@@ -1,5 +1,8 @@
 '''Code to read a switch and light an LED.
-Based on code found at http://makezine.com/projects/tutorial-raspberry-pi-gpio-pins-and-python/
+
+Based on code found at http://makezine.com/projects/tutorial-raspberry-pi-gpio-pins-and-python/ and 
+at http://mitchtech.net/raspberry-pi-physical-gmail-notifier/ .
+
 This code must be run as Superuser on the Raspberry Pi.
 
 ============
@@ -7,10 +10,15 @@ Dependencies
 ============
 
 Need to:
-sudo apt-get install python-dev
-sudo apt-get install python-pip python2.7-dev
-sudo apt-get install python-rpi.gpio
-sudo pip install flask
+
+* sudo apt-get install python-dev
+* sudo apt-get install python-pip python2.7-dev
+* sudo apt-get install python-rpi.gpio
+* sudo pip install flask
+
+====
+Code
+====
 '''
 
 #import RPi.GPIO as GPIO
