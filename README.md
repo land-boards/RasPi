@@ -7,4 +7,6 @@ Light an LED.
 
 Read a switch.
 
+Do it all from a webpage.
+
 Physical computing at its most basic.
