@@ -1,4 +1,5 @@
 pi_iot
 ======
 
-Raspberry Pi Internet of Things
+land-boards first foray into the Internet of Things using the Raspberry Pi.
+
