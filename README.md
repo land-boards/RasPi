@@ -1,4 +1,4 @@
-py_iot
+pi_iot
 ======
 
 Raspberry Pi Internet of Things
