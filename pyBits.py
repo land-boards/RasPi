@@ -9,7 +9,7 @@ This code must be run as Superuser on the Raspberry Pi.
 Dependencies
 ============
 
-Need to:
+Need to: 
 
 * sudo apt-get install python-dev
 * sudo apt-get install python-pip python2.7-dev
