@@ -15,4 +15,4 @@ Physical computing at its most basic.
 ```
 ./web_server.py
 ```
- - Navigate to "localhost:5000"
+ - Navigate to "localhost:5000/led"
