@@ -8,3 +8,10 @@ pi_iot
 * Do it all from a webpage.
 
 Physical computing at its most basic.
+
+## To Run
+ - Ensure dependencies are installed.
+ - Run
+```
+./web_server.py
+```
