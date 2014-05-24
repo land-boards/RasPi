@@ -56,12 +56,7 @@ class TalkToAPi:
 
 		:param ledState: True to turn the light on, false to turn light off
 		'''
-		ledVal = ledState
-		if ledState == False:
-			GPIO.output(LED_PIN, True)
-		else:
-			GPIO.output(LED_PIN, False)
-		return
+		GPIO.output(LED_PIN, not ledState)
 		
 	def getGPIOLibVersion(self):
 		'''Returns the GPIO library version that is being used.
