@@ -35,7 +35,7 @@ def hello_route():
 
 @app.route('/led/<state>')
 def change_led_route(state):
-    led_is_on = bool(state == 'on')
+    led_is_on = state == 'on'
     TalkToAPi().controlLED(led_is_on)
     return toggle_template(led_is_on)
 

@@ -15,4 +15,9 @@ Physical computing at its most basic.
 ```
 ./web_server.py
 ```
- - Navigate to "localhost:5000"
+ - Navigate to "localhost:5000/led"
+
+# Steps to configure on a fresh Raspbian Pi
+ - git clone  adafruit rasbperry_pi_python_code.git
+ - sudo apt-get install python-rpi-gpio
+ - sudo apt-get install python-pip
