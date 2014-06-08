@@ -13,9 +13,10 @@ Physical computing at its most basic.
  - Ensure dependencies are installed.
  - Run
 ```
-./web_server.py
+sudo ./web_server.py
 ```
- - Navigate to "localhost:5000/led"
+ - Navigate to "localhost:5000/led" to control LED functionality
+ - Navigate to "localhost:5000/switch" to check the state of the switch
 
 # Steps to configure on a fresh Raspbian Pi
  - git clone  adafruit rasbperry_pi_python_code.git
