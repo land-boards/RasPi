@@ -39,5 +39,10 @@ def change_led_route(state):
     TalkToAPi().controlLED(led_is_on)
     return toggle_template(led_is_on)
 
+@app.route('/switch')
+def check_switch_route():
+    switch_value = TalkToAPi().getSwitchValue()
+    return templatize('the switch is ' + ON_OFF[switch_value])
+
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')

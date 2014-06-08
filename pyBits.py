@@ -21,10 +21,11 @@ Code
 ====
 '''
 
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
+import os
 
-LED_PIN = 23
-SWITCH_PIN = 24
+LED_PIN = 24
+SWITCH_PIN = 23
 
 class TalkToAPi:
 	'''Simple code to talk to the low level bits of a Raspberry Pi
@@ -33,7 +34,7 @@ class TalkToAPi:
 	def __init__(self):
 		'''constructor 
 		'''
-		GPIO.setmode(GPIO.BOARD)	# setup GPIO using Board numbering
+		GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 		GPIO.setup(SWITCH_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 		GPIO.setup(LED_PIN, GPIO.OUT)
 
