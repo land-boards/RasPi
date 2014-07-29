@@ -27,10 +27,9 @@ J13 = 6
 J14 = 13
 
 def blinkLED(channel):
-	GPIO.output(channel, 0)
-	time.sleep(0.25)
 	GPIO.output(channel, 1)
 	time.sleep(0.25)
+	GPIO.output(channel, 0)
 	
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 GPIO.setup(J12, GPIO.OUT)
