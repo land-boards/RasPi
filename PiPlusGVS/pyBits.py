@@ -22,13 +22,20 @@ import RPi.GPIO as GPIO
 import os
 import time
 
-LED_PIN = 5
+J12 = 5
+J13 = 6
+J14 = 13
 
+def blinkLED(channel):
+	GPIO.output(channel, 0)
+	time.sleep(0.1)
+	GPIO.output(channel, 1)
+	time.sleep(0.1)
+	
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 GPIO.setup(LED_PIN, GPIO.OUT)
 
 while 1:
-	GPIO.output(LED_PIN, 0)
-	time.sleep(0.1)
-	GPIO.output(LED_PIN, 1)
-	time.sleep(0.1)
+	blinkLED(J12)
+	blinkLED(J13)
+
