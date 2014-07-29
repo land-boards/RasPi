@@ -28,6 +28,9 @@ J14 = 13
 J15 = 19
 J16 = 26
 J17 = 21
+J18 = 12
+J19 = 18
+J20 = 20
 
 def blinkLED(channel):
 	GPIO.output(channel, 1)
@@ -41,6 +44,9 @@ GPIO.setup(J14, GPIO.OUT)
 GPIO.setup(J15, GPIO.OUT)
 GPIO.setup(J16, GPIO.OUT)
 GPIO.setup(J17, GPIO.OUT)
+GPIO.setup(J18, GPIO.OUT)
+GPIO.setup(J19, GPIO.OUT)
+GPIO.setup(J20, GPIO.OUT)
 
 while 1:
 	blinkLED(J12)
@@ -49,3 +55,6 @@ while 1:
 	blinkLED(J15)
 	blinkLED(J16)
 	blinkLED(J17)
+	blinkLED(J18)
+	blinkLED(J19)
+	blinkLED(J20)
