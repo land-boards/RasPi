@@ -29,7 +29,7 @@ J15 = 19
 J16 = 26
 J17 = 21
 J18 = 12
-J19 = 18
+J19 = 16
 J20 = 20
 
 def blinkLED(channel):
