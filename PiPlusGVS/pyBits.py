@@ -20,9 +20,15 @@ Code
 
 import RPi.GPIO as GPIO
 import os
+import time
 
 LED_PIN = 5
 
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 GPIO.setup(LED_PIN, GPIO.OUT)
-GPIO.output(LED_PIN, 1)
+
+while 1:
+	GPIO.output(LED_PIN, 0)
+	time.sleep(0.1)
+	GPIO.output(LED_PIN, 1)
+	time.sleep(0.1)
