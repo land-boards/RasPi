@@ -1,7 +1,4 @@
-'''Code to read a switch and light an LED.
-
-Based on code found at http://makezine.com/projects/tutorial-raspberry-pi-gpio-pins-and-python/ and 
-at http://mitchtech.net/raspberry-pi-physical-gmail-notifier/ .
+'''Code to blink LEDs.
 
 This code must be run as Superuser on the Raspberry Pi.
 
@@ -24,49 +21,8 @@ Code
 import RPi.GPIO as GPIO
 import os
 
-LED_PIN = 24
-SWITCH_PIN = 23
+LED_PIN = 5
 
-class TalkToAPi:
-	'''Simple code to talk to the low level bits of a Raspberry Pi
-	'''
-	
-	def __init__(self):
-		'''constructor 
-		'''
-		GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
-		GPIO.setup(SWITCH_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-		GPIO.setup(LED_PIN, GPIO.OUT)
-
-	def getSwitchValue(self):
-		'''Poll the value of a switch/pushbutton.
-		Will probably replace this code later with an interrupt driven routine.
-		
-		:returns: True if the switch is pressed, false if the switch is not pressed
-		'''
-		if(GPIO.input(SWITCH_PIN) == 0):
-			print 'getSwitchValue: Button pressed'
-			return True
-		else:
-			print 'getSwitchValue: Button is not pressed'
-			return False
-			
-	def controlLED(self, ledState):
-		'''turns off or on a LED.
-		The LED is pulled up to Vcc so it needs to be driven low to turn the LED on.
-
-		:param ledState: True to turn the light on, false to turn light off
-		'''
-		GPIO.output(LED_PIN, not ledState)
-		
-	def getGPIOLibVersion(self):
-		'''Returns the GPIO library version that is being used.
-		
-		:returns: GPIO library version as a string
-		'''
-		return GPIO.VERSION
-		
-	def stopUsingRPi(self):
-		'''Free up the Raspbetty Pi pins when you are done using them
-		'''
-		GPIO.cleanup()
+GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
+GPIO.setup(LED_PIN, GPIO.OUT)
+GPIO.output(LED_PIN, 1)
