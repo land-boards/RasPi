@@ -39,6 +39,13 @@ J6 = 23
 J7 = 22
 J8 = 24
 J9 = 25
+J1_3 = 2
+J1_4 = 3
+J10_3 = 10
+J10_4 = 9
+J10_5 = 11
+J10_6 = 8
+J11_6 = 7
 
 def blinkLED(channel):
 	GPIO.output(channel, 1)
@@ -62,6 +69,13 @@ GPIO.setup(J6, GPIO.OUT)
 GPIO.setup(J7, GPIO.OUT)
 GPIO.setup(J8, GPIO.OUT)
 GPIO.setup(J9, GPIO.OUT)
+GPIO.setup(J1_3, GPIO.OUT)
+GPIO.setup(J1_4, GPIO.OUT)
+GPIO.setup(J10_3, GPIO.OUT)
+GPIO.setup(J10_4, GPIO.OUT)
+GPIO.setup(J10_5, GPIO.OUT)
+GPIO.setup(J10_6, GPIO.OUT)
+GPIO.setup(J11_6, GPIO.OUT)
 GPIO.setup(OE, GPIO.OUT)
 GPIO.output(OE, 1)
 
@@ -82,3 +96,10 @@ while 1:
 	blinkLED(J7)
 	blinkLED(J8)
 	blinkLED(J9)
+	blinkLED(J1_3)
+	blinkLED(J1_4)
+	blinkLED(J10_3)
+	blinkLED(J10_4)
+	blinkLED(J10_5)
+	blinkLED(J10_6)
+	blinkLED(J11_6)
