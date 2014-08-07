@@ -1,4 +1,6 @@
-''' blinkLEDs.py
+#!/usr/bin/env python
+
+'''blinkLEDs.py
 
 Code to blink all of the LEDs on the GVS card for a Raspberry Pi Model B Plus.
 
@@ -39,7 +41,6 @@ J17 = 21
 J18 = 12
 J19 = 16
 J20 = 20
-OE = 4
 J3 = 18
 J4 = 17
 J5 = 27
@@ -54,6 +55,8 @@ J10_4 = 9
 J10_5 = 11
 J10_6 = 8
 J11_6 = 7
+
+OE = 4
 
 def blinkLED(channel):
 	'''Function to blink an LED attached to an output channel
