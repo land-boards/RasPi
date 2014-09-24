@@ -41,6 +41,8 @@ J8 = 24
 J9 = 25
 J2_3 = 2
 J2_4 = 3
+J1_3 = 14
+J1_4 = 15
 J10_3 = 10
 J10_4 = 9
 J10_5 = 11
@@ -69,6 +71,8 @@ GPIO.setup(J7, GPIO.OUT)
 GPIO.setup(J8, GPIO.OUT)
 GPIO.setup(J9, GPIO.OUT)
 GPIO.setup(OE, GPIO.OUT)
+GPIO.setup(J1_3, GPIO.OUT)
+GPIO.setup(J1_4, GPIO.OUT)
 GPIO.setup(J2_3, GPIO.OUT)
 GPIO.setup(J2_4, GPIO.OUT)
 GPIO.setup(J10_3, GPIO.OUT)
@@ -91,6 +95,8 @@ while 1:
 	blinkLED(J7)
 	blinkLED(J8)
 	blinkLED(J9)
+	blinkLED(J1_3)
+	blinkLED(J1_4)
 	blinkLED(J2_3)
 	blinkLED(J2_4)
 	blinkLED(J10_3)
