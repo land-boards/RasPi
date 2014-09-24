@@ -57,7 +57,7 @@ def blinkLED(channel):
 	The high level output turns on the LED.
 	'''
 	GPIO.output(channel, 1)
-	time.sleep(0.5)
+	time.sleep(0.25)
 	GPIO.output(channel, 0)
 	
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
