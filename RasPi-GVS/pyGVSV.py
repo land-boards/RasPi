@@ -95,6 +95,7 @@ while 1:
 	blinkLED(J7)
 	blinkLED(J8)
 	blinkLED(J9)
+	blinkLED(J11_6)
 	blinkLED(J1_3)
 	blinkLED(J1_4)
 	blinkLED(J2_3)
@@ -103,4 +104,3 @@ while 1:
 	blinkLED(J10_4)
 	blinkLED(J10_5)
 	blinkLED(J10_6)
-	blinkLED(J11_6)
