@@ -31,6 +31,8 @@ import time
 
 I2C_3 = 2
 I2C_4 = 3
+UART_3 = 14
+UART_4 = 15
 IO4 = 4
 IO18 = 18
 IO17 = 17
@@ -69,6 +71,8 @@ GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 
 GPIO.setup(I2C_3, GPIO.OUT)
 GPIO.setup(I2C_4, GPIO.OUT)
+GPIO.setup(UART_3, GPIO.OUT)
+GPIO.setup(UART_4, GPIO.OUT)
 GPIO.setup(IO4, GPIO.OUT)
 GPIO.setup(IO18, GPIO.OUT)
 GPIO.setup(IO17, GPIO.OUT)
@@ -98,6 +102,13 @@ GPIO.setup(IO21, GPIO.OUT)
 while 1:
 	blinkLED(I2C_3)
 	blinkLED(I2C_4)
+	blinkLED(UART_3)
+	blinkLED(UART_4)
+	blinkLED(SPI0_3)
+	blinkLED(SPI0_4)
+	blinkLED(SPI0_5)
+	blinkLED(SPI0_6)
+	blinkLED(SPI1_6)
 	blinkLED(IO4)
 	blinkLED(IO18)
 	blinkLED(IO17)
