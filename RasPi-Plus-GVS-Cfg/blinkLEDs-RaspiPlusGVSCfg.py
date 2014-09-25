@@ -33,28 +33,28 @@ I2C_3 = 2
 I2C_4 = 3
 UART_3 = 14
 UART_4 = 15
-IO4 = 4
-IO18 = 18
-IO17 = 17
-IO27 = 27
-IO23 = 23
-IO22 = 22
-IO24 = 24
-IO25 = 25
 SPI0_3 = 10
 SPI0_4 = 9
 SPI0_5 = 11
 SPI0_6 = 8
 SPI1_6 = 7
+IO4 = 4
 IO5 = 5
 IO6 = 6
 IO12 = 12
 IO13 = 13
-IO19 = 19
 IO16 = 16
-IO26 = 26
+IO17 = 17
+IO18 = 18
+IO19 = 19
 IO20 = 20
 IO21 = 21
+IO22 = 22
+IO23 = 23
+IO24 = 24
+IO25 = 25
+IO26 = 26
+IO27 = 27
 
 def blinkLED(channel):
 	'''Function to blink an LED attached to an output channel
@@ -117,11 +117,6 @@ while 1:
 	blinkLED(IO22)
 	blinkLED(IO24)
 	blinkLED(IO25)
-	blinkLED(SPI0_3)
-	blinkLED(SPI0_4)
-	blinkLED(SPI0_5)
-	blinkLED(SPI0_6)
-	blinkLED(SPI1_6)
 	blinkLED(IO5)
 	blinkLED(IO6)
 	blinkLED(IO12)
