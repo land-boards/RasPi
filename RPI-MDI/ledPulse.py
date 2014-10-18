@@ -14,7 +14,7 @@ pwm.setPWMFreq(60)                        # Set frequency to 60 Hz
 while (True):
 	channel = 0
 	duration = 0
-	while duration < 4095:
+	while duration < 1200:
 		pwm.setPWM(0, 0, duration)
 		time.sleep(.1)
 		duration += 10
