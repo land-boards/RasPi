@@ -8,7 +8,7 @@ import time
 # ===========================================================================
 
 # Initialise the PWM device using the default address
-pwm = PWM(0x40, debug=True)
+pwm = PWM(0x40, debug=False)
 
 pwm.setPWMFreq(60)                        # Set frequency to 60 Hz
 while (True):
