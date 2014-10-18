@@ -22,11 +22,11 @@ while (True):
 	duration = 0
 	while duration < 4095:
 		pwm.setPWM(channel, 0, duration)
-		time.sleep(.1)
+		time.sleep(.01)
 		duration += 10
 	channel = 9
 	duration = 0
 	while duration < 4095:
 		pwm.setPWM(channel, 0, duration)
-		time.sleep(.1)
+		time.sleep(.01)
 		duration += 10
