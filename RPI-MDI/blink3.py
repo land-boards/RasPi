@@ -56,13 +56,14 @@ def blinkLED(channel):
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 
 # Set all of the pins to outputs
-GPIO.setup(J4, GPIO.IN)
-GPIO.setup(J5, GPIO.IN)
+GPIO.setup(J4, GPIO.OUT)
+GPIO.setup(J5, GPIO.OUT)
 GPIO.setup(J6, GPIO.OUT)
 
 # Blink all of the LEDs one at a time forever
 # CTRL-C to exit which is not a particularly elegant exit strategy, but this is a demo program
 
 while 1:
-	readVal = GPIO.input(J4)
-	GPIO.output(J6, not readVal)
+	blinkLED(J4)
+	blinkLED(J5)
+	blinkLED(J6)
