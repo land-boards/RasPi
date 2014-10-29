@@ -95,8 +95,6 @@ def testPair(ch1,ch2):
 		print 'Error reading low on channels', ch1, ch2
 		return False
 	GPIO.setup(ch2, GPIO.IN)
-	print 'Pass on channels', ch1, ch2
-	print 'TEST PASSED'
 	return True
 	
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
@@ -169,4 +167,4 @@ if testPair(IO16,IO26) == False:
 if testPair(IO20,IO21) == False:
 	print 'Test failed'
 	exit
-print 'Daisy test completed'
+print 'Daisy test paaaed'
