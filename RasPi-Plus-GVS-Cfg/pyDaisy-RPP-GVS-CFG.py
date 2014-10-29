@@ -68,19 +68,19 @@ def testPair(ch1,ch2):
 	Set the output low and check the output matches.
 	Then switch the input/output channels and repeat.
 	'''
-	GPIO.setup(chl, GPIO.OUT)
+	GPIO.setup(ch1, GPIO.OUT)
 	GPIO.setup(ch2, GPIO.IN)
-	GPIO.output(chl, 1)
+	GPIO.output(ch1, 1)
 	time.sleep(0.05)
 	if GPIO.input(ch2) != 1:
 		print 'Error reading high on channels', ch1, ch2
 		return
-	GPIO.output(chl, 0)
+	GPIO.output(ch1, 0)
 	time.sleep(0.05)
 	if GPIO.input(ch2) != 0:
 		print 'Error reading low on channels', ch1, ch2
 		return
-	GPIO.setup(chl, GPIO.IN)
+	GPIO.setup(ch1, GPIO.IN)
 	# 
 	GPIO.setup(ch2, GPIO.OUT)
 	GPIO.setup(ch1, GPIO.IN)
