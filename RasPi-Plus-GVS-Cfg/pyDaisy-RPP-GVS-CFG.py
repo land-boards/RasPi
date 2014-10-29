@@ -74,12 +74,12 @@ def testPair(ch1,ch2):
 	time.sleep(0.05)
 	if GPIO.input(ch2) != 1:
 		print 'Error reading high on channels', ch1, ch2
-		return
+		return False
 	GPIO.output(ch1, 0)
 	time.sleep(0.05)
 	if GPIO.input(ch2) != 0:
 		print 'Error reading low on channels', ch1, ch2
-		return
+		return False
 	GPIO.setup(ch1, GPIO.IN)
 	# 
 	GPIO.setup(ch2, GPIO.OUT)
@@ -88,14 +88,15 @@ def testPair(ch1,ch2):
 	time.sleep(0.05)
 	if GPIO.input(ch1) != 1:
 		print 'Error reading high on channels', ch1, ch2
-		return
+		return False
 	GPIO.output(ch2, 0)
 	time.sleep(0.05)
 	if GPIO.input(ch1) != 0:
 		print 'Error reading low on channels', ch1, ch2
-		return
+		return False
 	GPIO.setup(ch2, GPIO.IN)
 	print 'Pass on channels', ch1, ch2
+	print 'TEST PASSED'
 	
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 
