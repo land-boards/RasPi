@@ -137,6 +137,7 @@ def daisyTests():
 	if testPair(IO20,IO21) == False:
 		print 'Test failed'
 		return False
+	return True
 	
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 
