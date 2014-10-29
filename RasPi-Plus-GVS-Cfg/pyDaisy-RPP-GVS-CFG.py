@@ -97,74 +97,48 @@ def testPair(ch1,ch2):
 	GPIO.setup(ch2, GPIO.IN)
 	return True
 	
+def daisyTests:
+	if testPair(I2C_3,I2C_4) == False:
+		print 'Test failed'
+		return False
+	if testPair(UART_3,UART_4) == False:
+		print 'Test failed'
+		return False
+	if testPair(IO4,IO18) == False:
+		print 'Test failed'
+		return False
+	if testPair(IO17,IO27) == False:
+		print 'Test failed'
+		return False
+	if testPair(IO23,IO22) == False:
+		print 'Test failed'
+		return False
+	if testPair(IO24,IO25) == False:
+		print 'Test failed'
+		return False
+	if testPair(SPI0_3,SPI0_4) == False:
+		print 'Test failed'
+		return False
+	if testPair(SPI0_5,SPI0_6) == False:
+		print 'Test failed'
+		return False
+	if testPair(SPI1_6,IO5) == False:
+		print 'Test failed'
+		return False
+	if testPair(IO6,IO12) == False:
+		print 'Test failed'
+		return False
+	if testPair(IO13,IO19) == False:
+		print 'Test failed'
+		return False
+	if testPair(IO16,IO26) == False:
+		print 'Test failed'
+		return False
+	if testPair(IO20,IO21) == False:
+		print 'Test failed'
+		return False
+	
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 
-# Set all of the pins to outputs
-
-# GPIO.setup(I2C_3, GPIO.OUT)
-# GPIO.setup(I2C_4, GPIO.IN)
-# GPIO.setup(UART_3, GPIO.OUT)
-# GPIO.setup(UART_4, GPIO.IN)
-# GPIO.setup(IO4, GPIO.OUT)
-# GPIO.setup(IO18, GPIO.IN)
-# GPIO.setup(IO17, GPIO.OUT)
-# GPIO.setup(IO27, GPIO.IN)
-# GPIO.setup(IO23, GPIO.OUT)
-# GPIO.setup(IO22, GPIO.IN)
-# GPIO.setup(IO24, GPIO.OUT)
-# GPIO.setup(IO25, GPIO.IN)
-# GPIO.setup(SPI0_3, GPIO.OUT)
-# GPIO.setup(SPI0_4, GPIO.IN)
-# GPIO.setup(SPI0_5, GPIO.OUT)
-# GPIO.setup(SPI0_6, GPIO.IN)
-# GPIO.setup(SPI1_6, GPIO.OUT)
-# GPIO.setup(IO5, GPIO.IN)
-# GPIO.setup(IO6, GPIO.OUT)
-# GPIO.setup(IO12, GPIO.IN)
-# GPIO.setup(IO13, GPIO.OUT)
-# GPIO.setup(IO19, GPIO.IN)
-# GPIO.setup(IO16, GPIO.OUT)
-# GPIO.setup(IO26, GPIO.IN)
-# GPIO.setup(IO20, GPIO.OUT)
-# GPIO.setup(IO21, GPIO.IN)
-
-if testPair(I2C_3,I2C_4) == False:
-	print 'Test failed'
-	exit
-if testPair(UART_3,UART_4) == False:
-	print 'Test failed'
-	exit
-if testPair(IO4,IO18) == False:
-	print 'Test failed'
-	exit
-if testPair(IO17,IO27) == False:
-	print 'Test failed'
-	exit
-if testPair(IO23,IO22) == False:
-	print 'Test failed'
-	exit
-if testPair(IO24,IO25) == False:
-	print 'Test failed'
-	exit
-if testPair(SPI0_3,SPI0_4) == False:
-	print 'Test failed'
-	exit
-if testPair(SPI0_5,SPI0_6) == False:
-	print 'Test failed'
-	exit
-if testPair(SPI1_6,IO5) == False:
-	print 'Test failed'
-	exit
-if testPair(IO6,IO12) == False:
-	print 'Test failed'
-	exit
-if testPair(IO13,IO19) == False:
-	print 'Test failed'
-	exit
-if testPair(IO16,IO26) == False:
-	print 'Test failed'
-	exit
-if testPair(IO20,IO21) == False:
-	print 'Test failed'
-	exit
-print 'Daisy test paaaed'
+if daisyTests() == True:
+	print 'Daisy test passed'
