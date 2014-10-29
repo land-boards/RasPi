@@ -97,7 +97,7 @@ def testPair(ch1,ch2):
 	GPIO.setup(ch2, GPIO.IN)
 	return True
 	
-def daisyTests:
+def daisyTests():
 	if testPair(I2C_3,I2C_4) == False:
 		print 'Test failed'
 		return False
