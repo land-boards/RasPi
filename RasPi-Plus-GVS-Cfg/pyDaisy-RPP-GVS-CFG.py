@@ -132,7 +132,7 @@ GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 
 if testPair(I2C_3,I2C_4) == False:
 	print 'Test failed'
-	return
+	exit
 if testPair(UART_3,UART_4) == False:
 	print 'Test failed'
 	return
