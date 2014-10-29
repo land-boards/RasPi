@@ -135,38 +135,38 @@ if testPair(I2C_3,I2C_4) == False:
 	exit
 if testPair(UART_3,UART_4) == False:
 	print 'Test failed'
-	return
+	exit
 if testPair(IO4,IO18) == False:
 	print 'Test failed'
-	return
+	exit
 if testPair(IO17,IO27) == False:
 	print 'Test failed'
-	return
+	exit
 if testPair(IO23,IO22) == False:
 	print 'Test failed'
-	return
+	exit
 if testPair(IO24,IO25) == False:
 	print 'Test failed'
-	return
+	exit
 if testPair(SPI0_3,SPI0_4) == False:
 	print 'Test failed'
-	return
+	exit
 if testPair(SPI0_5,SPI0_6) == False:
 	print 'Test failed'
-	return
+	exit
 if testPair(SPI1_6,IO5) == False:
 	print 'Test failed'
-	return
+	exit
 if testPair(IO6,IO12) == False:
 	print 'Test failed'
-	return
+	exit
 if testPair(IO13,IO19) == False:
 	print 'Test failed'
-	return
+	exit
 if testPair(IO16,IO26) == False:
 	print 'Test failed'
-	return
+	exit
 if testPair(IO20,IO21) == False:
 	print 'Test failed'
-	return
+	exit
 print 'Daisy test completed'
