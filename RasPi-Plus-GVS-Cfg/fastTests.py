@@ -144,13 +144,15 @@ GPIO.setup(IO22, GPIO.OUT)
 GPIO.setup(IO24, GPIO.OUT)
 GPIO.setup(IO25, GPIO.OUT)
 
-if daisyTests() == True:
-	print 'Daisy test passed'
-
 # Blink all of the LEDs one at a time forever
 # CTRL-C to exit which is not a particularly elegant exit strategy, but this is a demo program
 
 while 1:
+	if daisyTests() == True:
+		print 'Daisy test passed'
+	else:
+		print 'Daisy test failed'
+		break;
 	blinkLED(IO4)
 	blinkLED(IO18)
 	blinkLED(IO17)
