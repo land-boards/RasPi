@@ -131,6 +131,7 @@ fi
 
 if [ $rc != 0 ]; then
 	echo "Error doing I/O operation."
+	read -p "Ctrl-C to halt" yn
 	exit $rc
 else
 	echo "Done."
