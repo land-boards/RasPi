@@ -62,6 +62,7 @@ IO26 = 26
 IO27 = 27
 
 def testPair(ch1,ch2):
+	GPIO.setwarnings(False)
 	'''Function to test I/O Pair.
 	Sets one pin to be an output and the other pin to be an input. 
 	Set the output high and check the input matches.
@@ -98,6 +99,7 @@ def testPair(ch1,ch2):
 	return True
 	
 def daisyTests():
+	GPIO.setwarnings(False)
 	if testPair(I2C_3,I2C_4) == False:
 		print 'Test failed'
 		return False
@@ -140,6 +142,7 @@ def daisyTests():
 	return True
 	
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
+GPIO.setwarnings(False)
 
 if daisyTests() == True:
 	print 'Daisy test passed'
