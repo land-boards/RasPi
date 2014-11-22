@@ -14,7 +14,7 @@ def blinkLED(channel):
 	The high level output turns on the LED.
 	'''
 	GPIO.output(channel, 1)
-	time.sleep(0.25)
+	time.sleep(1.0)
 	GPIO.output(channel, 0)
 
 J4 = 25
