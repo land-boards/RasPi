@@ -36,32 +36,28 @@ while (True):
 	duration = 150
 	while duration < 600:
 		pwm.setPWM(channel, 0, duration)
-		time.sleep(.1)
+		time.sleep(.03)
 		duration += 10
 	channel = 6
-	duration = 150
+	duration = 300
 	while duration < 600:
 		pwm.setPWM(channel, 0, duration)
-		time.sleep(.1)
+		time.sleep(.03)
 		duration += 10
 	channel = 7
-	duration = 150
+	duration = 1300
 	while duration < 600:
 		pwm.setPWM(channel, 0, duration)
-		time.sleep(.1)
+		time.sleep(.03)
 		duration += 10
 	channel = 8
-	duration = 5
-	while duration < 4096:
-		pwm.setPWM(channel, 0, duration)
-		time.sleep(.01)
-		duration += 10
+	pwm.setPWM(channel, 0, 0)
+	time.sleep(1.0)
+	pwm.setPWM(channel, 0, 4095)
 	channel = 9
-	duration = 5
-	while duration < 4096:
-		pwm.setPWM(channel, 0, duration)
-		time.sleep(.01)
-		duration += 10
+	pwm.setPWM(channel, 0, 0)
+	time.sleep(1.0)
+	pwm.setPWM(channel, 0, 4095)
 	blinkLED(J4)
 	blinkLED(J5)
 	blinkLED(J6)
