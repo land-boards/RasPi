@@ -45,7 +45,7 @@ while (True):
 		time.sleep(.03)
 		duration += 10
 	channel = 7
-	duration = 1300
+	duration = 300
 	while duration < 600:
 		pwm.setPWM(channel, 0, duration)
 		time.sleep(.03)
