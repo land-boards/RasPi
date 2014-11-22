@@ -31,6 +31,11 @@ GPIO.setup(J6, GPIO.OUT)
 pwm = PWM(0x40, debug=False)
 
 pwm.setPWMFreq(60)                        # Set frequency to 60 Hz
+
+pwm.setPWM(0, 0, 600)
+pwm.setPWM(6, 0, 600)
+pwm.setPWM(7, 0, 600)
+
 while (True):
 	channel = 0
 	duration = 150
