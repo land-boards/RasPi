@@ -2,6 +2,7 @@
 
 from Adafruit_PWM_Servo_Driver import PWM
 import time
+import RPi.GPIO as GPIO
 
 # ===========================================================================
 # fatRPI-MDI Code
