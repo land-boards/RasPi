@@ -39,16 +39,8 @@ SPI0_5 = 11
 SPI0_6 = 8
 SPI1_6 = 7
 IO4 = 4
-IO5 = 5
-IO6 = 6
-IO12 = 12
-IO13 = 13
-IO16 = 16
 IO17 = 17
 IO18 = 18
-IO19 = 19
-IO20 = 20
-IO21 = 21
 IO22 = 22
 IO23 = 23
 IO24 = 24
@@ -77,8 +69,8 @@ GPIO.setup(IO4, GPIO.OUT)
 GPIO.setup(IO18, GPIO.OUT)
 GPIO.setup(IO17, GPIO.OUT)
 GPIO.setup(IO27, GPIO.OUT)
-GPIO.setup(IO23, GPIO.OUT)
 GPIO.setup(IO22, GPIO.OUT)
+GPIO.setup(IO23, GPIO.OUT)
 GPIO.setup(IO24, GPIO.OUT)
 GPIO.setup(IO25, GPIO.OUT)
 GPIO.setup(SPI0_3, GPIO.OUT)
@@ -86,15 +78,6 @@ GPIO.setup(SPI0_4, GPIO.OUT)
 GPIO.setup(SPI0_5, GPIO.OUT)
 GPIO.setup(SPI0_6, GPIO.OUT)
 GPIO.setup(SPI1_6, GPIO.OUT)
-GPIO.setup(IO5, GPIO.OUT)
-GPIO.setup(IO6, GPIO.OUT)
-GPIO.setup(IO12, GPIO.OUT)
-GPIO.setup(IO13, GPIO.OUT)
-GPIO.setup(IO19, GPIO.OUT)
-GPIO.setup(IO16, GPIO.OUT)
-GPIO.setup(IO26, GPIO.OUT)
-GPIO.setup(IO20, GPIO.OUT)
-GPIO.setup(IO21, GPIO.OUT)
 
 # Blink all of the LEDs one at a time forever
 # CTRL-C to exit which is not a particularly elegant exit strategy, but this is a demo program
@@ -113,16 +96,7 @@ while 1:
 	blinkLED(IO18)
 	blinkLED(IO17)
 	blinkLED(IO27)
-	blinkLED(IO23)
 	blinkLED(IO22)
+	blinkLED(IO23)
 	blinkLED(IO24)
 	blinkLED(IO25)
-	blinkLED(IO5)
-	blinkLED(IO6)
-	blinkLED(IO12)
-	blinkLED(IO13)
-	blinkLED(IO19)
-	blinkLED(IO16)
-	blinkLED(IO26)
-	blinkLED(IO20)
-	blinkLED(IO21)
