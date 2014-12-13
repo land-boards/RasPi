@@ -114,9 +114,6 @@ def daisyTests():
 	if testPair(SPI0_5,SPI0_6) == False:
 		print 'Test failed'
 		return False
-	if testPair(SPI1_6,IO5) == False:
-		print 'Test failed'
-		return False
 	return True
 	
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
