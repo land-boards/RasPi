@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-'''blinkLEDs.py
+'''fastTest-RPT2.py
 
-Code to blink all of the LEDs on the GVS-Cfg card for a Raspberry Pi Model B Plus.
+Code to test a RPIO-TINY-2 card.
 
 This code must be run as Superuser on the Raspberry Pi.
 
@@ -117,18 +117,6 @@ def daisyTests():
 	if testPair(SPI1_6,IO5) == False:
 		print 'Test failed'
 		return False
-	if testPair(IO6,IO12) == False:
-		print 'Test failed'
-		return False
-	if testPair(IO13,IO19) == False:
-		print 'Test failed'
-		return False
-	if testPair(IO16,IO26) == False:
-		print 'Test failed'
-		return False
-	if testPair(IO20,IO21) == False:
-		print 'Test failed'
-		return False
 	return True
 	
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
@@ -143,6 +131,7 @@ GPIO.setup(IO23, GPIO.OUT)
 GPIO.setup(IO22, GPIO.OUT)
 GPIO.setup(IO24, GPIO.OUT)
 GPIO.setup(IO25, GPIO.OUT)
+GPIO.setup(SPI1_6, GPIO.OUT)
 
 # Blink all of the LEDs one at a time forever
 # CTRL-C to exit which is not a particularly elegant exit strategy, but this is a demo program
@@ -161,3 +150,4 @@ while 1:
 	blinkLED(IO22)
 	blinkLED(IO24)
 	blinkLED(IO25)
+	blinkLED(SPI1_6)
