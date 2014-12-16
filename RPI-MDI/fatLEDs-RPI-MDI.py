@@ -36,25 +36,16 @@ pwm.setPWM(0, 0, 600)
 pwm.setPWM(6, 0, 600)
 pwm.setPWM(7, 0, 600)
 
+def blinkPWM(channel):
+	pwm.setPWM(channel, 0, 0)
+	time.sleep(1.0)
+	pwm.setPWM(channel, 0, 4095)
+
+
 while (True):
-	channel = 0
-	duration = 0
-	while duration < 4095:
-		pwm.setPWM(channel, 0, duration)
-		time.sleep(.03)
-		duration += 40
-	channel = 6
-	duration = 0
-	while duration < 4095:
-		pwm.setPWM(channel, 0, duration)
-		time.sleep(.03)
-		duration += 40
-	channel = 7
-	duration = 300
-	while duration < 4095:
-		pwm.setPWM(channel, 0, duration)
-		time.sleep(.03)
-		duration += 40
+	blinkPWM(0)
+	blinkPWM(6)
+	blinkPWM(7)
 	channel = 8
 	pwm.setPWM(channel, 0, 0)
 	time.sleep(1.0)
