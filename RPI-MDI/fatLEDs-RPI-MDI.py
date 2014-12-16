@@ -42,19 +42,19 @@ while (True):
 	while duration < 4095:
 		pwm.setPWM(channel, 0, duration)
 		time.sleep(.03)
-		duration += 100
+		duration += 40
 	channel = 6
-	duration = 300
+	duration = 0
 	while duration < 4095:
 		pwm.setPWM(channel, 0, duration)
 		time.sleep(.03)
-		duration += 100
+		duration += 40
 	channel = 7
 	duration = 300
 	while duration < 4095:
 		pwm.setPWM(channel, 0, duration)
 		time.sleep(.03)
-		duration += 100
+		duration += 40
 	channel = 8
 	pwm.setPWM(channel, 0, 0)
 	time.sleep(1.0)
