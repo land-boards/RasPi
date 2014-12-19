@@ -45,14 +45,8 @@ while (True):
 	blinkPWM(0)
 	blinkPWM(6)
 	blinkPWM(7)
-	channel = 8
-	pwm.setPWM(channel, 0, 0)
-	time.sleep(1.0)
-	pwm.setPWM(channel, 0, 4095)
-	channel = 9
-	pwm.setPWM(channel, 0, 0)
-	time.sleep(1.0)
-	pwm.setPWM(channel, 0, 4095)
+	blinkPWM(8)
+	blinkPWM(9)
 	blinkLED(J4)
 	blinkLED(J5)
 	blinkLED(J6)
