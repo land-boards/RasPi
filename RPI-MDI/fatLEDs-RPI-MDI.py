@@ -47,11 +47,11 @@ def blinkPWMH(channel):
 	pwm.setPWM(channel, 0, 4095)
 
 while (True):
-	blinkPWMH(0)
-	blinkPWMH(6)
+	blinkPWM(0)
+	blinkPWM(6)
 	blinkPWM(7)
-	blinkPWM(8)
-	blinkPWM(9)
+	blinkPWMH(8)
+	blinkPWMH(9)
 	blinkLED(J4)
 	blinkLED(J5)
 	blinkLED(J6)
