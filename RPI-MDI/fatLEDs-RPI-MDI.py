@@ -14,7 +14,7 @@ def blinkLED(channel):
 	The high level output turns on the LED.
 	'''
 	GPIO.output(channel, 1)
-	time.sleep(1.0)
+	time.sleep(0.5)
 	GPIO.output(channel, 0)
 
 J4 = 25
@@ -32,9 +32,11 @@ pwm = PWM(0x40, debug=False)
 
 pwm.setPWMFreq(60)                        # Set frequency to 60 Hz
 
-pwm.setPWM(0, 0, 600)
-pwm.setPWM(6, 0, 600)
-pwm.setPWM(7, 0, 600)
+pwm.setPWM(0, 0, 0)
+pwm.setPWM(6, 0, 0)
+pwm.setPWM(7, 0, 0)
+pwm.setPWM(8, 0, 4095)
+pwm.setPWM(9, 0, 4095)
 
 def blinkPWM(channel):
 	pwm.setPWM(channel, 0, 4095)
