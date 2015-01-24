@@ -33,7 +33,7 @@ import time
 # on the GVS card.
 
 J1_3 = 2
-J2_4 = 3
+J1_4 = 3
 J2_3 = 14
 J2_4 = 15
 J3 = 18
