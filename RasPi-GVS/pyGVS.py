@@ -102,5 +102,5 @@ while 1:
 	blinkLED(J10_3)
 	blinkLED(J10_4)
 	blinkLED(J10_5)
-	blinkLED(J10_6)
 	blinkLED(J11_6)
+	blinkLED(J10_6)
