@@ -32,6 +32,10 @@ import time
 # Assign all of the GPIO lines (by board pin numbering) to their corresponding jacks 
 # on the GVS card.
 
+J1_3 = 2
+J2_4 = 3
+J2_3 = 14
+J2_4 = 15
 J3 = 18
 J4 = 17
 J5 = 27
@@ -39,10 +43,6 @@ J6 = 23
 J7 = 22
 J8 = 24
 J9 = 25
-J2_3 = 2
-J2_4 = 3
-J1_3 = 14
-J1_4 = 15
 J10_3 = 10
 J10_4 = 9
 J10_5 = 11
