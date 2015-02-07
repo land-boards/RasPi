@@ -130,8 +130,10 @@ GPIO.setup(IO24, GPIO.OUT)
 GPIO.setup(IO25, GPIO.OUT)
 GPIO.setup(SPI1_6, GPIO.OUT)
 
-# Blink all of the LEDs one at a time forever
 # CTRL-C to exit which is not a particularly elegant exit strategy, but this is a demo program
+
+print 'Daisy chain connectors on I2C, UART and SP0'
+print 'LEDs on 5V outputs and SP1'
 
 while 1:
 	if daisyTests() == True:
