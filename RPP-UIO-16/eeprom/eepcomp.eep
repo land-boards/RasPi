@@ -5,18 +5,18 @@
 # version=0x01
 # reserved=0
 # numatoms=2
-# eeplen=117
+# eeplen=109
 # ----------
 
 
-# Start of atom #0 of type 0x0001 and length 57
+# Start of atom #0 of type 0x0001 and length 49
 # Vendor info
-product_uuid 3ea7c89f-353e-4633-bd6c-2572996f277b
-product_id 0x0004
+product_uuid d52d3ffe-3219-4f62-af8b-5c593973e9c0
+product_id 0x0005
 product_ver 0x0001
 vendor "land-boards.com"   # length=15
-product "RASPI-PLUS-GVS-CFG"   # length=18
-# End of atom. CRC16=0x437a
+product "RPP-UIO-16"   # length=10
+# End of atom. CRC16=0x9ff2
 
 
 # Start of atom #1 of type 0x0002 and length 32
