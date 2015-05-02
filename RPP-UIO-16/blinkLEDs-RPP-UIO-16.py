@@ -109,6 +109,7 @@ while 1:
 	blinkLED(SPI0_5)
 	blinkLED(SPI0_6)
 	blinkLED(SPI1_6)
+	blinkLED(IO21)
 	blinkLED(IO4)
 	blinkLED(IO18)
 	blinkLED(IO17)
@@ -125,4 +126,3 @@ while 1:
 	blinkLED(IO16)
 	blinkLED(IO26)
 	blinkLED(IO20)
-	blinkLED(IO21)
