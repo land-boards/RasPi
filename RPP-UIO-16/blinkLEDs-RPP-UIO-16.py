@@ -100,6 +100,8 @@ GPIO.setup(IO21, GPIO.OUT)
 # CTRL-C to exit which is not a particularly elegant exit strategy, but this is a demo program
 
 while 1:
+	blinkLED(IO21)
+	blinkLED(SPI1_6)
 	blinkLED(I2C_3)
 	blinkLED(I2C_4)
 	blinkLED(UART_3)
@@ -108,8 +110,6 @@ while 1:
 	blinkLED(SPI0_4)
 	blinkLED(SPI0_5)
 	blinkLED(SPI0_6)
-	blinkLED(SPI1_6)
-	blinkLED(IO21)
 	blinkLED(IO4)
 	blinkLED(IO18)
 	blinkLED(IO17)
