@@ -199,6 +199,6 @@ if __name__ == '__main__':
     print "Starting blinky on pin 0 (CTRL+C to quit)"
     while (True):
       mcp.output(0, 1)  # Pin 0 High
-      time.sleep(1);
+      time.sleep(0.1);
       mcp.output(0, 0)  # Pin 0 Low
-      time.sleep(1);
+      time.sleep(0.1);
