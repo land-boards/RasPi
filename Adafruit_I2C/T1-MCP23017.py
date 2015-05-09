@@ -1,3 +1,5 @@
+import Adafruit_MCP230xx
+
 mcp = Adafruit_MCP230XX(busnum = 1, address = 0x27, num_gpios = 16)
 
 # Set pins 0, 1 and 2 to output (you can set pins 0..15 this way)
