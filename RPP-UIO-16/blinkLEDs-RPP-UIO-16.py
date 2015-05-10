@@ -153,7 +153,7 @@ while 1:
 	GPIO.output(IO26, 0)
 	GPIO.output(IO20, 1)
 	GPIO.output(IO21, 0)
-	time.sleep(0.5)
+	time.sleep(2.0)
 	
 	GPIO.output(I2C_3, 0)
 	GPIO.output(I2C_4, 1)
@@ -181,7 +181,7 @@ while 1:
 	GPIO.output(IO26, 1)
 	GPIO.output(IO20, 0)
 	GPIO.output(IO21, 1)
-	time.sleep(0.5)
+	time.sleep(2.0)
 
 	GPIO.output(I2C_3, 0)
 	GPIO.output(I2C_4, 0)
