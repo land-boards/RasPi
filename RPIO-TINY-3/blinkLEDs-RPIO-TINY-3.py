@@ -99,4 +99,5 @@ while 1:
 	blinkLED(IO25)
 	blinkLED(8)
 	blinkLED(7)
+	blinkLED(11)
 
