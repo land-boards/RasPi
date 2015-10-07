@@ -11,12 +11,16 @@ OLATB    = 0x15 # Register for outputs
 GPIOA    = 0x12 # Register for inputs
 GPIOB    = 0x13 # Register for inputs
 
+PCA9544 = 0x71
+SELCH0 = 0X04
+bus.write_byte_data(PCA9544,SELCH0,SELCH0)
+
 # Set all GPA pins as outputs by setting
 # all bits of IODIRA register to 0
 bus.write_byte_data(MCP23017,IODIRA,0x00)
 bus.write_byte_data(MCP23017,IODIRB,0x00)
 
-# Set output all 7 output bits to 0
+# Set output all 16 output bits to 0
 bus.write_byte_data(MCP23017,OLATA,0)
 bus.write_byte_data(MCP23017,OLATB,0)
 
