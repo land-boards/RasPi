@@ -28,6 +28,20 @@ bus.write_byte_data(MCP23008,IODIR,0x00)
 # Set output all 16 output bits to 0
 bus.write_byte_data(MCP23008,OLAT,0)
 
+bus.write_byte_data(PCA9544,SELCH2,SELCH2)
+# Set all GPA pins as outputs by setting
+# all bits of IODIRA register to 0
+bus.write_byte_data(MCP23008,IODIR,0x00)
+# Set output all 16 output bits to 0
+bus.write_byte_data(MCP23008,OLAT,0)
+
+bus.write_byte_data(PCA9544,SELCH3,SELCH3)
+# Set all GPA pins as outputs by setting
+# all bits of IODIRA register to 0
+bus.write_byte_data(MCP23008,IODIR,0x00)
+# Set output all 16 output bits to 0
+bus.write_byte_data(MCP23008,OLAT,0)
+
 while True:
 	bus.write_byte_data(PCA9544,SELCH0,SELCH0)
 	bus.write_byte_data(MCP23008,OLAT,1)
