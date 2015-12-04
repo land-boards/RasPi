@@ -25,7 +25,7 @@ ENVIRONMENT
 * Run under Raspbian
 * Uses a Raspberry Pi
 * Uses a RPI-I2C-HUB card
-* Uses (4) I2CIO-8 cards 
+* Uses (2) DigIO-16 cards 
 
 ====
 BUGS
