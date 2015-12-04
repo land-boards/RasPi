@@ -31,22 +31,22 @@ bus.write_byte_data(MCP23008,IODIR,0x00)
 bus.write_byte_data(MCP23008,OLAT,0)
 
 while True:
-	bus.write_byte_data(PCA9544,SELCH0,SELCH0)	# Select I2C bus #0
+	bus.write_byte_data(PCA9544,SELCH0)	# Select I2C bus #0
 	bus.write_byte_data(MCP23008,OLAT,1)	# turn on LED
 	time.sleep(1)							# wait 1 sec
 	bus.write_byte_data(MCP23008,OLAT,0)	# turn off LED
 
-	bus.write_byte_data(PCA9544,SELCH1,SELCH1)
+	bus.write_byte_data(PCA9544,SELCH1)
 	bus.write_byte_data(MCP23008,OLAT,1)
 	time.sleep(1)
 	bus.write_byte_data(MCP23008,OLAT,0)
 	
-	bus.write_byte_data(PCA9544,SELCH2,SELCH2)
+	bus.write_byte_data(PCA9544,SELCH2)
 	bus.write_byte_data(MCP23008,OLAT,1)
 	time.sleep(1)
 	bus.write_byte_data(MCP23008,OLAT,0)
 	
-	bus.write_byte_data(PCA9544,SELCH3,SELCH3)
+	bus.write_byte_data(PCA9544,SELCH3)
 	bus.write_byte_data(MCP23008,OLAT,1)
 	time.sleep(1)
 	bus.write_byte_data(MCP23008,OLAT,0
