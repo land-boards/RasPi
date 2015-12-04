@@ -49,4 +49,4 @@ while True:
 	bus.write_byte_data(PCA9544,SELCH3)
 	bus.write_byte_data(MCP23008,OLAT,1)
 	time.sleep(1)
-	bus.write_byte_data(MCP23008,OLAT,0
+	bus.write_byte_data(MCP23008,OLAT,0)
