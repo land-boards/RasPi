@@ -33,6 +33,12 @@ bus.write_byte_data(MCP23008,OLAT,0)
 def bounceOne():
 	bus.write_byte_data(MCP23008,OLAT,1)	# turn on LED
 	time.sleep(1)							# wait 1 sec
+	bus.write_byte_data(MCP23008,OLAT,2)	# turn on LED
+	time.sleep(1)							# wait 1 sec
+	bus.write_byte_data(MCP23008,OLAT,4)	# turn on LED
+	time.sleep(1)							# wait 1 sec
+	bus.write_byte_data(MCP23008,OLAT,8)	# turn on LED
+	time.sleep(1)							# wait 1 sec
 	bus.write_byte_data(MCP23008,OLAT,0)	# turn off LED
 	
 
@@ -41,16 +47,10 @@ while True:
 	bounceOne()
 
 	bus.write_byte_data(PCA9544,SELCH1,SELCH1)
-	bus.write_byte_data(MCP23008,OLAT,1)
-	time.sleep(1)
-	bus.write_byte_data(MCP23008,OLAT,0)
+	bounceOne()
 	
 	bus.write_byte_data(PCA9544,SELCH2,SELCH2)
-	bus.write_byte_data(MCP23008,OLAT,1)
-	time.sleep(1)
-	bus.write_byte_data(MCP23008,OLAT,0)
+	bounceOne()
 	
 	bus.write_byte_data(PCA9544,SELCH3,SELCH3)
-	bus.write_byte_data(MCP23008,OLAT,1)
-	time.sleep(1)
-	bus.write_byte_data(MCP23008,OLAT,0)
+	bounceOne()
