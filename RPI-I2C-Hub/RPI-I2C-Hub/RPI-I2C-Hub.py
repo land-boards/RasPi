@@ -39,6 +39,7 @@ AUTHOR
 
 Doug Gilliland
 """
+
 import smbus
 import time
 
@@ -52,11 +53,11 @@ OLATB    = 0x15 # Register for outputs
 GPIOA    = 0x12 # Register for inputs
 GPIOB    = 0x13 # Register for inputs
 
-PCA9544 = 0x71
-SELCH0 = 0X04
-SELCH1 = 0X05
-SELCH2 = 0X06
-SELCH3 = 0X07
+PCA9544 = 0x71	# Mux address
+SELCH0 = 0X04	# Select mux channel #0
+SELCH1 = 0X05	# Select mux channel #1
+SELCH2 = 0X06	# Select mux channel #2
+SELCH3 = 0X07	# Select mux channel #3
 
 def setup():
 	"""setup code

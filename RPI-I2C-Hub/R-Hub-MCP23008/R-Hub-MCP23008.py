@@ -4,7 +4,7 @@
 NAME
 ====
 
-'''R-Hub-MCP23008.py''' - RPI-I2C-HUB example code 
+R-Hub-MCP23008.py - RPI-I2C-HUB example code 
 
 ========
 SYNOPSIS
@@ -38,7 +38,6 @@ AUTHOR
 ======
 
 Doug Gilliland
-
 """
 
 import smbus	# I2C library
