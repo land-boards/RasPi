@@ -2,6 +2,8 @@
 
 * These are the [http://land-boards.com/blwiki/index.php?title=RPI-I2C-HUB Land Boards I2C Hub/Repeater for the Raspberry Pi (RPI-I2C-HUB) Card] example code files.
 
+<img src="http://land-boards.com/blwiki/images/d/d0/I2C-RPT-01_5881-CCA-640px.jpg" alt="RPI-I2C-HUB" title="RPI-I2C-HUB" />
+
 === Ownership ===
 
 * Some of these files (particularly libraries) were created by others.
