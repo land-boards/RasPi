@@ -1,4 +1,4 @@
-== Land Boards Raspberry Pi Cards Files ==
+== Land Boards I2C Hub/Repeater for the Raspberry Pi (RPI-I2C-HUB) Card Files ==
 
 * These are the [http://land-boards.com/blwiki/index.php?title=RPI-I2C-HUB Land Boards I2C Hub/Repeater for the Raspberry Pi (RPI-I2C-HUB) Card] example code files.
 
