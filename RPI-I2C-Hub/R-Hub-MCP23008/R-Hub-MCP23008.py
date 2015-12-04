@@ -1,3 +1,45 @@
+"""
+====
+NAME
+====
+
+'''R-Hub-MCP23008.py''' - RPI-I2C-HUB example code 
+
+========
+SYNOPSIS
+========
+
+sudo python R-Hub-MCP23008.py
+
+===========
+DESCRIPTION
+===========
+
+Used to demonstrate the operation of the Raspberry Pi I2C hub card.
+
+===========
+ENVIRONMENT
+===========
+
+* Run under Raspbian
+* Uses a Raspberry Pi
+* Uses a RPI-I2C-HUB card
+* Uses (4) I2CIO-8 cards 
+
+====
+BUGS
+====
+
+None known.
+
+======
+AUTHOR
+======
+
+Doug Gilliland
+
+"""
+
 import smbus	# I2C library
 import time		# used for sleep function
 
