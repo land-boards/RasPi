@@ -14,22 +14,6 @@ SELCH1 = 0X05	# Select mux channel #1
 SELCH2 = 0X06	# Select mux channel #2
 SELCH3 = 0X07	# Select mux channel #3
 
-bus.write_byte_data(PCA9544,SELCH0,SELCH0)	# Select I2C bus #0
-bus.write_byte_data(MCP23008,IODIR,0x00)	# Set direction to outputs
-bus.write_byte_data(MCP23008,OLAT,0)		# Write out all 0s
-
-bus.write_byte_data(PCA9544,SELCH1,SELCH1)	# Select I2C bus #1
-bus.write_byte_data(MCP23008,IODIR,0x00)
-bus.write_byte_data(MCP23008,OLAT,0)
-
-bus.write_byte_data(PCA9544,SELCH2,SELCH2)	# Select I2C bus #2
-bus.write_byte_data(MCP23008,IODIR,0x00)
-bus.write_byte_data(MCP23008,OLAT,0)
-
-bus.write_byte_data(PCA9544,SELCH3,SELCH3)	# Select I2C bus #3
-bus.write_byte_data(MCP23008,IODIR,0x00)
-bus.write_byte_data(MCP23008,OLAT,0)
-
 def bounceOne():
 	bus.write_byte_data(MCP23008,OLAT,1)	# turn on LED
 	time.sleep(0.2)							# wait 1 sec
@@ -40,7 +24,22 @@ def bounceOne():
 	bus.write_byte_data(MCP23008,OLAT,8)	# turn on LED
 	time.sleep(0.2)							# wait 1 sec
 	bus.write_byte_data(MCP23008,OLAT,0)	# turn off LED
-	
+
+def initI2CIO8():
+	bus.write_byte_data(MCP23008,IODIR,0x00)	# Set direction to outputs
+	bus.write_byte_data(MCP23008,OLAT,0)		# Write out all 0s
+
+bus.write_byte_data(PCA9544,SELCH0,SELCH0)	# Select I2C bus #0
+initI2CIO8()
+
+bus.write_byte_data(PCA9544,SELCH1,SELCH1)	# Select I2C bus #1
+initI2CIO8()
+
+bus.write_byte_data(PCA9544,SELCH2,SELCH2)	# Select I2C bus #2
+initI2CIO8()
+
+bus.write_byte_data(PCA9544,SELCH3,SELCH3)	# Select I2C bus #3
+initI2CIO8()
 
 while True:
 	bus.write_byte_data(PCA9544,SELCH0,SELCH0)	# Select I2C bus #0
