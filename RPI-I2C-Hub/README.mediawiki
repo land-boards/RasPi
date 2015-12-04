@@ -4,6 +4,11 @@
 
 <img src="http://land-boards.com/blwiki/images/d/d0/I2C-RPT-01_5881-CCA-640px.jpg" alt="RPI-I2C-HUB" title="RPI-I2C-HUB" />
 
+=== Files ===
+
+* R-Hub-MCP23008.py - Demo of the RPI-I2C-HUB with four MCP23008 parts with an LED on each part.
+* RPI-I2C-Hub.py - Demo of the RPI-I2C-HUB with two MPC23017 parts with an LED on each part.
+
 === Ownership ===
 
 * Some of these files (particularly libraries) were created by others.
