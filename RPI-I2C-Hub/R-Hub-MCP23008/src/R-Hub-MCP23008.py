@@ -71,27 +71,38 @@ def initI2CIO8():
 	bus.write_byte_data(MCP23008,IODIR,0x00)	# Set direction to outputs
 	bus.write_byte_data(MCP23008,OLAT,0)		# Write out all 0s
 
-bus.write_byte_data(PCA9544,SELCH0,SELCH0)	# Select I2C bus #0
-initI2CIO8()
-
-bus.write_byte_data(PCA9544,SELCH1,SELCH1)	# Select I2C bus #1
-initI2CIO8()
-
-bus.write_byte_data(PCA9544,SELCH2,SELCH2)	# Select I2C bus #2
-initI2CIO8()
-
-bus.write_byte_data(PCA9544,SELCH3,SELCH3)	# Select I2C bus #3
-initI2CIO8()
-
-while True:
+def setup():
+	"""setup code
+	"""
 	bus.write_byte_data(PCA9544,SELCH0,SELCH0)	# Select I2C bus #0
-	bounceOne()
+	initI2CIO8()
 
-	bus.write_byte_data(PCA9544,SELCH1,SELCH1)
-	bounceOne()
+	bus.write_byte_data(PCA9544,SELCH1,SELCH1)	# Select I2C bus #1
+	initI2CIO8()
+
+	bus.write_byte_data(PCA9544,SELCH2,SELCH2)	# Select I2C bus #2
+	initI2CIO8()
+
+	bus.write_byte_data(PCA9544,SELCH3,SELCH3)	# Select I2C bus #3
+	initI2CIO8()
+
+def loop():
+	"""loop code
+	"""
+	while True:
+		bus.write_byte_data(PCA9544,SELCH0,SELCH0)	# Select I2C bus #0
+		bounceOne()
+
+		bus.write_byte_data(PCA9544,SELCH1,SELCH1)
+		bounceOne()
+		
+		bus.write_byte_data(PCA9544,SELCH2,SELCH2)
+		bounceOne()
+		
+		bus.write_byte_data(PCA9544,SELCH3,SELCH3)
+		bounceOne()
+
+if __name__ == '__main__':
+	setup()
+	loop()
 	
-	bus.write_byte_data(PCA9544,SELCH2,SELCH2)
-	bounceOne()
-	
-	bus.write_byte_data(PCA9544,SELCH3,SELCH3)
-	bounceOne()
