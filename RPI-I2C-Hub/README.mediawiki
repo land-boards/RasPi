@@ -16,6 +16,12 @@
 * Demo of the RPI-I2C-HUB with two MPC23017 parts with an LED on each part.
 * Uses two of the [http://land-boards.com/blwiki/index.php?title=DigIO16-I2C DigIO16-I2C] cards.
 
+'''IntrTestRPiHub.py'''
+
+* Demo of the interrupt function of the RPI-I2C-HUB
+* Uses a [http://land-boards.com/blwiki/index.php?title=I2CIO-8 I2CIO-8] card
+* Prints a message whenn an interrupt occurs (the interrupt is polled)
+
 === Ownership ===
 
 * Some of these files (particularly libraries) were created by others.
