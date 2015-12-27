@@ -57,7 +57,7 @@ IOCON    = 0x05 #
 GPPU     = 0x06 # 
 INTF     = 0x07 # 
 INTCAP   = 0x08 # 
-GPIO     = 0x09 # Register for inputs
+GPIOMCP  = 0x09 # Register for inputs
 OLAT     = 0x0a # Register for outputs
 
 INTPOLACTHI = 0x02
@@ -85,7 +85,7 @@ def loop():
 	"""
 	while True:
 		print 'int',GPIO.input(INTLINE)
-		value =  bus.read_byte_data(MCP23008,GPIO) >> 4
+		value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 		print 'value =', value
 		bus.write_byte_data(MCP23008,OLAT,value)
 		delay(0.5)
