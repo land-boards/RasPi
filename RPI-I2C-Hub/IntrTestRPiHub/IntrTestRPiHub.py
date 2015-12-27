@@ -63,6 +63,7 @@ GPIOMCP  = 0x09 # Register for inputs
 OLAT     = 0x0a # Register for outputs
 
 INTPOLACTHI = 0x02
+INTPOLACTLO = 0x00
 INTLINE = 17
 
 PCA9544 = 0x71	# Mux address
@@ -76,7 +77,7 @@ def setup():
 	"""
 	bus.write_byte_data(PCA9544,SELCH0,SELCH0)	# Select I2C bus #0
 	bus.write_byte_data(MCP23008,IODIR,0xf0)		# Set I/O direction control
-	bus.write_byte_data(MCP23008,IOCON,INTPOLACTHI)	# Set interrupt polarity to high 
+	bus.write_byte_data(MCP23008,IOCON,INTPOLACTLO)	# Set interrupt polarity to high 
 	bus.write_byte_data(MCP23008,IPOL,0xf0)			# Set input polarity to invert
 	bus.write_byte_data(MCP23008,GPINTEN,0xf0)		# Enable Interrupts on all inputs 
 	bus.write_byte_data(MCP23008,OLAT,0)			# Write out all 0s
