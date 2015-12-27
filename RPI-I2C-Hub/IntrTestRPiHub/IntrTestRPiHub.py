@@ -90,7 +90,7 @@ def loop():
 		value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 		print 'value =', value
 		bus.write_byte_data(MCP23008,OLAT,value)
-		delay(0.5)
+		time.sleep(0.5)
 
 if __name__ == '__main__':
 	setup()
