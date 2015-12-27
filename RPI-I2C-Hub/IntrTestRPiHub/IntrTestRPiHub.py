@@ -46,6 +46,8 @@ import time
 
 import smbus	# I2C library
 
+GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
+
 bus = smbus.SMBus(1) # Rev 2 Pi uses 1
 
 MCP23008 = 0x20 # Slave device address base
