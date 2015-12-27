@@ -87,11 +87,12 @@ def loop():
 	"""loop code
 	"""
 	while True:
-		print 'int',GPIO.input(INTLINE)
-		value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
-		print 'value =', value
-		bus.write_byte_data(MCP23008,OLAT,value)
-		time.sleep(0.5)
+		if GPIO.input(INTLINE) == 0:
+			time.sleep(0.005)
+			print 'input changed',GPIO.input(INTLINE)
+			value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
+			print 'value =', value
+			bus.write_byte_data(MCP23008,OLAT,value)
 
 if __name__ == '__main__':
 	setup()
