@@ -78,7 +78,7 @@ def setup():
 	bus.write_byte_data(MCP23008,IPOL,0xf0)			# Set input polarity to invert
 	bus.write_byte_data(MCP23008,GPINTEN,0xf0)		# Enable Interrupts on all inputs 
 	bus.write_byte_data(MCP23008,OLAT,0)			# Write out all 0s
-	GPIO.setup(INTLINE, INPUT)
+	GPIO.setup(INTLINE, GPIO.IN)
 	
 def loop():
 	"""loop code
