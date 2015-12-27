@@ -89,7 +89,7 @@ def loop():
 	while True:
 		if GPIO.input(INTLINE) == 0:
 			time.sleep(0.005)
-			print 'input changed',GPIO.input(INTLINE)
+			print 'input changed',
 			value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 			print 'value =', value
 			bus.write_byte_data(MCP23008,OLAT,value)
