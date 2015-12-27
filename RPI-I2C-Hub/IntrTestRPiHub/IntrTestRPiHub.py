@@ -40,8 +40,11 @@ AUTHOR
 Doug Gilliland
 """
 
+import RPi.GPIO as GPIO
+import os
+import time
+
 import smbus	# I2C library
-import time		# used for sleep function
 
 bus = smbus.SMBus(1) # Rev 2 Pi uses 1
 
