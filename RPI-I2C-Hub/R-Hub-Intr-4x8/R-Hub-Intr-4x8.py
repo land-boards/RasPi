@@ -43,6 +43,7 @@ Doug Gilliland
 import smbus	# I2C library
 import time		# used for sleep function
 import RPi.GPIO as GPIO
+
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 
 bus = smbus.SMBus(1) # Rev 2 Pi uses 1
@@ -87,7 +88,7 @@ def initI2CIO8():
 	bus.write_byte_data(MCP23008,GPINTEN,0xf0)		# Enable Interrupts on all inputs 
 	bus.write_byte_data(MCP23008,OLAT,0)			# Write out all 0s
 	GPIO.setup(INTLINE, GPIO.IN)
-	value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
+	bus.read_byte_data(MCP23008,GPIOMCP)
 	
 def setup():
 	"""setup code
@@ -123,20 +124,24 @@ def loop():
 		if GPIO.input(INTLINE) == 0:
 			time.sleep(0.005)
 			chInt = bus.read_byte_data(PCA9544,0) >> 4
-			print 'Input changed on channel ',chInt,
+			print 'Input changed on channel(s) ',
 			if chInt & 1:
+				print '0',
 				bus.write_byte_data(PCA9544,SELCH0,SELCH0)
 				value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 				print 'value =', value
 			if chInt & 2:
+				print '1',
 				bus.write_byte_data(PCA9544,SELCH1,SELCH1)
 				value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 				print 'value =', value
 			if chInt & 4:
+				print '2',
 				bus.write_byte_data(PCA9544,SELCH2,SELCH2)
 				value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 				print 'value =', value
 			if chInt & 8:
+				print '3',
 				bus.write_byte_data(PCA9544,SELCH3,SELCH3)
 				value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 				print 'value =', value
