@@ -42,6 +42,8 @@ Doug Gilliland
 
 import smbus	# I2C library
 import time		# used for sleep function
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 
 bus = smbus.SMBus(1) # Rev 2 Pi uses 1
 
