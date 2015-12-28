@@ -12,7 +12,7 @@
 
 <img src="http://land-boards.com/blwiki/images/3/33/I2C-RPT-01-Demo01-512px.jpg" alt="RPI-I2C-HUB Demo" title="RPI-I2C-HUB Demo" />
 
-'''RPI-I2C-Hub.py'''
+'''RPI-I2C-Hub-2x16.py'''
 * Demo of the RPI-I2C-HUB with two MPC23017 parts with an LED on each part.
 * Uses two of the [http://land-boards.com/blwiki/index.php?title=DigIO16-I2C DigIO16-I2C] cards.
 
