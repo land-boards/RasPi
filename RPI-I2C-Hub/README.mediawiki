@@ -6,8 +6,8 @@
 
 === Files ===
 
-'''R-Hub-MCP23008.py'''
-* Demo of the RPI-I2C-HUB with four MCP23008 parts with an LED on each part.
+'''R-Hub-4x8.py'''
+* Demo of the RPI-I2C-HUB.
 * Uses the four of the [http://land-boards.com/blwiki/index.php?title=I2CIO-8 I2CIO-8] cards.
 
 <img src="http://land-boards.com/blwiki/images/3/33/I2C-RPT-01-Demo01-512px.jpg" alt="RPI-I2C-HUB Demo" title="RPI-I2C-HUB Demo" />
