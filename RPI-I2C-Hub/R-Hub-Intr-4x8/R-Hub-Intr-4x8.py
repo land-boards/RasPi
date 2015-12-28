@@ -47,8 +47,19 @@ bus = smbus.SMBus(1) # Rev 2 Pi uses 1
 
 MCP23008 = 0x20 # Slave device address base
 IODIR    = 0x00 # Pin direction register
+IPOL     = 0x01 # 
+GPINTEN  = 0x02 # 
+INTCON   = 0x04 # 
+IOCON    = 0x05 # 
+GPPU     = 0x06 # 
+INTF     = 0x07 # 
+INTCAP   = 0x08 # 
+GPIOMCP  = 0x09 # Register for inputs
 OLAT     = 0x0a # Register for outputs
-GPIO     = 0x09 # Register for inputs
+
+INTPOLACTHI = 0x02
+INTPOLACTLO = 0x00
+INTLINE = 17
 
 PCA9544 = 0x71	# Mux address
 SELCH0 = 0X04	# Select mux channel #0
@@ -68,9 +79,15 @@ def bounceOne():
 	bus.write_byte_data(MCP23008,OLAT,0)	# turn off LED
 
 def initI2CIO8():
-	bus.write_byte_data(MCP23008,IODIR,0x00)	# Set direction to outputs
-	bus.write_byte_data(MCP23008,OLAT,0)		# Write out all 0s
-
+	bus.write_byte_data(PCA9544,SELCH0,SELCH0)	# Select I2C bus #0
+	bus.write_byte_data(MCP23008,IODIR,0xf0)		# Set I/O direction control
+	bus.write_byte_data(MCP23008,IOCON,INTPOLACTLO)	# Set interrupt polarity to high 
+	bus.write_byte_data(MCP23008,IPOL,0xf0)			# Set input polarity to invert
+	bus.write_byte_data(MCP23008,GPINTEN,0xf0)		# Enable Interrupts on all inputs 
+	bus.write_byte_data(MCP23008,OLAT,0)			# Write out all 0s
+	GPIO.setup(INTLINE, GPIO.IN)
+	
+	
 def setup():
 	"""setup code
 	"""
@@ -101,6 +118,22 @@ def loop():
 		
 		bus.write_byte_data(PCA9544,SELCH3,SELCH3)
 		bounceOne()
+		
+		if GPIO.input(INTLINE) == 0:
+			time.sleep(0.005)
+			chInt = bus.read_byte_data(PCA9544,0) >> 4
+			print 'Input changed on channel ',chInt,
+			if chInt == 0:
+				bus.write_byte_data(PCA9544,SELCH0,SELCH0)
+			elif chInt == 1:
+				bus.write_byte_data(PCA9544,SELCH1,SELCH1)
+			elif chInt == 2:
+				bus.write_byte_data(PCA9544,SELCH2,SELCH2)
+			elif chInt == 3:
+				bus.write_byte_data(PCA9544,SELCH3,SELCH3)
+			value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
+			print 'value =', value
+			bus.write_byte_data(MCP23008,OLAT,value)
 
 if __name__ == '__main__':
 	setup()
