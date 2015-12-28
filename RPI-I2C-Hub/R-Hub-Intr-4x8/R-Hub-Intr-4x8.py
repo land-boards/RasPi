@@ -4,13 +4,13 @@
 NAME
 ====
 
-R-Hub-4x8.py - RPI-I2C-HUB example code 
+R-Hub-Intr-4x8.py - RPI-I2C-HUB example code 
 
 ========
 SYNOPSIS
 ========
 
-sudo python R-Hub-4x8.py
+sudo python R-Hub-Intr-4x8.py
 
 ===========
 DESCRIPTION
