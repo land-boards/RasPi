@@ -124,24 +124,23 @@ def loop():
 		if GPIO.input(INTLINE) == 0:
 			time.sleep(0.005)
 			chInt = bus.read_byte_data(PCA9544,0) >> 4
-			print 'Input changed on channel(s) ',
 			if chInt & 1:
-				print '0',
+				print 'Input changed on channel 0',
 				bus.write_byte_data(PCA9544,SELCH0,SELCH0)
 				value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 				print 'value =', value
 			if chInt & 2:
-				print '1',
+				print 'Input changed on channel 1',
 				bus.write_byte_data(PCA9544,SELCH1,SELCH1)
 				value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 				print 'value =', value
 			if chInt & 4:
-				print '2',
+				print 'Input changed on channel 2',
 				bus.write_byte_data(PCA9544,SELCH2,SELCH2)
 				value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 				print 'value =', value
 			if chInt & 8:
-				print '3',
+				print 'Input changed on channel 3',
 				bus.write_byte_data(PCA9544,SELCH3,SELCH3)
 				value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 				print 'value =', value
