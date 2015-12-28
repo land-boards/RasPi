@@ -82,7 +82,7 @@ def bounceOne():
 
 def initI2CIO8():
 	bus.write_byte_data(MCP23008,IODIR,0xf0)		# Set I/O direction control
-	bus.write_byte_data(MCP23008,IOCON,INTPOLACTLO)	# Set interrupt polarity to high 
+	bus.write_byte_data(MCP23008,IOCON,INTPOLACTLO)	# Set interrupt polarity to low 
 	bus.write_byte_data(MCP23008,IPOL,0xf0)			# Set input polarity to invert
 	bus.write_byte_data(MCP23008,GPINTEN,0xf0)		# Enable Interrupts on all inputs 
 	bus.write_byte_data(MCP23008,OLAT,0)			# Write out all 0s
@@ -123,19 +123,19 @@ def loop():
 			time.sleep(0.005)
 			chInt = bus.read_byte_data(PCA9544,0) >> 4
 			print 'Input changed on channel ',chInt,
-			if chInt == 1:
+			if chInt & 1:
 				bus.write_byte_data(PCA9544,SELCH0,SELCH0)
 				value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 				print 'value =', value
-			if chInt == 2:
+			if chInt & 2:
 				bus.write_byte_data(PCA9544,SELCH1,SELCH1)
 				value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 				print 'value =', value
-			if chInt == 4:
+			if chInt & 4:
 				bus.write_byte_data(PCA9544,SELCH2,SELCH2)
 				value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 				print 'value =', value
-			if chInt == 8:
+			if chInt & 8:
 				bus.write_byte_data(PCA9544,SELCH3,SELCH3)
 				value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 				print 'value =', value
