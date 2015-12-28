@@ -87,6 +87,7 @@ def initI2CIO8():
 	bus.write_byte_data(MCP23008,GPINTEN,0xf0)		# Enable Interrupts on all inputs 
 	bus.write_byte_data(MCP23008,OLAT,0)			# Write out all 0s
 	GPIO.setup(INTLINE, GPIO.IN)
+	value =  bus.read_byte_data(MCP23008,GPIOMCP) >> 4
 	
 def setup():
 	"""setup code
