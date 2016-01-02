@@ -71,10 +71,31 @@ GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 # Set all of the pins to outputs
 
 GPIO.setup(IO18, GPIO.OUT)
+GPIO.setup(IO17, GPIO.OUT)
+GPIO.setup(IO27, GPIO.OUT)
+GPIO.setup(IO22, GPIO.OUT)
+GPIO.setup(IO23, GPIO.OUT)
+GPIO.setup(IO24, GPIO.OUT)
+GPIO.setup(IO25, GPIO.OUT)
+GPIO.setup(IO5, GPIO.OUT)
 GPIO.output(IO18, 0)
+GPIO.output(IO17, 0)
+GPIO.output(IO27, 0)
+GPIO.output(IO22, 0)
+GPIO.output(IO23, 0)
+GPIO.output(IO24, 0)
+GPIO.output(IO25, 0)
+GPIO.output(IO5, 0)
 
 # Blink all of the LEDs one at a time forever
 # CTRL-C to exit which is not a particularly elegant exit strategy, but this is a demo program
 
 while 1:
 	blinkLED(IO18)
+	blinkLED(IO17)
+	blinkLED(IO27)
+	blinkLED(IO22)
+	blinkLED(IO23)
+	blinkLED(IO24)
+	blinkLED(IO25)
+	blinkLED(IO5)
