@@ -66,7 +66,7 @@ def blinkLED(channel):
 	GPIO.output(channel, 0)
 	time.sleep(0.5)
 	
-def blinkLEDlong(channel):
+def blinkLEDLong(channel):
 	'''Function to blink an LED attached to an output channel
 	Drives line high for a short time and then drives it low.
 	The high level output turns on the LED.
