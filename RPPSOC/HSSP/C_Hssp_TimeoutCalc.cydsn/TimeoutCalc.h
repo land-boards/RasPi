@@ -38,9 +38,10 @@
 4.) For example, for a PSoC 5LP host programmer operating at 66 MHz, defining the 
     XRES_PULSE_100US as 630 gave a low pulse width of ~105 uS. This was used in the HSSP code.
 5.) This parameter is referred to as TRESET in the programming specifications document.
-6840 = 93.6 uS
+6300 = 93.6 uS
+
 *********************************************************************************/
-#define XRES_PULSE_100US  7100
+#define XRES_PULSE_100US  6840
 
 /*********************Calculating TIME_WINDOW_68US *******************************************
 1.) Call ONLY the function TestSwdck(), defined in TimeoutCalc.c, in the for loop of the main code
