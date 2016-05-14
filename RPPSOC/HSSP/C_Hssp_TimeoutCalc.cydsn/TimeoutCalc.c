@@ -47,7 +47,7 @@ void TestDelayHundredUs(void)
     unsigned short timestamp;
         
     digitalWrite(5,1); /* Make the pin low before start of the delay */
-	delayMicroseconds(100);
+	delayMicroseconds(99);
     digitalWrite(5,0); /* Make the pin high after end of the delay */
 }
 
