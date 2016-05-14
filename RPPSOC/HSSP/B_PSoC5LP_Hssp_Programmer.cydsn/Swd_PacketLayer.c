@@ -104,15 +104,15 @@ static void Swd_SendByteFast(unsigned char txByte)
     {
         if(txByte & LSB_BIT_MASK) /* Send a '1' */
         {
-            SWDCK_OUTPUT_LOW;
-            SWDIO_OUTPUT_HIGH;
-            SWDCK_OUTPUT_HIGH;
+//            SWDCK_OUTPUT_LOW;
+//            SWDIO_OUTPUT_HIGH;
+//            SWDCK_OUTPUT_HIGH;
         }
         else  /* Send a '0' */
         {
-            SWDCK_OUTPUT_LOW;
-            SWDIO_OUTPUT_LOW;
-            SWDCK_OUTPUT_HIGH;            
+//            SWDCK_OUTPUT_LOW;
+//            SWDIO_OUTPUT_LOW;
+//            SWDCK_OUTPUT_HIGH;            
         }
         
         txByte = txByte >> 1; /* Make the next bit to send as LS bit */
@@ -659,26 +659,26 @@ void Swd_WritePacketFast(unsigned char dataParityBit)
     Swd_SendByteFast(Swd_packetHeader); 
     
     /* First Turnaround phase */
-    SWDIO_DRIVEMODE_HIGHZIN; /* Change to High-Z to read ACK data */  
-    SWDCK_OUTPUT_LOW;
-    SWDCK_OUTPUT_HIGH; 
+//    SWDIO_DRIVEMODE_HIGHZIN; /* Change to High-Z to read ACK data */  
+//    SWDCK_OUTPUT_LOW;
+//    SWDCK_OUTPUT_HIGH; 
  
-    SWDCK_OUTPUT_LOW;
+//    SWDCK_OUTPUT_LOW;
     Swd_packetAck = Swd_packetAck | (SWDIO_INPUT_READ); // Concatenate the 1st ACK bit with ACK data byte 
-    SWDCK_OUTPUT_HIGH;
+//    SWDCK_OUTPUT_HIGH;
     
-    SWDCK_OUTPUT_LOW;
+//    SWDCK_OUTPUT_LOW;
     Swd_packetAck = Swd_packetAck | (SWDIO_INPUT_READ << 1); // Concatenate the 2nd ACK bit with ACK data byte 
-    SWDCK_OUTPUT_HIGH;    
+//    SWDCK_OUTPUT_HIGH;    
 
-    SWDCK_OUTPUT_LOW;
+//    SWDCK_OUTPUT_LOW;
     Swd_packetAck = Swd_packetAck | (SWDIO_INPUT_READ << 2); // Concatenate the 3rd ACK bit with ACK data byte 
-    SWDCK_OUTPUT_HIGH;    
+//    SWDCK_OUTPUT_HIGH;    
     
     /* Second Turnaround phase */
-    SWDIO_DRIVEMODE_CMOSOUT;
-    SWDCK_OUTPUT_LOW;
-    SWDCK_OUTPUT_HIGH;   
+//    SWDIO_DRIVEMODE_CMOSOUT;
+//    SWDCK_OUTPUT_LOW;
+//    SWDCK_OUTPUT_HIGH;   
     
     /* Send 4-byte data stored in Global array Swd_packetData[].
        Use the time optimized function Swd_SendByteFast() to send bytes */
@@ -688,31 +688,31 @@ void Swd_WritePacketFast(unsigned char dataParityBit)
     Swd_SendByteFast(Swd_packetData[3]); 
 
     /* Parity phase */
-    SWDCK_OUTPUT_LOW;
+//    SWDCK_OUTPUT_LOW;
     if(dataParityBit)
     {
-        SWDIO_OUTPUT_HIGH;
+//        SWDIO_OUTPUT_HIGH;
     }
     else
     {
-        SWDIO_OUTPUT_LOW;
+//        SWDIO_OUTPUT_LOW;
     }
     SWDCK_OUTPUT_HIGH;
     
     /* Dummy clock phase since clock is not free running */
-    SWDIO_OUTPUT_LOW;       
+//    SWDIO_OUTPUT_LOW;       
     
     /* First Dummy clock */
-    SWDCK_OUTPUT_LOW;       
-    SWDCK_OUTPUT_HIGH; 
+//    SWDCK_OUTPUT_LOW;       
+//    SWDCK_OUTPUT_HIGH; 
     
     /* Second Dummy clock */
-    SWDCK_OUTPUT_LOW;       
-    SWDCK_OUTPUT_HIGH;
+//    SWDCK_OUTPUT_LOW;       
+//    SWDCK_OUTPUT_HIGH;
 
     /* Third Dummy clock */
-    SWDCK_OUTPUT_LOW;       
-    SWDCK_OUTPUT_HIGH;    
+//    SWDCK_OUTPUT_LOW;       
+//    SWDCK_OUTPUT_HIGH;    
     
     /* Swd_packetAck global variable holds the status of the SWD transaction */
 }
