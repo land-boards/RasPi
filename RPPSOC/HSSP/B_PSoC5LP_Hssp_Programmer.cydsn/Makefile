@@ -1,7 +1,7 @@
 all: progsoc
 
 progsoc: main.o DataFetch.o DeviceAcquire.o HexImage.o ProgrammingSteps.o Swd_PacketLayer.o Swd_PhysicalLayer.o Timeout.o
-	gcc main.o DataFetch.o DeviceAcquire.o HexImage.o ProgrammingSteps.o Swd_PacketLayer.o Swd_PhysicalLayer.o Timeout.o -o progsoc
+	gcc main.o DataFetch.o DeviceAcquire.o HexImage.o ProgrammingSteps.o Swd_PacketLayer.o Swd_PhysicalLayer.o Timeout.o  -lwiringPi -o progsoc
 
 main.o: main.c
 	gcc -c main.c
