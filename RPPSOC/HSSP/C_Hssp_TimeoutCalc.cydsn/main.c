@@ -26,7 +26,7 @@ int main()
 {
     wiringPiSetup();
 	pinMode(5,OUTPUT);		// Set TEST pin for Strong drive mode
-    digitalWrite(5,1);      // Drive the pin high
+    digitalWrite(5,0);      // Drive the pin high
     
         /* Uncomment ONLY ONE of the functions below at a time. Then, calculate the 
            corresponding timeout parameter using the explanation provided for the

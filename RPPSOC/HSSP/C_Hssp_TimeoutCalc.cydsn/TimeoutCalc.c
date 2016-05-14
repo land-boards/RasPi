@@ -46,7 +46,7 @@ void TestDelayHundredUs(void)
 {
     unsigned short timestamp;
         
-    digitalWrite(5,0); /* Make the pin low before start of the delay */
+    digitalWrite(5,1); /* Make the pin low before start of the delay */
     
     /* For loop to introduce the 100 us delay */
     for(timestamp = 0; timestamp < XRES_PULSE_100US; timestamp++)
@@ -54,7 +54,7 @@ void TestDelayHundredUs(void)
 
     }
     
-    digitalWrite(5,1); /* Make the pin high after end of the delay */
+    digitalWrite(5,0); /* Make the pin high after end of the delay */
 }
 
 /*******************************************************************************
@@ -78,11 +78,11 @@ void TestDelayHundredUs(void)
 *******************************************************************************/
 void TestSwdReadPacket()
 {       
-    digitalWrite(5,0); /* Make the pin low before sending SWD read packet */     
+    digitalWrite(5,1); /* Make the pin low before sending SWD read packet */     
 
     Swd_RawReadPacket(); /* Send a single SWD read packet */
         
-    digitalWrite(5,1); /* Make the pin high after sending SWD read packet */
+    digitalWrite(5,0); /* Make the pin high after sending SWD read packet */
 }
 
 /*******************************************************************************
@@ -106,14 +106,14 @@ void TestSwdReadPacket()
 *******************************************************************************/
 void TestAcquirePacket()
 {
-    digitalWrite(5,0); /* Make the pin low before sending SWD acquire packet */
+    digitalWrite(5,1); /* Make the pin low before sending SWD acquire packet */
 
     /* Send a dummy packet with all zeros since this is a test function  */
     Swd_packetHeader =  0x00;
     Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0x00;
     Swd_WritePacketFast(0x00);
 
-    digitalWrite(5,1);  /* Make the pin high after sending SWD acquire packet */
+    digitalWrite(5,0);  /* Make the pin high after sending SWD acquire packet */
 }
 
 /*******************************************************************************
@@ -139,7 +139,7 @@ void TestSwdck()
 {
     unsigned short time_elapsed;
        
-    digitalWrite(5,0); /* Make the pin low before sending SWD clock train */
+    digitalWrite(5,1); /* Make the pin low before sending SWD clock train */
     
     /* For loop that does a clocking of the SWDCK for >= 68 us duration */
     for(time_elapsed = 0; time_elapsed < TIME_WINDOW_68US; time_elapsed++)
@@ -148,7 +148,7 @@ void TestSwdck()
         SWDCK_OUTPUT_HIGH;
     }
     
-    digitalWrite(5,1); /* Make the pin high after sending SWD clock train */
+    digitalWrite(5,0); /* Make the pin high after sending SWD clock train */
 }
 
 /* [] END OF FILE */
