@@ -39,9 +39,6 @@ unsigned char currentStep; /* Global variable that stores the current HSSP Progr
 *  step value in which the failure occurred
 *******************************************************************************/
 
-#define SUCCESS 0
-#define FAILURE -1
-
 unsigned char ProgramDevice()
 {
     currentStep = 0;
