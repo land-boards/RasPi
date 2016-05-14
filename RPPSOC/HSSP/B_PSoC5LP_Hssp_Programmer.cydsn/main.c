@@ -133,15 +133,14 @@ int main()
         
         /* If the errorStatus contains THE SPC_TIMEOUT_ERROR error condition,
            read the SPC status register and display on THE LCD */
-/* 
+ 
         if(errorStatus & SPC_TIMEOUT_ERROR)
         {
             spcErrorStatus = ReadSpcStatusReg();
             
-            LCD_Char_PrintString(" SPC ");
-            LCD_Char_PrintInt8(spcErrorStatus);            
+            print(" SPC %d",spcErrorStatus);            
         } 
-*/
+
     } 
 
     for(;;)
