@@ -664,15 +664,15 @@ void Swd_WritePacketFast(unsigned char dataParityBit)
 //    SWDCK_OUTPUT_HIGH; 
  
 //    SWDCK_OUTPUT_LOW;
-    Swd_packetAck = Swd_packetAck | (SWDIO_INPUT_READ); // Concatenate the 1st ACK bit with ACK data byte 
+//    Swd_packetAck = Swd_packetAck | (SWDIO_INPUT_READ); // Concatenate the 1st ACK bit with ACK data byte 
 //    SWDCK_OUTPUT_HIGH;
     
 //    SWDCK_OUTPUT_LOW;
-    Swd_packetAck = Swd_packetAck | (SWDIO_INPUT_READ << 1); // Concatenate the 2nd ACK bit with ACK data byte 
+//    Swd_packetAck = Swd_packetAck | (SWDIO_INPUT_READ << 1); // Concatenate the 2nd ACK bit with ACK data byte 
 //    SWDCK_OUTPUT_HIGH;    
 
 //    SWDCK_OUTPUT_LOW;
-    Swd_packetAck = Swd_packetAck | (SWDIO_INPUT_READ << 2); // Concatenate the 3rd ACK bit with ACK data byte 
+//    Swd_packetAck = Swd_packetAck | (SWDIO_INPUT_READ << 2); // Concatenate the 3rd ACK bit with ACK data byte 
 //    SWDCK_OUTPUT_HIGH;    
     
     /* Second Turnaround phase */
@@ -697,7 +697,7 @@ void Swd_WritePacketFast(unsigned char dataParityBit)
     {
 //        SWDIO_OUTPUT_LOW;
     }
-    SWDCK_OUTPUT_HIGH;
+//    SWDCK_OUTPUT_HIGH;
     
     /* Dummy clock phase since clock is not free running */
 //    SWDIO_OUTPUT_LOW;       
