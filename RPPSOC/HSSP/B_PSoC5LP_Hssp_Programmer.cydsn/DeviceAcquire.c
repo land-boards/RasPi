@@ -74,30 +74,30 @@ unsigned char AcquireTargetDevice()
     /* Set the initial state of the programming pins */
     
     /* Host XRES pin must be in strong drive mode, and is driven high by default */
-    XRES_DRIVEMODE_CMOSOUT;
-    XRES_OUTPUT_HIGH;
+//    XRES_DRIVEMODE_CMOSOUT;
+//    XRES_OUTPUT_HIGH;
     
     /* Host SWDCK pin must be in strong drive mode, and is driven low by default */   
-    SWDCK_DRIVEMODE_CMOSOUT;
-    SWDCK_OUTPUT_LOW;
+//    SWDCK_DRIVEMODE_CMOSOUT;
+//    SWDCK_OUTPUT_LOW;
     
     /* Host SWDIO pin must be in strong drive mode, and is driven low by default */ 
-    SWDIO_DRIVEMODE_CMOSOUT;
-    SWDIO_OUTPUT_LOW;  
+//    SWDIO_DRIVEMODE_CMOSOUT;
+//    SWDIO_OUTPUT_LOW;  
     
     /* Generate a Reset pulse of 100 uS. Minimum XRES pulse width is 1 uS for PSoC 5LP.
        The Delay function need not be accurate, it can be more than 100 uS as well. It will not 
        affect the programming operation */
-    XRES_OUTPUT_LOW;
+//    XRES_OUTPUT_LOW;
     DelayHundredUs(); /* This function is defined in Timeout.c */
-    XRES_OUTPUT_HIGH;
+//    XRES_OUTPUT_HIGH;
     
     /* Clock the SWDCK line with SWDIO low (already low) for time
        TIME_WINDOW_68US defined in Timeout.h */
     for(time_elapsed = 0; time_elapsed < TIME_WINDOW_68US; time_elapsed++)
     {
-        SWDCK_OUTPUT_LOW;
-        SWDCK_OUTPUT_HIGH;
+//        SWDCK_OUTPUT_LOW;
+//        SWDCK_OUTPUT_HIGH;
     }    
 
     /* Send the Port Acquire SWD packet continuously till OK ACK or timeout occurs.
