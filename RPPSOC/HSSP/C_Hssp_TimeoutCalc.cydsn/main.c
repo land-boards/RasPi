@@ -15,10 +15,11 @@
 *  file Timeout.h.
 *******************************************************************************/
 
-#include <project.h>  /* Remove this header file for non PSoC 5LP host programmer */
-
 /* This header file has the function declarations, macros used to arrive at the timeout 
    parameter values */
+#include <stdio.h>
+#include <wiringPi.h>
+
 #include "TimeoutCalc.h"
 
 int main()
