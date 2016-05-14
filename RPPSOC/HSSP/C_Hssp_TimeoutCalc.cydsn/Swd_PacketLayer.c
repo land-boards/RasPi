@@ -14,6 +14,8 @@
 /********************************************************************************
 *   Header file Inclusion
 ********************************************************************************/
+#include <stdio.h>
+#include <wiringPi.h>
 #include "Swd_PacketLayer.h"
 
 /* "Swd_PhysicalLayer.h" file contains the bit banging routines for programming */
