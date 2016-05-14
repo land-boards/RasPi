@@ -12,10 +12,6 @@
 *  to non PSoC 5LP host programmer.
 *******************************************************************************/
 
-/* This file is included for calling Character LCD functions in host PSoC 5LP.
-   Remove this header file while porting to non PSoC 5LP host programmer*/
-#include <project.h> 
-
 /* This file has the top level HSSP routines that should be called from main application code */
 #include "ProgrammingSteps.h"
 
@@ -120,11 +116,12 @@ int main()
     
     CyGlobalIntEnable; /* Enable global interrupts. */
 
-    LCD_Char_Start();    /* Initialize Character LCD  */
+    // LCD_Char_Start();    /* Initialize Character LCD  */
     
-    LCD_Char_Position(0,0);
-    LCD_Char_PrintString("Programming PSoC");
-    
+    // LCD_Char_Position(0,0);
+    printf("Programming PSoC\n");
+    return();		// remove
+	
     /* Start the HSSP Programming and store the status */
     programResult = ProgramDevice();
     
