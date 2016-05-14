@@ -111,7 +111,7 @@ int main()
     unsigned char errorStatus;    /* Variable to store the HSSP Error status in case of failure */
     unsigned char spcErrorStatus; /* Variable to store the SPC Error status if ErrorStatus contains SPC_TIMEOUT_ERROR error*/ 
     wiringPiSetup();
-    printf("Programming PSoC\n");
+    printf("Land Boards, LLC\nProgramming PSoC\n");
     return;		// remove
 	
     /* Start the HSSP Programming and store the status */
