@@ -24,8 +24,9 @@
 
 int main()
 {
-    TESTPIN_DRIVEMODE_CMOSOUT; /* Set TEST pin for Strong drive mode */
-    TESTPIN_OUTPUT_HIGH;       /* Drive the pin high */
+    wiringPiSetup();
+	pinMode(5,OUTPUT);		// Set TEST pin for Strong drive mode
+    digitalWrite(5,1);      // Drive the pin high
     
     for(;;)
     {
@@ -41,5 +42,3 @@ int main()
 
     }
 }
-
-/* [] END OF FILE */

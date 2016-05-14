@@ -17,33 +17,6 @@
 
 /***************************** USER ATTENTION REQUIRED **************************
 ***************************** HOST PROCESSOR SPECIFIC ***************************
-********************  GPIO defines header file *******************
-*
-* Modify the header file inclusion depending on the host processor used
-********************************************************************************/
-#include "cyfitter.h"
-    
-/***************************** USER ATTENTION REQUIRED **************************
-***************************** HOST PROCESSOR SPECIFIC ***************************
-***************************** Macros for the TESTPIN ****************************/
-
-#define TESTPIN_PRT_NUM            Pin_Test__0__PORT
-#define TESTPIN_PIN_NUM            Pin_Test__0__SHIFT
-
-#define TESTPIN_PIN_MASK           Pin_Test__0__MASK
-
-#define TESTPIN_PRT_OUT_REG        (*((volatile unsigned char *)Pin_Test__DR))
-#define TESTPIN_DM_REG             (*((volatile unsigned char *)Pin_Test__0__PC))
-
-#define CMOSOUT_DM_ANDMASK         0xF1
-#define CMOSOUT_DM_ORMASK          0x0C
-
-#define TESTPIN_DRIVEMODE_CMOSOUT  (TESTPIN_DM_REG = (TESTPIN_DM_REG & CMOSOUT_DM_ANDMASK) | CMOSOUT_DM_ORMASK) 
-#define TESTPIN_OUTPUT_HIGH        (TESTPIN_PRT_OUT_REG = TESTPIN_PRT_OUT_REG | TESTPIN_PIN_MASK)
-#define TESTPIN_OUTPUT_LOW         (TESTPIN_PRT_OUT_REG = TESTPIN_PRT_OUT_REG & (~TESTPIN_PIN_MASK))
-
-/***************************** USER ATTENTION REQUIRED **************************
-***************************** HOST PROCESSOR SPECIFIC ***************************
 ***************************** Timeout parameter definitions *********************
 *
 * The below four timeout values namely: XRES_PULSE_100US, TIME_WINDOW_68US, DEVICE_ACQUIRE_TIMEOUT,
