@@ -1,22 +1,10 @@
-all: progsoc
+all: TimeoutCalc
 
-progsoc: main.o DataFetch.o DeviceAcquire.o HexImage.o ProgrammingSteps.o Swd_PacketLayer.o Swd_PhysicalLayer.o Timeout.o
-	gcc main.o DataFetch.o DeviceAcquire.o HexImage.o ProgrammingSteps.o Swd_PacketLayer.o Swd_PhysicalLayer.o Timeout.o  -lwiringPi -o progsoc
+TimeoutCalc: main.o Swd_PacketLayer.o Swd_PhysicalLayer.o TimeoutCalc.o
+	gcc main.o Swd_PacketLayer.o Swd_PhysicalLayer.o TimeoutCalc.o  -lwiringPi -o TimeoutCalc
 
 main.o: main.c
 	gcc -c main.c
-
-DataFetch.o: DataFetch.c
-	gcc -c DataFetch.c
-
-DeviceAcquire.o: DeviceAcquire.c
-	gcc -c DeviceAcquire.c
-
-HexImage.o: HexImage.c
-	gcc -c HexImage.c
-
-ProgrammingSteps.o: ProgrammingSteps.c
-	gcc -c ProgrammingSteps.c
 
 Swd_PacketLayer.o: Swd_PacketLayer.c
 	gcc -c Swd_PacketLayer.c
@@ -24,8 +12,8 @@ Swd_PacketLayer.o: Swd_PacketLayer.c
 Swd_PhysicalLayer.o: Swd_PhysicalLayer.c
 	gcc -c Swd_PhysicalLayer.c
 
-Timeout.o: Timeout.c
-	gcc -c Timeout.c
+TimeoutCalc.o: TimeoutCalc.c
+	gcc -c TimeoutCalc.c
 
 clean:
-	rm *o progsoc
+	rm *o TimeoutCalc
