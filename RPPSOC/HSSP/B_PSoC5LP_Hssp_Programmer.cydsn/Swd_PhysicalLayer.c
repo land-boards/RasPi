@@ -6,15 +6,12 @@
 *  This file provides the source code for the physical layer functions of the
 *  SWD protocol. These function definitions are the same as the corresponding
 *  macro definitions in Swd_PhysicalLayer.h
-*
-* Note:
-*  The functions defined here are specific to PSoC 5LP Host Programmer.
-*  Modify the definitions as applicable for your Host Programmer.
 *******************************************************************************/
 
 /********************************************************************************
 *   Header file Inclusion
 ********************************************************************************/
+#include <wiringPi.h>
 #include "Swd_PhysicalLayer.h"
 
 /********************************************************************************
