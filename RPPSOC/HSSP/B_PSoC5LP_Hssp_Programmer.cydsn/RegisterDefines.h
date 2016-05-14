@@ -26,7 +26,7 @@
 *
 * Modify the header file inclusion depending on the host processor used
 ********************************************************************************/
-#include "cyfitter.h"
+//#include "cyfitter.h"
 
 /***************************** USER ATTENTION REQUIRED **************************
 ***************************** HOST PROCESSOR SPECIFIC ***************************
