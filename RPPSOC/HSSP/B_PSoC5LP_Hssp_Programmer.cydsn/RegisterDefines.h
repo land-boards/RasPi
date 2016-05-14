@@ -37,14 +37,14 @@
 * pin selection
 ********************************************************************************/
 
-#define SWDIO_PRT_NUM   Pin_Swdio__0__PORT
-#define SWDIO_PIN_NUM   Pin_Swdio__0__SHIFT
+//#define SWDIO_PRT_NUM   Pin_Swdio__0__PORT
+//#define SWDIO_PIN_NUM   Pin_Swdio__0__SHIFT
 
-#define SWDCK_PRT_NUM   Pin_Swdck__0__PORT
-#define SWDCK_PIN_NUM   Pin_Swdck__0__SHIFT
+//#define SWDCK_PRT_NUM   Pin_Swdck__0__PORT
+//#define SWDCK_PIN_NUM   Pin_Swdck__0__SHIFT
 
-#define XRES_PRT_NUM    Pin_Xres__0__PORT
-#define XRES_PIN_NUM    Pin_Xres__0__SHIFT
+//#define XRES_PRT_NUM    Pin_Xres__0__PORT
+//#define XRES_PIN_NUM    Pin_Xres__0__SHIFT
 
 /***************************** USER ATTENTION REQUIRED **************************
 ***************************** HOST PROCESSOR SPECIFIC ***************************
@@ -56,15 +56,15 @@
 * Modify these definitions as applicable for your Host programmer.
 ********************************************************************************/
 
-#define SWDIO_PRT_OUT_REG     (*((volatile unsigned char *)Pin_Swdio__DR)) 
-#define SWDIO_PRT_IN_REG      (*((volatile unsigned char *)Pin_Swdio__PS))
-#define SWDIO_PIN_DM_REG      (*((volatile unsigned char *)Pin_Swdio__0__PC))
+//#define SWDIO_PRT_OUT_REG     (*((volatile unsigned char *)Pin_Swdio__DR)) 
+//#define SWDIO_PRT_IN_REG      (*((volatile unsigned char *)Pin_Swdio__PS))
+//#define SWDIO_PIN_DM_REG      (*((volatile unsigned char *)Pin_Swdio__0__PC))
 
-#define SWDCK_PRT_OUT_REG     (*((volatile unsigned char *)Pin_Swdck__DR))
-#define SWDCK_PIN_DM_REG      (*((volatile unsigned char *)Pin_Swdck__0__PC))
+//#define SWDCK_PRT_OUT_REG     (*((volatile unsigned char *)Pin_Swdck__DR))
+//#define SWDCK_PIN_DM_REG      (*((volatile unsigned char *)Pin_Swdck__0__PC))
 
-#define XRES_PRT_OUT_REG      (*((volatile unsigned char *)Pin_Xres__DR))
-#define XRES_PIN_DM_REG       (*((volatile unsigned char *)Pin_Xres__0__PC))
+//#define XRES_PRT_OUT_REG      (*((volatile unsigned char *)Pin_Xres__DR))
+//#define XRES_PIN_DM_REG       (*((volatile unsigned char *)Pin_Xres__0__PC))
 
 /***************************** USER ATTENTION REQUIRED **************************
 ***************************** HOST PROCESSOR SPECIFIC ***************************
@@ -77,9 +77,9 @@
 * 
 * Modify these as applicable for Host programmer.
 ******************************************************************************/
-#define XRES_PIN_MASK   Pin_Xres__0__MASK
-#define SWDCK_PIN_MASK  Pin_Swdck__0__MASK
-#define SWDIO_PIN_MASK  Pin_Swdio__0__MASK
+//#define XRES_PIN_MASK   Pin_Xres__0__MASK
+//#define SWDCK_PIN_MASK  Pin_Swdck__0__MASK
+//#define SWDIO_PIN_MASK  Pin_Swdio__0__MASK
 
 /***************************** USER ATTENTION REQUIRED **************************
 ***************************** HOST PROCESSOR SPECIFIC ***************************
@@ -92,10 +92,10 @@
 *
 * Modify these mask values as applicable for Host programmer.
 ********************************************************************************/
-#define HIGHZIN_DM_ANDMASK  0xF1
-#define HIGHZIN_DM_ORMASK   0x02
-#define CMOSOUT_DM_ANDMASK  0xF1
-#define CMOSOUT_DM_ORMASK   0x0C
+//#define HIGHZIN_DM_ANDMASK  0xF1
+//#define HIGHZIN_DM_ORMASK   0x02
+//#define CMOSOUT_DM_ANDMASK  0xF1
+//#define CMOSOUT_DM_ORMASK   0x0C
 
 #endif /* __REGISTERDEFINES_H */
 //[] END OF FILE
