@@ -7,6 +7,8 @@
 *  sequence to program the target PSoC 5LP
 *******************************************************************************/
 
+#include <wiringPi.h>
+
 /* Contains define for presence of EEPROM data in hex file */
 #include "HexImage.h"
 
