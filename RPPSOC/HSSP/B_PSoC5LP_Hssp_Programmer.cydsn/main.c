@@ -15,6 +15,8 @@
 /* This file has the top level HSSP routines that should be called from main application code */
 //#include "ProgrammingSteps.h"
 
+#ub=nckude "fcnprototypes.h"
+
 /* Contains define for presence of EEPROM data in hex file */
 #include "HexImage.h"
 
@@ -49,7 +51,7 @@ unsigned char ProgramDevice()
     /* Call the different sequence of steps in HSSP Programming.
        Abort operation if any of the steps fail */ 
     
-    currentStep++;    
+    currentStep++;
     if(EnterProgrammingMode() == FAILURE)     /* Step 1 - EnterProgrammingMode */
         return(FAILURE);
     
