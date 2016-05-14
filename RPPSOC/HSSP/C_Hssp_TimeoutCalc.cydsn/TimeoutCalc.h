@@ -40,7 +40,7 @@
 5.) This parameter is referred to as TRESET in the programming specifications document.
 
 *********************************************************************************/
-#define XRES_PULSE_100US  630
+#define XRES_PULSE_100US  6300
 
 /*********************Calculating TIME_WINDOW_68US *******************************************
 1.) Call ONLY the function TestSwdck(), defined in TimeoutCalc.c, in the for loop of the main code
