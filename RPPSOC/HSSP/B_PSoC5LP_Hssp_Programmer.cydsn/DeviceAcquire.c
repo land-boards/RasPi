@@ -15,6 +15,8 @@
 /********************************************************************************
 *   Header file Inclusion
 ********************************************************************************/
+#include <stdio.h>
+#include <wiringPi.h>
 #include "DeviceAcquire.h"
 
 /* "Swd_PhysicalLayer.h" file contains the bit banging routines for SWD protocol.
