@@ -7,8 +7,6 @@
 *  sequence to program the target PSoC 5LP
 *******************************************************************************/
 
-#include "fcnprototypes.h"
-
 /* Contains define for presence of EEPROM data in hex file */
 #include "HexImage.h"
 
@@ -124,14 +122,12 @@ int main()
     else /* HSSP Failure */
     { 
         /* Display the step number where the HSSP failed */
-        printf("HSSP Fail Step %i",currentStep);
+        printf("HSSP Fail Step %d",currentStep);
         
         /* Get the HSSP error status and display on THE LCD */
         errorStatus = ReadHsspErrorStatus();        
         
-        LCD_Char_Position(1,0);
-        LCD_Char_PrintString("Err ");
-        LCD_Char_PrintInt8(errorStatus);
+        printf("Err %d",errorStatus);
         
         /* If the errorStatus contains THE SPC_TIMEOUT_ERROR error condition,
            read the SPC status register and display on THE LCD */
