@@ -28,8 +28,6 @@ int main()
 	pinMode(5,OUTPUT);		// Set TEST pin for Strong drive mode
     digitalWrite(5,1);      // Drive the pin high
     
-    for(;;)
-    {
         /* Uncomment ONLY ONE of the functions below at a time. Then, calculate the 
            corresponding timeout parameter using the explanation provided for the
            timeout parameter in the file TimeoutCalc.h */
@@ -39,6 +37,4 @@ int main()
 //        TestAcquirePacket();  /* Uncomment this line to calculate the timeout parameter DEVICE_ACQUIRE_TIMEOUT */         
 //        TestSwdReadPacket();  /* Uncomment this line to calculate the timeout parameter SPC_POLLING_TIMEOUT */
     
-
-    }
 }
