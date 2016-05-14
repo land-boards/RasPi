@@ -111,31 +111,29 @@ int main()
     unsigned char errorStatus;    /* Variable to store the HSSP Error status in case of failure */
     unsigned char spcErrorStatus; /* Variable to store the SPC Error status if ErrorStatus contains SPC_TIMEOUT_ERROR error*/ 
     
-    CyGlobalIntEnable; /* Enable global interrupts. */
+    // CyGlobalIntEnable; /* Enable global interrupts. */
 
     // LCD_Char_Start();    /* Initialize Character LCD  */
     
     // LCD_Char_Position(0,0);
     printf("Programming PSoC\n");
-    return();		// remove
+    return;		// remove
 	
     /* Start the HSSP Programming and store the status */
     programResult = ProgramDevice();
     
     /* Character LCD will display the status of HSSP Programming  */
-    LCD_Char_ClearDisplay();    
+    // LCD_Char_ClearDisplay();    
     
     if(programResult == SUCCESS) /* HSSP completed successfully */
     {
-        LCD_Char_Position(0,0);
-        LCD_Char_PrintString("HSSP Success");    
+//        LCD_Char_Position(0,0);
+        printf("HSSP Success\n");    
     }
     else /* HSSP Failure */
     { 
         /* Display the step number where the HSSP failed */
-        LCD_Char_Position(0,0);
-        LCD_Char_PrintString("HSSP Fail Step");
-        LCD_Char_PrintNumber(currentStep);
+        print("HSSP Fail Step %i",currentStep);
         
         /* Get the HSSP error status and display on THE LCD */
         errorStatus = ReadHsspErrorStatus();        
