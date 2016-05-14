@@ -5,15 +5,7 @@
 * Description:
 *  This file has the main function that calls the top level HSSP functions in 
 *  sequence to program the target PSoC 5LP
-*
-* Note:
-*  The Character LCD functions in the main() function are for PSoC 5LP 
-*  host programmer. Remove the Character LCD functions while porting the code 
-*  to non PSoC 5LP host programmer.
 *******************************************************************************/
-
-/* This file has the top level HSSP routines that should be called from main application code */
-//#include "ProgrammingSteps.h"
 
 #include "fcnprototypes.h"
 
@@ -43,6 +35,9 @@ unsigned char currentStep; /* Global variable that stores the current HSSP Progr
 *  In case of FAILURE return value, global variable currentStep will store the
 *  step value in which the failure occurred
 *******************************************************************************/
+
+#define SUCCESS 0
+#define FAILURE -1
 
 unsigned char ProgramDevice()
 {
