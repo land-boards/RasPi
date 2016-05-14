@@ -1,6 +1,8 @@
 /*******************************************************************************
 * File Name: RegisterDefines.h
 * Version 3.0
+* Based on
+*	http://wiringpi.com/download-and-install/
 *
 * Description:
 *  This header file contains the definitions for the programming pins on the
@@ -13,8 +15,7 @@
 *  4.) Mask values for configuring the different pin drive modes
 *
 * Note:
-*  The definitions provided here are for a PSoC 5LP host programmer.
-*  Modify them as applicable for your specific host programmer.
+*  The definitions provided here are for a Raspberry Pi.
 *  These definitions are used in the file Swd_PhysicalLayer.h.
 *******************************************************************************/
 #ifndef __REGISTERDEFINES_H

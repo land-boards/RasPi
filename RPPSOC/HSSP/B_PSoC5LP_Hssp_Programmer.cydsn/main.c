@@ -108,7 +108,7 @@ int main()
     unsigned char programResult;  /* Variable to store the result of HSSP operation */ 
     unsigned char errorStatus;    /* Variable to store the HSSP Error status in case of failure */
     unsigned char spcErrorStatus; /* Variable to store the SPC Error status if ErrorStatus contains SPC_TIMEOUT_ERROR error*/ 
-    
+    wiringPiSetup();
     printf("Programming PSoC\n");
     return;		// remove
 	

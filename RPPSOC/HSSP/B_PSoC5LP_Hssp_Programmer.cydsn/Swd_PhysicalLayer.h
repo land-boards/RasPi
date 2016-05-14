@@ -49,15 +49,14 @@
 * Modify these as applicable to your Host Programmer
 ********************************************************************************/
 
-#define SWDIO_DRIVEMODE_HIGHZIN         (SWDIO_PIN_DM_REG = (SWDIO_PIN_DM_REG & HIGHZIN_DM_ANDMASK) | HIGHZIN_DM_ORMASK)        
-#define SWDIO_DRIVEMODE_CMOSOUT         (SWDIO_PIN_DM_REG = (SWDIO_PIN_DM_REG & CMOSOUT_DM_ANDMASK) | CMOSOUT_DM_ORMASK)
+#define SWDIO_DRIVEMODE_HIGHZIN         pinMode (5, INPUT)        
+#define SWDIO_DRIVEMODE_CMOSOUT         pinMode (5, OUTPUT)
 
-#define SWDCK_DRIVEMODE_HIGHZIN         (SWDCK_PIN_DM_REG = (SWDCK_PIN_DM_REG & HIGHZIN_DM_ANDMASK) | HIGHZIN_DM_ORMASK)
-#define SWDCK_DRIVEMODE_CMOSOUT         (SWDCK_PIN_DM_REG = (SWDCK_PIN_DM_REG & CMOSOUT_DM_ANDMASK) | CMOSOUT_DM_ORMASK)
+#define SWDCK_DRIVEMODE_HIGHZIN         pinMode (4, INPUT)
+#define SWDCK_DRIVEMODE_CMOSOUT         pinMode (4, OUTPUT)
                                            
-#define XRES_DRIVEMODE_CMOSOUT          (XRES_PIN_DM_REG = (XRES_PIN_DM_REG & CMOSOUT_DM_ANDMASK) | CMOSOUT_DM_ORMASK)
-#define XRES_DRIVEMODE_HIGHZIN          (XRES_PIN_DM_REG = (XRES_PIN_DM_REG & HIGHZIN_DM_ANDMASK) | HIGHZIN_DM_ORMASK)
-
+#define XRES_DRIVEMODE_HIGHZIN          pinMode (3, INPUT)
+#define XRES_DRIVEMODE_CMOSOUT          pinMode (3, OUTPUT)
 
 /***************************** USER ATTENTION REQUIRED **************************
 ***************************** HOST PROCESSOR SPECIFIC ***************************
@@ -70,14 +69,14 @@
 * Modify these as applicable to your Host Programmer
 ********************************************************************************/
 
-#define SWDIO_OUTPUT_HIGH      (SWDIO_PRT_OUT_REG = SWDIO_PRT_OUT_REG | SWDIO_PIN_MASK)
-#define SWDIO_OUTPUT_LOW       (SWDIO_PRT_OUT_REG = SWDIO_PRT_OUT_REG & (~SWDIO_PIN_MASK))
+#define SWDIO_OUTPUT_HIGH      digitalWrite (5, 1)
+#define SWDIO_OUTPUT_LOW       digitalWrite (5, 0)
 
-#define SWDCK_OUTPUT_HIGH      (SWDCK_PRT_OUT_REG = SWDCK_PRT_OUT_REG | SWDCK_PIN_MASK)
-#define SWDCK_OUTPUT_LOW       (SWDCK_PRT_OUT_REG = SWDCK_PRT_OUT_REG & (~SWDCK_PIN_MASK))
+#define SWDCK_OUTPUT_HIGH      digitalWrite (4, 1)
+#define SWDCK_OUTPUT_LOW       digitalWrite (4, 0)
 
-#define XRES_OUTPUT_HIGH       (XRES_PRT_OUT_REG = XRES_PRT_OUT_REG | XRES_PIN_MASK)
-#define XRES_OUTPUT_LOW        (XRES_PRT_OUT_REG = XRES_PRT_OUT_REG & (~XRES_PIN_MASK))
+#define XRES_OUTPUT_HIGH       digitalWrite (3, 1)
+#define XRES_OUTPUT_LOW        digitalWrite (3, 0)
 
 /***************************** USER ATTENTION REQUIRED **************************
 ***************************** HOST PROCESSOR SPECIFIC ***************************
@@ -92,7 +91,7 @@
 * Modify this as applicable to your Host Programmer
 ********************************************************************************/
 
-#define SWDIO_INPUT_READ      ((SWDIO_PRT_IN_REG >> SWDIO_PIN_NUM) & 0x01)
+#define SWDIO_INPUT_READ      digitalRead (5)
 
 /********************************************************************************
 *   Function Prototypes
@@ -113,7 +112,6 @@ void SetXresHigh(void);
 void SetXresLow(void);
 void SetXresCmosOutput(void);
 void SetXresHizInput(void);
-
 
 #endif /* __SWD_PHYSICALLAYER_H */
 //[] END OF FILE

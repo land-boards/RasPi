@@ -49,7 +49,7 @@
 *******************************************************************************/
 void SetSwdckCmosOutput()
 {
-    SWDCK_PIN_DM_REG = (SWDCK_PIN_DM_REG & CMOSOUT_DM_ANDMASK) | CMOSOUT_DM_ORMASK;
+    SWDCK_DRIVEMODE_CMOSOUT;
 }
 
 /*******************************************************************************
@@ -72,7 +72,7 @@ void SetSwdckCmosOutput()
 *******************************************************************************/
 void SetSwdckHizInput()
 {
-    SWDCK_PIN_DM_REG = (SWDCK_PIN_DM_REG & HIGHZIN_DM_ANDMASK) | HIGHZIN_DM_ORMASK;
+    SWDCK_DRIVEMODE_HIGHZIN;
 }
 
 /*******************************************************************************
@@ -95,7 +95,7 @@ void SetSwdckHizInput()
 *******************************************************************************/
 void SetSwdioCmosOutput()
 {
-    SWDIO_PIN_DM_REG = (SWDIO_PIN_DM_REG & CMOSOUT_DM_ANDMASK) | CMOSOUT_DM_ORMASK;
+    SWDIO_DRIVEMODE_CMOSOUT;
 }
 
 /*******************************************************************************
@@ -118,7 +118,7 @@ void SetSwdioCmosOutput()
 *******************************************************************************/
 void SetSwdioHizInput()
 {
-    SWDIO_PIN_DM_REG = (SWDIO_PIN_DM_REG & HIGHZIN_DM_ANDMASK) | HIGHZIN_DM_ORMASK;        
+    SWDIO_DRIVEMODE_HIGHZIN;        
 }
 
 /*******************************************************************************
@@ -141,7 +141,7 @@ void SetSwdioHizInput()
 *******************************************************************************/
 void SetXresCmosOutput()
 {
-    XRES_PIN_DM_REG = (XRES_PIN_DM_REG & CMOSOUT_DM_ANDMASK) | CMOSOUT_DM_ORMASK;
+    XRES_DRIVEMODE_CMOSOUT;
 }
 
 /*******************************************************************************
@@ -164,7 +164,7 @@ void SetXresCmosOutput()
 *******************************************************************************/
 void SetXresHizInput()
 {
-    XRES_PIN_DM_REG = (XRES_PIN_DM_REG & HIGHZIN_DM_ANDMASK) | HIGHZIN_DM_ORMASK;
+    XRES_DRIVEMODE_HIGHZIN;
 }
 
 /*******************************************************************************
@@ -187,7 +187,7 @@ void SetXresHizInput()
 *******************************************************************************/
 void SetSwdckHigh()
 {
-    SWDCK_PRT_OUT_REG = SWDCK_PRT_OUT_REG | SWDCK_PIN_MASK;    
+    SWDCK_OUTPUT_HIGH;    
 }
 
 /*******************************************************************************
@@ -210,7 +210,7 @@ void SetSwdckHigh()
 *******************************************************************************/
 void SetSwdckLow()
 {
-    SWDCK_PRT_OUT_REG = SWDCK_PRT_OUT_REG & (~SWDCK_PIN_MASK);
+    SWDCK_OUTPUT_LOW;
 }
 
 /*******************************************************************************
@@ -233,7 +233,7 @@ void SetSwdckLow()
 *******************************************************************************/
 void SetSwdioHigh()
 {
-    SWDIO_PRT_OUT_REG = SWDIO_PRT_OUT_REG | SWDIO_PIN_MASK;
+    SWDIO_OUTPUT_HIGH;
 }
 
 /*******************************************************************************
@@ -256,7 +256,7 @@ void SetSwdioHigh()
 *******************************************************************************/
 void SetSwdioLow()
 {
-    SWDIO_PRT_OUT_REG = SWDIO_PRT_OUT_REG & (~SWDIO_PIN_MASK);
+    SWDIO_OUTPUT_LOW;
 }
 
 /*******************************************************************************
@@ -279,7 +279,7 @@ void SetSwdioLow()
 *******************************************************************************/
 void SetXresHigh()
 {
-    XRES_PRT_OUT_REG = XRES_PRT_OUT_REG | XRES_PIN_MASK;
+    XRES_OUTPUT_HIGH;
 }
 
 /*******************************************************************************
@@ -302,7 +302,7 @@ void SetXresHigh()
 *******************************************************************************/
 void SetXresLow()
 {
-    XRES_PRT_OUT_REG = XRES_PRT_OUT_REG & (~XRES_PIN_MASK);
+    XRES_OUTPUT_LOW;
 }
 
 /*******************************************************************************
@@ -327,7 +327,7 @@ void SetXresLow()
 *******************************************************************************/
 unsigned char ReadSwdio()
 {
-    return((SWDIO_PRT_IN_REG >> SWDIO_PIN_NUM) & 0x01);
+    SWDIO_INPUT_READ;
 }
 
 /* [] END OF FILE */
