@@ -13,7 +13,7 @@
 *******************************************************************************/
 
 /* This file has the top level HSSP routines that should be called from main application code */
-#include "ProgrammingSteps.h"
+//#include "ProgrammingSteps.h"
 
 /* Contains define for presence of EEPROM data in hex file */
 #include "HexImage.h"
