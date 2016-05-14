@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <wiringPi.h>
 
+#include "ProgrammingSteps.h"
+
 /* Contains define for presence of EEPROM data in hex file */
 #include "HexImage.h"
 
