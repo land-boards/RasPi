@@ -47,13 +47,7 @@ void TestDelayHundredUs(void)
     unsigned short timestamp;
         
     digitalWrite(5,1); /* Make the pin low before start of the delay */
-    
-    /* For loop to introduce the 100 us delay */
-    for(timestamp = 0; timestamp < XRES_PULSE_100US; timestamp++)
-    {
-
-    }
-    
+	delayMicroseconds(100);
     digitalWrite(5,0); /* Make the pin high after end of the delay */
 }
 
