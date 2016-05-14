@@ -126,13 +126,13 @@ int main()
         /* Display the step number where the HSSP failed */
         printf("HSSP Fail Step %d",currentStep);
         
-        /* Get the HSSP error status and display on THE LCD */
+        /* Get the HSSP error status */
         errorStatus = ReadHsspErrorStatus();        
         
         printf("Err %d",errorStatus);
         
         /* If the errorStatus contains THE SPC_TIMEOUT_ERROR error condition,
-           read the SPC status register and display on THE LCD */
+           read the SPC status register */
  
         if(errorStatus & SPC_TIMEOUT_ERROR)
         {
@@ -143,11 +143,8 @@ int main()
 
     } 
 
-    for(;;)
-    {
-        
-        
-    }
+ printf("Exiting");
+ return 0;
 }
 
 /* [] END OF FILE */
