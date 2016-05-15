@@ -53,7 +53,7 @@
 5.) This parameter is referred to as TBOOT in the programming specifications document.
 
 *********************************************************************************/
-#define TIME_WINDOW_68US 125
+#define TIME_WINDOW_68US 300
 
 
 /*********************Calculating DEVICE_ACQUIRE_TIMEOUT *******************************************
