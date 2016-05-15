@@ -131,7 +131,7 @@ void TestAcquirePacket()
 *******************************************************************************/
 void TestSwdck()
 {
-    unsigned short time_elapsed;
+    unsigned short time_elapsed = 0;
        
     digitalWrite(5,1); /* Make the pin low before sending SWD clock train */
     
