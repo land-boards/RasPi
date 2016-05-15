@@ -110,8 +110,8 @@ void TestAcquirePacket()
 	Swd_packetData[0] = 0x00;
 	Swd_WritePacketFast(0x00);
 
-	delayMicroseconds(10);
 	digitalWrite(5,0);  /* Make the pin high after sending SWD acquire packet */
+	delayMicroseconds(10);
 }
 
 /*******************************************************************************
