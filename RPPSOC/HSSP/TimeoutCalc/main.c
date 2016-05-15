@@ -16,7 +16,7 @@
 *******************************************************************************/
 
 /* This header file has the function declarations, macros used to arrive at the timeout 
-   parameter values */
+parameter values */
 #include <stdio.h>
 #include <wiringPi.h>
 
@@ -24,19 +24,21 @@
 
 int main()
 {
-    wiringPiSetup();
+	wiringPiSetup();
 	pinMode(5,OUTPUT);		// Set TEST pin for Strong drive mode
-    digitalWrite(5,0);      // Drive the pin high
-    
-        /* Uncomment ONLY ONE of the functions below at a time. Then, calculate the 
-           corresponding timeout parameter using the explanation provided for the
-           timeout parameter in the file TimeoutCalc.h */
-    
-while(1)
-{
-//        TestDelayHundredUs(); /* Uncomment this line to calculate the timeout parameter XRES_PULSE_100US */
-        TestSwdck();          /* Uncomment this line to calculate the timeout parameter TIME_WINDOW_68US */  
-//        TestAcquirePacket();  /* Uncomment this line to calculate the timeout parameter DEVICE_ACQUIRE_TIMEOUT */         
-//        TestSwdReadPacket();  /* Uncomment this line to calculate the timeout parameter SPC_POLLING_TIMEOUT */
-    
+	digitalWrite(5,0);      // Drive the pin high
+	
+	/* Uncomment ONLY ONE of the functions below at a time. Then, calculate the 
+		corresponding timeout parameter using the explanation provided for the
+		timeout parameter in the file TimeoutCalc.h */
+	
+	while(1)
+	{
+		//        TestDelayHundredUs(); /* Uncomment this line to calculate the timeout parameter XRES_PULSE_100US */
+		TestSwdck();          /* Uncomment this line to calculate the timeout parameter TIME_WINDOW_68US */  
+		//        TestAcquirePacket();  /* Uncomment this line to calculate the timeout parameter DEVICE_ACQUIRE_TIMEOUT */         
+		//        TestSwdReadPacket();  /* Uncomment this line to calculate the timeout parameter SPC_POLLING_TIMEOUT */
+		
+	}
+
 }
