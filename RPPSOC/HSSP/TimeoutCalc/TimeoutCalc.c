@@ -104,9 +104,13 @@ void TestAcquirePacket()
 
 	/* Send a dummy packet with all zeros since this is a test function  */
 	Swd_packetHeader =  0x00;
-	Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0x00;
+	Swd_packetData[3] = 0x00;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x00;
+	Swd_packetData[0] = 0x00;
 	Swd_WritePacketFast(0x00);
 
+	delayMicroseconds(10);
 	digitalWrite(5,0);  /* Make the pin high after sending SWD acquire packet */
 }
 

@@ -35,8 +35,8 @@ int main()
 	while(1)
 	{
 		//        TestDelayHundredUs(); /* Uncomment this line to calculate the timeout parameter XRES_PULSE_100US */
-		TestSwdck();          /* Uncomment this line to calculate the timeout parameter TIME_WINDOW_68US */  
-		//        TestAcquirePacket();  /* Uncomment this line to calculate the timeout parameter DEVICE_ACQUIRE_TIMEOUT */         
+		//	TestSwdck();          /* Uncomment this line to calculate the timeout parameter TIME_WINDOW_68US */  
+		TestAcquirePacket();  /* Uncomment this line to calculate the timeout parameter DEVICE_ACQUIRE_TIMEOUT */         
 		//        TestSwdReadPacket();  /* Uncomment this line to calculate the timeout parameter SPC_POLLING_TIMEOUT */
 		
 	}
