@@ -19,18 +19,13 @@
 *   Macro definitions
 ********************************************************************************/
 
-/***************************** USER ATTENTION REQUIRED **************************
-***************************** HOST PROCESSOR SPECIFIC ***************************
-* All below four timeout values namely: TIME_WINDOW_68US, DEVICE_ACQUIRE_TIMEOUT,
-* XRES_PULSE_100US, and SPC_POLLING_TIMEOUT are for a PSoC 5LP Host programmer
-* running at 66 MHz.
-* Modify these values as required for your host processor. 
+/*************************** HOST PROCESSOR SPECIFIC ***************************
 * Refer to the TimeoutCalc.h header file in the other project "C_Hssp_TimeoutCalc"
 * for details on the procedure to calculate these parameters for your specific
 * host programmer
 ********************************************************************************/
 
-#define XRES_PULSE_100US  630
+// #define XRES_PULSE_100US  630
 #define TIME_WINDOW_68US 125
 #define DEVICE_ACQUIRE_TIMEOUT 7
 #define SPC_POLLING_TIMEOUT 13889

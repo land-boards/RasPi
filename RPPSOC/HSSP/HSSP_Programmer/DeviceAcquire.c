@@ -106,7 +106,10 @@ unsigned char AcquireTargetDevice()
        For the first packet alone, sometimes an ACK of "0x07" may be received. So, we
        will loop till the first packet receives an OK ACK, else timeout. */
     Swd_packetHeader =  PORT_ACQUIRE_KEY_HEADER;
-    Swd_packetData[3] = 0x7B;Swd_packetData[2] = 0x0C;Swd_packetData[1] = 0x06;Swd_packetData[0] = 0xDB;    
+    Swd_packetData[3] = 0x7B;
+	Swd_packetData[2] = 0x0C;
+	Swd_packetData[1] = 0x06;
+	Swd_packetData[0] = 0xDB;    
     do
     {
         Swd_WritePacketFast(PARITY_PORT_ACQUIRE_KEY); 
@@ -121,7 +124,10 @@ unsigned char AcquireTargetDevice()
 
     /* Send the Test mode address SWD packet. Repeat for WAIT ACK till timeout occurs */
     Swd_packetHeader =  TESTMODE_ADDRESS_HEADER;
-    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x05;Swd_packetData[1] = 0x02;Swd_packetData[0] = 0x10;    
+    Swd_packetData[3] = 0x40;
+	Swd_packetData[2] = 0x05;
+	Swd_packetData[1] = 0x02;
+	Swd_packetData[0] = 0x10;    
     do
     {
         Swd_WritePacketFast(PARITY_TESTMODE_ADDRESS); 
@@ -135,7 +141,10 @@ unsigned char AcquireTargetDevice()
     
     /* Send the Test mode key SWD packet. Repeat for WAIT ACK till timeout occurs */
     Swd_packetHeader =  TESTMODE_KEY_HEADER;
-    Swd_packetData[3] = 0xEA;Swd_packetData[2] = 0x7E;Swd_packetData[1] = 0x30;Swd_packetData[0] = 0xA9;    
+    Swd_packetData[3] = 0xEA;
+	Swd_packetData[2] = 0x7E;
+	Swd_packetData[1] = 0x30;
+	Swd_packetData[0] = 0xA9;    
     do
     {
         Swd_WritePacketFast(PARITY_TESTMODE_KEY); 

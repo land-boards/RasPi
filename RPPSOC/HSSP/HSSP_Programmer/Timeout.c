@@ -5,8 +5,6 @@
 * Description:
 *  This file provides source code for the delay routine used in the HSSP application
 *
-* Note:
-* 
 *******************************************************************************/
 
 /********************************************************************************
@@ -39,13 +37,7 @@
 
 void DelayHundredUs(void)
 {
-    unsigned short timestamp;    
-
-    /* Delay using a empty for loop */
-    for(timestamp = 0; timestamp < XRES_PULSE_100US; timestamp++)
-    {
-        
-    }
+    delayMicroseconds(99);
 }
 
 /* [] END OF FILE */

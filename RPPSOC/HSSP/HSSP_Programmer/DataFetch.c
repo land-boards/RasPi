@@ -371,6 +371,5 @@ unsigned char GetEepromSectorCount()
 	return(NUMBER_OF_EEPROM_SECTORS_HEX_FILE);
 }
 
-#endif /* (EEPROM_DATA_PRESENT_HEX_FILE) */
+#endif
 
-/* [] END OF FILE */

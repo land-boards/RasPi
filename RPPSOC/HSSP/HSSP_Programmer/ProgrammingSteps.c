@@ -220,7 +220,10 @@ static unsigned char GetDieTemperature(unsigned char * temperatureSign, unsigned
 
     /* APACC ADDR Write [0x4000 4720] */
     Swd_packetHeader =  APACC_ADDR_WRITE;
-    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+    Swd_packetData[3] = 0x40;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x47;
+	Swd_packetData[0] = 0x20;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);
