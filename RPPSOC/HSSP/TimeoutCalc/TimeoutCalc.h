@@ -7,10 +7,7 @@
 *  of the functions used for calculating the the timeout parameters.
 *
 * Note:
-*  The timeout values given below are applicable for a PSoC 5LP Host processor with the CPU
-*  operating at a clock frequency of 63 MHz. A test pin defined as TESTPIN
-*  is used to arrive at these timeout values by toggling the pin, and measuring the low 
-*  pulse width of the square wave on the test pin using an oscilloscope.
+*
 *******************************************************************************/
 #ifndef __TIMEOUTCALC_H
 #define __TIMEOUTCALC_H
@@ -24,24 +21,10 @@
 * in the for loop of the main() function  and measuring the low pulse width
 * of the square wave signal on the TESTPIN. Refer to the procedure given for calculating each
 * of the parameters below.
-* The default definitions below are for a PSoC 5LP host programmer operating at a frequency of 66 MHZ.
 *
 * Modify these values as required for your host processor. 
 
 ********************************************************************************/
-
-/*********************Calculating XRES_PULSE_100US *******************************************
-1.) Call ONLY the function TestDelayHundredUs(), defined in TimeoutCalc.c, in the for loop of the main code
-2.) Note down the LOW PULSE WIDTH (Tlow) of the square wave on the pin TEST_PIN
-3.) Tune the value of the definition XRES_PULSE_100US below till the low pulse width (Tlow)
-    is JUST GREATER than 100uS 
-4.) For example, for a PSoC 5LP host programmer operating at 66 MHz, defining the 
-    XRES_PULSE_100US as 630 gave a low pulse width of ~105 uS. This was used in the HSSP code.
-5.) This parameter is referred to as TRESET in the programming specifications document.
-6300 = 93.6 uS
-
-*********************************************************************************/
-#define XRES_PULSE_100US  6840
 
 /*********************Calculating TIME_WINDOW_68US *******************************************
 1.) Call ONLY the function TestSwdck(), defined in TimeoutCalc.c, in the for loop of the main code
