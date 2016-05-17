@@ -18,8 +18,7 @@
 *  places to save code space.
 *
 * Note:
-*  The macros, functions defined here are specific to PSoC 5LP Host Programmer.
-*  Modify them as applicable for your Host Programmer.
+*
 *******************************************************************************/
 
 #ifndef __SWD_PHYSICALLAYER_H
@@ -49,7 +48,7 @@
 * Modify these as applicable to your Host Programmer
 ********************************************************************************/
 
-#define SWDIO_DRIVEMODE_HIGHZIN         pinMode (5, INPUT)        
+#define SWDIO_DRIVEMODE_HIGHZIN         pinMode (5, INPUT)
 #define SWDIO_DRIVEMODE_CMOSOUT         pinMode (5, OUTPUT)
 
 #define SWDCK_DRIVEMODE_HIGHZIN         pinMode (4, INPUT)
@@ -59,14 +58,12 @@
 #define XRES_DRIVEMODE_CMOSOUT          pinMode (3, OUTPUT)
 
 /***************************** USER ATTENTION REQUIRED **************************
-***************************** HOST PROCESSOR SPECIFIC ***************************
 **************** Macros for driving output pins on host side ********************
 *
 * Uses the register definitions, mask values in "RegisterDefines.h" to drive
 * output pins either to logic high (suffixed by 'HIGH') or
 * logic low (suffixed by 'LOW')
 *
-* Modify these as applicable to your Host Programmer
 ********************************************************************************/
 
 #define SWDIO_OUTPUT_HIGH      digitalWrite (5, 1)
@@ -79,7 +76,6 @@
 #define XRES_OUTPUT_LOW        digitalWrite (3, 0)
 
 /***************************** USER ATTENTION REQUIRED **************************
-***************************** HOST PROCESSOR SPECIFIC ***************************
 **************** Macro for reading input pin on host side ***********************
 *
 * Uses the register definitions, mask values in "RegisterDefines.h" to read
@@ -114,4 +110,3 @@ void SetXresCmosOutput(void);
 void SetXresHizInput(void);
 
 #endif /* __SWD_PHYSICALLAYER_H */
-//[] END OF FILE

@@ -5,8 +5,8 @@
 * Description:
 *  This file provides the source code for "Step1: Enter Programming Mode" in Programming flow.
 *  It also has the routine to exit programming mode.
-*  This step is provided as separate .c, .h file as the procedure to enter target 
-*  programming mode has strict timing requirements.
+*  This step is provided as separate .c, .h file as the procedure to enter target programming 
+*  mode has strict timing requirements.
 *
 * Note:
 *  Refer to the PSoC 5LP Programming specifications for details on timing requirements.
@@ -20,11 +20,9 @@
 #include "DeviceAcquire.h"
 
 /* "Swd_PhysicalLayer.h" file contains the bit banging routines for SWD protocol.
-   "Swd_PacketLayer.h" file contains the packet definitions for the SWD protocol.
-   "Timeout.h" file contains the timeout constants for "Step1: Enter Programming Mode" */
+   "Swd_PacketLayer.h" file contains the packet definitions for the SWD protocol."  */
 #include "Swd_PhysicalLayer.h"
 #include "Swd_PacketLayer.h"
-#include "Timeout.h"
 
 /********************************************************************************
 *   Function Definitions
@@ -91,16 +89,14 @@ unsigned char AcquireTargetDevice()
        The Delay function need not be accurate, it can be more than 100 uS as well. It will not 
        affect the programming operation */
     XRES_OUTPUT_LOW;
-    DelayHundredUs(); /* This function is defined in Timeout.c */
+    delayMicroseconds(99);
     XRES_OUTPUT_HIGH;
     
     /* Clock the SWDCK line with SWDIO low (already low) for time
        TIME_WINDOW_68US defined in Timeout.h */
-    for(time_elapsed = 0; time_elapsed < TIME_WINDOW_68US; time_elapsed++)
-    {
-        SWDCK_OUTPUT_LOW;
-        SWDCK_OUTPUT_HIGH;
-    }    
+    SWDCK_OUTPUT_LOW;
+	delayMicroseconds(68);
+    SWDCK_OUTPUT_HIGH;
 
     /* Send the Port Acquire SWD packet continuously till OK ACK or timeout occurs.
        For the first packet alone, sometimes an ACK of "0x07" may be received. So, we
@@ -114,9 +110,10 @@ unsigned char AcquireTargetDevice()
     {
         Swd_WritePacketFast(PARITY_PORT_ACQUIRE_KEY); 
         total_packet_count++;
-    }while((Swd_packetAck != SWD_OK_ACK) && (total_packet_count < DEVICE_ACQUIRE_TIMEOUT));
+    }
+	while((Swd_packetAck != SWD_OK_ACK) && (total_packet_count < DEVICE_ACQUIRE_TIMEOUT));
 
-    /* If OK ACK is not recieved for Port Acquire key, abort operation and retun the SWD packet ack */
+    /* If OK ACK is not received for Port Acquire key, abort operation and retun the SWD packet ack */
     if(Swd_packetAck != SWD_OK_ACK)
     {
         return((Swd_packetAck | PORT_ACQUIRE_TIMEOUT_ERROR));
@@ -132,7 +129,8 @@ unsigned char AcquireTargetDevice()
     {
         Swd_WritePacketFast(PARITY_TESTMODE_ADDRESS); 
         total_packet_count++;
-    }while((Swd_packetAck == SWD_WAIT_ACK) && (total_packet_count < DEVICE_ACQUIRE_TIMEOUT));
+    }
+	while((Swd_packetAck == SWD_WAIT_ACK) && (total_packet_count < DEVICE_ACQUIRE_TIMEOUT));
     
     if(Swd_packetAck != SWD_OK_ACK)
     {
@@ -149,7 +147,8 @@ unsigned char AcquireTargetDevice()
     {
         Swd_WritePacketFast(PARITY_TESTMODE_KEY); 
         total_packet_count++;
-    }while((Swd_packetAck == SWD_WAIT_ACK) && (total_packet_count < DEVICE_ACQUIRE_TIMEOUT));
+    }
+	while((Swd_packetAck == SWD_WAIT_ACK) && (total_packet_count < DEVICE_ACQUIRE_TIMEOUT));
     
     /* If the total number of SWD packets sent is higher than the timeout count,
        set the timeout error bit */
@@ -194,10 +193,9 @@ void ReleaseTargetDevice()
     
     /* Generate active low rest pulse for 100 uS */
     SetXresLow();
-    DelayHundredUs();    
+    delayMicroseconds(99);
     SetXresHigh();
 
     /* Make XRES High-Z after generating the reset pulse */  
     SetXresHizInput();
 }
-/* [] END OF FILE */

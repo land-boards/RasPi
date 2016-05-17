@@ -62,4 +62,3 @@ void Swd_ReadPacket(void);
 void JtagToSwdSequence(void);
 
 #endif /* __SWD_PACKETLAYER_H */
-//[] END OF FILE

@@ -17,7 +17,6 @@
 #include "Swd_PacketLayer.h"
 #include "DeviceAcquire.h"
 #include "DataFetch.h"
-#include "Timeout.h"
 #include "HexImage.h"
 
 /********************************************************************************
@@ -52,7 +51,10 @@ static unsigned char IsSpcIdle()
     
     /* APACC ADDR Write [0x4000 4722] */
     Swd_packetHeader =  APACC_ADDR_WRITE;
-    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x22;
+    Swd_packetData[3] = 0x40;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x47;
+	Swd_packetData[0] = 0x22;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE); 
@@ -73,7 +75,8 @@ static unsigned char IsSpcIdle()
             return(FAILURE);
             
         loop++;
-    }while((Swd_packetData[2] != SPC_STATUS_IDLE) && (loop < SPC_POLLING_TIMEOUT));
+    }
+	while((Swd_packetData[2] != SPC_STATUS_IDLE) && (loop < SPC_POLLING_TIMEOUT));
     
     if(Swd_packetData[2] == SPC_STATUS_IDLE) /*Return success if Idle */
     {
@@ -116,7 +119,10 @@ static unsigned char IsSpcDataReady()
     
     /* APACC ADDR Write [0x4000 4722] */
     Swd_packetHeader =  APACC_ADDR_WRITE;
-    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x22;
+    Swd_packetData[3] = 0x40;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x47;
+	Swd_packetData[0] = 0x22;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);  
@@ -181,14 +187,19 @@ static unsigned char GetDieTemperature(unsigned char * temperatureSign, unsigned
 {
  	/* APACC ADDR Write [0x4000 4720] */
     Swd_packetHeader =  APACC_ADDR_WRITE;
-    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+    Swd_packetData[3] = 0x40;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x47;
+	Swd_packetData[0] = 0x20;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);    
     
     /* The MSB three bytes in the following data transfers are always zero. Only the LSB byte will change 
        for each SWD packet. Also, all the below SWD packets have the same header APACC_DATA_WRITE */
-    Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;
+    Swd_packetData[3] = 0x00;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x00;
     Swd_packetHeader =  APACC_DATA_WRITE;
         
     /* APACC DATA Write [0x0000 00B6] */
@@ -346,77 +357,110 @@ unsigned char ConfigureTargetDevice()
     
     /* DPACC DP CTRLSTAT Write [0x50000000]  */
     Swd_packetHeader =  DPACC_DP_CTRLSTAT_WRITE;
-    Swd_packetData[3] = 0x50;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0x00;
+    Swd_packetData[3] = 0x50;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x00;
+	Swd_packetData[0] = 0x00;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);
         
     /* DPACC DP SELECT Write [0x00000000]  */
     Swd_packetHeader =  DPACC_DP_SELECT_WRITE;
-    Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0x00;
+    Swd_packetData[3] = 0x00;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x00;
+	Swd_packetData[0] = 0x00;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);        
 
     /* APACC AP CTRLSTAT Write [0x22000002]  */
     Swd_packetHeader =  APACC_AP_CTRLSTAT_WRITE;
-    Swd_packetData[3] = 0x22;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0x02;
+    Swd_packetData[3] = 0x22;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x00;
+	Swd_packetData[0] = 0x02;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE); 
 
     /* APACC ADDR Write [0xE000 EDF0] */
     Swd_packetHeader =  APACC_ADDR_WRITE;
-    Swd_packetData[3] = 0xE0;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0xED;Swd_packetData[0] = 0xF0;
+    Swd_packetData[3] = 0xE0;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0xED;
+	Swd_packetData[0] = 0xF0;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);    
     
     /* APACC DATA Write [0xA05F 0001] */
     Swd_packetHeader =  APACC_DATA_WRITE;
-    Swd_packetData[3] = 0xA0;Swd_packetData[2] = 0x5F;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0x01;
+    Swd_packetData[3] = 0xA0;
+	Swd_packetData[2] = 0x5F;
+	Swd_packetData[1] = 0x00;
+	Swd_packetData[0] = 0x01;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);        
 
     /* APACC ADDR Write [0x4008 000C] */
     Swd_packetHeader =  APACC_ADDR_WRITE;
-    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x08;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0x0C;
+    Swd_packetData[3] = 0x40;
+	Swd_packetData[2] = 0x08;
+	Swd_packetData[1] = 0x00;
+	Swd_packetData[0] = 0x0C;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);    
     
     /* APACC DATA Write [0x0000 0002] */
     Swd_packetHeader =  APACC_DATA_WRITE;
-    Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0x02;
+    Swd_packetData[3] = 0x00;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x00;
+	Swd_packetData[0] = 0x02;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE); 
         
     /* APACC ADDR Write [0x4000 43A0] */
     Swd_packetHeader =  APACC_ADDR_WRITE;
-    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x43;Swd_packetData[0] = 0xA0;
+    Swd_packetData[3] = 0x40;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x43;
+	Swd_packetData[0] = 0xA0;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);    
     
     /* APACC DATA Write [0x0000 00BF] */
     Swd_packetHeader =  APACC_DATA_WRITE;
-    Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0xBF;
+    Swd_packetData[3] = 0x00;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x00;
+	Swd_packetData[0] = 0xBF;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);        
 
     /* APACC ADDR Write [0x4000 4200] */
     Swd_packetHeader =  APACC_ADDR_WRITE;
-    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x42;Swd_packetData[0] = 0x00;
+    Swd_packetData[3] = 0x40;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x42;
+	Swd_packetData[0] = 0x00;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);    
     
     /* APACC DATA Write [0x0000 0002] */
     Swd_packetHeader =  APACC_DATA_WRITE;
-    Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0x02;
+    Swd_packetData[3] = 0x00;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x00;
+	Swd_packetData[0] = 0x02;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);  
@@ -424,14 +468,20 @@ unsigned char ConfigureTargetDevice()
         
      /* APACC ADDR Write [0x4000 46E8] */
     Swd_packetHeader =  APACC_ADDR_WRITE;
-    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x46;Swd_packetData[0] = 0xE8;
+    Swd_packetData[3] = 0x40;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x46;
+	Swd_packetData[0] = 0xE8;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);    
     
     /* APACC DATA Write [0x0000 0040] */
     Swd_packetHeader =  APACC_DATA_WRITE;
-    Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0x40;
+    Swd_packetData[3] = 0x00;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x00;
+	Swd_packetData[0] = 0x40;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);
@@ -468,7 +518,10 @@ unsigned char VerifyDeviceId()
 
     /* APACC ADDR Write [0x4008 001C] */
     Swd_packetHeader =  APACC_ADDR_WRITE;
-    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x08;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0x1C;
+    Swd_packetData[3] = 0x40;
+	Swd_packetData[2] = 0x08;
+	Swd_packetData[1] = 0x00;
+	Swd_packetData[0] = 0x1C;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);  
@@ -514,7 +567,10 @@ unsigned char EraseFlash()
 {
     /* APACC ADDR Write [0x4000 4720] */
     Swd_packetHeader =  APACC_ADDR_WRITE;
-    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+    Swd_packetData[3] = 0x40;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x47;
+	Swd_packetData[0] = 0x20;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);
@@ -522,7 +578,9 @@ unsigned char EraseFlash()
     /* The MSB three bytes in the following data transfers are always zero. Only the LSB byte will change 
        for each SWD packet. Also, all the below SWD packets have the same header APACC_DATA_WRITE */        
     Swd_packetHeader =  APACC_DATA_WRITE;
-    Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;
+    Swd_packetData[3] = 0x00;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x00;
     
     /* APACC DATA Write [0x0000 00B6] */
     Swd_packetData[0] = 0xB6;
@@ -583,7 +641,10 @@ unsigned char ProgramDeviceConfigNvl()
     {
         /* APACC ADDR Write [0x4000 4720] */
         Swd_packetHeader =  APACC_ADDR_WRITE;
-        Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+        Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
         Swd_WritePacket();
         if(Swd_packetAck != SWD_OK_ACK)
             return(FAILURE); 
@@ -591,7 +652,9 @@ unsigned char ProgramDeviceConfigNvl()
         /* The MSB three bytes in the following data transfers are always zero. Only the LSB byte will change 
            for each SWD packet. Also, all the below SWD packets have the same header APACC_DATA_WRITE */            
         Swd_packetHeader =  APACC_DATA_WRITE;
-        Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00; 
+        Swd_packetData[3] = 0x00;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x00; 
         
         /* APACC DATA Write [0x0000 00B6] */
         Swd_packetData[0] = 0xB6;
@@ -628,7 +691,10 @@ unsigned char ProgramDeviceConfigNvl()
 
         /* APACC ADDR Write [0x4000 4720] */
         Swd_packetHeader =  APACC_ADDR_WRITE;
-        Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+        Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
         Swd_WritePacket();
         if(Swd_packetAck != SWD_OK_ACK)
             return(FAILURE); 
@@ -674,7 +740,10 @@ unsigned char ProgramDeviceConfigNvl()
 		{
             /* APACC ADDR Write [0x4000 500A] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x50;Swd_packetData[0] = 0x0A;
+            Swd_packetData[3] = 0x40;
+			Swd_packetData[2] = 0x00;
+			Swd_packetData[1] = 0x50;
+			Swd_packetData[0] = 0x0A;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);	
@@ -696,7 +765,10 @@ unsigned char ProgramDeviceConfigNvl()
         {
             /* APACC ADDR Write [0x4000 4720] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+            Swd_packetData[3] = 0x40;
+			Swd_packetData[2] = 0x00;
+			Swd_packetData[1] = 0x47;
+			Swd_packetData[0] = 0x20;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);  
@@ -704,7 +776,9 @@ unsigned char ProgramDeviceConfigNvl()
             /* The MSB three bytes in the following data transfers are always zero. Only the LSB byte will change 
                for each SWD packet. Also, all the below SWD packets have the same header APACC_DATA_WRITE */                
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;
+            Swd_packetData[3] = 0x00;
+			Swd_packetData[2] = 0x00;
+			Swd_packetData[1] = 0x00;
             
             /* APACC DATA Write [0x0000 00B6] */
             Swd_packetData[0] = 0xB6;
@@ -748,7 +822,10 @@ unsigned char ProgramDeviceConfigNvl()
         
         /* APACC ADDR Write [0x4000 4720] */
         Swd_packetHeader =  APACC_ADDR_WRITE;
-        Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+        Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
         Swd_WritePacket();
         if(Swd_packetAck != SWD_OK_ACK)
             return(FAILURE);
@@ -756,7 +833,9 @@ unsigned char ProgramDeviceConfigNvl()
         /* The MSB three bytes in the following data transfers are always zero. Only the LSB byte will change 
            for each SWD packet. Also, all the below SWD packets have the same header APACC_DATA_WRITE */            
         Swd_packetHeader =  APACC_DATA_WRITE;
-        Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00; 
+        Swd_packetData[3] = 0x00;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x00; 
         
         /* APACC DATA Write [0x0000 00B6] */
         Swd_packetData[0] = 0xB6;
@@ -844,7 +923,10 @@ unsigned char ProgramFlash()
 
     /* APACC AP CTRLSTAT WRITE [0x22000002] */
     Swd_packetHeader =  APACC_AP_CTRLSTAT_WRITE;
-    Swd_packetData[3] = 0x22; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x00; Swd_packetData[0] = 0x02;
+    Swd_packetData[3] = 0x22;
+	Swd_packetData[2] = 0x00;
+	Swd_packetData[1] = 0x00;
+	Swd_packetData[0] = 0x02;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);
@@ -877,14 +959,20 @@ unsigned char ProgramFlash()
             
             /* APACC ADDR Write [0x2000 0000] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x20; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x00; Swd_packetData[0] = 0x00;
+            Swd_packetData[3] = 0x20;
+			Swd_packetData[2] = 0x00;
+			Swd_packetData[1] = 0x00;
+			Swd_packetData[0] = 0x00;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [[(0x0002 D5B6) | (arrayCount << 24)] */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = arrayCount; Swd_packetData[2] = 0x02; Swd_packetData[1] = 0xD5; Swd_packetData[0] = 0xB6;
+            Swd_packetData[3] = arrayCount;
+			Swd_packetData[2] = 0x02;
+			Swd_packetData[1] = 0xD5;
+			Swd_packetData[0] = 0xB6;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);   
@@ -929,7 +1017,10 @@ unsigned char ProgramFlash()
                 
             /* APACC DATA Write [0xB600 0000] */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0xB6; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x00; Swd_packetData[0] = 0x00;
+            Swd_packetData[3] = 0xB6;
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x00; 
+			Swd_packetData[0] = 0x00;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);              
@@ -946,7 +1037,10 @@ unsigned char ProgramFlash()
                 
             /* APACC DATA Write [(0x000007DA) | (arrayCount << 16)] */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00; Swd_packetData[2] = arrayCount; Swd_packetData[1] = 0x07; Swd_packetData[0] = 0xDA;
+            Swd_packetData[3] = 0x00; 
+			Swd_packetData[2] = arrayCount; 
+			Swd_packetData[1] = 0x07; 
+			Swd_packetData[0] = 0xDA;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);     
@@ -973,63 +1067,90 @@ unsigned char ProgramFlash()
 
             /* APACC ADDR Write [0x4000 7018] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x70; Swd_packetData[0] = 0x18;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x70; 
+			Swd_packetData[0] = 0x18;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x0000 0000] */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x00; Swd_packetData[0] = 0x00;
+            Swd_packetData[3] = 0x00; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x00; 
+			Swd_packetData[0] = 0x00;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
      
             /* APACC ADDR Write [0x4000 7010] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x70; Swd_packetData[0] = 0x10;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x70; 
+			Swd_packetData[0] = 0x10;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x0000 0021]  */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x00; Swd_packetData[0] = 0x21;
+            Swd_packetData[3] = 0x00; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x00; 
+			Swd_packetData[0] = 0x21;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
 
             /* APACC ADDR Write [0x4000 7600] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x76; Swd_packetData[0] = 0x00;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x76; 
+			Swd_packetData[0] = 0x00;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x0000 0080]  */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x00; Swd_packetData[0] = 0x80;
+            Swd_packetData[3] = 0x00; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x00; 
+			Swd_packetData[0] = 0x80;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE); 
 
             /* APACC ADDR Write [0x4000 7604] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x76; Swd_packetData[0] = 0x04;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x76; 
+			Swd_packetData[0] = 0x04;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x4000 2000]   */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x20; Swd_packetData[0] = 0x00;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x20; 
+			Swd_packetData[0] = 0x00;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE); 
 
             /* APACC ADDR Write [0x4000 7800] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x78; Swd_packetData[0] = 0x00;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x78; 
+			Swd_packetData[0] = 0x00;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);  
@@ -1046,14 +1167,20 @@ unsigned char ProgramFlash()
 
             /* APACC ADDR Write [0x4000 7804]  */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x78; Swd_packetData[0] = 0x04;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x78; 
+			Swd_packetData[0] = 0x04;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x4720 0000]    */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x47; Swd_packetData[2] = 0x20; Swd_packetData[1] = 0x00; Swd_packetData[0] = 0x00;
+            Swd_packetData[3] = 0x47; 
+			Swd_packetData[2] = 0x20; 
+			Swd_packetData[1] = 0x00; 
+			Swd_packetData[0] = 0x00;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);  
@@ -1063,14 +1190,20 @@ unsigned char ProgramFlash()
 
             /* APACC ADDR Write [0x4000 7014]  */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x70; Swd_packetData[0] = 0x14;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x70; 
+			Swd_packetData[0] = 0x14;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x0000 0001]    */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x00; Swd_packetData[0] = 0x01;
+            Swd_packetData[3] = 0x00; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x00; 
+			Swd_packetData[0] = 0x01;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);   
@@ -1084,14 +1217,20 @@ unsigned char ProgramFlash()
 
             /* APACC ADDR Write [0x2000 0200] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x20; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x02; Swd_packetData[0] = 0x00;
+            Swd_packetData[3] = 0x20; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x02; 
+			Swd_packetData[0] = 0x00;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x0002 D5B6 | (arrayCount << 24)] */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = arrayCount; Swd_packetData[2] = 0x02; Swd_packetData[1] = 0xD5; Swd_packetData[0] = 0xB6;
+            Swd_packetData[3] = arrayCount; 
+			Swd_packetData[2] = 0x02; 
+			Swd_packetData[1] = 0xD5; 
+			Swd_packetData[0] = 0xB6;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);   
@@ -1136,7 +1275,10 @@ unsigned char ProgramFlash()
                 
             /* APACC DATA Write [0xB600 0000] */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0xB6; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x00; Swd_packetData[0] = 0x00;
+            Swd_packetData[3] = 0xB6; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x00; 
+			Swd_packetData[0] = 0x00;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);              
@@ -1153,7 +1295,10 @@ unsigned char ProgramFlash()
                 
             /* APACC DATA Write [0x000007DA | (arrayCount << 16)] */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00; Swd_packetData[2] = arrayCount; Swd_packetData[1] = 0x07; Swd_packetData[0] = 0xDA;
+            Swd_packetData[3] = 0x00; 
+			Swd_packetData[2] = arrayCount; 
+			Swd_packetData[1] = 0x07; 
+			Swd_packetData[0] = 0xDA;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);     
@@ -1180,63 +1325,90 @@ unsigned char ProgramFlash()
 
             /* APACC ADDR Write [0x4000 7028] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x70; Swd_packetData[0] = 0x28;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x70; 
+			Swd_packetData[0] = 0x28;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x0000 0100] */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x01; Swd_packetData[0] = 0x00;
+            Swd_packetData[3] = 0x00; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x01; 
+			Swd_packetData[0] = 0x00;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
      
             /* APACC ADDR Write [0x4000 7020] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x70; Swd_packetData[0] = 0x20;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x70; 
+			Swd_packetData[0] = 0x20;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x0000 0021]  */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x00; Swd_packetData[0] = 0x21;
+            Swd_packetData[3] = 0x00; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x00; 
+			Swd_packetData[0] = 0x21;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
 
             /* APACC ADDR Write [0x4000 7608] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x76; Swd_packetData[0] = 0x08;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x76; 
+			Swd_packetData[0] = 0x08;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x0000 0080]  */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x00; Swd_packetData[0] = 0x80;
+            Swd_packetData[3] = 0x00; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x00; 
+			Swd_packetData[0] = 0x80;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE); 
 
             /* APACC ADDR Write [0x4000 760C] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x76; Swd_packetData[0] = 0x0C;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x76; 
+			Swd_packetData[0] = 0x0C;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x4000 2000]   */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x20; Swd_packetData[0] = 0x00;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x20; 
+			Swd_packetData[0] = 0x00;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE); 
 
             /* APACC ADDR Write [0x4000 7808] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x78; Swd_packetData[0] = 0x08;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x78; 
+			Swd_packetData[0] = 0x08;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);  
@@ -1253,14 +1425,20 @@ unsigned char ProgramFlash()
 
             /* APACC ADDR Write [0x4000 780C]  */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x78; Swd_packetData[0] = 0x0C;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x78; 
+			Swd_packetData[0] = 0x0C;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x4720 0200]    */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x47; Swd_packetData[2] = 0x20; Swd_packetData[1] = 0x02; Swd_packetData[0] = 0x00;
+            Swd_packetData[3] = 0x47; 
+			Swd_packetData[2] = 0x20; 
+			Swd_packetData[1] = 0x02; 
+			Swd_packetData[0] = 0x00;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);  
@@ -1270,14 +1448,20 @@ unsigned char ProgramFlash()
 
             /* APACC ADDR Write [0x4000 7024]  */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x70; Swd_packetData[0] = 0x24;
+            Swd_packetData[3] = 0x40; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x70; 
+			Swd_packetData[0] = 0x24;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x0000 0001]    */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00; Swd_packetData[2] = 0x00; Swd_packetData[1] = 0x00; Swd_packetData[0] = 0x01;
+            Swd_packetData[3] = 0x00; 
+			Swd_packetData[2] = 0x00; 
+			Swd_packetData[1] = 0x00; 
+			Swd_packetData[0] = 0x01;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);   
@@ -1358,14 +1542,20 @@ unsigned char VerifyFlash()
             
             /* APACC ADDR Write [0x4000 4720] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+            Swd_packetData[3] = 0x40;
+			Swd_packetData[2] = 0x00;
+			Swd_packetData[1] = 0x47;
+			Swd_packetData[0] = 0x20;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);    
                 
             /* APACC DATA Write [0x0000 00B6] */
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0xB6;
+            Swd_packetData[3] = 0x00;
+			Swd_packetData[2] = 0x00;
+			Swd_packetData[1] = 0x00;
+			Swd_packetData[0] = 0xB6;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);
@@ -1373,7 +1563,9 @@ unsigned char VerifyFlash()
             /* The MSB three bytes in the following data transfers are always zero. Only the LSB byte will change 
                for each SWD packet. Also, all the below SWD packets have the same header APACC_DATA_WRITE */             
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;
+            Swd_packetData[3] = 0x00;
+			Swd_packetData[2] = 0x00;
+			Swd_packetData[1] = 0x00;
             
             /* APACC DATA Write [0x0000 00D7] */
             Swd_packetData[0] = 0xD7;
@@ -1423,7 +1615,10 @@ unsigned char VerifyFlash()
 
             /* APACC ADDR Write [0x4000 4720] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+            Swd_packetData[3] = 0x40;
+			Swd_packetData[2] = 0x00;
+			Swd_packetData[1] = 0x47;
+			Swd_packetData[0] = 0x20;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE);  
@@ -1458,7 +1653,10 @@ unsigned char VerifyFlash()
 	                
 	                /* APACC ADDR Write [0x4000 4720] */
 	                Swd_packetHeader =  APACC_ADDR_WRITE;
-	                Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+	                Swd_packetData[3] = 0x40;
+					Swd_packetData[2] = 0x00;
+					Swd_packetData[1] = 0x47;
+					Swd_packetData[0] = 0x20;
 	                Swd_WritePacket();
 	                if(Swd_packetAck != SWD_OK_ACK)
 	                    return(FAILURE); 
@@ -1466,7 +1664,9 @@ unsigned char VerifyFlash()
 	                /* The MSB three bytes in the following data transfers are always zero. Only the LSB byte will change 
 	                   for each SWD packet. Also, all the below SWD packets have the same header APACC_DATA_WRITE */                 
 	                Swd_packetHeader =  APACC_DATA_WRITE;
-	                Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;
+	                Swd_packetData[3] = 0x00;
+					Swd_packetData[2] = 0x00;
+					Swd_packetData[1] = 0x00;
 	                
 	                /* APACC DATA Write [0x0000 00B6] */
 	                Swd_packetData[0] = 0xB6;
@@ -1476,7 +1676,10 @@ unsigned char VerifyFlash()
 	                    
 	                /* APACC DATA Write [0x0000 00D7] */
 	                Swd_packetHeader =  APACC_DATA_WRITE;
-	                Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0xD7;
+	                Swd_packetData[3] = 0x00;
+					Swd_packetData[2] = 0x00;
+					Swd_packetData[1] = 0x00;
+					Swd_packetData[0] = 0xD7;
 	                Swd_WritePacket();
 	                if(Swd_packetAck != SWD_OK_ACK)
 	                    return(FAILURE);    
@@ -1522,7 +1725,10 @@ unsigned char VerifyFlash()
 	        
 	                /* APACC ADDR Write [0x4000 4720] */
 	                Swd_packetHeader =  APACC_ADDR_WRITE;
-	                Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+	                Swd_packetData[3] = 0x40;
+					Swd_packetData[2] = 0x00;
+					Swd_packetData[1] = 0x47;
+					Swd_packetData[0] = 0x20;
 	                Swd_WritePacket();
 	                if(Swd_packetAck != SWD_OK_ACK)
 	                    return(FAILURE);
@@ -1602,13 +1808,18 @@ unsigned char ProgramWriteOnceNvl()
     {
         /* APACC ADDR Write [0x4000 4720] */
         Swd_packetHeader =  APACC_ADDR_WRITE;
-        Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+        Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
         Swd_WritePacket();
         if(Swd_packetAck != SWD_OK_ACK)
             return(FAILURE); 
             
         Swd_packetHeader =  APACC_DATA_WRITE;
-        Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;
+        Swd_packetData[3] = 0x00;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x00;
         
         /* APACC DATA Write [0x0000 00B6] */
         Swd_packetData[0] = 0xB6;
@@ -1645,7 +1856,10 @@ unsigned char ProgramWriteOnceNvl()
 
         /* APACC ADDR Write [0x4000 4720] */
         Swd_packetHeader =  APACC_ADDR_WRITE;
-        Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+        Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
         Swd_WritePacket();
         if(Swd_packetAck != SWD_OK_ACK)
             return(FAILURE); 
@@ -1683,13 +1897,18 @@ unsigned char ProgramWriteOnceNvl()
         {
             /* APACC ADDR Write [0x4000 4720] */
             Swd_packetHeader =  APACC_ADDR_WRITE;
-            Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+            Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
             Swd_WritePacket();
             if(Swd_packetAck != SWD_OK_ACK)
                 return(FAILURE); 
                 
             Swd_packetHeader =  APACC_DATA_WRITE;
-            Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00; 
+            Swd_packetData[3] = 0x00;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x00; 
             
             /* APACC DATA Write [0x0000 00B6] */
             Swd_packetData[0] = 0xB6;
@@ -1733,13 +1952,18 @@ unsigned char ProgramWriteOnceNvl()
         
         /* APACC ADDR Write [0x4000 4720] */
         Swd_packetHeader =  APACC_ADDR_WRITE;
-        Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+        Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
         Swd_WritePacket();
         if(Swd_packetAck != SWD_OK_ACK)
             return(FAILURE); 
             
         Swd_packetHeader =  APACC_DATA_WRITE;
-        Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;
+        Swd_packetData[3] = 0x00;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x00;
         
         /* APACC DATA Write [0x0000 00B6] */
         Swd_packetData[0] = 0xB6;
@@ -1839,13 +2063,18 @@ unsigned char ProgramFlashProtection()
                 
         /* APACC ADDR Write [0x4000 4720] */
         Swd_packetHeader =  APACC_ADDR_WRITE;
-        Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+        Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
         Swd_WritePacket();
         if(Swd_packetAck != SWD_OK_ACK)
             return(FAILURE); 
             
         Swd_packetHeader =  APACC_DATA_WRITE;
-        Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00; 
+        Swd_packetData[3] = 0x00;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x00; 
         
         /* APACC DATA Write [0x0000 00B6] */
         Swd_packetData[0] = 0xB6;
@@ -2004,7 +2233,10 @@ unsigned char VerifyFlashProtection()
 
         /* APACC ADDR Write [0x4000 4720] */
         Swd_packetHeader =  APACC_ADDR_WRITE;
-        Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+        Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
         Swd_WritePacket();
         if(Swd_packetAck != SWD_OK_ACK)
             return(FAILURE);   
@@ -2012,7 +2244,9 @@ unsigned char VerifyFlashProtection()
         /* The MSB three bytes in the following data transfers are always zero. Only the LSB byte will change 
            for each SWD packet. Also, all the below SWD packets have the same header APACC_DATA_WRITE */         
         Swd_packetHeader =  APACC_DATA_WRITE;
-        Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;  
+        Swd_packetData[3] = 0x00;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x00;  
         
         /* APACC DATA Write [0x0000 00B6] */
         Swd_packetData[0] = 0xB6;
@@ -2049,7 +2283,10 @@ unsigned char VerifyFlashProtection()
 
         /* APACC ADDR Write [0x4000 4720] */
         Swd_packetHeader =  APACC_ADDR_WRITE;
-        Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+        Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
         Swd_WritePacket();
         if(Swd_packetAck != SWD_OK_ACK)
             return(FAILURE); 
@@ -2148,7 +2385,10 @@ unsigned char VerifyChecksum()
     
         /* APACC ADDR Write [0x4000 4720] */
         Swd_packetHeader =  APACC_ADDR_WRITE;
-        Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+        Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
         Swd_WritePacket();
         if(Swd_packetAck != SWD_OK_ACK)
             return(FAILURE);
@@ -2156,7 +2396,9 @@ unsigned char VerifyChecksum()
         /* The MSB three bytes in the following data transfers are always zero. Only the LSB byte will change 
            for each SWD packet. Also, all the below SWD packets have the same header APACC_DATA_WRITE */          
         Swd_packetHeader =  APACC_DATA_WRITE;
-        Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;
+        Swd_packetData[3] = 0x00;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x00;
         
         /* APACC DATA Write [0x0000 00B6] */
         Swd_packetData[0] = 0xB6;
@@ -2211,7 +2453,10 @@ unsigned char VerifyChecksum()
 
         /* APACC ADDR Write [0x4000 4720] */
         Swd_packetHeader =  APACC_ADDR_WRITE;
-        Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+        Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
         Swd_WritePacket();
         if(Swd_packetAck != SWD_OK_ACK)
             return(FAILURE); 
@@ -2305,7 +2550,10 @@ unsigned char ProgramEeprom()
 	
     /* APACC ADDR Write [0x4000 43AC] */
     Swd_packetHeader =  APACC_ADDR_WRITE;
-    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x43;Swd_packetData[0] = 0xAC;
+    Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x43;
+		Swd_packetData[0] = 0xAC;
     Swd_WritePacket();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);
@@ -2328,7 +2576,10 @@ unsigned char ProgramEeprom()
 	{
 		/* APACC ADDR Write [0x4000 4720] */
 	    Swd_packetHeader =  APACC_ADDR_WRITE;
-	    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+	    Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
 	    Swd_WritePacket();
 	    if(Swd_packetAck != SWD_OK_ACK)
 	        return(FAILURE);	
@@ -2336,7 +2587,9 @@ unsigned char ProgramEeprom()
 	    /* The MSB three bytes in the following data transfers are always zero. Only the LSB byte will change 
 	       for each SWD packet. Also, all the below SWD packets have the same header APACC_DATA_WRITE */          
 	    Swd_packetHeader =  APACC_DATA_WRITE;
-	    Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;			
+	    Swd_packetData[3] = 0x00;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x00;			
 		
 		/* APACC DATA Write [0x0000 00B6] */
 	    Swd_packetData[0] = 0xB6;
@@ -2387,7 +2640,10 @@ unsigned char ProgramEeprom()
 		
 		/* APACC ADDR Write [0x4000 4720] */
 	    Swd_packetHeader =  APACC_ADDR_WRITE;
-	    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+	    Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
 	    Swd_WritePacket();
 	    if(Swd_packetAck != SWD_OK_ACK)
 	        return(FAILURE);	
@@ -2395,7 +2651,9 @@ unsigned char ProgramEeprom()
 	    /* The MSB three bytes in the following data transfers are always zero. Only the LSB byte will change 
 	       for each SWD packet. Also, all the below SWD packets have the same header APACC_DATA_WRITE */          
 	    Swd_packetHeader =  APACC_DATA_WRITE;
-	    Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;			
+	    Swd_packetData[3] = 0x00;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x00;			
 		
 		/* APACC DATA Write [0x0000 00B6] */
 	    Swd_packetData[0] = 0xB6;
@@ -2435,7 +2693,10 @@ unsigned char ProgramEeprom()
 			
 		/* APACC ADDR Write [0x4000 4720] */
 	    Swd_packetHeader =  APACC_ADDR_WRITE;
-	    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x47;Swd_packetData[0] = 0x20;
+	    Swd_packetData[3] = 0x40;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x47;
+		Swd_packetData[0] = 0x20;
 	    Swd_WritePacket();
 	    if(Swd_packetAck != SWD_OK_ACK)
 	        return(FAILURE);	
@@ -2443,7 +2704,9 @@ unsigned char ProgramEeprom()
 	    /* The MSB three bytes in the following data transfers are always zero. Only the LSB byte will change 
 	       for each SWD packet. Also, all the below SWD packets have the same header APACC_DATA_WRITE */          
 	    Swd_packetHeader =  APACC_DATA_WRITE;
-	    Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;			
+	    Swd_packetData[3] = 0x00;
+		Swd_packetData[2] = 0x00;
+		Swd_packetData[1] = 0x00;			
 		
 		/* APACC DATA Write [0x0000 00B6] */
 	    Swd_packetData[0] = 0xB6;

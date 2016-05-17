@@ -19,12 +19,7 @@
 *   Function Definitions
 ********************************************************************************/
 
-/***************************** USER ATTENTION REQUIRED **************************
-***************************** HOST PROCESSOR SPECIFIC ***************************
-******************* SWD Protocol Physical Layer functions ***********************
-*
-* All of the function definitions below are for a PSoC 5LP host programmer.
-* Modify the definitions as applicable for the specific host programmer.
+/****************** SWD Protocol Physical Layer functions ***********************
 ********************************************************************************/
 
 /*******************************************************************************
