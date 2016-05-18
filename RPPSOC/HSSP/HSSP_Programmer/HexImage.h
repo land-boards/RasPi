@@ -1,7 +1,7 @@
 /*****************************************************************************
 * File Name: HexImage.h
 **
-Version: 3.0
+Version: 3.0 plus WiringPi modifications
 **
 Description:
 * 1.) This is the header file of HexImage.c

@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: Swd_PhysicalLayer.c
-* Version 3.0
+* Version 3.0 Plus WiringPi modifications
 *
 * Description:
 *  This file provides the source code for the physical layer functions of the
@@ -323,4 +323,3 @@ unsigned char ReadSwdio()
     SWDIO_INPUT_READ;
 }
 
-/* [] END OF FILE */

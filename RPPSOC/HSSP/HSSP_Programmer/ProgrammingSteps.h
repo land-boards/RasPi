@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: ProgrammingSteps.h
-* Version 3.0
+* Version 3.0 plus WiringPi modifications
 *
 * Description:
 *  This header file contains high level definitions and function declarations associated with 
@@ -42,7 +42,7 @@
 #define DPACC_DP_SELECT_WRITE    0xB1
 #define APACC_AP_CTRLSTAT_WRITE  0xA3
 
-/* SPC Status Register defintions */
+/* SPC Status Register definitions */
 #define SPC_STATUS_IDLE       0x02
 #define SPC_STATUS_DATA_READY 0x01
 
@@ -77,4 +77,3 @@ unsigned char ReadHsspErrorStatus(void);
 unsigned char ReadSpcStatusReg(void);
 
 #endif /* __PROGRAMMINGSTEPS_H */
-//[] END OF FILE

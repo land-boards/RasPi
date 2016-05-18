@@ -1,13 +1,13 @@
 /*******************************************************************************
 * File Name: DataFetch.h
-* Version 3.0
+* Version 3.0 plus WiringPi modifications
 *
 * Description:
 *  This header file contains the definitions for the size of Programming data,
 *  and declarations for the functions used in getting the Programming data
-*  from Hex file image. The fuction definitions in corresponding
-*  DataFetch.c file will have to be modified if the method of getting programming data 
-*  is changed.
+*  from Hex file image. 
+*  The function definitions in corresponding DataFetch.c file will have to be 
+*  modified if the method of getting programming data is changed.
 *
 * Note:
 *
@@ -56,4 +56,3 @@ unsigned short GetFlashRowByteSize(void);
 #endif /* (EEPROM_DATA_PRESENT_HEX_FILE) */
 
 #endif /* __DATAFETCH_H */
-//[] END OF FILE

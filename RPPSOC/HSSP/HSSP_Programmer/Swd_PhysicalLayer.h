@@ -1,21 +1,25 @@
 /*******************************************************************************
 * File Name: Swd_PhysicalLayer.h
-* Version 3.0
+* Version 3.0 plus WiringPi modifications
+* Based on
+*	http://wiringpi.com/
 *
 * Description:
 *  This header file contains the macro definitions, function declarations for the
-*  physical layer of the  SWD protocol. These include -
+*  physical layer of the SWD protocol. 
+*  These include -
 *    a.) Setting a output pin high or low
 *    b.) Reading the logic level of an input pin
-*    c.) Configuring the drive mode of the programming pin
+*    c.) Setting a pin as input or output
 *
 *  The pin manipulation routines are defined both as macros and functions.
 *  The macros are used in AcquireTargetDevice() function in DeviceAcquire.c
 *  as the function has strict timing requirements for execution.
-*  Using the macros instead of fuctions reduces execution overhead.
-*
-*  The pin manipulation functions are used instead of macros in all other
-*  places to save code space.
+*  Using the macros instead of functions reduces execution overhead.
+*  This is not as much of an advantage with the Raspberry Pi since the 
+*  DigitalWrite function is very quick.
+*  Does not need to use the register definitions or mask values in 
+*  "RegisterDefines.h" to drive output pins since that is all handled by WiringPi.
 *
 * Note:
 *
@@ -24,76 +28,65 @@
 #ifndef __SWD_PHYSICALLAYER_H
 #define __SWD_PHYSICALLAYER_H
 
-/* Host programmer registers, mask values are defined in "RegisterDefines.h" */
-#include "RegisterDefines.h"
+#define SWDIO_Pin	5
+#define SWDCK_Pin	4
+#define XRES_Pin	3
 
-/***************************** USER ATTENTION REQUIRED **************************
-***************************** HOST PROCESSOR SPECIFIC ***************************
-**************** Macros for Host Pin Drive mode configuration *******************
-*
-* Uses the register definitions, mask values in "RegisterDefines.h" to
-* configure the pin drive mode
+/********* WiringPi Functions for Host Pin Direction configuration *************
+* Does not need to use the register definitions or mask values in 
+* "RegisterDefines.h" to drive output pins since that is all handled by WiringPi.
 *
 * SWDIO pin on host side - CMOS output (host writes data to target PSoC 5LP),
-*                          High Z digital input (host reads data from target
+*                          High Z digital input ((host reads data from target)
 *                          PSoC 5LP or when host is not programming target
 *                          PSoC 5LP (idle))
 *
 * SWDCK pin on host side - CMOS output (when host is programming target PSoC 5LP),
-*                          High Z digital input (when host is not programming target PSoC 5LP (idle))
+*                          High Z digital input (when host is not programming target 
+*                          PSoC 5LP (idle))
 *
 * XRES pin on host side -  CMOS output (when host is programming target PSoC 5LP)
-*                          High Z digital input (when host is not programming target PSoC 5LP (idle))
-*
-* Modify these as applicable to your Host Programmer
+*                          High Z digital input (when host is not programming target 
+*                          PSoC 5LP (idle))
 ********************************************************************************/
 
-#define SWDIO_DRIVEMODE_HIGHZIN         pinMode (5, INPUT)
-#define SWDIO_DRIVEMODE_CMOSOUT         pinMode (5, OUTPUT)
+#define SWDIO_DRIVEMODE_HIGHZIN         pinMode(SWDIO_Pin,INPUT)
+#define SWDIO_DRIVEMODE_CMOSOUT         pinMode(SWDIO_Pin,OUTPUT)
 
-#define SWDCK_DRIVEMODE_HIGHZIN         pinMode (4, INPUT)
-#define SWDCK_DRIVEMODE_CMOSOUT         pinMode (4, OUTPUT)
+#define SWDCK_DRIVEMODE_HIGHZIN         pinMode(SWDCK_Pin,INPUT)
+#define SWDCK_DRIVEMODE_CMOSOUT         pinMode(SWDCK_Pin,OUTPUT)
                                            
-#define XRES_DRIVEMODE_HIGHZIN          pinMode (3, INPUT)
-#define XRES_DRIVEMODE_CMOSOUT          pinMode (3, OUTPUT)
+#define XRES_DRIVEMODE_HIGHZIN          pinMode(XRES_Pin,INPUT)
+#define XRES_DRIVEMODE_CMOSOUT          pinMode(XRES_Pin,OUTPUT)
 
-/***************************** USER ATTENTION REQUIRED **************************
-**************** Macros for driving output pins on host side ********************
-*
-* Uses the register definitions, mask values in "RegisterDefines.h" to drive
-* output pins either to logic high (suffixed by 'HIGH') or
-* logic low (suffixed by 'LOW')
-*
+/********* WiringPi Functions for driving output pins on host side **************
+* Does not need to use the register definitions or mask values in 
+* "RegisterDefines.h" to drive output pins since that is all handled by WiringPi.
 ********************************************************************************/
 
-#define SWDIO_OUTPUT_HIGH      digitalWrite (5, 1)
-#define SWDIO_OUTPUT_LOW       digitalWrite (5, 0)
+#define SWDIO_OUTPUT_HIGH      digitalWrite(SWDIO_Pin,1)
+#define SWDIO_OUTPUT_LOW       digitalWrite(SWDIO_Pin,0)
 
-#define SWDCK_OUTPUT_HIGH      digitalWrite (4, 1)
-#define SWDCK_OUTPUT_LOW       digitalWrite (4, 0)
+#define SWDCK_OUTPUT_HIGH      digitalWrite(SWDCK_Pin,1)
+#define SWDCK_OUTPUT_LOW       digitalWrite(SWDCK_Pin,0)
 
-#define XRES_OUTPUT_HIGH       digitalWrite (3, 1)
-#define XRES_OUTPUT_LOW        digitalWrite (3, 0)
+#define XRES_OUTPUT_HIGH       digitalWrite(XRES_Pin,1)
+#define XRES_OUTPUT_LOW        digitalWrite(XRES_Pin,0)
 
-/***************************** USER ATTENTION REQUIRED **************************
-**************** Macro for reading input pin on host side ***********************
-*
-* Uses the register definitions, mask values in "RegisterDefines.h" to read
-* the SWDIO pin in input mode
-*
-* This macro returns '0x01' if the SWDIO input pin is at logic high,
+/********** WiringPi Functions reading input pin on host side *******************
+* Does not need to use the register definitions or mask values in 
+* "RegisterDefines.h" to drive output pins since that is all handled by WiringPi.
+* This function returns '0x01' if the SWDIO input pin is at logic high,
 * or '0x00' if the SWDIO input pin is at logic low
-*
-* Modify this as applicable to your Host Programmer
 ********************************************************************************/
 
-#define SWDIO_INPUT_READ      digitalRead (5)
+#define SWDIO_INPUT_READ      digitalRead (SWDIO_Pin)
 
 /********************************************************************************
-*   Function Prototypes
+* Function Prototypes
+* The below functions are for pin manipulation, and their definitions in
+*  Swd_PhysicalLayer.c are the same as the corresponding macro defs above.
 ********************************************************************************/
-/* The below fuctions are for pin manipulation, and their definitions in
-*  Swd_PhysicalLayer.c are the same as the corresponding macro defitnions above. */
 
 void SetSwdckHigh(void);
 void SetSwdckLow(void);
@@ -102,8 +95,8 @@ void SetSwdckHizInput(void);
 void SetSwdioHigh(void);
 void SetSwdioLow(void);
 void SetSwdioCmosOutput(void);
-unsigned char ReadSwdio(void);
 void SetSwdioHizInput(void);
+unsigned char ReadSwdio(void);
 void SetXresHigh(void);
 void SetXresLow(void);
 void SetXresCmosOutput(void);

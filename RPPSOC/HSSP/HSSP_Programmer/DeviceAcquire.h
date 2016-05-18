@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: DeviceAcquire.h
-* Version 3.0
+* Version 3.0 plus WiringPi modifications
 *
 * Description:
 *  This header file contains the macros, function declarations  for

@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: Swd_PacketLayer.h
-* Version 3.0
+* Version 3.0 plus WiringPi modifications
 *
 * Description:
 *  This header file contains the constant definitions, function declarations
@@ -61,4 +61,4 @@ void Swd_ReadPacket(void);
 
 void JtagToSwdSequence(void);
 
-#endif /* __SWD_PACKETLAYER_H */
+#endif
