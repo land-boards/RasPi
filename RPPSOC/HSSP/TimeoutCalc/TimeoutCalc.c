@@ -135,6 +135,7 @@ void TestAcquirePacket()
 *******************************************************************************/
 void TestSwdck()
 {
+    unsigned short time_elapsed;
 	/* calculate the actual maximum speed of the GPIO lines 	*/
 	unsigned int deltaCount = 0;
 	deltaCount =  micros();
