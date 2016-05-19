@@ -44,11 +44,17 @@
 
 void TestDelayHundredUs(void)
 {
-	unsigned short timestamp;
-	
-	digitalWrite(5,1); /* Make the pin low before start of the delay */
-	delayMicroseconds(99);
-	digitalWrite(5,0); /* Make the pin high after end of the delay */
+    unsigned short timestamp;
+        
+    TESTPIN_OUTPUT_LOW; /* Make the pin low before start of the delay */
+    
+    /* For loop to introduce the 100 us delay */
+    for(timestamp = 0; timestamp < XRES_PULSE_100US; timestamp++)
+    {
+
+    }
+    
+    TESTPIN_OUTPUT_HIGH; /* Make the pin high after end of the delay */
 }
 
 /*******************************************************************************
@@ -72,11 +78,11 @@ void TestDelayHundredUs(void)
 *******************************************************************************/
 void TestSwdReadPacket()
 {       
-	digitalWrite(5,1); /* Make the pin low before sending SWD read packet */     
+    TESTPIN_OUTPUT_LOW; /* Make the pin low before sending SWD read packet */     
 
-	Swd_RawReadPacket(); /* Send a single SWD read packet */
-	
-	digitalWrite(5,0); /* Make the pin high after sending SWD read packet */
+    Swd_RawReadPacket(); /* Send a single SWD read packet */
+        
+    TESTPIN_OUTPUT_HIGH; /* Make the pin high after sending SWD read packet */
 }
 
 /*******************************************************************************
@@ -100,18 +106,14 @@ void TestSwdReadPacket()
 *******************************************************************************/
 void TestAcquirePacket()
 {
-	digitalWrite(5,1); /* Make the pin low before sending SWD acquire packet */
+    TESTPIN_OUTPUT_LOW; /* Make the pin low before sending SWD acquire packet */
 
-	/* Send a dummy packet with all zeros since this is a test function  */
-	Swd_packetHeader =  0x00;
-	Swd_packetData[3] = 0x00;
-	Swd_packetData[2] = 0x00;
-	Swd_packetData[1] = 0x00;
-	Swd_packetData[0] = 0x00;
-	Swd_WritePacketFast(0x00);
+    /* Send a dummy packet with all zeros since this is a test function  */
+    Swd_packetHeader =  0x00;
+    Swd_packetData[3] = 0x00;Swd_packetData[2] = 0x00;Swd_packetData[1] = 0x00;Swd_packetData[0] = 0x00;
+    Swd_WritePacketFast(0x00);
 
-	digitalWrite(5,0);  /* Make the pin high after sending SWD acquire packet */
-	delayMicroseconds(10);
+    TESTPIN_OUTPUT_HIGH;  /* Make the pin high after sending SWD acquire packet */
 }
 
 /*******************************************************************************
@@ -119,8 +121,7 @@ void TestAcquirePacket()
 ********************************************************************************
 *
 * Summary:
-*  This function is  used to calculate the timing parameter 
-*  TIME_WINDOW_68US
+*  This function is used to calculate the timing parameter TIME_WINDOW_68US
 *
 * Parameters:
 *  None
@@ -129,35 +130,25 @@ void TestAcquirePacket()
 *  None
 *
 * Note:
-*  Replaced the original constant with a call to the microsecond timer on the 
-*  Raspberry Pi as accessed from WiringPi.
+*  Refer to the explanation of the parameter TIME_WINDOW_68US in the file
+*  TimeoutCalc.h for details on using this function to calculate the parameter
+*  TIME_WINDOW_68US  
 *
 *******************************************************************************/
 void TestSwdck()
 {
-	/* calculate the actual maximum speed of the GPIO lines 	*/
-	unsigned int deltaCount = 0;
-	deltaCount =  micros();
-	/* Measure the time it takes to do 100 clocks				*/
-	for (time_elapsed = 0; time_elapsed < 100; time_elapsed++)
+    unsigned short time_elapsed;
+       
+    TESTPIN_OUTPUT_LOW; /* Make the pin low before sending SWD clock train */
+    
+    /* For loop that does a clocking of the SWDCK for >= 68 us duration */
+    for(time_elapsed = 0; time_elapsed < TIME_WINDOW_68US; time_elapsed++)
     {
         SWDCK_OUTPUT_LOW;
-        SWDCK_OUTPUT_LOW;
-    }  
-	deltaCount = micros() - deltaCount;	/* time in uS that it took to do 100 clocks	*/
-	deltaCount = 6800/deltaCount;
-
-	digitalWrite(5,1); /* Make the pin low before sending SWD clock train */
-	
-	unsigned int endCount;
-	endCount =  micros() + 68;
-	for (time_elapsed = 0; time_elapsed < deltaCount; time_elapsed++)
-	{
-		SWDCK_OUTPUT_LOW;
-		SWDCK_OUTPUT_HIGH;
-	}
-	
-	digitalWrite(5,0); /* Make the pin high after sending SWD clock train */
-	delayMicroseconds(10);	// make sure you have a low for at least 10 uS
+        SWDCK_OUTPUT_HIGH;
+    }
+    
+    TESTPIN_OUTPUT_HIGH; /* Make the pin high after sending SWD clock train */
 }
 
+/* [] END OF FILE */

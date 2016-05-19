@@ -5,8 +5,8 @@
 * Description:
 *  This file provides the source code for "Step1: Enter Programming Mode" in Programming flow.
 *  It also has the routine to exit programming mode.
-*  This step is provided as separate .c, .h file as the procedure to enter target programming 
-*  mode has strict timing requirements.
+*  This step is provided as separate .c, .h file as the procedure to enter target 
+*  programming mode has strict timing requirements.
 *
 * Note:
 *  Refer to the PSoC 5LP Programming specifications for details on timing requirements.
@@ -15,14 +15,14 @@
 /********************************************************************************
 *   Header file Inclusion
 ********************************************************************************/
-#include <stdio.h>
-#include <wiringPi.h>
 #include "DeviceAcquire.h"
 
 /* "Swd_PhysicalLayer.h" file contains the bit banging routines for SWD protocol.
-   "Swd_PacketLayer.h" file contains the packet definitions for the SWD protocol."  */
+   "Swd_PacketLayer.h" file contains the packet definitions for the SWD protocol.
+   "Timeout.h" file contains the timeout constants for "Step1: Enter Programming Mode" */
 #include "Swd_PhysicalLayer.h"
 #include "Swd_PacketLayer.h"
+#include "Timeout.h"
 
 /********************************************************************************
 *   Function Definitions
@@ -89,12 +89,11 @@ unsigned char AcquireTargetDevice()
        The Delay function need not be accurate, it can be more than 100 uS as well. It will not 
        affect the programming operation */
     XRES_OUTPUT_LOW;
-    delayMicroseconds(99);
+    DelayHundredUs(); /* This function is defined in Timeout.c */
     XRES_OUTPUT_HIGH;
     
-    /* Clock the SWDCK line with SWDIO low (already low) for time TIME_WINDOW_68US 	*/
-	unsigned int endCount;
-	endCount =  micros() + 68;
+    /* Clock the SWDCK line with SWDIO low (already low) for time
+       TIME_WINDOW_68US defined in Timeout.h */
     for(time_elapsed = 0; time_elapsed < TIME_WINDOW_68US; time_elapsed++)
     {
         SWDCK_OUTPUT_LOW;
@@ -105,18 +104,14 @@ unsigned char AcquireTargetDevice()
        For the first packet alone, sometimes an ACK of "0x07" may be received. So, we
        will loop till the first packet receives an OK ACK, else timeout. */
     Swd_packetHeader =  PORT_ACQUIRE_KEY_HEADER;
-    Swd_packetData[3] = 0x7B;
-	Swd_packetData[2] = 0x0C;
-	Swd_packetData[1] = 0x06;
-	Swd_packetData[0] = 0xDB;    
+    Swd_packetData[3] = 0x7B;Swd_packetData[2] = 0x0C;Swd_packetData[1] = 0x06;Swd_packetData[0] = 0xDB;    
     do
     {
         Swd_WritePacketFast(PARITY_PORT_ACQUIRE_KEY); 
         total_packet_count++;
-    }
-	while((Swd_packetAck != SWD_OK_ACK) && (total_packet_count < DEVICE_ACQUIRE_TIMEOUT));
+    }while((Swd_packetAck != SWD_OK_ACK) && (total_packet_count < DEVICE_ACQUIRE_TIMEOUT));
 
-    /* If OK ACK is not received for Port Acquire key, abort operation and retun the SWD packet ack */
+    /* If OK ACK is not recieved for Port Acquire key, abort operation and retun the SWD packet ack */
     if(Swd_packetAck != SWD_OK_ACK)
     {
         return((Swd_packetAck | PORT_ACQUIRE_TIMEOUT_ERROR));
@@ -124,16 +119,12 @@ unsigned char AcquireTargetDevice()
 
     /* Send the Test mode address SWD packet. Repeat for WAIT ACK till timeout occurs */
     Swd_packetHeader =  TESTMODE_ADDRESS_HEADER;
-    Swd_packetData[3] = 0x40;
-	Swd_packetData[2] = 0x05;
-	Swd_packetData[1] = 0x02;
-	Swd_packetData[0] = 0x10;    
+    Swd_packetData[3] = 0x40;Swd_packetData[2] = 0x05;Swd_packetData[1] = 0x02;Swd_packetData[0] = 0x10;    
     do
     {
         Swd_WritePacketFast(PARITY_TESTMODE_ADDRESS); 
         total_packet_count++;
-    }
-	while((Swd_packetAck == SWD_WAIT_ACK) && (total_packet_count < DEVICE_ACQUIRE_TIMEOUT));
+    }while((Swd_packetAck == SWD_WAIT_ACK) && (total_packet_count < DEVICE_ACQUIRE_TIMEOUT));
     
     if(Swd_packetAck != SWD_OK_ACK)
     {
@@ -142,16 +133,12 @@ unsigned char AcquireTargetDevice()
     
     /* Send the Test mode key SWD packet. Repeat for WAIT ACK till timeout occurs */
     Swd_packetHeader =  TESTMODE_KEY_HEADER;
-    Swd_packetData[3] = 0xEA;
-	Swd_packetData[2] = 0x7E;
-	Swd_packetData[1] = 0x30;
-	Swd_packetData[0] = 0xA9;    
+    Swd_packetData[3] = 0xEA;Swd_packetData[2] = 0x7E;Swd_packetData[1] = 0x30;Swd_packetData[0] = 0xA9;    
     do
     {
         Swd_WritePacketFast(PARITY_TESTMODE_KEY); 
         total_packet_count++;
-    }
-	while((Swd_packetAck == SWD_WAIT_ACK) && (total_packet_count < DEVICE_ACQUIRE_TIMEOUT));
+    }while((Swd_packetAck == SWD_WAIT_ACK) && (total_packet_count < DEVICE_ACQUIRE_TIMEOUT));
     
     /* If the total number of SWD packets sent is higher than the timeout count,
        set the timeout error bit */
@@ -196,9 +183,10 @@ void ReleaseTargetDevice()
     
     /* Generate active low rest pulse for 100 uS */
     SetXresLow();
-    delayMicroseconds(99);
+    DelayHundredUs();    
     SetXresHigh();
 
     /* Make XRES High-Z after generating the reset pulse */  
     SetXresHizInput();
 }
+/* [] END OF FILE */
