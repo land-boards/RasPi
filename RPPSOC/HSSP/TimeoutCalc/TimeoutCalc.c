@@ -138,6 +138,7 @@ void TestSwdck()
     unsigned short time_elapsed;
 	/* calculate the actual maximum speed of the GPIO lines 	*/
 	unsigned int deltaCount = 0;
+	SetSwdckCmosOutput();
 	deltaCount =  micros();
 	/* Measure the time it takes to do 100 clocks				*/
 	for (time_elapsed = 0; time_elapsed < 100; time_elapsed++)
@@ -159,6 +160,7 @@ void TestSwdck()
 	}
 	
 	digitalWrite(5,0); /* Make the pin high after sending SWD clock train */
+	SetSwdckHizInput();
 	delayMicroseconds(10);	// make sure you have a low for at least 10 uS
 }
 
