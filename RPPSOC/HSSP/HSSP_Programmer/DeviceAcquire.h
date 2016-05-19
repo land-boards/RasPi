@@ -16,6 +16,7 @@
 #define __DEVICEACQUIRE_H
 
 #define DEVICE_ACQUIRE_TIMEOUT 999
+#define SPC_POLLING_TIMEOUT 999
 
 /********************************************************************************
 *   Macro definitions
