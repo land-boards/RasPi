@@ -45,10 +45,7 @@
 void TestDelayHundredUs(void)
 {
 	unsigned short timestamp;
-	
-	digitalWrite(5,1); /* Make the pin low before start of the delay */
 	delayMicroseconds(99);
-	digitalWrite(5,0); /* Make the pin high after end of the delay */
 }
 
 /*******************************************************************************
@@ -72,11 +69,7 @@ void TestDelayHundredUs(void)
 *******************************************************************************/
 void TestSwdReadPacket()
 {       
-	digitalWrite(5,1); /* Make the pin low before sending SWD read packet */     
-
 	Swd_RawReadPacket(); /* Send a single SWD read packet */
-	
-	digitalWrite(5,0); /* Make the pin high after sending SWD read packet */
 }
 
 /*******************************************************************************
@@ -100,8 +93,6 @@ void TestSwdReadPacket()
 *******************************************************************************/
 void TestAcquirePacket()
 {
-	digitalWrite(5,1); /* Make the pin low before sending SWD acquire packet */
-
 	/* Send a dummy packet with all zeros since this is a test function  */
 	Swd_packetHeader =  0x00;
 	Swd_packetData[3] = 0x00;
@@ -109,9 +100,6 @@ void TestAcquirePacket()
 	Swd_packetData[1] = 0x00;
 	Swd_packetData[0] = 0x00;
 	Swd_WritePacketFast(0x00);
-
-	digitalWrite(5,0);  /* Make the pin high after sending SWD acquire packet */
-	delayMicroseconds(10);
 }
 
 /*******************************************************************************
@@ -145,12 +133,10 @@ void TestSwdck()
     {
         SWDCK_OUTPUT_LOW;
         SWDCK_OUTPUT_LOW;
-    }  
+    }
 	deltaCount = micros() - deltaCount;	/* time in uS that it took to do 100 clocks	*/
 	deltaCount = 6800/deltaCount;
 
-	digitalWrite(5,1); /* Make the pin low before sending SWD clock train */
-	
 	unsigned int endCount;
 	endCount =  micros() + 68;
 	for (time_elapsed = 0; time_elapsed < deltaCount; time_elapsed++)
@@ -158,9 +144,5 @@ void TestSwdck()
 		SWDCK_OUTPUT_LOW;
 		SWDCK_OUTPUT_HIGH;
 	}
-	
-	digitalWrite(5,0); /* Make the pin high after sending SWD clock train */
 	SetSwdckHizInput();
-	delayMicroseconds(10);	// make sure you have a low for at least 10 uS
 }
-
