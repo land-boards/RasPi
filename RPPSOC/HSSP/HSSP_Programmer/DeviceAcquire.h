@@ -15,8 +15,8 @@
 #ifndef __DEVICEACQUIRE_H
 #define __DEVICEACQUIRE_H
 
-#define DEVICE_ACQUIRE_TIMEOUT 999
-#define SPC_POLLING_TIMEOUT 999
+#define DEVICE_ACQUIRE_TIMEOUT 16
+#define SPC_POLLING_TIMEOUT 40000
 
 /********************************************************************************
 *   Macro definitions
@@ -44,4 +44,3 @@ unsigned char AcquireTargetDevice(void);
 void ReleaseTargetDevice(void);
 
 #endif /* __DEVICEACQUIRE_H */
-//[] END OF FILE
