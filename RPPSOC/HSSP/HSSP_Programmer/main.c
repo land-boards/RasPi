@@ -123,7 +123,7 @@ int main()
     else /* HSSP Failure */
     { 
         /* Display the step number where the HSSP failed */
-        printf("HSSP Fail Step %d\n",currentStep);
+        printf("HSSP Fail Step %d - ",currentStep);
 		switch (currentStep)
 		{
 			case 0x1:
@@ -131,7 +131,9 @@ int main()
 				break;
 			case 0x2:
 				printf("Configure Target Device Failed\n");
-				break;				
+				break;
+			default:
+				printf("\n");
 		}
         
         /* Get the HSSP error status */
