@@ -60,7 +60,7 @@
 4.) For example, for a PSoC 5LP host programmer operating at 66 MHz, Tlow was 72 uS.
     So, SPC_POLLING_TIMEOUT = (1000000 us)/(72 us) = 13889. This value was used in the HSSP code.
 5.) The value 1000000 us (1 second) is derived from the programming specifications document
-    based on the SPC polling timeout duration whoch is 1 second.
+    based on the SPC polling timeout duration which is 1 second.
 *********************************************************************************/
 #define SPC_POLLING_TIMEOUT 13889
 

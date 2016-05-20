@@ -37,8 +37,8 @@ int main()
 		digitalWrite(5,1); /* Make the pin low before sending SWD acquire packet */
 		//        TestDelayHundredUs(); /* Uncomment this line to calculate the timeout parameter XRES_PULSE_100US */
 		//	TestSwdck();          /* Uncomment this line to calculate the timeout parameter TIME_WINDOW_68US */  
-		TestAcquirePacket();  /* Uncomment this line to calculate the timeout parameter DEVICE_ACQUIRE_TIMEOUT */         
-		//        TestSwdReadPacket();  /* Uncomment this line to calculate the timeout parameter SPC_POLLING_TIMEOUT */
+		//        TestAcquirePacket();  /* Uncomment this line to calculate the timeout parameter DEVICE_ACQUIRE_TIMEOUT */         
+		TestSwdReadPacket();  /* Uncomment this line to calculate the timeout parameter SPC_POLLING_TIMEOUT */
 		digitalWrite(5,0);  /* Make the pin high after sending SWD acquire packet */
 		delayMicroseconds(10);
 	}
