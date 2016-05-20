@@ -38,7 +38,6 @@
 *********************************************************************************/
 #define TIME_WINDOW_68US 280
 
-
 /*********************Calculating DEVICE_ACQUIRE_TIMEOUT *******************************************
 1.) Call ONLY the function TestAcquirePacket(), defined in TimeoutCalc.c, in the for loop of the main code
 2.) Note down the LOW PULSE WIDTH (Tlow in us) of the square wave on the pin TEST_PIN
@@ -51,7 +50,8 @@
     target PSoC 3 / PSoC 5LP. Because a maximum of 4 SWD packets are required to acquire target PSoC 3 / PSoC 5LP device. If this value is 
     less than 4, optimize the acquire code so that Tlow duration is reduced, and the value is >= 4.
 *********************************************************************************/
-#define DEVICE_ACQUIRE_TIMEOUT 7
+//#define DEVICE_ACQUIRE_TIMEOUT 7
+#define DEVICE_ACQUIRE_TIMEOUT 16
 
 /*********************Calculating SPC_POLLING_TIMEOUT *******************************************
 1.) Call ONLY the function TestSwdReadPacket(), defined in TimeoutCalc.c, in the for loop of the main code
@@ -62,7 +62,8 @@
 5.) The value 1000000 us (1 second) is derived from the programming specifications document
     based on the SPC polling timeout duration which is 1 second.
 *********************************************************************************/
-#define SPC_POLLING_TIMEOUT 13889
+//#define SPC_POLLING_TIMEOUT 13889
+#define SPC_POLLING_TIMEOUT 40000
 
 /********************************************************************************
 *   Function Prototypes

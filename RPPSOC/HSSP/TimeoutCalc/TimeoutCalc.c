@@ -123,17 +123,17 @@ void TestAcquirePacket()
 *******************************************************************************/
 void TestSwdck()
 {
-    unsigned short time_elapsed;
+	unsigned short time_elapsed;
 	/* calculate the actual maximum speed of the GPIO lines 	*/
 	unsigned int deltaCount = 0;
 	SetSwdckCmosOutput();
 	deltaCount =  micros();
 	/* Measure the time it takes to do 100 clocks				*/
 	for (time_elapsed = 0; time_elapsed < 100; time_elapsed++)
-    {
-        SWDCK_OUTPUT_LOW;
-        SWDCK_OUTPUT_LOW;
-    }
+	{
+		SWDCK_OUTPUT_LOW;
+		SWDCK_OUTPUT_LOW;
+	}
 	deltaCount = micros() - deltaCount;	/* time in uS that it took to do 100 clocks	*/
 	deltaCount = 6800/deltaCount;
 
