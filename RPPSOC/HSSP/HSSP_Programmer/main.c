@@ -180,7 +180,7 @@ int main()
         if(errorStatus & SPC_TIMEOUT_ERROR)
         {
             spcErrorStatus = ReadSpcStatusReg();
-            printf(" SPC %d",spcErrorStatus);            
+            printf(" SPC %d\n",spcErrorStatus);            
         }
     } 
 
