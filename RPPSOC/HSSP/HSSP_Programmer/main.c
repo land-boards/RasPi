@@ -172,7 +172,7 @@ int main()
         /* Get the HSSP error status */
         errorStatus = ReadHsspErrorStatus();        
         
-        printf("Error code: %d\n",errorStatus);
+        printf("Error code: 0x%x\n",errorStatus);
         
         /* If the errorStatus contains THE SPC_TIMEOUT_ERROR error condition,
            read the SPC status register */
@@ -180,7 +180,7 @@ int main()
         if(errorStatus & SPC_TIMEOUT_ERROR)
         {
             spcErrorStatus = ReadSpcStatusReg();
-            printf(" SPC %d\n",spcErrorStatus);            
+            printf(" SPC 0x%x\n",spcErrorStatus);            
         }
     } 
 
