@@ -136,7 +136,7 @@ int main()
         if(errorStatus & SPC_TIMEOUT_ERROR)
         {
             spcErrorStatus = ReadSpcStatusReg();
-            print(" SPC %d",spcErrorStatus);            
+            printf(" SPC %d",spcErrorStatus);            
         }
     } 
 
