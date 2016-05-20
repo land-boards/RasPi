@@ -92,14 +92,26 @@ unsigned char AcquireTargetDevice()
     delayMicroseconds(99);
     XRES_OUTPUT_HIGH;
     
-    /* Clock the SWDCK line with SWDIO low (already low) for time TIME_WINDOW_68US 	*/
+	unsigned short time_elapsed;
+	/* calculate the actual maximum speed of the GPIO lines 	*/
+	unsigned int deltaCount = 0;
+	deltaCount =  micros();
+	/* Measure the time it takes to do 100 clocks				*/
+	for (time_elapsed = 0; time_elapsed < 100; time_elapsed++)
+	{
+		SWDCK_OUTPUT_LOW;
+		SWDCK_OUTPUT_LOW;
+	}
+	deltaCount = micros() - deltaCount;	/* time in uS that it took to do 100 clocks	*/
+	deltaCount = 6800/deltaCount;
+
 	unsigned int endCount;
 	endCount =  micros() + 68;
-    for(time_elapsed = 0; time_elapsed < TIME_WINDOW_68US; time_elapsed++)
-    {
-        SWDCK_OUTPUT_LOW;
-        SWDCK_OUTPUT_HIGH;
-    }    
+	for (time_elapsed = 0; time_elapsed < deltaCount; time_elapsed++)
+	{
+		SWDCK_OUTPUT_LOW;
+		SWDCK_OUTPUT_HIGH;
+	}
 
     /* Send the Port Acquire SWD packet continuously till OK ACK or timeout occurs.
        For the first packet alone, sometimes an ACK of "0x07" may be received. So, we
