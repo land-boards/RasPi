@@ -353,7 +353,10 @@ unsigned char ConfigureTargetDevice()
 {     
     /* Switch to SWD interface */    
     if(SwitchToSwd() == FAILURE)
+	{
+		printf("FAILED switch to SWD\n");
         return(FAILURE);
+	}
     
     /* DPACC DP CTRLSTAT Write [0x50000000]  */
     Swd_packetHeader =  DPACC_DP_CTRLSTAT_WRITE;
