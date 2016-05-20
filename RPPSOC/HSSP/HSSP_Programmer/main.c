@@ -128,7 +128,16 @@ int main()
         /* Get the HSSP error status */
         errorStatus = ReadHsspErrorStatus();        
         
-        printf("Err %d\n",errorStatus);
+        printf("Error code: %d\n",errorStatus);
+		switch (errorStatus)
+		{
+			case 0x1:
+				printf("Failed to Enter Programming Mode\n");
+				break;
+			case 0x2:
+				printf("Configure Target Device Failed\n");
+				break;				
+		}
         
         /* If the errorStatus contains THE SPC_TIMEOUT_ERROR error condition,
            read the SPC status register */
