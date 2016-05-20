@@ -84,13 +84,6 @@ unsigned char AcquireTargetDevice()
     SWDIO_DRIVEMODE_CMOSOUT;
     SWDIO_OUTPUT_LOW;  
     
-    /* Generate a Reset pulse of 100 uS. Minimum XRES pulse width is 1 uS for PSoC 5LP.
-       The Delay function need not be accurate, it can be more than 100 uS as well. It will not 
-       affect the programming operation */
-    XRES_OUTPUT_LOW;
-    delayMicroseconds(99);
-    XRES_OUTPUT_HIGH;
-    
 	/* calculate the actual maximum speed of the GPIO lines 	*/
 	unsigned int deltaCount = 0;
 	deltaCount =  micros();
@@ -103,6 +96,13 @@ unsigned char AcquireTargetDevice()
 	deltaCount = micros() - deltaCount;	/* time in uS that it took to do 100 clocks	*/
 	deltaCount = 6800/deltaCount;
 
+    /* Generate a Reset pulse of 100 uS. Minimum XRES pulse width is 1 uS for PSoC 5LP.
+       The Delay function need not be accurate, it can be more than 100 uS as well. It will not 
+       affect the programming operation */
+    XRES_OUTPUT_LOW;
+    delayMicroseconds(99);
+    XRES_OUTPUT_HIGH;
+    
 	unsigned int endCount;
 	endCount =  micros() + 68;
 	for (time_elapsed = 0; time_elapsed < deltaCount; time_elapsed++)
