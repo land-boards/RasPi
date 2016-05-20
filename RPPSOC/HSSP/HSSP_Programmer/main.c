@@ -123,17 +123,50 @@ int main()
     else /* HSSP Failure */
     { 
         /* Display the step number where the HSSP failed */
-        printf("HSSP Fail Step %d - ",currentStep);
+        printf("HSSP Failed Step %d - ",currentStep);
 		switch (currentStep)
 		{
-			case 0x1:
+			case 1:
 				printf("Failed to Enter Programming Mode\n");
 				break;
-			case 0x2:
+			case 2:
 				printf("Configure Target Device Failed\n");
 				break;
+			case 3:
+				printf("Verify JTAG ID Failed\n");
+				break;
+			case 4:
+				printf("Erase Flash Failed\n");
+				break;
+			case 5:
+				printf("Program Device Configuration NVL Failed\n");
+				break;
+			case 6:
+				printf("Program Flash Failed\n");
+				break;
+			case 7:
+				printf("Verify Flash Failed\n");
+				break;
+			case 8:
+				printf("Program WO NVL Failed\n");
+				break;
+			case 9:
+				printf("Program Flash Protection Failed\n");
+				break;
+			case 10:
+				printf("Verify Flash Protection  Failed\n");
+				break;
+			case 11:
+				printf("Checksum Validation Failed\n");
+				break;
+			case 12:
+				printf("Program EERROM Failed\n");
+				break;
+			case 13:
+				printf("Verify EERROM Failed\n");
+				break;
 			default:
-				printf("\n");
+				printf("Unexpected error condition\n");
 		}
         
         /* Get the HSSP error status */
