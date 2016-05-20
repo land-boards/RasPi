@@ -69,7 +69,6 @@ unsigned char AcquireTargetDevice()
     unsigned short time_elapsed;
     
     total_packet_count = 0;
-    time_elapsed = 0;
     
     /* Set the initial state of the programming pins */
     
@@ -92,7 +91,6 @@ unsigned char AcquireTargetDevice()
     delayMicroseconds(99);
     XRES_OUTPUT_HIGH;
     
-	unsigned short time_elapsed;
 	/* calculate the actual maximum speed of the GPIO lines 	*/
 	unsigned int deltaCount = 0;
 	deltaCount =  micros();
