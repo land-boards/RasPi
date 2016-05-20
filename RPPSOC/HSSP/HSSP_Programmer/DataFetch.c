@@ -142,20 +142,20 @@ void LoadFlashRowData(unsigned short rowNumber, unsigned short rowByteSize, unsi
 {
     unsigned short i; /* Maximum value of 'i' can be 288, so declare as 16-bit unsigned int */
     
-    if(rowNumber < (NUMBER_OF_FLASH_ROWS_HEX_FILE - NUMBER_OF_FLASH_ROWS_REMOVED) )
-    {
+    // if(rowNumber < (NUMBER_OF_FLASH_ROWS_HEX_FILE - NUMBER_OF_FLASH_ROWS_REMOVED) )
+    // {
         for(i = 0; i < rowByteSize; i++)
         {
             flashRowData[i] = flashData_hexFile [rowNumber][i];
         }
-    }
-    else
-    {
-        for(i = 0; i < rowByteSize; i++)
-        {
-            flashRowData[i] = 0x00;
-        }    
-    }
+    // }
+    // else
+    // {
+        // for(i = 0; i < rowByteSize; i++)
+        // {
+            // flashRowData[i] = 0x00;
+        // }    
+    // }
 }
 
 /*******************************************************************************
