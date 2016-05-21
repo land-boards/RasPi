@@ -73,7 +73,6 @@ unsigned char AcquireTargetDevice()
     /* Set the initial state of the programming pins */
     
     /* Host XRES pin must be in strong drive mode, and is driven high by default */
-    XRES_OUTPUT_HIGH;
     XRES_DRIVEMODE_CMOSOUT;
     XRES_OUTPUT_HIGH;
     
@@ -209,6 +208,7 @@ void ReleaseTargetDevice()
     SetXresLow();
     delayMicroseconds(99);
     SetXresHigh();
+    delayMicroseconds(5);
 
     /* Make XRES High-Z after generating the reset pulse */  
     SetXresHizInput();
