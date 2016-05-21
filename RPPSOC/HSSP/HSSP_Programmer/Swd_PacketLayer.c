@@ -352,6 +352,8 @@ static void Swd_SendDummyClocks()
     for(loop = 0; loop < NUMBER_OF_DUMMY_SWD_CLOCK_CYCLES; loop++)
     {
        SetSwdckLow();       
+       SetSwdckLow();       
+       SetSwdckHigh(); 
        SetSwdckHigh(); 
     }
 }

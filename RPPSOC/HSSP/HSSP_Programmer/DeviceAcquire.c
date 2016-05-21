@@ -85,6 +85,7 @@ unsigned char AcquireTargetDevice()
     SWDIO_OUTPUT_LOW;  
     
 	/* calculate the actual maximum speed of the GPIO lines 	*/
+	/* Raspberry Pi B+ with normal clocking = around 4 MHz 		*/
 	unsigned int deltaCount = 0;
 	deltaCount =  micros();
 	/* Measure the time it takes to do 100 clocks				*/
@@ -94,7 +95,7 @@ unsigned char AcquireTargetDevice()
 		SWDCK_OUTPUT_LOW;
 	}
 	deltaCount = micros() - deltaCount;	/* time in uS that it took to do 100 clocks	*/
-	printf("deltaCount = %d\n",deltaCount);		// typical = 28 or around 4 MHz
+	// printf("deltaCount = %d\n",deltaCount);		// typical = 250 or around 4 MHz
 	deltaCount = 75000/(deltaCount+1);
 
     /* Generate a Reset pulse of 100 uS. Minimum XRES pulse width is 1 uS for PSoC 5LP.
