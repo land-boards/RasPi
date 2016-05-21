@@ -292,7 +292,6 @@ static unsigned char SwitchToSwd()
 {
     JtagToSwdSequence();  /* Initial part of the switching sequence */
     
- 	trigger();
     /* DPACC IDCODE Read  */
     Swd_packetHeader =  DPACC_IDOCDE_READ;
     Swd_RawReadPacket();

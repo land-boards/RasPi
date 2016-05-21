@@ -470,6 +470,7 @@ void Swd_RawReadPacket()
     unsigned char parity;
     unsigned char loop = 0;
     unsigned char i;
+ 	trigger();
     
     do
     {
