@@ -807,6 +807,7 @@ static void SwdLineIdle()
 *******************************************************************************/
 void JtagToSwdSequence()
 {
+	trigger();
     SwdLineReset();  /* Reset the SWD line just in case */
     
     /* Send the initial JTAG to SWD 16-bit switching sequence */
