@@ -243,8 +243,8 @@ static void Swd_SecondTurnAroundPhase()
 static unsigned char Swd_GetAckSegment()
 {
     unsigned char ack = 0;
-    unsigned char rxBit = 0;
-    unsigned char loop = 0;
+    unsigned char rxBit;
+    unsigned char loop;
     
     /* ACK bits are received lsb bit first */
     for(loop = 0; loop < NUMBER_OF_ACK_BITS; loop++)
@@ -477,7 +477,6 @@ void Swd_RawReadPacket()
         
         Swd_FirstTurnAroundPhase();   /* First Turnaround phase */
         
-		trigger();
         Swd_packetAck = Swd_GetAckSegment(); /* Get the 3-bit ACK data */
         
         /* Read 4-byte data and store in Global array Swd_packetData[] */
@@ -499,6 +498,7 @@ void Swd_RawReadPacket()
     }
 	while((Swd_packetAck == SWD_WAIT_ACK ) && (loop < NUMBER_OF_WAIT_ACK_LOOPS));
     
+	trigger();
     /* For a OK ACK, check the parity bit received with parity computed */
     if(Swd_packetAck == SWD_OK_ACK)
     {
