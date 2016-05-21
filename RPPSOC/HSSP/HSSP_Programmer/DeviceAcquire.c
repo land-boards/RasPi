@@ -103,8 +103,6 @@ unsigned char AcquireTargetDevice()
     delayMicroseconds(99);
     XRES_OUTPUT_HIGH;
     
-	unsigned int endCount;
-	endCount =  micros() + 68;
 	for (time_elapsed = 0; time_elapsed < deltaCount; time_elapsed++)
 	{
 		SWDCK_OUTPUT_LOW;
