@@ -208,7 +208,7 @@ void ReleaseTargetDevice()
     SetXresLow();
     delayMicroseconds(99);
     SetXresHigh();
-    delayMicroseconds(5);
+    delayMicroseconds(10);
 
     /* Make XRES High-Z after generating the reset pulse */  
     SetXresHizInput();
