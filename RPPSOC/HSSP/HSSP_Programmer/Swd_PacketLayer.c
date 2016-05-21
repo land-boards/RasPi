@@ -498,13 +498,13 @@ void Swd_RawReadPacket()
     }
 	while((Swd_packetAck == SWD_WAIT_ACK ) && (loop < NUMBER_OF_WAIT_ACK_LOOPS));
     
-	trigger();
     /* For a OK ACK, check the parity bit received with parity computed */
     if(Swd_packetAck == SWD_OK_ACK)
     {
         if(parity != Swd_ComputeDataParity())
         {
             Swd_packetAck = Swd_packetAck | SWD_PARITY_ERROR; /* Set the Parity error bit in ACK code */
+			trigger();
         }
     }
     
