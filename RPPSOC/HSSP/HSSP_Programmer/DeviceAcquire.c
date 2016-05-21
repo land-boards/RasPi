@@ -88,14 +88,14 @@ unsigned char AcquireTargetDevice()
 	unsigned int deltaCount = 0;
 	deltaCount =  micros();
 	/* Measure the time it takes to do 100 clocks				*/
-	for (time_elapsed = 0; time_elapsed < 100; time_elapsed++)
+	for (time_elapsed = 0; time_elapsed < 1000; time_elapsed++)
 	{
 		SWDCK_OUTPUT_LOW;
 		SWDCK_OUTPUT_LOW;
 	}
 	deltaCount = micros() - deltaCount;	/* time in uS that it took to do 100 clocks	*/
 	printf("deltaCount = %d\n",deltaCount);		// typical = 28 or around 4 MHz
-	deltaCount = 7500/(deltaCount+1);
+	deltaCount = 75000/(deltaCount+1);
 
     /* Generate a Reset pulse of 100 uS. Minimum XRES pulse width is 1 uS for PSoC 5LP.
        The Delay function need not be accurate, it can be more than 100 uS as well. It will not 
