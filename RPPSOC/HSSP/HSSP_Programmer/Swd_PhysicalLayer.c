@@ -333,5 +333,5 @@ void SetXresLow()
 *******************************************************************************/
 unsigned char ReadSwdio()
 {
-    SWDIO_INPUT_READ;
+    return (SWDIO_INPUT_READ);
 }
