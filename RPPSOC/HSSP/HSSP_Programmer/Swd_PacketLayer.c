@@ -776,7 +776,8 @@ static void SwdLineIdle()
     
     /* SWD line is reset in case it is not done before calling this function */
     SwdLineReset(); 
-    
+ 	trigger();
+   
     /* After SWD line is reset, at least three SWDCK clock cycles must be clocked with SWDIO low. */    
     SetSwdioLow();
     for(i = 0; i < NUMBER_OF_DUMMY_SWD_CLOCK_CYCLES; i++)
@@ -809,7 +810,6 @@ void JtagToSwdSequence()
 {
     SwdLineReset();  /* Reset the SWD line just in case */
     
-	trigger();
     /* Send the initial JTAG to SWD 16-bit switching sequence */
     Swd_SendByte(0x9E);
     Swd_SendByte(0xE7);
