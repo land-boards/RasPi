@@ -247,7 +247,6 @@ static unsigned char Swd_GetAckSegment()
     unsigned char loop;
     
     /* ACK bits are received lsb bit first */
-	trigger();
     for(loop = 0; loop < NUMBER_OF_ACK_BITS; loop++)
     {
         SetSwdckLow();
@@ -499,6 +498,7 @@ void Swd_RawReadPacket()
     }
 	while((Swd_packetAck == SWD_WAIT_ACK ) && (loop < NUMBER_OF_WAIT_ACK_LOOPS));
     
+	trigger();
     /* For a OK ACK, check the parity bit received with parity computed */
     if(Swd_packetAck == SWD_OK_ACK)
     {
