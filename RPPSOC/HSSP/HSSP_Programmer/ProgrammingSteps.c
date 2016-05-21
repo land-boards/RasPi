@@ -365,7 +365,6 @@ unsigned char ConfigureTargetDevice()
 	Swd_packetData[1] = 0x00;
 	Swd_packetData[0] = 0x00;
     Swd_WritePacket();
-    trigger();
     if(Swd_packetAck != SWD_OK_ACK)
         return(FAILURE);
        

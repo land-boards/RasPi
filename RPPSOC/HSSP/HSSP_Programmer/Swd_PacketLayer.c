@@ -588,6 +588,7 @@ void Swd_WritePacket()
     unsigned char loop = 0;
     unsigned char i;
     
+    trigger();
     parity = Swd_ComputeDataParity(); /* Compute Even parity for 4-byte data */  
     
     do
