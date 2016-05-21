@@ -504,8 +504,10 @@ void Swd_RawReadPacket()
         if(parity != Swd_ComputeDataParity())
         {
             Swd_packetAck = Swd_packetAck | SWD_PARITY_ERROR; /* Set the Parity error bit in ACK code */
-			trigger();
         }
+		else
+			trigger();
+
     }
     
     /* Swd_packetAck global variable holds the status of the SWD transaction */
