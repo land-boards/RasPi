@@ -101,6 +101,6 @@ void SetXresHigh(void);
 void SetXresLow(void);
 void SetXresCmosOutput(void);
 void SetXresHizInput(void);
-void trigger(void)
+void trigger(void);
 
 #endif
