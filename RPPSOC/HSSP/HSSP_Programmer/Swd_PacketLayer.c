@@ -499,9 +499,6 @@ void Swd_RawReadPacket()
     }
 	while((Swd_packetAck == SWD_WAIT_ACK ) && (loop < NUMBER_OF_WAIT_ACK_LOOPS));
     
-	printf("Swd_packetAck=%x\n",Swd_packetAck);
-	printf("loop=%d\n",loop);
-	
     /* For a OK ACK, check the parity bit received with parity computed */
     if(Swd_packetAck == SWD_OK_ACK)
     {
