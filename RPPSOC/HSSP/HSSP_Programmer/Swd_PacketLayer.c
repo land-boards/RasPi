@@ -618,6 +618,8 @@ void Swd_WritePacket()
     }
 	while((Swd_packetAck == SWD_WAIT_ACK ) && (loop < NUMBER_OF_WAIT_ACK_LOOPS));
     
+	printf("Swd_packetAck=%x\n",Swd_packetAck);
+	printf("loop=%d\n",loop);
     /* Swd_packetAck global variable holds the status of the SWD transaction */
 }
 
