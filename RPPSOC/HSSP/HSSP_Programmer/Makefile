@@ -1,7 +1,7 @@
 all: progsoc
 
 progsoc: main.o DataFetch.o DeviceAcquire.o HexImage.o ProgrammingSteps.o Swd_PacketLayer.o Swd_PhysicalLayer.o
-	gcc main.o DataFetch.o DeviceAcquire.o HexImage.o ProgrammingSteps.o Swd_PacketLayer.o Swd_PhysicalLayer.o -lwiringPi -o progsoc
+	gcc main.o DataFetch.o DeviceAcquire.o HexImage.o ProgrammingSteps.o Swd_PacketLayer.o Swd_PhysicalLayer.o -I/usr/local/include -L/usr/local/lib -lwiringPi -o progsoc
 
 main.o: main.c ProgrammingSteps.h HexImage.h
 	gcc -c main.c
