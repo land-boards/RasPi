@@ -290,8 +290,8 @@ static unsigned char GetDieTemperature(unsigned char * temperatureSign, unsigned
 *******************************************************************************/
 static unsigned char SwitchToSwd()
 {
-	trigger();
     JtagToSwdSequence();  /* Initial part of the switching sequence */
+	trigger();
     
     /* DPACC IDCODE Read  */
     Swd_packetHeader =  DPACC_IDOCDE_READ;
