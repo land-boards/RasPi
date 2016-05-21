@@ -474,10 +474,10 @@ void Swd_RawReadPacket()
     do
     {
         Swd_SendByte(Swd_packetHeader); /* 8-bit Header data */       
-		trigger();
-                
+        
         Swd_FirstTurnAroundPhase();   /* First Turnaround phase */
         
+		trigger();
         Swd_packetAck = Swd_GetAckSegment(); /* Get the 3-bit ACK data */
         
         /* Read 4-byte data and store in Global array Swd_packetData[] */
