@@ -60,8 +60,6 @@
 #define XRES_DRIVEMODE_CMOSOUT          pinMode(XRES_Pin,OUTPUT)
 
 /********* WiringPi Functions for driving output pins on host side **************
-* Does not need to use the register definitions or mask values in 
-* "RegisterDefines.h" to drive output pins since that is all handled by WiringPi.
 ********************************************************************************/
 
 #define SWDIO_OUTPUT_HIGH      digitalWrite(SWDIO_Pin,1)
@@ -74,18 +72,14 @@
 #define XRES_OUTPUT_LOW        digitalWrite(XRES_Pin,0)
 
 /********** WiringPi Functions reading input pin on host side *******************
-* Does not need to use the register definitions or mask values in 
-* "RegisterDefines.h" to drive output pins since that is all handled by WiringPi.
 * This function returns '0x01' if the SWDIO input pin is at logic high,
 * or '0x00' if the SWDIO input pin is at logic low
 ********************************************************************************/
 
-#define SWDIO_INPUT_READ      digitalRead (SWDIO_Pin)
+#define SWDIO_INPUT_READ      digitalRead(SWDIO_Pin)
 
 /********************************************************************************
 * Function Prototypes
-* The below functions are for pin manipulation, and their definitions in
-*  Swd_PhysicalLayer.c are the same as the corresponding macro defs above.
 ********************************************************************************/
 
 void SetSwdckHigh(void);
@@ -102,4 +96,4 @@ void SetXresLow(void);
 void SetXresCmosOutput(void);
 void SetXresHizInput(void);
 
-#endif /* __SWD_PHYSICALLAYER_H */
+#endif

@@ -354,7 +354,7 @@ unsigned char ConfigureTargetDevice()
     /* Switch to SWD interface */    
     if(SwitchToSwd() == FAILURE)
 	{
-		printf("FAILED switch to SWD\n");
+		// printf("FAILED switch to SWD\n");
         return(FAILURE);
 	}
     
