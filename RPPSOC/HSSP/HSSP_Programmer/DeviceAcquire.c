@@ -94,7 +94,7 @@ unsigned char AcquireTargetDevice()
 		SWDCK_OUTPUT_LOW;
 	}
 	deltaCount = micros() - deltaCount;	/* time in uS that it took to do 100 clocks	*/
-	deltaCount = 7000/deltaCount;
+	deltaCount = 7500/deltaCount;
 
     /* Generate a Reset pulse of 100 uS. Minimum XRES pulse width is 1 uS for PSoC 5LP.
        The Delay function need not be accurate, it can be more than 100 uS as well. It will not 
