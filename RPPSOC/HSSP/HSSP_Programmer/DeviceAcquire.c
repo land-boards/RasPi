@@ -73,6 +73,7 @@ unsigned char AcquireTargetDevice()
     /* Set the initial state of the programming pins */
     
     /* Host XRES pin must be in strong drive mode, and is driven high by default */
+    XRES_OUTPUT_HIGH;
     XRES_DRIVEMODE_CMOSOUT;
     XRES_OUTPUT_HIGH;
     
