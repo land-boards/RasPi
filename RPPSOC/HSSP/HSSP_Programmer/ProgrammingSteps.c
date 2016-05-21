@@ -290,6 +290,7 @@ static unsigned char GetDieTemperature(unsigned char * temperatureSign, unsigned
 *******************************************************************************/
 static unsigned char SwitchToSwd()
 {
+	trigger();
     JtagToSwdSequence();  /* Initial part of the switching sequence */
     
     /* DPACC IDCODE Read  */
@@ -351,7 +352,6 @@ unsigned char EnterProgrammingMode()
 
 unsigned char ConfigureTargetDevice()
 {
-	trigger();
     /* Switch to SWD interface */    
     if(SwitchToSwd() == FAILURE)
 	{
