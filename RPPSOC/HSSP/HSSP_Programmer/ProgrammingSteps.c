@@ -350,7 +350,8 @@ unsigned char EnterProgrammingMode()
 *******************************************************************************/
 
 unsigned char ConfigureTargetDevice()
-{     
+{
+	trigger();
     /* Switch to SWD interface */    
     if(SwitchToSwd() == FAILURE)
 	{
