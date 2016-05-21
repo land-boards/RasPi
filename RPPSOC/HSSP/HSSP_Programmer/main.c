@@ -51,7 +51,6 @@ unsigned char ProgramDevice()
 	return(FAILURE);
 	
 	currentStep++;
-	trigger();
 	if(ConfigureTargetDevice() == FAILURE)    /* Step 2 - ConfigureTargetDevice */
 	return(FAILURE);
 
