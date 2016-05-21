@@ -17,8 +17,6 @@
 #include <stdio.h>
 #include <wiringPi.h>
 #include "Swd_PacketLayer.h"
-
-/* "Swd_PhysicalLayer.h" file contains the bit banging routines for programming */
 #include "Swd_PhysicalLayer.h"
 
 /********************************************************************************
@@ -497,7 +495,8 @@ void Swd_RawReadPacket()
         
         /* Repeat for a WAIT ACK till timeout loop expires */
         
-    }while((Swd_packetAck == SWD_WAIT_ACK ) && (loop < NUMBER_OF_WAIT_ACK_LOOPS));
+    }
+	while((Swd_packetAck == SWD_WAIT_ACK ) && (loop < NUMBER_OF_WAIT_ACK_LOOPS));
     
     /* For a OK ACK, check the parity bit received with parity computed */
     if(Swd_packetAck == SWD_OK_ACK)
@@ -615,7 +614,8 @@ void Swd_WritePacket()
         
         /* Repeat for a WAIT ACK till timeout loop expires */
         
-    }while((Swd_packetAck == SWD_WAIT_ACK ) && (loop < NUMBER_OF_WAIT_ACK_LOOPS));
+    }
+	while((Swd_packetAck == SWD_WAIT_ACK ) && (loop < NUMBER_OF_WAIT_ACK_LOOPS));
     
     /* Swd_packetAck global variable holds the status of the SWD transaction */
 }
@@ -782,6 +782,8 @@ static void SwdLineIdle()
     for(i = 0; i < NUMBER_OF_DUMMY_SWD_CLOCK_CYCLES; i++)
     {
         SetSwdckLow();        
+        SetSwdckLow();        
+        SetSwdckHigh();           
         SetSwdckHigh();           
     }    
 }

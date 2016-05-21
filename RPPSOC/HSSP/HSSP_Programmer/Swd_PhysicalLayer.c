@@ -322,4 +322,3 @@ unsigned char ReadSwdio()
 {
     SWDIO_INPUT_READ;
 }
-
