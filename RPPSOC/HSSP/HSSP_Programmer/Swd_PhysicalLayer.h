@@ -28,6 +28,7 @@
 #ifndef __SWD_PHYSICALLAYER_H
 #define __SWD_PHYSICALLAYER_H
 
+#define TRIG_Pin	7
 #define SWDIO_Pin	5
 #define SWDCK_Pin	4
 #define XRES_Pin	3
@@ -50,6 +51,8 @@
 *                          PSoC 5LP (idle))
 ********************************************************************************/
 
+#define TRIG_DRIVEMODE_CMOSOUT         	pinMode(TRIG_Pin,OUTPUT)
+
 #define SWDIO_DRIVEMODE_HIGHZIN         pinMode(SWDIO_Pin,INPUT)
 #define SWDIO_DRIVEMODE_CMOSOUT         pinMode(SWDIO_Pin,OUTPUT)
 
@@ -61,6 +64,9 @@
 
 /********* WiringPi Functions for driving output pins on host side **************
 ********************************************************************************/
+
+#define TRIG_OUTPUT_LOW       digitalWrite(TRIG_Pin,0)
+#define TRIG_OUTPUT_HIGH      digitalWrite(TRIG_Pin,1)
 
 #define SWDIO_OUTPUT_HIGH      digitalWrite(SWDIO_Pin,1)
 #define SWDIO_OUTPUT_LOW       digitalWrite(SWDIO_Pin,0)
@@ -95,5 +101,6 @@ void SetXresHigh(void);
 void SetXresLow(void);
 void SetXresCmosOutput(void);
 void SetXresHizInput(void);
+void trigger(void)
 
 #endif

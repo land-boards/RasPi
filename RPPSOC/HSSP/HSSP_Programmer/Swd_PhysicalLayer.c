@@ -22,6 +22,19 @@
 /****************** SWD Protocol Physical Layer functions ***********************
 ********************************************************************************/
 
+void setupTrig()
+{
+	TRIG_DRIVEMODE_CMOSOUT;
+	TRIG_OUTPUT_LOW;
+}
+
+void trigger()
+{	
+	TRIG_OUTPUT_HIGH;
+	TRIG_OUTPUT_HIGH;
+	TRIG_OUTPUT_LOW;
+}
+
 /*******************************************************************************
 * Function Name: SetSwdckCmosOutput
 ********************************************************************************
