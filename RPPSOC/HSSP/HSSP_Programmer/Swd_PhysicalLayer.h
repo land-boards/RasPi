@@ -82,7 +82,7 @@
 * or '0x00' if the SWDIO input pin is at logic low
 ********************************************************************************/
 
-#define SWDIO_INPUT_READ      digitalRead(SWDIO_Pin) & 0x1
+#define SWDIO_INPUT_READ      digitalRead(SWDIO_Pin)
 
 /********************************************************************************
 * Function Prototypes
