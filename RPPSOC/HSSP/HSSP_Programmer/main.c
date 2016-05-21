@@ -112,7 +112,7 @@ int main()
     unsigned char spcErrorStatus; /* Variable to store the SPC Error status if ErrorStatus contains SPC_TIMEOUT_ERROR error*/ 
     wiringPiSetup();
     printf("Land Boards, LLC - Programming PSoC\n");
-	piHiPri(0);
+	piHiPri(255);
     /* Start the HSSP Programming and store the status */
     programResult = ProgramDevice();
     
