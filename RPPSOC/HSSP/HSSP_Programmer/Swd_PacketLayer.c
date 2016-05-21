@@ -776,15 +776,12 @@ static void SwdLineIdle()
     
     /* SWD line is reset in case it is not done before calling this function */
     SwdLineReset(); 
- 	trigger();
    
     /* After SWD line is reset, at least three SWDCK clock cycles must be clocked with SWDIO low. */    
     SetSwdioLow();
     for(i = 0; i < NUMBER_OF_DUMMY_SWD_CLOCK_CYCLES; i++)
     {
         SetSwdckLow();        
-        SetSwdckLow();        
-        SetSwdckHigh();           
         SetSwdckHigh();           
     }    
 }
