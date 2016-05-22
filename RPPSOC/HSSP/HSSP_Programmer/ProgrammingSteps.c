@@ -359,7 +359,7 @@ unsigned char ConfigureTargetDevice()
 	}
 
     /* DPACC DP CTRLSTAT Write [0x50000000]  */
-    Swd_packetHeader =  DPACC_DP_CTRLSTAT_WRITE;	//
+    Swd_packetHeader =  DPACC_DP_CTRLSTAT_WRITE;	// #define DPACC_DP_CTRLSTAT_WRITE  0xA9
     Swd_packetData[3] = 0x50;
 	Swd_packetData[2] = 0x00;
 	Swd_packetData[1] = 0x00;

@@ -250,7 +250,9 @@ static unsigned char Swd_GetAckSegment()
     for(loop = 0; loop < NUMBER_OF_ACK_BITS; loop++)
     {
         SetSwdckLow();
+        SetSwdckLow();
         rxBit = ReadSwdio(); /* Store the ACK bit received */
+        SetSwdckHigh();
         SetSwdckHigh();
         
         ack = ack | (rxBit << loop); /* Concatenate the ACK bit with ACK data byte */
@@ -589,7 +591,6 @@ void Swd_WritePacket()
     unsigned char i;
     
     parity = Swd_ComputeDataParity(); /* Compute Even parity for 4-byte data */  
-    trigger();
    
     do
     {
@@ -597,6 +598,7 @@ void Swd_WritePacket()
         
         Swd_FirstTurnAroundPhase();   /* First Turnaround phase */
         
+    trigger();
         Swd_packetAck = Swd_GetAckSegment();  /* Get the 3-bit ACK data */
         
         Swd_SecondTurnAroundPhase();   /* Second Turnaround phase */
