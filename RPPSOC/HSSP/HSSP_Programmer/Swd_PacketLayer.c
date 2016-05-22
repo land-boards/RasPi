@@ -188,7 +188,6 @@ static void Swd_FirstTurnAroundPhase()
     SetSwdioHizInput(); /* Change to High-Z drive mode for host to read the SWDIO line */
     
     SetSwdckLow();
-    SetSwdckLow();
     SetSwdckHigh();
 }
 
