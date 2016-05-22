@@ -251,6 +251,7 @@ static unsigned char Swd_GetAckSegment()
     {
         SetSwdckLow();
         SetSwdckLow();
+        SetSwdckLow();
         rxBit = ReadSwdio(); /* Store the ACK bit received */
         SetSwdckHigh();
         SetSwdckHigh();
