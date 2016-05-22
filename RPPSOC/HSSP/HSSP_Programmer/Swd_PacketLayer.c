@@ -250,10 +250,7 @@ static unsigned char Swd_GetAckSegment()
     for(loop = 0; loop < NUMBER_OF_ACK_BITS; loop++)
     {
         SetSwdckLow();
-        SetSwdckLow();
-        SetSwdckLow();
         rxBit = ReadSwdio(); /* Store the ACK bit received */
-        SetSwdckHigh();
         SetSwdckHigh();
         
         ack = ack | (rxBit << loop); /* Concatenate the ACK bit with ACK data byte */
