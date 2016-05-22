@@ -85,7 +85,7 @@ unsigned char AcquireTargetDevice()
     SWDIO_OUTPUT_LOW;  
     
 	/* calculate the actual maximum speed of the GPIO lines 	*/
-	/* Raspberry Pi B+ with normal clocking = around 4 MHz 		*/
+	/* Raspberry Pi B+ with normal clocking = around 4 MHz 		
 	unsigned int deltaCount = 0;
 	deltaCount =  micros();
 	/* Measure the time it takes to do 100 clocks				*/
