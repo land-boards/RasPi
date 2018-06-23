@@ -88,7 +88,7 @@ def bounceOne():
 
 def initMCP23017():
 	bus.write_byte_data(MCP23017,IODIRA,0xf0)		# Set I/O direction control
-	bus.write_byte_data(MCP23017,IOCONA,INTPOLACTLO)	# Set interrupt polarity to low 
+	bus.write_byte_data(MCP23017,IOCON,INTPOLACTLO)	# Set interrupt polarity to low 
 	bus.write_byte_data(MCP23017,IPOLA,0xf0)			# Set input polarity to invert
 	bus.write_byte_data(MCP23017,GPINTENA,0xf0)		# Enable Interrupts on all inputs 
 	bus.write_byte_data(MCP23017,OLATA,0)			# Write out all 0s
