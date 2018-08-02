@@ -1,4 +1,0 @@
-Programmer,H1 pin,Python IO Pin,WiringPi IO Pin
-RESET,H1-3,IO_22(Python),Pi Pin 15,GPIO.3(WiringPi)
-SWDCLK,H1-4,IO_23(Python),Pi Pin 16,GPIO.4(WiringPi)
-SWDIO,H1-6,IO_25(Python),Pi Pin 17,GPIO.5(WiringPi)
