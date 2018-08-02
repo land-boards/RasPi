@@ -5,18 +5,18 @@
 # version=0x01
 # reserved=0
 # numatoms=2
-# eeplen=109
+# eeplen=105
 # ----------
 
 
-# Start of atom #0 of type 0x0001 and length 49
+# Start of atom #0 of type 0x0001 and length 45
 # Vendor info
-product_uuid d52d3ffe-3219-4f62-af8b-5c593973e9c0
-product_id 0x0005
+product_uuid 6edee236-5855-4a67-8b17-f87f0f091f4b
+product_id 0x0006
 product_ver 0x0001
 vendor "land-boards.com"   # length=15
-product "RPP-UIO-16"   # length=10
-# End of atom. CRC16=0x9ff2
+product "RPPSOC"   # length=6
+# End of atom. CRC16=0x74e4
 
 
 # Start of atom #1 of type 0x0002 and length 32
