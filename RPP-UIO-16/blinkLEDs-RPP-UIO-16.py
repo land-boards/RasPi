@@ -69,32 +69,32 @@ GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 
 # Set all of the pins to outputs
 
-GPIO.setup(I2C_3, GPIO.OUT)
-GPIO.setup(I2C_4, GPIO.OUT)
-GPIO.setup(UART_3, GPIO.OUT)
-GPIO.setup(UART_4, GPIO.OUT)
-GPIO.setup(IO4, GPIO.OUT)
-GPIO.setup(IO18, GPIO.OUT)
-GPIO.setup(IO17, GPIO.OUT)
-GPIO.setup(IO27, GPIO.OUT)
-GPIO.setup(IO23, GPIO.OUT)
-GPIO.setup(IO22, GPIO.OUT)
-GPIO.setup(IO24, GPIO.OUT)
-GPIO.setup(IO25, GPIO.OUT)
-GPIO.setup(SPI0_3, GPIO.OUT)
-GPIO.setup(SPI0_4, GPIO.OUT)
-GPIO.setup(SPI0_5, GPIO.OUT)
-GPIO.setup(SPI0_6, GPIO.OUT)
-GPIO.setup(SPI1_6, GPIO.OUT)
-GPIO.setup(IO5, GPIO.OUT)
-GPIO.setup(IO6, GPIO.OUT)
-GPIO.setup(IO12, GPIO.OUT)
-GPIO.setup(IO13, GPIO.OUT)
-GPIO.setup(IO19, GPIO.OUT)
-GPIO.setup(IO16, GPIO.OUT)
-GPIO.setup(IO26, GPIO.OUT)
-GPIO.setup(IO20, GPIO.OUT)
-GPIO.setup(IO21, GPIO.OUT)
+GPIO.setup(I2C_3, GPIO.OUT)		#
+GPIO.setup(I2C_4, GPIO.OUT)		#
+GPIO.setup(UART_3, GPIO.OUT)	#
+GPIO.setup(UART_4, GPIO.OUT)	#
+GPIO.setup(IO4, GPIO.OUT)		#
+GPIO.setup(IO18, GPIO.OUT)		#
+GPIO.setup(IO17, GPIO.OUT)		#
+GPIO.setup(IO27, GPIO.OUT)		#
+GPIO.setup(IO23, GPIO.OUT)		#
+GPIO.setup(IO22, GPIO.OUT)		#
+GPIO.setup(IO24, GPIO.OUT)		#
+GPIO.setup(IO25, GPIO.OUT)		#
+GPIO.setup(SPI0_3, GPIO.OUT)	#
+GPIO.setup(SPI0_4, GPIO.OUT)	#
+GPIO.setup(SPI0_5, GPIO.OUT)	#
+GPIO.setup(SPI0_6, GPIO.OUT)	#
+GPIO.setup(SPI1_6, GPIO.OUT)	#
+GPIO.setup(IO5, GPIO.OUT)		#
+GPIO.setup(IO6, GPIO.OUT)		#
+GPIO.setup(IO12, GPIO.OUT)		#
+GPIO.setup(IO13, GPIO.OUT)		#
+GPIO.setup(IO19, GPIO.OUT)		#
+GPIO.setup(IO16, GPIO.OUT)		#
+GPIO.setup(IO26, GPIO.OUT)		#
+GPIO.setup(IO20, GPIO.OUT)		#
+GPIO.setup(IO21, GPIO.OUT)		#
 
 GPIO.output(I2C_3, 0)
 GPIO.output(I2C_4, 0)
@@ -127,16 +127,16 @@ GPIO.output(IO21, 0)
 # CTRL-C to exit which is not a particularly elegant exit strategy, but this is a demo program
 
 while 1:
-	blinkLED(IO21)
-	blinkLED(SPI1_6)
-	blinkLED(SPI0_3)
-	blinkLED(SPI0_4)
-	blinkLED(SPI0_5)
-	blinkLED(SPI0_6)
-	blinkLED(I2C_3)
-	blinkLED(I2C_4)
-	blinkLED(UART_3)
-	blinkLED(UART_4)
+	blinkLED(IO21)		# IO_21	
+	blinkLED(SPI1_6)	# IO_7 	SPICE1
+	blinkLED(SPI0_3)	# IO_10 SPIMOSI
+	blinkLED(SPI0_4)	# IO_9 	SPIMISO
+	blinkLED(SPI0_5)	# IO_11	SPISCK
+	blinkLED(SPI0_6)	# IO_8	SPICE0
+	blinkLED(I2C_3)		# IO_2	SDA1
+	blinkLED(I2C_4)		# IO_3	SCLK1
+	blinkLED(UART_3)	# IO_14	TXD0
+	blinkLED(UART_4)	# IO_15	RXD0
 	blinkLED(IO4)
 	blinkLED(IO18)
 	blinkLED(IO17)
