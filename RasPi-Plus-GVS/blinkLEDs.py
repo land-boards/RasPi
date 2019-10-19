@@ -72,21 +72,21 @@ def blinkLED(channel):
 GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 
 # Set all of the pins to outputs
-GPIO.setup(J12, GPIO.OUT)
-GPIO.setup(J13, GPIO.OUT)
-GPIO.setup(J14, GPIO.OUT)
-GPIO.setup(J15, GPIO.OUT)
-GPIO.setup(J16, GPIO.OUT)
-GPIO.setup(J17, GPIO.OUT)
-GPIO.setup(J18, GPIO.OUT)
-GPIO.setup(J19, GPIO.OUT)
-GPIO.setup(J20, GPIO.OUT)
-GPIO.setup(J3, GPIO.OUT)
-GPIO.setup(J4, GPIO.OUT)
-GPIO.setup(J5, GPIO.OUT)
-GPIO.setup(J6, GPIO.OUT)
-GPIO.setup(J7, GPIO.OUT)
-GPIO.setup(J8, GPIO.OUT)
+GPIO.setup(J12, GPIO.OUT)	# 
+GPIO.setup(J13, GPIO.OUT)	# 
+GPIO.setup(J14, GPIO.OUT)	# 
+GPIO.setup(J15, GPIO.OUT)	# 
+GPIO.setup(J16, GPIO.OUT)	# 
+GPIO.setup(J17, GPIO.OUT)	# 
+GPIO.setup(J18, GPIO.OUT)	# 
+GPIO.setup(J19, GPIO.OUT)	# 
+GPIO.setup(J20, GPIO.OUT)	# 
+GPIO.setup(J3, GPIO.OUT)	# 
+GPIO.setup(J4, GPIO.OUT)	# 
+GPIO.setup(J5, GPIO.OUT)	# 
+GPIO.setup(J6, GPIO.OUT)	# 
+GPIO.setup(J7, GPIO.OUT)	# 
+GPIO.setup(J8, GPIO.OUT)	# 
 GPIO.setup(J9, GPIO.OUT)
 GPIO.setup(J1_3, GPIO.OUT)
 GPIO.setup(J1_4, GPIO.OUT)
@@ -106,28 +106,29 @@ GPIO.output(OE, 1)
 # CTRL-C to exit which is not a particularly elegant exit strategy, but this is a demo program
 
 while 1:
-	blinkLED(J12)
-	blinkLED(J13)
-	blinkLED(J14)
-	blinkLED(J15)
-	blinkLED(J16)
-	blinkLED(J17)
-	blinkLED(J18)
-	blinkLED(J19)
-	blinkLED(J20)
-	blinkLED(J3)
-	blinkLED(J4)
-	blinkLED(J5)
-	blinkLED(J6)
-	blinkLED(J7)
-	blinkLED(J8)
-	blinkLED(J9)
-	blinkLED(J1_3)
-	blinkLED(J1_4)
-	blinkLED(J2_3)
-	blinkLED(J2_4)
-	blinkLED(J10_3)
-	blinkLED(J10_4)
-	blinkLED(J10_5)
-	blinkLED(J10_6)
-	blinkLED(J11_6)
+	blinkLED(J12)	# 5
+	blinkLED(J13)	# 6
+	blinkLED(J14)	# 13
+	blinkLED(J15)	# 19
+	blinkLED(J16)	# 26
+	blinkLED(J17)	# 21
+	blinkLED(J18)	# 12
+	blinkLED(J19)	# 16
+	blinkLED(J20)	# 20
+	
+	blinkLED(J3)	# 18
+	blinkLED(J4)	# 17
+	blinkLED(J5)	# 27
+	blinkLED(J6)	# 23
+	blinkLED(J7)	# 22
+	blinkLED(J8)	# 24
+	blinkLED(J9)	# 25
+	blinkLED(J1_3)	# 2
+	blinkLED(J1_4)	# 3
+	blinkLED(J2_3)	# 10
+	blinkLED(J2_4)	# 9
+	blinkLED(J10_3)	# 11
+	blinkLED(J10_4)	# 8
+	blinkLED(J10_5)	# 7
+	blinkLED(J10_6)	# 14
+	blinkLED(J11_6)	# 15
