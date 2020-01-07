@@ -1,3 +1,7 @@
+<a href="https://www.tindie.com/products/land_boards/programmable-system-on-a-chip-for-the-raspberry-pi/?pt=ac_prod_search" >
+<img src="http://land-boards.com/tindie/tindie-larges-v2.png" alt="Tindie Logo">
+</img></a> 
+
 == Land Boards Raspberry Pi Cards Files ==
 
 * These are the [http://land-boards.com/blwiki/index.php?title=Main_Page#Raspberry_Pi_Boards Land Boards Cards] Raspberry Pi code example files.
