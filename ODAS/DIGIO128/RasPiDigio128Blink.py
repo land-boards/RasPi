@@ -72,10 +72,10 @@ INTFA    = 0x0E # Interrupt Flag Register (Port A)
 INTFB    = 0x0F # Interrupt Flag Register (Port B)
 INTCAPA  = 0x10 # Interrupt Captured Register (Port A)
 INTCAPB  = 0x11 # Interrupt Captured Register (Port B)
-GPIOA    = 0x12 # Inputs
-GPIOB    = 0x13 # Inputs
-OLATA    = 0x14 # Register/Latch for outputs
-OLATB    = 0x15 # Register/Latch for outputs
+GPIOA    = 0x12 # Inputs (Port A)
+GPIOB    = 0x13 # Inputs (Port B)
+OLATA    = 0x14 # Register/Latch for outputs (Port A)
+OLATB    = 0x15 # Register/Latch for outputs (Port B)
 
 def blinkOne():
 	""" Blink an LED on the least significant bit of the first MCP23017
