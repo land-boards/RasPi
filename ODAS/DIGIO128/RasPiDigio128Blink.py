@@ -94,24 +94,18 @@ def initMCP23017():
 	Set all pins to inputs
 	"""
 	for MCPAddress in MCPAddresses:
-		bus.write_byte_data(MCPAddress,IODIRA,0xff)		# Set all pins to inputs
+		bus.write_byte_data(MCPAddress,IODIRA,0xff)			# Set all pins to inputs
 		bus.write_byte_data(MCPAddress,IOCON,INTPOLACTLO)	# Set interrupt polarity to low 
-		bus.write_byte_data(MCPAddress,IPOLA,0xfe)		# Set input polarity to invert
+		bus.write_byte_data(MCPAddress,IPOLA,0xfe)			# Set input polarity to invert
 		bus.write_byte_data(MCPAddress,GPINTENA,0xfe)		# Enable Interrupts on all inputs 
-		bus.write_byte_data(MCPAddress,OLATA,0)			# Write out all 0s
+		bus.write_byte_data(MCPAddress,OLATA,0)				# Write out all 0s
 		bus.read_byte_data(MCPAddress,GPIOA)				# Read a byte from the input port to clear any interrupts
-		bus.write_byte_data(MCPAddress,IODIRB,0xff)		# Set all pins to inputs
-		bus.write_byte_data(MCPAddress,IPOLB,0xfe)		# Set input polarity to invert
+		bus.write_byte_data(MCPAddress,IODIRB,0xff)			# Set all pins to inputs
+		bus.write_byte_data(MCPAddress,IPOLB,0xfe)			# Set input polarity to invert
 		bus.write_byte_data(MCPAddress,GPINTENB,0xfe)		# Enable Interrupts on all inputs 
-		bus.write_byte_data(MCPAddress,OLATB,0)			# Write out all 0s
+		bus.write_byte_data(MCPAddress,OLATB,0)				# Write out all 0s
 		bus.read_byte_data(MCPAddress,GPIOB)				# Read a byte from the input port to clear any interrupts
 	
-def setup():
-	"""setup code
-	Sets the Mux port to 0 - DIGIO-128 is attached to the Mux Port #0
-	Call the intitialization code for the MCP23017
-	"""
-
 initMCP23017()	# intialize the MCP ports
 bus.write_byte_data(MCPAddress[0],IODIRA,0xfe)		# Set First port to output, rest are inputs
 # Toggle the single output line
