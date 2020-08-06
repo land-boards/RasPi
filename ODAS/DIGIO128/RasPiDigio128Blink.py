@@ -103,7 +103,7 @@ def initMCP23017():
 		bus.read_byte_data(MCPAddress,GPIOB)				# Read a byte from the input port to clear any interrupts
 	
 initMCP23017()	# intialize the MCP ports
-bus.write_byte_data(MCPAddress[0],IODIRA,0xfe)		# Set First port to output, rest are inputs
+bus.write_byte_data(MCPAddress[0],IODIRA,0xfe)		# Set first bit og first port to output, rest are inputs
 # Toggle the single output line
 while True:
 	blinkOne()
