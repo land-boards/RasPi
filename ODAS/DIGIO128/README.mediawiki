@@ -40,7 +40,7 @@
 * [http://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf Data sheet for the MCP23017]
 * [http://land-boards.com/blwiki/index.php?title=DIGIO-128 Wiki page for the DIGIO128]
 
-== I/O Cobnections ==
+== I/O Connections ==
 
 <img src="http://land-boards.com/blwiki/images/0/0d/P1-DIGIO-Conn.PNG"></img>
 
