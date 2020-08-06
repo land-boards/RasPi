@@ -56,7 +56,7 @@ GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 bus = smbus.SMBus(1) # Rev 2 Pi uses 1
 
 MCPAddresses = [0x2,0x21,0x22,0x23,0x24,0x25,0x26,0x27]
-MCP23017 = 0x20 # Slave device address base
+#MCP23017 = 0x20 # Slave device address base
 IODIRA   = 0x00 # Pin direction register (PORT A)
 IODIRB   = 0x01 # Pin direction register (PORT B)
 IPOLA    = 0x02 # Input Polarity (PORT A)
@@ -84,9 +84,9 @@ INTLINE = 17		# Interrupt from the Mux card
 def blinkOne():
 	""" Blink an LED on the least significant bit of the first MCP23017
 	"""
-	bus.write_byte_data(MCP23017,OLATA,1)	# turn on LED
+	bus.write_byte_data(MCPAddress[0],OLATA,1)	# turn on LED
 	time.sleep(0.2)							# wait 1 sec
-	bus.write_byte_data(MCP23017,OLATA,0)	# turn off LED
+	bus.write_byte_data(MCPAddress[0],OLATA,0)	# turn off LED
 	time.sleep(0.2)							# wait 1 sec
 
 def initMCP23017():
@@ -94,17 +94,17 @@ def initMCP23017():
 	Set all pins to inputs
 	"""
 	for MCPAddress in MCPAddresses:
-		bus.write_byte_data(MCP23017,IODIRA,0xff)		# Set all pins to inputs
-		bus.write_byte_data(MCP23017,IOCON,INTPOLACTLO)	# Set interrupt polarity to low 
-		bus.write_byte_data(MCP23017,IPOLA,0xfe)		# Set input polarity to invert
-		bus.write_byte_data(MCP23017,GPINTENA,0xfe)		# Enable Interrupts on all inputs 
-		bus.write_byte_data(MCP23017,OLATA,0)			# Write out all 0s
-		bus.read_byte_data(MCP23017,GPIOA)				# Read a byte from the input port to clear any interrupts
-		bus.write_byte_data(MCP23017,IODIRB,0xff)		# Set all pins to inputs
-		bus.write_byte_data(MCP23017,IPOLB,0xfe)		# Set input polarity to invert
-		bus.write_byte_data(MCP23017,GPINTENB,0xfe)		# Enable Interrupts on all inputs 
-		bus.write_byte_data(MCP23017,OLATB,0)			# Write out all 0s
-		bus.read_byte_data(MCP23017,GPIOB)				# Read a byte from the input port to clear any interrupts
+		bus.write_byte_data(MCPAddress,IODIRA,0xff)		# Set all pins to inputs
+		bus.write_byte_data(MCPAddress,IOCON,INTPOLACTLO)	# Set interrupt polarity to low 
+		bus.write_byte_data(MCPAddress,IPOLA,0xfe)		# Set input polarity to invert
+		bus.write_byte_data(MCPAddress,GPINTENA,0xfe)		# Enable Interrupts on all inputs 
+		bus.write_byte_data(MCPAddress,OLATA,0)			# Write out all 0s
+		bus.read_byte_data(MCPAddress,GPIOA)				# Read a byte from the input port to clear any interrupts
+		bus.write_byte_data(MCPAddress,IODIRB,0xff)		# Set all pins to inputs
+		bus.write_byte_data(MCPAddress,IPOLB,0xfe)		# Set input polarity to invert
+		bus.write_byte_data(MCPAddress,GPINTENB,0xfe)		# Enable Interrupts on all inputs 
+		bus.write_byte_data(MCPAddress,OLATB,0)			# Write out all 0s
+		bus.read_byte_data(MCPAddress,GPIOB)				# Read a byte from the input port to clear any interrupts
 	
 def setup():
 	"""setup code
@@ -113,7 +113,7 @@ def setup():
 	"""
 
 initMCP23017()	# intialize the MCP ports
-bus.write_byte_data(MCP23017,IODIRA,0xfe)		# Set First port to output, rest are inputs
+bus.write_byte_data(MCPAddress[0],IODIRA,0xfe)		# Set First port to output, rest are inputs
 # Toggle the single output line
 while True:
 	blinkOne()
