@@ -26,7 +26,7 @@
 ** Power Connector
 * 24LC024 Personality EEPROM
 * 3.3V or 5V operation
-* Compatible with Arduino, Raspberry Pi, BeagleBone Black
+* Compatible with [https://github.com/land-boards/lb-Arduino-Code/tree/master/LBCards/DIGIO128 Arduino], Raspberry Pi, BeagleBone Black
 * 95x95mm form factor
 * (4) 6-32 mounting holes - one on each corner
 
