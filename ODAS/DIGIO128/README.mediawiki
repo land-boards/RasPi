@@ -35,8 +35,6 @@
 * MCP23017 parts 0x20 - 0x27
 * EEPROM 24LC024 = 0x50
 
-[[File:DIGIO-128-I2C-Addrs-X2.PNG]]
-
 == References ==
 
 * [http://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf Data sheet for the MCP23017]
