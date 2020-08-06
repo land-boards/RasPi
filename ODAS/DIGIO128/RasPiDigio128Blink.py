@@ -77,10 +77,6 @@ GPIOB    = 0x13 # Inputs
 OLATA    = 0x14 # Register/Latch for outputs
 OLATB    = 0x15 # Register/Latch for outputs
 
-INTPOLACTHI = 0x02	# Interrupt Polarity Active High Flag
-INTPOLACTLO = 0x00	# Interrupt Polarity Active Low Flag
-INTLINE = 17		# Interrupt from the Mux card
-
 def blinkOne():
 	""" Blink an LED on the least significant bit of the first MCP23017
 	"""
