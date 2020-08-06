@@ -55,7 +55,7 @@ GPIO.setmode(GPIO.BCM)	# setup GPIO using Board numbering
 
 bus = smbus.SMBus(1) # Rev 2 Pi uses 1
 
-MCPAddresses = [0x2,0x21,0x22,0x23,0x24,0x25,0x26,0x27]
+MCPAddresses = [0x20,0x21,0x22,0x23,0x24,0x25,0x26,0x27]
 #MCP23017 = 0x20 # Slave device address base
 IODIRA   = 0x00 # Pin direction register (PORT A)
 IODIRB   = 0x01 # Pin direction register (PORT B)
@@ -81,9 +81,9 @@ def blinkOne():
 	""" Blink an LED on the least significant bit of the first MCP23017
 	"""
 	bus.write_byte_data(MCPAddress[0],OLATA,1)	# turn on LED
-	time.sleep(0.2)							# wait 1 sec
+	time.sleep(0.2)								# wait 1 sec
 	bus.write_byte_data(MCPAddress[0],OLATA,0)	# turn off LED
-	time.sleep(0.2)							# wait 1 sec
+	time.sleep(0.2)								# wait 1 sec
 
 def initMCP23017():
 	""" Initialize PORTs A/B of the MCP23017 parts
