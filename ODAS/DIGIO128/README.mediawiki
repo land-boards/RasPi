@@ -2,3 +2,5 @@
 * [http://land-boards.com/blwiki/index.php?title=DIGIO-128 Wiki page for the DIGIO128]
 
 <img src="http://land-boards.com/blwiki/images/0/0d/P1-DIGIO-Conn.PNG"></img>
+
+<img src="http://land-boards.com/blwiki/images/8/88/DIGIO-128-I2C-Addrs-X2.PNG"></img>
