@@ -1,3 +1,5 @@
+== Demo Code for the DIGIO-128 on the Raspberry Pi ==
+
 <img src="http://land-boards.com/blwiki/images/2/26/DIGIO-128-X3-CCA_5847-640px.jpg"></img>
 
 * [http://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf Data sheet for the MCP23017]
