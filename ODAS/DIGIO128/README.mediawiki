@@ -6,6 +6,37 @@
 
 <img src="http://land-boards.com/blwiki/images/2/26/DIGIO-128-X3-CCA_5847-640px.jpg"></img>
 
+== Features ==
+
+* (8) of [http://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf MCP23017] - 16 bit GPIO x 8
+** Total of 128 bits of GPIO
+* I2C host interface
+** MCP23017] I2C Parallel I/O
+** Two Wire interface
+** 100/400 KHZ operation
+** 25mA sink/source capability per I/O
+** Jumper selectable terminators
+** Single 4-pin host interface connector (Ground, Power, Clock, Data)
+* 0.1" Pitch I/O Connectors
+** 16 digital I/O
+** 2 Power
+** 2 Ground
+** Interrupt connectors
+** I2C Connector
+** Power Connector
+* 24LC024 Personality EEPROM
+* 3.3V or 5V operation
+* Compatible with Arduino, Raspberry Pi, BeagleBone Black
+* 95x95mm form factor
+* (4) 6-32 mounting holes - one on each corner
+
+=== I2C Addresses ===
+
+* MCP23017 parts 0x20 - 0x27
+* EEPROM 24LC024 = 0x50
+
+[[File:DIGIO-128-I2C-Addrs-X2.PNG]]
+
 == References ==
 
 * [http://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf Data sheet for the MCP23017]
