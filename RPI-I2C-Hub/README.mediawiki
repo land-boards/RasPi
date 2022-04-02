@@ -7,6 +7,25 @@
 
 <img src="http://land-boards.com/blwiki/images/d/db/I2C-RPT-01_-6026_CCA-640px.jpg" alt="RPI-I2C-HUB" title="RPI-I2C-HUB" />
 
+== Features ==
+
+* I2C Hub / Repeater / Replicator / Multiplexer / De-multiplexer
+** PCA9544A IC
+** Controlled via I2C
+** Multiple part vendors
+** Devices with the same address can be attached to different ports
+* Host I2 port goes to Raspberry Pi I2C lines
+** 3.3V host operation
+* Four I2C slave ports
+** I2C ports can use the Raspberry Pi or have their own power (power source select jumper)
+** A Raspberry PI which runs 3.3V can control an I2C device which runs at 5V
+* Voltage translation between the ports
+** I2C ports can be 3.3V or 5V
+* Fits in any Raspberry Pi model
+** Cutout for Model B RCA video jack
+* Interrupt controller on each channel and host 100KHz/400KHz operation
+* On-board termination resistors
+
 === Files ===
 
 '''R-Hub-4x8.py'''
