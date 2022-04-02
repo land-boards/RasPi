@@ -1,4 +1,4 @@
-<a href="https://www.tindie.com/products/6447/"><img src="http://land-boards.com/tindie/tindie-larges-v2.png" alt="Tindie Logo">
+<a href="https://www.tindie.com/products/6447/"><img src="http://land-boards.com/blwiki/images/5/51/Tindie-mediums.png" alt="Tindie Logo">
 </img></a>
 
 == Land Boards I2C Hub/Repeater for the Raspberry Pi (RPI-I2C-HUB) Card Files ==
