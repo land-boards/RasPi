@@ -1,0 +1,2074 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"ExtEEPROM.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.readEEPROM,"ax",%progbits
+  20              		.align	2
+  21              		.global	readEEPROM
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	readEEPROM, %function
+  25              	readEEPROM:
+  26              	.LFB64:
+  27              		.file 1 "ExtEEPROM.c"
+   1:ExtEEPROM.c   **** /* ========================================
+   2:ExtEEPROM.c   ****  *
+   3:ExtEEPROM.c   ****  * Copyright LAND BOARDS, LLC, 2019
+   4:ExtEEPROM.c   ****  * All Rights Reserved
+   5:ExtEEPROM.c   ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:ExtEEPROM.c   ****  *
+   7:ExtEEPROM.c   ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:ExtEEPROM.c   ****  * WHICH IS THE PROPERTY OF Land Boards.
+   9:ExtEEPROM.c   ****  *
+  10:ExtEEPROM.c   ****  * ========================================
+  11:ExtEEPROM.c   **** */
+  12:ExtEEPROM.c   **** 
+  13:ExtEEPROM.c   **** #include "RPI_PSOC5.h"
+  14:ExtEEPROM.c   **** #include "stdio.h"
+  15:ExtEEPROM.c   **** 
+  16:ExtEEPROM.c   **** void readEEPROM(uint8 * eepromBuffer)
+  17:ExtEEPROM.c   **** {
+  28              		.loc 1 17 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 16
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 84B0     		sub	sp, sp, #16
+  37              		.cfi_def_cfa_offset 24
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  40 0006 7860     		str	r0, [r7, #4]
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 2
+
+
+  18:ExtEEPROM.c   ****     uint8 SLAVE_ADDR = 0x50;
+  41              		.loc 1 18 0
+  42 0008 5023     		movs	r3, #80
+  43 000a FB73     		strb	r3, [r7, #15]
+  19:ExtEEPROM.c   ****     uint8 cMessage[2];
+  20:ExtEEPROM.c   ****     uint16 cLength = 256;
+  44              		.loc 1 20 0
+  45 000c 4FF48073 		mov	r3, #256
+  46 0010 BB81     		strh	r3, [r7, #12]	@ movhi
+  21:ExtEEPROM.c   ****     
+  22:ExtEEPROM.c   ****     cMessage[0] = 0;
+  47              		.loc 1 22 0
+  48 0012 0023     		movs	r3, #0
+  49 0014 3B72     		strb	r3, [r7, #8]
+  23:ExtEEPROM.c   ****     cMessage[1] = 0;
+  50              		.loc 1 23 0
+  51 0016 0023     		movs	r3, #0
+  52 0018 7B72     		strb	r3, [r7, #9]
+  24:ExtEEPROM.c   ****     
+  25:ExtEEPROM.c   ****     //write a dummy byte to initialize the address word counter of 
+  26:ExtEEPROM.c   ****     //eeprom to start address for read back operation. First location 
+  27:ExtEEPROM.c   ****     //of cMessage array has word address.
+  28:ExtEEPROM.c   ****     
+  29:ExtEEPROM.c   ****     I2C_EEPROM_MasterWriteBuf(SLAVE_ADDR, cMessage, 2, I2C_EEPROM_MODE_COMPLETE_XFER);
+  53              		.loc 1 29 0
+  54 001a 07F10801 		add	r1, r7, #8
+  55 001e F87B     		ldrb	r0, [r7, #15]	@ zero_extendqisi2
+  56 0020 0023     		movs	r3, #0
+  57 0022 0222     		movs	r2, #2
+  58 0024 FFF7FEFF 		bl	I2C_EEPROM_MasterWriteBuf
+  30:ExtEEPROM.c   ****     
+  31:ExtEEPROM.c   ****     //wait until Transfer is complete
+  32:ExtEEPROM.c   ****     while((I2C_EEPROM_MasterStatus() & I2C_EEPROM_MSTAT_WR_CMPLT )==0);
+  59              		.loc 1 32 0
+  60 0028 00BF     		nop
+  61              	.L2:
+  62              		.loc 1 32 0 is_stmt 0 discriminator 1
+  63 002a FFF7FEFF 		bl	I2C_EEPROM_MasterStatus
+  64 002e 0346     		mov	r3, r0
+  65 0030 03F00203 		and	r3, r3, #2
+  66 0034 002B     		cmp	r3, #0
+  67 0036 F8D0     		beq	.L2
+  33:ExtEEPROM.c   ****     
+  34:ExtEEPROM.c   ****     //Delay for setting address in EEPROM
+  35:ExtEEPROM.c   ****     CyDelayUs(1);
+  68              		.loc 1 35 0 is_stmt 1
+  69 0038 0120     		movs	r0, #1
+  70 003a FFF7FEFF 		bl	CyDelayUs
+  36:ExtEEPROM.c   ****     
+  37:ExtEEPROM.c   ****     //Read the 16 bytes from slave, staring from word address specified by iMessage
+  38:ExtEEPROM.c   ****     //SLAVE_ADDR is the slave address in this API
+  39:ExtEEPROM.c   ****     //cRx_Buffer is the pointer to array where data has to be stored after reading from EEPROM.
+  40:ExtEEPROM.c   ****     //cLength-1 is the number of bytes which have to be read from EEPROM
+  41:ExtEEPROM.c   ****     //I2C_MODE_COMPLETE_XFER, is to read data completly before sending stop command.
+  42:ExtEEPROM.c   ****     
+  43:ExtEEPROM.c   ****     I2C_EEPROM_MasterReadBuf(SLAVE_ADDR, eepromBuffer, cLength-1, I2C_EEPROM_MODE_COMPLETE_XFER );
+  71              		.loc 1 43 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 3
+
+
+  72 003e BB89     		ldrh	r3, [r7, #12]	@ movhi
+  73 0040 DBB2     		uxtb	r3, r3
+  74 0042 013B     		subs	r3, r3, #1
+  75 0044 DAB2     		uxtb	r2, r3
+  76 0046 F87B     		ldrb	r0, [r7, #15]	@ zero_extendqisi2
+  77 0048 0023     		movs	r3, #0
+  78 004a 7968     		ldr	r1, [r7, #4]
+  79 004c FFF7FEFF 		bl	I2C_EEPROM_MasterReadBuf
+  44:ExtEEPROM.c   ****             
+  45:ExtEEPROM.c   ****     //wait until Transfer is complete
+  46:ExtEEPROM.c   ****     while((I2C_EEPROM_MasterStatus() & I2C_EEPROM_MSTAT_RD_CMPLT )==0); 
+  80              		.loc 1 46 0
+  81 0050 00BF     		nop
+  82              	.L3:
+  83              		.loc 1 46 0 is_stmt 0 discriminator 1
+  84 0052 FFF7FEFF 		bl	I2C_EEPROM_MasterStatus
+  85 0056 0346     		mov	r3, r0
+  86 0058 03F00103 		and	r3, r3, #1
+  87 005c 002B     		cmp	r3, #0
+  88 005e F8D0     		beq	.L3
+  47:ExtEEPROM.c   **** }
+  89              		.loc 1 47 0 is_stmt 1
+  90 0060 00BF     		nop
+  91 0062 1037     		adds	r7, r7, #16
+  92              		.cfi_def_cfa_offset 8
+  93 0064 BD46     		mov	sp, r7
+  94              		.cfi_def_cfa_register 13
+  95              		@ sp needed
+  96 0066 80BD     		pop	{r7, pc}
+  97              		.cfi_endproc
+  98              	.LFE64:
+  99              		.size	readEEPROM, .-readEEPROM
+ 100              		.section	.rodata
+ 101              		.align	2
+ 102              	.LC0:
+ 103 0000 25303478 		.ascii	"%04x \000"
+ 103      2000
+ 104 0006 0000     		.align	2
+ 105              	.LC1:
+ 106 0008 20253032 		.ascii	" %02x\000"
+ 106      7800
+ 107 000e 0000     		.align	2
+ 108              	.LC2:
+ 109 0010 202000   		.ascii	"  \000"
+ 110 0013 00       		.align	2
+ 111              	.LC3:
+ 112 0014 0A0D00   		.ascii	"\012\015\000"
+ 113              		.section	.text.dumpEEPROM,"ax",%progbits
+ 114              		.align	2
+ 115              		.global	dumpEEPROM
+ 116              		.thumb
+ 117              		.thumb_func
+ 118              		.type	dumpEEPROM, %function
+ 119              	dumpEEPROM:
+ 120              	.LFB65:
+  48:ExtEEPROM.c   **** 
+  49:ExtEEPROM.c   **** void dumpEEPROM(uint8 * eepromBuffer)
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 4
+
+
+  50:ExtEEPROM.c   **** {
+ 121              		.loc 1 50 0
+ 122              		.cfi_startproc
+ 123              		@ args = 0, pretend = 0, frame = 96
+ 124              		@ frame_needed = 1, uses_anonymous_args = 0
+ 125 0000 80B5     		push	{r7, lr}
+ 126              		.cfi_def_cfa_offset 8
+ 127              		.cfi_offset 7, -8
+ 128              		.cfi_offset 14, -4
+ 129 0002 98B0     		sub	sp, sp, #96
+ 130              		.cfi_def_cfa_offset 104
+ 131 0004 00AF     		add	r7, sp, #0
+ 132              		.cfi_def_cfa_register 7
+ 133 0006 7860     		str	r0, [r7, #4]
+  51:ExtEEPROM.c   ****     char lineBuffer[8];
+  52:ExtEEPROM.c   ****     lineBuffer[0] = 0;
+ 134              		.loc 1 52 0
+ 135 0008 0023     		movs	r3, #0
+ 136 000a 87F85030 		strb	r3, [r7, #80]
+  53:ExtEEPROM.c   ****     uint16 linesLoop = 0;
+ 137              		.loc 1 53 0
+ 138 000e 0023     		movs	r3, #0
+ 139 0010 A7F85E30 		strh	r3, [r7, #94]	@ movhi
+  54:ExtEEPROM.c   ****     uint16 charsLoop = 0;
+ 140              		.loc 1 54 0
+ 141 0014 0023     		movs	r3, #0
+ 142 0016 A7F85C30 		strh	r3, [r7, #92]	@ movhi
+  55:ExtEEPROM.c   ****     for (linesLoop = 0; linesLoop < 16; linesLoop++)
+ 143              		.loc 1 55 0
+ 144 001a 0023     		movs	r3, #0
+ 145 001c A7F85E30 		strh	r3, [r7, #94]	@ movhi
+ 146 0020 C3E0     		b	.L5
+ 147              	.L14:
+ 148              	.LBB2:
+  56:ExtEEPROM.c   ****     {
+  57:ExtEEPROM.c   ****         char lineString[65];
+  58:ExtEEPROM.c   ****         lineString[0] = 0;
+ 149              		.loc 1 58 0
+ 150 0022 0023     		movs	r3, #0
+ 151 0024 3B73     		strb	r3, [r7, #12]
+  59:ExtEEPROM.c   ****         sprintf(lineString,"%04x ",linesLoop<<4);
+ 152              		.loc 1 59 0
+ 153 0026 B7F85E30 		ldrh	r3, [r7, #94]
+ 154 002a 1A01     		lsls	r2, r3, #4
+ 155 002c 07F10C03 		add	r3, r7, #12
+ 156 0030 6249     		ldr	r1, .L15
+ 157 0032 1846     		mov	r0, r3
+ 158 0034 FFF7FEFF 		bl	sprintf
+  60:ExtEEPROM.c   ****         for (charsLoop = 0; charsLoop < 16; charsLoop++)
+ 159              		.loc 1 60 0
+ 160 0038 0023     		movs	r3, #0
+ 161 003a A7F85C30 		strh	r3, [r7, #92]	@ movhi
+ 162 003e 1DE0     		b	.L6
+ 163              	.L7:
+  61:ExtEEPROM.c   ****         {
+  62:ExtEEPROM.c   ****             sprintf(lineBuffer, " %02x",eepromBuffer[(linesLoop<<4)+charsLoop]);
+ 164              		.loc 1 62 0 discriminator 3
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 5
+
+
+ 165 0040 B7F85E30 		ldrh	r3, [r7, #94]
+ 166 0044 1A01     		lsls	r2, r3, #4
+ 167 0046 B7F85C30 		ldrh	r3, [r7, #92]
+ 168 004a 1344     		add	r3, r3, r2
+ 169 004c 1A46     		mov	r2, r3
+ 170 004e 7B68     		ldr	r3, [r7, #4]
+ 171 0050 1344     		add	r3, r3, r2
+ 172 0052 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 173 0054 1A46     		mov	r2, r3
+ 174 0056 07F15003 		add	r3, r7, #80
+ 175 005a 5949     		ldr	r1, .L15+4
+ 176 005c 1846     		mov	r0, r3
+ 177 005e FFF7FEFF 		bl	sprintf
+  63:ExtEEPROM.c   ****             strcat(lineString, lineBuffer);
+ 178              		.loc 1 63 0 discriminator 3
+ 179 0062 07F15002 		add	r2, r7, #80
+ 180 0066 07F10C03 		add	r3, r7, #12
+ 181 006a 1146     		mov	r1, r2
+ 182 006c 1846     		mov	r0, r3
+ 183 006e FFF7FEFF 		bl	strcat
+  60:ExtEEPROM.c   ****         for (charsLoop = 0; charsLoop < 16; charsLoop++)
+ 184              		.loc 1 60 0 discriminator 3
+ 185 0072 B7F85C30 		ldrh	r3, [r7, #92]
+ 186 0076 0133     		adds	r3, r3, #1
+ 187 0078 A7F85C30 		strh	r3, [r7, #92]	@ movhi
+ 188              	.L6:
+  60:ExtEEPROM.c   ****         for (charsLoop = 0; charsLoop < 16; charsLoop++)
+ 189              		.loc 1 60 0 is_stmt 0 discriminator 1
+ 190 007c B7F85C30 		ldrh	r3, [r7, #92]
+ 191 0080 0F2B     		cmp	r3, #15
+ 192 0082 DDD9     		bls	.L7
+  64:ExtEEPROM.c   ****         }
+  65:ExtEEPROM.c   ****         strcat(lineString, "  ");
+ 193              		.loc 1 65 0 is_stmt 1
+ 194 0084 07F10C03 		add	r3, r7, #12
+ 195 0088 1846     		mov	r0, r3
+ 196 008a FFF7FEFF 		bl	strlen
+ 197 008e 0346     		mov	r3, r0
+ 198 0090 1A46     		mov	r2, r3
+ 199 0092 07F10C03 		add	r3, r7, #12
+ 200 0096 1344     		add	r3, r3, r2
+ 201 0098 4A4A     		ldr	r2, .L15+8
+ 202 009a 1188     		ldrh	r1, [r2]	@ unaligned
+ 203 009c 9278     		ldrb	r2, [r2, #2]
+ 204 009e 1980     		strh	r1, [r3]	@ unaligned
+ 205 00a0 9A70     		strb	r2, [r3, #2]
+  66:ExtEEPROM.c   ****         USBUART_PutData((uint8 *)lineString, strlen(lineString));
+ 206              		.loc 1 66 0
+ 207 00a2 07F10C03 		add	r3, r7, #12
+ 208 00a6 1846     		mov	r0, r3
+ 209 00a8 FFF7FEFF 		bl	strlen
+ 210 00ac 0346     		mov	r3, r0
+ 211 00ae 9AB2     		uxth	r2, r3
+ 212 00b0 07F10C03 		add	r3, r7, #12
+ 213 00b4 1146     		mov	r1, r2
+ 214 00b6 1846     		mov	r0, r3
+ 215 00b8 FFF7FEFF 		bl	USBUART_PutData
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 6
+
+
+  67:ExtEEPROM.c   ****         while (0u == USBUART_CDCIsReady());
+ 216              		.loc 1 67 0
+ 217 00bc 00BF     		nop
+ 218              	.L8:
+ 219              		.loc 1 67 0 is_stmt 0 discriminator 1
+ 220 00be FFF7FEFF 		bl	USBUART_CDCIsReady
+ 221 00c2 0346     		mov	r3, r0
+ 222 00c4 002B     		cmp	r3, #0
+ 223 00c6 FAD0     		beq	.L8
+  68:ExtEEPROM.c   ****         lineString[0] = 0;
+ 224              		.loc 1 68 0 is_stmt 1
+ 225 00c8 0023     		movs	r3, #0
+ 226 00ca 3B73     		strb	r3, [r7, #12]
+ 227              	.LBB3:
+  69:ExtEEPROM.c   ****         // Form a character string for the 
+  70:ExtEEPROM.c   ****         for (uint16 charCol = 0; charCol < 16; charCol++)
+ 228              		.loc 1 70 0
+ 229 00cc 0023     		movs	r3, #0
+ 230 00ce A7F85A30 		strh	r3, [r7, #90]	@ movhi
+ 231 00d2 3FE0     		b	.L9
+ 232              	.L12:
+  71:ExtEEPROM.c   ****         {
+  72:ExtEEPROM.c   ****             // print if the char is printable
+  73:ExtEEPROM.c   ****             if ((eepromBuffer[(linesLoop<<4)+charCol] >= 0x21) && (eepromBuffer[(linesLoop<<4)+char
+ 233              		.loc 1 73 0
+ 234 00d4 B7F85E30 		ldrh	r3, [r7, #94]
+ 235 00d8 1A01     		lsls	r2, r3, #4
+ 236 00da B7F85A30 		ldrh	r3, [r7, #90]
+ 237 00de 1344     		add	r3, r3, r2
+ 238 00e0 1A46     		mov	r2, r3
+ 239 00e2 7B68     		ldr	r3, [r7, #4]
+ 240 00e4 1344     		add	r3, r3, r2
+ 241 00e6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 242 00e8 202B     		cmp	r3, #32
+ 243 00ea 1DD9     		bls	.L10
+ 244              		.loc 1 73 0 is_stmt 0 discriminator 1
+ 245 00ec B7F85E30 		ldrh	r3, [r7, #94]
+ 246 00f0 1A01     		lsls	r2, r3, #4
+ 247 00f2 B7F85A30 		ldrh	r3, [r7, #90]
+ 248 00f6 1344     		add	r3, r3, r2
+ 249 00f8 1A46     		mov	r2, r3
+ 250 00fa 7B68     		ldr	r3, [r7, #4]
+ 251 00fc 1344     		add	r3, r3, r2
+ 252 00fe 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 253 0100 7E2B     		cmp	r3, #126
+ 254 0102 11D8     		bhi	.L10
+  74:ExtEEPROM.c   ****             {
+  75:ExtEEPROM.c   ****                 lineString[charCol] = eepromBuffer[(linesLoop<<4)+charCol];
+ 255              		.loc 1 75 0 is_stmt 1
+ 256 0104 B7F85A30 		ldrh	r3, [r7, #90]
+ 257 0108 B7F85E20 		ldrh	r2, [r7, #94]
+ 258 010c 1101     		lsls	r1, r2, #4
+ 259 010e B7F85A20 		ldrh	r2, [r7, #90]
+ 260 0112 0A44     		add	r2, r2, r1
+ 261 0114 1146     		mov	r1, r2
+ 262 0116 7A68     		ldr	r2, [r7, #4]
+ 263 0118 0A44     		add	r2, r2, r1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 7
+
+
+ 264 011a 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 265 011c 07F16001 		add	r1, r7, #96
+ 266 0120 0B44     		add	r3, r3, r1
+ 267 0122 03F8542C 		strb	r2, [r3, #-84]
+ 268 0126 07E0     		b	.L11
+ 269              	.L10:
+  76:ExtEEPROM.c   ****             }
+  77:ExtEEPROM.c   ****             else
+  78:ExtEEPROM.c   ****             {
+  79:ExtEEPROM.c   ****                 lineString[charCol] = '.';
+ 270              		.loc 1 79 0
+ 271 0128 B7F85A30 		ldrh	r3, [r7, #90]
+ 272 012c 07F16002 		add	r2, r7, #96
+ 273 0130 1344     		add	r3, r3, r2
+ 274 0132 2E22     		movs	r2, #46
+ 275 0134 03F8542C 		strb	r2, [r3, #-84]
+ 276              	.L11:
+  80:ExtEEPROM.c   ****             }
+  81:ExtEEPROM.c   ****             lineString[charCol+1] = 0;
+ 277              		.loc 1 81 0 discriminator 2
+ 278 0138 B7F85A30 		ldrh	r3, [r7, #90]
+ 279 013c 0133     		adds	r3, r3, #1
+ 280 013e 07F16002 		add	r2, r7, #96
+ 281 0142 1344     		add	r3, r3, r2
+ 282 0144 0022     		movs	r2, #0
+ 283 0146 03F8542C 		strb	r2, [r3, #-84]
+  70:ExtEEPROM.c   ****         {
+ 284              		.loc 1 70 0 discriminator 2
+ 285 014a B7F85A30 		ldrh	r3, [r7, #90]
+ 286 014e 0133     		adds	r3, r3, #1
+ 287 0150 A7F85A30 		strh	r3, [r7, #90]	@ movhi
+ 288              	.L9:
+  70:ExtEEPROM.c   ****         {
+ 289              		.loc 1 70 0 is_stmt 0 discriminator 1
+ 290 0154 B7F85A30 		ldrh	r3, [r7, #90]
+ 291 0158 0F2B     		cmp	r3, #15
+ 292 015a BBD9     		bls	.L12
+ 293              	.LBE3:
+  82:ExtEEPROM.c   ****         }
+  83:ExtEEPROM.c   ****         strcat(lineString, "\n\r");
+ 294              		.loc 1 83 0 is_stmt 1
+ 295 015c 07F10C03 		add	r3, r7, #12
+ 296 0160 1846     		mov	r0, r3
+ 297 0162 FFF7FEFF 		bl	strlen
+ 298 0166 0346     		mov	r3, r0
+ 299 0168 1A46     		mov	r2, r3
+ 300 016a 07F10C03 		add	r3, r7, #12
+ 301 016e 1344     		add	r3, r3, r2
+ 302 0170 154A     		ldr	r2, .L15+12
+ 303 0172 1188     		ldrh	r1, [r2]	@ unaligned
+ 304 0174 9278     		ldrb	r2, [r2, #2]
+ 305 0176 1980     		strh	r1, [r3]	@ unaligned
+ 306 0178 9A70     		strb	r2, [r3, #2]
+  84:ExtEEPROM.c   ****         USBUART_PutData((uint8 *)lineString, strlen(lineString));
+ 307              		.loc 1 84 0
+ 308 017a 07F10C03 		add	r3, r7, #12
+ 309 017e 1846     		mov	r0, r3
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 8
+
+
+ 310 0180 FFF7FEFF 		bl	strlen
+ 311 0184 0346     		mov	r3, r0
+ 312 0186 9AB2     		uxth	r2, r3
+ 313 0188 07F10C03 		add	r3, r7, #12
+ 314 018c 1146     		mov	r1, r2
+ 315 018e 1846     		mov	r0, r3
+ 316 0190 FFF7FEFF 		bl	USBUART_PutData
+  85:ExtEEPROM.c   ****         while (0u == USBUART_CDCIsReady());
+ 317              		.loc 1 85 0
+ 318 0194 00BF     		nop
+ 319              	.L13:
+ 320              		.loc 1 85 0 is_stmt 0 discriminator 1
+ 321 0196 FFF7FEFF 		bl	USBUART_CDCIsReady
+ 322 019a 0346     		mov	r3, r0
+ 323 019c 002B     		cmp	r3, #0
+ 324 019e FAD0     		beq	.L13
+ 325              	.LBE2:
+  55:ExtEEPROM.c   ****     {
+ 326              		.loc 1 55 0 is_stmt 1 discriminator 2
+ 327 01a0 B7F85E30 		ldrh	r3, [r7, #94]
+ 328 01a4 0133     		adds	r3, r3, #1
+ 329 01a6 A7F85E30 		strh	r3, [r7, #94]	@ movhi
+ 330              	.L5:
+  55:ExtEEPROM.c   ****     {
+ 331              		.loc 1 55 0 is_stmt 0 discriminator 1
+ 332 01aa B7F85E30 		ldrh	r3, [r7, #94]
+ 333 01ae 0F2B     		cmp	r3, #15
+ 334 01b0 7FF637AF 		bls	.L14
+  86:ExtEEPROM.c   ****     }
+  87:ExtEEPROM.c   **** }
+ 335              		.loc 1 87 0 is_stmt 1
+ 336 01b4 00BF     		nop
+ 337 01b6 6037     		adds	r7, r7, #96
+ 338              		.cfi_def_cfa_offset 8
+ 339 01b8 BD46     		mov	sp, r7
+ 340              		.cfi_def_cfa_register 13
+ 341              		@ sp needed
+ 342 01ba 80BD     		pop	{r7, pc}
+ 343              	.L16:
+ 344              		.align	2
+ 345              	.L15:
+ 346 01bc 00000000 		.word	.LC0
+ 347 01c0 08000000 		.word	.LC1
+ 348 01c4 10000000 		.word	.LC2
+ 349 01c8 14000000 		.word	.LC3
+ 350              		.cfi_endproc
+ 351              	.LFE65:
+ 352              		.size	dumpEEPROM, .-dumpEEPROM
+ 353              		.section	.text.writeEEPROM,"ax",%progbits
+ 354              		.align	2
+ 355              		.global	writeEEPROM
+ 356              		.thumb
+ 357              		.thumb_func
+ 358              		.type	writeEEPROM, %function
+ 359              	writeEEPROM:
+ 360              	.LFB66:
+  88:ExtEEPROM.c   **** 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 9
+
+
+  89:ExtEEPROM.c   **** //////////////////////////////////////////////////////////////////////////////
+  90:ExtEEPROM.c   **** // void writeEEPROM() - Take the EEPROM source and move it to a 32-byte buffer
+  91:ExtEEPROM.c   **** // Call the routine to write the 32-byte buffers to the EEPROM
+  92:ExtEEPROM.c   **** 
+  93:ExtEEPROM.c   **** uint8 writeEEPROM(uint16 targetHat)
+  94:ExtEEPROM.c   **** {
+ 361              		.loc 1 94 0
+ 362              		.cfi_startproc
+ 363              		@ args = 0, pretend = 0, frame = 64
+ 364              		@ frame_needed = 1, uses_anonymous_args = 0
+ 365 0000 80B5     		push	{r7, lr}
+ 366              		.cfi_def_cfa_offset 8
+ 367              		.cfi_offset 7, -8
+ 368              		.cfi_offset 14, -4
+ 369 0002 90B0     		sub	sp, sp, #64
+ 370              		.cfi_def_cfa_offset 72
+ 371 0004 00AF     		add	r7, sp, #0
+ 372              		.cfi_def_cfa_register 7
+ 373 0006 0346     		mov	r3, r0
+ 374 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+  95:ExtEEPROM.c   ****     uint8 array32Bytes[34];
+  96:ExtEEPROM.c   ****     uint16 srcPointer = 0;
+ 375              		.loc 1 96 0
+ 376 000a 0023     		movs	r3, #0
+ 377 000c FB87     		strh	r3, [r7, #62]	@ movhi
+  97:ExtEEPROM.c   ****     uint16 dstPointer;
+  98:ExtEEPROM.c   ****     
+  99:ExtEEPROM.c   ****     if (targetHat == RPPUIO16)
+ 378              		.loc 1 99 0
+ 379 000e FB88     		ldrh	r3, [r7, #6]
+ 380 0010 012B     		cmp	r3, #1
+ 381 0012 4BD1     		bne	.L18
+ 382              	.LBB4:
+ 100:ExtEEPROM.c   ****     {
+ 101:ExtEEPROM.c   ****         for (uint16 blockNumber = 0; blockNumber < NUM_32_BYTE_BLOCKS; blockNumber++)
+ 383              		.loc 1 101 0
+ 384 0014 0023     		movs	r3, #0
+ 385 0016 7B87     		strh	r3, [r7, #58]	@ movhi
+ 386 0018 43E0     		b	.L19
+ 387              	.L24:
+ 102:ExtEEPROM.c   ****         {
+ 103:ExtEEPROM.c   ****             dstPointer = 0;
+ 388              		.loc 1 103 0
+ 389 001a 0023     		movs	r3, #0
+ 390 001c BB87     		strh	r3, [r7, #60]	@ movhi
+ 104:ExtEEPROM.c   ****             array32Bytes[dstPointer++] = 0;                         // 
+ 391              		.loc 1 104 0
+ 392 001e BB8F     		ldrh	r3, [r7, #60]
+ 393 0020 5A1C     		adds	r2, r3, #1
+ 394 0022 BA87     		strh	r2, [r7, #60]	@ movhi
+ 395 0024 07F14002 		add	r2, r7, #64
+ 396 0028 1344     		add	r3, r3, r2
+ 397 002a 0022     		movs	r2, #0
+ 398 002c 03F8342C 		strb	r2, [r3, #-52]
+ 105:ExtEEPROM.c   ****             array32Bytes[dstPointer++] = (blockNumber<<5) & 0xff;   // Set the starting address
+ 399              		.loc 1 105 0
+ 400 0030 BB8F     		ldrh	r3, [r7, #60]
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 10
+
+
+ 401 0032 5A1C     		adds	r2, r3, #1
+ 402 0034 BA87     		strh	r2, [r7, #60]	@ movhi
+ 403 0036 1946     		mov	r1, r3
+ 404 0038 7B8F     		ldrh	r3, [r7, #58]
+ 405 003a 5B01     		lsls	r3, r3, #5
+ 406 003c DAB2     		uxtb	r2, r3
+ 407 003e 07F14003 		add	r3, r7, #64
+ 408 0042 0B44     		add	r3, r3, r1
+ 409 0044 03F8342C 		strb	r2, [r3, #-52]
+ 410              	.LBB5:
+ 106:ExtEEPROM.c   ****             for (uint16 loopCounter = 0; loopCounter< 32; loopCounter++)
+ 411              		.loc 1 106 0
+ 412 0048 0023     		movs	r3, #0
+ 413 004a 3B87     		strh	r3, [r7, #56]	@ movhi
+ 414 004c 1EE0     		b	.L20
+ 415              	.L23:
+ 107:ExtEEPROM.c   ****             {
+ 108:ExtEEPROM.c   ****                 if (srcPointer < RPP_UIO16_EEPROM_LENGTH)
+ 416              		.loc 1 108 0
+ 417 004e FB8F     		ldrh	r3, [r7, #62]
+ 418 0050 6C2B     		cmp	r3, #108
+ 419 0052 0CD8     		bhi	.L21
+ 109:ExtEEPROM.c   ****                     array32Bytes[dstPointer++] = rpp_uio_16_eeprom[srcPointer];
+ 420              		.loc 1 109 0
+ 421 0054 BB8F     		ldrh	r3, [r7, #60]
+ 422 0056 5A1C     		adds	r2, r3, #1
+ 423 0058 BA87     		strh	r2, [r7, #60]	@ movhi
+ 424 005a 1946     		mov	r1, r3
+ 425 005c FB8F     		ldrh	r3, [r7, #62]
+ 426 005e 654A     		ldr	r2, .L41
+ 427 0060 D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ 428 0062 07F14003 		add	r3, r7, #64
+ 429 0066 0B44     		add	r3, r3, r1
+ 430 0068 03F8342C 		strb	r2, [r3, #-52]
+ 431 006c 08E0     		b	.L22
+ 432              	.L21:
+ 110:ExtEEPROM.c   ****                 else
+ 111:ExtEEPROM.c   ****                     array32Bytes[dstPointer++] = 0;
+ 433              		.loc 1 111 0
+ 434 006e BB8F     		ldrh	r3, [r7, #60]
+ 435 0070 5A1C     		adds	r2, r3, #1
+ 436 0072 BA87     		strh	r2, [r7, #60]	@ movhi
+ 437 0074 07F14002 		add	r2, r7, #64
+ 438 0078 1344     		add	r3, r3, r2
+ 439 007a 0022     		movs	r2, #0
+ 440 007c 03F8342C 		strb	r2, [r3, #-52]
+ 441              	.L22:
+ 112:ExtEEPROM.c   ****                 srcPointer++;
+ 442              		.loc 1 112 0 discriminator 2
+ 443 0080 FB8F     		ldrh	r3, [r7, #62]
+ 444 0082 0133     		adds	r3, r3, #1
+ 445 0084 FB87     		strh	r3, [r7, #62]	@ movhi
+ 106:ExtEEPROM.c   ****             {
+ 446              		.loc 1 106 0 discriminator 2
+ 447 0086 3B8F     		ldrh	r3, [r7, #56]
+ 448 0088 0133     		adds	r3, r3, #1
+ 449 008a 3B87     		strh	r3, [r7, #56]	@ movhi
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 11
+
+
+ 450              	.L20:
+ 106:ExtEEPROM.c   ****             {
+ 451              		.loc 1 106 0 is_stmt 0 discriminator 1
+ 452 008c 3B8F     		ldrh	r3, [r7, #56]
+ 453 008e 1F2B     		cmp	r3, #31
+ 454 0090 DDD9     		bls	.L23
+ 455              	.LBE5:
+ 113:ExtEEPROM.c   ****             }
+ 114:ExtEEPROM.c   ****             writeEEPROMBlock(array32Bytes);
+ 456              		.loc 1 114 0 is_stmt 1 discriminator 2
+ 457 0092 07F10C03 		add	r3, r7, #12
+ 458 0096 1846     		mov	r0, r3
+ 459 0098 FFF7FEFF 		bl	writeEEPROMBlock
+ 101:ExtEEPROM.c   ****         {
+ 460              		.loc 1 101 0 discriminator 2
+ 461 009c 7B8F     		ldrh	r3, [r7, #58]
+ 462 009e 0133     		adds	r3, r3, #1
+ 463 00a0 7B87     		strh	r3, [r7, #58]	@ movhi
+ 464              	.L19:
+ 101:ExtEEPROM.c   ****         {
+ 465              		.loc 1 101 0 is_stmt 0 discriminator 1
+ 466 00a2 7B8F     		ldrh	r3, [r7, #58]
+ 467 00a4 032B     		cmp	r3, #3
+ 468 00a6 B8D9     		bls	.L24
+ 469              	.LBE4:
+ 115:ExtEEPROM.c   ****         }
+ 116:ExtEEPROM.c   ****         return(1);
+ 470              		.loc 1 116 0 is_stmt 1
+ 471 00a8 0123     		movs	r3, #1
+ 472 00aa 9EE0     		b	.L40
+ 473              	.L18:
+ 117:ExtEEPROM.c   ****     }
+ 118:ExtEEPROM.c   ****     else if (targetHat == RPPGVSCFG)
+ 474              		.loc 1 118 0
+ 475 00ac FB88     		ldrh	r3, [r7, #6]
+ 476 00ae 022B     		cmp	r3, #2
+ 477 00b0 4BD1     		bne	.L26
+ 478              	.LBB6:
+ 119:ExtEEPROM.c   ****     {
+ 120:ExtEEPROM.c   ****         for (uint16 blockNumber = 0; blockNumber < NUM_32_BYTE_BLOCKS; blockNumber++)
+ 479              		.loc 1 120 0
+ 480 00b2 0023     		movs	r3, #0
+ 481 00b4 FB86     		strh	r3, [r7, #54]	@ movhi
+ 482 00b6 43E0     		b	.L27
+ 483              	.L32:
+ 121:ExtEEPROM.c   ****         {
+ 122:ExtEEPROM.c   ****             dstPointer = 0;
+ 484              		.loc 1 122 0
+ 485 00b8 0023     		movs	r3, #0
+ 486 00ba BB87     		strh	r3, [r7, #60]	@ movhi
+ 123:ExtEEPROM.c   ****             array32Bytes[dstPointer++] = 0;                         // 
+ 487              		.loc 1 123 0
+ 488 00bc BB8F     		ldrh	r3, [r7, #60]
+ 489 00be 5A1C     		adds	r2, r3, #1
+ 490 00c0 BA87     		strh	r2, [r7, #60]	@ movhi
+ 491 00c2 07F14002 		add	r2, r7, #64
+ 492 00c6 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 12
+
+
+ 493 00c8 0022     		movs	r2, #0
+ 494 00ca 03F8342C 		strb	r2, [r3, #-52]
+ 124:ExtEEPROM.c   ****             array32Bytes[dstPointer++] = (blockNumber<<5) & 0xff;   // Set the starting address
+ 495              		.loc 1 124 0
+ 496 00ce BB8F     		ldrh	r3, [r7, #60]
+ 497 00d0 5A1C     		adds	r2, r3, #1
+ 498 00d2 BA87     		strh	r2, [r7, #60]	@ movhi
+ 499 00d4 1946     		mov	r1, r3
+ 500 00d6 FB8E     		ldrh	r3, [r7, #54]
+ 501 00d8 5B01     		lsls	r3, r3, #5
+ 502 00da DAB2     		uxtb	r2, r3
+ 503 00dc 07F14003 		add	r3, r7, #64
+ 504 00e0 0B44     		add	r3, r3, r1
+ 505 00e2 03F8342C 		strb	r2, [r3, #-52]
+ 506              	.LBB7:
+ 125:ExtEEPROM.c   ****             for (uint16 loopCounter = 0; loopCounter< 32; loopCounter++)
+ 507              		.loc 1 125 0
+ 508 00e6 0023     		movs	r3, #0
+ 509 00e8 BB86     		strh	r3, [r7, #52]	@ movhi
+ 510 00ea 1EE0     		b	.L28
+ 511              	.L31:
+ 126:ExtEEPROM.c   ****             {
+ 127:ExtEEPROM.c   ****                 if (srcPointer < RPPGVSCFG_EEPROM_LENGTH)
+ 512              		.loc 1 127 0
+ 513 00ec FB8F     		ldrh	r3, [r7, #62]
+ 514 00ee 742B     		cmp	r3, #116
+ 515 00f0 0CD8     		bhi	.L29
+ 128:ExtEEPROM.c   ****                     array32Bytes[dstPointer++] = raspi_plus_gvs_cfg_eeprom[srcPointer];
+ 516              		.loc 1 128 0
+ 517 00f2 BB8F     		ldrh	r3, [r7, #60]
+ 518 00f4 5A1C     		adds	r2, r3, #1
+ 519 00f6 BA87     		strh	r2, [r7, #60]	@ movhi
+ 520 00f8 1946     		mov	r1, r3
+ 521 00fa FB8F     		ldrh	r3, [r7, #62]
+ 522 00fc 3E4A     		ldr	r2, .L41+4
+ 523 00fe D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ 524 0100 07F14003 		add	r3, r7, #64
+ 525 0104 0B44     		add	r3, r3, r1
+ 526 0106 03F8342C 		strb	r2, [r3, #-52]
+ 527 010a 08E0     		b	.L30
+ 528              	.L29:
+ 129:ExtEEPROM.c   ****                 else
+ 130:ExtEEPROM.c   ****                     array32Bytes[dstPointer++] = 0;
+ 529              		.loc 1 130 0
+ 530 010c BB8F     		ldrh	r3, [r7, #60]
+ 531 010e 5A1C     		adds	r2, r3, #1
+ 532 0110 BA87     		strh	r2, [r7, #60]	@ movhi
+ 533 0112 07F14002 		add	r2, r7, #64
+ 534 0116 1344     		add	r3, r3, r2
+ 535 0118 0022     		movs	r2, #0
+ 536 011a 03F8342C 		strb	r2, [r3, #-52]
+ 537              	.L30:
+ 131:ExtEEPROM.c   ****                 srcPointer++;
+ 538              		.loc 1 131 0 discriminator 2
+ 539 011e FB8F     		ldrh	r3, [r7, #62]
+ 540 0120 0133     		adds	r3, r3, #1
+ 541 0122 FB87     		strh	r3, [r7, #62]	@ movhi
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 13
+
+
+ 125:ExtEEPROM.c   ****             {
+ 542              		.loc 1 125 0 discriminator 2
+ 543 0124 BB8E     		ldrh	r3, [r7, #52]
+ 544 0126 0133     		adds	r3, r3, #1
+ 545 0128 BB86     		strh	r3, [r7, #52]	@ movhi
+ 546              	.L28:
+ 125:ExtEEPROM.c   ****             {
+ 547              		.loc 1 125 0 is_stmt 0 discriminator 1
+ 548 012a BB8E     		ldrh	r3, [r7, #52]
+ 549 012c 1F2B     		cmp	r3, #31
+ 550 012e DDD9     		bls	.L31
+ 551              	.LBE7:
+ 132:ExtEEPROM.c   ****             }
+ 133:ExtEEPROM.c   ****             writeEEPROMBlock(array32Bytes);
+ 552              		.loc 1 133 0 is_stmt 1 discriminator 2
+ 553 0130 07F10C03 		add	r3, r7, #12
+ 554 0134 1846     		mov	r0, r3
+ 555 0136 FFF7FEFF 		bl	writeEEPROMBlock
+ 120:ExtEEPROM.c   ****         {
+ 556              		.loc 1 120 0 discriminator 2
+ 557 013a FB8E     		ldrh	r3, [r7, #54]
+ 558 013c 0133     		adds	r3, r3, #1
+ 559 013e FB86     		strh	r3, [r7, #54]	@ movhi
+ 560              	.L27:
+ 120:ExtEEPROM.c   ****         {
+ 561              		.loc 1 120 0 is_stmt 0 discriminator 1
+ 562 0140 FB8E     		ldrh	r3, [r7, #54]
+ 563 0142 032B     		cmp	r3, #3
+ 564 0144 B8D9     		bls	.L32
+ 565              	.LBE6:
+ 134:ExtEEPROM.c   ****         }
+ 135:ExtEEPROM.c   ****         return(1);
+ 566              		.loc 1 135 0 is_stmt 1
+ 567 0146 0123     		movs	r3, #1
+ 568 0148 4FE0     		b	.L40
+ 569              	.L26:
+ 136:ExtEEPROM.c   ****     }
+ 137:ExtEEPROM.c   ****     else if (targetHat == RPPSOC)
+ 570              		.loc 1 137 0
+ 571 014a FB88     		ldrh	r3, [r7, #6]
+ 572 014c 032B     		cmp	r3, #3
+ 573 014e 4BD1     		bne	.L33
+ 574              	.LBB8:
+ 138:ExtEEPROM.c   ****     {
+ 139:ExtEEPROM.c   ****         for (uint16 blockNumber = 0; blockNumber < NUM_32_BYTE_BLOCKS; blockNumber++)
+ 575              		.loc 1 139 0
+ 576 0150 0023     		movs	r3, #0
+ 577 0152 7B86     		strh	r3, [r7, #50]	@ movhi
+ 578 0154 43E0     		b	.L34
+ 579              	.L39:
+ 140:ExtEEPROM.c   ****         {
+ 141:ExtEEPROM.c   ****             dstPointer = 0;
+ 580              		.loc 1 141 0
+ 581 0156 0023     		movs	r3, #0
+ 582 0158 BB87     		strh	r3, [r7, #60]	@ movhi
+ 142:ExtEEPROM.c   ****             array32Bytes[dstPointer++] = 0;                         // 
+ 583              		.loc 1 142 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 14
+
+
+ 584 015a BB8F     		ldrh	r3, [r7, #60]
+ 585 015c 5A1C     		adds	r2, r3, #1
+ 586 015e BA87     		strh	r2, [r7, #60]	@ movhi
+ 587 0160 07F14002 		add	r2, r7, #64
+ 588 0164 1344     		add	r3, r3, r2
+ 589 0166 0022     		movs	r2, #0
+ 590 0168 03F8342C 		strb	r2, [r3, #-52]
+ 143:ExtEEPROM.c   ****             array32Bytes[dstPointer++] = (blockNumber<<5) & 0xff;   // Set the starting address
+ 591              		.loc 1 143 0
+ 592 016c BB8F     		ldrh	r3, [r7, #60]
+ 593 016e 5A1C     		adds	r2, r3, #1
+ 594 0170 BA87     		strh	r2, [r7, #60]	@ movhi
+ 595 0172 1946     		mov	r1, r3
+ 596 0174 7B8E     		ldrh	r3, [r7, #50]
+ 597 0176 5B01     		lsls	r3, r3, #5
+ 598 0178 DAB2     		uxtb	r2, r3
+ 599 017a 07F14003 		add	r3, r7, #64
+ 600 017e 0B44     		add	r3, r3, r1
+ 601 0180 03F8342C 		strb	r2, [r3, #-52]
+ 602              	.LBB9:
+ 144:ExtEEPROM.c   ****             for (uint16 loopCounter = 0; loopCounter< 32; loopCounter++)
+ 603              		.loc 1 144 0
+ 604 0184 0023     		movs	r3, #0
+ 605 0186 3B86     		strh	r3, [r7, #48]	@ movhi
+ 606 0188 1EE0     		b	.L35
+ 607              	.L38:
+ 145:ExtEEPROM.c   ****             {
+ 146:ExtEEPROM.c   ****                 if (srcPointer < RPPSOC_EEPROM_LENGTH)
+ 608              		.loc 1 146 0
+ 609 018a FB8F     		ldrh	r3, [r7, #62]
+ 610 018c 682B     		cmp	r3, #104
+ 611 018e 0CD8     		bhi	.L36
+ 147:ExtEEPROM.c   ****                     array32Bytes[dstPointer++] = rppsoc_eeprom[srcPointer];
+ 612              		.loc 1 147 0
+ 613 0190 BB8F     		ldrh	r3, [r7, #60]
+ 614 0192 5A1C     		adds	r2, r3, #1
+ 615 0194 BA87     		strh	r2, [r7, #60]	@ movhi
+ 616 0196 1946     		mov	r1, r3
+ 617 0198 FB8F     		ldrh	r3, [r7, #62]
+ 618 019a 184A     		ldr	r2, .L41+8
+ 619 019c D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ 620 019e 07F14003 		add	r3, r7, #64
+ 621 01a2 0B44     		add	r3, r3, r1
+ 622 01a4 03F8342C 		strb	r2, [r3, #-52]
+ 623 01a8 08E0     		b	.L37
+ 624              	.L36:
+ 148:ExtEEPROM.c   ****                 else
+ 149:ExtEEPROM.c   ****                     array32Bytes[dstPointer++] = 0;
+ 625              		.loc 1 149 0
+ 626 01aa BB8F     		ldrh	r3, [r7, #60]
+ 627 01ac 5A1C     		adds	r2, r3, #1
+ 628 01ae BA87     		strh	r2, [r7, #60]	@ movhi
+ 629 01b0 07F14002 		add	r2, r7, #64
+ 630 01b4 1344     		add	r3, r3, r2
+ 631 01b6 0022     		movs	r2, #0
+ 632 01b8 03F8342C 		strb	r2, [r3, #-52]
+ 633              	.L37:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 15
+
+
+ 150:ExtEEPROM.c   ****                 srcPointer++;
+ 634              		.loc 1 150 0 discriminator 2
+ 635 01bc FB8F     		ldrh	r3, [r7, #62]
+ 636 01be 0133     		adds	r3, r3, #1
+ 637 01c0 FB87     		strh	r3, [r7, #62]	@ movhi
+ 144:ExtEEPROM.c   ****             {
+ 638              		.loc 1 144 0 discriminator 2
+ 639 01c2 3B8E     		ldrh	r3, [r7, #48]
+ 640 01c4 0133     		adds	r3, r3, #1
+ 641 01c6 3B86     		strh	r3, [r7, #48]	@ movhi
+ 642              	.L35:
+ 144:ExtEEPROM.c   ****             {
+ 643              		.loc 1 144 0 is_stmt 0 discriminator 1
+ 644 01c8 3B8E     		ldrh	r3, [r7, #48]
+ 645 01ca 1F2B     		cmp	r3, #31
+ 646 01cc DDD9     		bls	.L38
+ 647              	.LBE9:
+ 151:ExtEEPROM.c   ****             }
+ 152:ExtEEPROM.c   ****             writeEEPROMBlock(array32Bytes);
+ 648              		.loc 1 152 0 is_stmt 1 discriminator 2
+ 649 01ce 07F10C03 		add	r3, r7, #12
+ 650 01d2 1846     		mov	r0, r3
+ 651 01d4 FFF7FEFF 		bl	writeEEPROMBlock
+ 139:ExtEEPROM.c   ****         {
+ 652              		.loc 1 139 0 discriminator 2
+ 653 01d8 7B8E     		ldrh	r3, [r7, #50]
+ 654 01da 0133     		adds	r3, r3, #1
+ 655 01dc 7B86     		strh	r3, [r7, #50]	@ movhi
+ 656              	.L34:
+ 139:ExtEEPROM.c   ****         {
+ 657              		.loc 1 139 0 is_stmt 0 discriminator 1
+ 658 01de 7B8E     		ldrh	r3, [r7, #50]
+ 659 01e0 032B     		cmp	r3, #3
+ 660 01e2 B8D9     		bls	.L39
+ 661              	.LBE8:
+ 153:ExtEEPROM.c   ****         }
+ 154:ExtEEPROM.c   ****         return(1);
+ 662              		.loc 1 154 0 is_stmt 1
+ 663 01e4 0123     		movs	r3, #1
+ 664 01e6 00E0     		b	.L40
+ 665              	.L33:
+ 155:ExtEEPROM.c   ****     }
+ 156:ExtEEPROM.c   ****     return(0);    
+ 666              		.loc 1 156 0
+ 667 01e8 0023     		movs	r3, #0
+ 668              	.L40:
+ 157:ExtEEPROM.c   **** }
+ 669              		.loc 1 157 0 discriminator 1
+ 670 01ea 1846     		mov	r0, r3
+ 671 01ec 4037     		adds	r7, r7, #64
+ 672              		.cfi_def_cfa_offset 8
+ 673 01ee BD46     		mov	sp, r7
+ 674              		.cfi_def_cfa_register 13
+ 675              		@ sp needed
+ 676 01f0 80BD     		pop	{r7, pc}
+ 677              	.L42:
+ 678 01f2 00BF     		.align	2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 16
+
+
+ 679              	.L41:
+ 680 01f4 00000000 		.word	rpp_uio_16_eeprom
+ 681 01f8 00000000 		.word	raspi_plus_gvs_cfg_eeprom
+ 682 01fc 00000000 		.word	rppsoc_eeprom
+ 683              		.cfi_endproc
+ 684              	.LFE66:
+ 685              		.size	writeEEPROM, .-writeEEPROM
+ 686              		.section	.text.writeEEPROMBlock,"ax",%progbits
+ 687              		.align	2
+ 688              		.global	writeEEPROMBlock
+ 689              		.thumb
+ 690              		.thumb_func
+ 691              		.type	writeEEPROMBlock, %function
+ 692              	writeEEPROMBlock:
+ 693              	.LFB67:
+ 158:ExtEEPROM.c   **** 
+ 159:ExtEEPROM.c   **** void writeEEPROMBlock(uint8 * cMessage)
+ 160:ExtEEPROM.c   **** {
+ 694              		.loc 1 160 0
+ 695              		.cfi_startproc
+ 696              		@ args = 0, pretend = 0, frame = 16
+ 697              		@ frame_needed = 1, uses_anonymous_args = 0
+ 698 0000 80B5     		push	{r7, lr}
+ 699              		.cfi_def_cfa_offset 8
+ 700              		.cfi_offset 7, -8
+ 701              		.cfi_offset 14, -4
+ 702 0002 84B0     		sub	sp, sp, #16
+ 703              		.cfi_def_cfa_offset 24
+ 704 0004 00AF     		add	r7, sp, #0
+ 705              		.cfi_def_cfa_register 7
+ 706 0006 7860     		str	r0, [r7, #4]
+ 161:ExtEEPROM.c   ****     //Following API writes the data from PSoC3 RAM buffer to EEPROM
+ 162:ExtEEPROM.c   ****     //SLAVE_ADDR is the slave address in this API
+ 163:ExtEEPROM.c   ****     //cMessage is the pointer to array which contains the data to be written to EEPROM.
+ 164:ExtEEPROM.c   ****     //cLength is the number of bytes which have to be written to EEPROM
+ 165:ExtEEPROM.c   ****     //I2C_MODE_COMPLETE_XFER, is to send data completly before sending stop command.
+ 166:ExtEEPROM.c   **** 
+ 167:ExtEEPROM.c   ****     uint8 SLAVE_ADDR = 0x50;
+ 707              		.loc 1 167 0
+ 708 0008 5023     		movs	r3, #80
+ 709 000a FB73     		strb	r3, [r7, #15]
+ 168:ExtEEPROM.c   ****     uint8 cLength = 34;         // First two are the address of the block to write
+ 710              		.loc 1 168 0
+ 711 000c 2223     		movs	r3, #34
+ 712 000e BB73     		strb	r3, [r7, #14]
+ 169:ExtEEPROM.c   ****     
+ 170:ExtEEPROM.c   ****     I2C_EEPROM_MasterWriteBuf(SLAVE_ADDR, cMessage, cLength, I2C_EEPROM_MODE_COMPLETE_XFER);
+ 713              		.loc 1 170 0
+ 714 0010 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 715 0012 F87B     		ldrb	r0, [r7, #15]	@ zero_extendqisi2
+ 716 0014 0023     		movs	r3, #0
+ 717 0016 7968     		ldr	r1, [r7, #4]
+ 718 0018 FFF7FEFF 		bl	I2C_EEPROM_MasterWriteBuf
+ 171:ExtEEPROM.c   ****     
+ 172:ExtEEPROM.c   ****     //wait until Transfer is complete
+ 173:ExtEEPROM.c   ****     while((I2C_EEPROM_MasterStatus() & I2C_EEPROM_MSTAT_WR_CMPLT )==0); 
+ 719              		.loc 1 173 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 17
+
+
+ 720 001c 00BF     		nop
+ 721              	.L44:
+ 722              		.loc 1 173 0 is_stmt 0 discriminator 1
+ 723 001e FFF7FEFF 		bl	I2C_EEPROM_MasterStatus
+ 724 0022 0346     		mov	r3, r0
+ 725 0024 03F00203 		and	r3, r3, #2
+ 726 0028 002B     		cmp	r3, #0
+ 727 002a F8D0     		beq	.L44
+ 174:ExtEEPROM.c   ****     
+ 175:ExtEEPROM.c   ****     // 10 mS delay to complete the write operation(twr)
+ 176:ExtEEPROM.c   ****     CyDelay(10);    
+ 728              		.loc 1 176 0 is_stmt 1
+ 729 002c 0A20     		movs	r0, #10
+ 730 002e FFF7FEFF 		bl	CyDelay
+ 177:ExtEEPROM.c   **** }
+ 731              		.loc 1 177 0
+ 732 0032 00BF     		nop
+ 733 0034 1037     		adds	r7, r7, #16
+ 734              		.cfi_def_cfa_offset 8
+ 735 0036 BD46     		mov	sp, r7
+ 736              		.cfi_def_cfa_register 13
+ 737              		@ sp needed
+ 738 0038 80BD     		pop	{r7, pc}
+ 739              		.cfi_endproc
+ 740              	.LFE67:
+ 741              		.size	writeEEPROMBlock, .-writeEEPROMBlock
+ 742 003a 00BF     		.text
+ 743              	.Letext0:
+ 744              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 745              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 746              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 747              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 748              		.file 6 "EEPROM_Images.h"
+ 749              		.file 7 "RPI_PSOC5.h"
+ 750              		.section	.debug_info,"",%progbits
+ 751              	.Ldebug_info0:
+ 752 0000 AF030000 		.4byte	0x3af
+ 753 0004 0400     		.2byte	0x4
+ 754 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 755 000a 04       		.byte	0x4
+ 756 000b 01       		.uleb128 0x1
+ 757 000c 20000000 		.4byte	.LASF48
+ 758 0010 0C       		.byte	0xc
+ 759 0011 BA000000 		.4byte	.LASF49
+ 760 0015 89010000 		.4byte	.LASF50
+ 761 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 762 001d 00000000 		.4byte	0
+ 763 0021 00000000 		.4byte	.Ldebug_line0
+ 764 0025 02       		.uleb128 0x2
+ 765 0026 01       		.byte	0x1
+ 766 0027 06       		.byte	0x6
+ 767 0028 35010000 		.4byte	.LASF0
+ 768 002c 02       		.uleb128 0x2
+ 769 002d 01       		.byte	0x1
+ 770 002e 08       		.byte	0x8
+ 771 002f 5C010000 		.4byte	.LASF1
+ 772 0033 02       		.uleb128 0x2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 18
+
+
+ 773 0034 02       		.byte	0x2
+ 774 0035 05       		.byte	0x5
+ 775 0036 DB020000 		.4byte	.LASF2
+ 776 003a 02       		.uleb128 0x2
+ 777 003b 02       		.byte	0x2
+ 778 003c 07       		.byte	0x7
+ 779 003d E8010000 		.4byte	.LASF3
+ 780 0041 03       		.uleb128 0x3
+ 781 0042 E0000000 		.4byte	.LASF9
+ 782 0046 02       		.byte	0x2
+ 783 0047 3F       		.byte	0x3f
+ 784 0048 4C000000 		.4byte	0x4c
+ 785 004c 02       		.uleb128 0x2
+ 786 004d 04       		.byte	0x4
+ 787 004e 05       		.byte	0x5
+ 788 004f 09030000 		.4byte	.LASF4
+ 789 0053 02       		.uleb128 0x2
+ 790 0054 04       		.byte	0x4
+ 791 0055 07       		.byte	0x7
+ 792 0056 1D020000 		.4byte	.LASF5
+ 793 005a 02       		.uleb128 0x2
+ 794 005b 08       		.byte	0x8
+ 795 005c 05       		.byte	0x5
+ 796 005d AB020000 		.4byte	.LASF6
+ 797 0061 02       		.uleb128 0x2
+ 798 0062 08       		.byte	0x8
+ 799 0063 07       		.byte	0x7
+ 800 0064 4E020000 		.4byte	.LASF7
+ 801 0068 04       		.uleb128 0x4
+ 802 0069 04       		.byte	0x4
+ 803 006a 05       		.byte	0x5
+ 804 006b 696E7400 		.ascii	"int\000"
+ 805 006f 02       		.uleb128 0x2
+ 806 0070 04       		.byte	0x4
+ 807 0071 07       		.byte	0x7
+ 808 0072 41020000 		.4byte	.LASF8
+ 809 0076 03       		.uleb128 0x3
+ 810 0077 1A010000 		.4byte	.LASF10
+ 811 007b 03       		.byte	0x3
+ 812 007c 2C       		.byte	0x2c
+ 813 007d 41000000 		.4byte	0x41
+ 814 0081 05       		.uleb128 0x5
+ 815 0082 EF020000 		.4byte	.LASF11
+ 816 0086 04       		.byte	0x4
+ 817 0087 E401     		.2byte	0x1e4
+ 818 0089 2C000000 		.4byte	0x2c
+ 819 008d 05       		.uleb128 0x5
+ 820 008e 2F020000 		.4byte	.LASF12
+ 821 0092 04       		.byte	0x4
+ 822 0093 E501     		.2byte	0x1e5
+ 823 0095 3A000000 		.4byte	0x3a
+ 824 0099 02       		.uleb128 0x2
+ 825 009a 04       		.byte	0x4
+ 826 009b 04       		.byte	0x4
+ 827 009c 22010000 		.4byte	.LASF13
+ 828 00a0 02       		.uleb128 0x2
+ 829 00a1 08       		.byte	0x8
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 19
+
+
+ 830 00a2 04       		.byte	0x4
+ 831 00a3 08010000 		.4byte	.LASF14
+ 832 00a7 02       		.uleb128 0x2
+ 833 00a8 01       		.byte	0x1
+ 834 00a9 08       		.byte	0x8
+ 835 00aa B9020000 		.4byte	.LASF15
+ 836 00ae 02       		.uleb128 0x2
+ 837 00af 08       		.byte	0x8
+ 838 00b0 04       		.byte	0x4
+ 839 00b1 1A030000 		.4byte	.LASF16
+ 840 00b5 02       		.uleb128 0x2
+ 841 00b6 04       		.byte	0x4
+ 842 00b7 07       		.byte	0x7
+ 843 00b8 95020000 		.4byte	.LASF17
+ 844 00bc 06       		.uleb128 0x6
+ 845 00bd A7000000 		.4byte	0xa7
+ 846 00c1 CC000000 		.4byte	0xcc
+ 847 00c5 07       		.uleb128 0x7
+ 848 00c6 B5000000 		.4byte	0xb5
+ 849 00ca 07       		.byte	0x7
+ 850 00cb 00       		.byte	0
+ 851 00cc 08       		.uleb128 0x8
+ 852 00cd 00000000 		.4byte	.LASF51
+ 853 00d1 01       		.byte	0x1
+ 854 00d2 2C000000 		.4byte	0x2c
+ 855 00d6 07       		.byte	0x7
+ 856 00d7 1B       		.byte	0x1b
+ 857 00d8 0D010000 		.4byte	0x10d
+ 858 00dc 09       		.uleb128 0x9
+ 859 00dd 10000000 		.4byte	.LASF18
+ 860 00e1 00       		.byte	0
+ 861 00e2 09       		.uleb128 0x9
+ 862 00e3 53010000 		.4byte	.LASF19
+ 863 00e7 01       		.byte	0x1
+ 864 00e8 09       		.uleb128 0x9
+ 865 00e9 7F010000 		.4byte	.LASF20
+ 866 00ed 02       		.byte	0x2
+ 867 00ee 09       		.uleb128 0x9
+ 868 00ef F4000000 		.4byte	.LASF21
+ 869 00f3 03       		.byte	0x3
+ 870 00f4 09       		.uleb128 0x9
+ 871 00f5 C9020000 		.4byte	.LASF22
+ 872 00f9 04       		.byte	0x4
+ 873 00fa 09       		.uleb128 0x9
+ 874 00fb 28010000 		.4byte	.LASF23
+ 875 00ff 05       		.byte	0x5
+ 876 0100 09       		.uleb128 0x9
+ 877 0101 E5020000 		.4byte	.LASF24
+ 878 0105 06       		.byte	0x6
+ 879 0106 09       		.uleb128 0x9
+ 880 0107 12030000 		.4byte	.LASF25
+ 881 010b 07       		.byte	0x7
+ 882 010c 00       		.byte	0
+ 883 010d 0A       		.uleb128 0xa
+ 884 010e 0F010000 		.4byte	.LASF29
+ 885 0112 01       		.byte	0x1
+ 886 0113 10       		.byte	0x10
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 20
+
+
+ 887 0114 00000000 		.4byte	.LFB64
+ 888 0118 68000000 		.4byte	.LFE64-.LFB64
+ 889 011c 01       		.uleb128 0x1
+ 890 011d 9C       		.byte	0x9c
+ 891 011e 5B010000 		.4byte	0x15b
+ 892 0122 0B       		.uleb128 0xb
+ 893 0123 9E020000 		.4byte	.LASF31
+ 894 0127 01       		.byte	0x1
+ 895 0128 10       		.byte	0x10
+ 896 0129 5B010000 		.4byte	0x15b
+ 897 012d 02       		.uleb128 0x2
+ 898 012e 91       		.byte	0x91
+ 899 012f 6C       		.sleb128 -20
+ 900 0130 0C       		.uleb128 0xc
+ 901 0131 65020000 		.4byte	.LASF26
+ 902 0135 01       		.byte	0x1
+ 903 0136 12       		.byte	0x12
+ 904 0137 81000000 		.4byte	0x81
+ 905 013b 02       		.uleb128 0x2
+ 906 013c 91       		.byte	0x91
+ 907 013d 77       		.sleb128 -9
+ 908 013e 0C       		.uleb128 0xc
+ 909 013f D2020000 		.4byte	.LASF27
+ 910 0143 01       		.byte	0x1
+ 911 0144 13       		.byte	0x13
+ 912 0145 61010000 		.4byte	0x161
+ 913 0149 02       		.uleb128 0x2
+ 914 014a 91       		.byte	0x91
+ 915 014b 70       		.sleb128 -16
+ 916 014c 0C       		.uleb128 0xc
+ 917 014d 8D020000 		.4byte	.LASF28
+ 918 0151 01       		.byte	0x1
+ 919 0152 14       		.byte	0x14
+ 920 0153 8D000000 		.4byte	0x8d
+ 921 0157 02       		.uleb128 0x2
+ 922 0158 91       		.byte	0x91
+ 923 0159 74       		.sleb128 -12
+ 924 015a 00       		.byte	0
+ 925 015b 0D       		.uleb128 0xd
+ 926 015c 04       		.byte	0x4
+ 927 015d 81000000 		.4byte	0x81
+ 928 0161 06       		.uleb128 0x6
+ 929 0162 81000000 		.4byte	0x81
+ 930 0166 71010000 		.4byte	0x171
+ 931 016a 07       		.uleb128 0x7
+ 932 016b B5000000 		.4byte	0xb5
+ 933 016f 01       		.byte	0x1
+ 934 0170 00       		.byte	0
+ 935 0171 0A       		.uleb128 0xa
+ 936 0172 36020000 		.4byte	.LASF30
+ 937 0176 01       		.byte	0x1
+ 938 0177 31       		.byte	0x31
+ 939 0178 00000000 		.4byte	.LFB65
+ 940 017c CC010000 		.4byte	.LFE65-.LFB65
+ 941 0180 01       		.uleb128 0x1
+ 942 0181 9C       		.byte	0x9c
+ 943 0182 F1010000 		.4byte	0x1f1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 21
+
+
+ 944 0186 0B       		.uleb128 0xb
+ 945 0187 9E020000 		.4byte	.LASF31
+ 946 018b 01       		.byte	0x1
+ 947 018c 31       		.byte	0x31
+ 948 018d 5B010000 		.4byte	0x15b
+ 949 0191 03       		.uleb128 0x3
+ 950 0192 91       		.byte	0x91
+ 951 0193 9C7F     		.sleb128 -100
+ 952 0195 0C       		.uleb128 0xc
+ 953 0196 26030000 		.4byte	.LASF32
+ 954 019a 01       		.byte	0x1
+ 955 019b 33       		.byte	0x33
+ 956 019c BC000000 		.4byte	0xbc
+ 957 01a0 02       		.uleb128 0x2
+ 958 01a1 91       		.byte	0x91
+ 959 01a2 68       		.sleb128 -24
+ 960 01a3 0C       		.uleb128 0xc
+ 961 01a4 08020000 		.4byte	.LASF33
+ 962 01a8 01       		.byte	0x1
+ 963 01a9 35       		.byte	0x35
+ 964 01aa 8D000000 		.4byte	0x8d
+ 965 01ae 02       		.uleb128 0x2
+ 966 01af 91       		.byte	0x91
+ 967 01b0 76       		.sleb128 -10
+ 968 01b1 0C       		.uleb128 0xc
+ 969 01b2 EA000000 		.4byte	.LASF34
+ 970 01b6 01       		.byte	0x1
+ 971 01b7 36       		.byte	0x36
+ 972 01b8 8D000000 		.4byte	0x8d
+ 973 01bc 02       		.uleb128 0x2
+ 974 01bd 91       		.byte	0x91
+ 975 01be 74       		.sleb128 -12
+ 976 01bf 0E       		.uleb128 0xe
+ 977 01c0 22000000 		.4byte	.LBB2
+ 978 01c4 7E010000 		.4byte	.LBE2-.LBB2
+ 979 01c8 0C       		.uleb128 0xc
+ 980 01c9 6A010000 		.4byte	.LASF35
+ 981 01cd 01       		.byte	0x1
+ 982 01ce 39       		.byte	0x39
+ 983 01cf F1010000 		.4byte	0x1f1
+ 984 01d3 03       		.uleb128 0x3
+ 985 01d4 91       		.byte	0x91
+ 986 01d5 A47F     		.sleb128 -92
+ 987 01d7 0E       		.uleb128 0xe
+ 988 01d8 CC000000 		.4byte	.LBB3
+ 989 01dc 90000000 		.4byte	.LBE3-.LBB3
+ 990 01e0 0C       		.uleb128 0xc
+ 991 01e1 01030000 		.4byte	.LASF36
+ 992 01e5 01       		.byte	0x1
+ 993 01e6 46       		.byte	0x46
+ 994 01e7 8D000000 		.4byte	0x8d
+ 995 01eb 02       		.uleb128 0x2
+ 996 01ec 91       		.byte	0x91
+ 997 01ed 72       		.sleb128 -14
+ 998 01ee 00       		.byte	0
+ 999 01ef 00       		.byte	0
+ 1000 01f0 00       		.byte	0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 22
+
+
+ 1001 01f1 06       		.uleb128 0x6
+ 1002 01f2 A7000000 		.4byte	0xa7
+ 1003 01f6 01020000 		.4byte	0x201
+ 1004 01fa 07       		.uleb128 0x7
+ 1005 01fb B5000000 		.4byte	0xb5
+ 1006 01ff 40       		.byte	0x40
+ 1007 0200 00       		.byte	0
+ 1008 0201 0F       		.uleb128 0xf
+ 1009 0202 F5020000 		.4byte	.LASF52
+ 1010 0206 01       		.byte	0x1
+ 1011 0207 5D       		.byte	0x5d
+ 1012 0208 81000000 		.4byte	0x81
+ 1013 020c 00000000 		.4byte	.LFB66
+ 1014 0210 00020000 		.4byte	.LFE66-.LFB66
+ 1015 0214 01       		.uleb128 0x1
+ 1016 0215 9C       		.byte	0x9c
+ 1017 0216 EC020000 		.4byte	0x2ec
+ 1018 021a 0B       		.uleb128 0xb
+ 1019 021b 75010000 		.4byte	.LASF37
+ 1020 021f 01       		.byte	0x1
+ 1021 0220 5D       		.byte	0x5d
+ 1022 0221 8D000000 		.4byte	0x8d
+ 1023 0225 03       		.uleb128 0x3
+ 1024 0226 91       		.byte	0x91
+ 1025 0227 BE7F     		.sleb128 -66
+ 1026 0229 0C       		.uleb128 0xc
+ 1027 022a FB000000 		.4byte	.LASF38
+ 1028 022e 01       		.byte	0x1
+ 1029 022f 5F       		.byte	0x5f
+ 1030 0230 EC020000 		.4byte	0x2ec
+ 1031 0234 02       		.uleb128 0x2
+ 1032 0235 91       		.byte	0x91
+ 1033 0236 44       		.sleb128 -60
+ 1034 0237 0C       		.uleb128 0xc
+ 1035 0238 12020000 		.4byte	.LASF39
+ 1036 023c 01       		.byte	0x1
+ 1037 023d 60       		.byte	0x60
+ 1038 023e 8D000000 		.4byte	0x8d
+ 1039 0242 02       		.uleb128 0x2
+ 1040 0243 91       		.byte	0x91
+ 1041 0244 76       		.sleb128 -10
+ 1042 0245 0C       		.uleb128 0xc
+ 1043 0246 BE020000 		.4byte	.LASF40
+ 1044 024a 01       		.byte	0x1
+ 1045 024b 61       		.byte	0x61
+ 1046 024c 8D000000 		.4byte	0x8d
+ 1047 0250 02       		.uleb128 0x2
+ 1048 0251 91       		.byte	0x91
+ 1049 0252 74       		.sleb128 -12
+ 1050 0253 10       		.uleb128 0x10
+ 1051 0254 14000000 		.4byte	.LBB4
+ 1052 0258 94000000 		.4byte	.LBE4-.LBB4
+ 1053 025c 87020000 		.4byte	0x287
+ 1054 0260 0C       		.uleb128 0xc
+ 1055 0261 AE000000 		.4byte	.LASF41
+ 1056 0265 01       		.byte	0x1
+ 1057 0266 65       		.byte	0x65
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 23
+
+
+ 1058 0267 8D000000 		.4byte	0x8d
+ 1059 026b 02       		.uleb128 0x2
+ 1060 026c 91       		.byte	0x91
+ 1061 026d 72       		.sleb128 -14
+ 1062 026e 0E       		.uleb128 0xe
+ 1063 026f 48000000 		.4byte	.LBB5
+ 1064 0273 4A000000 		.4byte	.LBE5-.LBB5
+ 1065 0277 0C       		.uleb128 0xc
+ 1066 0278 81020000 		.4byte	.LASF42
+ 1067 027c 01       		.byte	0x1
+ 1068 027d 6A       		.byte	0x6a
+ 1069 027e 8D000000 		.4byte	0x8d
+ 1070 0282 02       		.uleb128 0x2
+ 1071 0283 91       		.byte	0x91
+ 1072 0284 70       		.sleb128 -16
+ 1073 0285 00       		.byte	0
+ 1074 0286 00       		.byte	0
+ 1075 0287 10       		.uleb128 0x10
+ 1076 0288 B2000000 		.4byte	.LBB6
+ 1077 028c 94000000 		.4byte	.LBE6-.LBB6
+ 1078 0290 BB020000 		.4byte	0x2bb
+ 1079 0294 0C       		.uleb128 0xc
+ 1080 0295 AE000000 		.4byte	.LASF41
+ 1081 0299 01       		.byte	0x1
+ 1082 029a 78       		.byte	0x78
+ 1083 029b 8D000000 		.4byte	0x8d
+ 1084 029f 02       		.uleb128 0x2
+ 1085 02a0 91       		.byte	0x91
+ 1086 02a1 6E       		.sleb128 -18
+ 1087 02a2 0E       		.uleb128 0xe
+ 1088 02a3 E6000000 		.4byte	.LBB7
+ 1089 02a7 4A000000 		.4byte	.LBE7-.LBB7
+ 1090 02ab 0C       		.uleb128 0xc
+ 1091 02ac 81020000 		.4byte	.LASF42
+ 1092 02b0 01       		.byte	0x1
+ 1093 02b1 7D       		.byte	0x7d
+ 1094 02b2 8D000000 		.4byte	0x8d
+ 1095 02b6 02       		.uleb128 0x2
+ 1096 02b7 91       		.byte	0x91
+ 1097 02b8 6C       		.sleb128 -20
+ 1098 02b9 00       		.byte	0
+ 1099 02ba 00       		.byte	0
+ 1100 02bb 0E       		.uleb128 0xe
+ 1101 02bc 50010000 		.4byte	.LBB8
+ 1102 02c0 94000000 		.4byte	.LBE8-.LBB8
+ 1103 02c4 0C       		.uleb128 0xc
+ 1104 02c5 AE000000 		.4byte	.LASF41
+ 1105 02c9 01       		.byte	0x1
+ 1106 02ca 8B       		.byte	0x8b
+ 1107 02cb 8D000000 		.4byte	0x8d
+ 1108 02cf 02       		.uleb128 0x2
+ 1109 02d0 91       		.byte	0x91
+ 1110 02d1 6A       		.sleb128 -22
+ 1111 02d2 0E       		.uleb128 0xe
+ 1112 02d3 84010000 		.4byte	.LBB9
+ 1113 02d7 4A000000 		.4byte	.LBE9-.LBB9
+ 1114 02db 0C       		.uleb128 0xc
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 24
+
+
+ 1115 02dc 81020000 		.4byte	.LASF42
+ 1116 02e0 01       		.byte	0x1
+ 1117 02e1 90       		.byte	0x90
+ 1118 02e2 8D000000 		.4byte	0x8d
+ 1119 02e6 02       		.uleb128 0x2
+ 1120 02e7 91       		.byte	0x91
+ 1121 02e8 68       		.sleb128 -24
+ 1122 02e9 00       		.byte	0
+ 1123 02ea 00       		.byte	0
+ 1124 02eb 00       		.byte	0
+ 1125 02ec 06       		.uleb128 0x6
+ 1126 02ed 81000000 		.4byte	0x81
+ 1127 02f1 FC020000 		.4byte	0x2fc
+ 1128 02f5 07       		.uleb128 0x7
+ 1129 02f6 B5000000 		.4byte	0xb5
+ 1130 02fa 21       		.byte	0x21
+ 1131 02fb 00       		.byte	0
+ 1132 02fc 0A       		.uleb128 0xa
+ 1133 02fd 70020000 		.4byte	.LASF43
+ 1134 0301 01       		.byte	0x1
+ 1135 0302 9F       		.byte	0x9f
+ 1136 0303 00000000 		.4byte	.LFB67
+ 1137 0307 3A000000 		.4byte	.LFE67-.LFB67
+ 1138 030b 01       		.uleb128 0x1
+ 1139 030c 9C       		.byte	0x9c
+ 1140 030d 3C030000 		.4byte	0x33c
+ 1141 0311 0B       		.uleb128 0xb
+ 1142 0312 D2020000 		.4byte	.LASF27
+ 1143 0316 01       		.byte	0x1
+ 1144 0317 9F       		.byte	0x9f
+ 1145 0318 5B010000 		.4byte	0x15b
+ 1146 031c 02       		.uleb128 0x2
+ 1147 031d 91       		.byte	0x91
+ 1148 031e 6C       		.sleb128 -20
+ 1149 031f 0C       		.uleb128 0xc
+ 1150 0320 65020000 		.4byte	.LASF26
+ 1151 0324 01       		.byte	0x1
+ 1152 0325 A7       		.byte	0xa7
+ 1153 0326 81000000 		.4byte	0x81
+ 1154 032a 02       		.uleb128 0x2
+ 1155 032b 91       		.byte	0x91
+ 1156 032c 77       		.sleb128 -9
+ 1157 032d 0C       		.uleb128 0xc
+ 1158 032e 8D020000 		.4byte	.LASF28
+ 1159 0332 01       		.byte	0x1
+ 1160 0333 A8       		.byte	0xa8
+ 1161 0334 81000000 		.4byte	0x81
+ 1162 0338 02       		.uleb128 0x2
+ 1163 0339 91       		.byte	0x91
+ 1164 033a 76       		.sleb128 -10
+ 1165 033b 00       		.byte	0
+ 1166 033c 11       		.uleb128 0x11
+ 1167 033d FB010000 		.4byte	.LASF44
+ 1168 0341 05       		.byte	0x5
+ 1169 0342 1207     		.2byte	0x712
+ 1170 0344 48030000 		.4byte	0x348
+ 1171 0348 12       		.uleb128 0x12
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 25
+
+
+ 1172 0349 76000000 		.4byte	0x76
+ 1173 034d 06       		.uleb128 0x6
+ 1174 034e 5D030000 		.4byte	0x35d
+ 1175 0352 5D030000 		.4byte	0x35d
+ 1176 0356 07       		.uleb128 0x7
+ 1177 0357 B5000000 		.4byte	0xb5
+ 1178 035b 6C       		.byte	0x6c
+ 1179 035c 00       		.byte	0
+ 1180 035d 13       		.uleb128 0x13
+ 1181 035e 81000000 		.4byte	0x81
+ 1182 0362 14       		.uleb128 0x14
+ 1183 0363 41010000 		.4byte	.LASF45
+ 1184 0367 06       		.byte	0x6
+ 1185 0368 13       		.byte	0x13
+ 1186 0369 6D030000 		.4byte	0x36d
+ 1187 036d 13       		.uleb128 0x13
+ 1188 036e 4D030000 		.4byte	0x34d
+ 1189 0372 06       		.uleb128 0x6
+ 1190 0373 5D030000 		.4byte	0x35d
+ 1191 0377 82030000 		.4byte	0x382
+ 1192 037b 07       		.uleb128 0x7
+ 1193 037c B5000000 		.4byte	0xb5
+ 1194 0380 74       		.byte	0x74
+ 1195 0381 00       		.byte	0
+ 1196 0382 14       		.uleb128 0x14
+ 1197 0383 C6000000 		.4byte	.LASF46
+ 1198 0387 06       		.byte	0x6
+ 1199 0388 16       		.byte	0x16
+ 1200 0389 8D030000 		.4byte	0x38d
+ 1201 038d 13       		.uleb128 0x13
+ 1202 038e 72030000 		.4byte	0x372
+ 1203 0392 06       		.uleb128 0x6
+ 1204 0393 5D030000 		.4byte	0x35d
+ 1205 0397 A2030000 		.4byte	0x3a2
+ 1206 039b 07       		.uleb128 0x7
+ 1207 039c B5000000 		.4byte	0xb5
+ 1208 03a0 68       		.byte	0x68
+ 1209 03a1 00       		.byte	0
+ 1210 03a2 14       		.uleb128 0x14
+ 1211 03a3 31030000 		.4byte	.LASF47
+ 1212 03a7 06       		.byte	0x6
+ 1213 03a8 19       		.byte	0x19
+ 1214 03a9 AD030000 		.4byte	0x3ad
+ 1215 03ad 13       		.uleb128 0x13
+ 1216 03ae 92030000 		.4byte	0x392
+ 1217 03b2 00       		.byte	0
+ 1218              		.section	.debug_abbrev,"",%progbits
+ 1219              	.Ldebug_abbrev0:
+ 1220 0000 01       		.uleb128 0x1
+ 1221 0001 11       		.uleb128 0x11
+ 1222 0002 01       		.byte	0x1
+ 1223 0003 25       		.uleb128 0x25
+ 1224 0004 0E       		.uleb128 0xe
+ 1225 0005 13       		.uleb128 0x13
+ 1226 0006 0B       		.uleb128 0xb
+ 1227 0007 03       		.uleb128 0x3
+ 1228 0008 0E       		.uleb128 0xe
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 26
+
+
+ 1229 0009 1B       		.uleb128 0x1b
+ 1230 000a 0E       		.uleb128 0xe
+ 1231 000b 55       		.uleb128 0x55
+ 1232 000c 17       		.uleb128 0x17
+ 1233 000d 11       		.uleb128 0x11
+ 1234 000e 01       		.uleb128 0x1
+ 1235 000f 10       		.uleb128 0x10
+ 1236 0010 17       		.uleb128 0x17
+ 1237 0011 00       		.byte	0
+ 1238 0012 00       		.byte	0
+ 1239 0013 02       		.uleb128 0x2
+ 1240 0014 24       		.uleb128 0x24
+ 1241 0015 00       		.byte	0
+ 1242 0016 0B       		.uleb128 0xb
+ 1243 0017 0B       		.uleb128 0xb
+ 1244 0018 3E       		.uleb128 0x3e
+ 1245 0019 0B       		.uleb128 0xb
+ 1246 001a 03       		.uleb128 0x3
+ 1247 001b 0E       		.uleb128 0xe
+ 1248 001c 00       		.byte	0
+ 1249 001d 00       		.byte	0
+ 1250 001e 03       		.uleb128 0x3
+ 1251 001f 16       		.uleb128 0x16
+ 1252 0020 00       		.byte	0
+ 1253 0021 03       		.uleb128 0x3
+ 1254 0022 0E       		.uleb128 0xe
+ 1255 0023 3A       		.uleb128 0x3a
+ 1256 0024 0B       		.uleb128 0xb
+ 1257 0025 3B       		.uleb128 0x3b
+ 1258 0026 0B       		.uleb128 0xb
+ 1259 0027 49       		.uleb128 0x49
+ 1260 0028 13       		.uleb128 0x13
+ 1261 0029 00       		.byte	0
+ 1262 002a 00       		.byte	0
+ 1263 002b 04       		.uleb128 0x4
+ 1264 002c 24       		.uleb128 0x24
+ 1265 002d 00       		.byte	0
+ 1266 002e 0B       		.uleb128 0xb
+ 1267 002f 0B       		.uleb128 0xb
+ 1268 0030 3E       		.uleb128 0x3e
+ 1269 0031 0B       		.uleb128 0xb
+ 1270 0032 03       		.uleb128 0x3
+ 1271 0033 08       		.uleb128 0x8
+ 1272 0034 00       		.byte	0
+ 1273 0035 00       		.byte	0
+ 1274 0036 05       		.uleb128 0x5
+ 1275 0037 16       		.uleb128 0x16
+ 1276 0038 00       		.byte	0
+ 1277 0039 03       		.uleb128 0x3
+ 1278 003a 0E       		.uleb128 0xe
+ 1279 003b 3A       		.uleb128 0x3a
+ 1280 003c 0B       		.uleb128 0xb
+ 1281 003d 3B       		.uleb128 0x3b
+ 1282 003e 05       		.uleb128 0x5
+ 1283 003f 49       		.uleb128 0x49
+ 1284 0040 13       		.uleb128 0x13
+ 1285 0041 00       		.byte	0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 27
+
+
+ 1286 0042 00       		.byte	0
+ 1287 0043 06       		.uleb128 0x6
+ 1288 0044 01       		.uleb128 0x1
+ 1289 0045 01       		.byte	0x1
+ 1290 0046 49       		.uleb128 0x49
+ 1291 0047 13       		.uleb128 0x13
+ 1292 0048 01       		.uleb128 0x1
+ 1293 0049 13       		.uleb128 0x13
+ 1294 004a 00       		.byte	0
+ 1295 004b 00       		.byte	0
+ 1296 004c 07       		.uleb128 0x7
+ 1297 004d 21       		.uleb128 0x21
+ 1298 004e 00       		.byte	0
+ 1299 004f 49       		.uleb128 0x49
+ 1300 0050 13       		.uleb128 0x13
+ 1301 0051 2F       		.uleb128 0x2f
+ 1302 0052 0B       		.uleb128 0xb
+ 1303 0053 00       		.byte	0
+ 1304 0054 00       		.byte	0
+ 1305 0055 08       		.uleb128 0x8
+ 1306 0056 04       		.uleb128 0x4
+ 1307 0057 01       		.byte	0x1
+ 1308 0058 03       		.uleb128 0x3
+ 1309 0059 0E       		.uleb128 0xe
+ 1310 005a 0B       		.uleb128 0xb
+ 1311 005b 0B       		.uleb128 0xb
+ 1312 005c 49       		.uleb128 0x49
+ 1313 005d 13       		.uleb128 0x13
+ 1314 005e 3A       		.uleb128 0x3a
+ 1315 005f 0B       		.uleb128 0xb
+ 1316 0060 3B       		.uleb128 0x3b
+ 1317 0061 0B       		.uleb128 0xb
+ 1318 0062 01       		.uleb128 0x1
+ 1319 0063 13       		.uleb128 0x13
+ 1320 0064 00       		.byte	0
+ 1321 0065 00       		.byte	0
+ 1322 0066 09       		.uleb128 0x9
+ 1323 0067 28       		.uleb128 0x28
+ 1324 0068 00       		.byte	0
+ 1325 0069 03       		.uleb128 0x3
+ 1326 006a 0E       		.uleb128 0xe
+ 1327 006b 1C       		.uleb128 0x1c
+ 1328 006c 0B       		.uleb128 0xb
+ 1329 006d 00       		.byte	0
+ 1330 006e 00       		.byte	0
+ 1331 006f 0A       		.uleb128 0xa
+ 1332 0070 2E       		.uleb128 0x2e
+ 1333 0071 01       		.byte	0x1
+ 1334 0072 3F       		.uleb128 0x3f
+ 1335 0073 19       		.uleb128 0x19
+ 1336 0074 03       		.uleb128 0x3
+ 1337 0075 0E       		.uleb128 0xe
+ 1338 0076 3A       		.uleb128 0x3a
+ 1339 0077 0B       		.uleb128 0xb
+ 1340 0078 3B       		.uleb128 0x3b
+ 1341 0079 0B       		.uleb128 0xb
+ 1342 007a 27       		.uleb128 0x27
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 28
+
+
+ 1343 007b 19       		.uleb128 0x19
+ 1344 007c 11       		.uleb128 0x11
+ 1345 007d 01       		.uleb128 0x1
+ 1346 007e 12       		.uleb128 0x12
+ 1347 007f 06       		.uleb128 0x6
+ 1348 0080 40       		.uleb128 0x40
+ 1349 0081 18       		.uleb128 0x18
+ 1350 0082 9642     		.uleb128 0x2116
+ 1351 0084 19       		.uleb128 0x19
+ 1352 0085 01       		.uleb128 0x1
+ 1353 0086 13       		.uleb128 0x13
+ 1354 0087 00       		.byte	0
+ 1355 0088 00       		.byte	0
+ 1356 0089 0B       		.uleb128 0xb
+ 1357 008a 05       		.uleb128 0x5
+ 1358 008b 00       		.byte	0
+ 1359 008c 03       		.uleb128 0x3
+ 1360 008d 0E       		.uleb128 0xe
+ 1361 008e 3A       		.uleb128 0x3a
+ 1362 008f 0B       		.uleb128 0xb
+ 1363 0090 3B       		.uleb128 0x3b
+ 1364 0091 0B       		.uleb128 0xb
+ 1365 0092 49       		.uleb128 0x49
+ 1366 0093 13       		.uleb128 0x13
+ 1367 0094 02       		.uleb128 0x2
+ 1368 0095 18       		.uleb128 0x18
+ 1369 0096 00       		.byte	0
+ 1370 0097 00       		.byte	0
+ 1371 0098 0C       		.uleb128 0xc
+ 1372 0099 34       		.uleb128 0x34
+ 1373 009a 00       		.byte	0
+ 1374 009b 03       		.uleb128 0x3
+ 1375 009c 0E       		.uleb128 0xe
+ 1376 009d 3A       		.uleb128 0x3a
+ 1377 009e 0B       		.uleb128 0xb
+ 1378 009f 3B       		.uleb128 0x3b
+ 1379 00a0 0B       		.uleb128 0xb
+ 1380 00a1 49       		.uleb128 0x49
+ 1381 00a2 13       		.uleb128 0x13
+ 1382 00a3 02       		.uleb128 0x2
+ 1383 00a4 18       		.uleb128 0x18
+ 1384 00a5 00       		.byte	0
+ 1385 00a6 00       		.byte	0
+ 1386 00a7 0D       		.uleb128 0xd
+ 1387 00a8 0F       		.uleb128 0xf
+ 1388 00a9 00       		.byte	0
+ 1389 00aa 0B       		.uleb128 0xb
+ 1390 00ab 0B       		.uleb128 0xb
+ 1391 00ac 49       		.uleb128 0x49
+ 1392 00ad 13       		.uleb128 0x13
+ 1393 00ae 00       		.byte	0
+ 1394 00af 00       		.byte	0
+ 1395 00b0 0E       		.uleb128 0xe
+ 1396 00b1 0B       		.uleb128 0xb
+ 1397 00b2 01       		.byte	0x1
+ 1398 00b3 11       		.uleb128 0x11
+ 1399 00b4 01       		.uleb128 0x1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 29
+
+
+ 1400 00b5 12       		.uleb128 0x12
+ 1401 00b6 06       		.uleb128 0x6
+ 1402 00b7 00       		.byte	0
+ 1403 00b8 00       		.byte	0
+ 1404 00b9 0F       		.uleb128 0xf
+ 1405 00ba 2E       		.uleb128 0x2e
+ 1406 00bb 01       		.byte	0x1
+ 1407 00bc 3F       		.uleb128 0x3f
+ 1408 00bd 19       		.uleb128 0x19
+ 1409 00be 03       		.uleb128 0x3
+ 1410 00bf 0E       		.uleb128 0xe
+ 1411 00c0 3A       		.uleb128 0x3a
+ 1412 00c1 0B       		.uleb128 0xb
+ 1413 00c2 3B       		.uleb128 0x3b
+ 1414 00c3 0B       		.uleb128 0xb
+ 1415 00c4 27       		.uleb128 0x27
+ 1416 00c5 19       		.uleb128 0x19
+ 1417 00c6 49       		.uleb128 0x49
+ 1418 00c7 13       		.uleb128 0x13
+ 1419 00c8 11       		.uleb128 0x11
+ 1420 00c9 01       		.uleb128 0x1
+ 1421 00ca 12       		.uleb128 0x12
+ 1422 00cb 06       		.uleb128 0x6
+ 1423 00cc 40       		.uleb128 0x40
+ 1424 00cd 18       		.uleb128 0x18
+ 1425 00ce 9642     		.uleb128 0x2116
+ 1426 00d0 19       		.uleb128 0x19
+ 1427 00d1 01       		.uleb128 0x1
+ 1428 00d2 13       		.uleb128 0x13
+ 1429 00d3 00       		.byte	0
+ 1430 00d4 00       		.byte	0
+ 1431 00d5 10       		.uleb128 0x10
+ 1432 00d6 0B       		.uleb128 0xb
+ 1433 00d7 01       		.byte	0x1
+ 1434 00d8 11       		.uleb128 0x11
+ 1435 00d9 01       		.uleb128 0x1
+ 1436 00da 12       		.uleb128 0x12
+ 1437 00db 06       		.uleb128 0x6
+ 1438 00dc 01       		.uleb128 0x1
+ 1439 00dd 13       		.uleb128 0x13
+ 1440 00de 00       		.byte	0
+ 1441 00df 00       		.byte	0
+ 1442 00e0 11       		.uleb128 0x11
+ 1443 00e1 34       		.uleb128 0x34
+ 1444 00e2 00       		.byte	0
+ 1445 00e3 03       		.uleb128 0x3
+ 1446 00e4 0E       		.uleb128 0xe
+ 1447 00e5 3A       		.uleb128 0x3a
+ 1448 00e6 0B       		.uleb128 0xb
+ 1449 00e7 3B       		.uleb128 0x3b
+ 1450 00e8 05       		.uleb128 0x5
+ 1451 00e9 49       		.uleb128 0x49
+ 1452 00ea 13       		.uleb128 0x13
+ 1453 00eb 3F       		.uleb128 0x3f
+ 1454 00ec 19       		.uleb128 0x19
+ 1455 00ed 3C       		.uleb128 0x3c
+ 1456 00ee 19       		.uleb128 0x19
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 30
+
+
+ 1457 00ef 00       		.byte	0
+ 1458 00f0 00       		.byte	0
+ 1459 00f1 12       		.uleb128 0x12
+ 1460 00f2 35       		.uleb128 0x35
+ 1461 00f3 00       		.byte	0
+ 1462 00f4 49       		.uleb128 0x49
+ 1463 00f5 13       		.uleb128 0x13
+ 1464 00f6 00       		.byte	0
+ 1465 00f7 00       		.byte	0
+ 1466 00f8 13       		.uleb128 0x13
+ 1467 00f9 26       		.uleb128 0x26
+ 1468 00fa 00       		.byte	0
+ 1469 00fb 49       		.uleb128 0x49
+ 1470 00fc 13       		.uleb128 0x13
+ 1471 00fd 00       		.byte	0
+ 1472 00fe 00       		.byte	0
+ 1473 00ff 14       		.uleb128 0x14
+ 1474 0100 34       		.uleb128 0x34
+ 1475 0101 00       		.byte	0
+ 1476 0102 03       		.uleb128 0x3
+ 1477 0103 0E       		.uleb128 0xe
+ 1478 0104 3A       		.uleb128 0x3a
+ 1479 0105 0B       		.uleb128 0xb
+ 1480 0106 3B       		.uleb128 0x3b
+ 1481 0107 0B       		.uleb128 0xb
+ 1482 0108 49       		.uleb128 0x49
+ 1483 0109 13       		.uleb128 0x13
+ 1484 010a 3F       		.uleb128 0x3f
+ 1485 010b 19       		.uleb128 0x19
+ 1486 010c 3C       		.uleb128 0x3c
+ 1487 010d 19       		.uleb128 0x19
+ 1488 010e 00       		.byte	0
+ 1489 010f 00       		.byte	0
+ 1490 0110 00       		.byte	0
+ 1491              		.section	.debug_aranges,"",%progbits
+ 1492 0000 34000000 		.4byte	0x34
+ 1493 0004 0200     		.2byte	0x2
+ 1494 0006 00000000 		.4byte	.Ldebug_info0
+ 1495 000a 04       		.byte	0x4
+ 1496 000b 00       		.byte	0
+ 1497 000c 0000     		.2byte	0
+ 1498 000e 0000     		.2byte	0
+ 1499 0010 00000000 		.4byte	.LFB64
+ 1500 0014 68000000 		.4byte	.LFE64-.LFB64
+ 1501 0018 00000000 		.4byte	.LFB65
+ 1502 001c CC010000 		.4byte	.LFE65-.LFB65
+ 1503 0020 00000000 		.4byte	.LFB66
+ 1504 0024 00020000 		.4byte	.LFE66-.LFB66
+ 1505 0028 00000000 		.4byte	.LFB67
+ 1506 002c 3A000000 		.4byte	.LFE67-.LFB67
+ 1507 0030 00000000 		.4byte	0
+ 1508 0034 00000000 		.4byte	0
+ 1509              		.section	.debug_ranges,"",%progbits
+ 1510              	.Ldebug_ranges0:
+ 1511 0000 00000000 		.4byte	.LFB64
+ 1512 0004 68000000 		.4byte	.LFE64
+ 1513 0008 00000000 		.4byte	.LFB65
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 31
+
+
+ 1514 000c CC010000 		.4byte	.LFE65
+ 1515 0010 00000000 		.4byte	.LFB66
+ 1516 0014 00020000 		.4byte	.LFE66
+ 1517 0018 00000000 		.4byte	.LFB67
+ 1518 001c 3A000000 		.4byte	.LFE67
+ 1519 0020 00000000 		.4byte	0
+ 1520 0024 00000000 		.4byte	0
+ 1521              		.section	.debug_line,"",%progbits
+ 1522              	.Ldebug_line0:
+ 1523 0000 DE020000 		.section	.debug_str,"MS",%progbits,1
+ 1523      02007301 
+ 1523      00000201 
+ 1523      FB0E0D00 
+ 1523      01010101 
+ 1524              	.LASF51:
+ 1525 0000 43617264 		.ascii	"Card_Types_Enum\000"
+ 1525      5F547970 
+ 1525      65735F45 
+ 1525      6E756D00 
+ 1526              	.LASF18:
+ 1527 0010 554E5345 		.ascii	"UNSELECTED_CARD\000"
+ 1527      4C454354 
+ 1527      45445F43 
+ 1527      41524400 
+ 1528              	.LASF48:
+ 1529 0020 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1529      43313120 
+ 1529      352E342E 
+ 1529      31203230 
+ 1529      31363036 
+ 1530 0053 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1530      20726576 
+ 1530      6973696F 
+ 1530      6E203233 
+ 1530      37373135 
+ 1531 0086 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1531      66756E63 
+ 1531      74696F6E 
+ 1531      2D736563 
+ 1531      74696F6E 
+ 1532              	.LASF41:
+ 1533 00ae 626C6F63 		.ascii	"blockNumber\000"
+ 1533      6B4E756D 
+ 1533      62657200 
+ 1534              	.LASF49:
+ 1535 00ba 45787445 		.ascii	"ExtEEPROM.c\000"
+ 1535      4550524F 
+ 1535      4D2E6300 
+ 1536              	.LASF46:
+ 1537 00c6 72617370 		.ascii	"raspi_plus_gvs_cfg_eeprom\000"
+ 1537      695F706C 
+ 1537      75735F67 
+ 1537      76735F63 
+ 1537      66675F65 
+ 1538              	.LASF9:
+ 1539 00e0 5F5F696E 		.ascii	"__int32_t\000"
+ 1539      7433325F 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 32
+
+
+ 1539      7400
+ 1540              	.LASF34:
+ 1541 00ea 63686172 		.ascii	"charsLoop\000"
+ 1541      734C6F6F 
+ 1541      7000
+ 1542              	.LASF21:
+ 1543 00f4 52505053 		.ascii	"RPPSOC\000"
+ 1543      4F4300
+ 1544              	.LASF38:
+ 1545 00fb 61727261 		.ascii	"array32Bytes\000"
+ 1545      79333242 
+ 1545      79746573 
+ 1545      00
+ 1546              	.LASF14:
+ 1547 0108 646F7562 		.ascii	"double\000"
+ 1547      6C6500
+ 1548              	.LASF29:
+ 1549 010f 72656164 		.ascii	"readEEPROM\000"
+ 1549      45455052 
+ 1549      4F4D00
+ 1550              	.LASF10:
+ 1551 011a 696E7433 		.ascii	"int32_t\000"
+ 1551      325F7400 
+ 1552              	.LASF13:
+ 1553 0122 666C6F61 		.ascii	"float\000"
+ 1553      7400
+ 1554              	.LASF23:
+ 1555 0128 52415350 		.ascii	"RASPIPLUSGVS\000"
+ 1555      49504C55 
+ 1555      53475653 
+ 1555      00
+ 1556              	.LASF0:
+ 1557 0135 7369676E 		.ascii	"signed char\000"
+ 1557      65642063 
+ 1557      68617200 
+ 1558              	.LASF45:
+ 1559 0141 7270705F 		.ascii	"rpp_uio_16_eeprom\000"
+ 1559      75696F5F 
+ 1559      31365F65 
+ 1559      6570726F 
+ 1559      6D00
+ 1560              	.LASF19:
+ 1561 0153 52505055 		.ascii	"RPPUIO16\000"
+ 1561      494F3136 
+ 1561      00
+ 1562              	.LASF1:
+ 1563 015c 756E7369 		.ascii	"unsigned char\000"
+ 1563      676E6564 
+ 1563      20636861 
+ 1563      7200
+ 1564              	.LASF35:
+ 1565 016a 6C696E65 		.ascii	"lineString\000"
+ 1565      53747269 
+ 1565      6E6700
+ 1566              	.LASF37:
+ 1567 0175 74617267 		.ascii	"targetHat\000"
+ 1567      65744861 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 33
+
+
+ 1567      7400
+ 1568              	.LASF20:
+ 1569 017f 52505047 		.ascii	"RPPGVSCFG\000"
+ 1569      56534346 
+ 1569      4700
+ 1570              	.LASF50:
+ 1571 0189 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\land-boards\\"
+ 1571      73657273 
+ 1571      5C48507A 
+ 1571      3432305C 
+ 1571      446F6375 
+ 1572 01b6 52617350 		.ascii	"RasPi\\RPI_PSOC5\\RPI_PSOC5_CARD_TEST_STATION.cydsn"
+ 1572      695C5250 
+ 1572      495F5053 
+ 1572      4F43355C 
+ 1572      5250495F 
+ 1573 01e7 00       		.ascii	"\000"
+ 1574              	.LASF3:
+ 1575 01e8 73686F72 		.ascii	"short unsigned int\000"
+ 1575      7420756E 
+ 1575      7369676E 
+ 1575      65642069 
+ 1575      6E7400
+ 1576              	.LASF44:
+ 1577 01fb 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1577      52784275 
+ 1577      66666572 
+ 1577      00
+ 1578              	.LASF33:
+ 1579 0208 6C696E65 		.ascii	"linesLoop\000"
+ 1579      734C6F6F 
+ 1579      7000
+ 1580              	.LASF39:
+ 1581 0212 73726350 		.ascii	"srcPointer\000"
+ 1581      6F696E74 
+ 1581      657200
+ 1582              	.LASF5:
+ 1583 021d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1583      20756E73 
+ 1583      69676E65 
+ 1583      6420696E 
+ 1583      7400
+ 1584              	.LASF12:
+ 1585 022f 75696E74 		.ascii	"uint16\000"
+ 1585      313600
+ 1586              	.LASF30:
+ 1587 0236 64756D70 		.ascii	"dumpEEPROM\000"
+ 1587      45455052 
+ 1587      4F4D00
+ 1588              	.LASF8:
+ 1589 0241 756E7369 		.ascii	"unsigned int\000"
+ 1589      676E6564 
+ 1589      20696E74 
+ 1589      00
+ 1590              	.LASF7:
+ 1591 024e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1591      206C6F6E 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 34
+
+
+ 1591      6720756E 
+ 1591      7369676E 
+ 1591      65642069 
+ 1592              	.LASF26:
+ 1593 0265 534C4156 		.ascii	"SLAVE_ADDR\000"
+ 1593      455F4144 
+ 1593      445200
+ 1594              	.LASF43:
+ 1595 0270 77726974 		.ascii	"writeEEPROMBlock\000"
+ 1595      65454550 
+ 1595      524F4D42 
+ 1595      6C6F636B 
+ 1595      00
+ 1596              	.LASF42:
+ 1597 0281 6C6F6F70 		.ascii	"loopCounter\000"
+ 1597      436F756E 
+ 1597      74657200 
+ 1598              	.LASF28:
+ 1599 028d 634C656E 		.ascii	"cLength\000"
+ 1599      67746800 
+ 1600              	.LASF17:
+ 1601 0295 73697A65 		.ascii	"sizetype\000"
+ 1601      74797065 
+ 1601      00
+ 1602              	.LASF31:
+ 1603 029e 65657072 		.ascii	"eepromBuffer\000"
+ 1603      6F6D4275 
+ 1603      66666572 
+ 1603      00
+ 1604              	.LASF6:
+ 1605 02ab 6C6F6E67 		.ascii	"long long int\000"
+ 1605      206C6F6E 
+ 1605      6720696E 
+ 1605      7400
+ 1606              	.LASF15:
+ 1607 02b9 63686172 		.ascii	"char\000"
+ 1607      00
+ 1608              	.LASF40:
+ 1609 02be 64737450 		.ascii	"dstPointer\000"
+ 1609      6F696E74 
+ 1609      657200
+ 1610              	.LASF22:
+ 1611 02c9 52415350 		.ascii	"RASPIGVS\000"
+ 1611      49475653 
+ 1611      00
+ 1612              	.LASF27:
+ 1613 02d2 634D6573 		.ascii	"cMessage\000"
+ 1613      73616765 
+ 1613      00
+ 1614              	.LASF2:
+ 1615 02db 73686F72 		.ascii	"short int\000"
+ 1615      7420696E 
+ 1615      7400
+ 1616              	.LASF24:
+ 1617 02e5 52504949 		.ascii	"RPII2CHUB\000"
+ 1617      32434855 
+ 1617      4200
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccL7aTg2.s 			page 35
+
+
+ 1618              	.LASF11:
+ 1619 02ef 75696E74 		.ascii	"uint8\000"
+ 1619      3800
+ 1620              	.LASF52:
+ 1621 02f5 77726974 		.ascii	"writeEEPROM\000"
+ 1621      65454550 
+ 1621      524F4D00 
+ 1622              	.LASF36:
+ 1623 0301 63686172 		.ascii	"charCol\000"
+ 1623      436F6C00 
+ 1624              	.LASF4:
+ 1625 0309 6C6F6E67 		.ascii	"long int\000"
+ 1625      20696E74 
+ 1625      00
+ 1626              	.LASF25:
+ 1627 0312 52504953 		.ascii	"RPISPI8\000"
+ 1627      50493800 
+ 1628              	.LASF16:
+ 1629 031a 6C6F6E67 		.ascii	"long double\000"
+ 1629      20646F75 
+ 1629      626C6500 
+ 1630              	.LASF32:
+ 1631 0326 6C696E65 		.ascii	"lineBuffer\000"
+ 1631      42756666 
+ 1631      657200
+ 1632              	.LASF47:
+ 1633 0331 72707073 		.ascii	"rppsoc_eeprom\000"
+ 1633      6F635F65 
+ 1633      6570726F 
+ 1633      6D00
+ 1634              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

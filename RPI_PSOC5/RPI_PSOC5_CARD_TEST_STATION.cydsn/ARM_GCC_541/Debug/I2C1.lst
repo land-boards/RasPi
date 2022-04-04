@@ -1,0 +1,1189 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"I2C1.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	I2C1_initVar
+  20              		.bss
+  21              		.type	I2C1_initVar, %object
+  22              		.size	I2C1_initVar, 1
+  23              	I2C1_initVar:
+  24 0000 00       		.space	1
+  25              		.comm	I2C1_state,1,1
+  26              		.section	.text.I2C1_Init,"ax",%progbits
+  27              		.align	2
+  28              		.global	I2C1_Init
+  29              		.thumb
+  30              		.thumb_func
+  31              		.type	I2C1_Init, %function
+  32              	I2C1_Init:
+  33              	.LFB0:
+  34              		.file 1 "Generated_Source\\PSoC5\\I2C1.c"
+   1:Generated_Source\PSoC5/I2C1.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/I2C1.c **** * File Name: I2C1.c
+   3:Generated_Source\PSoC5/I2C1.c **** * Version 3.50
+   4:Generated_Source\PSoC5/I2C1.c **** *
+   5:Generated_Source\PSoC5/I2C1.c **** * Description:
+   6:Generated_Source\PSoC5/I2C1.c **** *  This file provides the source code of APIs for the I2C component.
+   7:Generated_Source\PSoC5/I2C1.c **** *  The actual protocol and operation code resides in the interrupt service
+   8:Generated_Source\PSoC5/I2C1.c **** *  routine file.
+   9:Generated_Source\PSoC5/I2C1.c **** *
+  10:Generated_Source\PSoC5/I2C1.c **** *******************************************************************************
+  11:Generated_Source\PSoC5/I2C1.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation. All rights reserved.
+  12:Generated_Source\PSoC5/I2C1.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:Generated_Source\PSoC5/I2C1.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:Generated_Source\PSoC5/I2C1.c **** * the software package with which this file was provided.
+  15:Generated_Source\PSoC5/I2C1.c **** *******************************************************************************/
+  16:Generated_Source\PSoC5/I2C1.c **** 
+  17:Generated_Source\PSoC5/I2C1.c **** #include "I2C1_PVT.h"
+  18:Generated_Source\PSoC5/I2C1.c **** 
+  19:Generated_Source\PSoC5/I2C1.c **** 
+  20:Generated_Source\PSoC5/I2C1.c **** /**********************************
+  21:Generated_Source\PSoC5/I2C1.c **** *      System variables
+  22:Generated_Source\PSoC5/I2C1.c **** **********************************/
+  23:Generated_Source\PSoC5/I2C1.c **** 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 2
+
+
+  24:Generated_Source\PSoC5/I2C1.c **** uint8 I2C1_initVar = 0u; /* Defines if component was initialized */
+  25:Generated_Source\PSoC5/I2C1.c **** 
+  26:Generated_Source\PSoC5/I2C1.c **** volatile uint8 I2C1_state;  /* Current state of I2C FSM */
+  27:Generated_Source\PSoC5/I2C1.c **** 
+  28:Generated_Source\PSoC5/I2C1.c **** 
+  29:Generated_Source\PSoC5/I2C1.c **** /*******************************************************************************
+  30:Generated_Source\PSoC5/I2C1.c **** * Function Name: I2C1_Init
+  31:Generated_Source\PSoC5/I2C1.c **** ********************************************************************************
+  32:Generated_Source\PSoC5/I2C1.c **** *
+  33:Generated_Source\PSoC5/I2C1.c **** * Summary:
+  34:Generated_Source\PSoC5/I2C1.c **** *  Initializes I2C registers with initial values provided from customizer.
+  35:Generated_Source\PSoC5/I2C1.c **** *
+  36:Generated_Source\PSoC5/I2C1.c **** * Parameters:
+  37:Generated_Source\PSoC5/I2C1.c **** *  None.
+  38:Generated_Source\PSoC5/I2C1.c **** *
+  39:Generated_Source\PSoC5/I2C1.c **** * Return:
+  40:Generated_Source\PSoC5/I2C1.c **** *  None.
+  41:Generated_Source\PSoC5/I2C1.c **** *
+  42:Generated_Source\PSoC5/I2C1.c **** * Global variables:
+  43:Generated_Source\PSoC5/I2C1.c **** *  None.
+  44:Generated_Source\PSoC5/I2C1.c **** *
+  45:Generated_Source\PSoC5/I2C1.c **** * Reentrant:
+  46:Generated_Source\PSoC5/I2C1.c **** *  No.
+  47:Generated_Source\PSoC5/I2C1.c **** *
+  48:Generated_Source\PSoC5/I2C1.c **** *******************************************************************************/
+  49:Generated_Source\PSoC5/I2C1.c **** void I2C1_Init(void) 
+  50:Generated_Source\PSoC5/I2C1.c **** {
+  35              		.loc 1 50 0
+  36              		.cfi_startproc
+  37              		@ args = 0, pretend = 0, frame = 8
+  38              		@ frame_needed = 1, uses_anonymous_args = 0
+  39 0000 80B5     		push	{r7, lr}
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 82B0     		sub	sp, sp, #8
+  44              		.cfi_def_cfa_offset 16
+  45 0004 00AF     		add	r7, sp, #0
+  46              		.cfi_def_cfa_register 7
+  51:Generated_Source\PSoC5/I2C1.c **** #if (I2C1_FF_IMPLEMENTED)
+  52:Generated_Source\PSoC5/I2C1.c ****     /* Configure fixed function block */
+  53:Generated_Source\PSoC5/I2C1.c ****     I2C1_CFG_REG  = I2C1_DEFAULT_CFG;
+  54:Generated_Source\PSoC5/I2C1.c ****     I2C1_XCFG_REG = I2C1_DEFAULT_XCFG;
+  55:Generated_Source\PSoC5/I2C1.c ****     I2C1_ADDR_REG = I2C1_DEFAULT_ADDR;
+  56:Generated_Source\PSoC5/I2C1.c ****     I2C1_CLKDIV1_REG = LO8(I2C1_DEFAULT_DIVIDE_FACTOR);
+  57:Generated_Source\PSoC5/I2C1.c ****     I2C1_CLKDIV2_REG = HI8(I2C1_DEFAULT_DIVIDE_FACTOR);
+  58:Generated_Source\PSoC5/I2C1.c **** 
+  59:Generated_Source\PSoC5/I2C1.c **** #else
+  60:Generated_Source\PSoC5/I2C1.c ****     uint8 intState;
+  61:Generated_Source\PSoC5/I2C1.c **** 
+  62:Generated_Source\PSoC5/I2C1.c ****     /* Configure control and interrupt sources */
+  63:Generated_Source\PSoC5/I2C1.c ****     I2C1_CFG_REG      = I2C1_DEFAULT_CFG;
+  47              		.loc 1 63 0
+  48 0006 1B4B     		ldr	r3, .L2
+  49 0008 0022     		movs	r2, #0
+  50 000a 1A70     		strb	r2, [r3]
+  64:Generated_Source\PSoC5/I2C1.c ****     I2C1_INT_MASK_REG = I2C1_DEFAULT_INT_MASK;
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 3
+
+
+  51              		.loc 1 64 0
+  52 000c 1A4B     		ldr	r3, .L2+4
+  53 000e 0122     		movs	r2, #1
+  54 0010 1A70     		strb	r2, [r3]
+  65:Generated_Source\PSoC5/I2C1.c **** 
+  66:Generated_Source\PSoC5/I2C1.c ****     /* Enable interrupt generation in status */
+  67:Generated_Source\PSoC5/I2C1.c ****     intState = CyEnterCriticalSection();
+  55              		.loc 1 67 0
+  56 0012 FFF7FEFF 		bl	CyEnterCriticalSection
+  57 0016 0346     		mov	r3, r0
+  58 0018 FB71     		strb	r3, [r7, #7]
+  68:Generated_Source\PSoC5/I2C1.c ****     I2C1_INT_ENABLE_REG |= I2C1_INTR_ENABLE;
+  59              		.loc 1 68 0
+  60 001a 184A     		ldr	r2, .L2+8
+  61 001c 174B     		ldr	r3, .L2+8
+  62 001e 1B78     		ldrb	r3, [r3]
+  63 0020 DBB2     		uxtb	r3, r3
+  64 0022 43F01003 		orr	r3, r3, #16
+  65 0026 DBB2     		uxtb	r3, r3
+  66 0028 1370     		strb	r3, [r2]
+  69:Generated_Source\PSoC5/I2C1.c ****     CyExitCriticalSection(intState);
+  67              		.loc 1 69 0
+  68 002a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  69 002c 1846     		mov	r0, r3
+  70 002e FFF7FEFF 		bl	CyExitCriticalSection
+  70:Generated_Source\PSoC5/I2C1.c **** 
+  71:Generated_Source\PSoC5/I2C1.c ****     /* Configure bit counter */
+  72:Generated_Source\PSoC5/I2C1.c ****     #if (I2C1_MODE_SLAVE_ENABLED)
+  73:Generated_Source\PSoC5/I2C1.c ****         I2C1_PERIOD_REG = I2C1_DEFAULT_PERIOD;
+  74:Generated_Source\PSoC5/I2C1.c ****     #endif  /* (I2C1_MODE_SLAVE_ENABLED) */
+  75:Generated_Source\PSoC5/I2C1.c **** 
+  76:Generated_Source\PSoC5/I2C1.c ****     /* Configure clock generator */
+  77:Generated_Source\PSoC5/I2C1.c ****     #if (I2C1_MODE_MASTER_ENABLED)
+  78:Generated_Source\PSoC5/I2C1.c ****         I2C1_MCLK_PRD_REG = I2C1_DEFAULT_MCLK_PRD;
+  71              		.loc 1 78 0
+  72 0032 134B     		ldr	r3, .L2+12
+  73 0034 0F22     		movs	r2, #15
+  74 0036 1A70     		strb	r2, [r3]
+  79:Generated_Source\PSoC5/I2C1.c ****         I2C1_MCLK_CMP_REG = I2C1_DEFAULT_MCLK_CMP;
+  75              		.loc 1 79 0
+  76 0038 124B     		ldr	r3, .L2+16
+  77 003a 0822     		movs	r2, #8
+  78 003c 1A70     		strb	r2, [r3]
+  80:Generated_Source\PSoC5/I2C1.c ****     #endif /* (I2C1_MODE_MASTER_ENABLED) */
+  81:Generated_Source\PSoC5/I2C1.c **** #endif /* (I2C1_FF_IMPLEMENTED) */
+  82:Generated_Source\PSoC5/I2C1.c **** 
+  83:Generated_Source\PSoC5/I2C1.c **** #if (I2C1_TIMEOUT_ENABLED)
+  84:Generated_Source\PSoC5/I2C1.c ****     I2C1_TimeoutInit();
+  85:Generated_Source\PSoC5/I2C1.c **** #endif /* (I2C1_TIMEOUT_ENABLED) */
+  86:Generated_Source\PSoC5/I2C1.c **** 
+  87:Generated_Source\PSoC5/I2C1.c ****     /* Configure internal interrupt */
+  88:Generated_Source\PSoC5/I2C1.c ****     CyIntDisable    (I2C1_ISR_NUMBER);
+  79              		.loc 1 88 0
+  80 003e 124B     		ldr	r3, .L2+20
+  81 0040 0122     		movs	r2, #1
+  82 0042 1A60     		str	r2, [r3]
+  89:Generated_Source\PSoC5/I2C1.c ****     CyIntSetPriority(I2C1_ISR_NUMBER, I2C1_ISR_PRIORITY);
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 4
+
+
+  83              		.loc 1 89 0
+  84 0044 0721     		movs	r1, #7
+  85 0046 0020     		movs	r0, #0
+  86 0048 FFF7FEFF 		bl	CyIntSetPriority
+  90:Generated_Source\PSoC5/I2C1.c ****     #if (I2C1_INTERN_I2C_INTR_HANDLER)
+  91:Generated_Source\PSoC5/I2C1.c ****         (void) CyIntSetVector(I2C1_ISR_NUMBER, &I2C1_ISR);
+  87              		.loc 1 91 0
+  88 004c 0F49     		ldr	r1, .L2+24
+  89 004e 0020     		movs	r0, #0
+  90 0050 FFF7FEFF 		bl	CyIntSetVector
+  92:Generated_Source\PSoC5/I2C1.c ****     #endif /* (I2C1_INTERN_I2C_INTR_HANDLER) */
+  93:Generated_Source\PSoC5/I2C1.c **** 
+  94:Generated_Source\PSoC5/I2C1.c ****     /* Set FSM to default state */
+  95:Generated_Source\PSoC5/I2C1.c ****     I2C1_state = I2C1_SM_IDLE;
+  91              		.loc 1 95 0
+  92 0054 0E4B     		ldr	r3, .L2+28
+  93 0056 1022     		movs	r2, #16
+  94 0058 1A70     		strb	r2, [r3]
+  96:Generated_Source\PSoC5/I2C1.c **** 
+  97:Generated_Source\PSoC5/I2C1.c **** #if (I2C1_MODE_SLAVE_ENABLED)
+  98:Generated_Source\PSoC5/I2C1.c ****     /* Clear status and buffers index */
+  99:Generated_Source\PSoC5/I2C1.c ****     I2C1_slStatus = 0u;
+ 100:Generated_Source\PSoC5/I2C1.c ****     I2C1_slRdBufIndex = 0u;
+ 101:Generated_Source\PSoC5/I2C1.c ****     I2C1_slWrBufIndex = 0u;
+ 102:Generated_Source\PSoC5/I2C1.c **** 
+ 103:Generated_Source\PSoC5/I2C1.c ****     /* Configure matched address */
+ 104:Generated_Source\PSoC5/I2C1.c ****     I2C1_SlaveSetAddress(I2C1_DEFAULT_ADDR);
+ 105:Generated_Source\PSoC5/I2C1.c **** #endif /* (I2C1_MODE_SLAVE_ENABLED) */
+ 106:Generated_Source\PSoC5/I2C1.c **** 
+ 107:Generated_Source\PSoC5/I2C1.c **** #if (I2C1_MODE_MASTER_ENABLED)
+ 108:Generated_Source\PSoC5/I2C1.c ****     /* Clear status and buffers index */
+ 109:Generated_Source\PSoC5/I2C1.c ****     I2C1_mstrStatus = 0u;
+  95              		.loc 1 109 0
+  96 005a 0E4B     		ldr	r3, .L2+32
+  97 005c 0022     		movs	r2, #0
+  98 005e 1A70     		strb	r2, [r3]
+ 110:Generated_Source\PSoC5/I2C1.c ****     I2C1_mstrRdBufIndex = 0u;
+  99              		.loc 1 110 0
+ 100 0060 0D4B     		ldr	r3, .L2+36
+ 101 0062 0022     		movs	r2, #0
+ 102 0064 1A70     		strb	r2, [r3]
+ 111:Generated_Source\PSoC5/I2C1.c ****     I2C1_mstrWrBufIndex = 0u;
+ 103              		.loc 1 111 0
+ 104 0066 0D4B     		ldr	r3, .L2+40
+ 105 0068 0022     		movs	r2, #0
+ 106 006a 1A70     		strb	r2, [r3]
+ 112:Generated_Source\PSoC5/I2C1.c **** #endif /* (I2C1_MODE_MASTER_ENABLED) */
+ 113:Generated_Source\PSoC5/I2C1.c **** }
+ 107              		.loc 1 113 0
+ 108 006c 00BF     		nop
+ 109 006e 0837     		adds	r7, r7, #8
+ 110              		.cfi_def_cfa_offset 8
+ 111 0070 BD46     		mov	sp, r7
+ 112              		.cfi_def_cfa_register 13
+ 113              		@ sp needed
+ 114 0072 80BD     		pop	{r7, pc}
+ 115              	.L3:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 5
+
+
+ 116              		.align	2
+ 117              	.L2:
+ 118 0074 76640040 		.word	1073767542
+ 119 0078 84640040 		.word	1073767556
+ 120 007c 94640040 		.word	1073767572
+ 121 0080 24650040 		.word	1073767716
+ 122 0084 34650040 		.word	1073767732
+ 123 0088 80E100E0 		.word	-536813184
+ 124 008c 00000000 		.word	I2C1_ISR
+ 125 0090 00000000 		.word	I2C1_state
+ 126 0094 00000000 		.word	I2C1_mstrStatus
+ 127 0098 00000000 		.word	I2C1_mstrRdBufIndex
+ 128 009c 00000000 		.word	I2C1_mstrWrBufIndex
+ 129              		.cfi_endproc
+ 130              	.LFE0:
+ 131              		.size	I2C1_Init, .-I2C1_Init
+ 132              		.section	.text.I2C1_Enable,"ax",%progbits
+ 133              		.align	2
+ 134              		.global	I2C1_Enable
+ 135              		.thumb
+ 136              		.thumb_func
+ 137              		.type	I2C1_Enable, %function
+ 138              	I2C1_Enable:
+ 139              	.LFB1:
+ 114:Generated_Source\PSoC5/I2C1.c **** 
+ 115:Generated_Source\PSoC5/I2C1.c **** 
+ 116:Generated_Source\PSoC5/I2C1.c **** /*******************************************************************************
+ 117:Generated_Source\PSoC5/I2C1.c **** * Function Name: I2C1_Enable
+ 118:Generated_Source\PSoC5/I2C1.c **** ********************************************************************************
+ 119:Generated_Source\PSoC5/I2C1.c **** *
+ 120:Generated_Source\PSoC5/I2C1.c **** * Summary:
+ 121:Generated_Source\PSoC5/I2C1.c **** *  Enables I2C operations.
+ 122:Generated_Source\PSoC5/I2C1.c **** *
+ 123:Generated_Source\PSoC5/I2C1.c **** * Parameters:
+ 124:Generated_Source\PSoC5/I2C1.c **** *  None.
+ 125:Generated_Source\PSoC5/I2C1.c **** *
+ 126:Generated_Source\PSoC5/I2C1.c **** * Return:
+ 127:Generated_Source\PSoC5/I2C1.c **** *  None.
+ 128:Generated_Source\PSoC5/I2C1.c **** *
+ 129:Generated_Source\PSoC5/I2C1.c **** * Global variables:
+ 130:Generated_Source\PSoC5/I2C1.c **** *  None.
+ 131:Generated_Source\PSoC5/I2C1.c **** *
+ 132:Generated_Source\PSoC5/I2C1.c **** *******************************************************************************/
+ 133:Generated_Source\PSoC5/I2C1.c **** void I2C1_Enable(void) 
+ 134:Generated_Source\PSoC5/I2C1.c **** {
+ 140              		.loc 1 134 0
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 1, uses_anonymous_args = 0
+ 144              		@ link register save eliminated.
+ 145 0000 80B4     		push	{r7}
+ 146              		.cfi_def_cfa_offset 4
+ 147              		.cfi_offset 7, -4
+ 148 0002 00AF     		add	r7, sp, #0
+ 149              		.cfi_def_cfa_register 7
+ 135:Generated_Source\PSoC5/I2C1.c **** #if (I2C1_FF_IMPLEMENTED)
+ 136:Generated_Source\PSoC5/I2C1.c ****     uint8 intState;
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 6
+
+
+ 137:Generated_Source\PSoC5/I2C1.c **** 
+ 138:Generated_Source\PSoC5/I2C1.c ****     /* Enable power to block */
+ 139:Generated_Source\PSoC5/I2C1.c ****     intState = CyEnterCriticalSection();
+ 140:Generated_Source\PSoC5/I2C1.c ****     I2C1_ACT_PWRMGR_REG  |= I2C1_ACT_PWR_EN;
+ 141:Generated_Source\PSoC5/I2C1.c ****     I2C1_STBY_PWRMGR_REG |= I2C1_STBY_PWR_EN;
+ 142:Generated_Source\PSoC5/I2C1.c ****     CyExitCriticalSection(intState);
+ 143:Generated_Source\PSoC5/I2C1.c **** #else
+ 144:Generated_Source\PSoC5/I2C1.c ****     #if (I2C1_MODE_SLAVE_ENABLED)
+ 145:Generated_Source\PSoC5/I2C1.c ****         /* Enable bit counter */
+ 146:Generated_Source\PSoC5/I2C1.c ****         uint8 intState = CyEnterCriticalSection();
+ 147:Generated_Source\PSoC5/I2C1.c ****         I2C1_COUNTER_AUX_CTL_REG |= I2C1_CNT7_ENABLE;
+ 148:Generated_Source\PSoC5/I2C1.c ****         CyExitCriticalSection(intState);
+ 149:Generated_Source\PSoC5/I2C1.c ****     #endif /* (I2C1_MODE_SLAVE_ENABLED) */
+ 150:Generated_Source\PSoC5/I2C1.c **** 
+ 151:Generated_Source\PSoC5/I2C1.c ****     /* Enable slave or master bits */
+ 152:Generated_Source\PSoC5/I2C1.c ****     I2C1_CFG_REG |= I2C1_ENABLE_MS;
+ 150              		.loc 1 152 0
+ 151 0004 054A     		ldr	r2, .L5
+ 152 0006 054B     		ldr	r3, .L5
+ 153 0008 1B78     		ldrb	r3, [r3]
+ 154 000a DBB2     		uxtb	r3, r3
+ 155 000c 43F00203 		orr	r3, r3, #2
+ 156 0010 DBB2     		uxtb	r3, r3
+ 157 0012 1370     		strb	r3, [r2]
+ 153:Generated_Source\PSoC5/I2C1.c **** #endif /* (I2C1_FF_IMPLEMENTED) */
+ 154:Generated_Source\PSoC5/I2C1.c **** 
+ 155:Generated_Source\PSoC5/I2C1.c **** #if (I2C1_TIMEOUT_ENABLED)
+ 156:Generated_Source\PSoC5/I2C1.c ****     I2C1_TimeoutEnable();
+ 157:Generated_Source\PSoC5/I2C1.c **** #endif /* (I2C1_TIMEOUT_ENABLED) */
+ 158:Generated_Source\PSoC5/I2C1.c **** }
+ 158              		.loc 1 158 0
+ 159 0014 00BF     		nop
+ 160 0016 BD46     		mov	sp, r7
+ 161              		.cfi_def_cfa_register 13
+ 162              		@ sp needed
+ 163 0018 80BC     		pop	{r7}
+ 164              		.cfi_restore 7
+ 165              		.cfi_def_cfa_offset 0
+ 166 001a 7047     		bx	lr
+ 167              	.L6:
+ 168              		.align	2
+ 169              	.L5:
+ 170 001c 76640040 		.word	1073767542
+ 171              		.cfi_endproc
+ 172              	.LFE1:
+ 173              		.size	I2C1_Enable, .-I2C1_Enable
+ 174              		.section	.text.I2C1_Start,"ax",%progbits
+ 175              		.align	2
+ 176              		.global	I2C1_Start
+ 177              		.thumb
+ 178              		.thumb_func
+ 179              		.type	I2C1_Start, %function
+ 180              	I2C1_Start:
+ 181              	.LFB2:
+ 159:Generated_Source\PSoC5/I2C1.c **** 
+ 160:Generated_Source\PSoC5/I2C1.c **** 
+ 161:Generated_Source\PSoC5/I2C1.c **** /*******************************************************************************
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 7
+
+
+ 162:Generated_Source\PSoC5/I2C1.c **** * Function Name: I2C1_Start
+ 163:Generated_Source\PSoC5/I2C1.c **** ********************************************************************************
+ 164:Generated_Source\PSoC5/I2C1.c **** *
+ 165:Generated_Source\PSoC5/I2C1.c **** * Summary:
+ 166:Generated_Source\PSoC5/I2C1.c **** *  Starts the I2C hardware. Enables Active mode power template bits or clock
+ 167:Generated_Source\PSoC5/I2C1.c **** *  gating as appropriate. It is required to be executed before I2C bus
+ 168:Generated_Source\PSoC5/I2C1.c **** *  operation.
+ 169:Generated_Source\PSoC5/I2C1.c **** *
+ 170:Generated_Source\PSoC5/I2C1.c **** * Parameters:
+ 171:Generated_Source\PSoC5/I2C1.c **** *  None.
+ 172:Generated_Source\PSoC5/I2C1.c **** *
+ 173:Generated_Source\PSoC5/I2C1.c **** * Return:
+ 174:Generated_Source\PSoC5/I2C1.c **** *  None.
+ 175:Generated_Source\PSoC5/I2C1.c **** *
+ 176:Generated_Source\PSoC5/I2C1.c **** * Side Effects:
+ 177:Generated_Source\PSoC5/I2C1.c **** *  This component automatically enables its interrupt.  If I2C is enabled !
+ 178:Generated_Source\PSoC5/I2C1.c **** *  without the interrupt enabled, it can lock up the I2C bus.
+ 179:Generated_Source\PSoC5/I2C1.c **** *
+ 180:Generated_Source\PSoC5/I2C1.c **** * Global variables:
+ 181:Generated_Source\PSoC5/I2C1.c **** *  I2C1_initVar - This variable is used to check the initial
+ 182:Generated_Source\PSoC5/I2C1.c **** *                             configuration, modified on the first
+ 183:Generated_Source\PSoC5/I2C1.c **** *                             function call.
+ 184:Generated_Source\PSoC5/I2C1.c **** *
+ 185:Generated_Source\PSoC5/I2C1.c **** * Reentrant:
+ 186:Generated_Source\PSoC5/I2C1.c **** *  No.
+ 187:Generated_Source\PSoC5/I2C1.c **** *
+ 188:Generated_Source\PSoC5/I2C1.c **** *******************************************************************************/
+ 189:Generated_Source\PSoC5/I2C1.c **** void I2C1_Start(void) 
+ 190:Generated_Source\PSoC5/I2C1.c **** {
+ 182              		.loc 1 190 0
+ 183              		.cfi_startproc
+ 184              		@ args = 0, pretend = 0, frame = 0
+ 185              		@ frame_needed = 1, uses_anonymous_args = 0
+ 186 0000 80B5     		push	{r7, lr}
+ 187              		.cfi_def_cfa_offset 8
+ 188              		.cfi_offset 7, -8
+ 189              		.cfi_offset 14, -4
+ 190 0002 00AF     		add	r7, sp, #0
+ 191              		.cfi_def_cfa_register 7
+ 191:Generated_Source\PSoC5/I2C1.c ****     if (0u == I2C1_initVar)
+ 192              		.loc 1 191 0
+ 193 0004 074B     		ldr	r3, .L9
+ 194 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 195 0008 002B     		cmp	r3, #0
+ 196 000a 04D1     		bne	.L8
+ 192:Generated_Source\PSoC5/I2C1.c ****     {
+ 193:Generated_Source\PSoC5/I2C1.c ****         I2C1_Init();
+ 197              		.loc 1 193 0
+ 198 000c FFF7FEFF 		bl	I2C1_Init
+ 194:Generated_Source\PSoC5/I2C1.c ****         I2C1_initVar = 1u; /* Component initialized */
+ 199              		.loc 1 194 0
+ 200 0010 044B     		ldr	r3, .L9
+ 201 0012 0122     		movs	r2, #1
+ 202 0014 1A70     		strb	r2, [r3]
+ 203              	.L8:
+ 195:Generated_Source\PSoC5/I2C1.c ****     }
+ 196:Generated_Source\PSoC5/I2C1.c **** 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 8
+
+
+ 197:Generated_Source\PSoC5/I2C1.c ****     I2C1_Enable();
+ 204              		.loc 1 197 0
+ 205 0016 FFF7FEFF 		bl	I2C1_Enable
+ 198:Generated_Source\PSoC5/I2C1.c ****     I2C1_EnableInt();
+ 206              		.loc 1 198 0
+ 207 001a 034B     		ldr	r3, .L9+4
+ 208 001c 0122     		movs	r2, #1
+ 209 001e 1A60     		str	r2, [r3]
+ 199:Generated_Source\PSoC5/I2C1.c **** }
+ 210              		.loc 1 199 0
+ 211 0020 00BF     		nop
+ 212 0022 80BD     		pop	{r7, pc}
+ 213              	.L10:
+ 214              		.align	2
+ 215              	.L9:
+ 216 0024 00000000 		.word	I2C1_initVar
+ 217 0028 00E100E0 		.word	-536813312
+ 218              		.cfi_endproc
+ 219              	.LFE2:
+ 220              		.size	I2C1_Start, .-I2C1_Start
+ 221              		.section	.text.I2C1_Stop,"ax",%progbits
+ 222              		.align	2
+ 223              		.global	I2C1_Stop
+ 224              		.thumb
+ 225              		.thumb_func
+ 226              		.type	I2C1_Stop, %function
+ 227              	I2C1_Stop:
+ 228              	.LFB3:
+ 200:Generated_Source\PSoC5/I2C1.c **** 
+ 201:Generated_Source\PSoC5/I2C1.c **** 
+ 202:Generated_Source\PSoC5/I2C1.c **** /*******************************************************************************
+ 203:Generated_Source\PSoC5/I2C1.c **** * Function Name: I2C1_Stop
+ 204:Generated_Source\PSoC5/I2C1.c **** ********************************************************************************
+ 205:Generated_Source\PSoC5/I2C1.c **** *
+ 206:Generated_Source\PSoC5/I2C1.c **** * Summary:
+ 207:Generated_Source\PSoC5/I2C1.c **** *  Disables I2C hardware and disables I2C interrupt. Disables Active mode power
+ 208:Generated_Source\PSoC5/I2C1.c **** *  template bits or clock gating as appropriate.
+ 209:Generated_Source\PSoC5/I2C1.c **** *
+ 210:Generated_Source\PSoC5/I2C1.c **** * Parameters:
+ 211:Generated_Source\PSoC5/I2C1.c **** *  None.
+ 212:Generated_Source\PSoC5/I2C1.c **** *
+ 213:Generated_Source\PSoC5/I2C1.c **** * Return:
+ 214:Generated_Source\PSoC5/I2C1.c **** *  None.
+ 215:Generated_Source\PSoC5/I2C1.c **** *
+ 216:Generated_Source\PSoC5/I2C1.c **** *******************************************************************************/
+ 217:Generated_Source\PSoC5/I2C1.c **** void I2C1_Stop(void) 
+ 218:Generated_Source\PSoC5/I2C1.c **** {
+ 229              		.loc 1 218 0
+ 230              		.cfi_startproc
+ 231              		@ args = 0, pretend = 0, frame = 0
+ 232              		@ frame_needed = 1, uses_anonymous_args = 0
+ 233              		@ link register save eliminated.
+ 234 0000 80B4     		push	{r7}
+ 235              		.cfi_def_cfa_offset 4
+ 236              		.cfi_offset 7, -4
+ 237 0002 00AF     		add	r7, sp, #0
+ 238              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 9
+
+
+ 219:Generated_Source\PSoC5/I2C1.c ****     I2C1_DisableInt();
+ 239              		.loc 1 219 0
+ 240 0004 0F4B     		ldr	r3, .L12
+ 241 0006 0122     		movs	r2, #1
+ 242 0008 1A60     		str	r2, [r3]
+ 220:Generated_Source\PSoC5/I2C1.c **** 
+ 221:Generated_Source\PSoC5/I2C1.c **** #if (I2C1_TIMEOUT_ENABLED)
+ 222:Generated_Source\PSoC5/I2C1.c ****     I2C1_TimeoutStop();
+ 223:Generated_Source\PSoC5/I2C1.c **** #endif  /* End (I2C1_TIMEOUT_ENABLED) */
+ 224:Generated_Source\PSoC5/I2C1.c **** 
+ 225:Generated_Source\PSoC5/I2C1.c **** #if (I2C1_FF_IMPLEMENTED)
+ 226:Generated_Source\PSoC5/I2C1.c ****     {
+ 227:Generated_Source\PSoC5/I2C1.c ****         uint8 intState;
+ 228:Generated_Source\PSoC5/I2C1.c ****         uint16 blockResetCycles;
+ 229:Generated_Source\PSoC5/I2C1.c **** 
+ 230:Generated_Source\PSoC5/I2C1.c ****         /* Store registers effected by block disable */
+ 231:Generated_Source\PSoC5/I2C1.c ****         I2C1_backup.addr    = I2C1_ADDR_REG;
+ 232:Generated_Source\PSoC5/I2C1.c ****         I2C1_backup.clkDiv1 = I2C1_CLKDIV1_REG;
+ 233:Generated_Source\PSoC5/I2C1.c ****         I2C1_backup.clkDiv2 = I2C1_CLKDIV2_REG;
+ 234:Generated_Source\PSoC5/I2C1.c **** 
+ 235:Generated_Source\PSoC5/I2C1.c ****         /* Calculate number of cycles to reset block */
+ 236:Generated_Source\PSoC5/I2C1.c ****         blockResetCycles = ((uint16) ((uint16) I2C1_CLKDIV2_REG << 8u) | I2C1_CLKDIV1_REG) + 1u;
+ 237:Generated_Source\PSoC5/I2C1.c **** 
+ 238:Generated_Source\PSoC5/I2C1.c ****         /* Disable block */
+ 239:Generated_Source\PSoC5/I2C1.c ****         I2C1_CFG_REG &= (uint8) ~I2C1_CFG_EN_SLAVE;
+ 240:Generated_Source\PSoC5/I2C1.c ****         /* Wait for block reset before disable power */
+ 241:Generated_Source\PSoC5/I2C1.c ****         CyDelayCycles((uint32) blockResetCycles);
+ 242:Generated_Source\PSoC5/I2C1.c **** 
+ 243:Generated_Source\PSoC5/I2C1.c ****         /* Disable power to block */
+ 244:Generated_Source\PSoC5/I2C1.c ****         intState = CyEnterCriticalSection();
+ 245:Generated_Source\PSoC5/I2C1.c ****         I2C1_ACT_PWRMGR_REG  &= (uint8) ~I2C1_ACT_PWR_EN;
+ 246:Generated_Source\PSoC5/I2C1.c ****         I2C1_STBY_PWRMGR_REG &= (uint8) ~I2C1_STBY_PWR_EN;
+ 247:Generated_Source\PSoC5/I2C1.c ****         CyExitCriticalSection(intState);
+ 248:Generated_Source\PSoC5/I2C1.c **** 
+ 249:Generated_Source\PSoC5/I2C1.c ****         /* Enable block */
+ 250:Generated_Source\PSoC5/I2C1.c ****         I2C1_CFG_REG |= (uint8) I2C1_ENABLE_MS;
+ 251:Generated_Source\PSoC5/I2C1.c **** 
+ 252:Generated_Source\PSoC5/I2C1.c ****         /* Restore registers effected by block disable. Ticket ID#198004 */
+ 253:Generated_Source\PSoC5/I2C1.c ****         I2C1_ADDR_REG    = I2C1_backup.addr;
+ 254:Generated_Source\PSoC5/I2C1.c ****         I2C1_ADDR_REG    = I2C1_backup.addr;
+ 255:Generated_Source\PSoC5/I2C1.c ****         I2C1_CLKDIV1_REG = I2C1_backup.clkDiv1;
+ 256:Generated_Source\PSoC5/I2C1.c ****         I2C1_CLKDIV2_REG = I2C1_backup.clkDiv2;
+ 257:Generated_Source\PSoC5/I2C1.c ****     }
+ 258:Generated_Source\PSoC5/I2C1.c **** #else
+ 259:Generated_Source\PSoC5/I2C1.c **** 
+ 260:Generated_Source\PSoC5/I2C1.c ****     /* Disable slave or master bits */
+ 261:Generated_Source\PSoC5/I2C1.c ****     I2C1_CFG_REG &= (uint8) ~I2C1_ENABLE_MS;
+ 243              		.loc 1 261 0
+ 244 000a 0F4A     		ldr	r2, .L12+4
+ 245 000c 0E4B     		ldr	r3, .L12+4
+ 246 000e 1B78     		ldrb	r3, [r3]
+ 247 0010 DBB2     		uxtb	r3, r3
+ 248 0012 23F00203 		bic	r3, r3, #2
+ 249 0016 DBB2     		uxtb	r3, r3
+ 250 0018 1370     		strb	r3, [r2]
+ 262:Generated_Source\PSoC5/I2C1.c **** 
+ 263:Generated_Source\PSoC5/I2C1.c **** #if (I2C1_MODE_SLAVE_ENABLED)
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 10
+
+
+ 264:Generated_Source\PSoC5/I2C1.c ****     {
+ 265:Generated_Source\PSoC5/I2C1.c ****         /* Disable bit counter */
+ 266:Generated_Source\PSoC5/I2C1.c ****         uint8 intState = CyEnterCriticalSection();
+ 267:Generated_Source\PSoC5/I2C1.c ****         I2C1_COUNTER_AUX_CTL_REG &= (uint8) ~I2C1_CNT7_ENABLE;
+ 268:Generated_Source\PSoC5/I2C1.c ****         CyExitCriticalSection(intState);
+ 269:Generated_Source\PSoC5/I2C1.c ****     }
+ 270:Generated_Source\PSoC5/I2C1.c **** #endif /* (I2C1_MODE_SLAVE_ENABLED) */
+ 271:Generated_Source\PSoC5/I2C1.c **** 
+ 272:Generated_Source\PSoC5/I2C1.c ****     /* Clear interrupt source register */
+ 273:Generated_Source\PSoC5/I2C1.c ****     (void) I2C1_CSR_REG;
+ 251              		.loc 1 273 0
+ 252 001a 0C4B     		ldr	r3, .L12+8
+ 253 001c 1B78     		ldrb	r3, [r3]
+ 274:Generated_Source\PSoC5/I2C1.c **** #endif /* (I2C1_FF_IMPLEMENTED) */
+ 275:Generated_Source\PSoC5/I2C1.c **** 
+ 276:Generated_Source\PSoC5/I2C1.c ****     /* Disable interrupt on stop (enabled by write transaction) */
+ 277:Generated_Source\PSoC5/I2C1.c ****     I2C1_DISABLE_INT_ON_STOP;
+ 254              		.loc 1 277 0
+ 255 001e 0C4A     		ldr	r2, .L12+12
+ 256 0020 0B4B     		ldr	r3, .L12+12
+ 257 0022 1B78     		ldrb	r3, [r3]
+ 258 0024 DBB2     		uxtb	r3, r3
+ 259 0026 23F02003 		bic	r3, r3, #32
+ 260 002a DBB2     		uxtb	r3, r3
+ 261 002c 1370     		strb	r3, [r2]
+ 278:Generated_Source\PSoC5/I2C1.c ****     I2C1_ClearPendingInt();
+ 262              		.loc 1 278 0
+ 263 002e 094B     		ldr	r3, .L12+16
+ 264 0030 0122     		movs	r2, #1
+ 265 0032 1A60     		str	r2, [r3]
+ 279:Generated_Source\PSoC5/I2C1.c **** 
+ 280:Generated_Source\PSoC5/I2C1.c ****     /* Reset FSM to default state */
+ 281:Generated_Source\PSoC5/I2C1.c ****     I2C1_state = I2C1_SM_IDLE;
+ 266              		.loc 1 281 0
+ 267 0034 084B     		ldr	r3, .L12+20
+ 268 0036 1022     		movs	r2, #16
+ 269 0038 1A70     		strb	r2, [r3]
+ 282:Generated_Source\PSoC5/I2C1.c **** 
+ 283:Generated_Source\PSoC5/I2C1.c ****     /* Clear busy statuses */
+ 284:Generated_Source\PSoC5/I2C1.c **** #if (I2C1_MODE_SLAVE_ENABLED)
+ 285:Generated_Source\PSoC5/I2C1.c ****     I2C1_slStatus &= (uint8) ~(I2C1_SSTAT_RD_BUSY | I2C1_SSTAT_WR_BUSY);
+ 286:Generated_Source\PSoC5/I2C1.c **** #endif /* (I2C1_MODE_SLAVE_ENABLED) */
+ 287:Generated_Source\PSoC5/I2C1.c **** }
+ 270              		.loc 1 287 0
+ 271 003a 00BF     		nop
+ 272 003c BD46     		mov	sp, r7
+ 273              		.cfi_def_cfa_register 13
+ 274              		@ sp needed
+ 275 003e 80BC     		pop	{r7}
+ 276              		.cfi_restore 7
+ 277              		.cfi_def_cfa_offset 0
+ 278 0040 7047     		bx	lr
+ 279              	.L13:
+ 280 0042 00BF     		.align	2
+ 281              	.L12:
+ 282 0044 80E100E0 		.word	-536813184
+ 283 0048 76640040 		.word	1073767542
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 11
+
+
+ 284 004c 64640040 		.word	1073767524
+ 285 0050 84640040 		.word	1073767556
+ 286 0054 80E200E0 		.word	-536812928
+ 287 0058 00000000 		.word	I2C1_state
+ 288              		.cfi_endproc
+ 289              	.LFE3:
+ 290              		.size	I2C1_Stop, .-I2C1_Stop
+ 291              		.text
+ 292              	.Letext0:
+ 293              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 294              		.file 3 "Generated_Source\\PSoC5\\I2C1_PVT.h"
+ 295              		.section	.debug_info,"",%progbits
+ 296              	.Ldebug_info0:
+ 297 0000 5F010000 		.4byte	0x15f
+ 298 0004 0400     		.2byte	0x4
+ 299 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 300 000a 04       		.byte	0x4
+ 301 000b 01       		.uleb128 0x1
+ 302 000c 12000000 		.4byte	.LASF26
+ 303 0010 0C       		.byte	0xc
+ 304 0011 D3010000 		.4byte	.LASF27
+ 305 0015 1D010000 		.4byte	.LASF28
+ 306 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 307 001d 00000000 		.4byte	0
+ 308 0021 00000000 		.4byte	.Ldebug_line0
+ 309 0025 02       		.uleb128 0x2
+ 310 0026 01       		.byte	0x1
+ 311 0027 06       		.byte	0x6
+ 312 0028 36020000 		.4byte	.LASF0
+ 313 002c 02       		.uleb128 0x2
+ 314 002d 01       		.byte	0x1
+ 315 002e 08       		.byte	0x8
+ 316 002f F8000000 		.4byte	.LASF1
+ 317 0033 02       		.uleb128 0x2
+ 318 0034 02       		.byte	0x2
+ 319 0035 05       		.byte	0x5
+ 320 0036 0D020000 		.4byte	.LASF2
+ 321 003a 02       		.uleb128 0x2
+ 322 003b 02       		.byte	0x2
+ 323 003c 07       		.byte	0x7
+ 324 003d C1000000 		.4byte	.LASF3
+ 325 0041 02       		.uleb128 0x2
+ 326 0042 04       		.byte	0x4
+ 327 0043 05       		.byte	0x5
+ 328 0044 21020000 		.4byte	.LASF4
+ 329 0048 02       		.uleb128 0x2
+ 330 0049 04       		.byte	0x4
+ 331 004a 07       		.byte	0x7
+ 332 004b 0B010000 		.4byte	.LASF5
+ 333 004f 02       		.uleb128 0x2
+ 334 0050 08       		.byte	0x8
+ 335 0051 05       		.byte	0x5
+ 336 0052 FA010000 		.4byte	.LASF6
+ 337 0056 02       		.uleb128 0x2
+ 338 0057 08       		.byte	0x8
+ 339 0058 07       		.byte	0x7
+ 340 0059 BC010000 		.4byte	.LASF7
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 12
+
+
+ 341 005d 03       		.uleb128 0x3
+ 342 005e 04       		.byte	0x4
+ 343 005f 05       		.byte	0x5
+ 344 0060 696E7400 		.ascii	"int\000"
+ 345 0064 02       		.uleb128 0x2
+ 346 0065 04       		.byte	0x4
+ 347 0066 07       		.byte	0x7
+ 348 0067 AF010000 		.4byte	.LASF8
+ 349 006b 04       		.uleb128 0x4
+ 350 006c 7C010000 		.4byte	.LASF9
+ 351 0070 02       		.byte	0x2
+ 352 0071 E401     		.2byte	0x1e4
+ 353 0073 2C000000 		.4byte	0x2c
+ 354 0077 04       		.uleb128 0x4
+ 355 0078 89010000 		.4byte	.LASF10
+ 356 007c 02       		.byte	0x2
+ 357 007d E601     		.2byte	0x1e6
+ 358 007f 48000000 		.4byte	0x48
+ 359 0083 02       		.uleb128 0x2
+ 360 0084 04       		.byte	0x4
+ 361 0085 04       		.byte	0x4
+ 362 0086 F2000000 		.4byte	.LASF11
+ 363 008a 02       		.uleb128 0x2
+ 364 008b 08       		.byte	0x8
+ 365 008c 04       		.byte	0x4
+ 366 008d 82010000 		.4byte	.LASF12
+ 367 0091 02       		.uleb128 0x2
+ 368 0092 01       		.byte	0x1
+ 369 0093 08       		.byte	0x8
+ 370 0094 08020000 		.4byte	.LASF13
+ 371 0098 04       		.uleb128 0x4
+ 372 0099 06010000 		.4byte	.LASF14
+ 373 009d 02       		.byte	0x2
+ 374 009e 8E02     		.2byte	0x28e
+ 375 00a0 A4000000 		.4byte	0xa4
+ 376 00a4 05       		.uleb128 0x5
+ 377 00a5 6B000000 		.4byte	0x6b
+ 378 00a9 04       		.uleb128 0x4
+ 379 00aa 0C000000 		.4byte	.LASF15
+ 380 00ae 02       		.byte	0x2
+ 381 00af 9002     		.2byte	0x290
+ 382 00b1 B5000000 		.4byte	0xb5
+ 383 00b5 05       		.uleb128 0x5
+ 384 00b6 77000000 		.4byte	0x77
+ 385 00ba 02       		.uleb128 0x2
+ 386 00bb 08       		.byte	0x8
+ 387 00bc 04       		.byte	0x4
+ 388 00bd 2A020000 		.4byte	.LASF16
+ 389 00c1 02       		.uleb128 0x2
+ 390 00c2 04       		.byte	0x4
+ 391 00c3 07       		.byte	0x7
+ 392 00c4 F1010000 		.4byte	.LASF17
+ 393 00c8 06       		.uleb128 0x6
+ 394 00c9 E8000000 		.4byte	.LASF29
+ 395 00cd 01       		.byte	0x1
+ 396 00ce 31       		.byte	0x31
+ 397 00cf 00000000 		.4byte	.LFB0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 13
+
+
+ 398 00d3 A0000000 		.4byte	.LFE0-.LFB0
+ 399 00d7 01       		.uleb128 0x1
+ 400 00d8 9C       		.byte	0x9c
+ 401 00d9 EC000000 		.4byte	0xec
+ 402 00dd 07       		.uleb128 0x7
+ 403 00de B8000000 		.4byte	.LASF30
+ 404 00e2 01       		.byte	0x1
+ 405 00e3 3C       		.byte	0x3c
+ 406 00e4 6B000000 		.4byte	0x6b
+ 407 00e8 02       		.uleb128 0x2
+ 408 00e9 91       		.byte	0x91
+ 409 00ea 77       		.sleb128 -9
+ 410 00eb 00       		.byte	0
+ 411 00ec 08       		.uleb128 0x8
+ 412 00ed 00000000 		.4byte	.LASF18
+ 413 00f1 01       		.byte	0x1
+ 414 00f2 85       		.byte	0x85
+ 415 00f3 00000000 		.4byte	.LFB1
+ 416 00f7 20000000 		.4byte	.LFE1-.LFB1
+ 417 00fb 01       		.uleb128 0x1
+ 418 00fc 9C       		.byte	0x9c
+ 419 00fd 09       		.uleb128 0x9
+ 420 00fe A0000000 		.4byte	.LASF19
+ 421 0102 01       		.byte	0x1
+ 422 0103 BD       		.byte	0xbd
+ 423 0104 00000000 		.4byte	.LFB2
+ 424 0108 2C000000 		.4byte	.LFE2-.LFB2
+ 425 010c 01       		.uleb128 0x1
+ 426 010d 9C       		.byte	0x9c
+ 427 010e 08       		.uleb128 0x8
+ 428 010f 17020000 		.4byte	.LASF20
+ 429 0113 01       		.byte	0x1
+ 430 0114 D9       		.byte	0xd9
+ 431 0115 00000000 		.4byte	.LFB3
+ 432 0119 5C000000 		.4byte	.LFE3-.LFB3
+ 433 011d 01       		.uleb128 0x1
+ 434 011e 9C       		.byte	0x9c
+ 435 011f 0A       		.uleb128 0xa
+ 436 0120 AB000000 		.4byte	.LASF21
+ 437 0124 01       		.byte	0x1
+ 438 0125 18       		.byte	0x18
+ 439 0126 6B000000 		.4byte	0x6b
+ 440 012a 05       		.uleb128 0x5
+ 441 012b 03       		.byte	0x3
+ 442 012c 00000000 		.4byte	I2C1_initVar
+ 443 0130 0A       		.uleb128 0xa
+ 444 0131 A4010000 		.4byte	.LASF22
+ 445 0135 01       		.byte	0x1
+ 446 0136 1A       		.byte	0x1a
+ 447 0137 A4000000 		.4byte	0xa4
+ 448 013b 05       		.uleb128 0x5
+ 449 013c 03       		.byte	0x3
+ 450 013d 00000000 		.4byte	I2C1_state
+ 451 0141 0B       		.uleb128 0xb
+ 452 0142 42020000 		.4byte	.LASF23
+ 453 0146 03       		.byte	0x3
+ 454 0147 27       		.byte	0x27
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 14
+
+
+ 455 0148 A4000000 		.4byte	0xa4
+ 456 014c 0B       		.uleb128 0xb
+ 457 014d 90010000 		.4byte	.LASF24
+ 458 0151 03       		.byte	0x3
+ 459 0152 2D       		.byte	0x2d
+ 460 0153 A4000000 		.4byte	0xa4
+ 461 0157 0B       		.uleb128 0xb
+ 462 0158 D4000000 		.4byte	.LASF25
+ 463 015c 03       		.byte	0x3
+ 464 015d 32       		.byte	0x32
+ 465 015e A4000000 		.4byte	0xa4
+ 466 0162 00       		.byte	0
+ 467              		.section	.debug_abbrev,"",%progbits
+ 468              	.Ldebug_abbrev0:
+ 469 0000 01       		.uleb128 0x1
+ 470 0001 11       		.uleb128 0x11
+ 471 0002 01       		.byte	0x1
+ 472 0003 25       		.uleb128 0x25
+ 473 0004 0E       		.uleb128 0xe
+ 474 0005 13       		.uleb128 0x13
+ 475 0006 0B       		.uleb128 0xb
+ 476 0007 03       		.uleb128 0x3
+ 477 0008 0E       		.uleb128 0xe
+ 478 0009 1B       		.uleb128 0x1b
+ 479 000a 0E       		.uleb128 0xe
+ 480 000b 55       		.uleb128 0x55
+ 481 000c 17       		.uleb128 0x17
+ 482 000d 11       		.uleb128 0x11
+ 483 000e 01       		.uleb128 0x1
+ 484 000f 10       		.uleb128 0x10
+ 485 0010 17       		.uleb128 0x17
+ 486 0011 00       		.byte	0
+ 487 0012 00       		.byte	0
+ 488 0013 02       		.uleb128 0x2
+ 489 0014 24       		.uleb128 0x24
+ 490 0015 00       		.byte	0
+ 491 0016 0B       		.uleb128 0xb
+ 492 0017 0B       		.uleb128 0xb
+ 493 0018 3E       		.uleb128 0x3e
+ 494 0019 0B       		.uleb128 0xb
+ 495 001a 03       		.uleb128 0x3
+ 496 001b 0E       		.uleb128 0xe
+ 497 001c 00       		.byte	0
+ 498 001d 00       		.byte	0
+ 499 001e 03       		.uleb128 0x3
+ 500 001f 24       		.uleb128 0x24
+ 501 0020 00       		.byte	0
+ 502 0021 0B       		.uleb128 0xb
+ 503 0022 0B       		.uleb128 0xb
+ 504 0023 3E       		.uleb128 0x3e
+ 505 0024 0B       		.uleb128 0xb
+ 506 0025 03       		.uleb128 0x3
+ 507 0026 08       		.uleb128 0x8
+ 508 0027 00       		.byte	0
+ 509 0028 00       		.byte	0
+ 510 0029 04       		.uleb128 0x4
+ 511 002a 16       		.uleb128 0x16
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 15
+
+
+ 512 002b 00       		.byte	0
+ 513 002c 03       		.uleb128 0x3
+ 514 002d 0E       		.uleb128 0xe
+ 515 002e 3A       		.uleb128 0x3a
+ 516 002f 0B       		.uleb128 0xb
+ 517 0030 3B       		.uleb128 0x3b
+ 518 0031 05       		.uleb128 0x5
+ 519 0032 49       		.uleb128 0x49
+ 520 0033 13       		.uleb128 0x13
+ 521 0034 00       		.byte	0
+ 522 0035 00       		.byte	0
+ 523 0036 05       		.uleb128 0x5
+ 524 0037 35       		.uleb128 0x35
+ 525 0038 00       		.byte	0
+ 526 0039 49       		.uleb128 0x49
+ 527 003a 13       		.uleb128 0x13
+ 528 003b 00       		.byte	0
+ 529 003c 00       		.byte	0
+ 530 003d 06       		.uleb128 0x6
+ 531 003e 2E       		.uleb128 0x2e
+ 532 003f 01       		.byte	0x1
+ 533 0040 3F       		.uleb128 0x3f
+ 534 0041 19       		.uleb128 0x19
+ 535 0042 03       		.uleb128 0x3
+ 536 0043 0E       		.uleb128 0xe
+ 537 0044 3A       		.uleb128 0x3a
+ 538 0045 0B       		.uleb128 0xb
+ 539 0046 3B       		.uleb128 0x3b
+ 540 0047 0B       		.uleb128 0xb
+ 541 0048 27       		.uleb128 0x27
+ 542 0049 19       		.uleb128 0x19
+ 543 004a 11       		.uleb128 0x11
+ 544 004b 01       		.uleb128 0x1
+ 545 004c 12       		.uleb128 0x12
+ 546 004d 06       		.uleb128 0x6
+ 547 004e 40       		.uleb128 0x40
+ 548 004f 18       		.uleb128 0x18
+ 549 0050 9642     		.uleb128 0x2116
+ 550 0052 19       		.uleb128 0x19
+ 551 0053 01       		.uleb128 0x1
+ 552 0054 13       		.uleb128 0x13
+ 553 0055 00       		.byte	0
+ 554 0056 00       		.byte	0
+ 555 0057 07       		.uleb128 0x7
+ 556 0058 34       		.uleb128 0x34
+ 557 0059 00       		.byte	0
+ 558 005a 03       		.uleb128 0x3
+ 559 005b 0E       		.uleb128 0xe
+ 560 005c 3A       		.uleb128 0x3a
+ 561 005d 0B       		.uleb128 0xb
+ 562 005e 3B       		.uleb128 0x3b
+ 563 005f 0B       		.uleb128 0xb
+ 564 0060 49       		.uleb128 0x49
+ 565 0061 13       		.uleb128 0x13
+ 566 0062 02       		.uleb128 0x2
+ 567 0063 18       		.uleb128 0x18
+ 568 0064 00       		.byte	0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 16
+
+
+ 569 0065 00       		.byte	0
+ 570 0066 08       		.uleb128 0x8
+ 571 0067 2E       		.uleb128 0x2e
+ 572 0068 00       		.byte	0
+ 573 0069 3F       		.uleb128 0x3f
+ 574 006a 19       		.uleb128 0x19
+ 575 006b 03       		.uleb128 0x3
+ 576 006c 0E       		.uleb128 0xe
+ 577 006d 3A       		.uleb128 0x3a
+ 578 006e 0B       		.uleb128 0xb
+ 579 006f 3B       		.uleb128 0x3b
+ 580 0070 0B       		.uleb128 0xb
+ 581 0071 27       		.uleb128 0x27
+ 582 0072 19       		.uleb128 0x19
+ 583 0073 11       		.uleb128 0x11
+ 584 0074 01       		.uleb128 0x1
+ 585 0075 12       		.uleb128 0x12
+ 586 0076 06       		.uleb128 0x6
+ 587 0077 40       		.uleb128 0x40
+ 588 0078 18       		.uleb128 0x18
+ 589 0079 9742     		.uleb128 0x2117
+ 590 007b 19       		.uleb128 0x19
+ 591 007c 00       		.byte	0
+ 592 007d 00       		.byte	0
+ 593 007e 09       		.uleb128 0x9
+ 594 007f 2E       		.uleb128 0x2e
+ 595 0080 00       		.byte	0
+ 596 0081 3F       		.uleb128 0x3f
+ 597 0082 19       		.uleb128 0x19
+ 598 0083 03       		.uleb128 0x3
+ 599 0084 0E       		.uleb128 0xe
+ 600 0085 3A       		.uleb128 0x3a
+ 601 0086 0B       		.uleb128 0xb
+ 602 0087 3B       		.uleb128 0x3b
+ 603 0088 0B       		.uleb128 0xb
+ 604 0089 27       		.uleb128 0x27
+ 605 008a 19       		.uleb128 0x19
+ 606 008b 11       		.uleb128 0x11
+ 607 008c 01       		.uleb128 0x1
+ 608 008d 12       		.uleb128 0x12
+ 609 008e 06       		.uleb128 0x6
+ 610 008f 40       		.uleb128 0x40
+ 611 0090 18       		.uleb128 0x18
+ 612 0091 9642     		.uleb128 0x2116
+ 613 0093 19       		.uleb128 0x19
+ 614 0094 00       		.byte	0
+ 615 0095 00       		.byte	0
+ 616 0096 0A       		.uleb128 0xa
+ 617 0097 34       		.uleb128 0x34
+ 618 0098 00       		.byte	0
+ 619 0099 03       		.uleb128 0x3
+ 620 009a 0E       		.uleb128 0xe
+ 621 009b 3A       		.uleb128 0x3a
+ 622 009c 0B       		.uleb128 0xb
+ 623 009d 3B       		.uleb128 0x3b
+ 624 009e 0B       		.uleb128 0xb
+ 625 009f 49       		.uleb128 0x49
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 17
+
+
+ 626 00a0 13       		.uleb128 0x13
+ 627 00a1 3F       		.uleb128 0x3f
+ 628 00a2 19       		.uleb128 0x19
+ 629 00a3 02       		.uleb128 0x2
+ 630 00a4 18       		.uleb128 0x18
+ 631 00a5 00       		.byte	0
+ 632 00a6 00       		.byte	0
+ 633 00a7 0B       		.uleb128 0xb
+ 634 00a8 34       		.uleb128 0x34
+ 635 00a9 00       		.byte	0
+ 636 00aa 03       		.uleb128 0x3
+ 637 00ab 0E       		.uleb128 0xe
+ 638 00ac 3A       		.uleb128 0x3a
+ 639 00ad 0B       		.uleb128 0xb
+ 640 00ae 3B       		.uleb128 0x3b
+ 641 00af 0B       		.uleb128 0xb
+ 642 00b0 49       		.uleb128 0x49
+ 643 00b1 13       		.uleb128 0x13
+ 644 00b2 3F       		.uleb128 0x3f
+ 645 00b3 19       		.uleb128 0x19
+ 646 00b4 3C       		.uleb128 0x3c
+ 647 00b5 19       		.uleb128 0x19
+ 648 00b6 00       		.byte	0
+ 649 00b7 00       		.byte	0
+ 650 00b8 00       		.byte	0
+ 651              		.section	.debug_aranges,"",%progbits
+ 652 0000 34000000 		.4byte	0x34
+ 653 0004 0200     		.2byte	0x2
+ 654 0006 00000000 		.4byte	.Ldebug_info0
+ 655 000a 04       		.byte	0x4
+ 656 000b 00       		.byte	0
+ 657 000c 0000     		.2byte	0
+ 658 000e 0000     		.2byte	0
+ 659 0010 00000000 		.4byte	.LFB0
+ 660 0014 A0000000 		.4byte	.LFE0-.LFB0
+ 661 0018 00000000 		.4byte	.LFB1
+ 662 001c 20000000 		.4byte	.LFE1-.LFB1
+ 663 0020 00000000 		.4byte	.LFB2
+ 664 0024 2C000000 		.4byte	.LFE2-.LFB2
+ 665 0028 00000000 		.4byte	.LFB3
+ 666 002c 5C000000 		.4byte	.LFE3-.LFB3
+ 667 0030 00000000 		.4byte	0
+ 668 0034 00000000 		.4byte	0
+ 669              		.section	.debug_ranges,"",%progbits
+ 670              	.Ldebug_ranges0:
+ 671 0000 00000000 		.4byte	.LFB0
+ 672 0004 A0000000 		.4byte	.LFE0
+ 673 0008 00000000 		.4byte	.LFB1
+ 674 000c 20000000 		.4byte	.LFE1
+ 675 0010 00000000 		.4byte	.LFB2
+ 676 0014 2C000000 		.4byte	.LFE2
+ 677 0018 00000000 		.4byte	.LFB3
+ 678 001c 5C000000 		.4byte	.LFE3
+ 679 0020 00000000 		.4byte	0
+ 680 0024 00000000 		.4byte	0
+ 681              		.section	.debug_line,"",%progbits
+ 682              	.Ldebug_line0:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 18
+
+
+ 683 0000 BF000000 		.section	.debug_str,"MS",%progbits,1
+ 683      02004F00 
+ 683      00000201 
+ 683      FB0E0D00 
+ 683      01010101 
+ 684              	.LASF18:
+ 685 0000 49324331 		.ascii	"I2C1_Enable\000"
+ 685      5F456E61 
+ 685      626C6500 
+ 686              	.LASF15:
+ 687 000c 72656733 		.ascii	"reg32\000"
+ 687      3200
+ 688              	.LASF26:
+ 689 0012 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 689      43313120 
+ 689      352E342E 
+ 689      31203230 
+ 689      31363036 
+ 690 0045 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 690      20726576 
+ 690      6973696F 
+ 690      6E203233 
+ 690      37373135 
+ 691 0078 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 691      66756E63 
+ 691      74696F6E 
+ 691      2D736563 
+ 691      74696F6E 
+ 692              	.LASF19:
+ 693 00a0 49324331 		.ascii	"I2C1_Start\000"
+ 693      5F537461 
+ 693      727400
+ 694              	.LASF21:
+ 695 00ab 49324331 		.ascii	"I2C1_initVar\000"
+ 695      5F696E69 
+ 695      74566172 
+ 695      00
+ 696              	.LASF30:
+ 697 00b8 696E7453 		.ascii	"intState\000"
+ 697      74617465 
+ 697      00
+ 698              	.LASF3:
+ 699 00c1 73686F72 		.ascii	"short unsigned int\000"
+ 699      7420756E 
+ 699      7369676E 
+ 699      65642069 
+ 699      6E7400
+ 700              	.LASF25:
+ 701 00d4 49324331 		.ascii	"I2C1_mstrWrBufIndex\000"
+ 701      5F6D7374 
+ 701      72577242 
+ 701      7566496E 
+ 701      64657800 
+ 702              	.LASF29:
+ 703 00e8 49324331 		.ascii	"I2C1_Init\000"
+ 703      5F496E69 
+ 703      7400
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 19
+
+
+ 704              	.LASF11:
+ 705 00f2 666C6F61 		.ascii	"float\000"
+ 705      7400
+ 706              	.LASF1:
+ 707 00f8 756E7369 		.ascii	"unsigned char\000"
+ 707      676E6564 
+ 707      20636861 
+ 707      7200
+ 708              	.LASF14:
+ 709 0106 72656738 		.ascii	"reg8\000"
+ 709      00
+ 710              	.LASF5:
+ 711 010b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 711      20756E73 
+ 711      69676E65 
+ 711      6420696E 
+ 711      7400
+ 712              	.LASF28:
+ 713 011d 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\land-boards\\"
+ 713      73657273 
+ 713      5C48507A 
+ 713      3432305C 
+ 713      446F6375 
+ 714 014a 52617350 		.ascii	"RasPi\\RPI_PSOC5\\RPI_PSOC5_CARD_TEST_STATION.cydsn"
+ 714      695C5250 
+ 714      495F5053 
+ 714      4F43355C 
+ 714      5250495F 
+ 715 017b 00       		.ascii	"\000"
+ 716              	.LASF9:
+ 717 017c 75696E74 		.ascii	"uint8\000"
+ 717      3800
+ 718              	.LASF12:
+ 719 0182 646F7562 		.ascii	"double\000"
+ 719      6C6500
+ 720              	.LASF10:
+ 721 0189 75696E74 		.ascii	"uint32\000"
+ 721      333200
+ 722              	.LASF24:
+ 723 0190 49324331 		.ascii	"I2C1_mstrRdBufIndex\000"
+ 723      5F6D7374 
+ 723      72526442 
+ 723      7566496E 
+ 723      64657800 
+ 724              	.LASF22:
+ 725 01a4 49324331 		.ascii	"I2C1_state\000"
+ 725      5F737461 
+ 725      746500
+ 726              	.LASF8:
+ 727 01af 756E7369 		.ascii	"unsigned int\000"
+ 727      676E6564 
+ 727      20696E74 
+ 727      00
+ 728              	.LASF7:
+ 729 01bc 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 729      206C6F6E 
+ 729      6720756E 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXeiLBQ.s 			page 20
+
+
+ 729      7369676E 
+ 729      65642069 
+ 730              	.LASF27:
+ 731 01d3 47656E65 		.ascii	"Generated_Source\\PSoC5\\I2C1.c\000"
+ 731      72617465 
+ 731      645F536F 
+ 731      75726365 
+ 731      5C50536F 
+ 732              	.LASF17:
+ 733 01f1 73697A65 		.ascii	"sizetype\000"
+ 733      74797065 
+ 733      00
+ 734              	.LASF6:
+ 735 01fa 6C6F6E67 		.ascii	"long long int\000"
+ 735      206C6F6E 
+ 735      6720696E 
+ 735      7400
+ 736              	.LASF13:
+ 737 0208 63686172 		.ascii	"char\000"
+ 737      00
+ 738              	.LASF2:
+ 739 020d 73686F72 		.ascii	"short int\000"
+ 739      7420696E 
+ 739      7400
+ 740              	.LASF20:
+ 741 0217 49324331 		.ascii	"I2C1_Stop\000"
+ 741      5F53746F 
+ 741      7000
+ 742              	.LASF4:
+ 743 0221 6C6F6E67 		.ascii	"long int\000"
+ 743      20696E74 
+ 743      00
+ 744              	.LASF16:
+ 745 022a 6C6F6E67 		.ascii	"long double\000"
+ 745      20646F75 
+ 745      626C6500 
+ 746              	.LASF0:
+ 747 0236 7369676E 		.ascii	"signed char\000"
+ 747      65642063 
+ 747      68617200 
+ 748              	.LASF23:
+ 749 0242 49324331 		.ascii	"I2C1_mstrStatus\000"
+ 749      5F6D7374 
+ 749      72537461 
+ 749      74757300 
+ 750              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,1194 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Test_RPP-UIO_16.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.blinkLED,"ax",%progbits
+  20              		.align	2
+  21              		.global	blinkLED
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	blinkLED, %function
+  25              	blinkLED:
+  26              	.LFB63:
+  27              		.file 1 "Test_RPP-UIO_16.c"
+   1:Test_RPP-UIO_16.c **** /* ========================================
+   2:Test_RPP-UIO_16.c ****  *
+   3:Test_RPP-UIO_16.c ****  * Copyright LAND BOARDS, LLC, 2019
+   4:Test_RPP-UIO_16.c ****  * All Rights Reserved
+   5:Test_RPP-UIO_16.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:Test_RPP-UIO_16.c ****  *
+   7:Test_RPP-UIO_16.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:Test_RPP-UIO_16.c ****  * WHICH IS THE PROPERTY OF Land Boards.
+   9:Test_RPP-UIO_16.c ****  *
+  10:Test_RPP-UIO_16.c ****  * Code tests an external RPI_SPI8 card
+  11:Test_RPP-UIO_16.c ****  * http://land-boards.com/blwiki/index.php?title=RPI_SPI8
+  12:Test_RPP-UIO_16.c ****  *
+  13:Test_RPP-UIO_16.c ****  * ========================================
+  14:Test_RPP-UIO_16.c **** */
+  15:Test_RPP-UIO_16.c **** 
+  16:Test_RPP-UIO_16.c **** // Function to blink an LED attached to an output channel
+  17:Test_RPP-UIO_16.c **** // Drives line high for a short time and then drives it low.
+  18:Test_RPP-UIO_16.c **** // The high level output turns on the LED.
+  19:Test_RPP-UIO_16.c **** 
+  20:Test_RPP-UIO_16.c **** #include <project.h>
+  21:Test_RPP-UIO_16.c **** #include "RPI_PSOC5.h"
+  22:Test_RPP-UIO_16.c **** 
+  23:Test_RPP-UIO_16.c **** #define LED_ON 1
+  24:Test_RPP-UIO_16.c **** #define LED_OFF 0
+  25:Test_RPP-UIO_16.c **** 
+  26:Test_RPP-UIO_16.c **** void blinkLED(uint8 RPI_Pin)
+  27:Test_RPP-UIO_16.c **** {
+  28              		.loc 1 27 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 2
+
+
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              		.cfi_def_cfa_offset 16
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  40 0006 0346     		mov	r3, r0
+  41 0008 FB71     		strb	r3, [r7, #7]
+  28:Test_RPP-UIO_16.c **** 	setRasPiPinValue(RPI_Pin, LED_ON);
+  42              		.loc 1 28 0
+  43 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  44 000c 0121     		movs	r1, #1
+  45 000e 1846     		mov	r0, r3
+  46 0010 FFF7FEFF 		bl	setRasPiPinValue
+  29:Test_RPP-UIO_16.c ****     CyDelay(250);
+  47              		.loc 1 29 0
+  48 0014 FA20     		movs	r0, #250
+  49 0016 FFF7FEFF 		bl	CyDelay
+  30:Test_RPP-UIO_16.c **** 	setRasPiPinValue(RPI_Pin, LED_OFF);
+  50              		.loc 1 30 0
+  51 001a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  52 001c 0021     		movs	r1, #0
+  53 001e 1846     		mov	r0, r3
+  54 0020 FFF7FEFF 		bl	setRasPiPinValue
+  31:Test_RPP-UIO_16.c **** }
+  55              		.loc 1 31 0
+  56 0024 00BF     		nop
+  57 0026 0837     		adds	r7, r7, #8
+  58              		.cfi_def_cfa_offset 8
+  59 0028 BD46     		mov	sp, r7
+  60              		.cfi_def_cfa_register 13
+  61              		@ sp needed
+  62 002a 80BD     		pop	{r7, pc}
+  63              		.cfi_endproc
+  64              	.LFE63:
+  65              		.size	blinkLED, .-blinkLED
+  66              		.section	.text.testRPPUIO16,"ax",%progbits
+  67              		.align	2
+  68              		.global	testRPPUIO16
+  69              		.thumb
+  70              		.thumb_func
+  71              		.type	testRPPUIO16, %function
+  72              	testRPPUIO16:
+  73              	.LFB64:
+  32:Test_RPP-UIO_16.c **** 
+  33:Test_RPP-UIO_16.c **** void testRPPUIO16(void)
+  34:Test_RPP-UIO_16.c **** {
+  74              		.loc 1 34 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 1, uses_anonymous_args = 0
+  78 0000 80B5     		push	{r7, lr}
+  79              		.cfi_def_cfa_offset 8
+  80              		.cfi_offset 7, -8
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 3
+
+
+  81              		.cfi_offset 14, -4
+  82 0002 00AF     		add	r7, sp, #0
+  83              		.cfi_def_cfa_register 7
+  35:Test_RPP-UIO_16.c **** // Set all of the RPI pins to outputs
+  36:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_2,PIN_DM_STRONG);
+  84              		.loc 1 36 0
+  85 0004 0C21     		movs	r1, #12
+  86 0006 0020     		movs	r0, #0
+  87 0008 FFF7FEFF 		bl	setRasPiPinValue
+  37:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_3,PIN_DM_STRONG);
+  88              		.loc 1 37 0
+  89 000c 0C21     		movs	r1, #12
+  90 000e 0120     		movs	r0, #1
+  91 0010 FFF7FEFF 		bl	setRasPiPinValue
+  38:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_4,PIN_DM_STRONG);
+  92              		.loc 1 38 0
+  93 0014 0C21     		movs	r1, #12
+  94 0016 0220     		movs	r0, #2
+  95 0018 FFF7FEFF 		bl	setRasPiPinValue
+  39:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_14,PIN_DM_STRONG);
+  96              		.loc 1 39 0
+  97 001c 0C21     		movs	r1, #12
+  98 001e 0320     		movs	r0, #3
+  99 0020 FFF7FEFF 		bl	setRasPiPinValue
+  40:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_15,PIN_DM_STRONG);
+ 100              		.loc 1 40 0
+ 101 0024 0C21     		movs	r1, #12
+ 102 0026 0420     		movs	r0, #4
+ 103 0028 FFF7FEFF 		bl	setRasPiPinValue
+  41:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_17,PIN_DM_STRONG);
+ 104              		.loc 1 41 0
+ 105 002c 0C21     		movs	r1, #12
+ 106 002e 0520     		movs	r0, #5
+ 107 0030 FFF7FEFF 		bl	setRasPiPinValue
+  42:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_18,PIN_DM_STRONG);
+ 108              		.loc 1 42 0
+ 109 0034 0C21     		movs	r1, #12
+ 110 0036 0620     		movs	r0, #6
+ 111 0038 FFF7FEFF 		bl	setRasPiPinValue
+  43:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_27,PIN_DM_STRONG);
+ 112              		.loc 1 43 0
+ 113 003c 0C21     		movs	r1, #12
+ 114 003e 0720     		movs	r0, #7
+ 115 0040 FFF7FEFF 		bl	setRasPiPinValue
+  44:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_22,PIN_DM_STRONG);
+ 116              		.loc 1 44 0
+ 117 0044 0C21     		movs	r1, #12
+ 118 0046 0820     		movs	r0, #8
+ 119 0048 FFF7FEFF 		bl	setRasPiPinValue
+  45:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_23,PIN_DM_STRONG);
+ 120              		.loc 1 45 0
+ 121 004c 0C21     		movs	r1, #12
+ 122 004e 0920     		movs	r0, #9
+ 123 0050 FFF7FEFF 		bl	setRasPiPinValue
+  46:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_24,PIN_DM_STRONG);
+ 124              		.loc 1 46 0
+ 125 0054 0C21     		movs	r1, #12
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 4
+
+
+ 126 0056 0A20     		movs	r0, #10
+ 127 0058 FFF7FEFF 		bl	setRasPiPinValue
+  47:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_10,PIN_DM_STRONG);
+ 128              		.loc 1 47 0
+ 129 005c 0C21     		movs	r1, #12
+ 130 005e 0B20     		movs	r0, #11
+ 131 0060 FFF7FEFF 		bl	setRasPiPinValue
+  48:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_9,PIN_DM_STRONG);
+ 132              		.loc 1 48 0
+ 133 0064 0C21     		movs	r1, #12
+ 134 0066 0C20     		movs	r0, #12
+ 135 0068 FFF7FEFF 		bl	setRasPiPinValue
+  49:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_25,PIN_DM_STRONG);
+ 136              		.loc 1 49 0
+ 137 006c 0C21     		movs	r1, #12
+ 138 006e 0D20     		movs	r0, #13
+ 139 0070 FFF7FEFF 		bl	setRasPiPinValue
+  50:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_11,PIN_DM_STRONG);
+ 140              		.loc 1 50 0
+ 141 0074 0C21     		movs	r1, #12
+ 142 0076 0E20     		movs	r0, #14
+ 143 0078 FFF7FEFF 		bl	setRasPiPinValue
+  51:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_8,PIN_DM_STRONG);
+ 144              		.loc 1 51 0
+ 145 007c 0C21     		movs	r1, #12
+ 146 007e 0F20     		movs	r0, #15
+ 147 0080 FFF7FEFF 		bl	setRasPiPinValue
+  52:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_7,PIN_DM_STRONG);
+ 148              		.loc 1 52 0
+ 149 0084 0C21     		movs	r1, #12
+ 150 0086 1020     		movs	r0, #16
+ 151 0088 FFF7FEFF 		bl	setRasPiPinValue
+  53:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_5,PIN_DM_STRONG);
+ 152              		.loc 1 53 0
+ 153 008c 0C21     		movs	r1, #12
+ 154 008e 1120     		movs	r0, #17
+ 155 0090 FFF7FEFF 		bl	setRasPiPinValue
+  54:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_6,PIN_DM_STRONG);
+ 156              		.loc 1 54 0
+ 157 0094 0C21     		movs	r1, #12
+ 158 0096 1220     		movs	r0, #18
+ 159 0098 FFF7FEFF 		bl	setRasPiPinValue
+  55:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_12,PIN_DM_STRONG);
+ 160              		.loc 1 55 0
+ 161 009c 0C21     		movs	r1, #12
+ 162 009e 1320     		movs	r0, #19
+ 163 00a0 FFF7FEFF 		bl	setRasPiPinValue
+  56:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_13,PIN_DM_STRONG);
+ 164              		.loc 1 56 0
+ 165 00a4 0C21     		movs	r1, #12
+ 166 00a6 1420     		movs	r0, #20
+ 167 00a8 FFF7FEFF 		bl	setRasPiPinValue
+  57:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_19,PIN_DM_STRONG);
+ 168              		.loc 1 57 0
+ 169 00ac 0C21     		movs	r1, #12
+ 170 00ae 1520     		movs	r0, #21
+ 171 00b0 FFF7FEFF 		bl	setRasPiPinValue
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 5
+
+
+  58:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_16,PIN_DM_STRONG);
+ 172              		.loc 1 58 0
+ 173 00b4 0C21     		movs	r1, #12
+ 174 00b6 1620     		movs	r0, #22
+ 175 00b8 FFF7FEFF 		bl	setRasPiPinValue
+  59:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_26,PIN_DM_STRONG);
+ 176              		.loc 1 59 0
+ 177 00bc 0C21     		movs	r1, #12
+ 178 00be 1720     		movs	r0, #23
+ 179 00c0 FFF7FEFF 		bl	setRasPiPinValue
+  60:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_20,PIN_DM_STRONG);
+ 180              		.loc 1 60 0
+ 181 00c4 0C21     		movs	r1, #12
+ 182 00c6 1820     		movs	r0, #24
+ 183 00c8 FFF7FEFF 		bl	setRasPiPinValue
+  61:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_21,PIN_DM_STRONG);
+ 184              		.loc 1 61 0
+ 185 00cc 0C21     		movs	r1, #12
+ 186 00ce 1920     		movs	r0, #25
+ 187 00d0 FFF7FEFF 		bl	setRasPiPinValue
+  62:Test_RPP-UIO_16.c ****     
+  63:Test_RPP-UIO_16.c **** // Set all of the RPI pins to low
+  64:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_2,LED_OFF);
+ 188              		.loc 1 64 0
+ 189 00d4 0021     		movs	r1, #0
+ 190 00d6 0020     		movs	r0, #0
+ 191 00d8 FFF7FEFF 		bl	setRasPiPinValue
+  65:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_3,LED_OFF);
+ 192              		.loc 1 65 0
+ 193 00dc 0021     		movs	r1, #0
+ 194 00de 0120     		movs	r0, #1
+ 195 00e0 FFF7FEFF 		bl	setRasPiPinValue
+  66:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_4,LED_OFF);
+ 196              		.loc 1 66 0
+ 197 00e4 0021     		movs	r1, #0
+ 198 00e6 0220     		movs	r0, #2
+ 199 00e8 FFF7FEFF 		bl	setRasPiPinValue
+  67:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_14,LED_OFF);
+ 200              		.loc 1 67 0
+ 201 00ec 0021     		movs	r1, #0
+ 202 00ee 0320     		movs	r0, #3
+ 203 00f0 FFF7FEFF 		bl	setRasPiPinValue
+  68:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_15,LED_OFF);
+ 204              		.loc 1 68 0
+ 205 00f4 0021     		movs	r1, #0
+ 206 00f6 0420     		movs	r0, #4
+ 207 00f8 FFF7FEFF 		bl	setRasPiPinValue
+  69:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_17,LED_OFF);
+ 208              		.loc 1 69 0
+ 209 00fc 0021     		movs	r1, #0
+ 210 00fe 0520     		movs	r0, #5
+ 211 0100 FFF7FEFF 		bl	setRasPiPinValue
+  70:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_18,LED_OFF);
+ 212              		.loc 1 70 0
+ 213 0104 0021     		movs	r1, #0
+ 214 0106 0620     		movs	r0, #6
+ 215 0108 FFF7FEFF 		bl	setRasPiPinValue
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 6
+
+
+  71:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_27,LED_OFF);
+ 216              		.loc 1 71 0
+ 217 010c 0021     		movs	r1, #0
+ 218 010e 0720     		movs	r0, #7
+ 219 0110 FFF7FEFF 		bl	setRasPiPinValue
+  72:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_22,LED_OFF);
+ 220              		.loc 1 72 0
+ 221 0114 0021     		movs	r1, #0
+ 222 0116 0820     		movs	r0, #8
+ 223 0118 FFF7FEFF 		bl	setRasPiPinValue
+  73:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_23,LED_OFF);
+ 224              		.loc 1 73 0
+ 225 011c 0021     		movs	r1, #0
+ 226 011e 0920     		movs	r0, #9
+ 227 0120 FFF7FEFF 		bl	setRasPiPinValue
+  74:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_24,LED_OFF);
+ 228              		.loc 1 74 0
+ 229 0124 0021     		movs	r1, #0
+ 230 0126 0A20     		movs	r0, #10
+ 231 0128 FFF7FEFF 		bl	setRasPiPinValue
+  75:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_10,LED_OFF);
+ 232              		.loc 1 75 0
+ 233 012c 0021     		movs	r1, #0
+ 234 012e 0B20     		movs	r0, #11
+ 235 0130 FFF7FEFF 		bl	setRasPiPinValue
+  76:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_9,LED_OFF);
+ 236              		.loc 1 76 0
+ 237 0134 0021     		movs	r1, #0
+ 238 0136 0C20     		movs	r0, #12
+ 239 0138 FFF7FEFF 		bl	setRasPiPinValue
+  77:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_25,LED_OFF);
+ 240              		.loc 1 77 0
+ 241 013c 0021     		movs	r1, #0
+ 242 013e 0D20     		movs	r0, #13
+ 243 0140 FFF7FEFF 		bl	setRasPiPinValue
+  78:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_11,LED_OFF);
+ 244              		.loc 1 78 0
+ 245 0144 0021     		movs	r1, #0
+ 246 0146 0E20     		movs	r0, #14
+ 247 0148 FFF7FEFF 		bl	setRasPiPinValue
+  79:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_8,LED_OFF);
+ 248              		.loc 1 79 0
+ 249 014c 0021     		movs	r1, #0
+ 250 014e 0F20     		movs	r0, #15
+ 251 0150 FFF7FEFF 		bl	setRasPiPinValue
+  80:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_7,LED_OFF);
+ 252              		.loc 1 80 0
+ 253 0154 0021     		movs	r1, #0
+ 254 0156 1020     		movs	r0, #16
+ 255 0158 FFF7FEFF 		bl	setRasPiPinValue
+  81:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_5,LED_OFF);
+ 256              		.loc 1 81 0
+ 257 015c 0021     		movs	r1, #0
+ 258 015e 1120     		movs	r0, #17
+ 259 0160 FFF7FEFF 		bl	setRasPiPinValue
+  82:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_6,LED_OFF);
+ 260              		.loc 1 82 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 7
+
+
+ 261 0164 0021     		movs	r1, #0
+ 262 0166 1220     		movs	r0, #18
+ 263 0168 FFF7FEFF 		bl	setRasPiPinValue
+  83:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_12,LED_OFF);
+ 264              		.loc 1 83 0
+ 265 016c 0021     		movs	r1, #0
+ 266 016e 1320     		movs	r0, #19
+ 267 0170 FFF7FEFF 		bl	setRasPiPinValue
+  84:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_13,LED_OFF);
+ 268              		.loc 1 84 0
+ 269 0174 0021     		movs	r1, #0
+ 270 0176 1420     		movs	r0, #20
+ 271 0178 FFF7FEFF 		bl	setRasPiPinValue
+  85:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_19,LED_OFF);
+ 272              		.loc 1 85 0
+ 273 017c 0021     		movs	r1, #0
+ 274 017e 1520     		movs	r0, #21
+ 275 0180 FFF7FEFF 		bl	setRasPiPinValue
+  86:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_16,LED_OFF);
+ 276              		.loc 1 86 0
+ 277 0184 0021     		movs	r1, #0
+ 278 0186 1620     		movs	r0, #22
+ 279 0188 FFF7FEFF 		bl	setRasPiPinValue
+  87:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_26,LED_OFF);
+ 280              		.loc 1 87 0
+ 281 018c 0021     		movs	r1, #0
+ 282 018e 1720     		movs	r0, #23
+ 283 0190 FFF7FEFF 		bl	setRasPiPinValue
+  88:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_20,LED_OFF);
+ 284              		.loc 1 88 0
+ 285 0194 0021     		movs	r1, #0
+ 286 0196 1820     		movs	r0, #24
+ 287 0198 FFF7FEFF 		bl	setRasPiPinValue
+  89:Test_RPP-UIO_16.c ****     setRasPiPinValue(IO_21,LED_OFF);
+ 288              		.loc 1 89 0
+ 289 019c 0021     		movs	r1, #0
+ 290 019e 1920     		movs	r0, #25
+ 291 01a0 FFF7FEFF 		bl	setRasPiPinValue
+  90:Test_RPP-UIO_16.c ****     
+  91:Test_RPP-UIO_16.c **** // Blink all of the LEDs one at a time forever
+  92:Test_RPP-UIO_16.c **** // CTRL-C to exit which is not a particularly elegant exit strategy, but this is a demo program
+  93:Test_RPP-UIO_16.c **** 
+  94:Test_RPP-UIO_16.c **** //    while (1)
+  95:Test_RPP-UIO_16.c ****     {
+  96:Test_RPP-UIO_16.c ****      	blinkLED(IO_21);
+ 292              		.loc 1 96 0
+ 293 01a4 1920     		movs	r0, #25
+ 294 01a6 FFF7FEFF 		bl	blinkLED
+  97:Test_RPP-UIO_16.c ****     	blinkLED(IO_7);     // SPICE1
+ 295              		.loc 1 97 0
+ 296 01aa 1020     		movs	r0, #16
+ 297 01ac FFF7FEFF 		bl	blinkLED
+  98:Test_RPP-UIO_16.c ****         blinkLED(IO_10);    // SPIMOSI
+ 298              		.loc 1 98 0
+ 299 01b0 0B20     		movs	r0, #11
+ 300 01b2 FFF7FEFF 		bl	blinkLED
+  99:Test_RPP-UIO_16.c ****         blinkLED(IO_9);     // SPIMISO
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 8
+
+
+ 301              		.loc 1 99 0
+ 302 01b6 0C20     		movs	r0, #12
+ 303 01b8 FFF7FEFF 		bl	blinkLED
+ 100:Test_RPP-UIO_16.c ****         blinkLED(IO_11);    // SPISCK
+ 304              		.loc 1 100 0
+ 305 01bc 0E20     		movs	r0, #14
+ 306 01be FFF7FEFF 		bl	blinkLED
+ 101:Test_RPP-UIO_16.c ****        	blinkLED(IO_8);     // SPICE0
+ 307              		.loc 1 101 0
+ 308 01c2 0F20     		movs	r0, #15
+ 309 01c4 FFF7FEFF 		bl	blinkLED
+ 102:Test_RPP-UIO_16.c ****     	blinkLED(IO_2);     // SDA1
+ 310              		.loc 1 102 0
+ 311 01c8 0020     		movs	r0, #0
+ 312 01ca FFF7FEFF 		bl	blinkLED
+ 103:Test_RPP-UIO_16.c ****     	blinkLED(IO_3);     // SCL1
+ 313              		.loc 1 103 0
+ 314 01ce 0120     		movs	r0, #1
+ 315 01d0 FFF7FEFF 		bl	blinkLED
+ 104:Test_RPP-UIO_16.c ****     	blinkLED(IO_14);    // TXD0
+ 316              		.loc 1 104 0
+ 317 01d4 0320     		movs	r0, #3
+ 318 01d6 FFF7FEFF 		bl	blinkLED
+ 105:Test_RPP-UIO_16.c ****     	blinkLED(IO_15);    // RXD0
+ 319              		.loc 1 105 0
+ 320 01da 0420     		movs	r0, #4
+ 321 01dc FFF7FEFF 		bl	blinkLED
+ 106:Test_RPP-UIO_16.c ****         
+ 107:Test_RPP-UIO_16.c ****     	blinkLED(IO_4);
+ 322              		.loc 1 107 0
+ 323 01e0 0220     		movs	r0, #2
+ 324 01e2 FFF7FEFF 		bl	blinkLED
+ 108:Test_RPP-UIO_16.c ****     	blinkLED(IO_18);
+ 325              		.loc 1 108 0
+ 326 01e6 0620     		movs	r0, #6
+ 327 01e8 FFF7FEFF 		bl	blinkLED
+ 109:Test_RPP-UIO_16.c ****     	blinkLED(IO_17);
+ 328              		.loc 1 109 0
+ 329 01ec 0520     		movs	r0, #5
+ 330 01ee FFF7FEFF 		bl	blinkLED
+ 110:Test_RPP-UIO_16.c ****     	blinkLED(IO_27);
+ 331              		.loc 1 110 0
+ 332 01f2 0720     		movs	r0, #7
+ 333 01f4 FFF7FEFF 		bl	blinkLED
+ 111:Test_RPP-UIO_16.c ****     	blinkLED(IO_23);
+ 334              		.loc 1 111 0
+ 335 01f8 0920     		movs	r0, #9
+ 336 01fa FFF7FEFF 		bl	blinkLED
+ 112:Test_RPP-UIO_16.c ****     	blinkLED(IO_22);
+ 337              		.loc 1 112 0
+ 338 01fe 0820     		movs	r0, #8
+ 339 0200 FFF7FEFF 		bl	blinkLED
+ 113:Test_RPP-UIO_16.c ****     	blinkLED(IO_24);
+ 340              		.loc 1 113 0
+ 341 0204 0A20     		movs	r0, #10
+ 342 0206 FFF7FEFF 		bl	blinkLED
+ 114:Test_RPP-UIO_16.c ****     	blinkLED(IO_25);
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 9
+
+
+ 343              		.loc 1 114 0
+ 344 020a 0D20     		movs	r0, #13
+ 345 020c FFF7FEFF 		bl	blinkLED
+ 115:Test_RPP-UIO_16.c ****         
+ 116:Test_RPP-UIO_16.c ****     	blinkLED(IO_5);
+ 346              		.loc 1 116 0
+ 347 0210 1120     		movs	r0, #17
+ 348 0212 FFF7FEFF 		bl	blinkLED
+ 117:Test_RPP-UIO_16.c ****     	blinkLED(IO_6);
+ 349              		.loc 1 117 0
+ 350 0216 1220     		movs	r0, #18
+ 351 0218 FFF7FEFF 		bl	blinkLED
+ 118:Test_RPP-UIO_16.c ****     	blinkLED(IO_12);
+ 352              		.loc 1 118 0
+ 353 021c 1320     		movs	r0, #19
+ 354 021e FFF7FEFF 		bl	blinkLED
+ 119:Test_RPP-UIO_16.c ****     	blinkLED(IO_13);
+ 355              		.loc 1 119 0
+ 356 0222 1420     		movs	r0, #20
+ 357 0224 FFF7FEFF 		bl	blinkLED
+ 120:Test_RPP-UIO_16.c ****     	blinkLED(IO_19);
+ 358              		.loc 1 120 0
+ 359 0228 1520     		movs	r0, #21
+ 360 022a FFF7FEFF 		bl	blinkLED
+ 121:Test_RPP-UIO_16.c ****     	blinkLED(IO_16);
+ 361              		.loc 1 121 0
+ 362 022e 1620     		movs	r0, #22
+ 363 0230 FFF7FEFF 		bl	blinkLED
+ 122:Test_RPP-UIO_16.c ****         blinkLED(IO_26);
+ 364              		.loc 1 122 0
+ 365 0234 1720     		movs	r0, #23
+ 366 0236 FFF7FEFF 		bl	blinkLED
+ 123:Test_RPP-UIO_16.c ****     	blinkLED(IO_20);
+ 367              		.loc 1 123 0
+ 368 023a 1820     		movs	r0, #24
+ 369 023c FFF7FEFF 		bl	blinkLED
+ 124:Test_RPP-UIO_16.c ****     }
+ 125:Test_RPP-UIO_16.c **** }
+ 370              		.loc 1 125 0
+ 371 0240 00BF     		nop
+ 372 0242 80BD     		pop	{r7, pc}
+ 373              		.cfi_endproc
+ 374              	.LFE64:
+ 375              		.size	testRPPUIO16, .-testRPPUIO16
+ 376              		.text
+ 377              	.Letext0:
+ 378              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 379              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 380              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 381              		.file 5 "RasPi_Pins.h"
+ 382              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 383              		.section	.debug_info,"",%progbits
+ 384              	.Ldebug_info0:
+ 385 0000 A0010000 		.4byte	0x1a0
+ 386 0004 0400     		.2byte	0x4
+ 387 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 388 000a 04       		.byte	0x4
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 10
+
+
+ 389 000b 01       		.uleb128 0x1
+ 390 000c 00000000 		.4byte	.LASF43
+ 391 0010 0C       		.byte	0xc
+ 392 0011 8B010000 		.4byte	.LASF44
+ 393 0015 0C010000 		.4byte	.LASF45
+ 394 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 395 001d 00000000 		.4byte	0
+ 396 0021 00000000 		.4byte	.Ldebug_line0
+ 397 0025 02       		.uleb128 0x2
+ 398 0026 01       		.byte	0x1
+ 399 0027 06       		.byte	0x6
+ 400 0028 7E020000 		.4byte	.LASF0
+ 401 002c 02       		.uleb128 0x2
+ 402 002d 01       		.byte	0x1
+ 403 002e 08       		.byte	0x8
+ 404 002f EC000000 		.4byte	.LASF1
+ 405 0033 02       		.uleb128 0x2
+ 406 0034 02       		.byte	0x2
+ 407 0035 05       		.byte	0x5
+ 408 0036 46020000 		.4byte	.LASF2
+ 409 003a 02       		.uleb128 0x2
+ 410 003b 02       		.byte	0x2
+ 411 003c 07       		.byte	0x7
+ 412 003d 6B010000 		.4byte	.LASF3
+ 413 0041 03       		.uleb128 0x3
+ 414 0042 8E000000 		.4byte	.LASF9
+ 415 0046 02       		.byte	0x2
+ 416 0047 3F       		.byte	0x3f
+ 417 0048 4C000000 		.4byte	0x4c
+ 418 004c 02       		.uleb128 0x2
+ 419 004d 04       		.byte	0x4
+ 420 004e 05       		.byte	0x5
+ 421 004f 98000000 		.4byte	.LASF4
+ 422 0053 02       		.uleb128 0x2
+ 423 0054 04       		.byte	0x4
+ 424 0055 07       		.byte	0x7
+ 425 0056 FA000000 		.4byte	.LASF5
+ 426 005a 02       		.uleb128 0x2
+ 427 005b 08       		.byte	0x8
+ 428 005c 05       		.byte	0x5
+ 429 005d 2B020000 		.4byte	.LASF6
+ 430 0061 02       		.uleb128 0x2
+ 431 0062 08       		.byte	0x8
+ 432 0063 07       		.byte	0x7
+ 433 0064 CF010000 		.4byte	.LASF7
+ 434 0068 04       		.uleb128 0x4
+ 435 0069 04       		.byte	0x4
+ 436 006a 05       		.byte	0x5
+ 437 006b 696E7400 		.ascii	"int\000"
+ 438 006f 02       		.uleb128 0x2
+ 439 0070 04       		.byte	0x4
+ 440 0071 07       		.byte	0x7
+ 441 0072 B9010000 		.4byte	.LASF8
+ 442 0076 03       		.uleb128 0x3
+ 443 0077 DE000000 		.4byte	.LASF10
+ 444 007b 03       		.byte	0x3
+ 445 007c 2C       		.byte	0x2c
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 11
+
+
+ 446 007d 41000000 		.4byte	0x41
+ 447 0081 05       		.uleb128 0x5
+ 448 0082 50020000 		.4byte	.LASF11
+ 449 0086 04       		.byte	0x4
+ 450 0087 E401     		.2byte	0x1e4
+ 451 0089 2C000000 		.4byte	0x2c
+ 452 008d 02       		.uleb128 0x2
+ 453 008e 04       		.byte	0x4
+ 454 008f 04       		.byte	0x4
+ 455 0090 E6000000 		.4byte	.LASF12
+ 456 0094 02       		.uleb128 0x2
+ 457 0095 08       		.byte	0x8
+ 458 0096 04       		.byte	0x4
+ 459 0097 9D010000 		.4byte	.LASF13
+ 460 009b 02       		.uleb128 0x2
+ 461 009c 01       		.byte	0x1
+ 462 009d 08       		.byte	0x8
+ 463 009e 39020000 		.4byte	.LASF14
+ 464 00a2 02       		.uleb128 0x2
+ 465 00a3 08       		.byte	0x8
+ 466 00a4 04       		.byte	0x4
+ 467 00a5 A4010000 		.4byte	.LASF15
+ 468 00a9 02       		.uleb128 0x2
+ 469 00aa 04       		.byte	0x4
+ 470 00ab 07       		.byte	0x7
+ 471 00ac 22020000 		.4byte	.LASF16
+ 472 00b0 06       		.uleb128 0x6
+ 473 00b1 C6010000 		.4byte	.LASF46
+ 474 00b5 01       		.byte	0x1
+ 475 00b6 2C000000 		.4byte	0x2c
+ 476 00ba 05       		.byte	0x5
+ 477 00bb 13       		.byte	0x13
+ 478 00bc 5D010000 		.4byte	0x15d
+ 479 00c0 07       		.uleb128 0x7
+ 480 00c1 56020000 		.4byte	.LASF17
+ 481 00c5 00       		.byte	0
+ 482 00c6 07       		.uleb128 0x7
+ 483 00c7 5B020000 		.4byte	.LASF18
+ 484 00cb 01       		.byte	0x1
+ 485 00cc 07       		.uleb128 0x7
+ 486 00cd 60020000 		.4byte	.LASF19
+ 487 00d1 02       		.byte	0x2
+ 488 00d2 07       		.uleb128 0x7
+ 489 00d3 FE010000 		.4byte	.LASF20
+ 490 00d7 03       		.byte	0x3
+ 491 00d8 07       		.uleb128 0x7
+ 492 00d9 04020000 		.4byte	.LASF21
+ 493 00dd 04       		.byte	0x4
+ 494 00de 07       		.uleb128 0x7
+ 495 00df 10020000 		.4byte	.LASF22
+ 496 00e3 05       		.byte	0x5
+ 497 00e4 07       		.uleb128 0x7
+ 498 00e5 16020000 		.4byte	.LASF23
+ 499 00e9 06       		.byte	0x6
+ 500 00ea 07       		.uleb128 0x7
+ 501 00eb D8000000 		.4byte	.LASF24
+ 502 00ef 07       		.byte	0x7
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 12
+
+
+ 503 00f0 07       		.uleb128 0x7
+ 504 00f1 BA000000 		.4byte	.LASF25
+ 505 00f5 08       		.byte	0x8
+ 506 00f6 07       		.uleb128 0x7
+ 507 00f7 C0000000 		.4byte	.LASF26
+ 508 00fb 09       		.byte	0x9
+ 509 00fc 07       		.uleb128 0x7
+ 510 00fd C6000000 		.4byte	.LASF27
+ 511 0101 0A       		.byte	0xa
+ 512 0102 07       		.uleb128 0x7
+ 513 0103 E6010000 		.4byte	.LASF28
+ 514 0107 0B       		.byte	0xb
+ 515 0108 07       		.uleb128 0x7
+ 516 0109 79020000 		.4byte	.LASF29
+ 517 010d 0C       		.byte	0xc
+ 518 010e 07       		.uleb128 0x7
+ 519 010f CC000000 		.4byte	.LASF30
+ 520 0113 0D       		.byte	0xd
+ 521 0114 07       		.uleb128 0x7
+ 522 0115 EC010000 		.4byte	.LASF31
+ 523 0119 0E       		.byte	0xe
+ 524 011a 07       		.uleb128 0x7
+ 525 011b 74020000 		.4byte	.LASF32
+ 526 011f 0F       		.byte	0xf
+ 527 0120 07       		.uleb128 0x7
+ 528 0121 6F020000 		.4byte	.LASF33
+ 529 0125 10       		.byte	0x10
+ 530 0126 07       		.uleb128 0x7
+ 531 0127 65020000 		.4byte	.LASF34
+ 532 012b 11       		.byte	0x11
+ 533 012c 07       		.uleb128 0x7
+ 534 012d 6A020000 		.4byte	.LASF35
+ 535 0131 12       		.byte	0x12
+ 536 0132 07       		.uleb128 0x7
+ 537 0133 F2010000 		.4byte	.LASF36
+ 538 0137 13       		.byte	0x13
+ 539 0138 07       		.uleb128 0x7
+ 540 0139 F8010000 		.4byte	.LASF37
+ 541 013d 14       		.byte	0x14
+ 542 013e 07       		.uleb128 0x7
+ 543 013f 1C020000 		.4byte	.LASF38
+ 544 0143 15       		.byte	0x15
+ 545 0144 07       		.uleb128 0x7
+ 546 0145 0A020000 		.4byte	.LASF39
+ 547 0149 16       		.byte	0x16
+ 548 014a 07       		.uleb128 0x7
+ 549 014b D2000000 		.4byte	.LASF40
+ 550 014f 17       		.byte	0x17
+ 551 0150 07       		.uleb128 0x7
+ 552 0151 AE000000 		.4byte	.LASF41
+ 553 0155 18       		.byte	0x18
+ 554 0156 07       		.uleb128 0x7
+ 555 0157 B4000000 		.4byte	.LASF42
+ 556 015b 19       		.byte	0x19
+ 557 015c 00       		.byte	0
+ 558 015d 08       		.uleb128 0x8
+ 559 015e B0010000 		.4byte	.LASF47
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 13
+
+
+ 560 0162 01       		.byte	0x1
+ 561 0163 1A       		.byte	0x1a
+ 562 0164 00000000 		.4byte	.LFB63
+ 563 0168 2C000000 		.4byte	.LFE63-.LFB63
+ 564 016c 01       		.uleb128 0x1
+ 565 016d 9C       		.byte	0x9c
+ 566 016e 81010000 		.4byte	0x181
+ 567 0172 09       		.uleb128 0x9
+ 568 0173 3E020000 		.4byte	.LASF48
+ 569 0177 01       		.byte	0x1
+ 570 0178 1A       		.byte	0x1a
+ 571 0179 81000000 		.4byte	0x81
+ 572 017d 02       		.uleb128 0x2
+ 573 017e 91       		.byte	0x91
+ 574 017f 77       		.sleb128 -9
+ 575 0180 00       		.byte	0
+ 576 0181 0A       		.uleb128 0xa
+ 577 0182 A1000000 		.4byte	.LASF49
+ 578 0186 01       		.byte	0x1
+ 579 0187 21       		.byte	0x21
+ 580 0188 00000000 		.4byte	.LFB64
+ 581 018c 44020000 		.4byte	.LFE64-.LFB64
+ 582 0190 01       		.uleb128 0x1
+ 583 0191 9C       		.byte	0x9c
+ 584 0192 0B       		.uleb128 0xb
+ 585 0193 7E010000 		.4byte	.LASF50
+ 586 0197 06       		.byte	0x6
+ 587 0198 1207     		.2byte	0x712
+ 588 019a 9E010000 		.4byte	0x19e
+ 589 019e 0C       		.uleb128 0xc
+ 590 019f 76000000 		.4byte	0x76
+ 591 01a3 00       		.byte	0
+ 592              		.section	.debug_abbrev,"",%progbits
+ 593              	.Ldebug_abbrev0:
+ 594 0000 01       		.uleb128 0x1
+ 595 0001 11       		.uleb128 0x11
+ 596 0002 01       		.byte	0x1
+ 597 0003 25       		.uleb128 0x25
+ 598 0004 0E       		.uleb128 0xe
+ 599 0005 13       		.uleb128 0x13
+ 600 0006 0B       		.uleb128 0xb
+ 601 0007 03       		.uleb128 0x3
+ 602 0008 0E       		.uleb128 0xe
+ 603 0009 1B       		.uleb128 0x1b
+ 604 000a 0E       		.uleb128 0xe
+ 605 000b 55       		.uleb128 0x55
+ 606 000c 17       		.uleb128 0x17
+ 607 000d 11       		.uleb128 0x11
+ 608 000e 01       		.uleb128 0x1
+ 609 000f 10       		.uleb128 0x10
+ 610 0010 17       		.uleb128 0x17
+ 611 0011 00       		.byte	0
+ 612 0012 00       		.byte	0
+ 613 0013 02       		.uleb128 0x2
+ 614 0014 24       		.uleb128 0x24
+ 615 0015 00       		.byte	0
+ 616 0016 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 14
+
+
+ 617 0017 0B       		.uleb128 0xb
+ 618 0018 3E       		.uleb128 0x3e
+ 619 0019 0B       		.uleb128 0xb
+ 620 001a 03       		.uleb128 0x3
+ 621 001b 0E       		.uleb128 0xe
+ 622 001c 00       		.byte	0
+ 623 001d 00       		.byte	0
+ 624 001e 03       		.uleb128 0x3
+ 625 001f 16       		.uleb128 0x16
+ 626 0020 00       		.byte	0
+ 627 0021 03       		.uleb128 0x3
+ 628 0022 0E       		.uleb128 0xe
+ 629 0023 3A       		.uleb128 0x3a
+ 630 0024 0B       		.uleb128 0xb
+ 631 0025 3B       		.uleb128 0x3b
+ 632 0026 0B       		.uleb128 0xb
+ 633 0027 49       		.uleb128 0x49
+ 634 0028 13       		.uleb128 0x13
+ 635 0029 00       		.byte	0
+ 636 002a 00       		.byte	0
+ 637 002b 04       		.uleb128 0x4
+ 638 002c 24       		.uleb128 0x24
+ 639 002d 00       		.byte	0
+ 640 002e 0B       		.uleb128 0xb
+ 641 002f 0B       		.uleb128 0xb
+ 642 0030 3E       		.uleb128 0x3e
+ 643 0031 0B       		.uleb128 0xb
+ 644 0032 03       		.uleb128 0x3
+ 645 0033 08       		.uleb128 0x8
+ 646 0034 00       		.byte	0
+ 647 0035 00       		.byte	0
+ 648 0036 05       		.uleb128 0x5
+ 649 0037 16       		.uleb128 0x16
+ 650 0038 00       		.byte	0
+ 651 0039 03       		.uleb128 0x3
+ 652 003a 0E       		.uleb128 0xe
+ 653 003b 3A       		.uleb128 0x3a
+ 654 003c 0B       		.uleb128 0xb
+ 655 003d 3B       		.uleb128 0x3b
+ 656 003e 05       		.uleb128 0x5
+ 657 003f 49       		.uleb128 0x49
+ 658 0040 13       		.uleb128 0x13
+ 659 0041 00       		.byte	0
+ 660 0042 00       		.byte	0
+ 661 0043 06       		.uleb128 0x6
+ 662 0044 04       		.uleb128 0x4
+ 663 0045 01       		.byte	0x1
+ 664 0046 03       		.uleb128 0x3
+ 665 0047 0E       		.uleb128 0xe
+ 666 0048 0B       		.uleb128 0xb
+ 667 0049 0B       		.uleb128 0xb
+ 668 004a 49       		.uleb128 0x49
+ 669 004b 13       		.uleb128 0x13
+ 670 004c 3A       		.uleb128 0x3a
+ 671 004d 0B       		.uleb128 0xb
+ 672 004e 3B       		.uleb128 0x3b
+ 673 004f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 15
+
+
+ 674 0050 01       		.uleb128 0x1
+ 675 0051 13       		.uleb128 0x13
+ 676 0052 00       		.byte	0
+ 677 0053 00       		.byte	0
+ 678 0054 07       		.uleb128 0x7
+ 679 0055 28       		.uleb128 0x28
+ 680 0056 00       		.byte	0
+ 681 0057 03       		.uleb128 0x3
+ 682 0058 0E       		.uleb128 0xe
+ 683 0059 1C       		.uleb128 0x1c
+ 684 005a 0B       		.uleb128 0xb
+ 685 005b 00       		.byte	0
+ 686 005c 00       		.byte	0
+ 687 005d 08       		.uleb128 0x8
+ 688 005e 2E       		.uleb128 0x2e
+ 689 005f 01       		.byte	0x1
+ 690 0060 3F       		.uleb128 0x3f
+ 691 0061 19       		.uleb128 0x19
+ 692 0062 03       		.uleb128 0x3
+ 693 0063 0E       		.uleb128 0xe
+ 694 0064 3A       		.uleb128 0x3a
+ 695 0065 0B       		.uleb128 0xb
+ 696 0066 3B       		.uleb128 0x3b
+ 697 0067 0B       		.uleb128 0xb
+ 698 0068 27       		.uleb128 0x27
+ 699 0069 19       		.uleb128 0x19
+ 700 006a 11       		.uleb128 0x11
+ 701 006b 01       		.uleb128 0x1
+ 702 006c 12       		.uleb128 0x12
+ 703 006d 06       		.uleb128 0x6
+ 704 006e 40       		.uleb128 0x40
+ 705 006f 18       		.uleb128 0x18
+ 706 0070 9642     		.uleb128 0x2116
+ 707 0072 19       		.uleb128 0x19
+ 708 0073 01       		.uleb128 0x1
+ 709 0074 13       		.uleb128 0x13
+ 710 0075 00       		.byte	0
+ 711 0076 00       		.byte	0
+ 712 0077 09       		.uleb128 0x9
+ 713 0078 05       		.uleb128 0x5
+ 714 0079 00       		.byte	0
+ 715 007a 03       		.uleb128 0x3
+ 716 007b 0E       		.uleb128 0xe
+ 717 007c 3A       		.uleb128 0x3a
+ 718 007d 0B       		.uleb128 0xb
+ 719 007e 3B       		.uleb128 0x3b
+ 720 007f 0B       		.uleb128 0xb
+ 721 0080 49       		.uleb128 0x49
+ 722 0081 13       		.uleb128 0x13
+ 723 0082 02       		.uleb128 0x2
+ 724 0083 18       		.uleb128 0x18
+ 725 0084 00       		.byte	0
+ 726 0085 00       		.byte	0
+ 727 0086 0A       		.uleb128 0xa
+ 728 0087 2E       		.uleb128 0x2e
+ 729 0088 00       		.byte	0
+ 730 0089 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 16
+
+
+ 731 008a 19       		.uleb128 0x19
+ 732 008b 03       		.uleb128 0x3
+ 733 008c 0E       		.uleb128 0xe
+ 734 008d 3A       		.uleb128 0x3a
+ 735 008e 0B       		.uleb128 0xb
+ 736 008f 3B       		.uleb128 0x3b
+ 737 0090 0B       		.uleb128 0xb
+ 738 0091 27       		.uleb128 0x27
+ 739 0092 19       		.uleb128 0x19
+ 740 0093 11       		.uleb128 0x11
+ 741 0094 01       		.uleb128 0x1
+ 742 0095 12       		.uleb128 0x12
+ 743 0096 06       		.uleb128 0x6
+ 744 0097 40       		.uleb128 0x40
+ 745 0098 18       		.uleb128 0x18
+ 746 0099 9642     		.uleb128 0x2116
+ 747 009b 19       		.uleb128 0x19
+ 748 009c 00       		.byte	0
+ 749 009d 00       		.byte	0
+ 750 009e 0B       		.uleb128 0xb
+ 751 009f 34       		.uleb128 0x34
+ 752 00a0 00       		.byte	0
+ 753 00a1 03       		.uleb128 0x3
+ 754 00a2 0E       		.uleb128 0xe
+ 755 00a3 3A       		.uleb128 0x3a
+ 756 00a4 0B       		.uleb128 0xb
+ 757 00a5 3B       		.uleb128 0x3b
+ 758 00a6 05       		.uleb128 0x5
+ 759 00a7 49       		.uleb128 0x49
+ 760 00a8 13       		.uleb128 0x13
+ 761 00a9 3F       		.uleb128 0x3f
+ 762 00aa 19       		.uleb128 0x19
+ 763 00ab 3C       		.uleb128 0x3c
+ 764 00ac 19       		.uleb128 0x19
+ 765 00ad 00       		.byte	0
+ 766 00ae 00       		.byte	0
+ 767 00af 0C       		.uleb128 0xc
+ 768 00b0 35       		.uleb128 0x35
+ 769 00b1 00       		.byte	0
+ 770 00b2 49       		.uleb128 0x49
+ 771 00b3 13       		.uleb128 0x13
+ 772 00b4 00       		.byte	0
+ 773 00b5 00       		.byte	0
+ 774 00b6 00       		.byte	0
+ 775              		.section	.debug_aranges,"",%progbits
+ 776 0000 24000000 		.4byte	0x24
+ 777 0004 0200     		.2byte	0x2
+ 778 0006 00000000 		.4byte	.Ldebug_info0
+ 779 000a 04       		.byte	0x4
+ 780 000b 00       		.byte	0
+ 781 000c 0000     		.2byte	0
+ 782 000e 0000     		.2byte	0
+ 783 0010 00000000 		.4byte	.LFB63
+ 784 0014 2C000000 		.4byte	.LFE63-.LFB63
+ 785 0018 00000000 		.4byte	.LFB64
+ 786 001c 44020000 		.4byte	.LFE64-.LFB64
+ 787 0020 00000000 		.4byte	0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 17
+
+
+ 788 0024 00000000 		.4byte	0
+ 789              		.section	.debug_ranges,"",%progbits
+ 790              	.Ldebug_ranges0:
+ 791 0000 00000000 		.4byte	.LFB63
+ 792 0004 2C000000 		.4byte	.LFE63
+ 793 0008 00000000 		.4byte	.LFB64
+ 794 000c 44020000 		.4byte	.LFE64
+ 795 0010 00000000 		.4byte	0
+ 796 0014 00000000 		.4byte	0
+ 797              		.section	.debug_line,"",%progbits
+ 798              	.Ldebug_line0:
+ 799 0000 DE010000 		.section	.debug_str,"MS",%progbits,1
+ 799      02006701 
+ 799      00000201 
+ 799      FB0E0D00 
+ 799      01010101 
+ 800              	.LASF43:
+ 801 0000 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 801      43313120 
+ 801      352E342E 
+ 801      31203230 
+ 801      31363036 
+ 802 0033 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 802      20726576 
+ 802      6973696F 
+ 802      6E203233 
+ 802      37373135 
+ 803 0066 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 803      66756E63 
+ 803      74696F6E 
+ 803      2D736563 
+ 803      74696F6E 
+ 804              	.LASF9:
+ 805 008e 5F5F696E 		.ascii	"__int32_t\000"
+ 805      7433325F 
+ 805      7400
+ 806              	.LASF4:
+ 807 0098 6C6F6E67 		.ascii	"long int\000"
+ 807      20696E74 
+ 807      00
+ 808              	.LASF49:
+ 809 00a1 74657374 		.ascii	"testRPPUIO16\000"
+ 809      52505055 
+ 809      494F3136 
+ 809      00
+ 810              	.LASF41:
+ 811 00ae 494F5F32 		.ascii	"IO_20\000"
+ 811      3000
+ 812              	.LASF42:
+ 813 00b4 494F5F32 		.ascii	"IO_21\000"
+ 813      3100
+ 814              	.LASF25:
+ 815 00ba 494F5F32 		.ascii	"IO_22\000"
+ 815      3200
+ 816              	.LASF26:
+ 817 00c0 494F5F32 		.ascii	"IO_23\000"
+ 817      3300
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 18
+
+
+ 818              	.LASF27:
+ 819 00c6 494F5F32 		.ascii	"IO_24\000"
+ 819      3400
+ 820              	.LASF30:
+ 821 00cc 494F5F32 		.ascii	"IO_25\000"
+ 821      3500
+ 822              	.LASF40:
+ 823 00d2 494F5F32 		.ascii	"IO_26\000"
+ 823      3600
+ 824              	.LASF24:
+ 825 00d8 494F5F32 		.ascii	"IO_27\000"
+ 825      3700
+ 826              	.LASF10:
+ 827 00de 696E7433 		.ascii	"int32_t\000"
+ 827      325F7400 
+ 828              	.LASF12:
+ 829 00e6 666C6F61 		.ascii	"float\000"
+ 829      7400
+ 830              	.LASF1:
+ 831 00ec 756E7369 		.ascii	"unsigned char\000"
+ 831      676E6564 
+ 831      20636861 
+ 831      7200
+ 832              	.LASF5:
+ 833 00fa 6C6F6E67 		.ascii	"long unsigned int\000"
+ 833      20756E73 
+ 833      69676E65 
+ 833      6420696E 
+ 833      7400
+ 834              	.LASF45:
+ 835 010c 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\land-boards\\"
+ 835      73657273 
+ 835      5C48507A 
+ 835      3432305C 
+ 835      446F6375 
+ 836 0139 52617350 		.ascii	"RasPi\\RPI_PSOC5\\RPI_PSOC5_CARD_TEST_STATION.cydsn"
+ 836      695C5250 
+ 836      495F5053 
+ 836      4F43355C 
+ 836      5250495F 
+ 837 016a 00       		.ascii	"\000"
+ 838              	.LASF3:
+ 839 016b 73686F72 		.ascii	"short unsigned int\000"
+ 839      7420756E 
+ 839      7369676E 
+ 839      65642069 
+ 839      6E7400
+ 840              	.LASF50:
+ 841 017e 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 841      52784275 
+ 841      66666572 
+ 841      00
+ 842              	.LASF44:
+ 843 018b 54657374 		.ascii	"Test_RPP-UIO_16.c\000"
+ 843      5F525050 
+ 843      2D55494F 
+ 843      5F31362E 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 19
+
+
+ 843      6300
+ 844              	.LASF13:
+ 845 019d 646F7562 		.ascii	"double\000"
+ 845      6C6500
+ 846              	.LASF15:
+ 847 01a4 6C6F6E67 		.ascii	"long double\000"
+ 847      20646F75 
+ 847      626C6500 
+ 848              	.LASF47:
+ 849 01b0 626C696E 		.ascii	"blinkLED\000"
+ 849      6B4C4544 
+ 849      00
+ 850              	.LASF8:
+ 851 01b9 756E7369 		.ascii	"unsigned int\000"
+ 851      676E6564 
+ 851      20696E74 
+ 851      00
+ 852              	.LASF46:
+ 853 01c6 42434D5F 		.ascii	"BCM_PINS\000"
+ 853      50494E53 
+ 853      00
+ 854              	.LASF7:
+ 855 01cf 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 855      206C6F6E 
+ 855      6720756E 
+ 855      7369676E 
+ 855      65642069 
+ 856              	.LASF28:
+ 857 01e6 494F5F31 		.ascii	"IO_10\000"
+ 857      3000
+ 858              	.LASF31:
+ 859 01ec 494F5F31 		.ascii	"IO_11\000"
+ 859      3100
+ 860              	.LASF36:
+ 861 01f2 494F5F31 		.ascii	"IO_12\000"
+ 861      3200
+ 862              	.LASF37:
+ 863 01f8 494F5F31 		.ascii	"IO_13\000"
+ 863      3300
+ 864              	.LASF20:
+ 865 01fe 494F5F31 		.ascii	"IO_14\000"
+ 865      3400
+ 866              	.LASF21:
+ 867 0204 494F5F31 		.ascii	"IO_15\000"
+ 867      3500
+ 868              	.LASF39:
+ 869 020a 494F5F31 		.ascii	"IO_16\000"
+ 869      3600
+ 870              	.LASF22:
+ 871 0210 494F5F31 		.ascii	"IO_17\000"
+ 871      3700
+ 872              	.LASF23:
+ 873 0216 494F5F31 		.ascii	"IO_18\000"
+ 873      3800
+ 874              	.LASF38:
+ 875 021c 494F5F31 		.ascii	"IO_19\000"
+ 875      3900
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cczNyo0y.s 			page 20
+
+
+ 876              	.LASF16:
+ 877 0222 73697A65 		.ascii	"sizetype\000"
+ 877      74797065 
+ 877      00
+ 878              	.LASF6:
+ 879 022b 6C6F6E67 		.ascii	"long long int\000"
+ 879      206C6F6E 
+ 879      6720696E 
+ 879      7400
+ 880              	.LASF14:
+ 881 0239 63686172 		.ascii	"char\000"
+ 881      00
+ 882              	.LASF48:
+ 883 023e 5250495F 		.ascii	"RPI_Pin\000"
+ 883      50696E00 
+ 884              	.LASF2:
+ 885 0246 73686F72 		.ascii	"short int\000"
+ 885      7420696E 
+ 885      7400
+ 886              	.LASF11:
+ 887 0250 75696E74 		.ascii	"uint8\000"
+ 887      3800
+ 888              	.LASF17:
+ 889 0256 494F5F32 		.ascii	"IO_2\000"
+ 889      00
+ 890              	.LASF18:
+ 891 025b 494F5F33 		.ascii	"IO_3\000"
+ 891      00
+ 892              	.LASF19:
+ 893 0260 494F5F34 		.ascii	"IO_4\000"
+ 893      00
+ 894              	.LASF34:
+ 895 0265 494F5F35 		.ascii	"IO_5\000"
+ 895      00
+ 896              	.LASF35:
+ 897 026a 494F5F36 		.ascii	"IO_6\000"
+ 897      00
+ 898              	.LASF33:
+ 899 026f 494F5F37 		.ascii	"IO_7\000"
+ 899      00
+ 900              	.LASF32:
+ 901 0274 494F5F38 		.ascii	"IO_8\000"
+ 901      00
+ 902              	.LASF29:
+ 903 0279 494F5F39 		.ascii	"IO_9\000"
+ 903      00
+ 904              	.LASF0:
+ 905 027e 7369676E 		.ascii	"signed char\000"
+ 905      65642063 
+ 905      68617200 
+ 906              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

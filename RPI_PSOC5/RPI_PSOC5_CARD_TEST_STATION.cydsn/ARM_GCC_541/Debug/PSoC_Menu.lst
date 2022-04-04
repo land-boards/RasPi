@@ -1,0 +1,3086 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"PSoC_Menu.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.comm	receiveBuffer,80,4
+  20              		.comm	receiveBufferPtr,1,1
+  21              		.comm	gotCRorLF,1,1
+  22              		.global	cardType
+  23              		.bss
+  24              		.align	1
+  25              		.type	cardType, %object
+  26              		.size	cardType, 2
+  27              	cardType:
+  28 0000 0000     		.space	2
+  29              		.section	.rodata
+  30              		.align	2
+  31              	.LC0:
+  32 0000 0A0D4C61 		.ascii	"\012\015Land Boards, LLC - RPi Card Test Station\012"
+  32      6E642042 
+  32      6F617264 
+  32      732C204C 
+  32      4C43202D 
+  33 002b 0D00     		.ascii	"\015\000"
+  34 002d 000000   		.align	2
+  35              	.LC1:
+  36 0030 31202D20 		.ascii	"1 - Select RPP-UIO-16 Card\012\015\000"
+  36      53656C65 
+  36      63742052 
+  36      50502D55 
+  36      494F2D31 
+  37 004d 000000   		.align	2
+  38              	.LC2:
+  39 0050 32202D20 		.ascii	"2 - Select RPPSOC Card\012\015\000"
+  39      53656C65 
+  39      63742052 
+  39      5050534F 
+  39      43204361 
+  40 0069 000000   		.align	2
+  41              	.LC3:
+  42 006c 33202D20 		.ascii	"3 - Select RASPI-PLUS-GVS-CFG Card\012\015\000"
+  42      53656C65 
+  42      63742052 
+  42      41535049 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 2
+
+
+  42      2D504C55 
+  43 0091 000000   		.align	2
+  44              	.LC4:
+  45 0094 34202D20 		.ascii	"4 - Select RASPI-GVS Card\012\015\000"
+  45      53656C65 
+  45      63742052 
+  45      41535049 
+  45      2D475653 
+  46              		.align	2
+  47              	.LC5:
+  48 00b0 35202D20 		.ascii	"5 - Select RASPI-PLUS-GVS Card\012\015\000"
+  48      53656C65 
+  48      63742052 
+  48      41535049 
+  48      2D504C55 
+  49 00d1 000000   		.align	2
+  50              	.LC6:
+  51 00d4 36202D20 		.ascii	"6 - Select RPI-I2C-HUB Card\012\015\000"
+  51      53656C65 
+  51      63742052 
+  51      50492D49 
+  51      32432D48 
+  52 00f2 0000     		.align	2
+  53              	.LC7:
+  54 00f4 37202D20 		.ascii	"7 - Select RPI-SPI8 Card\012\015\000"
+  54      53656C65 
+  54      63742052 
+  54      50492D53 
+  54      50493820 
+  55 010f 00       		.align	2
+  56              	.LC8:
+  57 0110 52202D20 		.ascii	"R - Read EEPROM\012\015\000"
+  57      52656164 
+  57      20454550 
+  57      524F4D0A 
+  57      0D00
+  58 0122 0000     		.align	2
+  59              	.LC9:
+  60 0124 57202D20 		.ascii	"W - Write EEPROM\012\015\000"
+  60      57726974 
+  60      65204545 
+  60      50524F4D 
+  60      0A0D00
+  61 0137 00       		.align	2
+  62              	.LC10:
+  63 0138 42202D20 		.ascii	"B - Bounce LED across Card GPIOs\012\015\000"
+  63      426F756E 
+  63      6365204C 
+  63      45442061 
+  63      63726F73 
+  64 015b 00       		.align	2
+  65              	.LC11:
+  66 015c 54202D20 		.ascii	"T - Test Card\012\015\000"
+  66      54657374 
+  66      20436172 
+  66      640A0D00 
+  67              		.align	2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 3
+
+
+  68              	.LC12:
+  69 016c 44202D20 		.ascii	"D - Debug Card\012\015\000"
+  69      44656275 
+  69      67204361 
+  69      72640A0D 
+  69      00
+  70 017d 000000   		.align	2
+  71              	.LC13:
+  72 0180 3F202D20 		.ascii	"? - Print this menu\012\015\000"
+  72      5072696E 
+  72      74207468 
+  72      6973206D 
+  72      656E750A 
+  73              		.section	.text.printMenuOptions,"ax",%progbits
+  74              		.align	2
+  75              		.global	printMenuOptions
+  76              		.thumb
+  77              		.thumb_func
+  78              		.type	printMenuOptions, %function
+  79              	printMenuOptions:
+  80              	.LFB63:
+  81              		.file 1 "PSoC_Menu.c"
+   1:PSoC_Menu.c   **** /* ========================================
+   2:PSoC_Menu.c   ****  *
+   3:PSoC_Menu.c   ****  * Copyright LAND BOARDS, LLC, 2019
+   4:PSoC_Menu.c   ****  * All Rights Reserved
+   5:PSoC_Menu.c   ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:PSoC_Menu.c   ****  *
+   7:PSoC_Menu.c   ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:PSoC_Menu.c   ****  * WHICH IS THE PROPERTY OF Land Boards.
+   9:PSoC_Menu.c   ****  *
+  10:PSoC_Menu.c   ****  * Menu for the card testing software
+  11:PSoC_Menu.c   ****  *
+  12:PSoC_Menu.c   ****  * ========================================
+  13:PSoC_Menu.c   **** */
+  14:PSoC_Menu.c   **** 
+  15:PSoC_Menu.c   **** #include "RPI_PSOC5.h"
+  16:PSoC_Menu.c   **** #include <project.h>
+  17:PSoC_Menu.c   **** 
+  18:PSoC_Menu.c   **** uint8 receiveBuffer[80];
+  19:PSoC_Menu.c   **** uint8 receiveBufferPtr;
+  20:PSoC_Menu.c   **** uint8 gotCRorLF;
+  21:PSoC_Menu.c   **** uint16 cardType = UNSELECTED_CARD;
+  22:PSoC_Menu.c   **** 
+  23:PSoC_Menu.c   **** ////////////////////////////////////////////////////////////////////////////
+  24:PSoC_Menu.c   **** // void printMenu(void) - Print the menu
+  25:PSoC_Menu.c   **** 
+  26:PSoC_Menu.c   **** void printMenuOptions(void)
+  27:PSoC_Menu.c   **** {
+  82              		.loc 1 27 0
+  83              		.cfi_startproc
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 1, uses_anonymous_args = 0
+  86 0000 80B5     		push	{r7, lr}
+  87              		.cfi_def_cfa_offset 8
+  88              		.cfi_offset 7, -8
+  89              		.cfi_offset 14, -4
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 4
+
+
+  90 0002 00AF     		add	r7, sp, #0
+  91              		.cfi_def_cfa_register 7
+  28:PSoC_Menu.c   ****     putStringToUSB("\n\rLand Boards, LLC - RPi Card Test Station\n\r");
+  92              		.loc 1 28 0
+  93 0004 1548     		ldr	r0, .L2
+  94 0006 FFF7FEFF 		bl	putStringToUSB
+  29:PSoC_Menu.c   ****     putStringToUSB("1 - Select RPP-UIO-16 Card\n\r");
+  95              		.loc 1 29 0
+  96 000a 1548     		ldr	r0, .L2+4
+  97 000c FFF7FEFF 		bl	putStringToUSB
+  30:PSoC_Menu.c   ****     putStringToUSB("2 - Select RPPSOC Card\n\r");
+  98              		.loc 1 30 0
+  99 0010 1448     		ldr	r0, .L2+8
+ 100 0012 FFF7FEFF 		bl	putStringToUSB
+  31:PSoC_Menu.c   ****     putStringToUSB("3 - Select RASPI-PLUS-GVS-CFG Card\n\r");
+ 101              		.loc 1 31 0
+ 102 0016 1448     		ldr	r0, .L2+12
+ 103 0018 FFF7FEFF 		bl	putStringToUSB
+  32:PSoC_Menu.c   ****     putStringToUSB("4 - Select RASPI-GVS Card\n\r");
+ 104              		.loc 1 32 0
+ 105 001c 1348     		ldr	r0, .L2+16
+ 106 001e FFF7FEFF 		bl	putStringToUSB
+  33:PSoC_Menu.c   ****     putStringToUSB("5 - Select RASPI-PLUS-GVS Card\n\r");
+ 107              		.loc 1 33 0
+ 108 0022 1348     		ldr	r0, .L2+20
+ 109 0024 FFF7FEFF 		bl	putStringToUSB
+  34:PSoC_Menu.c   ****     putStringToUSB("6 - Select RPI-I2C-HUB Card\n\r");
+ 110              		.loc 1 34 0
+ 111 0028 1248     		ldr	r0, .L2+24
+ 112 002a FFF7FEFF 		bl	putStringToUSB
+  35:PSoC_Menu.c   ****     putStringToUSB("7 - Select RPI-SPI8 Card\n\r");
+ 113              		.loc 1 35 0
+ 114 002e 1248     		ldr	r0, .L2+28
+ 115 0030 FFF7FEFF 		bl	putStringToUSB
+  36:PSoC_Menu.c   ****     putStringToUSB("R - Read EEPROM\n\r");
+ 116              		.loc 1 36 0
+ 117 0034 1148     		ldr	r0, .L2+32
+ 118 0036 FFF7FEFF 		bl	putStringToUSB
+  37:PSoC_Menu.c   ****     putStringToUSB("W - Write EEPROM\n\r");
+ 119              		.loc 1 37 0
+ 120 003a 1148     		ldr	r0, .L2+36
+ 121 003c FFF7FEFF 		bl	putStringToUSB
+  38:PSoC_Menu.c   ****     putStringToUSB("B - Bounce LED across Card GPIOs\n\r");
+ 122              		.loc 1 38 0
+ 123 0040 1048     		ldr	r0, .L2+40
+ 124 0042 FFF7FEFF 		bl	putStringToUSB
+  39:PSoC_Menu.c   ****     putStringToUSB("T - Test Card\n\r");
+ 125              		.loc 1 39 0
+ 126 0046 1048     		ldr	r0, .L2+44
+ 127 0048 FFF7FEFF 		bl	putStringToUSB
+  40:PSoC_Menu.c   ****     putStringToUSB("D - Debug Card\n\r");
+ 128              		.loc 1 40 0
+ 129 004c 0F48     		ldr	r0, .L2+48
+ 130 004e FFF7FEFF 		bl	putStringToUSB
+  41:PSoC_Menu.c   ****     putStringToUSB("? - Print this menu\n\r");
+ 131              		.loc 1 41 0
+ 132 0052 0F48     		ldr	r0, .L2+52
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 5
+
+
+ 133 0054 FFF7FEFF 		bl	putStringToUSB
+  42:PSoC_Menu.c   **** }
+ 134              		.loc 1 42 0
+ 135 0058 00BF     		nop
+ 136 005a 80BD     		pop	{r7, pc}
+ 137              	.L3:
+ 138              		.align	2
+ 139              	.L2:
+ 140 005c 00000000 		.word	.LC0
+ 141 0060 30000000 		.word	.LC1
+ 142 0064 50000000 		.word	.LC2
+ 143 0068 6C000000 		.word	.LC3
+ 144 006c 94000000 		.word	.LC4
+ 145 0070 B0000000 		.word	.LC5
+ 146 0074 D4000000 		.word	.LC6
+ 147 0078 F4000000 		.word	.LC7
+ 148 007c 10010000 		.word	.LC8
+ 149 0080 24010000 		.word	.LC9
+ 150 0084 38010000 		.word	.LC10
+ 151 0088 5C010000 		.word	.LC11
+ 152 008c 6C010000 		.word	.LC12
+ 153 0090 80010000 		.word	.LC13
+ 154              		.cfi_endproc
+ 155              	.LFE63:
+ 156              		.size	printMenuOptions, .-printMenuOptions
+ 157              		.section	.rodata
+ 158 0196 0000     		.align	2
+ 159              	.LC14:
+ 160 0198 52656164 		.ascii	"Read from the EEPROM\012\015\000"
+ 160      2066726F 
+ 160      6D207468 
+ 160      65204545 
+ 160      50524F4D 
+ 161 01af 00       		.align	2
+ 162              	.LC15:
+ 163 01b0 4D757374 		.ascii	"Must first select card type\012\015\000"
+ 163      20666972 
+ 163      73742073 
+ 163      656C6563 
+ 163      74206361 
+ 164 01ce 0000     		.align	2
+ 165              	.LC16:
+ 166 01d0 57726974 		.ascii	"Write to the EEPROM...\000"
+ 166      6520746F 
+ 166      20746865 
+ 166      20454550 
+ 166      524F4D2E 
+ 167 01e7 00       		.align	2
+ 168              	.LC17:
+ 169 01e8 436F6D70 		.ascii	"Completed EEPROM write\012\015\000"
+ 169      6C657465 
+ 169      64204545 
+ 169      50524F4D 
+ 169      20777269 
+ 170 0201 000000   		.align	2
+ 171              	.LC18:
+ 172 0204 45455052 		.ascii	"EEPROM write failed (does this card have an EEPROM?"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 6
+
+
+ 172      4F4D2077 
+ 172      72697465 
+ 172      20666169 
+ 172      6C656420 
+ 173 0237 0A0D00   		.ascii	"\012\015\000"
+ 174 023a 0000     		.align	2
+ 175              	.LC19:
+ 176 023c 54657374 		.ascii	"Testing RPI-I2C-HUB input, please wait\012\015\000"
+ 176      696E6720 
+ 176      5250492D 
+ 176      4932432D 
+ 176      48554220 
+ 177 0265 000000   		.align	2
+ 178              	.LC20:
+ 179 0268 436F6D70 		.ascii	"Completed Testing RPI-I2C-HUB input\012\015\000"
+ 179      6C657465 
+ 179      64205465 
+ 179      7374696E 
+ 179      67205250 
+ 180 028e 0000     		.align	2
+ 181              	.LC21:
+ 182 0290 54657374 		.ascii	"Testing RPI-SPI8 input, please wait\012\015\000"
+ 182      696E6720 
+ 182      5250492D 
+ 182      53504938 
+ 182      20696E70 
+ 183 02b6 0000     		.align	2
+ 184              	.LC22:
+ 185 02b8 436F6D70 		.ascii	"Completed Testing RPI-SPI8 input\012\015\000"
+ 185      6C657465 
+ 185      64205465 
+ 185      7374696E 
+ 185      67205250 
+ 186 02db 00       		.align	2
+ 187              	.LC23:
+ 188 02dc 43617264 		.ascii	"Card not yet implemented\012\015\000"
+ 188      206E6F74 
+ 188      20796574 
+ 188      20696D70 
+ 188      6C656D65 
+ 189 02f7 00       		.align	2
+ 190              	.LC24:
+ 191 02f8 426C696E 		.ascii	"Blinking the LEDs on the RasPI-PLUS-GVS-CFG card, p"
+ 191      6B696E67 
+ 191      20746865 
+ 191      204C4544 
+ 191      73206F6E 
+ 192 032b 6C656173 		.ascii	"lease wait\012\015\000"
+ 192      65207761 
+ 192      69740A0D 
+ 192      00
+ 193              		.align	2
+ 194              	.LC25:
+ 195 0338 436F6D70 		.ascii	"Completed blinking the LEDs on the RasPI-PLUS-GVS-C"
+ 195      6C657465 
+ 195      6420626C 
+ 195      696E6B69 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 7
+
+
+ 195      6E672074 
+ 196 036b 46472063 		.ascii	"FG card\012\015\000"
+ 196      6172640A 
+ 196      0D00
+ 197 0375 000000   		.align	2
+ 198              	.LC26:
+ 199 0378 426C696E 		.ascii	"Blinking the LEDs on the RASPI-PLUS-GVS card, pleas"
+ 199      6B696E67 
+ 199      20746865 
+ 199      204C4544 
+ 199      73206F6E 
+ 200 03ab 65207761 		.ascii	"e wait\012\015\000"
+ 200      69740A0D 
+ 200      00
+ 201              		.align	2
+ 202              	.LC27:
+ 203 03b4 436F6D70 		.ascii	"Completed blinking the LEDs on the RASPI-PLUS-GVS c"
+ 203      6C657465 
+ 203      6420626C 
+ 203      696E6B69 
+ 203      6E672074 
+ 204 03e7 6172640A 		.ascii	"ard\012\015\000"
+ 204      0D00
+ 205 03ed 000000   		.align	2
+ 206              	.LC28:
+ 207 03f0 426C696E 		.ascii	"Blinking the LEDs on the RASPI-GVS card, please wai"
+ 207      6B696E67 
+ 207      20746865 
+ 207      204C4544 
+ 207      73206F6E 
+ 208 0423 740A0D00 		.ascii	"t\012\015\000"
+ 209 0427 00       		.align	2
+ 210              	.LC29:
+ 211 0428 436F6D70 		.ascii	"Completed blinking the LEDs on the RASPI-GVS card\012"
+ 211      6C657465 
+ 211      6420626C 
+ 211      696E6B69 
+ 211      6E672074 
+ 212 045a 0D00     		.ascii	"\015\000"
+ 213              		.align	2
+ 214              	.LC30:
+ 215 045c 426C696E 		.ascii	"Blinking the LEDs on the RPP-UIO-16 card, please wa"
+ 215      6B696E67 
+ 215      20746865 
+ 215      204C4544 
+ 215      73206F6E 
+ 216 048f 69740A0D 		.ascii	"it\012\015\000"
+ 216      00
+ 217              		.align	2
+ 218              	.LC31:
+ 219 0494 436F6D70 		.ascii	"Completed blinking the LEDs on the RPP-UIO-16 card\012"
+ 219      6C657465 
+ 219      6420626C 
+ 219      696E6B69 
+ 219      6E672074 
+ 220 04c7 0D00     		.ascii	"\015\000"
+ 221 04c9 000000   		.align	2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 8
+
+
+ 222              	.LC32:
+ 223 04cc 426C696E 		.ascii	"Blinking the DIGIO-8 Card LEDs, please wait\012\015"
+ 223      6B696E67 
+ 223      20746865 
+ 223      20444947 
+ 223      494F2D38 
+ 224 04f9 00       		.ascii	"\000"
+ 225 04fa 0000     		.align	2
+ 226              	.LC33:
+ 227 04fc 436F6D70 		.ascii	"Completed blinking the LEDs\012\015\000"
+ 227      6C657465 
+ 227      6420626C 
+ 227      696E6B69 
+ 227      6E672074 
+ 228 051a 0000     		.align	2
+ 229              	.LC34:
+ 230 051c 426C696E 		.ascii	"Blinking the RPI-SPI8 Card LEDs, hit ENTER to exit\012"
+ 230      6B696E67 
+ 230      20746865 
+ 230      20525049 
+ 230      2D535049 
+ 231 054f 0D00     		.ascii	"\015\000"
+ 232 0551 000000   		.align	2
+ 233              	.LC35:
+ 234 0554 44656275 		.ascii	"Debugging the RasPI-PLUS-GVS-CFG card\012\015\000"
+ 234      6767696E 
+ 234      67207468 
+ 234      65205261 
+ 234      7350492D 
+ 235              		.align	2
+ 236              	.LC36:
+ 237 057c 436F6D70 		.ascii	"Completed debugging the RasPI-PLUS-GVS-CFG card\012"
+ 237      6C657465 
+ 237      64206465 
+ 237      62756767 
+ 237      696E6720 
+ 238 05ac 0D00     		.ascii	"\015\000"
+ 239 05ae 0000     		.align	2
+ 240              	.LC37:
+ 241 05b0 44656275 		.ascii	"Debugging the RASPI-PLUS-GVS card\012\015\000"
+ 241      6767696E 
+ 241      67207468 
+ 241      65205241 
+ 241      5350492D 
+ 242              		.align	2
+ 243              	.LC38:
+ 244 05d4 436F6D70 		.ascii	"Completed debugging the RASPI-PLUS-GVS card\012\015"
+ 244      6C657465 
+ 244      64206465 
+ 244      62756767 
+ 244      696E6720 
+ 245 0601 00       		.ascii	"\000"
+ 246 0602 0000     		.align	2
+ 247              	.LC39:
+ 248 0604 44656275 		.ascii	"Debugging the RASPI-GVS card\012\015\000"
+ 248      6767696E 
+ 248      67207468 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 9
+
+
+ 248      65205241 
+ 248      5350492D 
+ 249 0623 00       		.align	2
+ 250              	.LC40:
+ 251 0624 436F6D70 		.ascii	"Completed debugging the RASPI-GVS card\012\015\000"
+ 251      6C657465 
+ 251      64206465 
+ 251      62756767 
+ 251      696E6720 
+ 252 064d 000000   		.align	2
+ 253              	.LC41:
+ 254 0650 44656275 		.ascii	"Debugging the RPP-UIO-16 card\012\015\000"
+ 254      6767696E 
+ 254      67207468 
+ 254      65205250 
+ 254      502D5549 
+ 255              		.align	2
+ 256              	.LC42:
+ 257 0670 436F6D70 		.ascii	"Completed debugging the RPP-UIO-16 card\012\015\000"
+ 257      6C657465 
+ 257      64206465 
+ 257      62756767 
+ 257      696E6720 
+ 258 069a 0000     		.align	2
+ 259              	.LC43:
+ 260 069c 44656275 		.ascii	"Debugging the RPI-I2C-HUB card\012\015\000"
+ 260      6767696E 
+ 260      67207468 
+ 260      65205250 
+ 260      492D4932 
+ 261 06bd 000000   		.align	2
+ 262              	.LC44:
+ 263 06c0 436F6D70 		.ascii	"Completed debugging the RPI-I2C-HUB Card\012\015\000"
+ 263      6C657465 
+ 263      64206465 
+ 263      62756767 
+ 263      696E6720 
+ 264 06eb 00       		.align	2
+ 265              	.LC45:
+ 266 06ec 44656275 		.ascii	"Debugging the RPI-SPI8 card\012\015\000"
+ 266      6767696E 
+ 266      67207468 
+ 266      65205250 
+ 266      492D5350 
+ 267 070a 0000     		.align	2
+ 268              	.LC46:
+ 269 070c 436F6D70 		.ascii	"Completed debugging the RPI-SPI8 Card\012\015\000"
+ 269      6C657465 
+ 269      64206465 
+ 269      62756767 
+ 269      696E6720 
+ 270              		.align	2
+ 271              	.LC47:
+ 272 0734 53656C65 		.ascii	"Selected RPP-UIO-16 card\012\015\000"
+ 272      63746564 
+ 272      20525050 
+ 272      2D55494F 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 10
+
+
+ 272      2D313620 
+ 273 074f 00       		.align	2
+ 274              	.LC48:
+ 275 0750 53656C65 		.ascii	"Selected RPPSOC card\012\015\000"
+ 275      63746564 
+ 275      20525050 
+ 275      534F4320 
+ 275      63617264 
+ 276 0767 00       		.align	2
+ 277              	.LC49:
+ 278 0768 53656C65 		.ascii	"Selected RASPI-PLUS-GVS-CFG card\012\015\000"
+ 278      63746564 
+ 278      20524153 
+ 278      50492D50 
+ 278      4C55532D 
+ 279 078b 00       		.align	2
+ 280              	.LC50:
+ 281 078c 53656C65 		.ascii	"Selected RASPIGVS card\012\015\000"
+ 281      63746564 
+ 281      20524153 
+ 281      50494756 
+ 281      53206361 
+ 282 07a5 000000   		.align	2
+ 283              	.LC51:
+ 284 07a8 53656C65 		.ascii	"Selected RASPI-PLUS-GVS card\012\015\000"
+ 284      63746564 
+ 284      20524153 
+ 284      50492D50 
+ 284      4C55532D 
+ 285 07c7 00       		.align	2
+ 286              	.LC52:
+ 287 07c8 53656C65 		.ascii	"Selected RPI-I2C-HUB card\012\015\000"
+ 287      63746564 
+ 287      20525049 
+ 287      2D493243 
+ 287      2D485542 
+ 288              		.align	2
+ 289              	.LC53:
+ 290 07e4 53656C65 		.ascii	"Selected RPI-SPI8 card\012\015\000"
+ 290      63746564 
+ 290      20525049 
+ 290      2D535049 
+ 290      38206361 
+ 291 07fd 000000   		.align	2
+ 292              	.LC54:
+ 293 0800 4552524F 		.ascii	"ERROR - Unrecognized option\000"
+ 293      52202D20 
+ 293      556E7265 
+ 293      636F676E 
+ 293      697A6564 
+ 294              		.section	.text.psocMenu,"ax",%progbits
+ 295              		.align	2
+ 296              		.global	psocMenu
+ 297              		.thumb
+ 298              		.thumb_func
+ 299              		.type	psocMenu, %function
+ 300              	psocMenu:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 11
+
+
+ 301              	.LFB64:
+  43:PSoC_Menu.c   **** 
+  44:PSoC_Menu.c   **** ////////////////////////////////////////////////////////////////////////////
+  45:PSoC_Menu.c   **** // void psocMenu(void)
+  46:PSoC_Menu.c   **** //	uint8 uartReadBuffer[USBUART_Buffer_SIZE];
+  47:PSoC_Menu.c   **** //    uint16 uartReadBufferOff = 0;
+  48:PSoC_Menu.c   **** 
+  49:PSoC_Menu.c   **** void psocMenu(void)
+  50:PSoC_Menu.c   **** {
+ 302              		.loc 1 50 0
+ 303              		.cfi_startproc
+ 304              		@ args = 0, pretend = 0, frame = 256
+ 305              		@ frame_needed = 1, uses_anonymous_args = 0
+ 306 0000 80B5     		push	{r7, lr}
+ 307              		.cfi_def_cfa_offset 8
+ 308              		.cfi_offset 7, -8
+ 309              		.cfi_offset 14, -4
+ 310 0002 C0B0     		sub	sp, sp, #256
+ 311              		.cfi_def_cfa_offset 264
+ 312 0004 00AF     		add	r7, sp, #0
+ 313              		.cfi_def_cfa_register 7
+  51:PSoC_Menu.c   ****     uint8 eepromBuffer[256];
+  52:PSoC_Menu.c   **** 
+  53:PSoC_Menu.c   ****     while (0u == USBUART_CDCIsReady());
+ 314              		.loc 1 53 0
+ 315 0006 00BF     		nop
+ 316              	.L5:
+ 317              		.loc 1 53 0 is_stmt 0 discriminator 1
+ 318 0008 FFF7FEFF 		bl	USBUART_CDCIsReady
+ 319 000c 0346     		mov	r3, r0
+ 320 000e 002B     		cmp	r3, #0
+ 321 0010 FAD0     		beq	.L5
+  54:PSoC_Menu.c   ****     if ((receiveBuffer[0] == 'r') || (receiveBuffer[0] == 'R'))
+ 322              		.loc 1 54 0 is_stmt 1
+ 323 0012 A84B     		ldr	r3, .L48
+ 324 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 325 0016 722B     		cmp	r3, #114
+ 326 0018 03D0     		beq	.L6
+ 327              		.loc 1 54 0 is_stmt 0 discriminator 1
+ 328 001a A64B     		ldr	r3, .L48
+ 329 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 330 001e 522B     		cmp	r3, #82
+ 331 0020 11D1     		bne	.L7
+ 332              	.L6:
+  55:PSoC_Menu.c   ****     {
+  56:PSoC_Menu.c   ****         putStringToUSB("Read from the EEPROM\n\r");
+ 333              		.loc 1 56 0 is_stmt 1
+ 334 0022 A548     		ldr	r0, .L48+4
+ 335 0024 FFF7FEFF 		bl	putStringToUSB
+  57:PSoC_Menu.c   ****         readEEPROM(eepromBuffer);
+ 336              		.loc 1 57 0
+ 337 0028 3B46     		mov	r3, r7
+ 338 002a 1846     		mov	r0, r3
+ 339 002c FFF7FEFF 		bl	readEEPROM
+  58:PSoC_Menu.c   ****         dumpEEPROM(eepromBuffer);
+ 340              		.loc 1 58 0
+ 341 0030 3B46     		mov	r3, r7
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 12
+
+
+ 342 0032 1846     		mov	r0, r3
+ 343 0034 FFF7FEFF 		bl	dumpEEPROM
+  59:PSoC_Menu.c   ****         while (0u == USBUART_CDCIsReady());
+ 344              		.loc 1 59 0
+ 345 0038 00BF     		nop
+ 346              	.L8:
+ 347              		.loc 1 59 0 is_stmt 0 discriminator 1
+ 348 003a FFF7FEFF 		bl	USBUART_CDCIsReady
+ 349 003e 0346     		mov	r3, r0
+ 350 0040 002B     		cmp	r3, #0
+ 351 0042 FAD0     		beq	.L8
+  54:PSoC_Menu.c   ****     {
+ 352              		.loc 1 54 0 is_stmt 1
+ 353 0044 B3E1     		b	.L9
+ 354              	.L7:
+  60:PSoC_Menu.c   ****     }
+  61:PSoC_Menu.c   ****     else if ((receiveBuffer[0] == 'w') || (receiveBuffer[0] == 'W'))
+ 355              		.loc 1 61 0
+ 356 0046 9B4B     		ldr	r3, .L48
+ 357 0048 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 358 004a 772B     		cmp	r3, #119
+ 359 004c 03D0     		beq	.L10
+ 360              		.loc 1 61 0 is_stmt 0 discriminator 1
+ 361 004e 994B     		ldr	r3, .L48
+ 362 0050 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 363 0052 572B     		cmp	r3, #87
+ 364 0054 1AD1     		bne	.L11
+ 365              	.L10:
+  62:PSoC_Menu.c   ****     {
+  63:PSoC_Menu.c   ****         if (cardType == UNSELECTED_CARD)
+ 366              		.loc 1 63 0 is_stmt 1
+ 367 0056 994B     		ldr	r3, .L48+8
+ 368 0058 1B88     		ldrh	r3, [r3]
+ 369 005a 002B     		cmp	r3, #0
+ 370 005c 03D1     		bne	.L12
+  64:PSoC_Menu.c   ****         {
+  65:PSoC_Menu.c   ****             putStringToUSB("Must first select card type\n\r");
+ 371              		.loc 1 65 0
+ 372 005e 9848     		ldr	r0, .L48+12
+ 373 0060 FFF7FEFF 		bl	putStringToUSB
+  63:PSoC_Menu.c   ****         {
+ 374              		.loc 1 63 0
+ 375 0064 A3E1     		b	.L9
+ 376              	.L12:
+  66:PSoC_Menu.c   ****         }
+  67:PSoC_Menu.c   ****         else
+  68:PSoC_Menu.c   ****         {
+  69:PSoC_Menu.c   ****             putStringToUSB("Write to the EEPROM...");
+ 377              		.loc 1 69 0
+ 378 0066 9748     		ldr	r0, .L48+16
+ 379 0068 FFF7FEFF 		bl	putStringToUSB
+  70:PSoC_Menu.c   ****             if (writeEEPROM(cardType) == 1)
+ 380              		.loc 1 70 0
+ 381 006c 934B     		ldr	r3, .L48+8
+ 382 006e 1B88     		ldrh	r3, [r3]
+ 383 0070 1846     		mov	r0, r3
+ 384 0072 FFF7FEFF 		bl	writeEEPROM
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 13
+
+
+ 385 0076 0346     		mov	r3, r0
+ 386 0078 012B     		cmp	r3, #1
+ 387 007a 03D1     		bne	.L14
+  71:PSoC_Menu.c   ****                 putStringToUSB("Completed EEPROM write\n\r");
+ 388              		.loc 1 71 0
+ 389 007c 9248     		ldr	r0, .L48+20
+ 390 007e FFF7FEFF 		bl	putStringToUSB
+  63:PSoC_Menu.c   ****         {
+ 391              		.loc 1 63 0
+ 392 0082 94E1     		b	.L9
+ 393              	.L14:
+  72:PSoC_Menu.c   ****             else
+  73:PSoC_Menu.c   ****                 putStringToUSB("EEPROM write failed (does this card have an EEPROM?\n\r");
+ 394              		.loc 1 73 0
+ 395 0084 9148     		ldr	r0, .L48+24
+ 396 0086 FFF7FEFF 		bl	putStringToUSB
+  63:PSoC_Menu.c   ****         {
+ 397              		.loc 1 63 0
+ 398 008a 90E1     		b	.L9
+ 399              	.L11:
+  74:PSoC_Menu.c   ****         }
+  75:PSoC_Menu.c   ****     }
+  76:PSoC_Menu.c   ****     else if ((receiveBuffer[0] == 't') || (receiveBuffer[0] == 'T'))
+ 400              		.loc 1 76 0
+ 401 008c 894B     		ldr	r3, .L48
+ 402 008e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 403 0090 742B     		cmp	r3, #116
+ 404 0092 03D0     		beq	.L15
+ 405              		.loc 1 76 0 is_stmt 0 discriminator 1
+ 406 0094 874B     		ldr	r3, .L48
+ 407 0096 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 408 0098 542B     		cmp	r3, #84
+ 409 009a 25D1     		bne	.L16
+ 410              	.L15:
+  77:PSoC_Menu.c   ****     {
+  78:PSoC_Menu.c   ****         if (cardType == UNSELECTED_CARD)
+ 411              		.loc 1 78 0 is_stmt 1
+ 412 009c 874B     		ldr	r3, .L48+8
+ 413 009e 1B88     		ldrh	r3, [r3]
+ 414 00a0 002B     		cmp	r3, #0
+ 415 00a2 03D1     		bne	.L17
+  79:PSoC_Menu.c   ****         {
+  80:PSoC_Menu.c   ****             putStringToUSB("Must first select card type\n\r");
+ 416              		.loc 1 80 0
+ 417 00a4 8648     		ldr	r0, .L48+12
+ 418 00a6 FFF7FEFF 		bl	putStringToUSB
+  78:PSoC_Menu.c   ****         {
+ 419              		.loc 1 78 0
+ 420 00aa 80E1     		b	.L9
+ 421              	.L17:
+  81:PSoC_Menu.c   ****         }
+  82:PSoC_Menu.c   ****         else if (cardType == RPII2CHUB)
+ 422              		.loc 1 82 0
+ 423 00ac 834B     		ldr	r3, .L48+8
+ 424 00ae 1B88     		ldrh	r3, [r3]
+ 425 00b0 062B     		cmp	r3, #6
+ 426 00b2 08D1     		bne	.L19
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 14
+
+
+  83:PSoC_Menu.c   ****         {
+  84:PSoC_Menu.c   ****             putStringToUSB("Testing RPI-I2C-HUB input, please wait\n\r");
+ 427              		.loc 1 84 0
+ 428 00b4 8648     		ldr	r0, .L48+28
+ 429 00b6 FFF7FEFF 		bl	putStringToUSB
+  85:PSoC_Menu.c   ****             test_RPII2CHUB();
+ 430              		.loc 1 85 0
+ 431 00ba FFF7FEFF 		bl	test_RPII2CHUB
+  86:PSoC_Menu.c   ****             putStringToUSB("Completed Testing RPI-I2C-HUB input\n\r");
+ 432              		.loc 1 86 0
+ 433 00be 8548     		ldr	r0, .L48+32
+ 434 00c0 FFF7FEFF 		bl	putStringToUSB
+  78:PSoC_Menu.c   ****         {
+ 435              		.loc 1 78 0
+ 436 00c4 73E1     		b	.L9
+ 437              	.L19:
+  87:PSoC_Menu.c   ****         }
+  88:PSoC_Menu.c   ****         else if (cardType == RPISPI8)
+ 438              		.loc 1 88 0
+ 439 00c6 7D4B     		ldr	r3, .L48+8
+ 440 00c8 1B88     		ldrh	r3, [r3]
+ 441 00ca 072B     		cmp	r3, #7
+ 442 00cc 08D1     		bne	.L20
+  89:PSoC_Menu.c   ****         {
+  90:PSoC_Menu.c   ****             putStringToUSB("Testing RPI-SPI8 input, please wait\n\r");
+ 443              		.loc 1 90 0
+ 444 00ce 8248     		ldr	r0, .L48+36
+ 445 00d0 FFF7FEFF 		bl	putStringToUSB
+  91:PSoC_Menu.c   ****             testRPISPI8();
+ 446              		.loc 1 91 0
+ 447 00d4 FFF7FEFF 		bl	testRPISPI8
+  92:PSoC_Menu.c   ****             putStringToUSB("Completed Testing RPI-SPI8 input\n\r");
+ 448              		.loc 1 92 0
+ 449 00d8 8048     		ldr	r0, .L48+40
+ 450 00da FFF7FEFF 		bl	putStringToUSB
+  78:PSoC_Menu.c   ****         {
+ 451              		.loc 1 78 0
+ 452 00de 66E1     		b	.L9
+ 453              	.L20:
+  93:PSoC_Menu.c   ****         }
+  94:PSoC_Menu.c   ****         else
+  95:PSoC_Menu.c   ****         {
+  96:PSoC_Menu.c   ****             putStringToUSB("Card not yet implemented\n\r");
+ 454              		.loc 1 96 0
+ 455 00e0 7F48     		ldr	r0, .L48+44
+ 456 00e2 FFF7FEFF 		bl	putStringToUSB
+  78:PSoC_Menu.c   ****         {
+ 457              		.loc 1 78 0
+ 458 00e6 62E1     		b	.L9
+ 459              	.L16:
+  97:PSoC_Menu.c   ****         }
+  98:PSoC_Menu.c   ****     }
+  99:PSoC_Menu.c   ****     else if ((receiveBuffer[0] == 'b') || (receiveBuffer[0] == 'B'))
+ 460              		.loc 1 99 0
+ 461 00e8 724B     		ldr	r3, .L48
+ 462 00ea 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 463 00ec 622B     		cmp	r3, #98
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 15
+
+
+ 464 00ee 03D0     		beq	.L21
+ 465              		.loc 1 99 0 is_stmt 0 discriminator 1
+ 466 00f0 704B     		ldr	r3, .L48
+ 467 00f2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 468 00f4 422B     		cmp	r3, #66
+ 469 00f6 59D1     		bne	.L22
+ 470              	.L21:
+ 100:PSoC_Menu.c   ****     {
+ 101:PSoC_Menu.c   ****         if (cardType == UNSELECTED_CARD)
+ 471              		.loc 1 101 0 is_stmt 1
+ 472 00f8 704B     		ldr	r3, .L48+8
+ 473 00fa 1B88     		ldrh	r3, [r3]
+ 474 00fc 002B     		cmp	r3, #0
+ 475 00fe 03D1     		bne	.L23
+ 102:PSoC_Menu.c   ****         {
+ 103:PSoC_Menu.c   ****             putStringToUSB("Must first select card type\n\r");
+ 476              		.loc 1 103 0
+ 477 0100 6F48     		ldr	r0, .L48+12
+ 478 0102 FFF7FEFF 		bl	putStringToUSB
+ 101:PSoC_Menu.c   ****         {
+ 479              		.loc 1 101 0
+ 480 0106 52E1     		b	.L9
+ 481              	.L23:
+ 104:PSoC_Menu.c   ****         }
+ 105:PSoC_Menu.c   ****         else if (cardType == RPPGVSCFG)
+ 482              		.loc 1 105 0
+ 483 0108 6C4B     		ldr	r3, .L48+8
+ 484 010a 1B88     		ldrh	r3, [r3]
+ 485 010c 022B     		cmp	r3, #2
+ 486 010e 08D1     		bne	.L25
+ 106:PSoC_Menu.c   ****         {
+ 107:PSoC_Menu.c   ****             putStringToUSB("Blinking the LEDs on the RasPI-PLUS-GVS-CFG card, please wait\n\r");
+ 487              		.loc 1 107 0
+ 488 0110 7448     		ldr	r0, .L48+48
+ 489 0112 FFF7FEFF 		bl	putStringToUSB
+ 108:PSoC_Menu.c   ****             testRPPUIO16();
+ 490              		.loc 1 108 0
+ 491 0116 FFF7FEFF 		bl	testRPPUIO16
+ 109:PSoC_Menu.c   ****             putStringToUSB("Completed blinking the LEDs on the RasPI-PLUS-GVS-CFG card\n\r");
+ 492              		.loc 1 109 0
+ 493 011a 7348     		ldr	r0, .L48+52
+ 494 011c FFF7FEFF 		bl	putStringToUSB
+ 101:PSoC_Menu.c   ****         {
+ 495              		.loc 1 101 0
+ 496 0120 45E1     		b	.L9
+ 497              	.L25:
+ 110:PSoC_Menu.c   ****         }
+ 111:PSoC_Menu.c   ****         else if (cardType == RASPIPLUSGVS)
+ 498              		.loc 1 111 0
+ 499 0122 664B     		ldr	r3, .L48+8
+ 500 0124 1B88     		ldrh	r3, [r3]
+ 501 0126 052B     		cmp	r3, #5
+ 502 0128 08D1     		bne	.L26
+ 112:PSoC_Menu.c   ****         {
+ 113:PSoC_Menu.c   ****             putStringToUSB("Blinking the LEDs on the RASPI-PLUS-GVS card, please wait\n\r");
+ 503              		.loc 1 113 0
+ 504 012a 7048     		ldr	r0, .L48+56
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 16
+
+
+ 505 012c FFF7FEFF 		bl	putStringToUSB
+ 114:PSoC_Menu.c   ****             testRPPGVS();
+ 506              		.loc 1 114 0
+ 507 0130 FFF7FEFF 		bl	testRPPGVS
+ 115:PSoC_Menu.c   ****             putStringToUSB("Completed blinking the LEDs on the RASPI-PLUS-GVS card\n\r");
+ 508              		.loc 1 115 0
+ 509 0134 6E48     		ldr	r0, .L48+60
+ 510 0136 FFF7FEFF 		bl	putStringToUSB
+ 101:PSoC_Menu.c   ****         {
+ 511              		.loc 1 101 0
+ 512 013a 38E1     		b	.L9
+ 513              	.L26:
+ 116:PSoC_Menu.c   ****         }
+ 117:PSoC_Menu.c   ****         else if (cardType == RASPIGVS)
+ 514              		.loc 1 117 0
+ 515 013c 5F4B     		ldr	r3, .L48+8
+ 516 013e 1B88     		ldrh	r3, [r3]
+ 517 0140 042B     		cmp	r3, #4
+ 518 0142 08D1     		bne	.L27
+ 118:PSoC_Menu.c   ****         {
+ 119:PSoC_Menu.c   ****             putStringToUSB("Blinking the LEDs on the RASPI-GVS card, please wait\n\r");
+ 519              		.loc 1 119 0
+ 520 0144 6B48     		ldr	r0, .L48+64
+ 521 0146 FFF7FEFF 		bl	putStringToUSB
+ 120:PSoC_Menu.c   ****             testRASPIGVS();
+ 522              		.loc 1 120 0
+ 523 014a FFF7FEFF 		bl	testRASPIGVS
+ 121:PSoC_Menu.c   ****             putStringToUSB("Completed blinking the LEDs on the RASPI-GVS card\n\r");
+ 524              		.loc 1 121 0
+ 525 014e 6A48     		ldr	r0, .L48+68
+ 526 0150 FFF7FEFF 		bl	putStringToUSB
+ 101:PSoC_Menu.c   ****         {
+ 527              		.loc 1 101 0
+ 528 0154 2BE1     		b	.L9
+ 529              	.L27:
+ 122:PSoC_Menu.c   ****         }
+ 123:PSoC_Menu.c   ****         else if (cardType == RPPUIO16)
+ 530              		.loc 1 123 0
+ 531 0156 594B     		ldr	r3, .L48+8
+ 532 0158 1B88     		ldrh	r3, [r3]
+ 533 015a 012B     		cmp	r3, #1
+ 534 015c 08D1     		bne	.L28
+ 124:PSoC_Menu.c   ****         {
+ 125:PSoC_Menu.c   ****             putStringToUSB("Blinking the LEDs on the RPP-UIO-16 card, please wait\n\r");
+ 535              		.loc 1 125 0
+ 536 015e 6748     		ldr	r0, .L48+72
+ 537 0160 FFF7FEFF 		bl	putStringToUSB
+ 126:PSoC_Menu.c   ****             testRPPUIO16();
+ 538              		.loc 1 126 0
+ 539 0164 FFF7FEFF 		bl	testRPPUIO16
+ 127:PSoC_Menu.c   ****             putStringToUSB("Completed blinking the LEDs on the RPP-UIO-16 card\n\r");
+ 540              		.loc 1 127 0
+ 541 0168 6548     		ldr	r0, .L48+76
+ 542 016a FFF7FEFF 		bl	putStringToUSB
+ 101:PSoC_Menu.c   ****         {
+ 543              		.loc 1 101 0
+ 544 016e 1EE1     		b	.L9
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 17
+
+
+ 545              	.L28:
+ 128:PSoC_Menu.c   ****         }
+ 129:PSoC_Menu.c   ****         else if (cardType == RPII2CHUB)
+ 546              		.loc 1 129 0
+ 547 0170 524B     		ldr	r3, .L48+8
+ 548 0172 1B88     		ldrh	r3, [r3]
+ 549 0174 062B     		cmp	r3, #6
+ 550 0176 08D1     		bne	.L29
+ 130:PSoC_Menu.c   ****         {
+ 131:PSoC_Menu.c   ****             putStringToUSB("Blinking the DIGIO-8 Card LEDs, please wait\n\r");
+ 551              		.loc 1 131 0
+ 552 0178 6248     		ldr	r0, .L48+80
+ 553 017a FFF7FEFF 		bl	putStringToUSB
+ 132:PSoC_Menu.c   ****             bounceRPIHubLEDs();
+ 554              		.loc 1 132 0
+ 555 017e FFF7FEFF 		bl	bounceRPIHubLEDs
+ 133:PSoC_Menu.c   ****             putStringToUSB("Completed blinking the LEDs\n\r");
+ 556              		.loc 1 133 0
+ 557 0182 6148     		ldr	r0, .L48+84
+ 558 0184 FFF7FEFF 		bl	putStringToUSB
+ 101:PSoC_Menu.c   ****         {
+ 559              		.loc 1 101 0
+ 560 0188 11E1     		b	.L9
+ 561              	.L29:
+ 134:PSoC_Menu.c   ****         }
+ 135:PSoC_Menu.c   ****         else if (cardType == RPISPI8)
+ 562              		.loc 1 135 0
+ 563 018a 4C4B     		ldr	r3, .L48+8
+ 564 018c 1B88     		ldrh	r3, [r3]
+ 565 018e 072B     		cmp	r3, #7
+ 566 0190 08D1     		bne	.L30
+ 136:PSoC_Menu.c   ****         {
+ 137:PSoC_Menu.c   ****             putStringToUSB("Blinking the RPI-SPI8 Card LEDs, hit ENTER to exit\n\r");
+ 567              		.loc 1 137 0
+ 568 0192 5E48     		ldr	r0, .L48+88
+ 569 0194 FFF7FEFF 		bl	putStringToUSB
+ 138:PSoC_Menu.c   ****             testRPISPI8();
+ 570              		.loc 1 138 0
+ 571 0198 FFF7FEFF 		bl	testRPISPI8
+ 139:PSoC_Menu.c   ****             putStringToUSB("Completed blinking the LEDs\n\r");
+ 572              		.loc 1 139 0
+ 573 019c 5A48     		ldr	r0, .L48+84
+ 574 019e FFF7FEFF 		bl	putStringToUSB
+ 101:PSoC_Menu.c   ****         {
+ 575              		.loc 1 101 0
+ 576 01a2 04E1     		b	.L9
+ 577              	.L30:
+ 140:PSoC_Menu.c   ****         }
+ 141:PSoC_Menu.c   ****         else
+ 142:PSoC_Menu.c   ****         {
+ 143:PSoC_Menu.c   ****             putStringToUSB("Card not yet implemented\n\r");
+ 578              		.loc 1 143 0
+ 579 01a4 4E48     		ldr	r0, .L48+44
+ 580 01a6 FFF7FEFF 		bl	putStringToUSB
+ 101:PSoC_Menu.c   ****         {
+ 581              		.loc 1 101 0
+ 582 01aa 00E1     		b	.L9
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 18
+
+
+ 583              	.L22:
+ 144:PSoC_Menu.c   ****         }
+ 145:PSoC_Menu.c   ****     }
+ 146:PSoC_Menu.c   ****     else if ((receiveBuffer[0] == 'd') || (receiveBuffer[0] == 'D'))
+ 584              		.loc 1 146 0
+ 585 01ac 414B     		ldr	r3, .L48
+ 586 01ae 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 587 01b0 642B     		cmp	r3, #100
+ 588 01b2 03D0     		beq	.L31
+ 589              		.loc 1 146 0 is_stmt 0 discriminator 1
+ 590 01b4 3F4B     		ldr	r3, .L48
+ 591 01b6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 592 01b8 442B     		cmp	r3, #68
+ 593 01ba 59D1     		bne	.L32
+ 594              	.L31:
+ 147:PSoC_Menu.c   ****     {
+ 148:PSoC_Menu.c   ****         if (cardType == UNSELECTED_CARD)
+ 595              		.loc 1 148 0 is_stmt 1
+ 596 01bc 3F4B     		ldr	r3, .L48+8
+ 597 01be 1B88     		ldrh	r3, [r3]
+ 598 01c0 002B     		cmp	r3, #0
+ 599 01c2 03D1     		bne	.L33
+ 149:PSoC_Menu.c   ****         {
+ 150:PSoC_Menu.c   ****             putStringToUSB("Must first select card type\n\r");
+ 600              		.loc 1 150 0
+ 601 01c4 3E48     		ldr	r0, .L48+12
+ 602 01c6 FFF7FEFF 		bl	putStringToUSB
+ 148:PSoC_Menu.c   ****         {
+ 603              		.loc 1 148 0
+ 604 01ca F0E0     		b	.L9
+ 605              	.L33:
+ 151:PSoC_Menu.c   ****         }
+ 152:PSoC_Menu.c   ****         else if (cardType == RPPGVSCFG)
+ 606              		.loc 1 152 0
+ 607 01cc 3B4B     		ldr	r3, .L48+8
+ 608 01ce 1B88     		ldrh	r3, [r3]
+ 609 01d0 022B     		cmp	r3, #2
+ 610 01d2 08D1     		bne	.L35
+ 153:PSoC_Menu.c   ****         {
+ 154:PSoC_Menu.c   ****             putStringToUSB("Debugging the RasPI-PLUS-GVS-CFG card\n\r");
+ 611              		.loc 1 154 0
+ 612 01d4 4E48     		ldr	r0, .L48+92
+ 613 01d6 FFF7FEFF 		bl	putStringToUSB
+ 155:PSoC_Menu.c   ****             debugRPPGVSCFG();
+ 614              		.loc 1 155 0
+ 615 01da FFF7FEFF 		bl	debugRPPGVSCFG
+ 156:PSoC_Menu.c   ****             putStringToUSB("Completed debugging the RasPI-PLUS-GVS-CFG card\n\r");
+ 616              		.loc 1 156 0
+ 617 01de 4D48     		ldr	r0, .L48+96
+ 618 01e0 FFF7FEFF 		bl	putStringToUSB
+ 148:PSoC_Menu.c   ****         {
+ 619              		.loc 1 148 0
+ 620 01e4 E3E0     		b	.L9
+ 621              	.L35:
+ 157:PSoC_Menu.c   ****         }
+ 158:PSoC_Menu.c   ****         else if (cardType == RASPIPLUSGVS)
+ 622              		.loc 1 158 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 19
+
+
+ 623 01e6 354B     		ldr	r3, .L48+8
+ 624 01e8 1B88     		ldrh	r3, [r3]
+ 625 01ea 052B     		cmp	r3, #5
+ 626 01ec 08D1     		bne	.L36
+ 159:PSoC_Menu.c   ****         {
+ 160:PSoC_Menu.c   ****             putStringToUSB("Debugging the RASPI-PLUS-GVS card\n\r");
+ 627              		.loc 1 160 0
+ 628 01ee 4A48     		ldr	r0, .L48+100
+ 629 01f0 FFF7FEFF 		bl	putStringToUSB
+ 161:PSoC_Menu.c   ****             debugRPPGVS();
+ 630              		.loc 1 161 0
+ 631 01f4 FFF7FEFF 		bl	debugRPPGVS
+ 162:PSoC_Menu.c   ****             putStringToUSB("Completed debugging the RASPI-PLUS-GVS card\n\r");
+ 632              		.loc 1 162 0
+ 633 01f8 4848     		ldr	r0, .L48+104
+ 634 01fa FFF7FEFF 		bl	putStringToUSB
+ 148:PSoC_Menu.c   ****         {
+ 635              		.loc 1 148 0
+ 636 01fe D6E0     		b	.L9
+ 637              	.L36:
+ 163:PSoC_Menu.c   ****         }
+ 164:PSoC_Menu.c   ****         else if (cardType == RASPIGVS)
+ 638              		.loc 1 164 0
+ 639 0200 2E4B     		ldr	r3, .L48+8
+ 640 0202 1B88     		ldrh	r3, [r3]
+ 641 0204 042B     		cmp	r3, #4
+ 642 0206 08D1     		bne	.L37
+ 165:PSoC_Menu.c   ****         {
+ 166:PSoC_Menu.c   ****             putStringToUSB("Debugging the RASPI-GVS card\n\r");
+ 643              		.loc 1 166 0
+ 644 0208 4548     		ldr	r0, .L48+108
+ 645 020a FFF7FEFF 		bl	putStringToUSB
+ 167:PSoC_Menu.c   ****             debugRASPIGVS();
+ 646              		.loc 1 167 0
+ 647 020e FFF7FEFF 		bl	debugRASPIGVS
+ 168:PSoC_Menu.c   ****             putStringToUSB("Completed debugging the RASPI-GVS card\n\r");
+ 648              		.loc 1 168 0
+ 649 0212 4448     		ldr	r0, .L48+112
+ 650 0214 FFF7FEFF 		bl	putStringToUSB
+ 148:PSoC_Menu.c   ****         {
+ 651              		.loc 1 148 0
+ 652 0218 C9E0     		b	.L9
+ 653              	.L37:
+ 169:PSoC_Menu.c   ****         }
+ 170:PSoC_Menu.c   ****         else if (cardType == RPPUIO16)
+ 654              		.loc 1 170 0
+ 655 021a 284B     		ldr	r3, .L48+8
+ 656 021c 1B88     		ldrh	r3, [r3]
+ 657 021e 012B     		cmp	r3, #1
+ 658 0220 08D1     		bne	.L38
+ 171:PSoC_Menu.c   ****         {
+ 172:PSoC_Menu.c   ****             putStringToUSB("Debugging the RPP-UIO-16 card\n\r");
+ 659              		.loc 1 172 0
+ 660 0222 4148     		ldr	r0, .L48+116
+ 661 0224 FFF7FEFF 		bl	putStringToUSB
+ 173:PSoC_Menu.c   ****             debugRPPUIO16();
+ 662              		.loc 1 173 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 20
+
+
+ 663 0228 FFF7FEFF 		bl	debugRPPUIO16
+ 174:PSoC_Menu.c   ****             putStringToUSB("Completed debugging the RPP-UIO-16 card\n\r");
+ 664              		.loc 1 174 0
+ 665 022c 3F48     		ldr	r0, .L48+120
+ 666 022e FFF7FEFF 		bl	putStringToUSB
+ 148:PSoC_Menu.c   ****         {
+ 667              		.loc 1 148 0
+ 668 0232 BCE0     		b	.L9
+ 669              	.L38:
+ 175:PSoC_Menu.c   ****         }
+ 176:PSoC_Menu.c   ****         else if (cardType == RPII2CHUB)
+ 670              		.loc 1 176 0
+ 671 0234 214B     		ldr	r3, .L48+8
+ 672 0236 1B88     		ldrh	r3, [r3]
+ 673 0238 062B     		cmp	r3, #6
+ 674 023a 08D1     		bne	.L39
+ 177:PSoC_Menu.c   ****         {
+ 178:PSoC_Menu.c   ****             putStringToUSB("Debugging the RPI-I2C-HUB card\n\r");
+ 675              		.loc 1 178 0
+ 676 023c 3C48     		ldr	r0, .L48+124
+ 677 023e FFF7FEFF 		bl	putStringToUSB
+ 179:PSoC_Menu.c   ****             debugRPIHub();
+ 678              		.loc 1 179 0
+ 679 0242 FFF7FEFF 		bl	debugRPIHub
+ 180:PSoC_Menu.c   ****             putStringToUSB("Completed debugging the RPI-I2C-HUB Card\n\r");
+ 680              		.loc 1 180 0
+ 681 0246 3B48     		ldr	r0, .L48+128
+ 682 0248 FFF7FEFF 		bl	putStringToUSB
+ 148:PSoC_Menu.c   ****         {
+ 683              		.loc 1 148 0
+ 684 024c AFE0     		b	.L9
+ 685              	.L39:
+ 181:PSoC_Menu.c   ****         }
+ 182:PSoC_Menu.c   ****         else if (cardType == RPISPI8)
+ 686              		.loc 1 182 0
+ 687 024e 1B4B     		ldr	r3, .L48+8
+ 688 0250 1B88     		ldrh	r3, [r3]
+ 689 0252 072B     		cmp	r3, #7
+ 690 0254 08D1     		bne	.L40
+ 183:PSoC_Menu.c   ****         {
+ 184:PSoC_Menu.c   ****             putStringToUSB("Debugging the RPI-SPI8 card\n\r");
+ 691              		.loc 1 184 0
+ 692 0256 3848     		ldr	r0, .L48+132
+ 693 0258 FFF7FEFF 		bl	putStringToUSB
+ 185:PSoC_Menu.c   ****             debugRPISPI8();
+ 694              		.loc 1 185 0
+ 695 025c FFF7FEFF 		bl	debugRPISPI8
+ 186:PSoC_Menu.c   ****             putStringToUSB("Completed debugging the RPI-SPI8 Card\n\r");
+ 696              		.loc 1 186 0
+ 697 0260 3648     		ldr	r0, .L48+136
+ 698 0262 FFF7FEFF 		bl	putStringToUSB
+ 148:PSoC_Menu.c   ****         {
+ 699              		.loc 1 148 0
+ 700 0266 A2E0     		b	.L9
+ 701              	.L40:
+ 187:PSoC_Menu.c   ****         }
+ 188:PSoC_Menu.c   ****         else
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 21
+
+
+ 189:PSoC_Menu.c   ****         {
+ 190:PSoC_Menu.c   ****             putStringToUSB("Card not yet implemented\n\r");
+ 702              		.loc 1 190 0
+ 703 0268 1D48     		ldr	r0, .L48+44
+ 704 026a FFF7FEFF 		bl	putStringToUSB
+ 148:PSoC_Menu.c   ****         {
+ 705              		.loc 1 148 0
+ 706 026e 9EE0     		b	.L9
+ 707              	.L32:
+ 191:PSoC_Menu.c   ****         }
+ 192:PSoC_Menu.c   ****     }
+ 193:PSoC_Menu.c   ****     else if (receiveBuffer[0] == '1')
+ 708              		.loc 1 193 0
+ 709 0270 104B     		ldr	r3, .L48
+ 710 0272 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 711 0274 312B     		cmp	r3, #49
+ 712 0276 06D1     		bne	.L41
+ 194:PSoC_Menu.c   ****     {
+ 195:PSoC_Menu.c   ****         cardType = RPPUIO16;
+ 713              		.loc 1 195 0
+ 714 0278 104B     		ldr	r3, .L48+8
+ 715 027a 0122     		movs	r2, #1
+ 716 027c 1A80     		strh	r2, [r3]	@ movhi
+ 196:PSoC_Menu.c   ****         putStringToUSB("Selected RPP-UIO-16 card\n\r");
+ 717              		.loc 1 196 0
+ 718 027e 3048     		ldr	r0, .L48+140
+ 719 0280 FFF7FEFF 		bl	putStringToUSB
+ 720 0284 93E0     		b	.L9
+ 721              	.L41:
+ 197:PSoC_Menu.c   ****     }
+ 198:PSoC_Menu.c   ****     else if (receiveBuffer[0] == '2')
+ 722              		.loc 1 198 0
+ 723 0286 0B4B     		ldr	r3, .L48
+ 724 0288 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 725 028a 322B     		cmp	r3, #50
+ 726 028c 06D1     		bne	.L42
+ 199:PSoC_Menu.c   ****     {
+ 200:PSoC_Menu.c   ****         cardType = RPPSOC;
+ 727              		.loc 1 200 0
+ 728 028e 0B4B     		ldr	r3, .L48+8
+ 729 0290 0322     		movs	r2, #3
+ 730 0292 1A80     		strh	r2, [r3]	@ movhi
+ 201:PSoC_Menu.c   ****         putStringToUSB("Selected RPPSOC card\n\r");
+ 731              		.loc 1 201 0
+ 732 0294 2B48     		ldr	r0, .L48+144
+ 733 0296 FFF7FEFF 		bl	putStringToUSB
+ 734 029a 88E0     		b	.L9
+ 735              	.L42:
+ 202:PSoC_Menu.c   ****     }
+ 203:PSoC_Menu.c   ****     else if (receiveBuffer[0] == '3')
+ 736              		.loc 1 203 0
+ 737 029c 054B     		ldr	r3, .L48
+ 738 029e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 739 02a0 332B     		cmp	r3, #51
+ 740 02a2 53D1     		bne	.L43
+ 204:PSoC_Menu.c   ****     {
+ 205:PSoC_Menu.c   ****         cardType = RPPGVSCFG;
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 22
+
+
+ 741              		.loc 1 205 0
+ 742 02a4 054B     		ldr	r3, .L48+8
+ 743 02a6 0222     		movs	r2, #2
+ 744 02a8 1A80     		strh	r2, [r3]	@ movhi
+ 206:PSoC_Menu.c   ****         putStringToUSB("Selected RASPI-PLUS-GVS-CFG card\n\r");
+ 745              		.loc 1 206 0
+ 746 02aa 2748     		ldr	r0, .L48+148
+ 747 02ac FFF7FEFF 		bl	putStringToUSB
+ 748 02b0 7DE0     		b	.L9
+ 749              	.L49:
+ 750 02b2 00BF     		.align	2
+ 751              	.L48:
+ 752 02b4 00000000 		.word	receiveBuffer
+ 753 02b8 98010000 		.word	.LC14
+ 754 02bc 00000000 		.word	cardType
+ 755 02c0 B0010000 		.word	.LC15
+ 756 02c4 D0010000 		.word	.LC16
+ 757 02c8 E8010000 		.word	.LC17
+ 758 02cc 04020000 		.word	.LC18
+ 759 02d0 3C020000 		.word	.LC19
+ 760 02d4 68020000 		.word	.LC20
+ 761 02d8 90020000 		.word	.LC21
+ 762 02dc B8020000 		.word	.LC22
+ 763 02e0 DC020000 		.word	.LC23
+ 764 02e4 F8020000 		.word	.LC24
+ 765 02e8 38030000 		.word	.LC25
+ 766 02ec 78030000 		.word	.LC26
+ 767 02f0 B4030000 		.word	.LC27
+ 768 02f4 F0030000 		.word	.LC28
+ 769 02f8 28040000 		.word	.LC29
+ 770 02fc 5C040000 		.word	.LC30
+ 771 0300 94040000 		.word	.LC31
+ 772 0304 CC040000 		.word	.LC32
+ 773 0308 FC040000 		.word	.LC33
+ 774 030c 1C050000 		.word	.LC34
+ 775 0310 54050000 		.word	.LC35
+ 776 0314 7C050000 		.word	.LC36
+ 777 0318 B0050000 		.word	.LC37
+ 778 031c D4050000 		.word	.LC38
+ 779 0320 04060000 		.word	.LC39
+ 780 0324 24060000 		.word	.LC40
+ 781 0328 50060000 		.word	.LC41
+ 782 032c 70060000 		.word	.LC42
+ 783 0330 9C060000 		.word	.LC43
+ 784 0334 C0060000 		.word	.LC44
+ 785 0338 EC060000 		.word	.LC45
+ 786 033c 0C070000 		.word	.LC46
+ 787 0340 34070000 		.word	.LC47
+ 788 0344 50070000 		.word	.LC48
+ 789 0348 68070000 		.word	.LC49
+ 790              	.L43:
+ 207:PSoC_Menu.c   ****     }
+ 208:PSoC_Menu.c   ****     else if (receiveBuffer[0] == '4')
+ 791              		.loc 1 208 0
+ 792 034c 1B4B     		ldr	r3, .L50
+ 793 034e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 794 0350 342B     		cmp	r3, #52
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 23
+
+
+ 795 0352 06D1     		bne	.L44
+ 209:PSoC_Menu.c   ****     {
+ 210:PSoC_Menu.c   ****         cardType = RASPIGVS;
+ 796              		.loc 1 210 0
+ 797 0354 1A4B     		ldr	r3, .L50+4
+ 798 0356 0422     		movs	r2, #4
+ 799 0358 1A80     		strh	r2, [r3]	@ movhi
+ 211:PSoC_Menu.c   ****         putStringToUSB("Selected RASPIGVS card\n\r");
+ 800              		.loc 1 211 0
+ 801 035a 1A48     		ldr	r0, .L50+8
+ 802 035c FFF7FEFF 		bl	putStringToUSB
+ 803 0360 25E0     		b	.L9
+ 804              	.L44:
+ 212:PSoC_Menu.c   ****     }
+ 213:PSoC_Menu.c   ****     else if (receiveBuffer[0] == '5')
+ 805              		.loc 1 213 0
+ 806 0362 164B     		ldr	r3, .L50
+ 807 0364 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 808 0366 352B     		cmp	r3, #53
+ 809 0368 06D1     		bne	.L45
+ 214:PSoC_Menu.c   ****     {
+ 215:PSoC_Menu.c   ****         cardType = RASPIPLUSGVS;
+ 810              		.loc 1 215 0
+ 811 036a 154B     		ldr	r3, .L50+4
+ 812 036c 0522     		movs	r2, #5
+ 813 036e 1A80     		strh	r2, [r3]	@ movhi
+ 216:PSoC_Menu.c   ****         putStringToUSB("Selected RASPI-PLUS-GVS card\n\r");
+ 814              		.loc 1 216 0
+ 815 0370 1548     		ldr	r0, .L50+12
+ 816 0372 FFF7FEFF 		bl	putStringToUSB
+ 817 0376 1AE0     		b	.L9
+ 818              	.L45:
+ 217:PSoC_Menu.c   ****     }
+ 218:PSoC_Menu.c   ****     else if (receiveBuffer[0] == '6')
+ 819              		.loc 1 218 0
+ 820 0378 104B     		ldr	r3, .L50
+ 821 037a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 822 037c 362B     		cmp	r3, #54
+ 823 037e 06D1     		bne	.L46
+ 219:PSoC_Menu.c   ****     {
+ 220:PSoC_Menu.c   ****         cardType = RPII2CHUB;
+ 824              		.loc 1 220 0
+ 825 0380 0F4B     		ldr	r3, .L50+4
+ 826 0382 0622     		movs	r2, #6
+ 827 0384 1A80     		strh	r2, [r3]	@ movhi
+ 221:PSoC_Menu.c   ****         putStringToUSB("Selected RPI-I2C-HUB card\n\r");
+ 828              		.loc 1 221 0
+ 829 0386 1148     		ldr	r0, .L50+16
+ 830 0388 FFF7FEFF 		bl	putStringToUSB
+ 831 038c 0FE0     		b	.L9
+ 832              	.L46:
+ 222:PSoC_Menu.c   ****     }
+ 223:PSoC_Menu.c   ****     else if (receiveBuffer[0] == '7')
+ 833              		.loc 1 223 0
+ 834 038e 0B4B     		ldr	r3, .L50
+ 835 0390 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 836 0392 372B     		cmp	r3, #55
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 24
+
+
+ 837 0394 06D1     		bne	.L47
+ 224:PSoC_Menu.c   ****     {
+ 225:PSoC_Menu.c   ****         cardType = RPISPI8;
+ 838              		.loc 1 225 0
+ 839 0396 0A4B     		ldr	r3, .L50+4
+ 840 0398 0722     		movs	r2, #7
+ 841 039a 1A80     		strh	r2, [r3]	@ movhi
+ 226:PSoC_Menu.c   ****         putStringToUSB("Selected RPI-SPI8 card\n\r");
+ 842              		.loc 1 226 0
+ 843 039c 0C48     		ldr	r0, .L50+20
+ 844 039e FFF7FEFF 		bl	putStringToUSB
+ 845 03a2 04E0     		b	.L9
+ 846              	.L47:
+ 227:PSoC_Menu.c   ****     }
+ 228:PSoC_Menu.c   ****     else
+ 229:PSoC_Menu.c   ****     {
+ 230:PSoC_Menu.c   ****         putStringToUSB("ERROR - Unrecognized option");
+ 847              		.loc 1 230 0
+ 848 03a4 0B48     		ldr	r0, .L50+24
+ 849 03a6 FFF7FEFF 		bl	putStringToUSB
+ 231:PSoC_Menu.c   ****         printMenuOptions();
+ 850              		.loc 1 231 0
+ 851 03aa FFF7FEFF 		bl	printMenuOptions
+ 852              	.L9:
+ 232:PSoC_Menu.c   ****     }
+ 233:PSoC_Menu.c   ****     clearReceiveBuffer();
+ 853              		.loc 1 233 0
+ 854 03ae FFF7FEFF 		bl	clearReceiveBuffer
+ 234:PSoC_Menu.c   **** }
+ 855              		.loc 1 234 0
+ 856 03b2 00BF     		nop
+ 857 03b4 07F58077 		add	r7, r7, #256
+ 858              		.cfi_def_cfa_offset 8
+ 859 03b8 BD46     		mov	sp, r7
+ 860              		.cfi_def_cfa_register 13
+ 861              		@ sp needed
+ 862 03ba 80BD     		pop	{r7, pc}
+ 863              	.L51:
+ 864              		.align	2
+ 865              	.L50:
+ 866 03bc 00000000 		.word	receiveBuffer
+ 867 03c0 00000000 		.word	cardType
+ 868 03c4 8C070000 		.word	.LC50
+ 869 03c8 A8070000 		.word	.LC51
+ 870 03cc C8070000 		.word	.LC52
+ 871 03d0 E4070000 		.word	.LC53
+ 872 03d4 00080000 		.word	.LC54
+ 873              		.cfi_endproc
+ 874              	.LFE64:
+ 875              		.size	psocMenu, .-psocMenu
+ 876              		.section	.text.clearReceiveBuffer,"ax",%progbits
+ 877              		.align	2
+ 878              		.global	clearReceiveBuffer
+ 879              		.thumb
+ 880              		.thumb_func
+ 881              		.type	clearReceiveBuffer, %function
+ 882              	clearReceiveBuffer:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 25
+
+
+ 883              	.LFB65:
+ 235:PSoC_Menu.c   **** 
+ 236:PSoC_Menu.c   **** ////////////////////////////////////////////////////////////////////////////
+ 237:PSoC_Menu.c   **** // void clearReceiveBuffer(void)
+ 238:PSoC_Menu.c   **** 
+ 239:PSoC_Menu.c   **** void clearReceiveBuffer(void)
+ 240:PSoC_Menu.c   **** {
+ 884              		.loc 1 240 0
+ 885              		.cfi_startproc
+ 886              		@ args = 0, pretend = 0, frame = 0
+ 887              		@ frame_needed = 1, uses_anonymous_args = 0
+ 888              		@ link register save eliminated.
+ 889 0000 80B4     		push	{r7}
+ 890              		.cfi_def_cfa_offset 4
+ 891              		.cfi_offset 7, -4
+ 892 0002 00AF     		add	r7, sp, #0
+ 893              		.cfi_def_cfa_register 7
+ 241:PSoC_Menu.c   ****     receiveBufferPtr = 0;
+ 894              		.loc 1 241 0
+ 895 0004 064B     		ldr	r3, .L53
+ 896 0006 0022     		movs	r2, #0
+ 897 0008 1A70     		strb	r2, [r3]
+ 242:PSoC_Menu.c   ****     receiveBuffer[0] = 0;
+ 898              		.loc 1 242 0
+ 899 000a 064B     		ldr	r3, .L53+4
+ 900 000c 0022     		movs	r2, #0
+ 901 000e 1A70     		strb	r2, [r3]
+ 243:PSoC_Menu.c   ****     gotCRorLF = 0;
+ 902              		.loc 1 243 0
+ 903 0010 054B     		ldr	r3, .L53+8
+ 904 0012 0022     		movs	r2, #0
+ 905 0014 1A70     		strb	r2, [r3]
+ 244:PSoC_Menu.c   **** }
+ 906              		.loc 1 244 0
+ 907 0016 00BF     		nop
+ 908 0018 BD46     		mov	sp, r7
+ 909              		.cfi_def_cfa_register 13
+ 910              		@ sp needed
+ 911 001a 80BC     		pop	{r7}
+ 912              		.cfi_restore 7
+ 913              		.cfi_def_cfa_offset 0
+ 914 001c 7047     		bx	lr
+ 915              	.L54:
+ 916 001e 00BF     		.align	2
+ 917              	.L53:
+ 918 0020 00000000 		.word	receiveBufferPtr
+ 919 0024 00000000 		.word	receiveBuffer
+ 920 0028 00000000 		.word	gotCRorLF
+ 921              		.cfi_endproc
+ 922              	.LFE65:
+ 923              		.size	clearReceiveBuffer, .-clearReceiveBuffer
+ 924              		.section	.rodata
+ 925              		.align	2
+ 926              	.LC55:
+ 927 081c 0A0D00   		.ascii	"\012\015\000"
+ 928              		.section	.text.addToReceiveBuffer,"ax",%progbits
+ 929              		.align	2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 26
+
+
+ 930              		.global	addToReceiveBuffer
+ 931              		.thumb
+ 932              		.thumb_func
+ 933              		.type	addToReceiveBuffer, %function
+ 934              	addToReceiveBuffer:
+ 935              	.LFB66:
+ 245:PSoC_Menu.c   **** 
+ 246:PSoC_Menu.c   **** ////////////////////////////////////////////////////////////////////////////
+ 247:PSoC_Menu.c   **** // void addToReceiveBuffer(uint16, uint8 *)
+ 248:PSoC_Menu.c   **** 
+ 249:PSoC_Menu.c   **** void addToReceiveBuffer(uint16 inCount, uint8 * inBuffer)
+ 250:PSoC_Menu.c   **** {
+ 936              		.loc 1 250 0
+ 937              		.cfi_startproc
+ 938              		@ args = 0, pretend = 0, frame = 96
+ 939              		@ frame_needed = 1, uses_anonymous_args = 0
+ 940 0000 80B5     		push	{r7, lr}
+ 941              		.cfi_def_cfa_offset 8
+ 942              		.cfi_offset 7, -8
+ 943              		.cfi_offset 14, -4
+ 944 0002 98B0     		sub	sp, sp, #96
+ 945              		.cfi_def_cfa_offset 104
+ 946 0004 00AF     		add	r7, sp, #0
+ 947              		.cfi_def_cfa_register 7
+ 948 0006 0346     		mov	r3, r0
+ 949 0008 3960     		str	r1, [r7]
+ 950 000a FB80     		strh	r3, [r7, #6]	@ movhi
+ 251:PSoC_Menu.c   ****     uint8 echoString[80];
+ 252:PSoC_Menu.c   ****     echoString[0] = 0;
+ 951              		.loc 1 252 0
+ 952 000c 0023     		movs	r3, #0
+ 953 000e 3B73     		strb	r3, [r7, #12]
+ 954              	.LBB2:
+ 253:PSoC_Menu.c   ****     for (uint8 receiveCt = 0; receiveCt < inCount; receiveCt++)
+ 955              		.loc 1 253 0
+ 956 0010 0023     		movs	r3, #0
+ 957 0012 87F85F30 		strb	r3, [r7, #95]
+ 958 0016 74E0     		b	.L56
+ 959              	.L61:
+ 254:PSoC_Menu.c   ****     {
+ 255:PSoC_Menu.c   ****         // First check if the character is an end of line
+ 256:PSoC_Menu.c   ****         if ((inBuffer[receiveCt] == 0x0a) || (inBuffer[receiveCt] == 0x0d))
+ 960              		.loc 1 256 0
+ 961 0018 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
+ 962 001c 3A68     		ldr	r2, [r7]
+ 963 001e 1344     		add	r3, r3, r2
+ 964 0020 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 965 0022 0A2B     		cmp	r3, #10
+ 966 0024 06D0     		beq	.L57
+ 967              		.loc 1 256 0 is_stmt 0 discriminator 1
+ 968 0026 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
+ 969 002a 3A68     		ldr	r2, [r7]
+ 970 002c 1344     		add	r3, r3, r2
+ 971 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 972 0030 0D2B     		cmp	r3, #13
+ 973 0032 06D1     		bne	.L58
+ 974              	.L57:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 27
+
+
+ 257:PSoC_Menu.c   ****         {
+ 258:PSoC_Menu.c   ****             gotCRorLF = 1;
+ 975              		.loc 1 258 0 is_stmt 1
+ 976 0034 384B     		ldr	r3, .L62
+ 977 0036 0122     		movs	r2, #1
+ 978 0038 1A70     		strb	r2, [r3]
+ 259:PSoC_Menu.c   ****             putStringToUSB("\n\r");
+ 979              		.loc 1 259 0
+ 980 003a 3848     		ldr	r0, .L62+4
+ 981 003c FFF7FEFF 		bl	putStringToUSB
+ 982 0040 5AE0     		b	.L59
+ 983              	.L58:
+ 260:PSoC_Menu.c   ****         }
+ 261:PSoC_Menu.c   ****         // check if the character is not a RUBOUT and if the line length is OK
+ 262:PSoC_Menu.c   ****         else if ((inBuffer[receiveCt] != 0x7f) && (receiveCt < 80))
+ 984              		.loc 1 262 0
+ 985 0042 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
+ 986 0046 3A68     		ldr	r2, [r7]
+ 987 0048 1344     		add	r3, r3, r2
+ 988 004a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 989 004c 7F2B     		cmp	r3, #127
+ 990 004e 35D0     		beq	.L60
+ 991              		.loc 1 262 0 is_stmt 0 discriminator 1
+ 992 0050 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
+ 993 0054 4F2B     		cmp	r3, #79
+ 994 0056 31D8     		bhi	.L60
+ 263:PSoC_Menu.c   ****         {
+ 264:PSoC_Menu.c   ****             receiveBuffer[receiveBufferPtr] = inBuffer[receiveCt];
+ 995              		.loc 1 264 0 is_stmt 1
+ 996 0058 314B     		ldr	r3, .L62+8
+ 997 005a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 998 005c 1946     		mov	r1, r3
+ 999 005e 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
+ 1000 0062 3A68     		ldr	r2, [r7]
+ 1001 0064 1344     		add	r3, r3, r2
+ 1002 0066 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1003 0068 2E4B     		ldr	r3, .L62+12
+ 1004 006a 5A54     		strb	r2, [r3, r1]
+ 265:PSoC_Menu.c   ****             receiveBufferPtr++;
+ 1005              		.loc 1 265 0
+ 1006 006c 2C4B     		ldr	r3, .L62+8
+ 1007 006e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1008 0070 0133     		adds	r3, r3, #1
+ 1009 0072 DAB2     		uxtb	r2, r3
+ 1010 0074 2A4B     		ldr	r3, .L62+8
+ 1011 0076 1A70     		strb	r2, [r3]
+ 266:PSoC_Menu.c   ****             echoString[inCount] = 0;
+ 1012              		.loc 1 266 0
+ 1013 0078 FB88     		ldrh	r3, [r7, #6]
+ 1014 007a 07F16002 		add	r2, r7, #96
+ 1015 007e 1344     		add	r3, r3, r2
+ 1016 0080 0022     		movs	r2, #0
+ 1017 0082 03F8542C 		strb	r2, [r3, #-84]
+ 267:PSoC_Menu.c   ****             echoString[receiveCt] = inBuffer[receiveCt];
+ 1018              		.loc 1 267 0
+ 1019 0086 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
+ 1020 008a 97F85F20 		ldrb	r2, [r7, #95]	@ zero_extendqisi2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 28
+
+
+ 1021 008e 3968     		ldr	r1, [r7]
+ 1022 0090 0A44     		add	r2, r2, r1
+ 1023 0092 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 1024 0094 07F16001 		add	r1, r7, #96
+ 1025 0098 0B44     		add	r3, r3, r1
+ 1026 009a 03F8542C 		strb	r2, [r3, #-84]
+ 268:PSoC_Menu.c   ****             echoString[receiveCt+1] = 0;
+ 1027              		.loc 1 268 0
+ 1028 009e 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
+ 1029 00a2 0133     		adds	r3, r3, #1
+ 1030 00a4 07F16002 		add	r2, r7, #96
+ 1031 00a8 1344     		add	r3, r3, r2
+ 1032 00aa 0022     		movs	r2, #0
+ 1033 00ac 03F8542C 		strb	r2, [r3, #-84]
+ 269:PSoC_Menu.c   ****             putStringToUSB((char *)echoString);
+ 1034              		.loc 1 269 0
+ 1035 00b0 07F10C03 		add	r3, r7, #12
+ 1036 00b4 1846     		mov	r0, r3
+ 1037 00b6 FFF7FEFF 		bl	putStringToUSB
+ 1038 00ba 1DE0     		b	.L59
+ 1039              	.L60:
+ 270:PSoC_Menu.c   ****         }
+ 271:PSoC_Menu.c   ****         // If the character is rubout and not the 0th character
+ 272:PSoC_Menu.c   ****         else if ((receiveBufferPtr > 0) && (inBuffer[receiveCt] == 0x7f))
+ 1040              		.loc 1 272 0
+ 1041 00bc 184B     		ldr	r3, .L62+8
+ 1042 00be 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1043 00c0 002B     		cmp	r3, #0
+ 1044 00c2 19D0     		beq	.L59
+ 1045              		.loc 1 272 0 is_stmt 0 discriminator 1
+ 1046 00c4 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
+ 1047 00c8 3A68     		ldr	r2, [r7]
+ 1048 00ca 1344     		add	r3, r3, r2
+ 1049 00cc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1050 00ce 7F2B     		cmp	r3, #127
+ 1051 00d0 12D1     		bne	.L59
+ 273:PSoC_Menu.c   ****         {
+ 274:PSoC_Menu.c   ****             receiveBufferPtr--;
+ 1052              		.loc 1 274 0 is_stmt 1
+ 1053 00d2 134B     		ldr	r3, .L62+8
+ 1054 00d4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1055 00d6 013B     		subs	r3, r3, #1
+ 1056 00d8 DAB2     		uxtb	r2, r3
+ 1057 00da 114B     		ldr	r3, .L62+8
+ 1058 00dc 1A70     		strb	r2, [r3]
+ 275:PSoC_Menu.c   ****             echoString[0] = 0x08;       // Backspace
+ 1059              		.loc 1 275 0
+ 1060 00de 0823     		movs	r3, #8
+ 1061 00e0 3B73     		strb	r3, [r7, #12]
+ 276:PSoC_Menu.c   ****             echoString[1] = 0x20;       // Space
+ 1062              		.loc 1 276 0
+ 1063 00e2 2023     		movs	r3, #32
+ 1064 00e4 7B73     		strb	r3, [r7, #13]
+ 277:PSoC_Menu.c   ****             echoString[2] = 0x08;       // Backspace
+ 1065              		.loc 1 277 0
+ 1066 00e6 0823     		movs	r3, #8
+ 1067 00e8 BB73     		strb	r3, [r7, #14]
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 29
+
+
+ 278:PSoC_Menu.c   ****             echoString[3] = 0;
+ 1068              		.loc 1 278 0
+ 1069 00ea 0023     		movs	r3, #0
+ 1070 00ec FB73     		strb	r3, [r7, #15]
+ 279:PSoC_Menu.c   ****             putStringToUSB((char *)echoString);
+ 1071              		.loc 1 279 0
+ 1072 00ee 07F10C03 		add	r3, r7, #12
+ 1073 00f2 1846     		mov	r0, r3
+ 1074 00f4 FFF7FEFF 		bl	putStringToUSB
+ 1075              	.L59:
+ 253:PSoC_Menu.c   ****     {
+ 1076              		.loc 1 253 0 discriminator 2
+ 1077 00f8 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
+ 1078 00fc 0133     		adds	r3, r3, #1
+ 1079 00fe 87F85F30 		strb	r3, [r7, #95]
+ 1080              	.L56:
+ 253:PSoC_Menu.c   ****     {
+ 1081              		.loc 1 253 0 is_stmt 0 discriminator 1
+ 1082 0102 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
+ 1083 0106 9BB2     		uxth	r3, r3
+ 1084 0108 FA88     		ldrh	r2, [r7, #6]
+ 1085 010a 9A42     		cmp	r2, r3
+ 1086 010c 84D8     		bhi	.L61
+ 1087              	.LBE2:
+ 280:PSoC_Menu.c   ****         }
+ 281:PSoC_Menu.c   ****     }
+ 282:PSoC_Menu.c   **** }
+ 1088              		.loc 1 282 0 is_stmt 1
+ 1089 010e 00BF     		nop
+ 1090 0110 6037     		adds	r7, r7, #96
+ 1091              		.cfi_def_cfa_offset 8
+ 1092 0112 BD46     		mov	sp, r7
+ 1093              		.cfi_def_cfa_register 13
+ 1094              		@ sp needed
+ 1095 0114 80BD     		pop	{r7, pc}
+ 1096              	.L63:
+ 1097 0116 00BF     		.align	2
+ 1098              	.L62:
+ 1099 0118 00000000 		.word	gotCRorLF
+ 1100 011c 1C080000 		.word	.LC55
+ 1101 0120 00000000 		.word	receiveBufferPtr
+ 1102 0124 00000000 		.word	receiveBuffer
+ 1103              		.cfi_endproc
+ 1104              	.LFE66:
+ 1105              		.size	addToReceiveBuffer, .-addToReceiveBuffer
+ 1106              		.section	.text.putStringToUSB,"ax",%progbits
+ 1107              		.align	2
+ 1108              		.global	putStringToUSB
+ 1109              		.thumb
+ 1110              		.thumb_func
+ 1111              		.type	putStringToUSB, %function
+ 1112              	putStringToUSB:
+ 1113              	.LFB67:
+ 283:PSoC_Menu.c   **** 
+ 284:PSoC_Menu.c   **** ////////////////////////////////////////////////////////////////////////////
+ 285:PSoC_Menu.c   **** // void putStringToUSB(char *)
+ 286:PSoC_Menu.c   **** 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 30
+
+
+ 287:PSoC_Menu.c   **** void putStringToUSB(char * stringToPutOutUSB)
+ 288:PSoC_Menu.c   **** {
+ 1114              		.loc 1 288 0
+ 1115              		.cfi_startproc
+ 1116              		@ args = 0, pretend = 0, frame = 8
+ 1117              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1118 0000 80B5     		push	{r7, lr}
+ 1119              		.cfi_def_cfa_offset 8
+ 1120              		.cfi_offset 7, -8
+ 1121              		.cfi_offset 14, -4
+ 1122 0002 82B0     		sub	sp, sp, #8
+ 1123              		.cfi_def_cfa_offset 16
+ 1124 0004 00AF     		add	r7, sp, #0
+ 1125              		.cfi_def_cfa_register 7
+ 1126 0006 7860     		str	r0, [r7, #4]
+ 289:PSoC_Menu.c   ****     USBUART_PutData((uint8 *)stringToPutOutUSB, strlen(stringToPutOutUSB));
+ 1127              		.loc 1 289 0
+ 1128 0008 7868     		ldr	r0, [r7, #4]
+ 1129 000a FFF7FEFF 		bl	strlen
+ 1130 000e 0346     		mov	r3, r0
+ 1131 0010 9BB2     		uxth	r3, r3
+ 1132 0012 1946     		mov	r1, r3
+ 1133 0014 7868     		ldr	r0, [r7, #4]
+ 1134 0016 FFF7FEFF 		bl	USBUART_PutData
+ 290:PSoC_Menu.c   ****     while (0u == USBUART_CDCIsReady());
+ 1135              		.loc 1 290 0
+ 1136 001a 00BF     		nop
+ 1137              	.L65:
+ 1138              		.loc 1 290 0 is_stmt 0 discriminator 1
+ 1139 001c FFF7FEFF 		bl	USBUART_CDCIsReady
+ 1140 0020 0346     		mov	r3, r0
+ 1141 0022 002B     		cmp	r3, #0
+ 1142 0024 FAD0     		beq	.L65
+ 291:PSoC_Menu.c   **** }
+ 1143              		.loc 1 291 0 is_stmt 1
+ 1144 0026 00BF     		nop
+ 1145 0028 0837     		adds	r7, r7, #8
+ 1146              		.cfi_def_cfa_offset 8
+ 1147 002a BD46     		mov	sp, r7
+ 1148              		.cfi_def_cfa_register 13
+ 1149              		@ sp needed
+ 1150 002c 80BD     		pop	{r7, pc}
+ 1151              		.cfi_endproc
+ 1152              	.LFE67:
+ 1153              		.size	putStringToUSB, .-putStringToUSB
+ 1154              		.section	.text.asciiNibbleToVal,"ax",%progbits
+ 1155              		.align	2
+ 1156              		.global	asciiNibbleToVal
+ 1157              		.thumb
+ 1158              		.thumb_func
+ 1159              		.type	asciiNibbleToVal, %function
+ 1160              	asciiNibbleToVal:
+ 1161              	.LFB68:
+ 292:PSoC_Menu.c   **** 
+ 293:PSoC_Menu.c   **** ////////////////////////////////////////////////////////////////////////////
+ 294:PSoC_Menu.c   **** // asciiNibbleToVal(uint8)
+ 295:PSoC_Menu.c   **** 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 31
+
+
+ 296:PSoC_Menu.c   **** uint32 asciiNibbleToVal(uint8 charVal)
+ 297:PSoC_Menu.c   **** {
+ 1162              		.loc 1 297 0
+ 1163              		.cfi_startproc
+ 1164              		@ args = 0, pretend = 0, frame = 8
+ 1165              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1166              		@ link register save eliminated.
+ 1167 0000 80B4     		push	{r7}
+ 1168              		.cfi_def_cfa_offset 4
+ 1169              		.cfi_offset 7, -4
+ 1170 0002 83B0     		sub	sp, sp, #12
+ 1171              		.cfi_def_cfa_offset 16
+ 1172 0004 00AF     		add	r7, sp, #0
+ 1173              		.cfi_def_cfa_register 7
+ 1174 0006 0346     		mov	r3, r0
+ 1175 0008 FB71     		strb	r3, [r7, #7]
+ 298:PSoC_Menu.c   ****     if ((charVal >= '0') && (charVal <= '9'))
+ 1176              		.loc 1 298 0
+ 1177 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1178 000c 2F2B     		cmp	r3, #47
+ 1179 000e 05D9     		bls	.L67
+ 1180              		.loc 1 298 0 is_stmt 0 discriminator 1
+ 1181 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1182 0012 392B     		cmp	r3, #57
+ 1183 0014 02D8     		bhi	.L67
+ 299:PSoC_Menu.c   ****         return (charVal-'0');
+ 1184              		.loc 1 299 0 is_stmt 1
+ 1185 0016 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1186 0018 303B     		subs	r3, r3, #48
+ 1187 001a 12E0     		b	.L68
+ 1188              	.L67:
+ 300:PSoC_Menu.c   ****     else if ((charVal >= 'A') && (charVal <= 'F'))
+ 1189              		.loc 1 300 0
+ 1190 001c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1191 001e 402B     		cmp	r3, #64
+ 1192 0020 05D9     		bls	.L69
+ 1193              		.loc 1 300 0 is_stmt 0 discriminator 1
+ 1194 0022 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1195 0024 462B     		cmp	r3, #70
+ 1196 0026 02D8     		bhi	.L69
+ 301:PSoC_Menu.c   ****         return (charVal-'A'+10);
+ 1197              		.loc 1 301 0 is_stmt 1
+ 1198 0028 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1199 002a 373B     		subs	r3, r3, #55
+ 1200 002c 09E0     		b	.L68
+ 1201              	.L69:
+ 302:PSoC_Menu.c   ****     else if ((charVal >= 'a') && (charVal <= 'f'))
+ 1202              		.loc 1 302 0
+ 1203 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1204 0030 602B     		cmp	r3, #96
+ 1205 0032 05D9     		bls	.L70
+ 1206              		.loc 1 302 0 is_stmt 0 discriminator 1
+ 1207 0034 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1208 0036 662B     		cmp	r3, #102
+ 1209 0038 02D8     		bhi	.L70
+ 303:PSoC_Menu.c   ****         return (charVal-'a'+10);
+ 1210              		.loc 1 303 0 is_stmt 1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 32
+
+
+ 1211 003a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1212 003c 573B     		subs	r3, r3, #87
+ 1213 003e 00E0     		b	.L68
+ 1214              	.L70:
+ 304:PSoC_Menu.c   ****     return(0);
+ 1215              		.loc 1 304 0
+ 1216 0040 0023     		movs	r3, #0
+ 1217              	.L68:
+ 305:PSoC_Menu.c   **** }
+ 1218              		.loc 1 305 0
+ 1219 0042 1846     		mov	r0, r3
+ 1220 0044 0C37     		adds	r7, r7, #12
+ 1221              		.cfi_def_cfa_offset 4
+ 1222 0046 BD46     		mov	sp, r7
+ 1223              		.cfi_def_cfa_register 13
+ 1224              		@ sp needed
+ 1225 0048 80BC     		pop	{r7}
+ 1226              		.cfi_restore 7
+ 1227              		.cfi_def_cfa_offset 0
+ 1228 004a 7047     		bx	lr
+ 1229              		.cfi_endproc
+ 1230              	.LFE68:
+ 1231              		.size	asciiNibbleToVal, .-asciiNibbleToVal
+ 1232              		.section	.text.extractLong,"ax",%progbits
+ 1233              		.align	2
+ 1234              		.global	extractLong
+ 1235              		.thumb
+ 1236              		.thumb_func
+ 1237              		.type	extractLong, %function
+ 1238              	extractLong:
+ 1239              	.LFB69:
+ 306:PSoC_Menu.c   **** 
+ 307:PSoC_Menu.c   **** ////////////////////////////////////////////////////////////////////////////
+ 308:PSoC_Menu.c   **** // uint32 extractLong(uint8 *)
+ 309:PSoC_Menu.c   **** 
+ 310:PSoC_Menu.c   **** uint32 extractLong(uint8 * commandString)
+ 311:PSoC_Menu.c   **** {
+ 1240              		.loc 1 311 0
+ 1241              		.cfi_startproc
+ 1242              		@ args = 0, pretend = 0, frame = 16
+ 1243              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1244 0000 80B5     		push	{r7, lr}
+ 1245              		.cfi_def_cfa_offset 8
+ 1246              		.cfi_offset 7, -8
+ 1247              		.cfi_offset 14, -4
+ 1248 0002 84B0     		sub	sp, sp, #16
+ 1249              		.cfi_def_cfa_offset 24
+ 1250 0004 00AF     		add	r7, sp, #0
+ 1251              		.cfi_def_cfa_register 7
+ 1252 0006 7860     		str	r0, [r7, #4]
+ 312:PSoC_Menu.c   ****     uint8 linePtr = 1;
+ 1253              		.loc 1 312 0
+ 1254 0008 0123     		movs	r3, #1
+ 1255 000a FB73     		strb	r3, [r7, #15]
+ 313:PSoC_Menu.c   ****     uint32 rVal = 0;
+ 1256              		.loc 1 313 0
+ 1257 000c 0023     		movs	r3, #0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 33
+
+
+ 1258 000e BB60     		str	r3, [r7, #8]
+ 314:PSoC_Menu.c   ****     while ((commandString[linePtr] != 0) && (linePtr < 32) && (commandString[linePtr] != '\n') && (
+ 1259              		.loc 1 314 0
+ 1260 0010 10E0     		b	.L72
+ 1261              	.L74:
+ 315:PSoC_Menu.c   ****     {
+ 316:PSoC_Menu.c   ****         rVal <<= 4;
+ 1262              		.loc 1 316 0
+ 1263 0012 BB68     		ldr	r3, [r7, #8]
+ 1264 0014 1B01     		lsls	r3, r3, #4
+ 1265 0016 BB60     		str	r3, [r7, #8]
+ 317:PSoC_Menu.c   ****         rVal |= asciiNibbleToVal(commandString[linePtr]);
+ 1266              		.loc 1 317 0
+ 1267 0018 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1268 001a 7A68     		ldr	r2, [r7, #4]
+ 1269 001c 1344     		add	r3, r3, r2
+ 1270 001e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1271 0020 1846     		mov	r0, r3
+ 1272 0022 FFF7FEFF 		bl	asciiNibbleToVal
+ 1273 0026 0246     		mov	r2, r0
+ 1274 0028 BB68     		ldr	r3, [r7, #8]
+ 1275 002a 1343     		orrs	r3, r3, r2
+ 1276 002c BB60     		str	r3, [r7, #8]
+ 318:PSoC_Menu.c   ****         linePtr++;
+ 1277              		.loc 1 318 0
+ 1278 002e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1279 0030 0133     		adds	r3, r3, #1
+ 1280 0032 FB73     		strb	r3, [r7, #15]
+ 1281              	.L72:
+ 314:PSoC_Menu.c   ****     {
+ 1282              		.loc 1 314 0
+ 1283 0034 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1284 0036 7A68     		ldr	r2, [r7, #4]
+ 1285 0038 1344     		add	r3, r3, r2
+ 1286 003a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1287 003c 002B     		cmp	r3, #0
+ 1288 003e 0ED0     		beq	.L73
+ 314:PSoC_Menu.c   ****     {
+ 1289              		.loc 1 314 0 is_stmt 0 discriminator 1
+ 1290 0040 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1291 0042 1F2B     		cmp	r3, #31
+ 1292 0044 0BD8     		bhi	.L73
+ 314:PSoC_Menu.c   ****     {
+ 1293              		.loc 1 314 0 discriminator 2
+ 1294 0046 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1295 0048 7A68     		ldr	r2, [r7, #4]
+ 1296 004a 1344     		add	r3, r3, r2
+ 1297 004c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1298 004e 0A2B     		cmp	r3, #10
+ 1299 0050 05D0     		beq	.L73
+ 314:PSoC_Menu.c   ****     {
+ 1300              		.loc 1 314 0 discriminator 3
+ 1301 0052 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1302 0054 7A68     		ldr	r2, [r7, #4]
+ 1303 0056 1344     		add	r3, r3, r2
+ 1304 0058 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1305 005a 0D2B     		cmp	r3, #13
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 34
+
+
+ 1306 005c D9D1     		bne	.L74
+ 1307              	.L73:
+ 319:PSoC_Menu.c   ****     }
+ 320:PSoC_Menu.c   ****     return (rVal);
+ 1308              		.loc 1 320 0 is_stmt 1
+ 1309 005e BB68     		ldr	r3, [r7, #8]
+ 321:PSoC_Menu.c   **** }
+ 1310              		.loc 1 321 0
+ 1311 0060 1846     		mov	r0, r3
+ 1312 0062 1037     		adds	r7, r7, #16
+ 1313              		.cfi_def_cfa_offset 8
+ 1314 0064 BD46     		mov	sp, r7
+ 1315              		.cfi_def_cfa_register 13
+ 1316              		@ sp needed
+ 1317 0066 80BD     		pop	{r7, pc}
+ 1318              		.cfi_endproc
+ 1319              	.LFE69:
+ 1320              		.size	extractLong, .-extractLong
+ 1321              		.text
+ 1322              	.Letext0:
+ 1323              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 1324              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 1325              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 1326              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 1327              		.file 6 "RPI_PSOC5.h"
+ 1328              		.section	.debug_info,"",%progbits
+ 1329              	.Ldebug_info0:
+ 1330 0000 C1020000 		.4byte	0x2c1
+ 1331 0004 0400     		.2byte	0x4
+ 1332 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1333 000a 04       		.byte	0x4
+ 1334 000b 01       		.uleb128 0x1
+ 1335 000c 2E000000 		.4byte	.LASF49
+ 1336 0010 0C       		.byte	0xc
+ 1337 0011 81020000 		.4byte	.LASF50
+ 1338 0015 3C010000 		.4byte	.LASF51
+ 1339 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1340 001d 00000000 		.4byte	0
+ 1341 0021 00000000 		.4byte	.Ldebug_line0
+ 1342 0025 02       		.uleb128 0x2
+ 1343 0026 01       		.byte	0x1
+ 1344 0027 06       		.byte	0x6
+ 1345 0028 22030000 		.4byte	.LASF0
+ 1346 002c 02       		.uleb128 0x2
+ 1347 002d 01       		.byte	0x1
+ 1348 002e 08       		.byte	0x8
+ 1349 002f 12010000 		.4byte	.LASF1
+ 1350 0033 02       		.uleb128 0x2
+ 1351 0034 02       		.byte	0x2
+ 1352 0035 05       		.byte	0x5
+ 1353 0036 C8020000 		.4byte	.LASF2
+ 1354 003a 02       		.uleb128 0x2
+ 1355 003b 02       		.byte	0x2
+ 1356 003c 07       		.byte	0x7
+ 1357 003d 9B010000 		.4byte	.LASF3
+ 1358 0041 03       		.uleb128 0x3
+ 1359 0042 BC000000 		.4byte	.LASF9
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 35
+
+
+ 1360 0046 02       		.byte	0x2
+ 1361 0047 3F       		.byte	0x3f
+ 1362 0048 4C000000 		.4byte	0x4c
+ 1363 004c 02       		.uleb128 0x2
+ 1364 004d 04       		.byte	0x4
+ 1365 004e 05       		.byte	0x5
+ 1366 004f FA020000 		.4byte	.LASF4
+ 1367 0053 02       		.uleb128 0x2
+ 1368 0054 04       		.byte	0x4
+ 1369 0055 07       		.byte	0x7
+ 1370 0056 04020000 		.4byte	.LASF5
+ 1371 005a 02       		.uleb128 0x2
+ 1372 005b 08       		.byte	0x8
+ 1373 005c 05       		.byte	0x5
+ 1374 005d 96020000 		.4byte	.LASF6
+ 1375 0061 02       		.uleb128 0x2
+ 1376 0062 08       		.byte	0x8
+ 1377 0063 07       		.byte	0x7
+ 1378 0064 34020000 		.4byte	.LASF7
+ 1379 0068 04       		.uleb128 0x4
+ 1380 0069 04       		.byte	0x4
+ 1381 006a 05       		.byte	0x5
+ 1382 006b 696E7400 		.ascii	"int\000"
+ 1383 006f 02       		.uleb128 0x2
+ 1384 0070 04       		.byte	0x4
+ 1385 0071 07       		.byte	0x7
+ 1386 0072 16020000 		.4byte	.LASF8
+ 1387 0076 03       		.uleb128 0x3
+ 1388 0077 66020000 		.4byte	.LASF10
+ 1389 007b 03       		.byte	0x3
+ 1390 007c 2C       		.byte	0x2c
+ 1391 007d 41000000 		.4byte	0x41
+ 1392 0081 05       		.uleb128 0x5
+ 1393 0082 DC020000 		.4byte	.LASF11
+ 1394 0086 04       		.byte	0x4
+ 1395 0087 E401     		.2byte	0x1e4
+ 1396 0089 2C000000 		.4byte	0x2c
+ 1397 008d 05       		.uleb128 0x5
+ 1398 008e F6010000 		.4byte	.LASF12
+ 1399 0092 04       		.byte	0x4
+ 1400 0093 E501     		.2byte	0x1e5
+ 1401 0095 3A000000 		.4byte	0x3a
+ 1402 0099 05       		.uleb128 0x5
+ 1403 009a FD010000 		.4byte	.LASF13
+ 1404 009e 04       		.byte	0x4
+ 1405 009f E601     		.2byte	0x1e6
+ 1406 00a1 53000000 		.4byte	0x53
+ 1407 00a5 02       		.uleb128 0x2
+ 1408 00a6 04       		.byte	0x4
+ 1409 00a7 04       		.byte	0x4
+ 1410 00a8 F6000000 		.4byte	.LASF14
+ 1411 00ac 02       		.uleb128 0x2
+ 1412 00ad 08       		.byte	0x8
+ 1413 00ae 04       		.byte	0x4
+ 1414 00af DE000000 		.4byte	.LASF15
+ 1415 00b3 02       		.uleb128 0x2
+ 1416 00b4 01       		.byte	0x1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 36
+
+
+ 1417 00b5 08       		.byte	0x8
+ 1418 00b6 B1020000 		.4byte	.LASF16
+ 1419 00ba 02       		.uleb128 0x2
+ 1420 00bb 08       		.byte	0x8
+ 1421 00bc 04       		.byte	0x4
+ 1422 00bd 0B030000 		.4byte	.LASF17
+ 1423 00c1 02       		.uleb128 0x2
+ 1424 00c2 04       		.byte	0x4
+ 1425 00c3 07       		.byte	0x7
+ 1426 00c4 8D020000 		.4byte	.LASF18
+ 1427 00c8 06       		.uleb128 0x6
+ 1428 00c9 04       		.byte	0x4
+ 1429 00ca B3000000 		.4byte	0xb3
+ 1430 00ce 07       		.uleb128 0x7
+ 1431 00cf 00000000 		.4byte	.LASF52
+ 1432 00d3 01       		.byte	0x1
+ 1433 00d4 2C000000 		.4byte	0x2c
+ 1434 00d8 06       		.byte	0x6
+ 1435 00d9 1B       		.byte	0x1b
+ 1436 00da 0F010000 		.4byte	0x10f
+ 1437 00de 08       		.uleb128 0x8
+ 1438 00df 10000000 		.4byte	.LASF19
+ 1439 00e3 00       		.byte	0
+ 1440 00e4 08       		.uleb128 0x8
+ 1441 00e5 09010000 		.4byte	.LASF20
+ 1442 00e9 01       		.byte	0x1
+ 1443 00ea 08       		.uleb128 0x8
+ 1444 00eb 32010000 		.4byte	.LASF21
+ 1445 00ef 02       		.byte	0x2
+ 1446 00f0 08       		.uleb128 0x8
+ 1447 00f1 C6000000 		.4byte	.LASF22
+ 1448 00f5 03       		.byte	0x3
+ 1449 00f6 08       		.uleb128 0x8
+ 1450 00f7 BF020000 		.4byte	.LASF23
+ 1451 00fb 04       		.byte	0x4
+ 1452 00fc 08       		.uleb128 0x8
+ 1453 00fd FC000000 		.4byte	.LASF24
+ 1454 0101 05       		.byte	0x5
+ 1455 0102 08       		.uleb128 0x8
+ 1456 0103 D2020000 		.4byte	.LASF25
+ 1457 0107 06       		.byte	0x6
+ 1458 0108 08       		.uleb128 0x8
+ 1459 0109 03030000 		.4byte	.LASF26
+ 1460 010d 07       		.byte	0x7
+ 1461 010e 00       		.byte	0
+ 1462 010f 09       		.uleb128 0x9
+ 1463 0110 CD000000 		.4byte	.LASF27
+ 1464 0114 01       		.byte	0x1
+ 1465 0115 1A       		.byte	0x1a
+ 1466 0116 00000000 		.4byte	.LFB63
+ 1467 011a 94000000 		.4byte	.LFE63-.LFB63
+ 1468 011e 01       		.uleb128 0x1
+ 1469 011f 9C       		.byte	0x9c
+ 1470 0120 0A       		.uleb128 0xa
+ 1471 0121 B6020000 		.4byte	.LASF29
+ 1472 0125 01       		.byte	0x1
+ 1473 0126 31       		.byte	0x31
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 37
+
+
+ 1474 0127 00000000 		.4byte	.LFB64
+ 1475 012b D8030000 		.4byte	.LFE64-.LFB64
+ 1476 012f 01       		.uleb128 0x1
+ 1477 0130 9C       		.byte	0x9c
+ 1478 0131 45010000 		.4byte	0x145
+ 1479 0135 0B       		.uleb128 0xb
+ 1480 0136 A4020000 		.4byte	.LASF33
+ 1481 013a 01       		.byte	0x1
+ 1482 013b 33       		.byte	0x33
+ 1483 013c 45010000 		.4byte	0x145
+ 1484 0140 03       		.uleb128 0x3
+ 1485 0141 91       		.byte	0x91
+ 1486 0142 F87D     		.sleb128 -264
+ 1487 0144 00       		.byte	0
+ 1488 0145 0C       		.uleb128 0xc
+ 1489 0146 81000000 		.4byte	0x81
+ 1490 014a 55010000 		.4byte	0x155
+ 1491 014e 0D       		.uleb128 0xd
+ 1492 014f C1000000 		.4byte	0xc1
+ 1493 0153 FF       		.byte	0xff
+ 1494 0154 00       		.byte	0
+ 1495 0155 0E       		.uleb128 0xe
+ 1496 0156 53020000 		.4byte	.LASF28
+ 1497 015a 01       		.byte	0x1
+ 1498 015b EF       		.byte	0xef
+ 1499 015c 00000000 		.4byte	.LFB65
+ 1500 0160 2C000000 		.4byte	.LFE65-.LFB65
+ 1501 0164 01       		.uleb128 0x1
+ 1502 0165 9C       		.byte	0x9c
+ 1503 0166 0A       		.uleb128 0xa
+ 1504 0167 6E020000 		.4byte	.LASF30
+ 1505 016b 01       		.byte	0x1
+ 1506 016c F9       		.byte	0xf9
+ 1507 016d 00000000 		.4byte	.LFB66
+ 1508 0171 28010000 		.4byte	.LFE66-.LFB66
+ 1509 0175 01       		.uleb128 0x1
+ 1510 0176 9C       		.byte	0x9c
+ 1511 0177 C1010000 		.4byte	0x1c1
+ 1512 017b 0F       		.uleb128 0xf
+ 1513 017c 4B020000 		.4byte	.LASF31
+ 1514 0180 01       		.byte	0x1
+ 1515 0181 F9       		.byte	0xf9
+ 1516 0182 8D000000 		.4byte	0x8d
+ 1517 0186 03       		.uleb128 0x3
+ 1518 0187 91       		.byte	0x91
+ 1519 0188 9E7F     		.sleb128 -98
+ 1520 018a 0F       		.uleb128 0xf
+ 1521 018b 36030000 		.4byte	.LASF32
+ 1522 018f 01       		.byte	0x1
+ 1523 0190 F9       		.byte	0xf9
+ 1524 0191 C1010000 		.4byte	0x1c1
+ 1525 0195 03       		.uleb128 0x3
+ 1526 0196 91       		.byte	0x91
+ 1527 0197 987F     		.sleb128 -104
+ 1528 0199 0B       		.uleb128 0xb
+ 1529 019a 17030000 		.4byte	.LASF34
+ 1530 019e 01       		.byte	0x1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 38
+
+
+ 1531 019f FB       		.byte	0xfb
+ 1532 01a0 C7010000 		.4byte	0x1c7
+ 1533 01a4 03       		.uleb128 0x3
+ 1534 01a5 91       		.byte	0x91
+ 1535 01a6 A47F     		.sleb128 -92
+ 1536 01a8 10       		.uleb128 0x10
+ 1537 01a9 10000000 		.4byte	.LBB2
+ 1538 01ad FE000000 		.4byte	.LBE2-.LBB2
+ 1539 01b1 0B       		.uleb128 0xb
+ 1540 01b2 EC010000 		.4byte	.LASF35
+ 1541 01b6 01       		.byte	0x1
+ 1542 01b7 FD       		.byte	0xfd
+ 1543 01b8 81000000 		.4byte	0x81
+ 1544 01bc 02       		.uleb128 0x2
+ 1545 01bd 91       		.byte	0x91
+ 1546 01be 77       		.sleb128 -9
+ 1547 01bf 00       		.byte	0
+ 1548 01c0 00       		.byte	0
+ 1549 01c1 06       		.uleb128 0x6
+ 1550 01c2 04       		.byte	0x4
+ 1551 01c3 81000000 		.4byte	0x81
+ 1552 01c7 0C       		.uleb128 0xc
+ 1553 01c8 81000000 		.4byte	0x81
+ 1554 01cc D7010000 		.4byte	0x1d7
+ 1555 01d0 0D       		.uleb128 0xd
+ 1556 01d1 C1000000 		.4byte	0xc1
+ 1557 01d5 4F       		.byte	0x4f
+ 1558 01d6 00       		.byte	0
+ 1559 01d7 11       		.uleb128 0x11
+ 1560 01d8 B3010000 		.4byte	.LASF36
+ 1561 01dc 01       		.byte	0x1
+ 1562 01dd 1F01     		.2byte	0x11f
+ 1563 01df 00000000 		.4byte	.LFB67
+ 1564 01e3 2E000000 		.4byte	.LFE67-.LFB67
+ 1565 01e7 01       		.uleb128 0x1
+ 1566 01e8 9C       		.byte	0x9c
+ 1567 01e9 FD010000 		.4byte	0x1fd
+ 1568 01ed 12       		.uleb128 0x12
+ 1569 01ee 20010000 		.4byte	.LASF37
+ 1570 01f2 01       		.byte	0x1
+ 1571 01f3 1F01     		.2byte	0x11f
+ 1572 01f5 C8000000 		.4byte	0xc8
+ 1573 01f9 02       		.uleb128 0x2
+ 1574 01fa 91       		.byte	0x91
+ 1575 01fb 74       		.sleb128 -12
+ 1576 01fc 00       		.byte	0
+ 1577 01fd 13       		.uleb128 0x13
+ 1578 01fe E5000000 		.4byte	.LASF39
+ 1579 0202 01       		.byte	0x1
+ 1580 0203 2801     		.2byte	0x128
+ 1581 0205 99000000 		.4byte	0x99
+ 1582 0209 00000000 		.4byte	.LFB68
+ 1583 020d 4C000000 		.4byte	.LFE68-.LFB68
+ 1584 0211 01       		.uleb128 0x1
+ 1585 0212 9C       		.byte	0x9c
+ 1586 0213 27020000 		.4byte	0x227
+ 1587 0217 12       		.uleb128 0x12
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 39
+
+
+ 1588 0218 E4010000 		.4byte	.LASF38
+ 1589 021c 01       		.byte	0x1
+ 1590 021d 2801     		.2byte	0x128
+ 1591 021f 81000000 		.4byte	0x81
+ 1592 0223 02       		.uleb128 0x2
+ 1593 0224 91       		.byte	0x91
+ 1594 0225 77       		.sleb128 -9
+ 1595 0226 00       		.byte	0
+ 1596 0227 14       		.uleb128 0x14
+ 1597 0228 CF010000 		.4byte	.LASF40
+ 1598 022c 01       		.byte	0x1
+ 1599 022d 3601     		.2byte	0x136
+ 1600 022f 99000000 		.4byte	0x99
+ 1601 0233 00000000 		.4byte	.LFB69
+ 1602 0237 68000000 		.4byte	.LFE69-.LFB69
+ 1603 023b 01       		.uleb128 0x1
+ 1604 023c 9C       		.byte	0x9c
+ 1605 023d 6F020000 		.4byte	0x26f
+ 1606 0241 12       		.uleb128 0x12
+ 1607 0242 E2020000 		.4byte	.LASF41
+ 1608 0246 01       		.byte	0x1
+ 1609 0247 3601     		.2byte	0x136
+ 1610 0249 C1010000 		.4byte	0x1c1
+ 1611 024d 02       		.uleb128 0x2
+ 1612 024e 91       		.byte	0x91
+ 1613 024f 6C       		.sleb128 -20
+ 1614 0250 15       		.uleb128 0x15
+ 1615 0251 2E030000 		.4byte	.LASF42
+ 1616 0255 01       		.byte	0x1
+ 1617 0256 3801     		.2byte	0x138
+ 1618 0258 81000000 		.4byte	0x81
+ 1619 025c 02       		.uleb128 0x2
+ 1620 025d 91       		.byte	0x91
+ 1621 025e 77       		.sleb128 -9
+ 1622 025f 15       		.uleb128 0x15
+ 1623 0260 AE010000 		.4byte	.LASF43
+ 1624 0264 01       		.byte	0x1
+ 1625 0265 3901     		.2byte	0x139
+ 1626 0267 99000000 		.4byte	0x99
+ 1627 026b 02       		.uleb128 0x2
+ 1628 026c 91       		.byte	0x91
+ 1629 026d 70       		.sleb128 -16
+ 1630 026e 00       		.byte	0
+ 1631 026f 16       		.uleb128 0x16
+ 1632 0270 C2010000 		.4byte	.LASF44
+ 1633 0274 05       		.byte	0x5
+ 1634 0275 1207     		.2byte	0x712
+ 1635 0277 7B020000 		.4byte	0x27b
+ 1636 027b 17       		.uleb128 0x17
+ 1637 027c 76000000 		.4byte	0x76
+ 1638 0280 18       		.uleb128 0x18
+ 1639 0281 DB010000 		.4byte	.LASF45
+ 1640 0285 01       		.byte	0x1
+ 1641 0286 15       		.byte	0x15
+ 1642 0287 8D000000 		.4byte	0x8d
+ 1643 028b 05       		.uleb128 0x5
+ 1644 028c 03       		.byte	0x3
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 40
+
+
+ 1645 028d 00000000 		.4byte	cardType
+ 1646 0291 18       		.uleb128 0x18
+ 1647 0292 20000000 		.4byte	.LASF46
+ 1648 0296 01       		.byte	0x1
+ 1649 0297 12       		.byte	0x12
+ 1650 0298 C7010000 		.4byte	0x1c7
+ 1651 029c 05       		.uleb128 0x5
+ 1652 029d 03       		.byte	0x3
+ 1653 029e 00000000 		.4byte	receiveBuffer
+ 1654 02a2 18       		.uleb128 0x18
+ 1655 02a3 23020000 		.4byte	.LASF47
+ 1656 02a7 01       		.byte	0x1
+ 1657 02a8 13       		.byte	0x13
+ 1658 02a9 81000000 		.4byte	0x81
+ 1659 02ad 05       		.uleb128 0x5
+ 1660 02ae 03       		.byte	0x3
+ 1661 02af 00000000 		.4byte	receiveBufferPtr
+ 1662 02b3 18       		.uleb128 0x18
+ 1663 02b4 F0020000 		.4byte	.LASF48
+ 1664 02b8 01       		.byte	0x1
+ 1665 02b9 14       		.byte	0x14
+ 1666 02ba 81000000 		.4byte	0x81
+ 1667 02be 05       		.uleb128 0x5
+ 1668 02bf 03       		.byte	0x3
+ 1669 02c0 00000000 		.4byte	gotCRorLF
+ 1670 02c4 00       		.byte	0
+ 1671              		.section	.debug_abbrev,"",%progbits
+ 1672              	.Ldebug_abbrev0:
+ 1673 0000 01       		.uleb128 0x1
+ 1674 0001 11       		.uleb128 0x11
+ 1675 0002 01       		.byte	0x1
+ 1676 0003 25       		.uleb128 0x25
+ 1677 0004 0E       		.uleb128 0xe
+ 1678 0005 13       		.uleb128 0x13
+ 1679 0006 0B       		.uleb128 0xb
+ 1680 0007 03       		.uleb128 0x3
+ 1681 0008 0E       		.uleb128 0xe
+ 1682 0009 1B       		.uleb128 0x1b
+ 1683 000a 0E       		.uleb128 0xe
+ 1684 000b 55       		.uleb128 0x55
+ 1685 000c 17       		.uleb128 0x17
+ 1686 000d 11       		.uleb128 0x11
+ 1687 000e 01       		.uleb128 0x1
+ 1688 000f 10       		.uleb128 0x10
+ 1689 0010 17       		.uleb128 0x17
+ 1690 0011 00       		.byte	0
+ 1691 0012 00       		.byte	0
+ 1692 0013 02       		.uleb128 0x2
+ 1693 0014 24       		.uleb128 0x24
+ 1694 0015 00       		.byte	0
+ 1695 0016 0B       		.uleb128 0xb
+ 1696 0017 0B       		.uleb128 0xb
+ 1697 0018 3E       		.uleb128 0x3e
+ 1698 0019 0B       		.uleb128 0xb
+ 1699 001a 03       		.uleb128 0x3
+ 1700 001b 0E       		.uleb128 0xe
+ 1701 001c 00       		.byte	0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 41
+
+
+ 1702 001d 00       		.byte	0
+ 1703 001e 03       		.uleb128 0x3
+ 1704 001f 16       		.uleb128 0x16
+ 1705 0020 00       		.byte	0
+ 1706 0021 03       		.uleb128 0x3
+ 1707 0022 0E       		.uleb128 0xe
+ 1708 0023 3A       		.uleb128 0x3a
+ 1709 0024 0B       		.uleb128 0xb
+ 1710 0025 3B       		.uleb128 0x3b
+ 1711 0026 0B       		.uleb128 0xb
+ 1712 0027 49       		.uleb128 0x49
+ 1713 0028 13       		.uleb128 0x13
+ 1714 0029 00       		.byte	0
+ 1715 002a 00       		.byte	0
+ 1716 002b 04       		.uleb128 0x4
+ 1717 002c 24       		.uleb128 0x24
+ 1718 002d 00       		.byte	0
+ 1719 002e 0B       		.uleb128 0xb
+ 1720 002f 0B       		.uleb128 0xb
+ 1721 0030 3E       		.uleb128 0x3e
+ 1722 0031 0B       		.uleb128 0xb
+ 1723 0032 03       		.uleb128 0x3
+ 1724 0033 08       		.uleb128 0x8
+ 1725 0034 00       		.byte	0
+ 1726 0035 00       		.byte	0
+ 1727 0036 05       		.uleb128 0x5
+ 1728 0037 16       		.uleb128 0x16
+ 1729 0038 00       		.byte	0
+ 1730 0039 03       		.uleb128 0x3
+ 1731 003a 0E       		.uleb128 0xe
+ 1732 003b 3A       		.uleb128 0x3a
+ 1733 003c 0B       		.uleb128 0xb
+ 1734 003d 3B       		.uleb128 0x3b
+ 1735 003e 05       		.uleb128 0x5
+ 1736 003f 49       		.uleb128 0x49
+ 1737 0040 13       		.uleb128 0x13
+ 1738 0041 00       		.byte	0
+ 1739 0042 00       		.byte	0
+ 1740 0043 06       		.uleb128 0x6
+ 1741 0044 0F       		.uleb128 0xf
+ 1742 0045 00       		.byte	0
+ 1743 0046 0B       		.uleb128 0xb
+ 1744 0047 0B       		.uleb128 0xb
+ 1745 0048 49       		.uleb128 0x49
+ 1746 0049 13       		.uleb128 0x13
+ 1747 004a 00       		.byte	0
+ 1748 004b 00       		.byte	0
+ 1749 004c 07       		.uleb128 0x7
+ 1750 004d 04       		.uleb128 0x4
+ 1751 004e 01       		.byte	0x1
+ 1752 004f 03       		.uleb128 0x3
+ 1753 0050 0E       		.uleb128 0xe
+ 1754 0051 0B       		.uleb128 0xb
+ 1755 0052 0B       		.uleb128 0xb
+ 1756 0053 49       		.uleb128 0x49
+ 1757 0054 13       		.uleb128 0x13
+ 1758 0055 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 42
+
+
+ 1759 0056 0B       		.uleb128 0xb
+ 1760 0057 3B       		.uleb128 0x3b
+ 1761 0058 0B       		.uleb128 0xb
+ 1762 0059 01       		.uleb128 0x1
+ 1763 005a 13       		.uleb128 0x13
+ 1764 005b 00       		.byte	0
+ 1765 005c 00       		.byte	0
+ 1766 005d 08       		.uleb128 0x8
+ 1767 005e 28       		.uleb128 0x28
+ 1768 005f 00       		.byte	0
+ 1769 0060 03       		.uleb128 0x3
+ 1770 0061 0E       		.uleb128 0xe
+ 1771 0062 1C       		.uleb128 0x1c
+ 1772 0063 0B       		.uleb128 0xb
+ 1773 0064 00       		.byte	0
+ 1774 0065 00       		.byte	0
+ 1775 0066 09       		.uleb128 0x9
+ 1776 0067 2E       		.uleb128 0x2e
+ 1777 0068 00       		.byte	0
+ 1778 0069 3F       		.uleb128 0x3f
+ 1779 006a 19       		.uleb128 0x19
+ 1780 006b 03       		.uleb128 0x3
+ 1781 006c 0E       		.uleb128 0xe
+ 1782 006d 3A       		.uleb128 0x3a
+ 1783 006e 0B       		.uleb128 0xb
+ 1784 006f 3B       		.uleb128 0x3b
+ 1785 0070 0B       		.uleb128 0xb
+ 1786 0071 27       		.uleb128 0x27
+ 1787 0072 19       		.uleb128 0x19
+ 1788 0073 11       		.uleb128 0x11
+ 1789 0074 01       		.uleb128 0x1
+ 1790 0075 12       		.uleb128 0x12
+ 1791 0076 06       		.uleb128 0x6
+ 1792 0077 40       		.uleb128 0x40
+ 1793 0078 18       		.uleb128 0x18
+ 1794 0079 9642     		.uleb128 0x2116
+ 1795 007b 19       		.uleb128 0x19
+ 1796 007c 00       		.byte	0
+ 1797 007d 00       		.byte	0
+ 1798 007e 0A       		.uleb128 0xa
+ 1799 007f 2E       		.uleb128 0x2e
+ 1800 0080 01       		.byte	0x1
+ 1801 0081 3F       		.uleb128 0x3f
+ 1802 0082 19       		.uleb128 0x19
+ 1803 0083 03       		.uleb128 0x3
+ 1804 0084 0E       		.uleb128 0xe
+ 1805 0085 3A       		.uleb128 0x3a
+ 1806 0086 0B       		.uleb128 0xb
+ 1807 0087 3B       		.uleb128 0x3b
+ 1808 0088 0B       		.uleb128 0xb
+ 1809 0089 27       		.uleb128 0x27
+ 1810 008a 19       		.uleb128 0x19
+ 1811 008b 11       		.uleb128 0x11
+ 1812 008c 01       		.uleb128 0x1
+ 1813 008d 12       		.uleb128 0x12
+ 1814 008e 06       		.uleb128 0x6
+ 1815 008f 40       		.uleb128 0x40
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 43
+
+
+ 1816 0090 18       		.uleb128 0x18
+ 1817 0091 9642     		.uleb128 0x2116
+ 1818 0093 19       		.uleb128 0x19
+ 1819 0094 01       		.uleb128 0x1
+ 1820 0095 13       		.uleb128 0x13
+ 1821 0096 00       		.byte	0
+ 1822 0097 00       		.byte	0
+ 1823 0098 0B       		.uleb128 0xb
+ 1824 0099 34       		.uleb128 0x34
+ 1825 009a 00       		.byte	0
+ 1826 009b 03       		.uleb128 0x3
+ 1827 009c 0E       		.uleb128 0xe
+ 1828 009d 3A       		.uleb128 0x3a
+ 1829 009e 0B       		.uleb128 0xb
+ 1830 009f 3B       		.uleb128 0x3b
+ 1831 00a0 0B       		.uleb128 0xb
+ 1832 00a1 49       		.uleb128 0x49
+ 1833 00a2 13       		.uleb128 0x13
+ 1834 00a3 02       		.uleb128 0x2
+ 1835 00a4 18       		.uleb128 0x18
+ 1836 00a5 00       		.byte	0
+ 1837 00a6 00       		.byte	0
+ 1838 00a7 0C       		.uleb128 0xc
+ 1839 00a8 01       		.uleb128 0x1
+ 1840 00a9 01       		.byte	0x1
+ 1841 00aa 49       		.uleb128 0x49
+ 1842 00ab 13       		.uleb128 0x13
+ 1843 00ac 01       		.uleb128 0x1
+ 1844 00ad 13       		.uleb128 0x13
+ 1845 00ae 00       		.byte	0
+ 1846 00af 00       		.byte	0
+ 1847 00b0 0D       		.uleb128 0xd
+ 1848 00b1 21       		.uleb128 0x21
+ 1849 00b2 00       		.byte	0
+ 1850 00b3 49       		.uleb128 0x49
+ 1851 00b4 13       		.uleb128 0x13
+ 1852 00b5 2F       		.uleb128 0x2f
+ 1853 00b6 0B       		.uleb128 0xb
+ 1854 00b7 00       		.byte	0
+ 1855 00b8 00       		.byte	0
+ 1856 00b9 0E       		.uleb128 0xe
+ 1857 00ba 2E       		.uleb128 0x2e
+ 1858 00bb 00       		.byte	0
+ 1859 00bc 3F       		.uleb128 0x3f
+ 1860 00bd 19       		.uleb128 0x19
+ 1861 00be 03       		.uleb128 0x3
+ 1862 00bf 0E       		.uleb128 0xe
+ 1863 00c0 3A       		.uleb128 0x3a
+ 1864 00c1 0B       		.uleb128 0xb
+ 1865 00c2 3B       		.uleb128 0x3b
+ 1866 00c3 0B       		.uleb128 0xb
+ 1867 00c4 27       		.uleb128 0x27
+ 1868 00c5 19       		.uleb128 0x19
+ 1869 00c6 11       		.uleb128 0x11
+ 1870 00c7 01       		.uleb128 0x1
+ 1871 00c8 12       		.uleb128 0x12
+ 1872 00c9 06       		.uleb128 0x6
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 44
+
+
+ 1873 00ca 40       		.uleb128 0x40
+ 1874 00cb 18       		.uleb128 0x18
+ 1875 00cc 9742     		.uleb128 0x2117
+ 1876 00ce 19       		.uleb128 0x19
+ 1877 00cf 00       		.byte	0
+ 1878 00d0 00       		.byte	0
+ 1879 00d1 0F       		.uleb128 0xf
+ 1880 00d2 05       		.uleb128 0x5
+ 1881 00d3 00       		.byte	0
+ 1882 00d4 03       		.uleb128 0x3
+ 1883 00d5 0E       		.uleb128 0xe
+ 1884 00d6 3A       		.uleb128 0x3a
+ 1885 00d7 0B       		.uleb128 0xb
+ 1886 00d8 3B       		.uleb128 0x3b
+ 1887 00d9 0B       		.uleb128 0xb
+ 1888 00da 49       		.uleb128 0x49
+ 1889 00db 13       		.uleb128 0x13
+ 1890 00dc 02       		.uleb128 0x2
+ 1891 00dd 18       		.uleb128 0x18
+ 1892 00de 00       		.byte	0
+ 1893 00df 00       		.byte	0
+ 1894 00e0 10       		.uleb128 0x10
+ 1895 00e1 0B       		.uleb128 0xb
+ 1896 00e2 01       		.byte	0x1
+ 1897 00e3 11       		.uleb128 0x11
+ 1898 00e4 01       		.uleb128 0x1
+ 1899 00e5 12       		.uleb128 0x12
+ 1900 00e6 06       		.uleb128 0x6
+ 1901 00e7 00       		.byte	0
+ 1902 00e8 00       		.byte	0
+ 1903 00e9 11       		.uleb128 0x11
+ 1904 00ea 2E       		.uleb128 0x2e
+ 1905 00eb 01       		.byte	0x1
+ 1906 00ec 3F       		.uleb128 0x3f
+ 1907 00ed 19       		.uleb128 0x19
+ 1908 00ee 03       		.uleb128 0x3
+ 1909 00ef 0E       		.uleb128 0xe
+ 1910 00f0 3A       		.uleb128 0x3a
+ 1911 00f1 0B       		.uleb128 0xb
+ 1912 00f2 3B       		.uleb128 0x3b
+ 1913 00f3 05       		.uleb128 0x5
+ 1914 00f4 27       		.uleb128 0x27
+ 1915 00f5 19       		.uleb128 0x19
+ 1916 00f6 11       		.uleb128 0x11
+ 1917 00f7 01       		.uleb128 0x1
+ 1918 00f8 12       		.uleb128 0x12
+ 1919 00f9 06       		.uleb128 0x6
+ 1920 00fa 40       		.uleb128 0x40
+ 1921 00fb 18       		.uleb128 0x18
+ 1922 00fc 9642     		.uleb128 0x2116
+ 1923 00fe 19       		.uleb128 0x19
+ 1924 00ff 01       		.uleb128 0x1
+ 1925 0100 13       		.uleb128 0x13
+ 1926 0101 00       		.byte	0
+ 1927 0102 00       		.byte	0
+ 1928 0103 12       		.uleb128 0x12
+ 1929 0104 05       		.uleb128 0x5
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 45
+
+
+ 1930 0105 00       		.byte	0
+ 1931 0106 03       		.uleb128 0x3
+ 1932 0107 0E       		.uleb128 0xe
+ 1933 0108 3A       		.uleb128 0x3a
+ 1934 0109 0B       		.uleb128 0xb
+ 1935 010a 3B       		.uleb128 0x3b
+ 1936 010b 05       		.uleb128 0x5
+ 1937 010c 49       		.uleb128 0x49
+ 1938 010d 13       		.uleb128 0x13
+ 1939 010e 02       		.uleb128 0x2
+ 1940 010f 18       		.uleb128 0x18
+ 1941 0110 00       		.byte	0
+ 1942 0111 00       		.byte	0
+ 1943 0112 13       		.uleb128 0x13
+ 1944 0113 2E       		.uleb128 0x2e
+ 1945 0114 01       		.byte	0x1
+ 1946 0115 3F       		.uleb128 0x3f
+ 1947 0116 19       		.uleb128 0x19
+ 1948 0117 03       		.uleb128 0x3
+ 1949 0118 0E       		.uleb128 0xe
+ 1950 0119 3A       		.uleb128 0x3a
+ 1951 011a 0B       		.uleb128 0xb
+ 1952 011b 3B       		.uleb128 0x3b
+ 1953 011c 05       		.uleb128 0x5
+ 1954 011d 27       		.uleb128 0x27
+ 1955 011e 19       		.uleb128 0x19
+ 1956 011f 49       		.uleb128 0x49
+ 1957 0120 13       		.uleb128 0x13
+ 1958 0121 11       		.uleb128 0x11
+ 1959 0122 01       		.uleb128 0x1
+ 1960 0123 12       		.uleb128 0x12
+ 1961 0124 06       		.uleb128 0x6
+ 1962 0125 40       		.uleb128 0x40
+ 1963 0126 18       		.uleb128 0x18
+ 1964 0127 9742     		.uleb128 0x2117
+ 1965 0129 19       		.uleb128 0x19
+ 1966 012a 01       		.uleb128 0x1
+ 1967 012b 13       		.uleb128 0x13
+ 1968 012c 00       		.byte	0
+ 1969 012d 00       		.byte	0
+ 1970 012e 14       		.uleb128 0x14
+ 1971 012f 2E       		.uleb128 0x2e
+ 1972 0130 01       		.byte	0x1
+ 1973 0131 3F       		.uleb128 0x3f
+ 1974 0132 19       		.uleb128 0x19
+ 1975 0133 03       		.uleb128 0x3
+ 1976 0134 0E       		.uleb128 0xe
+ 1977 0135 3A       		.uleb128 0x3a
+ 1978 0136 0B       		.uleb128 0xb
+ 1979 0137 3B       		.uleb128 0x3b
+ 1980 0138 05       		.uleb128 0x5
+ 1981 0139 27       		.uleb128 0x27
+ 1982 013a 19       		.uleb128 0x19
+ 1983 013b 49       		.uleb128 0x49
+ 1984 013c 13       		.uleb128 0x13
+ 1985 013d 11       		.uleb128 0x11
+ 1986 013e 01       		.uleb128 0x1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 46
+
+
+ 1987 013f 12       		.uleb128 0x12
+ 1988 0140 06       		.uleb128 0x6
+ 1989 0141 40       		.uleb128 0x40
+ 1990 0142 18       		.uleb128 0x18
+ 1991 0143 9642     		.uleb128 0x2116
+ 1992 0145 19       		.uleb128 0x19
+ 1993 0146 01       		.uleb128 0x1
+ 1994 0147 13       		.uleb128 0x13
+ 1995 0148 00       		.byte	0
+ 1996 0149 00       		.byte	0
+ 1997 014a 15       		.uleb128 0x15
+ 1998 014b 34       		.uleb128 0x34
+ 1999 014c 00       		.byte	0
+ 2000 014d 03       		.uleb128 0x3
+ 2001 014e 0E       		.uleb128 0xe
+ 2002 014f 3A       		.uleb128 0x3a
+ 2003 0150 0B       		.uleb128 0xb
+ 2004 0151 3B       		.uleb128 0x3b
+ 2005 0152 05       		.uleb128 0x5
+ 2006 0153 49       		.uleb128 0x49
+ 2007 0154 13       		.uleb128 0x13
+ 2008 0155 02       		.uleb128 0x2
+ 2009 0156 18       		.uleb128 0x18
+ 2010 0157 00       		.byte	0
+ 2011 0158 00       		.byte	0
+ 2012 0159 16       		.uleb128 0x16
+ 2013 015a 34       		.uleb128 0x34
+ 2014 015b 00       		.byte	0
+ 2015 015c 03       		.uleb128 0x3
+ 2016 015d 0E       		.uleb128 0xe
+ 2017 015e 3A       		.uleb128 0x3a
+ 2018 015f 0B       		.uleb128 0xb
+ 2019 0160 3B       		.uleb128 0x3b
+ 2020 0161 05       		.uleb128 0x5
+ 2021 0162 49       		.uleb128 0x49
+ 2022 0163 13       		.uleb128 0x13
+ 2023 0164 3F       		.uleb128 0x3f
+ 2024 0165 19       		.uleb128 0x19
+ 2025 0166 3C       		.uleb128 0x3c
+ 2026 0167 19       		.uleb128 0x19
+ 2027 0168 00       		.byte	0
+ 2028 0169 00       		.byte	0
+ 2029 016a 17       		.uleb128 0x17
+ 2030 016b 35       		.uleb128 0x35
+ 2031 016c 00       		.byte	0
+ 2032 016d 49       		.uleb128 0x49
+ 2033 016e 13       		.uleb128 0x13
+ 2034 016f 00       		.byte	0
+ 2035 0170 00       		.byte	0
+ 2036 0171 18       		.uleb128 0x18
+ 2037 0172 34       		.uleb128 0x34
+ 2038 0173 00       		.byte	0
+ 2039 0174 03       		.uleb128 0x3
+ 2040 0175 0E       		.uleb128 0xe
+ 2041 0176 3A       		.uleb128 0x3a
+ 2042 0177 0B       		.uleb128 0xb
+ 2043 0178 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 47
+
+
+ 2044 0179 0B       		.uleb128 0xb
+ 2045 017a 49       		.uleb128 0x49
+ 2046 017b 13       		.uleb128 0x13
+ 2047 017c 3F       		.uleb128 0x3f
+ 2048 017d 19       		.uleb128 0x19
+ 2049 017e 02       		.uleb128 0x2
+ 2050 017f 18       		.uleb128 0x18
+ 2051 0180 00       		.byte	0
+ 2052 0181 00       		.byte	0
+ 2053 0182 00       		.byte	0
+ 2054              		.section	.debug_aranges,"",%progbits
+ 2055 0000 4C000000 		.4byte	0x4c
+ 2056 0004 0200     		.2byte	0x2
+ 2057 0006 00000000 		.4byte	.Ldebug_info0
+ 2058 000a 04       		.byte	0x4
+ 2059 000b 00       		.byte	0
+ 2060 000c 0000     		.2byte	0
+ 2061 000e 0000     		.2byte	0
+ 2062 0010 00000000 		.4byte	.LFB63
+ 2063 0014 94000000 		.4byte	.LFE63-.LFB63
+ 2064 0018 00000000 		.4byte	.LFB64
+ 2065 001c D8030000 		.4byte	.LFE64-.LFB64
+ 2066 0020 00000000 		.4byte	.LFB65
+ 2067 0024 2C000000 		.4byte	.LFE65-.LFB65
+ 2068 0028 00000000 		.4byte	.LFB66
+ 2069 002c 28010000 		.4byte	.LFE66-.LFB66
+ 2070 0030 00000000 		.4byte	.LFB67
+ 2071 0034 2E000000 		.4byte	.LFE67-.LFB67
+ 2072 0038 00000000 		.4byte	.LFB68
+ 2073 003c 4C000000 		.4byte	.LFE68-.LFB68
+ 2074 0040 00000000 		.4byte	.LFB69
+ 2075 0044 68000000 		.4byte	.LFE69-.LFB69
+ 2076 0048 00000000 		.4byte	0
+ 2077 004c 00000000 		.4byte	0
+ 2078              		.section	.debug_ranges,"",%progbits
+ 2079              	.Ldebug_ranges0:
+ 2080 0000 00000000 		.4byte	.LFB63
+ 2081 0004 94000000 		.4byte	.LFE63
+ 2082 0008 00000000 		.4byte	.LFB64
+ 2083 000c D8030000 		.4byte	.LFE64
+ 2084 0010 00000000 		.4byte	.LFB65
+ 2085 0014 2C000000 		.4byte	.LFE65
+ 2086 0018 00000000 		.4byte	.LFB66
+ 2087 001c 28010000 		.4byte	.LFE66
+ 2088 0020 00000000 		.4byte	.LFB67
+ 2089 0024 2E000000 		.4byte	.LFE67
+ 2090 0028 00000000 		.4byte	.LFB68
+ 2091 002c 4C000000 		.4byte	.LFE68
+ 2092 0030 00000000 		.4byte	.LFB69
+ 2093 0034 68000000 		.4byte	.LFE69
+ 2094 0038 00000000 		.4byte	0
+ 2095 003c 00000000 		.4byte	0
+ 2096              		.section	.debug_line,"",%progbits
+ 2097              	.Ldebug_line0:
+ 2098 0000 62030000 		.section	.debug_str,"MS",%progbits,1
+ 2098      02006001 
+ 2098      00000201 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 48
+
+
+ 2098      FB0E0D00 
+ 2098      01010101 
+ 2099              	.LASF52:
+ 2100 0000 43617264 		.ascii	"Card_Types_Enum\000"
+ 2100      5F547970 
+ 2100      65735F45 
+ 2100      6E756D00 
+ 2101              	.LASF19:
+ 2102 0010 554E5345 		.ascii	"UNSELECTED_CARD\000"
+ 2102      4C454354 
+ 2102      45445F43 
+ 2102      41524400 
+ 2103              	.LASF46:
+ 2104 0020 72656365 		.ascii	"receiveBuffer\000"
+ 2104      69766542 
+ 2104      75666665 
+ 2104      7200
+ 2105              	.LASF49:
+ 2106 002e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2106      43313120 
+ 2106      352E342E 
+ 2106      31203230 
+ 2106      31363036 
+ 2107 0061 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2107      20726576 
+ 2107      6973696F 
+ 2107      6E203233 
+ 2107      37373135 
+ 2108 0094 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 2108      66756E63 
+ 2108      74696F6E 
+ 2108      2D736563 
+ 2108      74696F6E 
+ 2109              	.LASF9:
+ 2110 00bc 5F5F696E 		.ascii	"__int32_t\000"
+ 2110      7433325F 
+ 2110      7400
+ 2111              	.LASF22:
+ 2112 00c6 52505053 		.ascii	"RPPSOC\000"
+ 2112      4F4300
+ 2113              	.LASF27:
+ 2114 00cd 7072696E 		.ascii	"printMenuOptions\000"
+ 2114      744D656E 
+ 2114      754F7074 
+ 2114      696F6E73 
+ 2114      00
+ 2115              	.LASF15:
+ 2116 00de 646F7562 		.ascii	"double\000"
+ 2116      6C6500
+ 2117              	.LASF39:
+ 2118 00e5 61736369 		.ascii	"asciiNibbleToVal\000"
+ 2118      694E6962 
+ 2118      626C6554 
+ 2118      6F56616C 
+ 2118      00
+ 2119              	.LASF14:
+ 2120 00f6 666C6F61 		.ascii	"float\000"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 49
+
+
+ 2120      7400
+ 2121              	.LASF24:
+ 2122 00fc 52415350 		.ascii	"RASPIPLUSGVS\000"
+ 2122      49504C55 
+ 2122      53475653 
+ 2122      00
+ 2123              	.LASF20:
+ 2124 0109 52505055 		.ascii	"RPPUIO16\000"
+ 2124      494F3136 
+ 2124      00
+ 2125              	.LASF1:
+ 2126 0112 756E7369 		.ascii	"unsigned char\000"
+ 2126      676E6564 
+ 2126      20636861 
+ 2126      7200
+ 2127              	.LASF37:
+ 2128 0120 73747269 		.ascii	"stringToPutOutUSB\000"
+ 2128      6E67546F 
+ 2128      5075744F 
+ 2128      75745553 
+ 2128      4200
+ 2129              	.LASF21:
+ 2130 0132 52505047 		.ascii	"RPPGVSCFG\000"
+ 2130      56534346 
+ 2130      4700
+ 2131              	.LASF51:
+ 2132 013c 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\land-boards\\"
+ 2132      73657273 
+ 2132      5C48507A 
+ 2132      3432305C 
+ 2132      446F6375 
+ 2133 0169 52617350 		.ascii	"RasPi\\RPI_PSOC5\\RPI_PSOC5_CARD_TEST_STATION.cydsn"
+ 2133      695C5250 
+ 2133      495F5053 
+ 2133      4F43355C 
+ 2133      5250495F 
+ 2134 019a 00       		.ascii	"\000"
+ 2135              	.LASF3:
+ 2136 019b 73686F72 		.ascii	"short unsigned int\000"
+ 2136      7420756E 
+ 2136      7369676E 
+ 2136      65642069 
+ 2136      6E7400
+ 2137              	.LASF43:
+ 2138 01ae 7256616C 		.ascii	"rVal\000"
+ 2138      00
+ 2139              	.LASF36:
+ 2140 01b3 70757453 		.ascii	"putStringToUSB\000"
+ 2140      7472696E 
+ 2140      67546F55 
+ 2140      534200
+ 2141              	.LASF44:
+ 2142 01c2 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2142      52784275 
+ 2142      66666572 
+ 2142      00
+ 2143              	.LASF40:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 50
+
+
+ 2144 01cf 65787472 		.ascii	"extractLong\000"
+ 2144      6163744C 
+ 2144      6F6E6700 
+ 2145              	.LASF45:
+ 2146 01db 63617264 		.ascii	"cardType\000"
+ 2146      54797065 
+ 2146      00
+ 2147              	.LASF38:
+ 2148 01e4 63686172 		.ascii	"charVal\000"
+ 2148      56616C00 
+ 2149              	.LASF35:
+ 2150 01ec 72656365 		.ascii	"receiveCt\000"
+ 2150      69766543 
+ 2150      7400
+ 2151              	.LASF12:
+ 2152 01f6 75696E74 		.ascii	"uint16\000"
+ 2152      313600
+ 2153              	.LASF13:
+ 2154 01fd 75696E74 		.ascii	"uint32\000"
+ 2154      333200
+ 2155              	.LASF5:
+ 2156 0204 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2156      20756E73 
+ 2156      69676E65 
+ 2156      6420696E 
+ 2156      7400
+ 2157              	.LASF8:
+ 2158 0216 756E7369 		.ascii	"unsigned int\000"
+ 2158      676E6564 
+ 2158      20696E74 
+ 2158      00
+ 2159              	.LASF47:
+ 2160 0223 72656365 		.ascii	"receiveBufferPtr\000"
+ 2160      69766542 
+ 2160      75666665 
+ 2160      72507472 
+ 2160      00
+ 2161              	.LASF7:
+ 2162 0234 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2162      206C6F6E 
+ 2162      6720756E 
+ 2162      7369676E 
+ 2162      65642069 
+ 2163              	.LASF31:
+ 2164 024b 696E436F 		.ascii	"inCount\000"
+ 2164      756E7400 
+ 2165              	.LASF28:
+ 2166 0253 636C6561 		.ascii	"clearReceiveBuffer\000"
+ 2166      72526563 
+ 2166      65697665 
+ 2166      42756666 
+ 2166      657200
+ 2167              	.LASF10:
+ 2168 0266 696E7433 		.ascii	"int32_t\000"
+ 2168      325F7400 
+ 2169              	.LASF30:
+ 2170 026e 61646454 		.ascii	"addToReceiveBuffer\000"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 51
+
+
+ 2170      6F526563 
+ 2170      65697665 
+ 2170      42756666 
+ 2170      657200
+ 2171              	.LASF50:
+ 2172 0281 50536F43 		.ascii	"PSoC_Menu.c\000"
+ 2172      5F4D656E 
+ 2172      752E6300 
+ 2173              	.LASF18:
+ 2174 028d 73697A65 		.ascii	"sizetype\000"
+ 2174      74797065 
+ 2174      00
+ 2175              	.LASF6:
+ 2176 0296 6C6F6E67 		.ascii	"long long int\000"
+ 2176      206C6F6E 
+ 2176      6720696E 
+ 2176      7400
+ 2177              	.LASF33:
+ 2178 02a4 65657072 		.ascii	"eepromBuffer\000"
+ 2178      6F6D4275 
+ 2178      66666572 
+ 2178      00
+ 2179              	.LASF16:
+ 2180 02b1 63686172 		.ascii	"char\000"
+ 2180      00
+ 2181              	.LASF29:
+ 2182 02b6 70736F63 		.ascii	"psocMenu\000"
+ 2182      4D656E75 
+ 2182      00
+ 2183              	.LASF23:
+ 2184 02bf 52415350 		.ascii	"RASPIGVS\000"
+ 2184      49475653 
+ 2184      00
+ 2185              	.LASF2:
+ 2186 02c8 73686F72 		.ascii	"short int\000"
+ 2186      7420696E 
+ 2186      7400
+ 2187              	.LASF25:
+ 2188 02d2 52504949 		.ascii	"RPII2CHUB\000"
+ 2188      32434855 
+ 2188      4200
+ 2189              	.LASF11:
+ 2190 02dc 75696E74 		.ascii	"uint8\000"
+ 2190      3800
+ 2191              	.LASF41:
+ 2192 02e2 636F6D6D 		.ascii	"commandString\000"
+ 2192      616E6453 
+ 2192      7472696E 
+ 2192      6700
+ 2193              	.LASF48:
+ 2194 02f0 676F7443 		.ascii	"gotCRorLF\000"
+ 2194      526F724C 
+ 2194      4600
+ 2195              	.LASF4:
+ 2196 02fa 6C6F6E67 		.ascii	"long int\000"
+ 2196      20696E74 
+ 2196      00
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccUbV1LW.s 			page 52
+
+
+ 2197              	.LASF26:
+ 2198 0303 52504953 		.ascii	"RPISPI8\000"
+ 2198      50493800 
+ 2199              	.LASF17:
+ 2200 030b 6C6F6E67 		.ascii	"long double\000"
+ 2200      20646F75 
+ 2200      626C6500 
+ 2201              	.LASF34:
+ 2202 0317 6563686F 		.ascii	"echoString\000"
+ 2202      53747269 
+ 2202      6E6700
+ 2203              	.LASF0:
+ 2204 0322 7369676E 		.ascii	"signed char\000"
+ 2204      65642063 
+ 2204      68617200 
+ 2205              	.LASF42:
+ 2206 032e 6C696E65 		.ascii	"linePtr\000"
+ 2206      50747200 
+ 2207              	.LASF32:
+ 2208 0336 696E4275 		.ascii	"inBuffer\000"
+ 2208      66666572 
+ 2208      00
+ 2209              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

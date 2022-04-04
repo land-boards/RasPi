@@ -1,0 +1,1025 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Test_RASPI_GVS.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.testRASPIGVS,"ax",%progbits
+  20              		.align	2
+  21              		.global	testRASPIGVS
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	testRASPIGVS, %function
+  25              	testRASPIGVS:
+  26              	.LFB63:
+  27              		.file 1 "Test_RASPI_GVS.c"
+   1:Test_RASPI_GVS.c **** /* ========================================
+   2:Test_RASPI_GVS.c ****  *
+   3:Test_RASPI_GVS.c ****  * Copyright LAND BOARDS, LLC, 2019
+   4:Test_RASPI_GVS.c ****  * All Rights Reserved
+   5:Test_RASPI_GVS.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:Test_RASPI_GVS.c ****  *
+   7:Test_RASPI_GVS.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:Test_RASPI_GVS.c ****  * WHICH IS THE PROPERTY OF Land Boards.
+   9:Test_RASPI_GVS.c ****  *
+  10:Test_RASPI_GVS.c ****  * ========================================
+  11:Test_RASPI_GVS.c **** */
+  12:Test_RASPI_GVS.c **** 
+  13:Test_RASPI_GVS.c **** // Function to blink an LED attached to an output channel
+  14:Test_RASPI_GVS.c **** // Drives line high for a short time and then drives it low.
+  15:Test_RASPI_GVS.c **** // The high level output turns on the LED.
+  16:Test_RASPI_GVS.c **** 
+  17:Test_RASPI_GVS.c **** #include <project.h>
+  18:Test_RASPI_GVS.c **** #include "RPI_PSOC5.h"
+  19:Test_RASPI_GVS.c **** 
+  20:Test_RASPI_GVS.c **** #define LED_ON 1
+  21:Test_RASPI_GVS.c **** #define LED_OFF 0
+  22:Test_RASPI_GVS.c **** 
+  23:Test_RASPI_GVS.c **** //void blinkLED(uint8 RPI_Pin)
+  24:Test_RASPI_GVS.c **** //{
+  25:Test_RASPI_GVS.c **** //	setRasPiPinValue(RPI_Pin, LED_ON);
+  26:Test_RASPI_GVS.c **** //    CyDelay(250);
+  27:Test_RASPI_GVS.c **** //	setRasPiPinValue(RPI_Pin, LED_OFF);
+  28:Test_RASPI_GVS.c **** //}
+  29:Test_RASPI_GVS.c **** 
+  30:Test_RASPI_GVS.c **** void testRASPIGVS(void)
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 2
+
+
+  31:Test_RASPI_GVS.c **** {
+  28              		.loc 1 31 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
+  32:Test_RASPI_GVS.c **** // Set all of the RPI pins to outputs
+  33:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_2,PIN_DM_STRONG);
+  38              		.loc 1 33 0
+  39 0004 0C21     		movs	r1, #12
+  40 0006 0020     		movs	r0, #0
+  41 0008 FFF7FEFF 		bl	setRasPiPinValue
+  34:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_3,PIN_DM_STRONG);
+  42              		.loc 1 34 0
+  43 000c 0C21     		movs	r1, #12
+  44 000e 0120     		movs	r0, #1
+  45 0010 FFF7FEFF 		bl	setRasPiPinValue
+  35:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_4,PIN_DM_STRONG);
+  46              		.loc 1 35 0
+  47 0014 0C21     		movs	r1, #12
+  48 0016 0220     		movs	r0, #2
+  49 0018 FFF7FEFF 		bl	setRasPiPinValue
+  36:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_14,PIN_DM_STRONG);
+  50              		.loc 1 36 0
+  51 001c 0C21     		movs	r1, #12
+  52 001e 0320     		movs	r0, #3
+  53 0020 FFF7FEFF 		bl	setRasPiPinValue
+  37:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_15,PIN_DM_STRONG);
+  54              		.loc 1 37 0
+  55 0024 0C21     		movs	r1, #12
+  56 0026 0420     		movs	r0, #4
+  57 0028 FFF7FEFF 		bl	setRasPiPinValue
+  38:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_17,PIN_DM_STRONG);
+  58              		.loc 1 38 0
+  59 002c 0C21     		movs	r1, #12
+  60 002e 0520     		movs	r0, #5
+  61 0030 FFF7FEFF 		bl	setRasPiPinValue
+  39:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_18,PIN_DM_STRONG);
+  62              		.loc 1 39 0
+  63 0034 0C21     		movs	r1, #12
+  64 0036 0620     		movs	r0, #6
+  65 0038 FFF7FEFF 		bl	setRasPiPinValue
+  40:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_27,PIN_DM_STRONG);
+  66              		.loc 1 40 0
+  67 003c 0C21     		movs	r1, #12
+  68 003e 0720     		movs	r0, #7
+  69 0040 FFF7FEFF 		bl	setRasPiPinValue
+  41:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_22,PIN_DM_STRONG);
+  70              		.loc 1 41 0
+  71 0044 0C21     		movs	r1, #12
+  72 0046 0820     		movs	r0, #8
+  73 0048 FFF7FEFF 		bl	setRasPiPinValue
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 3
+
+
+  42:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_23,PIN_DM_STRONG);
+  74              		.loc 1 42 0
+  75 004c 0C21     		movs	r1, #12
+  76 004e 0920     		movs	r0, #9
+  77 0050 FFF7FEFF 		bl	setRasPiPinValue
+  43:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_24,PIN_DM_STRONG);
+  78              		.loc 1 43 0
+  79 0054 0C21     		movs	r1, #12
+  80 0056 0A20     		movs	r0, #10
+  81 0058 FFF7FEFF 		bl	setRasPiPinValue
+  44:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_10,PIN_DM_STRONG);
+  82              		.loc 1 44 0
+  83 005c 0C21     		movs	r1, #12
+  84 005e 0B20     		movs	r0, #11
+  85 0060 FFF7FEFF 		bl	setRasPiPinValue
+  45:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_9,PIN_DM_STRONG);
+  86              		.loc 1 45 0
+  87 0064 0C21     		movs	r1, #12
+  88 0066 0C20     		movs	r0, #12
+  89 0068 FFF7FEFF 		bl	setRasPiPinValue
+  46:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_25,PIN_DM_STRONG);
+  90              		.loc 1 46 0
+  91 006c 0C21     		movs	r1, #12
+  92 006e 0D20     		movs	r0, #13
+  93 0070 FFF7FEFF 		bl	setRasPiPinValue
+  47:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_11,PIN_DM_STRONG);
+  94              		.loc 1 47 0
+  95 0074 0C21     		movs	r1, #12
+  96 0076 0E20     		movs	r0, #14
+  97 0078 FFF7FEFF 		bl	setRasPiPinValue
+  48:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_8,PIN_DM_STRONG);
+  98              		.loc 1 48 0
+  99 007c 0C21     		movs	r1, #12
+ 100 007e 0F20     		movs	r0, #15
+ 101 0080 FFF7FEFF 		bl	setRasPiPinValue
+  49:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_7,PIN_DM_STRONG);
+ 102              		.loc 1 49 0
+ 103 0084 0C21     		movs	r1, #12
+ 104 0086 1020     		movs	r0, #16
+ 105 0088 FFF7FEFF 		bl	setRasPiPinValue
+  50:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_5,PIN_DM_STRONG);
+ 106              		.loc 1 50 0
+ 107 008c 0C21     		movs	r1, #12
+ 108 008e 1120     		movs	r0, #17
+ 109 0090 FFF7FEFF 		bl	setRasPiPinValue
+  51:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_6,PIN_DM_STRONG);
+ 110              		.loc 1 51 0
+ 111 0094 0C21     		movs	r1, #12
+ 112 0096 1220     		movs	r0, #18
+ 113 0098 FFF7FEFF 		bl	setRasPiPinValue
+  52:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_12,PIN_DM_STRONG);
+ 114              		.loc 1 52 0
+ 115 009c 0C21     		movs	r1, #12
+ 116 009e 1320     		movs	r0, #19
+ 117 00a0 FFF7FEFF 		bl	setRasPiPinValue
+  53:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_13,PIN_DM_STRONG);
+ 118              		.loc 1 53 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 4
+
+
+ 119 00a4 0C21     		movs	r1, #12
+ 120 00a6 1420     		movs	r0, #20
+ 121 00a8 FFF7FEFF 		bl	setRasPiPinValue
+  54:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_19,PIN_DM_STRONG);
+ 122              		.loc 1 54 0
+ 123 00ac 0C21     		movs	r1, #12
+ 124 00ae 1520     		movs	r0, #21
+ 125 00b0 FFF7FEFF 		bl	setRasPiPinValue
+  55:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_16,PIN_DM_STRONG);
+ 126              		.loc 1 55 0
+ 127 00b4 0C21     		movs	r1, #12
+ 128 00b6 1620     		movs	r0, #22
+ 129 00b8 FFF7FEFF 		bl	setRasPiPinValue
+  56:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_26,PIN_DM_STRONG);
+ 130              		.loc 1 56 0
+ 131 00bc 0C21     		movs	r1, #12
+ 132 00be 1720     		movs	r0, #23
+ 133 00c0 FFF7FEFF 		bl	setRasPiPinValue
+  57:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_20,PIN_DM_STRONG);
+ 134              		.loc 1 57 0
+ 135 00c4 0C21     		movs	r1, #12
+ 136 00c6 1820     		movs	r0, #24
+ 137 00c8 FFF7FEFF 		bl	setRasPiPinValue
+  58:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_21,PIN_DM_STRONG);
+ 138              		.loc 1 58 0
+ 139 00cc 0C21     		movs	r1, #12
+ 140 00ce 1920     		movs	r0, #25
+ 141 00d0 FFF7FEFF 		bl	setRasPiPinValue
+  59:Test_RASPI_GVS.c ****     
+  60:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_4,LED_ON);
+ 142              		.loc 1 60 0
+ 143 00d4 0121     		movs	r1, #1
+ 144 00d6 0220     		movs	r0, #2
+ 145 00d8 FFF7FEFF 		bl	setRasPiPinValue
+  61:Test_RASPI_GVS.c **** 
+  62:Test_RASPI_GVS.c ****     // Set all of the RPI pins to low
+  63:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_2,LED_OFF);
+ 146              		.loc 1 63 0
+ 147 00dc 0021     		movs	r1, #0
+ 148 00de 0020     		movs	r0, #0
+ 149 00e0 FFF7FEFF 		bl	setRasPiPinValue
+  64:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_3,LED_OFF);
+ 150              		.loc 1 64 0
+ 151 00e4 0021     		movs	r1, #0
+ 152 00e6 0120     		movs	r0, #1
+ 153 00e8 FFF7FEFF 		bl	setRasPiPinValue
+  65:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_14,LED_OFF);
+ 154              		.loc 1 65 0
+ 155 00ec 0021     		movs	r1, #0
+ 156 00ee 0320     		movs	r0, #3
+ 157 00f0 FFF7FEFF 		bl	setRasPiPinValue
+  66:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_15,LED_OFF);
+ 158              		.loc 1 66 0
+ 159 00f4 0021     		movs	r1, #0
+ 160 00f6 0420     		movs	r0, #4
+ 161 00f8 FFF7FEFF 		bl	setRasPiPinValue
+  67:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_17,LED_OFF);
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 5
+
+
+ 162              		.loc 1 67 0
+ 163 00fc 0021     		movs	r1, #0
+ 164 00fe 0520     		movs	r0, #5
+ 165 0100 FFF7FEFF 		bl	setRasPiPinValue
+  68:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_18,LED_OFF);
+ 166              		.loc 1 68 0
+ 167 0104 0021     		movs	r1, #0
+ 168 0106 0620     		movs	r0, #6
+ 169 0108 FFF7FEFF 		bl	setRasPiPinValue
+  69:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_27,LED_OFF);
+ 170              		.loc 1 69 0
+ 171 010c 0021     		movs	r1, #0
+ 172 010e 0720     		movs	r0, #7
+ 173 0110 FFF7FEFF 		bl	setRasPiPinValue
+  70:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_22,LED_OFF);
+ 174              		.loc 1 70 0
+ 175 0114 0021     		movs	r1, #0
+ 176 0116 0820     		movs	r0, #8
+ 177 0118 FFF7FEFF 		bl	setRasPiPinValue
+  71:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_23,LED_OFF);
+ 178              		.loc 1 71 0
+ 179 011c 0021     		movs	r1, #0
+ 180 011e 0920     		movs	r0, #9
+ 181 0120 FFF7FEFF 		bl	setRasPiPinValue
+  72:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_24,LED_OFF);
+ 182              		.loc 1 72 0
+ 183 0124 0021     		movs	r1, #0
+ 184 0126 0A20     		movs	r0, #10
+ 185 0128 FFF7FEFF 		bl	setRasPiPinValue
+  73:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_10,LED_OFF);
+ 186              		.loc 1 73 0
+ 187 012c 0021     		movs	r1, #0
+ 188 012e 0B20     		movs	r0, #11
+ 189 0130 FFF7FEFF 		bl	setRasPiPinValue
+  74:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_9,LED_OFF);
+ 190              		.loc 1 74 0
+ 191 0134 0021     		movs	r1, #0
+ 192 0136 0C20     		movs	r0, #12
+ 193 0138 FFF7FEFF 		bl	setRasPiPinValue
+  75:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_25,LED_OFF);
+ 194              		.loc 1 75 0
+ 195 013c 0021     		movs	r1, #0
+ 196 013e 0D20     		movs	r0, #13
+ 197 0140 FFF7FEFF 		bl	setRasPiPinValue
+  76:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_11,LED_OFF);
+ 198              		.loc 1 76 0
+ 199 0144 0021     		movs	r1, #0
+ 200 0146 0E20     		movs	r0, #14
+ 201 0148 FFF7FEFF 		bl	setRasPiPinValue
+  77:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_8,LED_OFF);
+ 202              		.loc 1 77 0
+ 203 014c 0021     		movs	r1, #0
+ 204 014e 0F20     		movs	r0, #15
+ 205 0150 FFF7FEFF 		bl	setRasPiPinValue
+  78:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_7,LED_OFF);
+ 206              		.loc 1 78 0
+ 207 0154 0021     		movs	r1, #0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 6
+
+
+ 208 0156 1020     		movs	r0, #16
+ 209 0158 FFF7FEFF 		bl	setRasPiPinValue
+  79:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_5,LED_OFF);
+ 210              		.loc 1 79 0
+ 211 015c 0021     		movs	r1, #0
+ 212 015e 1120     		movs	r0, #17
+ 213 0160 FFF7FEFF 		bl	setRasPiPinValue
+  80:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_6,LED_OFF);
+ 214              		.loc 1 80 0
+ 215 0164 0021     		movs	r1, #0
+ 216 0166 1220     		movs	r0, #18
+ 217 0168 FFF7FEFF 		bl	setRasPiPinValue
+  81:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_12,LED_OFF);
+ 218              		.loc 1 81 0
+ 219 016c 0021     		movs	r1, #0
+ 220 016e 1320     		movs	r0, #19
+ 221 0170 FFF7FEFF 		bl	setRasPiPinValue
+  82:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_13,LED_OFF);
+ 222              		.loc 1 82 0
+ 223 0174 0021     		movs	r1, #0
+ 224 0176 1420     		movs	r0, #20
+ 225 0178 FFF7FEFF 		bl	setRasPiPinValue
+  83:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_19,LED_OFF);
+ 226              		.loc 1 83 0
+ 227 017c 0021     		movs	r1, #0
+ 228 017e 1520     		movs	r0, #21
+ 229 0180 FFF7FEFF 		bl	setRasPiPinValue
+  84:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_16,LED_OFF);
+ 230              		.loc 1 84 0
+ 231 0184 0021     		movs	r1, #0
+ 232 0186 1620     		movs	r0, #22
+ 233 0188 FFF7FEFF 		bl	setRasPiPinValue
+  85:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_26,LED_OFF);
+ 234              		.loc 1 85 0
+ 235 018c 0021     		movs	r1, #0
+ 236 018e 1720     		movs	r0, #23
+ 237 0190 FFF7FEFF 		bl	setRasPiPinValue
+  86:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_20,LED_OFF);
+ 238              		.loc 1 86 0
+ 239 0194 0021     		movs	r1, #0
+ 240 0196 1820     		movs	r0, #24
+ 241 0198 FFF7FEFF 		bl	setRasPiPinValue
+  87:Test_RASPI_GVS.c ****     setRasPiPinValue(IO_21,LED_OFF);
+ 242              		.loc 1 87 0
+ 243 019c 0021     		movs	r1, #0
+ 244 019e 1920     		movs	r0, #25
+ 245 01a0 FFF7FEFF 		bl	setRasPiPinValue
+  88:Test_RASPI_GVS.c ****     
+  89:Test_RASPI_GVS.c **** // Blink all of the LEDs one at a time
+  90:Test_RASPI_GVS.c **** 
+  91:Test_RASPI_GVS.c **** 	blinkLED(IO_3);     // SCL1
+ 246              		.loc 1 91 0
+ 247 01a4 0120     		movs	r0, #1
+ 248 01a6 FFF7FEFF 		bl	blinkLED
+  92:Test_RASPI_GVS.c **** 	blinkLED(IO_14);    // TXD0
+ 249              		.loc 1 92 0
+ 250 01aa 0320     		movs	r0, #3
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 7
+
+
+ 251 01ac FFF7FEFF 		bl	blinkLED
+  93:Test_RASPI_GVS.c **** 	blinkLED(IO_15);    // RXD0
+ 252              		.loc 1 93 0
+ 253 01b0 0420     		movs	r0, #4
+ 254 01b2 FFF7FEFF 		bl	blinkLED
+  94:Test_RASPI_GVS.c ****     blinkLED(IO_10);    // SPIMOSI
+ 255              		.loc 1 94 0
+ 256 01b6 0B20     		movs	r0, #11
+ 257 01b8 FFF7FEFF 		bl	blinkLED
+  95:Test_RASPI_GVS.c ****     blinkLED(IO_9);     // SPIMISO
+ 258              		.loc 1 95 0
+ 259 01bc 0C20     		movs	r0, #12
+ 260 01be FFF7FEFF 		bl	blinkLED
+  96:Test_RASPI_GVS.c ****     blinkLED(IO_11);    // SPISCK
+ 261              		.loc 1 96 0
+ 262 01c2 0E20     		movs	r0, #14
+ 263 01c4 FFF7FEFF 		bl	blinkLED
+  97:Test_RASPI_GVS.c ****    	blinkLED(IO_8);     // SPICE0
+ 264              		.loc 1 97 0
+ 265 01c8 0F20     		movs	r0, #15
+ 266 01ca FFF7FEFF 		bl	blinkLED
+  98:Test_RASPI_GVS.c **** 	blinkLED(IO_7);     // SPICE1
+ 267              		.loc 1 98 0
+ 268 01ce 1020     		movs	r0, #16
+ 269 01d0 FFF7FEFF 		bl	blinkLED
+  99:Test_RASPI_GVS.c **** 	blinkLED(IO_18);
+ 270              		.loc 1 99 0
+ 271 01d4 0620     		movs	r0, #6
+ 272 01d6 FFF7FEFF 		bl	blinkLED
+ 100:Test_RASPI_GVS.c **** 	blinkLED(IO_17);
+ 273              		.loc 1 100 0
+ 274 01da 0520     		movs	r0, #5
+ 275 01dc FFF7FEFF 		bl	blinkLED
+ 101:Test_RASPI_GVS.c **** 	blinkLED(IO_27);
+ 276              		.loc 1 101 0
+ 277 01e0 0720     		movs	r0, #7
+ 278 01e2 FFF7FEFF 		bl	blinkLED
+ 102:Test_RASPI_GVS.c **** 	blinkLED(IO_23);
+ 279              		.loc 1 102 0
+ 280 01e6 0920     		movs	r0, #9
+ 281 01e8 FFF7FEFF 		bl	blinkLED
+ 103:Test_RASPI_GVS.c **** 	blinkLED(IO_22);
+ 282              		.loc 1 103 0
+ 283 01ec 0820     		movs	r0, #8
+ 284 01ee FFF7FEFF 		bl	blinkLED
+ 104:Test_RASPI_GVS.c **** 	blinkLED(IO_24);
+ 285              		.loc 1 104 0
+ 286 01f2 0A20     		movs	r0, #10
+ 287 01f4 FFF7FEFF 		bl	blinkLED
+ 105:Test_RASPI_GVS.c **** 	blinkLED(IO_25);
+ 288              		.loc 1 105 0
+ 289 01f8 0D20     		movs	r0, #13
+ 290 01fa FFF7FEFF 		bl	blinkLED
+ 106:Test_RASPI_GVS.c **** 	blinkLED(IO_2);     // SDA1
+ 291              		.loc 1 106 0
+ 292 01fe 0020     		movs	r0, #0
+ 293 0200 FFF7FEFF 		bl	blinkLED
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 8
+
+
+ 107:Test_RASPI_GVS.c **** }
+ 294              		.loc 1 107 0
+ 295 0204 00BF     		nop
+ 296 0206 80BD     		pop	{r7, pc}
+ 297              		.cfi_endproc
+ 298              	.LFE63:
+ 299              		.size	testRASPIGVS, .-testRASPIGVS
+ 300              		.text
+ 301              	.Letext0:
+ 302              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 303              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 304              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 305              		.file 5 "RasPi_Pins.h"
+ 306              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 307              		.section	.debug_info,"",%progbits
+ 308              	.Ldebug_info0:
+ 309 0000 7C010000 		.4byte	0x17c
+ 310 0004 0400     		.2byte	0x4
+ 311 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 312 000a 04       		.byte	0x4
+ 313 000b 01       		.uleb128 0x1
+ 314 000c 00000000 		.4byte	.LASF43
+ 315 0010 0C       		.byte	0xc
+ 316 0011 D1000000 		.4byte	.LASF44
+ 317 0015 10010000 		.4byte	.LASF45
+ 318 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 319 001d 00000000 		.4byte	0
+ 320 0021 00000000 		.4byte	.Ldebug_line0
+ 321 0025 02       		.uleb128 0x2
+ 322 0026 01       		.byte	0x1
+ 323 0027 06       		.byte	0x6
+ 324 0028 6C020000 		.4byte	.LASF0
+ 325 002c 02       		.uleb128 0x2
+ 326 002d 01       		.byte	0x1
+ 327 002e 08       		.byte	0x8
+ 328 002f F0000000 		.4byte	.LASF1
+ 329 0033 02       		.uleb128 0x2
+ 330 0034 02       		.byte	0x2
+ 331 0035 05       		.byte	0x5
+ 332 0036 34020000 		.4byte	.LASF2
+ 333 003a 02       		.uleb128 0x2
+ 334 003b 02       		.byte	0x2
+ 335 003c 07       		.byte	0x7
+ 336 003d 6F010000 		.4byte	.LASF3
+ 337 0041 03       		.uleb128 0x3
+ 338 0042 8E000000 		.4byte	.LASF9
+ 339 0046 02       		.byte	0x2
+ 340 0047 3F       		.byte	0x3f
+ 341 0048 4C000000 		.4byte	0x4c
+ 342 004c 02       		.uleb128 0x2
+ 343 004d 04       		.byte	0x4
+ 344 004e 05       		.byte	0x5
+ 345 004f 98000000 		.4byte	.LASF4
+ 346 0053 02       		.uleb128 0x2
+ 347 0054 04       		.byte	0x4
+ 348 0055 07       		.byte	0x7
+ 349 0056 FE000000 		.4byte	.LASF5
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 9
+
+
+ 350 005a 02       		.uleb128 0x2
+ 351 005b 08       		.byte	0x8
+ 352 005c 05       		.byte	0x5
+ 353 005d 21020000 		.4byte	.LASF6
+ 354 0061 02       		.uleb128 0x2
+ 355 0062 08       		.byte	0x8
+ 356 0063 07       		.byte	0x7
+ 357 0064 C5010000 		.4byte	.LASF7
+ 358 0068 04       		.uleb128 0x4
+ 359 0069 04       		.byte	0x4
+ 360 006a 05       		.byte	0x5
+ 361 006b 696E7400 		.ascii	"int\000"
+ 362 006f 02       		.uleb128 0x2
+ 363 0070 04       		.byte	0x4
+ 364 0071 07       		.byte	0x7
+ 365 0072 A2010000 		.4byte	.LASF8
+ 366 0076 03       		.uleb128 0x3
+ 367 0077 E2000000 		.4byte	.LASF10
+ 368 007b 03       		.byte	0x3
+ 369 007c 2C       		.byte	0x2c
+ 370 007d 41000000 		.4byte	0x41
+ 371 0081 05       		.uleb128 0x5
+ 372 0082 3E020000 		.4byte	.LASF11
+ 373 0086 04       		.byte	0x4
+ 374 0087 E401     		.2byte	0x1e4
+ 375 0089 2C000000 		.4byte	0x2c
+ 376 008d 02       		.uleb128 0x2
+ 377 008e 04       		.byte	0x4
+ 378 008f 04       		.byte	0x4
+ 379 0090 EA000000 		.4byte	.LASF12
+ 380 0094 02       		.uleb128 0x2
+ 381 0095 08       		.byte	0x8
+ 382 0096 04       		.byte	0x4
+ 383 0097 8F010000 		.4byte	.LASF13
+ 384 009b 02       		.uleb128 0x2
+ 385 009c 01       		.byte	0x1
+ 386 009d 08       		.byte	0x8
+ 387 009e 2F020000 		.4byte	.LASF14
+ 388 00a2 02       		.uleb128 0x2
+ 389 00a3 08       		.byte	0x8
+ 390 00a4 04       		.byte	0x4
+ 391 00a5 96010000 		.4byte	.LASF15
+ 392 00a9 02       		.uleb128 0x2
+ 393 00aa 04       		.byte	0x4
+ 394 00ab 07       		.byte	0x7
+ 395 00ac 18020000 		.4byte	.LASF16
+ 396 00b0 06       		.uleb128 0x6
+ 397 00b1 BC010000 		.4byte	.LASF46
+ 398 00b5 01       		.byte	0x1
+ 399 00b6 2C000000 		.4byte	0x2c
+ 400 00ba 05       		.byte	0x5
+ 401 00bb 13       		.byte	0x13
+ 402 00bc 5D010000 		.4byte	0x15d
+ 403 00c0 07       		.uleb128 0x7
+ 404 00c1 44020000 		.4byte	.LASF17
+ 405 00c5 00       		.byte	0
+ 406 00c6 07       		.uleb128 0x7
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 10
+
+
+ 407 00c7 49020000 		.4byte	.LASF18
+ 408 00cb 01       		.byte	0x1
+ 409 00cc 07       		.uleb128 0x7
+ 410 00cd 4E020000 		.4byte	.LASF19
+ 411 00d1 02       		.byte	0x2
+ 412 00d2 07       		.uleb128 0x7
+ 413 00d3 F4010000 		.4byte	.LASF20
+ 414 00d7 03       		.byte	0x3
+ 415 00d8 07       		.uleb128 0x7
+ 416 00d9 FA010000 		.4byte	.LASF21
+ 417 00dd 04       		.byte	0x4
+ 418 00de 07       		.uleb128 0x7
+ 419 00df 06020000 		.4byte	.LASF22
+ 420 00e3 05       		.byte	0x5
+ 421 00e4 07       		.uleb128 0x7
+ 422 00e5 0C020000 		.4byte	.LASF23
+ 423 00e9 06       		.byte	0x6
+ 424 00ea 07       		.uleb128 0x7
+ 425 00eb CB000000 		.4byte	.LASF24
+ 426 00ef 07       		.byte	0x7
+ 427 00f0 07       		.uleb128 0x7
+ 428 00f1 AD000000 		.4byte	.LASF25
+ 429 00f5 08       		.byte	0x8
+ 430 00f6 07       		.uleb128 0x7
+ 431 00f7 B3000000 		.4byte	.LASF26
+ 432 00fb 09       		.byte	0x9
+ 433 00fc 07       		.uleb128 0x7
+ 434 00fd B9000000 		.4byte	.LASF27
+ 435 0101 0A       		.byte	0xa
+ 436 0102 07       		.uleb128 0x7
+ 437 0103 DC010000 		.4byte	.LASF28
+ 438 0107 0B       		.byte	0xb
+ 439 0108 07       		.uleb128 0x7
+ 440 0109 67020000 		.4byte	.LASF29
+ 441 010d 0C       		.byte	0xc
+ 442 010e 07       		.uleb128 0x7
+ 443 010f BF000000 		.4byte	.LASF30
+ 444 0113 0D       		.byte	0xd
+ 445 0114 07       		.uleb128 0x7
+ 446 0115 E2010000 		.4byte	.LASF31
+ 447 0119 0E       		.byte	0xe
+ 448 011a 07       		.uleb128 0x7
+ 449 011b 62020000 		.4byte	.LASF32
+ 450 011f 0F       		.byte	0xf
+ 451 0120 07       		.uleb128 0x7
+ 452 0121 5D020000 		.4byte	.LASF33
+ 453 0125 10       		.byte	0x10
+ 454 0126 07       		.uleb128 0x7
+ 455 0127 53020000 		.4byte	.LASF34
+ 456 012b 11       		.byte	0x11
+ 457 012c 07       		.uleb128 0x7
+ 458 012d 58020000 		.4byte	.LASF35
+ 459 0131 12       		.byte	0x12
+ 460 0132 07       		.uleb128 0x7
+ 461 0133 E8010000 		.4byte	.LASF36
+ 462 0137 13       		.byte	0x13
+ 463 0138 07       		.uleb128 0x7
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 11
+
+
+ 464 0139 EE010000 		.4byte	.LASF37
+ 465 013d 14       		.byte	0x14
+ 466 013e 07       		.uleb128 0x7
+ 467 013f 12020000 		.4byte	.LASF38
+ 468 0143 15       		.byte	0x15
+ 469 0144 07       		.uleb128 0x7
+ 470 0145 00020000 		.4byte	.LASF39
+ 471 0149 16       		.byte	0x16
+ 472 014a 07       		.uleb128 0x7
+ 473 014b C5000000 		.4byte	.LASF40
+ 474 014f 17       		.byte	0x17
+ 475 0150 07       		.uleb128 0x7
+ 476 0151 A1000000 		.4byte	.LASF41
+ 477 0155 18       		.byte	0x18
+ 478 0156 07       		.uleb128 0x7
+ 479 0157 A7000000 		.4byte	.LASF42
+ 480 015b 19       		.byte	0x19
+ 481 015c 00       		.byte	0
+ 482 015d 08       		.uleb128 0x8
+ 483 015e AF010000 		.4byte	.LASF47
+ 484 0162 01       		.byte	0x1
+ 485 0163 1E       		.byte	0x1e
+ 486 0164 00000000 		.4byte	.LFB63
+ 487 0168 08020000 		.4byte	.LFE63-.LFB63
+ 488 016c 01       		.uleb128 0x1
+ 489 016d 9C       		.byte	0x9c
+ 490 016e 09       		.uleb128 0x9
+ 491 016f 82010000 		.4byte	.LASF48
+ 492 0173 06       		.byte	0x6
+ 493 0174 1207     		.2byte	0x712
+ 494 0176 7A010000 		.4byte	0x17a
+ 495 017a 0A       		.uleb128 0xa
+ 496 017b 76000000 		.4byte	0x76
+ 497 017f 00       		.byte	0
+ 498              		.section	.debug_abbrev,"",%progbits
+ 499              	.Ldebug_abbrev0:
+ 500 0000 01       		.uleb128 0x1
+ 501 0001 11       		.uleb128 0x11
+ 502 0002 01       		.byte	0x1
+ 503 0003 25       		.uleb128 0x25
+ 504 0004 0E       		.uleb128 0xe
+ 505 0005 13       		.uleb128 0x13
+ 506 0006 0B       		.uleb128 0xb
+ 507 0007 03       		.uleb128 0x3
+ 508 0008 0E       		.uleb128 0xe
+ 509 0009 1B       		.uleb128 0x1b
+ 510 000a 0E       		.uleb128 0xe
+ 511 000b 55       		.uleb128 0x55
+ 512 000c 17       		.uleb128 0x17
+ 513 000d 11       		.uleb128 0x11
+ 514 000e 01       		.uleb128 0x1
+ 515 000f 10       		.uleb128 0x10
+ 516 0010 17       		.uleb128 0x17
+ 517 0011 00       		.byte	0
+ 518 0012 00       		.byte	0
+ 519 0013 02       		.uleb128 0x2
+ 520 0014 24       		.uleb128 0x24
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 12
+
+
+ 521 0015 00       		.byte	0
+ 522 0016 0B       		.uleb128 0xb
+ 523 0017 0B       		.uleb128 0xb
+ 524 0018 3E       		.uleb128 0x3e
+ 525 0019 0B       		.uleb128 0xb
+ 526 001a 03       		.uleb128 0x3
+ 527 001b 0E       		.uleb128 0xe
+ 528 001c 00       		.byte	0
+ 529 001d 00       		.byte	0
+ 530 001e 03       		.uleb128 0x3
+ 531 001f 16       		.uleb128 0x16
+ 532 0020 00       		.byte	0
+ 533 0021 03       		.uleb128 0x3
+ 534 0022 0E       		.uleb128 0xe
+ 535 0023 3A       		.uleb128 0x3a
+ 536 0024 0B       		.uleb128 0xb
+ 537 0025 3B       		.uleb128 0x3b
+ 538 0026 0B       		.uleb128 0xb
+ 539 0027 49       		.uleb128 0x49
+ 540 0028 13       		.uleb128 0x13
+ 541 0029 00       		.byte	0
+ 542 002a 00       		.byte	0
+ 543 002b 04       		.uleb128 0x4
+ 544 002c 24       		.uleb128 0x24
+ 545 002d 00       		.byte	0
+ 546 002e 0B       		.uleb128 0xb
+ 547 002f 0B       		.uleb128 0xb
+ 548 0030 3E       		.uleb128 0x3e
+ 549 0031 0B       		.uleb128 0xb
+ 550 0032 03       		.uleb128 0x3
+ 551 0033 08       		.uleb128 0x8
+ 552 0034 00       		.byte	0
+ 553 0035 00       		.byte	0
+ 554 0036 05       		.uleb128 0x5
+ 555 0037 16       		.uleb128 0x16
+ 556 0038 00       		.byte	0
+ 557 0039 03       		.uleb128 0x3
+ 558 003a 0E       		.uleb128 0xe
+ 559 003b 3A       		.uleb128 0x3a
+ 560 003c 0B       		.uleb128 0xb
+ 561 003d 3B       		.uleb128 0x3b
+ 562 003e 05       		.uleb128 0x5
+ 563 003f 49       		.uleb128 0x49
+ 564 0040 13       		.uleb128 0x13
+ 565 0041 00       		.byte	0
+ 566 0042 00       		.byte	0
+ 567 0043 06       		.uleb128 0x6
+ 568 0044 04       		.uleb128 0x4
+ 569 0045 01       		.byte	0x1
+ 570 0046 03       		.uleb128 0x3
+ 571 0047 0E       		.uleb128 0xe
+ 572 0048 0B       		.uleb128 0xb
+ 573 0049 0B       		.uleb128 0xb
+ 574 004a 49       		.uleb128 0x49
+ 575 004b 13       		.uleb128 0x13
+ 576 004c 3A       		.uleb128 0x3a
+ 577 004d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 13
+
+
+ 578 004e 3B       		.uleb128 0x3b
+ 579 004f 0B       		.uleb128 0xb
+ 580 0050 01       		.uleb128 0x1
+ 581 0051 13       		.uleb128 0x13
+ 582 0052 00       		.byte	0
+ 583 0053 00       		.byte	0
+ 584 0054 07       		.uleb128 0x7
+ 585 0055 28       		.uleb128 0x28
+ 586 0056 00       		.byte	0
+ 587 0057 03       		.uleb128 0x3
+ 588 0058 0E       		.uleb128 0xe
+ 589 0059 1C       		.uleb128 0x1c
+ 590 005a 0B       		.uleb128 0xb
+ 591 005b 00       		.byte	0
+ 592 005c 00       		.byte	0
+ 593 005d 08       		.uleb128 0x8
+ 594 005e 2E       		.uleb128 0x2e
+ 595 005f 00       		.byte	0
+ 596 0060 3F       		.uleb128 0x3f
+ 597 0061 19       		.uleb128 0x19
+ 598 0062 03       		.uleb128 0x3
+ 599 0063 0E       		.uleb128 0xe
+ 600 0064 3A       		.uleb128 0x3a
+ 601 0065 0B       		.uleb128 0xb
+ 602 0066 3B       		.uleb128 0x3b
+ 603 0067 0B       		.uleb128 0xb
+ 604 0068 27       		.uleb128 0x27
+ 605 0069 19       		.uleb128 0x19
+ 606 006a 11       		.uleb128 0x11
+ 607 006b 01       		.uleb128 0x1
+ 608 006c 12       		.uleb128 0x12
+ 609 006d 06       		.uleb128 0x6
+ 610 006e 40       		.uleb128 0x40
+ 611 006f 18       		.uleb128 0x18
+ 612 0070 9642     		.uleb128 0x2116
+ 613 0072 19       		.uleb128 0x19
+ 614 0073 00       		.byte	0
+ 615 0074 00       		.byte	0
+ 616 0075 09       		.uleb128 0x9
+ 617 0076 34       		.uleb128 0x34
+ 618 0077 00       		.byte	0
+ 619 0078 03       		.uleb128 0x3
+ 620 0079 0E       		.uleb128 0xe
+ 621 007a 3A       		.uleb128 0x3a
+ 622 007b 0B       		.uleb128 0xb
+ 623 007c 3B       		.uleb128 0x3b
+ 624 007d 05       		.uleb128 0x5
+ 625 007e 49       		.uleb128 0x49
+ 626 007f 13       		.uleb128 0x13
+ 627 0080 3F       		.uleb128 0x3f
+ 628 0081 19       		.uleb128 0x19
+ 629 0082 3C       		.uleb128 0x3c
+ 630 0083 19       		.uleb128 0x19
+ 631 0084 00       		.byte	0
+ 632 0085 00       		.byte	0
+ 633 0086 0A       		.uleb128 0xa
+ 634 0087 35       		.uleb128 0x35
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 14
+
+
+ 635 0088 00       		.byte	0
+ 636 0089 49       		.uleb128 0x49
+ 637 008a 13       		.uleb128 0x13
+ 638 008b 00       		.byte	0
+ 639 008c 00       		.byte	0
+ 640 008d 00       		.byte	0
+ 641              		.section	.debug_aranges,"",%progbits
+ 642 0000 1C000000 		.4byte	0x1c
+ 643 0004 0200     		.2byte	0x2
+ 644 0006 00000000 		.4byte	.Ldebug_info0
+ 645 000a 04       		.byte	0x4
+ 646 000b 00       		.byte	0
+ 647 000c 0000     		.2byte	0
+ 648 000e 0000     		.2byte	0
+ 649 0010 00000000 		.4byte	.LFB63
+ 650 0014 08020000 		.4byte	.LFE63-.LFB63
+ 651 0018 00000000 		.4byte	0
+ 652 001c 00000000 		.4byte	0
+ 653              		.section	.debug_ranges,"",%progbits
+ 654              	.Ldebug_ranges0:
+ 655 0000 00000000 		.4byte	.LFB63
+ 656 0004 08020000 		.4byte	.LFE63
+ 657 0008 00000000 		.4byte	0
+ 658 000c 00000000 		.4byte	0
+ 659              		.section	.debug_line,"",%progbits
+ 660              	.Ldebug_line0:
+ 661 0000 C0010000 		.section	.debug_str,"MS",%progbits,1
+ 661      02006601 
+ 661      00000201 
+ 661      FB0E0D00 
+ 661      01010101 
+ 662              	.LASF43:
+ 663 0000 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 663      43313120 
+ 663      352E342E 
+ 663      31203230 
+ 663      31363036 
+ 664 0033 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 664      20726576 
+ 664      6973696F 
+ 664      6E203233 
+ 664      37373135 
+ 665 0066 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 665      66756E63 
+ 665      74696F6E 
+ 665      2D736563 
+ 665      74696F6E 
+ 666              	.LASF9:
+ 667 008e 5F5F696E 		.ascii	"__int32_t\000"
+ 667      7433325F 
+ 667      7400
+ 668              	.LASF4:
+ 669 0098 6C6F6E67 		.ascii	"long int\000"
+ 669      20696E74 
+ 669      00
+ 670              	.LASF41:
+ 671 00a1 494F5F32 		.ascii	"IO_20\000"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 15
+
+
+ 671      3000
+ 672              	.LASF42:
+ 673 00a7 494F5F32 		.ascii	"IO_21\000"
+ 673      3100
+ 674              	.LASF25:
+ 675 00ad 494F5F32 		.ascii	"IO_22\000"
+ 675      3200
+ 676              	.LASF26:
+ 677 00b3 494F5F32 		.ascii	"IO_23\000"
+ 677      3300
+ 678              	.LASF27:
+ 679 00b9 494F5F32 		.ascii	"IO_24\000"
+ 679      3400
+ 680              	.LASF30:
+ 681 00bf 494F5F32 		.ascii	"IO_25\000"
+ 681      3500
+ 682              	.LASF40:
+ 683 00c5 494F5F32 		.ascii	"IO_26\000"
+ 683      3600
+ 684              	.LASF24:
+ 685 00cb 494F5F32 		.ascii	"IO_27\000"
+ 685      3700
+ 686              	.LASF44:
+ 687 00d1 54657374 		.ascii	"Test_RASPI_GVS.c\000"
+ 687      5F524153 
+ 687      50495F47 
+ 687      56532E63 
+ 687      00
+ 688              	.LASF10:
+ 689 00e2 696E7433 		.ascii	"int32_t\000"
+ 689      325F7400 
+ 690              	.LASF12:
+ 691 00ea 666C6F61 		.ascii	"float\000"
+ 691      7400
+ 692              	.LASF1:
+ 693 00f0 756E7369 		.ascii	"unsigned char\000"
+ 693      676E6564 
+ 693      20636861 
+ 693      7200
+ 694              	.LASF5:
+ 695 00fe 6C6F6E67 		.ascii	"long unsigned int\000"
+ 695      20756E73 
+ 695      69676E65 
+ 695      6420696E 
+ 695      7400
+ 696              	.LASF45:
+ 697 0110 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\land-boards\\"
+ 697      73657273 
+ 697      5C48507A 
+ 697      3432305C 
+ 697      446F6375 
+ 698 013d 52617350 		.ascii	"RasPi\\RPI_PSOC5\\RPI_PSOC5_CARD_TEST_STATION.cydsn"
+ 698      695C5250 
+ 698      495F5053 
+ 698      4F43355C 
+ 698      5250495F 
+ 699 016e 00       		.ascii	"\000"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 16
+
+
+ 700              	.LASF3:
+ 701 016f 73686F72 		.ascii	"short unsigned int\000"
+ 701      7420756E 
+ 701      7369676E 
+ 701      65642069 
+ 701      6E7400
+ 702              	.LASF48:
+ 703 0182 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 703      52784275 
+ 703      66666572 
+ 703      00
+ 704              	.LASF13:
+ 705 018f 646F7562 		.ascii	"double\000"
+ 705      6C6500
+ 706              	.LASF15:
+ 707 0196 6C6F6E67 		.ascii	"long double\000"
+ 707      20646F75 
+ 707      626C6500 
+ 708              	.LASF8:
+ 709 01a2 756E7369 		.ascii	"unsigned int\000"
+ 709      676E6564 
+ 709      20696E74 
+ 709      00
+ 710              	.LASF47:
+ 711 01af 74657374 		.ascii	"testRASPIGVS\000"
+ 711      52415350 
+ 711      49475653 
+ 711      00
+ 712              	.LASF46:
+ 713 01bc 42434D5F 		.ascii	"BCM_PINS\000"
+ 713      50494E53 
+ 713      00
+ 714              	.LASF7:
+ 715 01c5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 715      206C6F6E 
+ 715      6720756E 
+ 715      7369676E 
+ 715      65642069 
+ 716              	.LASF28:
+ 717 01dc 494F5F31 		.ascii	"IO_10\000"
+ 717      3000
+ 718              	.LASF31:
+ 719 01e2 494F5F31 		.ascii	"IO_11\000"
+ 719      3100
+ 720              	.LASF36:
+ 721 01e8 494F5F31 		.ascii	"IO_12\000"
+ 721      3200
+ 722              	.LASF37:
+ 723 01ee 494F5F31 		.ascii	"IO_13\000"
+ 723      3300
+ 724              	.LASF20:
+ 725 01f4 494F5F31 		.ascii	"IO_14\000"
+ 725      3400
+ 726              	.LASF21:
+ 727 01fa 494F5F31 		.ascii	"IO_15\000"
+ 727      3500
+ 728              	.LASF39:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 17
+
+
+ 729 0200 494F5F31 		.ascii	"IO_16\000"
+ 729      3600
+ 730              	.LASF22:
+ 731 0206 494F5F31 		.ascii	"IO_17\000"
+ 731      3700
+ 732              	.LASF23:
+ 733 020c 494F5F31 		.ascii	"IO_18\000"
+ 733      3800
+ 734              	.LASF38:
+ 735 0212 494F5F31 		.ascii	"IO_19\000"
+ 735      3900
+ 736              	.LASF16:
+ 737 0218 73697A65 		.ascii	"sizetype\000"
+ 737      74797065 
+ 737      00
+ 738              	.LASF6:
+ 739 0221 6C6F6E67 		.ascii	"long long int\000"
+ 739      206C6F6E 
+ 739      6720696E 
+ 739      7400
+ 740              	.LASF14:
+ 741 022f 63686172 		.ascii	"char\000"
+ 741      00
+ 742              	.LASF2:
+ 743 0234 73686F72 		.ascii	"short int\000"
+ 743      7420696E 
+ 743      7400
+ 744              	.LASF11:
+ 745 023e 75696E74 		.ascii	"uint8\000"
+ 745      3800
+ 746              	.LASF17:
+ 747 0244 494F5F32 		.ascii	"IO_2\000"
+ 747      00
+ 748              	.LASF18:
+ 749 0249 494F5F33 		.ascii	"IO_3\000"
+ 749      00
+ 750              	.LASF19:
+ 751 024e 494F5F34 		.ascii	"IO_4\000"
+ 751      00
+ 752              	.LASF34:
+ 753 0253 494F5F35 		.ascii	"IO_5\000"
+ 753      00
+ 754              	.LASF35:
+ 755 0258 494F5F36 		.ascii	"IO_6\000"
+ 755      00
+ 756              	.LASF33:
+ 757 025d 494F5F37 		.ascii	"IO_7\000"
+ 757      00
+ 758              	.LASF32:
+ 759 0262 494F5F38 		.ascii	"IO_8\000"
+ 759      00
+ 760              	.LASF29:
+ 761 0267 494F5F39 		.ascii	"IO_9\000"
+ 761      00
+ 762              	.LASF0:
+ 763 026c 7369676E 		.ascii	"signed char\000"
+ 763      65642063 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccugGxts.s 			page 18
+
+
+ 763      68617200 
+ 764              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

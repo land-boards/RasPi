@@ -1,0 +1,1235 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Test_RPI_I2C_HUB.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.init_RPII2CHUB,"ax",%progbits
+  20              		.align	2
+  21              		.global	init_RPII2CHUB
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	init_RPII2CHUB, %function
+  25              	init_RPII2CHUB:
+  26              	.LFB63:
+  27              		.file 1 "Test_RPI_I2C_HUB.c"
+   1:Test_RPI_I2C_HUB.c **** /* ========================================
+   2:Test_RPI_I2C_HUB.c ****  *
+   3:Test_RPI_I2C_HUB.c ****  * Copyright LAND BOARDS, LLC, 2019
+   4:Test_RPI_I2C_HUB.c ****  * All Rights Reserved
+   5:Test_RPI_I2C_HUB.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:Test_RPI_I2C_HUB.c ****  *
+   7:Test_RPI_I2C_HUB.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:Test_RPI_I2C_HUB.c ****  * WHICH IS THE PROPERTY OF Land Boards.
+   9:Test_RPI_I2C_HUB.c ****  *
+  10:Test_RPI_I2C_HUB.c ****  * ========================================
+  11:Test_RPI_I2C_HUB.c **** */
+  12:Test_RPI_I2C_HUB.c **** 
+  13:Test_RPI_I2C_HUB.c **** // Test an RPI_I2C_HUB
+  14:Test_RPI_I2C_HUB.c **** // Requires 4 DIGIO-8 cards
+  15:Test_RPI_I2C_HUB.c **** // Test bounces an LED across the four DIGIO-8 cards
+  16:Test_RPI_I2C_HUB.c **** 
+  17:Test_RPI_I2C_HUB.c **** #include <project.h>
+  18:Test_RPI_I2C_HUB.c **** #include "RPI_PSOC5.h"
+  19:Test_RPI_I2C_HUB.c **** 
+  20:Test_RPI_I2C_HUB.c **** // ////////////////////////////////////////////////////////////////////////////
+  21:Test_RPI_I2C_HUB.c **** // init_RPII2CHUB() - Initialize the RPI_I2C_HUB and (4) I2CIO-8 cards
+  22:Test_RPI_I2C_HUB.c **** // ////////////////////////////////////////////////////////////////////////////
+  23:Test_RPI_I2C_HUB.c **** 
+  24:Test_RPI_I2C_HUB.c **** void init_RPII2CHUB(void)
+  25:Test_RPI_I2C_HUB.c **** {
+  28              		.loc 1 25 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 2
+
+
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              		.cfi_def_cfa_offset 16
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  26:Test_RPI_I2C_HUB.c ****     uint8 I2CMUX_SLAVE_ADDR = 0x71;
+  40              		.loc 1 26 0
+  41 0006 7123     		movs	r3, #113
+  42 0008 BB71     		strb	r3, [r7, #6]
+  27:Test_RPI_I2C_HUB.c ****     uint8 cMessage[2];
+  28:Test_RPI_I2C_HUB.c ****     uint8 channel;
+  29:Test_RPI_I2C_HUB.c ****     
+  30:Test_RPI_I2C_HUB.c ****     I2C1_Start();
+  43              		.loc 1 30 0
+  44 000a FFF7FEFF 		bl	I2C1_Start
+  31:Test_RPI_I2C_HUB.c ****     
+  32:Test_RPI_I2C_HUB.c ****     // initialize the four DIGIO8 cards
+  33:Test_RPI_I2C_HUB.c ****     for (channel = 0; channel < 4; channel++)
+  45              		.loc 1 33 0
+  46 000e 0023     		movs	r3, #0
+  47 0010 FB71     		strb	r3, [r7, #7]
+  48 0012 18E0     		b	.L2
+  49              	.L4:
+  34:Test_RPI_I2C_HUB.c ****     {
+  35:Test_RPI_I2C_HUB.c ****         cMessage[0] = 0x04 | channel;
+  50              		.loc 1 35 0
+  51 0014 FB79     		ldrb	r3, [r7, #7]
+  52 0016 43F00403 		orr	r3, r3, #4
+  53 001a DBB2     		uxtb	r3, r3
+  54 001c 3B71     		strb	r3, [r7, #4]
+  36:Test_RPI_I2C_HUB.c ****         I2C1_MasterWriteBuf(I2CMUX_SLAVE_ADDR, cMessage, 1, I2C_EEPROM_MODE_COMPLETE_XFER);
+  55              		.loc 1 36 0
+  56 001e 391D     		adds	r1, r7, #4
+  57 0020 B879     		ldrb	r0, [r7, #6]	@ zero_extendqisi2
+  58 0022 0023     		movs	r3, #0
+  59 0024 0122     		movs	r2, #1
+  60 0026 FFF7FEFF 		bl	I2C1_MasterWriteBuf
+  37:Test_RPI_I2C_HUB.c ****         while (0u == (I2C1_MasterStatus() & I2C1_MSTAT_WR_CMPLT));
+  61              		.loc 1 37 0
+  62 002a 00BF     		nop
+  63              	.L3:
+  64              		.loc 1 37 0 is_stmt 0 discriminator 1
+  65 002c FFF7FEFF 		bl	I2C1_MasterStatus
+  66 0030 0346     		mov	r3, r0
+  67 0032 03F00203 		and	r3, r3, #2
+  68 0036 002B     		cmp	r3, #0
+  69 0038 F8D0     		beq	.L3
+  38:Test_RPI_I2C_HUB.c ****         initDIGIO8Card(0x20);
+  70              		.loc 1 38 0 is_stmt 1 discriminator 2
+  71 003a 2020     		movs	r0, #32
+  72 003c FFF7FEFF 		bl	initDIGIO8Card
+  33:Test_RPI_I2C_HUB.c ****     {
+  73              		.loc 1 33 0 discriminator 2
+  74 0040 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  75 0042 0133     		adds	r3, r3, #1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 3
+
+
+  76 0044 FB71     		strb	r3, [r7, #7]
+  77              	.L2:
+  33:Test_RPI_I2C_HUB.c ****     {
+  78              		.loc 1 33 0 is_stmt 0 discriminator 1
+  79 0046 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  80 0048 032B     		cmp	r3, #3
+  81 004a E3D9     		bls	.L4
+  39:Test_RPI_I2C_HUB.c ****     }
+  40:Test_RPI_I2C_HUB.c **** }
+  82              		.loc 1 40 0 is_stmt 1
+  83 004c 00BF     		nop
+  84 004e 0837     		adds	r7, r7, #8
+  85              		.cfi_def_cfa_offset 8
+  86 0050 BD46     		mov	sp, r7
+  87              		.cfi_def_cfa_register 13
+  88              		@ sp needed
+  89 0052 80BD     		pop	{r7, pc}
+  90              		.cfi_endproc
+  91              	.LFE63:
+  92              		.size	init_RPII2CHUB, .-init_RPII2CHUB
+  93              		.section	.rodata
+  94              		.align	2
+  95              	.LC0:
+  96 0000 496E6974 		.ascii	"Initialized RPI-I2C-HUB card\012\015\000"
+  96      69616C69 
+  96      7A656420 
+  96      5250492D 
+  96      4932432D 
+  97 001f 00       		.align	2
+  98              	.LC1:
+  99 0020 506F6C6C 		.ascii	"Polling interrupts\012\015\000"
+  99      696E6720 
+  99      696E7465 
+  99      72727570 
+  99      74730A0D 
+ 100 0035 000000   		.align	2
+ 101              	.LC2:
+ 102 0038 496E743D 		.ascii	"Int=0\012\015\000"
+ 102      300A0D00 
+ 103              		.align	2
+ 104              	.LC3:
+ 105 0040 496E743D 		.ascii	"Int=1\012\015\000"
+ 105      310A0D00 
+ 106              		.align	2
+ 107              	.LC4:
+ 108 0048 496E743D 		.ascii	"Int=2\012\015\000"
+ 108      320A0D00 
+ 109              		.align	2
+ 110              	.LC5:
+ 111 0050 496E743D 		.ascii	"Int=3\012\015\000"
+ 111      330A0D00 
+ 112              		.align	2
+ 113              	.LC6:
+ 114 0058 446F6E65 		.ascii	"Done testing interrupts\012\015\000"
+ 114      20746573 
+ 114      74696E67 
+ 114      20696E74 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 4
+
+
+ 114      65727275 
+ 115              		.section	.text.test_RPII2CHUB,"ax",%progbits
+ 116              		.align	2
+ 117              		.global	test_RPII2CHUB
+ 118              		.thumb
+ 119              		.thumb_func
+ 120              		.type	test_RPII2CHUB, %function
+ 121              	test_RPII2CHUB:
+ 122              	.LFB64:
+  41:Test_RPI_I2C_HUB.c **** 
+  42:Test_RPI_I2C_HUB.c **** // ////////////////////////////////////////////////////////////////////////////
+  43:Test_RPI_I2C_HUB.c **** // test_RPII2CHUB()
+  44:Test_RPI_I2C_HUB.c **** // ////////////////////////////////////////////////////////////////////////////
+  45:Test_RPI_I2C_HUB.c **** 
+  46:Test_RPI_I2C_HUB.c **** void test_RPII2CHUB(void)
+  47:Test_RPI_I2C_HUB.c **** {
+ 123              		.loc 1 47 0
+ 124              		.cfi_startproc
+ 125              		@ args = 0, pretend = 0, frame = 8
+ 126              		@ frame_needed = 1, uses_anonymous_args = 0
+ 127 0000 80B5     		push	{r7, lr}
+ 128              		.cfi_def_cfa_offset 8
+ 129              		.cfi_offset 7, -8
+ 130              		.cfi_offset 14, -4
+ 131 0002 82B0     		sub	sp, sp, #8
+ 132              		.cfi_def_cfa_offset 16
+ 133 0004 00AF     		add	r7, sp, #0
+ 134              		.cfi_def_cfa_register 7
+  48:Test_RPI_I2C_HUB.c ****     uint8 I2CMUX_SLAVE_ADDR = 0x71;
+ 135              		.loc 1 48 0
+ 136 0006 7123     		movs	r3, #113
+ 137 0008 FB71     		strb	r3, [r7, #7]
+  49:Test_RPI_I2C_HUB.c ****     uint8 I2CIO8_SLAVE_ADDR = 0x20;
+ 138              		.loc 1 49 0
+ 139 000a 2023     		movs	r3, #32
+ 140 000c BB71     		strb	r3, [r7, #6]
+  50:Test_RPI_I2C_HUB.c ****     uint8 cMessage[2];
+  51:Test_RPI_I2C_HUB.c ****     uint8 rdIntStat;
+  52:Test_RPI_I2C_HUB.c ****     
+  53:Test_RPI_I2C_HUB.c ****     //I2C1_Start();
+  54:Test_RPI_I2C_HUB.c ****     
+  55:Test_RPI_I2C_HUB.c ****     init_RPII2CHUB();
+ 141              		.loc 1 55 0
+ 142 000e FFF7FEFF 		bl	init_RPII2CHUB
+  56:Test_RPI_I2C_HUB.c ****     putStringToUSB("Initialized RPI-I2C-HUB card\n\r");
+ 143              		.loc 1 56 0
+ 144 0012 4E48     		ldr	r0, .L17
+ 145 0014 FFF7FEFF 		bl	putStringToUSB
+  57:Test_RPI_I2C_HUB.c ****     
+  58:Test_RPI_I2C_HUB.c ****     putStringToUSB("Polling interrupts\n\r");
+ 146              		.loc 1 58 0
+ 147 0018 4D48     		ldr	r0, .L17+4
+ 148 001a FFF7FEFF 		bl	putStringToUSB
+  59:Test_RPI_I2C_HUB.c **** 
+  60:Test_RPI_I2C_HUB.c ****     while (0u == USBUART_DataIsReady())
+ 149              		.loc 1 60 0
+ 150 001e 87E0     		b	.L6
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 5
+
+
+ 151              	.L16:
+  61:Test_RPI_I2C_HUB.c ****     {
+  62:Test_RPI_I2C_HUB.c ****         I2C1_MasterReadBuf(I2CMUX_SLAVE_ADDR,cMessage, 1, I2C_EEPROM_MODE_COMPLETE_XFER);
+ 152              		.loc 1 62 0
+ 153 0020 3946     		mov	r1, r7
+ 154 0022 F879     		ldrb	r0, [r7, #7]	@ zero_extendqisi2
+ 155 0024 0023     		movs	r3, #0
+ 156 0026 0122     		movs	r2, #1
+ 157 0028 FFF7FEFF 		bl	I2C1_MasterReadBuf
+  63:Test_RPI_I2C_HUB.c ****         while (0u == (I2C1_MasterStatus() & I2C1_MSTAT_RD_CMPLT));
+ 158              		.loc 1 63 0
+ 159 002c 00BF     		nop
+ 160              	.L7:
+ 161              		.loc 1 63 0 is_stmt 0 discriminator 1
+ 162 002e FFF7FEFF 		bl	I2C1_MasterStatus
+ 163 0032 0346     		mov	r3, r0
+ 164 0034 03F00103 		and	r3, r3, #1
+ 165 0038 002B     		cmp	r3, #0
+ 166 003a F8D0     		beq	.L7
+  64:Test_RPI_I2C_HUB.c **** //        I2C1_MasterSendStop();
+  65:Test_RPI_I2C_HUB.c **** //        I2C1_MasterClearStatus();
+  66:Test_RPI_I2C_HUB.c ****         //while (0u == (I2C1_MasterStatus() & I2C1_MSTAT_WR_CMPLT));
+  67:Test_RPI_I2C_HUB.c ****         rdIntStat = ((cMessage[0] >> 4) & 0xf);
+ 167              		.loc 1 67 0 is_stmt 1
+ 168 003c 3B78     		ldrb	r3, [r7]	@ zero_extendqisi2
+ 169 003e 1B09     		lsrs	r3, r3, #4
+ 170 0040 7B71     		strb	r3, [r7, #5]
+  68:Test_RPI_I2C_HUB.c ****         if ((rdIntStat & 0x01) == 0x01)
+ 171              		.loc 1 68 0
+ 172 0042 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 173 0044 03F00103 		and	r3, r3, #1
+ 174 0048 002B     		cmp	r3, #0
+ 175 004a 17D0     		beq	.L8
+  69:Test_RPI_I2C_HUB.c ****         {
+  70:Test_RPI_I2C_HUB.c ****             putStringToUSB("Int=0\n\r");
+ 176              		.loc 1 70 0
+ 177 004c 4148     		ldr	r0, .L17+8
+ 178 004e FFF7FEFF 		bl	putStringToUSB
+  71:Test_RPI_I2C_HUB.c ****             cMessage[0] = 0x04;
+ 179              		.loc 1 71 0
+ 180 0052 0423     		movs	r3, #4
+ 181 0054 3B70     		strb	r3, [r7]
+  72:Test_RPI_I2C_HUB.c ****             I2C1_MasterWriteBuf(I2CMUX_SLAVE_ADDR, cMessage, 1, I2C_EEPROM_MODE_COMPLETE_XFER);
+ 182              		.loc 1 72 0
+ 183 0056 3946     		mov	r1, r7
+ 184 0058 F879     		ldrb	r0, [r7, #7]	@ zero_extendqisi2
+ 185 005a 0023     		movs	r3, #0
+ 186 005c 0122     		movs	r2, #1
+ 187 005e FFF7FEFF 		bl	I2C1_MasterWriteBuf
+  73:Test_RPI_I2C_HUB.c ****             while (0u == (I2C1_MasterStatus() & I2C1_MSTAT_WR_CMPLT));
+ 188              		.loc 1 73 0
+ 189 0062 00BF     		nop
+ 190              	.L9:
+ 191              		.loc 1 73 0 is_stmt 0 discriminator 1
+ 192 0064 FFF7FEFF 		bl	I2C1_MasterStatus
+ 193 0068 0346     		mov	r3, r0
+ 194 006a 03F00203 		and	r3, r3, #2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 6
+
+
+ 195 006e 002B     		cmp	r3, #0
+ 196 0070 F8D0     		beq	.L9
+  74:Test_RPI_I2C_HUB.c ****             //readDIGIO8Card(I2CIO8_SLAVE_ADDR);
+  75:Test_RPI_I2C_HUB.c ****             readRegisterDIGIO8Card(I2CIO8_SLAVE_ADDR,MCP23008_INTCAP_REGADR); // Clear interrupt LE
+ 197              		.loc 1 75 0 is_stmt 1
+ 198 0072 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 199 0074 0821     		movs	r1, #8
+ 200 0076 1846     		mov	r0, r3
+ 201 0078 FFF7FEFF 		bl	readRegisterDIGIO8Card
+ 202              	.L8:
+  76:Test_RPI_I2C_HUB.c ****         }
+  77:Test_RPI_I2C_HUB.c ****         if ((rdIntStat & 0x02) == 0x02)
+ 203              		.loc 1 77 0
+ 204 007c 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 205 007e 03F00203 		and	r3, r3, #2
+ 206 0082 002B     		cmp	r3, #0
+ 207 0084 17D0     		beq	.L10
+  78:Test_RPI_I2C_HUB.c ****         {
+  79:Test_RPI_I2C_HUB.c ****             cMessage[0] = 0x05;
+ 208              		.loc 1 79 0
+ 209 0086 0523     		movs	r3, #5
+ 210 0088 3B70     		strb	r3, [r7]
+  80:Test_RPI_I2C_HUB.c ****             I2C1_MasterWriteBuf(I2CMUX_SLAVE_ADDR, cMessage, 1, I2C_EEPROM_MODE_COMPLETE_XFER);
+ 211              		.loc 1 80 0
+ 212 008a 3946     		mov	r1, r7
+ 213 008c F879     		ldrb	r0, [r7, #7]	@ zero_extendqisi2
+ 214 008e 0023     		movs	r3, #0
+ 215 0090 0122     		movs	r2, #1
+ 216 0092 FFF7FEFF 		bl	I2C1_MasterWriteBuf
+  81:Test_RPI_I2C_HUB.c ****             while (0u == (I2C1_MasterStatus() & I2C1_MSTAT_WR_CMPLT));
+ 217              		.loc 1 81 0
+ 218 0096 00BF     		nop
+ 219              	.L11:
+ 220              		.loc 1 81 0 is_stmt 0 discriminator 1
+ 221 0098 FFF7FEFF 		bl	I2C1_MasterStatus
+ 222 009c 0346     		mov	r3, r0
+ 223 009e 03F00203 		and	r3, r3, #2
+ 224 00a2 002B     		cmp	r3, #0
+ 225 00a4 F8D0     		beq	.L11
+  82:Test_RPI_I2C_HUB.c ****             putStringToUSB("Int=1\n\r");
+ 226              		.loc 1 82 0 is_stmt 1
+ 227 00a6 2C48     		ldr	r0, .L17+12
+ 228 00a8 FFF7FEFF 		bl	putStringToUSB
+  83:Test_RPI_I2C_HUB.c ****             //readDIGIO8Card(I2CIO8_SLAVE_ADDR);
+  84:Test_RPI_I2C_HUB.c ****             readRegisterDIGIO8Card(I2CIO8_SLAVE_ADDR,MCP23008_INTCAP_REGADR); // Clear interrupt LE
+ 229              		.loc 1 84 0
+ 230 00ac BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 231 00ae 0821     		movs	r1, #8
+ 232 00b0 1846     		mov	r0, r3
+ 233 00b2 FFF7FEFF 		bl	readRegisterDIGIO8Card
+ 234              	.L10:
+  85:Test_RPI_I2C_HUB.c ****        }
+  86:Test_RPI_I2C_HUB.c ****         if ((rdIntStat & 0x04) == 0x04)
+ 235              		.loc 1 86 0
+ 236 00b6 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 237 00b8 03F00403 		and	r3, r3, #4
+ 238 00bc 002B     		cmp	r3, #0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 7
+
+
+ 239 00be 17D0     		beq	.L12
+  87:Test_RPI_I2C_HUB.c ****         {
+  88:Test_RPI_I2C_HUB.c ****             cMessage[0] = 0x06;
+ 240              		.loc 1 88 0
+ 241 00c0 0623     		movs	r3, #6
+ 242 00c2 3B70     		strb	r3, [r7]
+  89:Test_RPI_I2C_HUB.c ****             I2C1_MasterWriteBuf(I2CMUX_SLAVE_ADDR, cMessage, 1, I2C_EEPROM_MODE_COMPLETE_XFER);
+ 243              		.loc 1 89 0
+ 244 00c4 3946     		mov	r1, r7
+ 245 00c6 F879     		ldrb	r0, [r7, #7]	@ zero_extendqisi2
+ 246 00c8 0023     		movs	r3, #0
+ 247 00ca 0122     		movs	r2, #1
+ 248 00cc FFF7FEFF 		bl	I2C1_MasterWriteBuf
+  90:Test_RPI_I2C_HUB.c ****             while (0u == (I2C1_MasterStatus() & I2C1_MSTAT_WR_CMPLT));
+ 249              		.loc 1 90 0
+ 250 00d0 00BF     		nop
+ 251              	.L13:
+ 252              		.loc 1 90 0 is_stmt 0 discriminator 1
+ 253 00d2 FFF7FEFF 		bl	I2C1_MasterStatus
+ 254 00d6 0346     		mov	r3, r0
+ 255 00d8 03F00203 		and	r3, r3, #2
+ 256 00dc 002B     		cmp	r3, #0
+ 257 00de F8D0     		beq	.L13
+  91:Test_RPI_I2C_HUB.c ****             putStringToUSB("Int=2\n\r");
+ 258              		.loc 1 91 0 is_stmt 1
+ 259 00e0 1E48     		ldr	r0, .L17+16
+ 260 00e2 FFF7FEFF 		bl	putStringToUSB
+  92:Test_RPI_I2C_HUB.c ****             //readDIGIO8Card(I2CIO8_SLAVE_ADDR);
+  93:Test_RPI_I2C_HUB.c ****             readRegisterDIGIO8Card(I2CIO8_SLAVE_ADDR,MCP23008_INTCAP_REGADR); // Clear interrupt LE
+ 261              		.loc 1 93 0
+ 262 00e6 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 263 00e8 0821     		movs	r1, #8
+ 264 00ea 1846     		mov	r0, r3
+ 265 00ec FFF7FEFF 		bl	readRegisterDIGIO8Card
+ 266              	.L12:
+  94:Test_RPI_I2C_HUB.c ****         }
+  95:Test_RPI_I2C_HUB.c ****         if ((rdIntStat & 0x08) == 0x08)
+ 267              		.loc 1 95 0
+ 268 00f0 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 269 00f2 03F00803 		and	r3, r3, #8
+ 270 00f6 002B     		cmp	r3, #0
+ 271 00f8 17D0     		beq	.L14
+  96:Test_RPI_I2C_HUB.c ****         {
+  97:Test_RPI_I2C_HUB.c ****             cMessage[0] = 0x07;
+ 272              		.loc 1 97 0
+ 273 00fa 0723     		movs	r3, #7
+ 274 00fc 3B70     		strb	r3, [r7]
+  98:Test_RPI_I2C_HUB.c ****             I2C1_MasterWriteBuf(I2CMUX_SLAVE_ADDR, cMessage, 1, I2C_EEPROM_MODE_COMPLETE_XFER);
+ 275              		.loc 1 98 0
+ 276 00fe 3946     		mov	r1, r7
+ 277 0100 F879     		ldrb	r0, [r7, #7]	@ zero_extendqisi2
+ 278 0102 0023     		movs	r3, #0
+ 279 0104 0122     		movs	r2, #1
+ 280 0106 FFF7FEFF 		bl	I2C1_MasterWriteBuf
+  99:Test_RPI_I2C_HUB.c ****             while (0u == (I2C1_MasterStatus() & I2C1_MSTAT_WR_CMPLT));
+ 281              		.loc 1 99 0
+ 282 010a 00BF     		nop
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 8
+
+
+ 283              	.L15:
+ 284              		.loc 1 99 0 is_stmt 0 discriminator 1
+ 285 010c FFF7FEFF 		bl	I2C1_MasterStatus
+ 286 0110 0346     		mov	r3, r0
+ 287 0112 03F00203 		and	r3, r3, #2
+ 288 0116 002B     		cmp	r3, #0
+ 289 0118 F8D0     		beq	.L15
+ 100:Test_RPI_I2C_HUB.c ****             putStringToUSB("Int=3\n\r");
+ 290              		.loc 1 100 0 is_stmt 1
+ 291 011a 1148     		ldr	r0, .L17+20
+ 292 011c FFF7FEFF 		bl	putStringToUSB
+ 101:Test_RPI_I2C_HUB.c ****             //readDIGIO8Card(I2CIO8_SLAVE_ADDR);
+ 102:Test_RPI_I2C_HUB.c ****             readRegisterDIGIO8Card(I2CIO8_SLAVE_ADDR,MCP23008_INTCAP_REGADR); // Clear interrupt LE
+ 293              		.loc 1 102 0
+ 294 0120 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 295 0122 0821     		movs	r1, #8
+ 296 0124 1846     		mov	r0, r3
+ 297 0126 FFF7FEFF 		bl	readRegisterDIGIO8Card
+ 298              	.L14:
+ 103:Test_RPI_I2C_HUB.c ****         }
+ 104:Test_RPI_I2C_HUB.c ****     CyDelay(200);
+ 299              		.loc 1 104 0
+ 300 012a C820     		movs	r0, #200
+ 301 012c FFF7FEFF 		bl	CyDelay
+ 302              	.L6:
+  60:Test_RPI_I2C_HUB.c ****     {
+ 303              		.loc 1 60 0
+ 304 0130 FFF7FEFF 		bl	USBUART_DataIsReady
+ 305 0134 0346     		mov	r3, r0
+ 306 0136 002B     		cmp	r3, #0
+ 307 0138 3FF472AF 		beq	.L16
+ 105:Test_RPI_I2C_HUB.c ****     }
+ 106:Test_RPI_I2C_HUB.c ****     putStringToUSB("Done testing interrupts\n\r");
+ 308              		.loc 1 106 0
+ 309 013c 0948     		ldr	r0, .L17+24
+ 310 013e FFF7FEFF 		bl	putStringToUSB
+ 107:Test_RPI_I2C_HUB.c **** }
+ 311              		.loc 1 107 0
+ 312 0142 00BF     		nop
+ 313 0144 0837     		adds	r7, r7, #8
+ 314              		.cfi_def_cfa_offset 8
+ 315 0146 BD46     		mov	sp, r7
+ 316              		.cfi_def_cfa_register 13
+ 317              		@ sp needed
+ 318 0148 80BD     		pop	{r7, pc}
+ 319              	.L18:
+ 320 014a 00BF     		.align	2
+ 321              	.L17:
+ 322 014c 00000000 		.word	.LC0
+ 323 0150 20000000 		.word	.LC1
+ 324 0154 38000000 		.word	.LC2
+ 325 0158 40000000 		.word	.LC3
+ 326 015c 48000000 		.word	.LC4
+ 327 0160 50000000 		.word	.LC5
+ 328 0164 58000000 		.word	.LC6
+ 329              		.cfi_endproc
+ 330              	.LFE64:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 9
+
+
+ 331              		.size	test_RPII2CHUB, .-test_RPII2CHUB
+ 332              		.section	.text.bounceRPIHubLEDs,"ax",%progbits
+ 333              		.align	2
+ 334              		.global	bounceRPIHubLEDs
+ 335              		.thumb
+ 336              		.thumb_func
+ 337              		.type	bounceRPIHubLEDs, %function
+ 338              	bounceRPIHubLEDs:
+ 339              	.LFB65:
+ 108:Test_RPI_I2C_HUB.c **** 
+ 109:Test_RPI_I2C_HUB.c **** // ////////////////////////////////////////////////////////////////////////////
+ 110:Test_RPI_I2C_HUB.c **** // bounceRPIHubLEDs()
+ 111:Test_RPI_I2C_HUB.c **** // ////////////////////////////////////////////////////////////////////////////
+ 112:Test_RPI_I2C_HUB.c **** 
+ 113:Test_RPI_I2C_HUB.c **** void bounceRPIHubLEDs(void)
+ 114:Test_RPI_I2C_HUB.c **** {
+ 340              		.loc 1 114 0
+ 341              		.cfi_startproc
+ 342              		@ args = 0, pretend = 0, frame = 8
+ 343              		@ frame_needed = 1, uses_anonymous_args = 0
+ 344 0000 80B5     		push	{r7, lr}
+ 345              		.cfi_def_cfa_offset 8
+ 346              		.cfi_offset 7, -8
+ 347              		.cfi_offset 14, -4
+ 348 0002 82B0     		sub	sp, sp, #8
+ 349              		.cfi_def_cfa_offset 16
+ 350 0004 00AF     		add	r7, sp, #0
+ 351              		.cfi_def_cfa_register 7
+ 115:Test_RPI_I2C_HUB.c **** //    I2C1_Start();
+ 116:Test_RPI_I2C_HUB.c ****     uint8 I2CMUX_SLAVE_ADDR = 0x71;
+ 352              		.loc 1 116 0
+ 353 0006 7123     		movs	r3, #113
+ 354 0008 BB71     		strb	r3, [r7, #6]
+ 117:Test_RPI_I2C_HUB.c ****     uint8 I2CIO8_SLAVE_ADDR = 0x20;
+ 355              		.loc 1 117 0
+ 356 000a 2023     		movs	r3, #32
+ 357 000c 7B71     		strb	r3, [r7, #5]
+ 118:Test_RPI_I2C_HUB.c ****     uint8 cMessage[2];
+ 119:Test_RPI_I2C_HUB.c ****     uint8 channel;
+ 120:Test_RPI_I2C_HUB.c ****     
+ 121:Test_RPI_I2C_HUB.c ****     init_RPII2CHUB();
+ 358              		.loc 1 121 0
+ 359 000e FFF7FEFF 		bl	init_RPII2CHUB
+ 122:Test_RPI_I2C_HUB.c ****     putStringToUSB("Initialized RPI-I2C-HUB card\n\r");
+ 360              		.loc 1 122 0
+ 361 0012 2448     		ldr	r0, .L23
+ 362 0014 FFF7FEFF 		bl	putStringToUSB
+ 123:Test_RPI_I2C_HUB.c ****     
+ 124:Test_RPI_I2C_HUB.c ****     for (channel = 0; channel < 4; channel++)
+ 363              		.loc 1 124 0
+ 364 0018 0023     		movs	r3, #0
+ 365 001a FB71     		strb	r3, [r7, #7]
+ 366 001c 3AE0     		b	.L20
+ 367              	.L22:
+ 125:Test_RPI_I2C_HUB.c ****     {
+ 126:Test_RPI_I2C_HUB.c ****         cMessage[0] = 0x04 | channel;
+ 368              		.loc 1 126 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 10
+
+
+ 369 001e FB79     		ldrb	r3, [r7, #7]
+ 370 0020 43F00403 		orr	r3, r3, #4
+ 371 0024 DBB2     		uxtb	r3, r3
+ 372 0026 3B70     		strb	r3, [r7]
+ 127:Test_RPI_I2C_HUB.c ****         I2C1_MasterWriteBuf(I2CMUX_SLAVE_ADDR, cMessage, 1, I2C_EEPROM_MODE_COMPLETE_XFER);
+ 373              		.loc 1 127 0
+ 374 0028 3946     		mov	r1, r7
+ 375 002a B879     		ldrb	r0, [r7, #6]	@ zero_extendqisi2
+ 376 002c 0023     		movs	r3, #0
+ 377 002e 0122     		movs	r2, #1
+ 378 0030 FFF7FEFF 		bl	I2C1_MasterWriteBuf
+ 128:Test_RPI_I2C_HUB.c ****         while (0u == (I2C1_MasterStatus() & I2C1_MSTAT_WR_CMPLT));
+ 379              		.loc 1 128 0
+ 380 0034 00BF     		nop
+ 381              	.L21:
+ 382              		.loc 1 128 0 is_stmt 0 discriminator 1
+ 383 0036 FFF7FEFF 		bl	I2C1_MasterStatus
+ 384 003a 0346     		mov	r3, r0
+ 385 003c 03F00203 		and	r3, r3, #2
+ 386 0040 002B     		cmp	r3, #0
+ 387 0042 F8D0     		beq	.L21
+ 129:Test_RPI_I2C_HUB.c ****         writeDIGIO8Card(I2CIO8_SLAVE_ADDR, 0x01);
+ 388              		.loc 1 129 0 is_stmt 1 discriminator 2
+ 389 0044 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 390 0046 0121     		movs	r1, #1
+ 391 0048 1846     		mov	r0, r3
+ 392 004a FFF7FEFF 		bl	writeDIGIO8Card
+ 130:Test_RPI_I2C_HUB.c ****         CyDelay(200);
+ 393              		.loc 1 130 0 discriminator 2
+ 394 004e C820     		movs	r0, #200
+ 395 0050 FFF7FEFF 		bl	CyDelay
+ 131:Test_RPI_I2C_HUB.c ****         writeDIGIO8Card(I2CIO8_SLAVE_ADDR, 0x02);
+ 396              		.loc 1 131 0 discriminator 2
+ 397 0054 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 398 0056 0221     		movs	r1, #2
+ 399 0058 1846     		mov	r0, r3
+ 400 005a FFF7FEFF 		bl	writeDIGIO8Card
+ 132:Test_RPI_I2C_HUB.c ****         CyDelay(200);
+ 401              		.loc 1 132 0 discriminator 2
+ 402 005e C820     		movs	r0, #200
+ 403 0060 FFF7FEFF 		bl	CyDelay
+ 133:Test_RPI_I2C_HUB.c ****         writeDIGIO8Card(I2CIO8_SLAVE_ADDR, 0x04);
+ 404              		.loc 1 133 0 discriminator 2
+ 405 0064 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 406 0066 0421     		movs	r1, #4
+ 407 0068 1846     		mov	r0, r3
+ 408 006a FFF7FEFF 		bl	writeDIGIO8Card
+ 134:Test_RPI_I2C_HUB.c ****         CyDelay(200);
+ 409              		.loc 1 134 0 discriminator 2
+ 410 006e C820     		movs	r0, #200
+ 411 0070 FFF7FEFF 		bl	CyDelay
+ 135:Test_RPI_I2C_HUB.c ****         writeDIGIO8Card(I2CIO8_SLAVE_ADDR, 0x08);
+ 412              		.loc 1 135 0 discriminator 2
+ 413 0074 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 414 0076 0821     		movs	r1, #8
+ 415 0078 1846     		mov	r0, r3
+ 416 007a FFF7FEFF 		bl	writeDIGIO8Card
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 11
+
+
+ 136:Test_RPI_I2C_HUB.c ****         CyDelay(200);
+ 417              		.loc 1 136 0 discriminator 2
+ 418 007e C820     		movs	r0, #200
+ 419 0080 FFF7FEFF 		bl	CyDelay
+ 137:Test_RPI_I2C_HUB.c ****         writeDIGIO8Card(I2CIO8_SLAVE_ADDR, 0x00);
+ 420              		.loc 1 137 0 discriminator 2
+ 421 0084 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 422 0086 0021     		movs	r1, #0
+ 423 0088 1846     		mov	r0, r3
+ 424 008a FFF7FEFF 		bl	writeDIGIO8Card
+ 124:Test_RPI_I2C_HUB.c ****     {
+ 425              		.loc 1 124 0 discriminator 2
+ 426 008e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 427 0090 0133     		adds	r3, r3, #1
+ 428 0092 FB71     		strb	r3, [r7, #7]
+ 429              	.L20:
+ 124:Test_RPI_I2C_HUB.c ****     {
+ 430              		.loc 1 124 0 is_stmt 0 discriminator 1
+ 431 0094 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 432 0096 032B     		cmp	r3, #3
+ 433 0098 C1D9     		bls	.L22
+ 138:Test_RPI_I2C_HUB.c ****     }
+ 139:Test_RPI_I2C_HUB.c **** }
+ 434              		.loc 1 139 0 is_stmt 1
+ 435 009a 00BF     		nop
+ 436 009c 0837     		adds	r7, r7, #8
+ 437              		.cfi_def_cfa_offset 8
+ 438 009e BD46     		mov	sp, r7
+ 439              		.cfi_def_cfa_register 13
+ 440              		@ sp needed
+ 441 00a0 80BD     		pop	{r7, pc}
+ 442              	.L24:
+ 443 00a2 00BF     		.align	2
+ 444              	.L23:
+ 445 00a4 00000000 		.word	.LC0
+ 446              		.cfi_endproc
+ 447              	.LFE65:
+ 448              		.size	bounceRPIHubLEDs, .-bounceRPIHubLEDs
+ 449              		.text
+ 450              	.Letext0:
+ 451              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 452              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 453              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 454              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 455              		.section	.debug_info,"",%progbits
+ 456              	.Ldebug_info0:
+ 457 0000 AA010000 		.4byte	0x1aa
+ 458 0004 0400     		.2byte	0x4
+ 459 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 460 000a 04       		.byte	0x4
+ 461 000b 01       		.uleb128 0x1
+ 462 000c C2000000 		.4byte	.LASF25
+ 463 0010 0C       		.byte	0xc
+ 464 0011 3C000000 		.4byte	.LASF26
+ 465 0015 50010000 		.4byte	.LASF27
+ 466 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 467 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 12
+
+
+ 468 0021 00000000 		.4byte	.Ldebug_line0
+ 469 0025 02       		.uleb128 0x2
+ 470 0026 01       		.byte	0x1
+ 471 0027 06       		.byte	0x6
+ 472 0028 EC010000 		.4byte	.LASF0
+ 473 002c 02       		.uleb128 0x2
+ 474 002d 01       		.byte	0x1
+ 475 002e 08       		.byte	0x8
+ 476 002f 2E000000 		.4byte	.LASF1
+ 477 0033 02       		.uleb128 0x2
+ 478 0034 02       		.byte	0x2
+ 479 0035 05       		.byte	0x5
+ 480 0036 C6010000 		.4byte	.LASF2
+ 481 003a 02       		.uleb128 0x2
+ 482 003b 02       		.byte	0x2
+ 483 003c 07       		.byte	0x7
+ 484 003d 0E000000 		.4byte	.LASF3
+ 485 0041 03       		.uleb128 0x3
+ 486 0042 04020000 		.4byte	.LASF9
+ 487 0046 02       		.byte	0x2
+ 488 0047 3F       		.byte	0x3f
+ 489 0048 4C000000 		.4byte	0x4c
+ 490 004c 02       		.uleb128 0x2
+ 491 004d 04       		.byte	0x4
+ 492 004e 05       		.byte	0x5
+ 493 004f BD010000 		.4byte	.LASF4
+ 494 0053 02       		.uleb128 0x2
+ 495 0054 04       		.byte	0x4
+ 496 0055 07       		.byte	0x7
+ 497 0056 88000000 		.4byte	.LASF5
+ 498 005a 02       		.uleb128 0x2
+ 499 005b 08       		.byte	0x8
+ 500 005c 05       		.byte	0x5
+ 501 005d 00000000 		.4byte	.LASF6
+ 502 0061 02       		.uleb128 0x2
+ 503 0062 08       		.byte	0x8
+ 504 0063 07       		.byte	0x7
+ 505 0064 AB000000 		.4byte	.LASF7
+ 506 0068 04       		.uleb128 0x4
+ 507 0069 04       		.byte	0x4
+ 508 006a 05       		.byte	0x5
+ 509 006b 696E7400 		.ascii	"int\000"
+ 510 006f 02       		.uleb128 0x2
+ 511 0070 04       		.byte	0x4
+ 512 0071 07       		.byte	0x7
+ 513 0072 21000000 		.4byte	.LASF8
+ 514 0076 03       		.uleb128 0x3
+ 515 0077 2D020000 		.4byte	.LASF10
+ 516 007b 03       		.byte	0x3
+ 517 007c 2C       		.byte	0x2c
+ 518 007d 41000000 		.4byte	0x41
+ 519 0081 05       		.uleb128 0x5
+ 520 0082 4F000000 		.4byte	.LASF11
+ 521 0086 04       		.byte	0x4
+ 522 0087 E401     		.2byte	0x1e4
+ 523 0089 2C000000 		.4byte	0x2c
+ 524 008d 02       		.uleb128 0x2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 13
+
+
+ 525 008e 04       		.byte	0x4
+ 526 008f 04       		.byte	0x4
+ 527 0090 0E020000 		.4byte	.LASF12
+ 528 0094 02       		.uleb128 0x2
+ 529 0095 08       		.byte	0x8
+ 530 0096 04       		.byte	0x4
+ 531 0097 D0010000 		.4byte	.LASF13
+ 532 009b 02       		.uleb128 0x2
+ 533 009c 01       		.byte	0x1
+ 534 009d 08       		.byte	0x8
+ 535 009e AF010000 		.4byte	.LASF14
+ 536 00a2 02       		.uleb128 0x2
+ 537 00a3 08       		.byte	0x8
+ 538 00a4 04       		.byte	0x4
+ 539 00a5 F8010000 		.4byte	.LASF15
+ 540 00a9 02       		.uleb128 0x2
+ 541 00aa 04       		.byte	0x4
+ 542 00ab 07       		.byte	0x7
+ 543 00ac 35020000 		.4byte	.LASF16
+ 544 00b0 06       		.uleb128 0x6
+ 545 00b1 67000000 		.4byte	.LASF20
+ 546 00b5 01       		.byte	0x1
+ 547 00b6 18       		.byte	0x18
+ 548 00b7 00000000 		.4byte	.LFB63
+ 549 00bb 54000000 		.4byte	.LFE63-.LFB63
+ 550 00bf 01       		.uleb128 0x1
+ 551 00c0 9C       		.byte	0x9c
+ 552 00c1 F0000000 		.4byte	0xf0
+ 553 00c5 07       		.uleb128 0x7
+ 554 00c6 76000000 		.4byte	.LASF17
+ 555 00ca 01       		.byte	0x1
+ 556 00cb 1A       		.byte	0x1a
+ 557 00cc 81000000 		.4byte	0x81
+ 558 00d0 02       		.uleb128 0x2
+ 559 00d1 91       		.byte	0x91
+ 560 00d2 76       		.sleb128 -10
+ 561 00d3 07       		.uleb128 0x7
+ 562 00d4 B4010000 		.4byte	.LASF18
+ 563 00d8 01       		.byte	0x1
+ 564 00d9 1B       		.byte	0x1b
+ 565 00da F0000000 		.4byte	0xf0
+ 566 00de 02       		.uleb128 0x2
+ 567 00df 91       		.byte	0x91
+ 568 00e0 74       		.sleb128 -12
+ 569 00e1 07       		.uleb128 0x7
+ 570 00e2 D7010000 		.4byte	.LASF19
+ 571 00e6 01       		.byte	0x1
+ 572 00e7 1C       		.byte	0x1c
+ 573 00e8 81000000 		.4byte	0x81
+ 574 00ec 02       		.uleb128 0x2
+ 575 00ed 91       		.byte	0x91
+ 576 00ee 77       		.sleb128 -9
+ 577 00ef 00       		.byte	0
+ 578 00f0 08       		.uleb128 0x8
+ 579 00f1 81000000 		.4byte	0x81
+ 580 00f5 00010000 		.4byte	0x100
+ 581 00f9 09       		.uleb128 0x9
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 14
+
+
+ 582 00fa A9000000 		.4byte	0xa9
+ 583 00fe 01       		.byte	0x1
+ 584 00ff 00       		.byte	0
+ 585 0100 06       		.uleb128 0x6
+ 586 0101 14020000 		.4byte	.LASF21
+ 587 0105 01       		.byte	0x1
+ 588 0106 2E       		.byte	0x2e
+ 589 0107 00000000 		.4byte	.LFB64
+ 590 010b 68010000 		.4byte	.LFE64-.LFB64
+ 591 010f 01       		.uleb128 0x1
+ 592 0110 9C       		.byte	0x9c
+ 593 0111 4E010000 		.4byte	0x14e
+ 594 0115 07       		.uleb128 0x7
+ 595 0116 76000000 		.4byte	.LASF17
+ 596 011a 01       		.byte	0x1
+ 597 011b 30       		.byte	0x30
+ 598 011c 81000000 		.4byte	0x81
+ 599 0120 02       		.uleb128 0x2
+ 600 0121 91       		.byte	0x91
+ 601 0122 77       		.sleb128 -9
+ 602 0123 07       		.uleb128 0x7
+ 603 0124 55000000 		.4byte	.LASF22
+ 604 0128 01       		.byte	0x1
+ 605 0129 31       		.byte	0x31
+ 606 012a 81000000 		.4byte	0x81
+ 607 012e 02       		.uleb128 0x2
+ 608 012f 91       		.byte	0x91
+ 609 0130 76       		.sleb128 -10
+ 610 0131 07       		.uleb128 0x7
+ 611 0132 B4010000 		.4byte	.LASF18
+ 612 0136 01       		.byte	0x1
+ 613 0137 32       		.byte	0x32
+ 614 0138 F0000000 		.4byte	0xf0
+ 615 013c 02       		.uleb128 0x2
+ 616 013d 91       		.byte	0x91
+ 617 013e 70       		.sleb128 -16
+ 618 013f 07       		.uleb128 0x7
+ 619 0140 23020000 		.4byte	.LASF23
+ 620 0144 01       		.byte	0x1
+ 621 0145 33       		.byte	0x33
+ 622 0146 81000000 		.4byte	0x81
+ 623 014a 02       		.uleb128 0x2
+ 624 014b 91       		.byte	0x91
+ 625 014c 75       		.sleb128 -11
+ 626 014d 00       		.byte	0
+ 627 014e 06       		.uleb128 0x6
+ 628 014f 9A000000 		.4byte	.LASF24
+ 629 0153 01       		.byte	0x1
+ 630 0154 71       		.byte	0x71
+ 631 0155 00000000 		.4byte	.LFB65
+ 632 0159 A8000000 		.4byte	.LFE65-.LFB65
+ 633 015d 01       		.uleb128 0x1
+ 634 015e 9C       		.byte	0x9c
+ 635 015f 9C010000 		.4byte	0x19c
+ 636 0163 07       		.uleb128 0x7
+ 637 0164 76000000 		.4byte	.LASF17
+ 638 0168 01       		.byte	0x1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 15
+
+
+ 639 0169 74       		.byte	0x74
+ 640 016a 81000000 		.4byte	0x81
+ 641 016e 02       		.uleb128 0x2
+ 642 016f 91       		.byte	0x91
+ 643 0170 76       		.sleb128 -10
+ 644 0171 07       		.uleb128 0x7
+ 645 0172 55000000 		.4byte	.LASF22
+ 646 0176 01       		.byte	0x1
+ 647 0177 75       		.byte	0x75
+ 648 0178 81000000 		.4byte	0x81
+ 649 017c 02       		.uleb128 0x2
+ 650 017d 91       		.byte	0x91
+ 651 017e 75       		.sleb128 -11
+ 652 017f 07       		.uleb128 0x7
+ 653 0180 B4010000 		.4byte	.LASF18
+ 654 0184 01       		.byte	0x1
+ 655 0185 76       		.byte	0x76
+ 656 0186 F0000000 		.4byte	0xf0
+ 657 018a 02       		.uleb128 0x2
+ 658 018b 91       		.byte	0x91
+ 659 018c 70       		.sleb128 -16
+ 660 018d 07       		.uleb128 0x7
+ 661 018e D7010000 		.4byte	.LASF19
+ 662 0192 01       		.byte	0x1
+ 663 0193 77       		.byte	0x77
+ 664 0194 81000000 		.4byte	0x81
+ 665 0198 02       		.uleb128 0x2
+ 666 0199 91       		.byte	0x91
+ 667 019a 77       		.sleb128 -9
+ 668 019b 00       		.byte	0
+ 669 019c 0A       		.uleb128 0xa
+ 670 019d DF010000 		.4byte	.LASF28
+ 671 01a1 05       		.byte	0x5
+ 672 01a2 1207     		.2byte	0x712
+ 673 01a4 A8010000 		.4byte	0x1a8
+ 674 01a8 0B       		.uleb128 0xb
+ 675 01a9 76000000 		.4byte	0x76
+ 676 01ad 00       		.byte	0
+ 677              		.section	.debug_abbrev,"",%progbits
+ 678              	.Ldebug_abbrev0:
+ 679 0000 01       		.uleb128 0x1
+ 680 0001 11       		.uleb128 0x11
+ 681 0002 01       		.byte	0x1
+ 682 0003 25       		.uleb128 0x25
+ 683 0004 0E       		.uleb128 0xe
+ 684 0005 13       		.uleb128 0x13
+ 685 0006 0B       		.uleb128 0xb
+ 686 0007 03       		.uleb128 0x3
+ 687 0008 0E       		.uleb128 0xe
+ 688 0009 1B       		.uleb128 0x1b
+ 689 000a 0E       		.uleb128 0xe
+ 690 000b 55       		.uleb128 0x55
+ 691 000c 17       		.uleb128 0x17
+ 692 000d 11       		.uleb128 0x11
+ 693 000e 01       		.uleb128 0x1
+ 694 000f 10       		.uleb128 0x10
+ 695 0010 17       		.uleb128 0x17
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 16
+
+
+ 696 0011 00       		.byte	0
+ 697 0012 00       		.byte	0
+ 698 0013 02       		.uleb128 0x2
+ 699 0014 24       		.uleb128 0x24
+ 700 0015 00       		.byte	0
+ 701 0016 0B       		.uleb128 0xb
+ 702 0017 0B       		.uleb128 0xb
+ 703 0018 3E       		.uleb128 0x3e
+ 704 0019 0B       		.uleb128 0xb
+ 705 001a 03       		.uleb128 0x3
+ 706 001b 0E       		.uleb128 0xe
+ 707 001c 00       		.byte	0
+ 708 001d 00       		.byte	0
+ 709 001e 03       		.uleb128 0x3
+ 710 001f 16       		.uleb128 0x16
+ 711 0020 00       		.byte	0
+ 712 0021 03       		.uleb128 0x3
+ 713 0022 0E       		.uleb128 0xe
+ 714 0023 3A       		.uleb128 0x3a
+ 715 0024 0B       		.uleb128 0xb
+ 716 0025 3B       		.uleb128 0x3b
+ 717 0026 0B       		.uleb128 0xb
+ 718 0027 49       		.uleb128 0x49
+ 719 0028 13       		.uleb128 0x13
+ 720 0029 00       		.byte	0
+ 721 002a 00       		.byte	0
+ 722 002b 04       		.uleb128 0x4
+ 723 002c 24       		.uleb128 0x24
+ 724 002d 00       		.byte	0
+ 725 002e 0B       		.uleb128 0xb
+ 726 002f 0B       		.uleb128 0xb
+ 727 0030 3E       		.uleb128 0x3e
+ 728 0031 0B       		.uleb128 0xb
+ 729 0032 03       		.uleb128 0x3
+ 730 0033 08       		.uleb128 0x8
+ 731 0034 00       		.byte	0
+ 732 0035 00       		.byte	0
+ 733 0036 05       		.uleb128 0x5
+ 734 0037 16       		.uleb128 0x16
+ 735 0038 00       		.byte	0
+ 736 0039 03       		.uleb128 0x3
+ 737 003a 0E       		.uleb128 0xe
+ 738 003b 3A       		.uleb128 0x3a
+ 739 003c 0B       		.uleb128 0xb
+ 740 003d 3B       		.uleb128 0x3b
+ 741 003e 05       		.uleb128 0x5
+ 742 003f 49       		.uleb128 0x49
+ 743 0040 13       		.uleb128 0x13
+ 744 0041 00       		.byte	0
+ 745 0042 00       		.byte	0
+ 746 0043 06       		.uleb128 0x6
+ 747 0044 2E       		.uleb128 0x2e
+ 748 0045 01       		.byte	0x1
+ 749 0046 3F       		.uleb128 0x3f
+ 750 0047 19       		.uleb128 0x19
+ 751 0048 03       		.uleb128 0x3
+ 752 0049 0E       		.uleb128 0xe
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 17
+
+
+ 753 004a 3A       		.uleb128 0x3a
+ 754 004b 0B       		.uleb128 0xb
+ 755 004c 3B       		.uleb128 0x3b
+ 756 004d 0B       		.uleb128 0xb
+ 757 004e 27       		.uleb128 0x27
+ 758 004f 19       		.uleb128 0x19
+ 759 0050 11       		.uleb128 0x11
+ 760 0051 01       		.uleb128 0x1
+ 761 0052 12       		.uleb128 0x12
+ 762 0053 06       		.uleb128 0x6
+ 763 0054 40       		.uleb128 0x40
+ 764 0055 18       		.uleb128 0x18
+ 765 0056 9642     		.uleb128 0x2116
+ 766 0058 19       		.uleb128 0x19
+ 767 0059 01       		.uleb128 0x1
+ 768 005a 13       		.uleb128 0x13
+ 769 005b 00       		.byte	0
+ 770 005c 00       		.byte	0
+ 771 005d 07       		.uleb128 0x7
+ 772 005e 34       		.uleb128 0x34
+ 773 005f 00       		.byte	0
+ 774 0060 03       		.uleb128 0x3
+ 775 0061 0E       		.uleb128 0xe
+ 776 0062 3A       		.uleb128 0x3a
+ 777 0063 0B       		.uleb128 0xb
+ 778 0064 3B       		.uleb128 0x3b
+ 779 0065 0B       		.uleb128 0xb
+ 780 0066 49       		.uleb128 0x49
+ 781 0067 13       		.uleb128 0x13
+ 782 0068 02       		.uleb128 0x2
+ 783 0069 18       		.uleb128 0x18
+ 784 006a 00       		.byte	0
+ 785 006b 00       		.byte	0
+ 786 006c 08       		.uleb128 0x8
+ 787 006d 01       		.uleb128 0x1
+ 788 006e 01       		.byte	0x1
+ 789 006f 49       		.uleb128 0x49
+ 790 0070 13       		.uleb128 0x13
+ 791 0071 01       		.uleb128 0x1
+ 792 0072 13       		.uleb128 0x13
+ 793 0073 00       		.byte	0
+ 794 0074 00       		.byte	0
+ 795 0075 09       		.uleb128 0x9
+ 796 0076 21       		.uleb128 0x21
+ 797 0077 00       		.byte	0
+ 798 0078 49       		.uleb128 0x49
+ 799 0079 13       		.uleb128 0x13
+ 800 007a 2F       		.uleb128 0x2f
+ 801 007b 0B       		.uleb128 0xb
+ 802 007c 00       		.byte	0
+ 803 007d 00       		.byte	0
+ 804 007e 0A       		.uleb128 0xa
+ 805 007f 34       		.uleb128 0x34
+ 806 0080 00       		.byte	0
+ 807 0081 03       		.uleb128 0x3
+ 808 0082 0E       		.uleb128 0xe
+ 809 0083 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 18
+
+
+ 810 0084 0B       		.uleb128 0xb
+ 811 0085 3B       		.uleb128 0x3b
+ 812 0086 05       		.uleb128 0x5
+ 813 0087 49       		.uleb128 0x49
+ 814 0088 13       		.uleb128 0x13
+ 815 0089 3F       		.uleb128 0x3f
+ 816 008a 19       		.uleb128 0x19
+ 817 008b 3C       		.uleb128 0x3c
+ 818 008c 19       		.uleb128 0x19
+ 819 008d 00       		.byte	0
+ 820 008e 00       		.byte	0
+ 821 008f 0B       		.uleb128 0xb
+ 822 0090 35       		.uleb128 0x35
+ 823 0091 00       		.byte	0
+ 824 0092 49       		.uleb128 0x49
+ 825 0093 13       		.uleb128 0x13
+ 826 0094 00       		.byte	0
+ 827 0095 00       		.byte	0
+ 828 0096 00       		.byte	0
+ 829              		.section	.debug_aranges,"",%progbits
+ 830 0000 2C000000 		.4byte	0x2c
+ 831 0004 0200     		.2byte	0x2
+ 832 0006 00000000 		.4byte	.Ldebug_info0
+ 833 000a 04       		.byte	0x4
+ 834 000b 00       		.byte	0
+ 835 000c 0000     		.2byte	0
+ 836 000e 0000     		.2byte	0
+ 837 0010 00000000 		.4byte	.LFB63
+ 838 0014 54000000 		.4byte	.LFE63-.LFB63
+ 839 0018 00000000 		.4byte	.LFB64
+ 840 001c 68010000 		.4byte	.LFE64-.LFB64
+ 841 0020 00000000 		.4byte	.LFB65
+ 842 0024 A8000000 		.4byte	.LFE65-.LFB65
+ 843 0028 00000000 		.4byte	0
+ 844 002c 00000000 		.4byte	0
+ 845              		.section	.debug_ranges,"",%progbits
+ 846              	.Ldebug_ranges0:
+ 847 0000 00000000 		.4byte	.LFB63
+ 848 0004 54000000 		.4byte	.LFE63
+ 849 0008 00000000 		.4byte	.LFB64
+ 850 000c 68010000 		.4byte	.LFE64
+ 851 0010 00000000 		.4byte	.LFB65
+ 852 0014 A8000000 		.4byte	.LFE65
+ 853 0018 00000000 		.4byte	0
+ 854 001c 00000000 		.4byte	0
+ 855              		.section	.debug_line,"",%progbits
+ 856              	.Ldebug_line0:
+ 857 0000 44020000 		.section	.debug_str,"MS",%progbits,1
+ 857      02005801 
+ 857      00000201 
+ 857      FB0E0D00 
+ 857      01010101 
+ 858              	.LASF6:
+ 859 0000 6C6F6E67 		.ascii	"long long int\000"
+ 859      206C6F6E 
+ 859      6720696E 
+ 859      7400
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 19
+
+
+ 860              	.LASF3:
+ 861 000e 73686F72 		.ascii	"short unsigned int\000"
+ 861      7420756E 
+ 861      7369676E 
+ 861      65642069 
+ 861      6E7400
+ 862              	.LASF8:
+ 863 0021 756E7369 		.ascii	"unsigned int\000"
+ 863      676E6564 
+ 863      20696E74 
+ 863      00
+ 864              	.LASF1:
+ 865 002e 756E7369 		.ascii	"unsigned char\000"
+ 865      676E6564 
+ 865      20636861 
+ 865      7200
+ 866              	.LASF26:
+ 867 003c 54657374 		.ascii	"Test_RPI_I2C_HUB.c\000"
+ 867      5F525049 
+ 867      5F493243 
+ 867      5F485542 
+ 867      2E6300
+ 868              	.LASF11:
+ 869 004f 75696E74 		.ascii	"uint8\000"
+ 869      3800
+ 870              	.LASF22:
+ 871 0055 49324349 		.ascii	"I2CIO8_SLAVE_ADDR\000"
+ 871      4F385F53 
+ 871      4C415645 
+ 871      5F414444 
+ 871      5200
+ 872              	.LASF20:
+ 873 0067 696E6974 		.ascii	"init_RPII2CHUB\000"
+ 873      5F525049 
+ 873      49324348 
+ 873      554200
+ 874              	.LASF17:
+ 875 0076 4932434D 		.ascii	"I2CMUX_SLAVE_ADDR\000"
+ 875      55585F53 
+ 875      4C415645 
+ 875      5F414444 
+ 875      5200
+ 876              	.LASF5:
+ 877 0088 6C6F6E67 		.ascii	"long unsigned int\000"
+ 877      20756E73 
+ 877      69676E65 
+ 877      6420696E 
+ 877      7400
+ 878              	.LASF24:
+ 879 009a 626F756E 		.ascii	"bounceRPIHubLEDs\000"
+ 879      63655250 
+ 879      49487562 
+ 879      4C454473 
+ 879      00
+ 880              	.LASF7:
+ 881 00ab 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 881      206C6F6E 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 20
+
+
+ 881      6720756E 
+ 881      7369676E 
+ 881      65642069 
+ 882              	.LASF25:
+ 883 00c2 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 883      43313120 
+ 883      352E342E 
+ 883      31203230 
+ 883      31363036 
+ 884 00f5 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 884      20726576 
+ 884      6973696F 
+ 884      6E203233 
+ 884      37373135 
+ 885 0128 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 885      66756E63 
+ 885      74696F6E 
+ 885      2D736563 
+ 885      74696F6E 
+ 886              	.LASF27:
+ 887 0150 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\land-boards\\"
+ 887      73657273 
+ 887      5C48507A 
+ 887      3432305C 
+ 887      446F6375 
+ 888 017d 52617350 		.ascii	"RasPi\\RPI_PSOC5\\RPI_PSOC5_CARD_TEST_STATION.cydsn"
+ 888      695C5250 
+ 888      495F5053 
+ 888      4F43355C 
+ 888      5250495F 
+ 889 01ae 00       		.ascii	"\000"
+ 890              	.LASF14:
+ 891 01af 63686172 		.ascii	"char\000"
+ 891      00
+ 892              	.LASF18:
+ 893 01b4 634D6573 		.ascii	"cMessage\000"
+ 893      73616765 
+ 893      00
+ 894              	.LASF4:
+ 895 01bd 6C6F6E67 		.ascii	"long int\000"
+ 895      20696E74 
+ 895      00
+ 896              	.LASF2:
+ 897 01c6 73686F72 		.ascii	"short int\000"
+ 897      7420696E 
+ 897      7400
+ 898              	.LASF13:
+ 899 01d0 646F7562 		.ascii	"double\000"
+ 899      6C6500
+ 900              	.LASF19:
+ 901 01d7 6368616E 		.ascii	"channel\000"
+ 901      6E656C00 
+ 902              	.LASF28:
+ 903 01df 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 903      52784275 
+ 903      66666572 
+ 903      00
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc6TyzGf.s 			page 21
+
+
+ 904              	.LASF0:
+ 905 01ec 7369676E 		.ascii	"signed char\000"
+ 905      65642063 
+ 905      68617200 
+ 906              	.LASF15:
+ 907 01f8 6C6F6E67 		.ascii	"long double\000"
+ 907      20646F75 
+ 907      626C6500 
+ 908              	.LASF9:
+ 909 0204 5F5F696E 		.ascii	"__int32_t\000"
+ 909      7433325F 
+ 909      7400
+ 910              	.LASF12:
+ 911 020e 666C6F61 		.ascii	"float\000"
+ 911      7400
+ 912              	.LASF21:
+ 913 0214 74657374 		.ascii	"test_RPII2CHUB\000"
+ 913      5F525049 
+ 913      49324348 
+ 913      554200
+ 914              	.LASF23:
+ 915 0223 7264496E 		.ascii	"rdIntStat\000"
+ 915      74537461 
+ 915      7400
+ 916              	.LASF10:
+ 917 022d 696E7433 		.ascii	"int32_t\000"
+ 917      325F7400 
+ 918              	.LASF16:
+ 919 0235 73697A65 		.ascii	"sizetype\000"
+ 919      74797065 
+ 919      00
+ 920              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

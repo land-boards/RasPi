@@ -1,0 +1,1488 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Debug_Cards.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.comm	myWrBuffer,2,4
+  20              		.section	.text.debugRPPUIO16,"ax",%progbits
+  21              		.align	2
+  22              		.global	debugRPPUIO16
+  23              		.thumb
+  24              		.thumb_func
+  25              		.type	debugRPPUIO16, %function
+  26              	debugRPPUIO16:
+  27              	.LFB63:
+  28              		.file 1 "Debug_Cards.c"
+   1:Debug_Cards.c **** /* ========================================
+   2:Debug_Cards.c ****  *
+   3:Debug_Cards.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:Debug_Cards.c ****  * All Rights Reserved
+   5:Debug_Cards.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:Debug_Cards.c ****  *
+   7:Debug_Cards.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:Debug_Cards.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:Debug_Cards.c ****  *
+  10:Debug_Cards.c ****  * ========================================
+  11:Debug_Cards.c **** */
+  12:Debug_Cards.c **** 
+  13:Debug_Cards.c **** #include <project.h>
+  14:Debug_Cards.c **** #include "RPI_PSOC5.h"
+  15:Debug_Cards.c **** 
+  16:Debug_Cards.c **** uint8 myWrBuffer[2];
+  17:Debug_Cards.c **** 
+  18:Debug_Cards.c **** void debugRPPUIO16(void)
+  19:Debug_Cards.c **** {
+  29              		.loc 1 19 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34 0000 80B4     		push	{r7}
+  35              		.cfi_def_cfa_offset 4
+  36              		.cfi_offset 7, -4
+  37 0002 00AF     		add	r7, sp, #0
+  38              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 2
+
+
+  20:Debug_Cards.c ****     
+  21:Debug_Cards.c **** }
+  39              		.loc 1 21 0
+  40 0004 00BF     		nop
+  41 0006 BD46     		mov	sp, r7
+  42              		.cfi_def_cfa_register 13
+  43              		@ sp needed
+  44 0008 80BC     		pop	{r7}
+  45              		.cfi_restore 7
+  46              		.cfi_def_cfa_offset 0
+  47 000a 7047     		bx	lr
+  48              		.cfi_endproc
+  49              	.LFE63:
+  50              		.size	debugRPPUIO16, .-debugRPPUIO16
+  51              		.section	.text.debugRPPGVS,"ax",%progbits
+  52              		.align	2
+  53              		.global	debugRPPGVS
+  54              		.thumb
+  55              		.thumb_func
+  56              		.type	debugRPPGVS, %function
+  57              	debugRPPGVS:
+  58              	.LFB64:
+  22:Debug_Cards.c **** 
+  23:Debug_Cards.c **** void debugRPPGVS(void)
+  24:Debug_Cards.c **** {
+  59              		.loc 1 24 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 1, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
+  64 0000 80B4     		push	{r7}
+  65              		.cfi_def_cfa_offset 4
+  66              		.cfi_offset 7, -4
+  67 0002 00AF     		add	r7, sp, #0
+  68              		.cfi_def_cfa_register 7
+  25:Debug_Cards.c ****     
+  26:Debug_Cards.c **** }
+  69              		.loc 1 26 0
+  70 0004 00BF     		nop
+  71 0006 BD46     		mov	sp, r7
+  72              		.cfi_def_cfa_register 13
+  73              		@ sp needed
+  74 0008 80BC     		pop	{r7}
+  75              		.cfi_restore 7
+  76              		.cfi_def_cfa_offset 0
+  77 000a 7047     		bx	lr
+  78              		.cfi_endproc
+  79              	.LFE64:
+  80              		.size	debugRPPGVS, .-debugRPPGVS
+  81              		.section	.text.debugRASPIGVS,"ax",%progbits
+  82              		.align	2
+  83              		.global	debugRASPIGVS
+  84              		.thumb
+  85              		.thumb_func
+  86              		.type	debugRASPIGVS, %function
+  87              	debugRASPIGVS:
+  88              	.LFB65:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 3
+
+
+  27:Debug_Cards.c **** 
+  28:Debug_Cards.c **** void debugRASPIGVS(void)
+  29:Debug_Cards.c **** {
+  89              		.loc 1 29 0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 1, uses_anonymous_args = 0
+  93              		@ link register save eliminated.
+  94 0000 80B4     		push	{r7}
+  95              		.cfi_def_cfa_offset 4
+  96              		.cfi_offset 7, -4
+  97 0002 00AF     		add	r7, sp, #0
+  98              		.cfi_def_cfa_register 7
+  30:Debug_Cards.c ****     
+  31:Debug_Cards.c **** }
+  99              		.loc 1 31 0
+ 100 0004 00BF     		nop
+ 101 0006 BD46     		mov	sp, r7
+ 102              		.cfi_def_cfa_register 13
+ 103              		@ sp needed
+ 104 0008 80BC     		pop	{r7}
+ 105              		.cfi_restore 7
+ 106              		.cfi_def_cfa_offset 0
+ 107 000a 7047     		bx	lr
+ 108              		.cfi_endproc
+ 109              	.LFE65:
+ 110              		.size	debugRASPIGVS, .-debugRASPIGVS
+ 111              		.section	.text.debugRPPGVSCFG,"ax",%progbits
+ 112              		.align	2
+ 113              		.global	debugRPPGVSCFG
+ 114              		.thumb
+ 115              		.thumb_func
+ 116              		.type	debugRPPGVSCFG, %function
+ 117              	debugRPPGVSCFG:
+ 118              	.LFB66:
+  32:Debug_Cards.c **** 
+  33:Debug_Cards.c **** void debugRPPGVSCFG(void)
+  34:Debug_Cards.c **** {
+ 119              		.loc 1 34 0
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 1, uses_anonymous_args = 0
+ 123              		@ link register save eliminated.
+ 124 0000 80B4     		push	{r7}
+ 125              		.cfi_def_cfa_offset 4
+ 126              		.cfi_offset 7, -4
+ 127 0002 00AF     		add	r7, sp, #0
+ 128              		.cfi_def_cfa_register 7
+  35:Debug_Cards.c ****     
+  36:Debug_Cards.c **** }
+ 129              		.loc 1 36 0
+ 130 0004 00BF     		nop
+ 131 0006 BD46     		mov	sp, r7
+ 132              		.cfi_def_cfa_register 13
+ 133              		@ sp needed
+ 134 0008 80BC     		pop	{r7}
+ 135              		.cfi_restore 7
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 4
+
+
+ 136              		.cfi_def_cfa_offset 0
+ 137 000a 7047     		bx	lr
+ 138              		.cfi_endproc
+ 139              	.LFE66:
+ 140              		.size	debugRPPGVSCFG, .-debugRPPGVSCFG
+ 141              		.section	.text.readRegisterDIGIO8CardX,"ax",%progbits
+ 142              		.align	2
+ 143              		.global	readRegisterDIGIO8CardX
+ 144              		.thumb
+ 145              		.thumb_func
+ 146              		.type	readRegisterDIGIO8CardX, %function
+ 147              	readRegisterDIGIO8CardX:
+ 148              	.LFB67:
+  37:Debug_Cards.c **** 
+  38:Debug_Cards.c **** //////////////////////////////////////////////////////////////////////////////
+  39:Debug_Cards.c **** // uint8 readRegisterDIGIO8Card(ctrlAdr) - 
+  40:Debug_Cards.c **** //////////////////////////////////////////////////////////////////////////////
+  41:Debug_Cards.c **** 
+  42:Debug_Cards.c **** uint8 readRegisterDIGIO8CardX(uint8 slaveAdr, uint8 ctrlAdr)
+  43:Debug_Cards.c **** {
+ 149              		.loc 1 43 0
+ 150              		.cfi_startproc
+ 151              		@ args = 0, pretend = 0, frame = 16
+ 152              		@ frame_needed = 1, uses_anonymous_args = 0
+ 153 0000 80B5     		push	{r7, lr}
+ 154              		.cfi_def_cfa_offset 8
+ 155              		.cfi_offset 7, -8
+ 156              		.cfi_offset 14, -4
+ 157 0002 84B0     		sub	sp, sp, #16
+ 158              		.cfi_def_cfa_offset 24
+ 159 0004 00AF     		add	r7, sp, #0
+ 160              		.cfi_def_cfa_register 7
+ 161 0006 0346     		mov	r3, r0
+ 162 0008 0A46     		mov	r2, r1
+ 163 000a FB71     		strb	r3, [r7, #7]
+ 164 000c 1346     		mov	r3, r2
+ 165 000e BB71     		strb	r3, [r7, #6]
+  44:Debug_Cards.c ****     uint8 rdBuff;
+  45:Debug_Cards.c ****     I2C1_MasterClearStatus();
+ 166              		.loc 1 45 0
+ 167 0010 FFF7FEFF 		bl	I2C1_MasterClearStatus
+  46:Debug_Cards.c ****     I2C1_MasterSendStart(MPC23008_SLAVE_ADDR,I2C1_WRITE_XFER_MODE);
+ 168              		.loc 1 46 0
+ 169 0014 0021     		movs	r1, #0
+ 170 0016 2020     		movs	r0, #32
+ 171 0018 FFF7FEFF 		bl	I2C1_MasterSendStart
+  47:Debug_Cards.c ****     I2C1_MasterWriteByte(ctrlAdr);
+ 172              		.loc 1 47 0
+ 173 001c BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 174 001e 1846     		mov	r0, r3
+ 175 0020 FFF7FEFF 		bl	I2C1_MasterWriteByte
+  48:Debug_Cards.c ****     I2C1_MasterSendStop();
+ 176              		.loc 1 48 0
+ 177 0024 FFF7FEFF 		bl	I2C1_MasterSendStop
+  49:Debug_Cards.c **** //    while ((I2C1_MasterStatus() & I2C1_MSTAT_WR_CMPLT) == 0);
+  50:Debug_Cards.c ****     I2C1_MasterSendStart(slaveAdr,I2C1_READ_XFER_MODE);
+ 178              		.loc 1 50 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 5
+
+
+ 179 0028 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 180 002a 0121     		movs	r1, #1
+ 181 002c 1846     		mov	r0, r3
+ 182 002e FFF7FEFF 		bl	I2C1_MasterSendStart
+  51:Debug_Cards.c ****     rdBuff = I2C1_MasterReadByte(I2C1_NAK_DATA);
+ 183              		.loc 1 51 0
+ 184 0032 0020     		movs	r0, #0
+ 185 0034 FFF7FEFF 		bl	I2C1_MasterReadByte
+ 186 0038 0346     		mov	r3, r0
+ 187 003a FB73     		strb	r3, [r7, #15]
+  52:Debug_Cards.c ****     I2C1_MasterSendStop();
+ 188              		.loc 1 52 0
+ 189 003c FFF7FEFF 		bl	I2C1_MasterSendStop
+  53:Debug_Cards.c **** //    while ((I2C1_MasterStatus() & I2C1_MSTAT_RD_CMPLT) == 0);
+  54:Debug_Cards.c ****     I2C1_MasterClearStatus();
+ 190              		.loc 1 54 0
+ 191 0040 FFF7FEFF 		bl	I2C1_MasterClearStatus
+  55:Debug_Cards.c ****     return rdBuff;
+ 192              		.loc 1 55 0
+ 193 0044 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  56:Debug_Cards.c **** }
+ 194              		.loc 1 56 0
+ 195 0046 1846     		mov	r0, r3
+ 196 0048 1037     		adds	r7, r7, #16
+ 197              		.cfi_def_cfa_offset 8
+ 198 004a BD46     		mov	sp, r7
+ 199              		.cfi_def_cfa_register 13
+ 200              		@ sp needed
+ 201 004c 80BD     		pop	{r7, pc}
+ 202              		.cfi_endproc
+ 203              	.LFE67:
+ 204              		.size	readRegisterDIGIO8CardX, .-readRegisterDIGIO8CardX
+ 205 004e 00BF     		.section	.text.writeRegisterDIGIO8CardX,"ax",%progbits
+ 206              		.align	2
+ 207              		.global	writeRegisterDIGIO8CardX
+ 208              		.thumb
+ 209              		.thumb_func
+ 210              		.type	writeRegisterDIGIO8CardX, %function
+ 211              	writeRegisterDIGIO8CardX:
+ 212              	.LFB68:
+  57:Debug_Cards.c **** 
+  58:Debug_Cards.c **** //////////////////////////////////////////////////////////////////////////////
+  59:Debug_Cards.c **** // writeRegisterDIGIO8Card(ctrlAdr, ctrlVal) - 
+  60:Debug_Cards.c **** //////////////////////////////////////////////////////////////////////////////
+  61:Debug_Cards.c **** 
+  62:Debug_Cards.c **** void writeRegisterDIGIO8CardX(uint8 slaveAdr, uint8 ctrlAdr, uint8 ctrlVal)
+  63:Debug_Cards.c **** {
+ 213              		.loc 1 63 0
+ 214              		.cfi_startproc
+ 215              		@ args = 0, pretend = 0, frame = 8
+ 216              		@ frame_needed = 1, uses_anonymous_args = 0
+ 217 0000 80B5     		push	{r7, lr}
+ 218              		.cfi_def_cfa_offset 8
+ 219              		.cfi_offset 7, -8
+ 220              		.cfi_offset 14, -4
+ 221 0002 82B0     		sub	sp, sp, #8
+ 222              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 6
+
+
+ 223 0004 00AF     		add	r7, sp, #0
+ 224              		.cfi_def_cfa_register 7
+ 225 0006 0346     		mov	r3, r0
+ 226 0008 FB71     		strb	r3, [r7, #7]
+ 227 000a 0B46     		mov	r3, r1
+ 228 000c BB71     		strb	r3, [r7, #6]
+ 229 000e 1346     		mov	r3, r2
+ 230 0010 7B71     		strb	r3, [r7, #5]
+  64:Debug_Cards.c ****     I2C1_MasterClearStatus();
+ 231              		.loc 1 64 0
+ 232 0012 FFF7FEFF 		bl	I2C1_MasterClearStatus
+  65:Debug_Cards.c ****     myWrBuffer[0] = ctrlAdr;
+ 233              		.loc 1 65 0
+ 234 0016 0D4A     		ldr	r2, .L9
+ 235 0018 BB79     		ldrb	r3, [r7, #6]
+ 236 001a 1370     		strb	r3, [r2]
+  66:Debug_Cards.c ****     myWrBuffer[1] = ctrlVal;
+ 237              		.loc 1 66 0
+ 238 001c 0B4A     		ldr	r2, .L9
+ 239 001e 7B79     		ldrb	r3, [r7, #5]
+ 240 0020 5370     		strb	r3, [r2, #1]
+  67:Debug_Cards.c ****     I2C1_MasterWriteBuf(slaveAdr, myWrBuffer, 2, I2C1_MODE_COMPLETE_XFER);
+ 241              		.loc 1 67 0
+ 242 0022 F879     		ldrb	r0, [r7, #7]	@ zero_extendqisi2
+ 243 0024 0023     		movs	r3, #0
+ 244 0026 0222     		movs	r2, #2
+ 245 0028 0849     		ldr	r1, .L9
+ 246 002a FFF7FEFF 		bl	I2C1_MasterWriteBuf
+  68:Debug_Cards.c ****     while (0u == (I2C1_MasterStatus() & I2C1_MSTAT_WR_CMPLT));
+ 247              		.loc 1 68 0
+ 248 002e 00BF     		nop
+ 249              	.L8:
+ 250              		.loc 1 68 0 is_stmt 0 discriminator 1
+ 251 0030 FFF7FEFF 		bl	I2C1_MasterStatus
+ 252 0034 0346     		mov	r3, r0
+ 253 0036 03F00203 		and	r3, r3, #2
+ 254 003a 002B     		cmp	r3, #0
+ 255 003c F8D0     		beq	.L8
+  69:Debug_Cards.c ****     I2C1_MasterClearStatus();
+ 256              		.loc 1 69 0 is_stmt 1
+ 257 003e FFF7FEFF 		bl	I2C1_MasterClearStatus
+  70:Debug_Cards.c **** }
+ 258              		.loc 1 70 0
+ 259 0042 00BF     		nop
+ 260 0044 0837     		adds	r7, r7, #8
+ 261              		.cfi_def_cfa_offset 8
+ 262 0046 BD46     		mov	sp, r7
+ 263              		.cfi_def_cfa_register 13
+ 264              		@ sp needed
+ 265 0048 80BD     		pop	{r7, pc}
+ 266              	.L10:
+ 267 004a 00BF     		.align	2
+ 268              	.L9:
+ 269 004c 00000000 		.word	myWrBuffer
+ 270              		.cfi_endproc
+ 271              	.LFE68:
+ 272              		.size	writeRegisterDIGIO8CardX, .-writeRegisterDIGIO8CardX
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 7
+
+
+ 273              		.section	.rodata
+ 274              		.align	2
+ 275              	.LC0:
+ 276 0000 54657374 		.ascii	"Testing...\012\015\000"
+ 276      696E672E 
+ 276      2E2E0A0D 
+ 276      00
+ 277 000d 000000   		.align	2
+ 278              	.LC1:
+ 279 0010 43616C6C 		.ascii	"Calling I2C1_Start()...\012\015\000"
+ 279      696E6720 
+ 279      49324331 
+ 279      5F537461 
+ 279      72742829 
+ 280 002a 0000     		.align	2
+ 281              	.LC2:
+ 282 002c 43616C6C 		.ascii	"Called I2C1_Start()...\012\015\000"
+ 282      65642049 
+ 282      3243315F 
+ 282      53746172 
+ 282      7428292E 
+ 283 0045 000000   		.align	2
+ 284              	.LC3:
+ 285 0048 53657474 		.ascii	"Setting mux channel = 0x\000"
+ 285      696E6720 
+ 285      6D757820 
+ 285      6368616E 
+ 285      6E656C20 
+ 286 0061 000000   		.align	2
+ 287              	.LC4:
+ 288 0064 0A0D00   		.ascii	"\012\015\000"
+ 289 0067 00       		.align	2
+ 290              	.LC5:
+ 291 0068 54657374 		.ascii	"Testing DIGIO Card\000"
+ 291      696E6720 
+ 291      44494749 
+ 291      4F204361 
+ 291      726400
+ 292 007b 00       		.align	2
+ 293              	.LC6:
+ 294 007c 2E2E2E20 		.ascii	"... OK\012\015\000"
+ 294      4F4B0A0D 
+ 294      00
+ 295 0085 000000   		.align	2
+ 296              	.LC7:
+ 297 0088 2E2E2E2A 		.ascii	"...*** Read back FAILED ***\012\015\000"
+ 297      2A2A2052 
+ 297      65616420 
+ 297      6261636B 
+ 297      20464149 
+ 298 00a6 0000     		.align	2
+ 299              	.LC8:
+ 300 00a8 416C6C20 		.ascii	"All tests passed\012\015\000"
+ 300      74657374 
+ 300      73207061 
+ 300      73736564 
+ 300      0A0D00
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 8
+
+
+ 301 00bb 00       		.align	2
+ 302              	.LC9:
+ 303 00bc 0A0D2A2A 		.ascii	"\012\015*** TESTS FAILED ***\012\012\015\000"
+ 303      2A205445 
+ 303      53545320 
+ 303      4641494C 
+ 303      4544202A 
+ 304              		.section	.text.debugRPIHub,"ax",%progbits
+ 305              		.align	2
+ 306              		.global	debugRPIHub
+ 307              		.thumb
+ 308              		.thumb_func
+ 309              		.type	debugRPIHub, %function
+ 310              	debugRPIHub:
+ 311              	.LFB69:
+  71:Debug_Cards.c **** 
+  72:Debug_Cards.c **** void debugRPIHub(void)
+  73:Debug_Cards.c **** {
+ 312              		.loc 1 73 0
+ 313              		.cfi_startproc
+ 314              		@ args = 0, pretend = 0, frame = 96
+ 315              		@ frame_needed = 1, uses_anonymous_args = 0
+ 316 0000 B0B5     		push	{r4, r5, r7, lr}
+ 317              		.cfi_def_cfa_offset 16
+ 318              		.cfi_offset 4, -16
+ 319              		.cfi_offset 5, -12
+ 320              		.cfi_offset 7, -8
+ 321              		.cfi_offset 14, -4
+ 322 0002 98B0     		sub	sp, sp, #96
+ 323              		.cfi_def_cfa_offset 112
+ 324 0004 00AF     		add	r7, sp, #0
+ 325              		.cfi_def_cfa_register 7
+  74:Debug_Cards.c ****     char debugStr[80];
+  75:Debug_Cards.c ****     char muxNum[2];
+  76:Debug_Cards.c ****     putStringToUSB("Testing...\n\r");
+ 326              		.loc 1 76 0
+ 327 0006 4648     		ldr	r0, .L20
+ 328 0008 FFF7FEFF 		bl	putStringToUSB
+  77:Debug_Cards.c ****     uint8 I2CMUX_SLAVE_ADDR = 0x71;
+ 329              		.loc 1 77 0
+ 330 000c 7123     		movs	r3, #113
+ 331 000e 87F85D30 		strb	r3, [r7, #93]
+  78:Debug_Cards.c ****     uint8 cMessage[2];
+  79:Debug_Cards.c ****     uint8 channel;
+  80:Debug_Cards.c ****     uint8 rdVal;
+  81:Debug_Cards.c ****     uint8 pass1Fail0 = 1;
+ 332              		.loc 1 81 0
+ 333 0012 0123     		movs	r3, #1
+ 334 0014 87F85E30 		strb	r3, [r7, #94]
+  82:Debug_Cards.c ****     
+  83:Debug_Cards.c ****     putStringToUSB("Calling I2C1_Start()...\n\r");
+ 335              		.loc 1 83 0
+ 336 0018 4248     		ldr	r0, .L20+4
+ 337 001a FFF7FEFF 		bl	putStringToUSB
+  84:Debug_Cards.c ****     I2C1_Start();
+ 338              		.loc 1 84 0
+ 339 001e FFF7FEFF 		bl	I2C1_Start
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 9
+
+
+  85:Debug_Cards.c ****     putStringToUSB("Called I2C1_Start()...\n\r");
+ 340              		.loc 1 85 0
+ 341 0022 4148     		ldr	r0, .L20+8
+ 342 0024 FFF7FEFF 		bl	putStringToUSB
+  86:Debug_Cards.c ****     
+  87:Debug_Cards.c ****     // initialize the four DIGIO8 cards
+  88:Debug_Cards.c ****     for (channel = 0; channel < 4; channel++)
+ 343              		.loc 1 88 0
+ 344 0028 0023     		movs	r3, #0
+ 345 002a 87F85F30 		strb	r3, [r7, #95]
+ 346 002e 64E0     		b	.L12
+ 347              	.L16:
+  89:Debug_Cards.c ****     {
+  90:Debug_Cards.c ****         strcpy(debugStr,"Setting mux channel = 0x");
+ 348              		.loc 1 90 0
+ 349 0030 07F10C03 		add	r3, r7, #12
+ 350 0034 3D4A     		ldr	r2, .L20+12
+ 351 0036 1C46     		mov	r4, r3
+ 352 0038 1546     		mov	r5, r2
+ 353 003a 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 354 003c 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 355 003e 95E80700 		ldmia	r5, {r0, r1, r2}
+ 356 0042 03C4     		stmia	r4!, {r0, r1}
+ 357 0044 2270     		strb	r2, [r4]
+  91:Debug_Cards.c ****         muxNum[0] = '0' + channel;
+ 358              		.loc 1 91 0
+ 359 0046 97F85F30 		ldrb	r3, [r7, #95]
+ 360 004a 3033     		adds	r3, r3, #48
+ 361 004c DBB2     		uxtb	r3, r3
+ 362 004e 3B72     		strb	r3, [r7, #8]
+  92:Debug_Cards.c ****         muxNum[1] = 0;
+ 363              		.loc 1 92 0
+ 364 0050 0023     		movs	r3, #0
+ 365 0052 7B72     		strb	r3, [r7, #9]
+  93:Debug_Cards.c ****         strcat(debugStr,muxNum);
+ 366              		.loc 1 93 0
+ 367 0054 07F10802 		add	r2, r7, #8
+ 368 0058 07F10C03 		add	r3, r7, #12
+ 369 005c 1146     		mov	r1, r2
+ 370 005e 1846     		mov	r0, r3
+ 371 0060 FFF7FEFF 		bl	strcat
+  94:Debug_Cards.c ****         strcat(debugStr,"\n\r");
+ 372              		.loc 1 94 0
+ 373 0064 07F10C03 		add	r3, r7, #12
+ 374 0068 1846     		mov	r0, r3
+ 375 006a FFF7FEFF 		bl	strlen
+ 376 006e 0346     		mov	r3, r0
+ 377 0070 1A46     		mov	r2, r3
+ 378 0072 07F10C03 		add	r3, r7, #12
+ 379 0076 1344     		add	r3, r3, r2
+ 380 0078 2D4A     		ldr	r2, .L20+16
+ 381 007a 1188     		ldrh	r1, [r2]	@ unaligned
+ 382 007c 9278     		ldrb	r2, [r2, #2]
+ 383 007e 1980     		strh	r1, [r3]	@ unaligned
+ 384 0080 9A70     		strb	r2, [r3, #2]
+  95:Debug_Cards.c ****         putStringToUSB(debugStr);
+ 385              		.loc 1 95 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 10
+
+
+ 386 0082 07F10C03 		add	r3, r7, #12
+ 387 0086 1846     		mov	r0, r3
+ 388 0088 FFF7FEFF 		bl	putStringToUSB
+  96:Debug_Cards.c ****         cMessage[0] = 0x04 | channel;
+ 389              		.loc 1 96 0
+ 390 008c 97F85F30 		ldrb	r3, [r7, #95]
+ 391 0090 43F00403 		orr	r3, r3, #4
+ 392 0094 DBB2     		uxtb	r3, r3
+ 393 0096 3B71     		strb	r3, [r7, #4]
+  97:Debug_Cards.c ****         I2C1_MasterWriteBuf(I2CMUX_SLAVE_ADDR, cMessage, 1, I2C_EEPROM_MODE_COMPLETE_XFER);
+ 394              		.loc 1 97 0
+ 395 0098 391D     		adds	r1, r7, #4
+ 396 009a 97F85D00 		ldrb	r0, [r7, #93]	@ zero_extendqisi2
+ 397 009e 0023     		movs	r3, #0
+ 398 00a0 0122     		movs	r2, #1
+ 399 00a2 FFF7FEFF 		bl	I2C1_MasterWriteBuf
+  98:Debug_Cards.c ****         while (0u == (I2C1_MasterStatus() & I2C1_MSTAT_WR_CMPLT));
+ 400              		.loc 1 98 0
+ 401 00a6 00BF     		nop
+ 402              	.L13:
+ 403              		.loc 1 98 0 is_stmt 0 discriminator 1
+ 404 00a8 FFF7FEFF 		bl	I2C1_MasterStatus
+ 405 00ac 0346     		mov	r3, r0
+ 406 00ae 03F00203 		and	r3, r3, #2
+ 407 00b2 002B     		cmp	r3, #0
+ 408 00b4 F8D0     		beq	.L13
+  99:Debug_Cards.c ****         putStringToUSB("Testing DIGIO Card");
+ 409              		.loc 1 99 0 is_stmt 1
+ 410 00b6 1F48     		ldr	r0, .L20+20
+ 411 00b8 FFF7FEFF 		bl	putStringToUSB
+ 100:Debug_Cards.c ****         writeRegisterDIGIO8CardX(0x20,MCP23008_IODIR_REGADR,MCP23008_IODIR_DEFVAL);
+ 412              		.loc 1 100 0
+ 413 00bc F022     		movs	r2, #240
+ 414 00be 0021     		movs	r1, #0
+ 415 00c0 2020     		movs	r0, #32
+ 416 00c2 FFF7FEFF 		bl	writeRegisterDIGIO8CardX
+ 101:Debug_Cards.c ****         rdVal = readRegisterDIGIO8CardX(0x20,MCP23008_IODIR_REGADR);
+ 417              		.loc 1 101 0
+ 418 00c6 0021     		movs	r1, #0
+ 419 00c8 2020     		movs	r0, #32
+ 420 00ca FFF7FEFF 		bl	readRegisterDIGIO8CardX
+ 421 00ce 0346     		mov	r3, r0
+ 422 00d0 87F85C30 		strb	r3, [r7, #92]
+ 102:Debug_Cards.c ****         if (rdVal == MCP23008_IODIR_DEFVAL)
+ 423              		.loc 1 102 0
+ 424 00d4 97F85C30 		ldrb	r3, [r7, #92]	@ zero_extendqisi2
+ 425 00d8 F02B     		cmp	r3, #240
+ 426 00da 03D1     		bne	.L14
+ 103:Debug_Cards.c ****         {
+ 104:Debug_Cards.c ****             putStringToUSB("... OK\n\r");
+ 427              		.loc 1 104 0
+ 428 00dc 1648     		ldr	r0, .L20+24
+ 429 00de FFF7FEFF 		bl	putStringToUSB
+ 430 00e2 05E0     		b	.L15
+ 431              	.L14:
+ 105:Debug_Cards.c ****         }
+ 106:Debug_Cards.c ****         else
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 11
+
+
+ 107:Debug_Cards.c ****         {
+ 108:Debug_Cards.c ****             putStringToUSB("...*** Read back FAILED ***\n\r");
+ 432              		.loc 1 108 0
+ 433 00e4 1548     		ldr	r0, .L20+28
+ 434 00e6 FFF7FEFF 		bl	putStringToUSB
+ 109:Debug_Cards.c ****             pass1Fail0 = 0;
+ 435              		.loc 1 109 0
+ 436 00ea 0023     		movs	r3, #0
+ 437 00ec 87F85E30 		strb	r3, [r7, #94]
+ 438              	.L15:
+  88:Debug_Cards.c ****     {
+ 439              		.loc 1 88 0 discriminator 2
+ 440 00f0 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
+ 441 00f4 0133     		adds	r3, r3, #1
+ 442 00f6 87F85F30 		strb	r3, [r7, #95]
+ 443              	.L12:
+  88:Debug_Cards.c ****     {
+ 444              		.loc 1 88 0 is_stmt 0 discriminator 1
+ 445 00fa 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
+ 446 00fe 032B     		cmp	r3, #3
+ 447 0100 96D9     		bls	.L16
+ 110:Debug_Cards.c ****          }
+ 111:Debug_Cards.c ****     }
+ 112:Debug_Cards.c ****    if (pass1Fail0 == 1)
+ 448              		.loc 1 112 0 is_stmt 1
+ 449 0102 97F85E30 		ldrb	r3, [r7, #94]	@ zero_extendqisi2
+ 450 0106 012B     		cmp	r3, #1
+ 451 0108 03D1     		bne	.L17
+ 113:Debug_Cards.c ****     {
+ 114:Debug_Cards.c ****         putStringToUSB("All tests passed\n\r");
+ 452              		.loc 1 114 0
+ 453 010a 0D48     		ldr	r0, .L20+32
+ 454 010c FFF7FEFF 		bl	putStringToUSB
+ 115:Debug_Cards.c ****     }
+ 116:Debug_Cards.c ****     else
+ 117:Debug_Cards.c ****     {
+ 118:Debug_Cards.c ****         putStringToUSB("\n\r*** TESTS FAILED ***\n\n\r");
+ 119:Debug_Cards.c ****     }
+ 120:Debug_Cards.c **** }
+ 455              		.loc 1 120 0
+ 456 0110 02E0     		b	.L19
+ 457              	.L17:
+ 118:Debug_Cards.c ****     }
+ 458              		.loc 1 118 0
+ 459 0112 0C48     		ldr	r0, .L20+36
+ 460 0114 FFF7FEFF 		bl	putStringToUSB
+ 461              	.L19:
+ 462              		.loc 1 120 0
+ 463 0118 00BF     		nop
+ 464 011a 6037     		adds	r7, r7, #96
+ 465              		.cfi_def_cfa_offset 16
+ 466 011c BD46     		mov	sp, r7
+ 467              		.cfi_def_cfa_register 13
+ 468              		@ sp needed
+ 469 011e B0BD     		pop	{r4, r5, r7, pc}
+ 470              	.L21:
+ 471              		.align	2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 12
+
+
+ 472              	.L20:
+ 473 0120 00000000 		.word	.LC0
+ 474 0124 10000000 		.word	.LC1
+ 475 0128 2C000000 		.word	.LC2
+ 476 012c 48000000 		.word	.LC3
+ 477 0130 64000000 		.word	.LC4
+ 478 0134 68000000 		.word	.LC5
+ 479 0138 7C000000 		.word	.LC6
+ 480 013c 88000000 		.word	.LC7
+ 481 0140 A8000000 		.word	.LC8
+ 482 0144 BC000000 		.word	.LC9
+ 483              		.cfi_endproc
+ 484              	.LFE69:
+ 485              		.size	debugRPIHub, .-debugRPIHub
+ 486              		.text
+ 487              	.Letext0:
+ 488              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 489              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 490              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 491              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 492              		.section	.debug_info,"",%progbits
+ 493              	.Ldebug_info0:
+ 494 0000 42020000 		.4byte	0x242
+ 495 0004 0400     		.2byte	0x4
+ 496 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 497 000a 04       		.byte	0x4
+ 498 000b 01       		.uleb128 0x1
+ 499 000c 08000000 		.4byte	.LASF36
+ 500 0010 0C       		.byte	0xc
+ 501 0011 9E010000 		.4byte	.LASF37
+ 502 0015 F5000000 		.4byte	.LASF38
+ 503 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 504 001d 00000000 		.4byte	0
+ 505 0021 00000000 		.4byte	.Ldebug_line0
+ 506 0025 02       		.uleb128 0x2
+ 507 0026 01       		.byte	0x1
+ 508 0027 06       		.byte	0x6
+ 509 0028 A2020000 		.4byte	.LASF0
+ 510 002c 02       		.uleb128 0x2
+ 511 002d 01       		.byte	0x1
+ 512 002e 08       		.byte	0x8
+ 513 002f E7000000 		.4byte	.LASF1
+ 514 0033 02       		.uleb128 0x2
+ 515 0034 02       		.byte	0x2
+ 516 0035 05       		.byte	0x5
+ 517 0036 5F020000 		.4byte	.LASF2
+ 518 003a 02       		.uleb128 0x2
+ 519 003b 02       		.byte	0x2
+ 520 003c 07       		.byte	0x7
+ 521 003d A8000000 		.4byte	.LASF3
+ 522 0041 03       		.uleb128 0x3
+ 523 0042 9E000000 		.4byte	.LASF9
+ 524 0046 02       		.byte	0x2
+ 525 0047 3F       		.byte	0x3f
+ 526 0048 4C000000 		.4byte	0x4c
+ 527 004c 02       		.uleb128 0x2
+ 528 004d 04       		.byte	0x4
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 13
+
+
+ 529 004e 05       		.byte	0x5
+ 530 004f 8D020000 		.4byte	.LASF4
+ 531 0053 02       		.uleb128 0x2
+ 532 0054 04       		.byte	0x4
+ 533 0055 07       		.byte	0x7
+ 534 0056 54010000 		.4byte	.LASF5
+ 535 005a 02       		.uleb128 0x2
+ 536 005b 08       		.byte	0x8
+ 537 005c 05       		.byte	0x5
+ 538 005d 2C020000 		.4byte	.LASF6
+ 539 0061 02       		.uleb128 0x2
+ 540 0062 08       		.byte	0x8
+ 541 0063 07       		.byte	0x7
+ 542 0064 EF010000 		.4byte	.LASF7
+ 543 0068 04       		.uleb128 0x4
+ 544 0069 04       		.byte	0x4
+ 545 006a 05       		.byte	0x5
+ 546 006b 696E7400 		.ascii	"int\000"
+ 547 006f 02       		.uleb128 0x2
+ 548 0070 04       		.byte	0x4
+ 549 0071 07       		.byte	0x7
+ 550 0072 E2010000 		.4byte	.LASF8
+ 551 0076 03       		.uleb128 0x3
+ 552 0077 1B020000 		.4byte	.LASF10
+ 553 007b 03       		.byte	0x3
+ 554 007c 2C       		.byte	0x2c
+ 555 007d 41000000 		.4byte	0x41
+ 556 0081 05       		.uleb128 0x5
+ 557 0082 69020000 		.4byte	.LASF11
+ 558 0086 04       		.byte	0x4
+ 559 0087 E401     		.2byte	0x1e4
+ 560 0089 2C000000 		.4byte	0x2c
+ 561 008d 02       		.uleb128 0x2
+ 562 008e 04       		.byte	0x4
+ 563 008f 04       		.byte	0x4
+ 564 0090 C9000000 		.4byte	.LASF12
+ 565 0094 02       		.uleb128 0x2
+ 566 0095 08       		.byte	0x8
+ 567 0096 04       		.byte	0x4
+ 568 0097 BB000000 		.4byte	.LASF13
+ 569 009b 02       		.uleb128 0x2
+ 570 009c 01       		.byte	0x1
+ 571 009d 08       		.byte	0x8
+ 572 009e 43020000 		.4byte	.LASF14
+ 573 00a2 02       		.uleb128 0x2
+ 574 00a3 08       		.byte	0x8
+ 575 00a4 04       		.byte	0x4
+ 576 00a5 96020000 		.4byte	.LASF15
+ 577 00a9 02       		.uleb128 0x2
+ 578 00aa 04       		.byte	0x4
+ 579 00ab 07       		.byte	0x7
+ 580 00ac 23020000 		.4byte	.LASF16
+ 581 00b0 06       		.uleb128 0x6
+ 582 00b1 78010000 		.4byte	.LASF17
+ 583 00b5 01       		.byte	0x1
+ 584 00b6 12       		.byte	0x12
+ 585 00b7 00000000 		.4byte	.LFB63
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 14
+
+
+ 586 00bb 0C000000 		.4byte	.LFE63-.LFB63
+ 587 00bf 01       		.uleb128 0x1
+ 588 00c0 9C       		.byte	0x9c
+ 589 00c1 06       		.uleb128 0x6
+ 590 00c2 D6010000 		.4byte	.LASF18
+ 591 00c6 01       		.byte	0x1
+ 592 00c7 17       		.byte	0x17
+ 593 00c8 00000000 		.4byte	.LFB64
+ 594 00cc 0C000000 		.4byte	.LFE64-.LFB64
+ 595 00d0 01       		.uleb128 0x1
+ 596 00d1 9C       		.byte	0x9c
+ 597 00d2 06       		.uleb128 0x6
+ 598 00d3 48020000 		.4byte	.LASF19
+ 599 00d7 01       		.byte	0x1
+ 600 00d8 1C       		.byte	0x1c
+ 601 00d9 00000000 		.4byte	.LFB65
+ 602 00dd 0C000000 		.4byte	.LFE65-.LFB65
+ 603 00e1 01       		.uleb128 0x1
+ 604 00e2 9C       		.byte	0x9c
+ 605 00e3 06       		.uleb128 0x6
+ 606 00e4 0C020000 		.4byte	.LASF20
+ 607 00e8 01       		.byte	0x1
+ 608 00e9 21       		.byte	0x21
+ 609 00ea 00000000 		.4byte	.LFB66
+ 610 00ee 0C000000 		.4byte	.LFE66-.LFB66
+ 611 00f2 01       		.uleb128 0x1
+ 612 00f3 9C       		.byte	0x9c
+ 613 00f4 07       		.uleb128 0x7
+ 614 00f5 CF000000 		.4byte	.LASF39
+ 615 00f9 01       		.byte	0x1
+ 616 00fa 2A       		.byte	0x2a
+ 617 00fb 81000000 		.4byte	0x81
+ 618 00ff 00000000 		.4byte	.LFB67
+ 619 0103 4E000000 		.4byte	.LFE67-.LFB67
+ 620 0107 01       		.uleb128 0x1
+ 621 0108 9C       		.byte	0x9c
+ 622 0109 38010000 		.4byte	0x138
+ 623 010d 08       		.uleb128 0x8
+ 624 010e B4010000 		.4byte	.LASF21
+ 625 0112 01       		.byte	0x1
+ 626 0113 2A       		.byte	0x2a
+ 627 0114 81000000 		.4byte	0x81
+ 628 0118 02       		.uleb128 0x2
+ 629 0119 91       		.byte	0x91
+ 630 011a 6F       		.sleb128 -17
+ 631 011b 08       		.uleb128 0x8
+ 632 011c AC010000 		.4byte	.LASF22
+ 633 0120 01       		.byte	0x1
+ 634 0121 2A       		.byte	0x2a
+ 635 0122 81000000 		.4byte	0x81
+ 636 0126 02       		.uleb128 0x2
+ 637 0127 91       		.byte	0x91
+ 638 0128 6E       		.sleb128 -18
+ 639 0129 09       		.uleb128 0x9
+ 640 012a 7A020000 		.4byte	.LASF26
+ 641 012e 01       		.byte	0x1
+ 642 012f 2C       		.byte	0x2c
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 15
+
+
+ 643 0130 81000000 		.4byte	0x81
+ 644 0134 02       		.uleb128 0x2
+ 645 0135 91       		.byte	0x91
+ 646 0136 77       		.sleb128 -9
+ 647 0137 00       		.byte	0
+ 648 0138 0A       		.uleb128 0xa
+ 649 0139 BD010000 		.4byte	.LASF24
+ 650 013d 01       		.byte	0x1
+ 651 013e 3E       		.byte	0x3e
+ 652 013f 00000000 		.4byte	.LFB68
+ 653 0143 50000000 		.4byte	.LFE68-.LFB68
+ 654 0147 01       		.uleb128 0x1
+ 655 0148 9C       		.byte	0x9c
+ 656 0149 78010000 		.4byte	0x178
+ 657 014d 08       		.uleb128 0x8
+ 658 014e B4010000 		.4byte	.LASF21
+ 659 0152 01       		.byte	0x1
+ 660 0153 3E       		.byte	0x3e
+ 661 0154 81000000 		.4byte	0x81
+ 662 0158 02       		.uleb128 0x2
+ 663 0159 91       		.byte	0x91
+ 664 015a 77       		.sleb128 -9
+ 665 015b 08       		.uleb128 0x8
+ 666 015c AC010000 		.4byte	.LASF22
+ 667 0160 01       		.byte	0x1
+ 668 0161 3E       		.byte	0x3e
+ 669 0162 81000000 		.4byte	0x81
+ 670 0166 02       		.uleb128 0x2
+ 671 0167 91       		.byte	0x91
+ 672 0168 76       		.sleb128 -10
+ 673 0169 08       		.uleb128 0x8
+ 674 016a 96000000 		.4byte	.LASF23
+ 675 016e 01       		.byte	0x1
+ 676 016f 3E       		.byte	0x3e
+ 677 0170 81000000 		.4byte	0x81
+ 678 0174 02       		.uleb128 0x2
+ 679 0175 91       		.byte	0x91
+ 680 0176 75       		.sleb128 -11
+ 681 0177 00       		.byte	0
+ 682 0178 0A       		.uleb128 0xa
+ 683 0179 81020000 		.4byte	.LASF25
+ 684 017d 01       		.byte	0x1
+ 685 017e 48       		.byte	0x48
+ 686 017f 00000000 		.4byte	.LFB69
+ 687 0183 48010000 		.4byte	.LFE69-.LFB69
+ 688 0187 01       		.uleb128 0x1
+ 689 0188 9C       		.byte	0x9c
+ 690 0189 F3010000 		.4byte	0x1f3
+ 691 018d 09       		.uleb128 0x9
+ 692 018e 3A020000 		.4byte	.LASF27
+ 693 0192 01       		.byte	0x1
+ 694 0193 4A       		.byte	0x4a
+ 695 0194 F3010000 		.4byte	0x1f3
+ 696 0198 03       		.uleb128 0x3
+ 697 0199 91       		.byte	0x91
+ 698 019a 9C7F     		.sleb128 -100
+ 699 019c 09       		.uleb128 0x9
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 16
+
+
+ 700 019d C2000000 		.4byte	.LASF28
+ 701 01a1 01       		.byte	0x1
+ 702 01a2 4B       		.byte	0x4b
+ 703 01a3 03020000 		.4byte	0x203
+ 704 01a7 03       		.uleb128 0x3
+ 705 01a8 91       		.byte	0x91
+ 706 01a9 987F     		.sleb128 -104
+ 707 01ab 09       		.uleb128 0x9
+ 708 01ac 66010000 		.4byte	.LASF29
+ 709 01b0 01       		.byte	0x1
+ 710 01b1 4D       		.byte	0x4d
+ 711 01b2 81000000 		.4byte	0x81
+ 712 01b6 02       		.uleb128 0x2
+ 713 01b7 91       		.byte	0x91
+ 714 01b8 6D       		.sleb128 -19
+ 715 01b9 09       		.uleb128 0x9
+ 716 01ba 56020000 		.4byte	.LASF30
+ 717 01be 01       		.byte	0x1
+ 718 01bf 4E       		.byte	0x4e
+ 719 01c0 13020000 		.4byte	0x213
+ 720 01c4 03       		.uleb128 0x3
+ 721 01c5 91       		.byte	0x91
+ 722 01c6 947F     		.sleb128 -108
+ 723 01c8 09       		.uleb128 0x9
+ 724 01c9 00000000 		.4byte	.LASF31
+ 725 01cd 01       		.byte	0x1
+ 726 01ce 4F       		.byte	0x4f
+ 727 01cf 81000000 		.4byte	0x81
+ 728 01d3 02       		.uleb128 0x2
+ 729 01d4 91       		.byte	0x91
+ 730 01d5 6F       		.sleb128 -17
+ 731 01d6 09       		.uleb128 0x9
+ 732 01d7 06020000 		.4byte	.LASF32
+ 733 01db 01       		.byte	0x1
+ 734 01dc 50       		.byte	0x50
+ 735 01dd 81000000 		.4byte	0x81
+ 736 01e1 02       		.uleb128 0x2
+ 737 01e2 91       		.byte	0x91
+ 738 01e3 6C       		.sleb128 -20
+ 739 01e4 09       		.uleb128 0x9
+ 740 01e5 6F020000 		.4byte	.LASF33
+ 741 01e9 01       		.byte	0x1
+ 742 01ea 51       		.byte	0x51
+ 743 01eb 81000000 		.4byte	0x81
+ 744 01ef 02       		.uleb128 0x2
+ 745 01f0 91       		.byte	0x91
+ 746 01f1 6E       		.sleb128 -18
+ 747 01f2 00       		.byte	0
+ 748 01f3 0B       		.uleb128 0xb
+ 749 01f4 9B000000 		.4byte	0x9b
+ 750 01f8 03020000 		.4byte	0x203
+ 751 01fc 0C       		.uleb128 0xc
+ 752 01fd A9000000 		.4byte	0xa9
+ 753 0201 4F       		.byte	0x4f
+ 754 0202 00       		.byte	0
+ 755 0203 0B       		.uleb128 0xb
+ 756 0204 9B000000 		.4byte	0x9b
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 17
+
+
+ 757 0208 13020000 		.4byte	0x213
+ 758 020c 0C       		.uleb128 0xc
+ 759 020d A9000000 		.4byte	0xa9
+ 760 0211 01       		.byte	0x1
+ 761 0212 00       		.byte	0
+ 762 0213 0B       		.uleb128 0xb
+ 763 0214 81000000 		.4byte	0x81
+ 764 0218 23020000 		.4byte	0x223
+ 765 021c 0C       		.uleb128 0xc
+ 766 021d A9000000 		.4byte	0xa9
+ 767 0221 01       		.byte	0x1
+ 768 0222 00       		.byte	0
+ 769 0223 0D       		.uleb128 0xd
+ 770 0224 91010000 		.4byte	.LASF34
+ 771 0228 05       		.byte	0x5
+ 772 0229 1207     		.2byte	0x712
+ 773 022b 2F020000 		.4byte	0x22f
+ 774 022f 0E       		.uleb128 0xe
+ 775 0230 76000000 		.4byte	0x76
+ 776 0234 0F       		.uleb128 0xf
+ 777 0235 86010000 		.4byte	.LASF35
+ 778 0239 01       		.byte	0x1
+ 779 023a 10       		.byte	0x10
+ 780 023b 13020000 		.4byte	0x213
+ 781 023f 05       		.uleb128 0x5
+ 782 0240 03       		.byte	0x3
+ 783 0241 00000000 		.4byte	myWrBuffer
+ 784 0245 00       		.byte	0
+ 785              		.section	.debug_abbrev,"",%progbits
+ 786              	.Ldebug_abbrev0:
+ 787 0000 01       		.uleb128 0x1
+ 788 0001 11       		.uleb128 0x11
+ 789 0002 01       		.byte	0x1
+ 790 0003 25       		.uleb128 0x25
+ 791 0004 0E       		.uleb128 0xe
+ 792 0005 13       		.uleb128 0x13
+ 793 0006 0B       		.uleb128 0xb
+ 794 0007 03       		.uleb128 0x3
+ 795 0008 0E       		.uleb128 0xe
+ 796 0009 1B       		.uleb128 0x1b
+ 797 000a 0E       		.uleb128 0xe
+ 798 000b 55       		.uleb128 0x55
+ 799 000c 17       		.uleb128 0x17
+ 800 000d 11       		.uleb128 0x11
+ 801 000e 01       		.uleb128 0x1
+ 802 000f 10       		.uleb128 0x10
+ 803 0010 17       		.uleb128 0x17
+ 804 0011 00       		.byte	0
+ 805 0012 00       		.byte	0
+ 806 0013 02       		.uleb128 0x2
+ 807 0014 24       		.uleb128 0x24
+ 808 0015 00       		.byte	0
+ 809 0016 0B       		.uleb128 0xb
+ 810 0017 0B       		.uleb128 0xb
+ 811 0018 3E       		.uleb128 0x3e
+ 812 0019 0B       		.uleb128 0xb
+ 813 001a 03       		.uleb128 0x3
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 18
+
+
+ 814 001b 0E       		.uleb128 0xe
+ 815 001c 00       		.byte	0
+ 816 001d 00       		.byte	0
+ 817 001e 03       		.uleb128 0x3
+ 818 001f 16       		.uleb128 0x16
+ 819 0020 00       		.byte	0
+ 820 0021 03       		.uleb128 0x3
+ 821 0022 0E       		.uleb128 0xe
+ 822 0023 3A       		.uleb128 0x3a
+ 823 0024 0B       		.uleb128 0xb
+ 824 0025 3B       		.uleb128 0x3b
+ 825 0026 0B       		.uleb128 0xb
+ 826 0027 49       		.uleb128 0x49
+ 827 0028 13       		.uleb128 0x13
+ 828 0029 00       		.byte	0
+ 829 002a 00       		.byte	0
+ 830 002b 04       		.uleb128 0x4
+ 831 002c 24       		.uleb128 0x24
+ 832 002d 00       		.byte	0
+ 833 002e 0B       		.uleb128 0xb
+ 834 002f 0B       		.uleb128 0xb
+ 835 0030 3E       		.uleb128 0x3e
+ 836 0031 0B       		.uleb128 0xb
+ 837 0032 03       		.uleb128 0x3
+ 838 0033 08       		.uleb128 0x8
+ 839 0034 00       		.byte	0
+ 840 0035 00       		.byte	0
+ 841 0036 05       		.uleb128 0x5
+ 842 0037 16       		.uleb128 0x16
+ 843 0038 00       		.byte	0
+ 844 0039 03       		.uleb128 0x3
+ 845 003a 0E       		.uleb128 0xe
+ 846 003b 3A       		.uleb128 0x3a
+ 847 003c 0B       		.uleb128 0xb
+ 848 003d 3B       		.uleb128 0x3b
+ 849 003e 05       		.uleb128 0x5
+ 850 003f 49       		.uleb128 0x49
+ 851 0040 13       		.uleb128 0x13
+ 852 0041 00       		.byte	0
+ 853 0042 00       		.byte	0
+ 854 0043 06       		.uleb128 0x6
+ 855 0044 2E       		.uleb128 0x2e
+ 856 0045 00       		.byte	0
+ 857 0046 3F       		.uleb128 0x3f
+ 858 0047 19       		.uleb128 0x19
+ 859 0048 03       		.uleb128 0x3
+ 860 0049 0E       		.uleb128 0xe
+ 861 004a 3A       		.uleb128 0x3a
+ 862 004b 0B       		.uleb128 0xb
+ 863 004c 3B       		.uleb128 0x3b
+ 864 004d 0B       		.uleb128 0xb
+ 865 004e 27       		.uleb128 0x27
+ 866 004f 19       		.uleb128 0x19
+ 867 0050 11       		.uleb128 0x11
+ 868 0051 01       		.uleb128 0x1
+ 869 0052 12       		.uleb128 0x12
+ 870 0053 06       		.uleb128 0x6
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 19
+
+
+ 871 0054 40       		.uleb128 0x40
+ 872 0055 18       		.uleb128 0x18
+ 873 0056 9742     		.uleb128 0x2117
+ 874 0058 19       		.uleb128 0x19
+ 875 0059 00       		.byte	0
+ 876 005a 00       		.byte	0
+ 877 005b 07       		.uleb128 0x7
+ 878 005c 2E       		.uleb128 0x2e
+ 879 005d 01       		.byte	0x1
+ 880 005e 3F       		.uleb128 0x3f
+ 881 005f 19       		.uleb128 0x19
+ 882 0060 03       		.uleb128 0x3
+ 883 0061 0E       		.uleb128 0xe
+ 884 0062 3A       		.uleb128 0x3a
+ 885 0063 0B       		.uleb128 0xb
+ 886 0064 3B       		.uleb128 0x3b
+ 887 0065 0B       		.uleb128 0xb
+ 888 0066 27       		.uleb128 0x27
+ 889 0067 19       		.uleb128 0x19
+ 890 0068 49       		.uleb128 0x49
+ 891 0069 13       		.uleb128 0x13
+ 892 006a 11       		.uleb128 0x11
+ 893 006b 01       		.uleb128 0x1
+ 894 006c 12       		.uleb128 0x12
+ 895 006d 06       		.uleb128 0x6
+ 896 006e 40       		.uleb128 0x40
+ 897 006f 18       		.uleb128 0x18
+ 898 0070 9642     		.uleb128 0x2116
+ 899 0072 19       		.uleb128 0x19
+ 900 0073 01       		.uleb128 0x1
+ 901 0074 13       		.uleb128 0x13
+ 902 0075 00       		.byte	0
+ 903 0076 00       		.byte	0
+ 904 0077 08       		.uleb128 0x8
+ 905 0078 05       		.uleb128 0x5
+ 906 0079 00       		.byte	0
+ 907 007a 03       		.uleb128 0x3
+ 908 007b 0E       		.uleb128 0xe
+ 909 007c 3A       		.uleb128 0x3a
+ 910 007d 0B       		.uleb128 0xb
+ 911 007e 3B       		.uleb128 0x3b
+ 912 007f 0B       		.uleb128 0xb
+ 913 0080 49       		.uleb128 0x49
+ 914 0081 13       		.uleb128 0x13
+ 915 0082 02       		.uleb128 0x2
+ 916 0083 18       		.uleb128 0x18
+ 917 0084 00       		.byte	0
+ 918 0085 00       		.byte	0
+ 919 0086 09       		.uleb128 0x9
+ 920 0087 34       		.uleb128 0x34
+ 921 0088 00       		.byte	0
+ 922 0089 03       		.uleb128 0x3
+ 923 008a 0E       		.uleb128 0xe
+ 924 008b 3A       		.uleb128 0x3a
+ 925 008c 0B       		.uleb128 0xb
+ 926 008d 3B       		.uleb128 0x3b
+ 927 008e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 20
+
+
+ 928 008f 49       		.uleb128 0x49
+ 929 0090 13       		.uleb128 0x13
+ 930 0091 02       		.uleb128 0x2
+ 931 0092 18       		.uleb128 0x18
+ 932 0093 00       		.byte	0
+ 933 0094 00       		.byte	0
+ 934 0095 0A       		.uleb128 0xa
+ 935 0096 2E       		.uleb128 0x2e
+ 936 0097 01       		.byte	0x1
+ 937 0098 3F       		.uleb128 0x3f
+ 938 0099 19       		.uleb128 0x19
+ 939 009a 03       		.uleb128 0x3
+ 940 009b 0E       		.uleb128 0xe
+ 941 009c 3A       		.uleb128 0x3a
+ 942 009d 0B       		.uleb128 0xb
+ 943 009e 3B       		.uleb128 0x3b
+ 944 009f 0B       		.uleb128 0xb
+ 945 00a0 27       		.uleb128 0x27
+ 946 00a1 19       		.uleb128 0x19
+ 947 00a2 11       		.uleb128 0x11
+ 948 00a3 01       		.uleb128 0x1
+ 949 00a4 12       		.uleb128 0x12
+ 950 00a5 06       		.uleb128 0x6
+ 951 00a6 40       		.uleb128 0x40
+ 952 00a7 18       		.uleb128 0x18
+ 953 00a8 9642     		.uleb128 0x2116
+ 954 00aa 19       		.uleb128 0x19
+ 955 00ab 01       		.uleb128 0x1
+ 956 00ac 13       		.uleb128 0x13
+ 957 00ad 00       		.byte	0
+ 958 00ae 00       		.byte	0
+ 959 00af 0B       		.uleb128 0xb
+ 960 00b0 01       		.uleb128 0x1
+ 961 00b1 01       		.byte	0x1
+ 962 00b2 49       		.uleb128 0x49
+ 963 00b3 13       		.uleb128 0x13
+ 964 00b4 01       		.uleb128 0x1
+ 965 00b5 13       		.uleb128 0x13
+ 966 00b6 00       		.byte	0
+ 967 00b7 00       		.byte	0
+ 968 00b8 0C       		.uleb128 0xc
+ 969 00b9 21       		.uleb128 0x21
+ 970 00ba 00       		.byte	0
+ 971 00bb 49       		.uleb128 0x49
+ 972 00bc 13       		.uleb128 0x13
+ 973 00bd 2F       		.uleb128 0x2f
+ 974 00be 0B       		.uleb128 0xb
+ 975 00bf 00       		.byte	0
+ 976 00c0 00       		.byte	0
+ 977 00c1 0D       		.uleb128 0xd
+ 978 00c2 34       		.uleb128 0x34
+ 979 00c3 00       		.byte	0
+ 980 00c4 03       		.uleb128 0x3
+ 981 00c5 0E       		.uleb128 0xe
+ 982 00c6 3A       		.uleb128 0x3a
+ 983 00c7 0B       		.uleb128 0xb
+ 984 00c8 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 21
+
+
+ 985 00c9 05       		.uleb128 0x5
+ 986 00ca 49       		.uleb128 0x49
+ 987 00cb 13       		.uleb128 0x13
+ 988 00cc 3F       		.uleb128 0x3f
+ 989 00cd 19       		.uleb128 0x19
+ 990 00ce 3C       		.uleb128 0x3c
+ 991 00cf 19       		.uleb128 0x19
+ 992 00d0 00       		.byte	0
+ 993 00d1 00       		.byte	0
+ 994 00d2 0E       		.uleb128 0xe
+ 995 00d3 35       		.uleb128 0x35
+ 996 00d4 00       		.byte	0
+ 997 00d5 49       		.uleb128 0x49
+ 998 00d6 13       		.uleb128 0x13
+ 999 00d7 00       		.byte	0
+ 1000 00d8 00       		.byte	0
+ 1001 00d9 0F       		.uleb128 0xf
+ 1002 00da 34       		.uleb128 0x34
+ 1003 00db 00       		.byte	0
+ 1004 00dc 03       		.uleb128 0x3
+ 1005 00dd 0E       		.uleb128 0xe
+ 1006 00de 3A       		.uleb128 0x3a
+ 1007 00df 0B       		.uleb128 0xb
+ 1008 00e0 3B       		.uleb128 0x3b
+ 1009 00e1 0B       		.uleb128 0xb
+ 1010 00e2 49       		.uleb128 0x49
+ 1011 00e3 13       		.uleb128 0x13
+ 1012 00e4 3F       		.uleb128 0x3f
+ 1013 00e5 19       		.uleb128 0x19
+ 1014 00e6 02       		.uleb128 0x2
+ 1015 00e7 18       		.uleb128 0x18
+ 1016 00e8 00       		.byte	0
+ 1017 00e9 00       		.byte	0
+ 1018 00ea 00       		.byte	0
+ 1019              		.section	.debug_aranges,"",%progbits
+ 1020 0000 4C000000 		.4byte	0x4c
+ 1021 0004 0200     		.2byte	0x2
+ 1022 0006 00000000 		.4byte	.Ldebug_info0
+ 1023 000a 04       		.byte	0x4
+ 1024 000b 00       		.byte	0
+ 1025 000c 0000     		.2byte	0
+ 1026 000e 0000     		.2byte	0
+ 1027 0010 00000000 		.4byte	.LFB63
+ 1028 0014 0C000000 		.4byte	.LFE63-.LFB63
+ 1029 0018 00000000 		.4byte	.LFB64
+ 1030 001c 0C000000 		.4byte	.LFE64-.LFB64
+ 1031 0020 00000000 		.4byte	.LFB65
+ 1032 0024 0C000000 		.4byte	.LFE65-.LFB65
+ 1033 0028 00000000 		.4byte	.LFB66
+ 1034 002c 0C000000 		.4byte	.LFE66-.LFB66
+ 1035 0030 00000000 		.4byte	.LFB67
+ 1036 0034 4E000000 		.4byte	.LFE67-.LFB67
+ 1037 0038 00000000 		.4byte	.LFB68
+ 1038 003c 50000000 		.4byte	.LFE68-.LFB68
+ 1039 0040 00000000 		.4byte	.LFB69
+ 1040 0044 48010000 		.4byte	.LFE69-.LFB69
+ 1041 0048 00000000 		.4byte	0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 22
+
+
+ 1042 004c 00000000 		.4byte	0
+ 1043              		.section	.debug_ranges,"",%progbits
+ 1044              	.Ldebug_ranges0:
+ 1045 0000 00000000 		.4byte	.LFB63
+ 1046 0004 0C000000 		.4byte	.LFE63
+ 1047 0008 00000000 		.4byte	.LFB64
+ 1048 000c 0C000000 		.4byte	.LFE64
+ 1049 0010 00000000 		.4byte	.LFB65
+ 1050 0014 0C000000 		.4byte	.LFE65
+ 1051 0018 00000000 		.4byte	.LFB66
+ 1052 001c 0C000000 		.4byte	.LFE66
+ 1053 0020 00000000 		.4byte	.LFB67
+ 1054 0024 4E000000 		.4byte	.LFE67
+ 1055 0028 00000000 		.4byte	.LFB68
+ 1056 002c 50000000 		.4byte	.LFE68
+ 1057 0030 00000000 		.4byte	.LFB69
+ 1058 0034 48010000 		.4byte	.LFE69
+ 1059 0038 00000000 		.4byte	0
+ 1060 003c 00000000 		.4byte	0
+ 1061              		.section	.debug_line,"",%progbits
+ 1062              	.Ldebug_line0:
+ 1063 0000 12020000 		.section	.debug_str,"MS",%progbits,1
+ 1063      02005301 
+ 1063      00000201 
+ 1063      FB0E0D00 
+ 1063      01010101 
+ 1064              	.LASF31:
+ 1065 0000 6368616E 		.ascii	"channel\000"
+ 1065      6E656C00 
+ 1066              	.LASF36:
+ 1067 0008 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1067      43313120 
+ 1067      352E342E 
+ 1067      31203230 
+ 1067      31363036 
+ 1068 003b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1068      20726576 
+ 1068      6973696F 
+ 1068      6E203233 
+ 1068      37373135 
+ 1069 006e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1069      66756E63 
+ 1069      74696F6E 
+ 1069      2D736563 
+ 1069      74696F6E 
+ 1070              	.LASF23:
+ 1071 0096 6374726C 		.ascii	"ctrlVal\000"
+ 1071      56616C00 
+ 1072              	.LASF9:
+ 1073 009e 5F5F696E 		.ascii	"__int32_t\000"
+ 1073      7433325F 
+ 1073      7400
+ 1074              	.LASF3:
+ 1075 00a8 73686F72 		.ascii	"short unsigned int\000"
+ 1075      7420756E 
+ 1075      7369676E 
+ 1075      65642069 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 23
+
+
+ 1075      6E7400
+ 1076              	.LASF13:
+ 1077 00bb 646F7562 		.ascii	"double\000"
+ 1077      6C6500
+ 1078              	.LASF28:
+ 1079 00c2 6D75784E 		.ascii	"muxNum\000"
+ 1079      756D00
+ 1080              	.LASF12:
+ 1081 00c9 666C6F61 		.ascii	"float\000"
+ 1081      7400
+ 1082              	.LASF39:
+ 1083 00cf 72656164 		.ascii	"readRegisterDIGIO8CardX\000"
+ 1083      52656769 
+ 1083      73746572 
+ 1083      44494749 
+ 1083      4F384361 
+ 1084              	.LASF1:
+ 1085 00e7 756E7369 		.ascii	"unsigned char\000"
+ 1085      676E6564 
+ 1085      20636861 
+ 1085      7200
+ 1086              	.LASF38:
+ 1087 00f5 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\land-boards\\"
+ 1087      73657273 
+ 1087      5C48507A 
+ 1087      3432305C 
+ 1087      446F6375 
+ 1088 0122 52617350 		.ascii	"RasPi\\RPI_PSOC5\\RPI_PSOC5_CARD_TEST_STATION.cydsn"
+ 1088      695C5250 
+ 1088      495F5053 
+ 1088      4F43355C 
+ 1088      5250495F 
+ 1089 0153 00       		.ascii	"\000"
+ 1090              	.LASF5:
+ 1091 0154 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1091      20756E73 
+ 1091      69676E65 
+ 1091      6420696E 
+ 1091      7400
+ 1092              	.LASF29:
+ 1093 0166 4932434D 		.ascii	"I2CMUX_SLAVE_ADDR\000"
+ 1093      55585F53 
+ 1093      4C415645 
+ 1093      5F414444 
+ 1093      5200
+ 1094              	.LASF17:
+ 1095 0178 64656275 		.ascii	"debugRPPUIO16\000"
+ 1095      67525050 
+ 1095      55494F31 
+ 1095      3600
+ 1096              	.LASF35:
+ 1097 0186 6D795772 		.ascii	"myWrBuffer\000"
+ 1097      42756666 
+ 1097      657200
+ 1098              	.LASF34:
+ 1099 0191 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1099      52784275 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 24
+
+
+ 1099      66666572 
+ 1099      00
+ 1100              	.LASF37:
+ 1101 019e 44656275 		.ascii	"Debug_Cards.c\000"
+ 1101      675F4361 
+ 1101      7264732E 
+ 1101      6300
+ 1102              	.LASF22:
+ 1103 01ac 6374726C 		.ascii	"ctrlAdr\000"
+ 1103      41647200 
+ 1104              	.LASF21:
+ 1105 01b4 736C6176 		.ascii	"slaveAdr\000"
+ 1105      65416472 
+ 1105      00
+ 1106              	.LASF24:
+ 1107 01bd 77726974 		.ascii	"writeRegisterDIGIO8CardX\000"
+ 1107      65526567 
+ 1107      69737465 
+ 1107      72444947 
+ 1107      494F3843 
+ 1108              	.LASF18:
+ 1109 01d6 64656275 		.ascii	"debugRPPGVS\000"
+ 1109      67525050 
+ 1109      47565300 
+ 1110              	.LASF8:
+ 1111 01e2 756E7369 		.ascii	"unsigned int\000"
+ 1111      676E6564 
+ 1111      20696E74 
+ 1111      00
+ 1112              	.LASF7:
+ 1113 01ef 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1113      206C6F6E 
+ 1113      6720756E 
+ 1113      7369676E 
+ 1113      65642069 
+ 1114              	.LASF32:
+ 1115 0206 72645661 		.ascii	"rdVal\000"
+ 1115      6C00
+ 1116              	.LASF20:
+ 1117 020c 64656275 		.ascii	"debugRPPGVSCFG\000"
+ 1117      67525050 
+ 1117      47565343 
+ 1117      464700
+ 1118              	.LASF10:
+ 1119 021b 696E7433 		.ascii	"int32_t\000"
+ 1119      325F7400 
+ 1120              	.LASF16:
+ 1121 0223 73697A65 		.ascii	"sizetype\000"
+ 1121      74797065 
+ 1121      00
+ 1122              	.LASF6:
+ 1123 022c 6C6F6E67 		.ascii	"long long int\000"
+ 1123      206C6F6E 
+ 1123      6720696E 
+ 1123      7400
+ 1124              	.LASF27:
+ 1125 023a 64656275 		.ascii	"debugStr\000"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccJX2Bhy.s 			page 25
+
+
+ 1125      67537472 
+ 1125      00
+ 1126              	.LASF14:
+ 1127 0243 63686172 		.ascii	"char\000"
+ 1127      00
+ 1128              	.LASF19:
+ 1129 0248 64656275 		.ascii	"debugRASPIGVS\000"
+ 1129      67524153 
+ 1129      50494756 
+ 1129      5300
+ 1130              	.LASF30:
+ 1131 0256 634D6573 		.ascii	"cMessage\000"
+ 1131      73616765 
+ 1131      00
+ 1132              	.LASF2:
+ 1133 025f 73686F72 		.ascii	"short int\000"
+ 1133      7420696E 
+ 1133      7400
+ 1134              	.LASF11:
+ 1135 0269 75696E74 		.ascii	"uint8\000"
+ 1135      3800
+ 1136              	.LASF33:
+ 1137 026f 70617373 		.ascii	"pass1Fail0\000"
+ 1137      31466169 
+ 1137      6C3000
+ 1138              	.LASF26:
+ 1139 027a 72644275 		.ascii	"rdBuff\000"
+ 1139      666600
+ 1140              	.LASF25:
+ 1141 0281 64656275 		.ascii	"debugRPIHub\000"
+ 1141      67525049 
+ 1141      48756200 
+ 1142              	.LASF4:
+ 1143 028d 6C6F6E67 		.ascii	"long int\000"
+ 1143      20696E74 
+ 1143      00
+ 1144              	.LASF15:
+ 1145 0296 6C6F6E67 		.ascii	"long double\000"
+ 1145      20646F75 
+ 1145      626C6500 
+ 1146              	.LASF0:
+ 1147 02a2 7369676E 		.ascii	"signed char\000"
+ 1147      65642063 
+ 1147      68617200 
+ 1148              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
