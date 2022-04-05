@@ -23,6 +23,7 @@
 #include "DIGIO8Driver.h"
 #include "PSoC_Menu.h"
 #include "Debug_Cards.h"
+#include "Test_SPI_POTX2.h"
 
 enum Card_Types_Enum {
     UNSELECTED_CARD,
@@ -32,7 +33,8 @@ enum Card_Types_Enum {
     RASPIGVS,
     RASPIPLUSGVS,
     RPII2CHUB,
-    RPISPI8
+    RPISPI8,
+    SPIPOTX2
 };
 
 /* [] END OF FILE */

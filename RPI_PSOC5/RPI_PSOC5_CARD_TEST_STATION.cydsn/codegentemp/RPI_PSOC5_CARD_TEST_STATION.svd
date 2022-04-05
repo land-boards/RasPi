@@ -7,6 +7,27 @@
   <width>32</width>
   <peripherals>
     <peripheral>
+      <name>SPI_ADDR</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>SPI_ADDR_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x4000647A</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
       <name>I2C1</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
@@ -17,27 +38,9 @@
       </addressBlock>
       <registers>
         <register>
-          <name>I2C1_DATA</name>
-          <description>I2C Data Register</description>
-          <addressOffset>0x40006407</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>data</name>
-              <description>Read received data or write data to transmit.</description>
-              <lsb>0</lsb>
-              <msb>7</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-        <register>
           <name>I2C1_CSR</name>
           <description>I2C Status Register</description>
-          <addressOffset>0x40006464</addressOffset>
+          <addressOffset>0x40006467</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -97,7 +100,7 @@
         <register>
           <name>I2C1_CFG</name>
           <description>I2C Configuration Register</description>
-          <addressOffset>0x40006476</addressOffset>
+          <addressOffset>0x40006477</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -150,7 +153,7 @@
         <register>
           <name>I2C1_INT_MASK</name>
           <description>I2C Interrupt Enable Mask</description>
-          <addressOffset>0x40006484</addressOffset>
+          <addressOffset>0x40006487</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -203,6 +206,24 @@
               <description>Enables interrupt from the corresponding bit in status register.</description>
               <lsb>0</lsb>
               <msb>0</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>I2C1_DATA</name>
+          <description>I2C Data Register</description>
+          <addressOffset>0x40006505</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>data</name>
+              <description>Read received data or write data to transmit.</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
               <access>read-write</access>
             </field>
           </fields>

@@ -33,6 +33,7 @@ void printMenuOptions(void)
     putStringToUSB("5 - Select RASPI-PLUS-GVS Card\n\r");
     putStringToUSB("6 - Select RPI-I2C-HUB Card\n\r");
     putStringToUSB("7 - Select RPI-SPI8 Card\n\r");
+    putStringToUSB("8 - Select SPI-POTX2 Card (via RPI-SPI8)\n\r");
     putStringToUSB("R - Read EEPROM\n\r");
     putStringToUSB("W - Write EEPROM\n\r");
     putStringToUSB("B - Bounce LED across Card GPIOs\n\r");
@@ -91,6 +92,12 @@ void psocMenu(void)
             testRPISPI8();
             putStringToUSB("Completed Testing RPI-SPI8 input\n\r");
         }
+        else if (cardType == SPIPOTX2)
+        {
+            putStringToUSB("Testing SPI-POTX2 card (via RPI-SPI8), please wait\n\r");
+            test_SPI_POTX2();
+            putStringToUSB("Completed Testing SPI-POTX2 card (via RPI-SPI8)\n\r");
+        }
         else
         {
             putStringToUSB("Card not yet implemented\n\r");
@@ -138,6 +145,11 @@ void psocMenu(void)
             testRPISPI8();
             putStringToUSB("Completed blinking the LEDs\n\r");
         }
+        else if (cardType == SPIPOTX2)
+        {
+            putStringToUSB("Not supported\n\r");
+        }
+        
         else
         {
             putStringToUSB("Card not yet implemented\n\r");
@@ -225,6 +237,12 @@ void psocMenu(void)
         cardType = RPISPI8;
         putStringToUSB("Selected RPI-SPI8 card\n\r");
     }
+    else if (receiveBuffer[0] == '8')
+    {
+        cardType = SPIPOTX2;
+        putStringToUSB("Selected SPI-POTX2 card (vis RPI-SPI8)\n\r");
+    }
+    
     else
     {
         putStringToUSB("ERROR - Unrecognized option");

@@ -59,15 +59,14 @@
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_12_aliases.h" value="HEADER;;;;;IO_12" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_12.c" value="SOURCE_C;CortexM3;;;;IO_12" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_12.h" value="HEADER;;;;;IO_12" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\SPIM_1.c" value="SOURCE_C;CortexM3;;;;SPIM_1" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\SPIM_1.h" value="HEADER;;;;;SPIM_1" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\SPIM_1_PM.c" value="SOURCE_C;CortexM3;;;;SPIM_1" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\SPIM_1_INT.c" value="SOURCE_C;CortexM3;;;;SPIM_1" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\SPIM_1_PVT.h" value="HEADER;;;;;SPIM_1" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_10_aliases.h" value="HEADER;;;;;IO_10" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_10.c" value="SOURCE_C;CortexM3;;;;IO_10" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_10.h" value="HEADER;;;;;IO_10" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_9_aliases.h" value="HEADER;;;;;IO_9" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_9.c" value="SOURCE_C;CortexM3;;;;IO_9" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_9.h" value="HEADER;;;;;IO_9" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_11_aliases.h" value="HEADER;;;;;IO_11" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_11.c" value="SOURCE_C;CortexM3;;;;IO_11" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_11.h" value="HEADER;;;;;IO_11" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_8_aliases.h" value="HEADER;;;;;IO_8" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_8.c" value="SOURCE_C;CortexM3;;;;IO_8" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_8.h" value="HEADER;;;;;IO_8" />
@@ -101,18 +100,18 @@
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_21_aliases.h" value="HEADER;;;;;IO_21" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_21.c" value="SOURCE_C;CortexM3;;;;IO_21" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_21.h" value="HEADER;;;;;IO_21" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_17_aliases.h" value="HEADER;;;;;IO_17" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_17.c" value="SOURCE_C;CortexM3;;;;IO_17" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_17.h" value="HEADER;;;;;IO_17" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_22_aliases.h" value="HEADER;;;;;IO_22" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_22.c" value="SOURCE_C;CortexM3;;;;IO_22" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_22.h" value="HEADER;;;;;IO_22" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_18_aliases.h" value="HEADER;;;;;IO_18" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_18.c" value="SOURCE_C;CortexM3;;;;IO_18" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_18.h" value="HEADER;;;;;IO_18" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_27_aliases.h" value="HEADER;;;;;IO_27" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_27.c" value="SOURCE_C;CortexM3;;;;IO_27" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_27.h" value="HEADER;;;;;IO_27" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_22_aliases.h" value="HEADER;;;;;IO_22" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_22.c" value="SOURCE_C;CortexM3;;;;IO_22" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_22.h" value="HEADER;;;;;IO_22" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_17_aliases.h" value="HEADER;;;;;IO_17" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_17.c" value="SOURCE_C;CortexM3;;;;IO_17" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_17.h" value="HEADER;;;;;IO_17" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_23_aliases.h" value="HEADER;;;;;IO_23" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_23.c" value="SOURCE_C;CortexM3;;;;IO_23" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_23.h" value="HEADER;;;;;IO_23" />
@@ -155,12 +154,23 @@
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\I2C1_SLAVE.c" value="SOURCE_C;CortexM3;;;;I2C1" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\I2C1_MASTER.c" value="SOURCE_C;CortexM3;;;;I2C1" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\I2C1_PVT.h" value="HEADER;;;;;I2C1" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_11_aliases.h" value="HEADER;;;;;IO_11" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_11.c" value="SOURCE_C;CortexM3;;;;IO_11" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_11.h" value="HEADER;;;;;IO_11" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_9_aliases.h" value="HEADER;;;;;IO_9" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_9.c" value="SOURCE_C;CortexM3;;;;IO_9" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\IO_9.h" value="HEADER;;;;;IO_9" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\SPI_ADDR.h" value="HEADER;;;;;SPI_ADDR" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\SPI_ADDR.c" value="SOURCE_C;CortexM3;;;;SPI_ADDR" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\SPI_ADDR_PM.c" value="SOURCE_C;CortexM3;;;;SPI_ADDR" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\USBUART_Dm_aliases.h" value="HEADER;;;;;USBUART_Dm" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\USBUART_Dm.c" value="SOURCE_C;CortexM3;;;;USBUART_Dm" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\USBUART_Dm.h" value="HEADER;;;;;USBUART_Dm" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\USBUART_Dp_aliases.h" value="HEADER;;;;;USBUART_Dp" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\USBUART_Dp.c" value="SOURCE_C;CortexM3;;;;USBUART_Dp" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\USBUART_Dp.h" value="HEADER;;;;;USBUART_Dp" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\SPIM_1_IntClock.c" value="SOURCE_C;CortexM3;;;;SPIM_1_IntClock" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\SPIM_1_IntClock.h" value="HEADER;;;;;SPIM_1_IntClock" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cy_em_eeprom.c" value="SOURCE_C;CortexM3;;;;Em_EEPROM_Dynamic" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cy_em_eeprom.h" value="HEADER;;;;;Em_EEPROM_Dynamic" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cm3gcc.ld" value="LINKER_SCRIPT;;;b98f980c-3bd1-4fc7-a887-c56a20a46fdd;;cy_boot" />

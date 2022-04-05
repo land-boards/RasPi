@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
-  <block name="IO_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IO_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IO_25" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IO_27" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IO_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="LED" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SPI_ADDR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="SPI_ADDR_CONTROL_REG" address="0x4000647A" bitWidth="8" desc="" hidden="false" />
+  </block>
+  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SCL1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SDA1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="I2C1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="or_udb" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -30,10 +41,7 @@
     <block name="OneTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="bI2C_UDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="Vmux_scl_out" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="I2C1_DATA" address="0x40006407" bitWidth="8" desc="I2C Data Register" hidden="false">
-      <field name="data" from="7" to="0" access="RW" resetVal="" desc="Read received data or write data to transmit." hidden="false" />
-    </register>
-    <register name="I2C1_CSR" address="0x40006464" bitWidth="8" desc="I2C Status Register" hidden="false">
+    <register name="I2C1_CSR" address="0x40006467" bitWidth="8" desc="I2C Status Register" hidden="false">
       <field name="lost_arb" from="6" to="6" access="R" resetVal="" desc="If set, indicates arbitration was lost (multi-master and multi-master-slave modes)." hidden="false" />
       <field name="stop_status" from="5" to="5" access="R" resetVal="" desc="If set, indicates a Stop condition was detected on the bus." hidden="false" />
       <field name="bus_busy" from="4" to="4" access="R" resetVal="" desc="If set, indicates the bus is busy. Data is currently being transmitted or received." hidden="false" />
@@ -42,7 +50,7 @@
       <field name="lrb" from="1" to="1" access="R" resetVal="" desc="Last Received Bit. Indicates the state of the last received bit, which is the ACK/NAK received for the last byte transmitted. Cleared = ACK and set = NAK." hidden="false" />
       <field name="byte_complete" from="0" to="0" access="R" resetVal="" desc="Transmit or receive status since the last read of this register. In Transmit mode this bit indicates that eight bits of data plus ACK/NAK have been transmitted since the last read. In Receive mode this bit indicates that eight bits of data have been received since the last read of this register." hidden="false" />
     </register>
-    <register name="I2C1_CFG" address="0x40006476" bitWidth="8" desc="I2C Configuration Register" hidden="false">
+    <register name="I2C1_CFG" address="0x40006477" bitWidth="8" desc="I2C Configuration Register" hidden="false">
       <field name="start_gen" from="7" to="7" access="RW" resetVal="" desc="Set to 1 to generate a Start condition on the bus. This bit must be cleared by firmware before initiating the next transaction." hidden="false" />
       <field name="stop_gen" from="6" to="6" access="RW" resetVal="" desc="Set to 1 to generate a Stop condition on the bus. This bit must be cleared by firmware before initiating the next transaction." hidden="false" />
       <field name="restart_gen" from="5" to="5" access="RW" resetVal="" desc="Set to 1 to generate a Restart condition on the bus. This bit must be cleared by firmware after a Restart condition is generated." hidden="false" />
@@ -50,7 +58,7 @@
       <field name="transmit" from="2" to="2" access="RW" resetVal="" desc="Set to 1 to set the current mode to transmit or clear to 0 to receive a byte of data. This bit must be cleared by firmware before starting the next transmit or receive transaction." hidden="false" />
       <field name="master_en" from="1" to="1" access="RW" resetVal="" desc="Set to 1 to enable the master functionality." hidden="false" />
     </register>
-    <register name="I2C1_INT_MASK" address="0x40006484" bitWidth="8" desc="I2C Interrupt Enable Mask" hidden="false">
+    <register name="I2C1_INT_MASK" address="0x40006487" bitWidth="8" desc="I2C Interrupt Enable Mask" hidden="false">
       <field name="lost_arb" from="6" to="6" access="RW" resetVal="" desc="Enables interrupt from the corresponding bit in status register." hidden="false" />
       <field name="stop_status" from="5" to="5" access="RW" resetVal="" desc="Enables interrupt from the corresponding bit in status register." hidden="false" />
       <field name="bus_busy" from="4" to="4" access="RW" resetVal="" desc="Enables interrupt from the corresponding bit in status register." hidden="false" />
@@ -59,19 +67,21 @@
       <field name="lrb" from="1" to="1" access="RW" resetVal="" desc="Enables interrupt from the corresponding bit in status register." hidden="false" />
       <field name="byte_complete" from="0" to="0" access="RW" resetVal="" desc="Enables interrupt from the corresponding bit in status register." hidden="false" />
     </register>
+    <register name="I2C1_DATA" address="0x40006505" bitWidth="8" desc="I2C Data Register" hidden="false">
+      <field name="data" from="7" to="0" access="RW" resetVal="" desc="Read received data or write data to transmit." hidden="false" />
+    </register>
   </block>
   <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_constant_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="LED" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SDA1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SCL1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SPIM_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="VirtualMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="BSPIM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  </block>
   <block name="IO_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IO_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IO_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SDA0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1019,14 +1029,15 @@
       <field name="timeout_period_highnibble" from="3" to="0" access="RW" resetVal="" desc="The configuration of this register along with that in register TMOUT_CFG1 to define the number units before SCL or SDA stuck low timeout triggers the I2C interrupt. The one unit is equal to SYSCLK/1024. The TMOUT_CFG1 defines higher octet of the period." hidden="false" />
     </register>
   </block>
-  <block name="IO_20" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_16" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IO_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_20" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IO_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="IO_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_16" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IO_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IO_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
 </blockRegMap>
