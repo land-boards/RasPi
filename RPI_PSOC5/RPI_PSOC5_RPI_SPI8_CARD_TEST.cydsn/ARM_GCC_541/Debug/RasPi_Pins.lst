@@ -1,0 +1,1429 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"RasPi_Pins.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.setRasPiPinValue,"ax",%progbits
+  20              		.align	2
+  21              		.global	setRasPiPinValue
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	setRasPiPinValue, %function
+  25              	setRasPiPinValue:
+  26              	.LFB63:
+  27              		.file 1 "RasPi_Pins.c"
+   1:RasPi_Pins.c  **** /* ========================================
+   2:RasPi_Pins.c  ****  *
+   3:RasPi_Pins.c  ****  * Copyright LAND BOARDS, LLC, 2019
+   4:RasPi_Pins.c  ****  * All Rights Reserved
+   5:RasPi_Pins.c  ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:RasPi_Pins.c  ****  *
+   7:RasPi_Pins.c  ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:RasPi_Pins.c  ****  * WHICH IS THE PROPERTY OF Land Boards.
+   9:RasPi_Pins.c  ****  *
+  10:RasPi_Pins.c  ****  * ========================================
+  11:RasPi_Pins.c  **** */
+  12:RasPi_Pins.c  **** 
+  13:RasPi_Pins.c  **** #include "RPI_PSOC5.h"
+  14:RasPi_Pins.c  **** 
+  15:RasPi_Pins.c  **** void setRasPiPinValue(uint8 bcmPinNum, uint8 value)
+  16:RasPi_Pins.c  **** {
+  28              		.loc 1 16 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              		.cfi_def_cfa_offset 16
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  40 0006 0346     		mov	r3, r0
+  41 0008 0A46     		mov	r2, r1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 2
+
+
+  42 000a FB71     		strb	r3, [r7, #7]
+  43 000c 1346     		mov	r3, r2
+  44 000e BB71     		strb	r3, [r7, #6]
+  17:RasPi_Pins.c  ****     switch (bcmPinNum)
+  45              		.loc 1 17 0
+  46 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  47 0012 192B     		cmp	r3, #25
+  48 0014 00F2BA80 		bhi	.L30
+  49 0018 01A2     		adr	r2, .L4
+  50 001a 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+  51 001e 00BF     		.p2align 2
+  52              	.L4:
+  53 0020 89000000 		.word	.L3+1
+  54 0024 93000000 		.word	.L5+1
+  55 0028 9D000000 		.word	.L6+1
+  56 002c A7000000 		.word	.L7+1
+  57 0030 B1000000 		.word	.L8+1
+  58 0034 BB000000 		.word	.L9+1
+  59 0038 C5000000 		.word	.L10+1
+  60 003c CF000000 		.word	.L11+1
+  61 0040 D9000000 		.word	.L12+1
+  62 0044 E3000000 		.word	.L13+1
+  63 0048 ED000000 		.word	.L14+1
+  64 004c F7000000 		.word	.L15+1
+  65 0050 01010000 		.word	.L16+1
+  66 0054 0B010000 		.word	.L17+1
+  67 0058 15010000 		.word	.L18+1
+  68 005c 1F010000 		.word	.L19+1
+  69 0060 29010000 		.word	.L20+1
+  70 0064 33010000 		.word	.L21+1
+  71 0068 3D010000 		.word	.L22+1
+  72 006c 47010000 		.word	.L23+1
+  73 0070 51010000 		.word	.L24+1
+  74 0074 5B010000 		.word	.L25+1
+  75 0078 65010000 		.word	.L26+1
+  76 007c 6F010000 		.word	.L27+1
+  77 0080 79010000 		.word	.L28+1
+  78 0084 83010000 		.word	.L29+1
+  79              		.p2align 1
+  80              	.L3:
+  18:RasPi_Pins.c  ****     {
+  19:RasPi_Pins.c  ****         case IO_2:
+  20:RasPi_Pins.c  ****             IO_2_Write(value);
+  81              		.loc 1 20 0
+  82 0088 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+  83 008a 1846     		mov	r0, r3
+  84 008c FFF7FEFF 		bl	IO_2_Write
+  21:RasPi_Pins.c  ****             break;
+  85              		.loc 1 21 0
+  86 0090 7CE0     		b	.L2
+  87              	.L5:
+  22:RasPi_Pins.c  ****         case IO_3:
+  23:RasPi_Pins.c  ****             IO_3_Write(value);
+  88              		.loc 1 23 0
+  89 0092 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+  90 0094 1846     		mov	r0, r3
+  91 0096 FFF7FEFF 		bl	IO_3_Write
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 3
+
+
+  24:RasPi_Pins.c  ****             break;
+  92              		.loc 1 24 0
+  93 009a 77E0     		b	.L2
+  94              	.L6:
+  25:RasPi_Pins.c  ****         case IO_4:
+  26:RasPi_Pins.c  ****             IO_4_Write(value);
+  95              		.loc 1 26 0
+  96 009c BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+  97 009e 1846     		mov	r0, r3
+  98 00a0 FFF7FEFF 		bl	IO_4_Write
+  27:RasPi_Pins.c  ****             break;
+  99              		.loc 1 27 0
+ 100 00a4 72E0     		b	.L2
+ 101              	.L7:
+  28:RasPi_Pins.c  ****         case IO_14:
+  29:RasPi_Pins.c  ****             IO_14_Write(value);
+ 102              		.loc 1 29 0
+ 103 00a6 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 104 00a8 1846     		mov	r0, r3
+ 105 00aa FFF7FEFF 		bl	IO_14_Write
+  30:RasPi_Pins.c  ****             break;
+ 106              		.loc 1 30 0
+ 107 00ae 6DE0     		b	.L2
+ 108              	.L8:
+  31:RasPi_Pins.c  ****         case IO_15:
+  32:RasPi_Pins.c  ****             IO_15_Write(value);
+ 109              		.loc 1 32 0
+ 110 00b0 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 111 00b2 1846     		mov	r0, r3
+ 112 00b4 FFF7FEFF 		bl	IO_15_Write
+  33:RasPi_Pins.c  ****             break;
+ 113              		.loc 1 33 0
+ 114 00b8 68E0     		b	.L2
+ 115              	.L9:
+  34:RasPi_Pins.c  ****         case IO_17:
+  35:RasPi_Pins.c  ****             IO_17_Write(value);
+ 116              		.loc 1 35 0
+ 117 00ba BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 118 00bc 1846     		mov	r0, r3
+ 119 00be FFF7FEFF 		bl	IO_17_Write
+  36:RasPi_Pins.c  ****             break;
+ 120              		.loc 1 36 0
+ 121 00c2 63E0     		b	.L2
+ 122              	.L10:
+  37:RasPi_Pins.c  ****         case IO_18:
+  38:RasPi_Pins.c  ****             IO_18_Write(value);
+ 123              		.loc 1 38 0
+ 124 00c4 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 125 00c6 1846     		mov	r0, r3
+ 126 00c8 FFF7FEFF 		bl	IO_18_Write
+  39:RasPi_Pins.c  ****             break;
+ 127              		.loc 1 39 0
+ 128 00cc 5EE0     		b	.L2
+ 129              	.L11:
+  40:RasPi_Pins.c  ****         case IO_27:
+  41:RasPi_Pins.c  ****             IO_27_Write(value);
+ 130              		.loc 1 41 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 4
+
+
+ 131 00ce BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 132 00d0 1846     		mov	r0, r3
+ 133 00d2 FFF7FEFF 		bl	IO_27_Write
+  42:RasPi_Pins.c  ****             break;
+ 134              		.loc 1 42 0
+ 135 00d6 59E0     		b	.L2
+ 136              	.L12:
+  43:RasPi_Pins.c  ****         case IO_22:
+  44:RasPi_Pins.c  ****             IO_22_Write(value);
+ 137              		.loc 1 44 0
+ 138 00d8 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 139 00da 1846     		mov	r0, r3
+ 140 00dc FFF7FEFF 		bl	IO_22_Write
+  45:RasPi_Pins.c  ****             break;
+ 141              		.loc 1 45 0
+ 142 00e0 54E0     		b	.L2
+ 143              	.L13:
+  46:RasPi_Pins.c  ****         case IO_23:
+  47:RasPi_Pins.c  ****             IO_23_Write(value);
+ 144              		.loc 1 47 0
+ 145 00e2 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 146 00e4 1846     		mov	r0, r3
+ 147 00e6 FFF7FEFF 		bl	IO_23_Write
+  48:RasPi_Pins.c  ****             break;
+ 148              		.loc 1 48 0
+ 149 00ea 4FE0     		b	.L2
+ 150              	.L14:
+  49:RasPi_Pins.c  ****         case IO_24:
+  50:RasPi_Pins.c  ****             IO_24_Write(value);
+ 151              		.loc 1 50 0
+ 152 00ec BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 153 00ee 1846     		mov	r0, r3
+ 154 00f0 FFF7FEFF 		bl	IO_24_Write
+  51:RasPi_Pins.c  ****             break;
+ 155              		.loc 1 51 0
+ 156 00f4 4AE0     		b	.L2
+ 157              	.L15:
+  52:RasPi_Pins.c  ****         case IO_10:
+  53:RasPi_Pins.c  ****             IO_10_Write(value);
+ 158              		.loc 1 53 0
+ 159 00f6 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 160 00f8 1846     		mov	r0, r3
+ 161 00fa FFF7FEFF 		bl	IO_10_Write
+  54:RasPi_Pins.c  ****             break;
+ 162              		.loc 1 54 0
+ 163 00fe 45E0     		b	.L2
+ 164              	.L16:
+  55:RasPi_Pins.c  ****         case IO_9:
+  56:RasPi_Pins.c  ****             IO_9_Write(value);
+ 165              		.loc 1 56 0
+ 166 0100 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 167 0102 1846     		mov	r0, r3
+ 168 0104 FFF7FEFF 		bl	IO_9_Write
+  57:RasPi_Pins.c  ****             break;
+ 169              		.loc 1 57 0
+ 170 0108 40E0     		b	.L2
+ 171              	.L17:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 5
+
+
+  58:RasPi_Pins.c  ****         case IO_25:
+  59:RasPi_Pins.c  ****             IO_25_Write(value);
+ 172              		.loc 1 59 0
+ 173 010a BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 174 010c 1846     		mov	r0, r3
+ 175 010e FFF7FEFF 		bl	IO_25_Write
+  60:RasPi_Pins.c  ****             break;
+ 176              		.loc 1 60 0
+ 177 0112 3BE0     		b	.L2
+ 178              	.L18:
+  61:RasPi_Pins.c  ****         case IO_11:
+  62:RasPi_Pins.c  ****             IO_11_Write(value);
+ 179              		.loc 1 62 0
+ 180 0114 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 181 0116 1846     		mov	r0, r3
+ 182 0118 FFF7FEFF 		bl	IO_11_Write
+  63:RasPi_Pins.c  ****             break;
+ 183              		.loc 1 63 0
+ 184 011c 36E0     		b	.L2
+ 185              	.L19:
+  64:RasPi_Pins.c  ****         case IO_8:
+  65:RasPi_Pins.c  ****             IO_8_Write(value);
+ 186              		.loc 1 65 0
+ 187 011e BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 188 0120 1846     		mov	r0, r3
+ 189 0122 FFF7FEFF 		bl	IO_8_Write
+  66:RasPi_Pins.c  ****             break;
+ 190              		.loc 1 66 0
+ 191 0126 31E0     		b	.L2
+ 192              	.L20:
+  67:RasPi_Pins.c  ****         case IO_7:
+  68:RasPi_Pins.c  ****             IO_7_Write(value);
+ 193              		.loc 1 68 0
+ 194 0128 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 195 012a 1846     		mov	r0, r3
+ 196 012c FFF7FEFF 		bl	IO_7_Write
+  69:RasPi_Pins.c  ****             break;
+ 197              		.loc 1 69 0
+ 198 0130 2CE0     		b	.L2
+ 199              	.L21:
+  70:RasPi_Pins.c  ****         case IO_5:
+  71:RasPi_Pins.c  ****             IO_5_Write(value);
+ 200              		.loc 1 71 0
+ 201 0132 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 202 0134 1846     		mov	r0, r3
+ 203 0136 FFF7FEFF 		bl	IO_5_Write
+  72:RasPi_Pins.c  ****             break;
+ 204              		.loc 1 72 0
+ 205 013a 27E0     		b	.L2
+ 206              	.L22:
+  73:RasPi_Pins.c  ****         case IO_6:
+  74:RasPi_Pins.c  ****             IO_6_Write(value);
+ 207              		.loc 1 74 0
+ 208 013c BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 209 013e 1846     		mov	r0, r3
+ 210 0140 FFF7FEFF 		bl	IO_6_Write
+  75:RasPi_Pins.c  ****             break;
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 6
+
+
+ 211              		.loc 1 75 0
+ 212 0144 22E0     		b	.L2
+ 213              	.L23:
+  76:RasPi_Pins.c  ****         case IO_12:
+  77:RasPi_Pins.c  ****             IO_12_Write(value);
+ 214              		.loc 1 77 0
+ 215 0146 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 216 0148 1846     		mov	r0, r3
+ 217 014a FFF7FEFF 		bl	IO_12_Write
+  78:RasPi_Pins.c  ****             break;
+ 218              		.loc 1 78 0
+ 219 014e 1DE0     		b	.L2
+ 220              	.L24:
+  79:RasPi_Pins.c  ****         case IO_13:
+  80:RasPi_Pins.c  ****             IO_13_Write(value);
+ 221              		.loc 1 80 0
+ 222 0150 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 223 0152 1846     		mov	r0, r3
+ 224 0154 FFF7FEFF 		bl	IO_13_Write
+  81:RasPi_Pins.c  ****             break;
+ 225              		.loc 1 81 0
+ 226 0158 18E0     		b	.L2
+ 227              	.L25:
+  82:RasPi_Pins.c  ****         case IO_19:
+  83:RasPi_Pins.c  ****             IO_19_Write(value);
+ 228              		.loc 1 83 0
+ 229 015a BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 230 015c 1846     		mov	r0, r3
+ 231 015e FFF7FEFF 		bl	IO_19_Write
+  84:RasPi_Pins.c  ****             break;
+ 232              		.loc 1 84 0
+ 233 0162 13E0     		b	.L2
+ 234              	.L26:
+  85:RasPi_Pins.c  ****         case IO_16:
+  86:RasPi_Pins.c  ****             IO_16_Write(value);
+ 235              		.loc 1 86 0
+ 236 0164 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 237 0166 1846     		mov	r0, r3
+ 238 0168 FFF7FEFF 		bl	IO_16_Write
+  87:RasPi_Pins.c  ****             break;
+ 239              		.loc 1 87 0
+ 240 016c 0EE0     		b	.L2
+ 241              	.L27:
+  88:RasPi_Pins.c  ****         case IO_26:
+  89:RasPi_Pins.c  ****             IO_26_Write(value);
+ 242              		.loc 1 89 0
+ 243 016e BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 244 0170 1846     		mov	r0, r3
+ 245 0172 FFF7FEFF 		bl	IO_26_Write
+  90:RasPi_Pins.c  ****             break;
+ 246              		.loc 1 90 0
+ 247 0176 09E0     		b	.L2
+ 248              	.L28:
+  91:RasPi_Pins.c  ****         case IO_20:
+  92:RasPi_Pins.c  ****             IO_20_Write(value);
+ 249              		.loc 1 92 0
+ 250 0178 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 7
+
+
+ 251 017a 1846     		mov	r0, r3
+ 252 017c FFF7FEFF 		bl	IO_20_Write
+  93:RasPi_Pins.c  ****             break;
+ 253              		.loc 1 93 0
+ 254 0180 04E0     		b	.L2
+ 255              	.L29:
+  94:RasPi_Pins.c  ****         case IO_21:
+  95:RasPi_Pins.c  ****             IO_21_Write(value);
+ 256              		.loc 1 95 0
+ 257 0182 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 258 0184 1846     		mov	r0, r3
+ 259 0186 FFF7FEFF 		bl	IO_21_Write
+  96:RasPi_Pins.c  ****             break;
+ 260              		.loc 1 96 0
+ 261 018a 00BF     		nop
+ 262              	.L2:
+ 263              	.L30:
+  97:RasPi_Pins.c  ****         }
+  98:RasPi_Pins.c  **** }
+ 264              		.loc 1 98 0
+ 265 018c 00BF     		nop
+ 266 018e 0837     		adds	r7, r7, #8
+ 267              		.cfi_def_cfa_offset 8
+ 268 0190 BD46     		mov	sp, r7
+ 269              		.cfi_def_cfa_register 13
+ 270              		@ sp needed
+ 271 0192 80BD     		pop	{r7, pc}
+ 272              		.cfi_endproc
+ 273              	.LFE63:
+ 274              		.size	setRasPiPinValue, .-setRasPiPinValue
+ 275              		.section	.text.setRasPiPinDrive,"ax",%progbits
+ 276              		.align	2
+ 277              		.global	setRasPiPinDrive
+ 278              		.thumb
+ 279              		.thumb_func
+ 280              		.type	setRasPiPinDrive, %function
+ 281              	setRasPiPinDrive:
+ 282              	.LFB64:
+  99:RasPi_Pins.c  **** 
+ 100:RasPi_Pins.c  **** // PIN_DM_STRONG
+ 101:RasPi_Pins.c  **** 
+ 102:RasPi_Pins.c  **** void setRasPiPinDrive(uint8 bcmPinNum, uint8 value)
+ 103:RasPi_Pins.c  **** {
+ 283              		.loc 1 103 0
+ 284              		.cfi_startproc
+ 285              		@ args = 0, pretend = 0, frame = 8
+ 286              		@ frame_needed = 1, uses_anonymous_args = 0
+ 287 0000 80B5     		push	{r7, lr}
+ 288              		.cfi_def_cfa_offset 8
+ 289              		.cfi_offset 7, -8
+ 290              		.cfi_offset 14, -4
+ 291 0002 82B0     		sub	sp, sp, #8
+ 292              		.cfi_def_cfa_offset 16
+ 293 0004 00AF     		add	r7, sp, #0
+ 294              		.cfi_def_cfa_register 7
+ 295 0006 0346     		mov	r3, r0
+ 296 0008 0A46     		mov	r2, r1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 8
+
+
+ 297 000a FB71     		strb	r3, [r7, #7]
+ 298 000c 1346     		mov	r3, r2
+ 299 000e BB71     		strb	r3, [r7, #6]
+ 104:RasPi_Pins.c  ****     switch (bcmPinNum)
+ 300              		.loc 1 104 0
+ 301 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 302 0012 192B     		cmp	r3, #25
+ 303 0014 00F2BA80 		bhi	.L60
+ 304 0018 01A2     		adr	r2, .L34
+ 305 001a 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 306 001e 00BF     		.p2align 2
+ 307              	.L34:
+ 308 0020 89000000 		.word	.L33+1
+ 309 0024 93000000 		.word	.L35+1
+ 310 0028 9D000000 		.word	.L36+1
+ 311 002c A7000000 		.word	.L37+1
+ 312 0030 B1000000 		.word	.L38+1
+ 313 0034 BB000000 		.word	.L39+1
+ 314 0038 C5000000 		.word	.L40+1
+ 315 003c CF000000 		.word	.L41+1
+ 316 0040 D9000000 		.word	.L42+1
+ 317 0044 E3000000 		.word	.L43+1
+ 318 0048 ED000000 		.word	.L44+1
+ 319 004c F7000000 		.word	.L45+1
+ 320 0050 01010000 		.word	.L46+1
+ 321 0054 0B010000 		.word	.L47+1
+ 322 0058 15010000 		.word	.L48+1
+ 323 005c 1F010000 		.word	.L49+1
+ 324 0060 29010000 		.word	.L50+1
+ 325 0064 33010000 		.word	.L51+1
+ 326 0068 3D010000 		.word	.L52+1
+ 327 006c 47010000 		.word	.L53+1
+ 328 0070 51010000 		.word	.L54+1
+ 329 0074 5B010000 		.word	.L55+1
+ 330 0078 65010000 		.word	.L56+1
+ 331 007c 6F010000 		.word	.L57+1
+ 332 0080 79010000 		.word	.L58+1
+ 333 0084 83010000 		.word	.L59+1
+ 334              		.p2align 1
+ 335              	.L33:
+ 105:RasPi_Pins.c  ****     {
+ 106:RasPi_Pins.c  ****         case IO_2:
+ 107:RasPi_Pins.c  ****             IO_2_SetDriveMode(value);
+ 336              		.loc 1 107 0
+ 337 0088 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 338 008a 1846     		mov	r0, r3
+ 339 008c FFF7FEFF 		bl	IO_2_SetDriveMode
+ 108:RasPi_Pins.c  ****             break;
+ 340              		.loc 1 108 0
+ 341 0090 7CE0     		b	.L32
+ 342              	.L35:
+ 109:RasPi_Pins.c  ****         case IO_3:
+ 110:RasPi_Pins.c  ****             IO_3_SetDriveMode(value);
+ 343              		.loc 1 110 0
+ 344 0092 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 345 0094 1846     		mov	r0, r3
+ 346 0096 FFF7FEFF 		bl	IO_3_SetDriveMode
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 9
+
+
+ 111:RasPi_Pins.c  ****             break;
+ 347              		.loc 1 111 0
+ 348 009a 77E0     		b	.L32
+ 349              	.L36:
+ 112:RasPi_Pins.c  ****         case IO_4:
+ 113:RasPi_Pins.c  ****             IO_4_SetDriveMode(value);
+ 350              		.loc 1 113 0
+ 351 009c BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 352 009e 1846     		mov	r0, r3
+ 353 00a0 FFF7FEFF 		bl	IO_4_SetDriveMode
+ 114:RasPi_Pins.c  ****             break;
+ 354              		.loc 1 114 0
+ 355 00a4 72E0     		b	.L32
+ 356              	.L37:
+ 115:RasPi_Pins.c  ****         case IO_14:
+ 116:RasPi_Pins.c  ****             IO_14_SetDriveMode(value);
+ 357              		.loc 1 116 0
+ 358 00a6 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 359 00a8 1846     		mov	r0, r3
+ 360 00aa FFF7FEFF 		bl	IO_14_SetDriveMode
+ 117:RasPi_Pins.c  ****             break;
+ 361              		.loc 1 117 0
+ 362 00ae 6DE0     		b	.L32
+ 363              	.L38:
+ 118:RasPi_Pins.c  ****         case IO_15:
+ 119:RasPi_Pins.c  ****             IO_14_SetDriveMode(value);
+ 364              		.loc 1 119 0
+ 365 00b0 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 366 00b2 1846     		mov	r0, r3
+ 367 00b4 FFF7FEFF 		bl	IO_14_SetDriveMode
+ 120:RasPi_Pins.c  ****             break;
+ 368              		.loc 1 120 0
+ 369 00b8 68E0     		b	.L32
+ 370              	.L39:
+ 121:RasPi_Pins.c  ****         case IO_17:
+ 122:RasPi_Pins.c  ****             IO_17_SetDriveMode(value);
+ 371              		.loc 1 122 0
+ 372 00ba BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 373 00bc 1846     		mov	r0, r3
+ 374 00be FFF7FEFF 		bl	IO_17_SetDriveMode
+ 123:RasPi_Pins.c  ****             break;
+ 375              		.loc 1 123 0
+ 376 00c2 63E0     		b	.L32
+ 377              	.L40:
+ 124:RasPi_Pins.c  ****         case IO_18:
+ 125:RasPi_Pins.c  ****             IO_18_SetDriveMode(value);
+ 378              		.loc 1 125 0
+ 379 00c4 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 380 00c6 1846     		mov	r0, r3
+ 381 00c8 FFF7FEFF 		bl	IO_18_SetDriveMode
+ 126:RasPi_Pins.c  ****             break;
+ 382              		.loc 1 126 0
+ 383 00cc 5EE0     		b	.L32
+ 384              	.L41:
+ 127:RasPi_Pins.c  ****         case IO_27:
+ 128:RasPi_Pins.c  ****             IO_27_SetDriveMode(value);
+ 385              		.loc 1 128 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 10
+
+
+ 386 00ce BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 387 00d0 1846     		mov	r0, r3
+ 388 00d2 FFF7FEFF 		bl	IO_27_SetDriveMode
+ 129:RasPi_Pins.c  ****             break;
+ 389              		.loc 1 129 0
+ 390 00d6 59E0     		b	.L32
+ 391              	.L42:
+ 130:RasPi_Pins.c  ****         case IO_22:
+ 131:RasPi_Pins.c  ****             IO_22_SetDriveMode(value);
+ 392              		.loc 1 131 0
+ 393 00d8 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 394 00da 1846     		mov	r0, r3
+ 395 00dc FFF7FEFF 		bl	IO_22_SetDriveMode
+ 132:RasPi_Pins.c  ****             break;
+ 396              		.loc 1 132 0
+ 397 00e0 54E0     		b	.L32
+ 398              	.L43:
+ 133:RasPi_Pins.c  ****         case IO_23:
+ 134:RasPi_Pins.c  ****             IO_23_SetDriveMode(value);
+ 399              		.loc 1 134 0
+ 400 00e2 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 401 00e4 1846     		mov	r0, r3
+ 402 00e6 FFF7FEFF 		bl	IO_23_SetDriveMode
+ 135:RasPi_Pins.c  ****             break;
+ 403              		.loc 1 135 0
+ 404 00ea 4FE0     		b	.L32
+ 405              	.L44:
+ 136:RasPi_Pins.c  ****         case IO_24:
+ 137:RasPi_Pins.c  ****             IO_24_SetDriveMode(value);
+ 406              		.loc 1 137 0
+ 407 00ec BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 408 00ee 1846     		mov	r0, r3
+ 409 00f0 FFF7FEFF 		bl	IO_24_SetDriveMode
+ 138:RasPi_Pins.c  ****             break;
+ 410              		.loc 1 138 0
+ 411 00f4 4AE0     		b	.L32
+ 412              	.L45:
+ 139:RasPi_Pins.c  ****         case IO_10:
+ 140:RasPi_Pins.c  ****             IO_10_SetDriveMode(value);
+ 413              		.loc 1 140 0
+ 414 00f6 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 415 00f8 1846     		mov	r0, r3
+ 416 00fa FFF7FEFF 		bl	IO_10_SetDriveMode
+ 141:RasPi_Pins.c  ****             break;
+ 417              		.loc 1 141 0
+ 418 00fe 45E0     		b	.L32
+ 419              	.L46:
+ 142:RasPi_Pins.c  ****         case IO_9:
+ 143:RasPi_Pins.c  ****             IO_9_SetDriveMode(value);
+ 420              		.loc 1 143 0
+ 421 0100 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 422 0102 1846     		mov	r0, r3
+ 423 0104 FFF7FEFF 		bl	IO_9_SetDriveMode
+ 144:RasPi_Pins.c  ****             break;
+ 424              		.loc 1 144 0
+ 425 0108 40E0     		b	.L32
+ 426              	.L47:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 11
+
+
+ 145:RasPi_Pins.c  ****         case IO_25:
+ 146:RasPi_Pins.c  ****             IO_25_SetDriveMode(value);
+ 427              		.loc 1 146 0
+ 428 010a BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 429 010c 1846     		mov	r0, r3
+ 430 010e FFF7FEFF 		bl	IO_25_SetDriveMode
+ 147:RasPi_Pins.c  ****             break;
+ 431              		.loc 1 147 0
+ 432 0112 3BE0     		b	.L32
+ 433              	.L48:
+ 148:RasPi_Pins.c  ****         case IO_11:
+ 149:RasPi_Pins.c  ****             IO_11_SetDriveMode(value);
+ 434              		.loc 1 149 0
+ 435 0114 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 436 0116 1846     		mov	r0, r3
+ 437 0118 FFF7FEFF 		bl	IO_11_SetDriveMode
+ 150:RasPi_Pins.c  ****             break;
+ 438              		.loc 1 150 0
+ 439 011c 36E0     		b	.L32
+ 440              	.L49:
+ 151:RasPi_Pins.c  ****         case IO_8:
+ 152:RasPi_Pins.c  ****             IO_8_SetDriveMode(value);
+ 441              		.loc 1 152 0
+ 442 011e BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 443 0120 1846     		mov	r0, r3
+ 444 0122 FFF7FEFF 		bl	IO_8_SetDriveMode
+ 153:RasPi_Pins.c  ****             break;
+ 445              		.loc 1 153 0
+ 446 0126 31E0     		b	.L32
+ 447              	.L50:
+ 154:RasPi_Pins.c  ****         case IO_7:
+ 155:RasPi_Pins.c  ****             IO_7_SetDriveMode(value);
+ 448              		.loc 1 155 0
+ 449 0128 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 450 012a 1846     		mov	r0, r3
+ 451 012c FFF7FEFF 		bl	IO_7_SetDriveMode
+ 156:RasPi_Pins.c  ****             break;
+ 452              		.loc 1 156 0
+ 453 0130 2CE0     		b	.L32
+ 454              	.L51:
+ 157:RasPi_Pins.c  ****         case IO_5:
+ 158:RasPi_Pins.c  ****             IO_5_SetDriveMode(value);
+ 455              		.loc 1 158 0
+ 456 0132 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 457 0134 1846     		mov	r0, r3
+ 458 0136 FFF7FEFF 		bl	IO_5_SetDriveMode
+ 159:RasPi_Pins.c  ****             break;
+ 459              		.loc 1 159 0
+ 460 013a 27E0     		b	.L32
+ 461              	.L52:
+ 160:RasPi_Pins.c  ****         case IO_6:
+ 161:RasPi_Pins.c  ****             IO_6_SetDriveMode(value);
+ 462              		.loc 1 161 0
+ 463 013c BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 464 013e 1846     		mov	r0, r3
+ 465 0140 FFF7FEFF 		bl	IO_6_SetDriveMode
+ 162:RasPi_Pins.c  ****             break;
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 12
+
+
+ 466              		.loc 1 162 0
+ 467 0144 22E0     		b	.L32
+ 468              	.L53:
+ 163:RasPi_Pins.c  ****         case IO_12:
+ 164:RasPi_Pins.c  ****             IO_12_SetDriveMode(value);
+ 469              		.loc 1 164 0
+ 470 0146 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 471 0148 1846     		mov	r0, r3
+ 472 014a FFF7FEFF 		bl	IO_12_SetDriveMode
+ 165:RasPi_Pins.c  ****             break;
+ 473              		.loc 1 165 0
+ 474 014e 1DE0     		b	.L32
+ 475              	.L54:
+ 166:RasPi_Pins.c  ****         case IO_13:
+ 167:RasPi_Pins.c  ****             IO_13_SetDriveMode(value);
+ 476              		.loc 1 167 0
+ 477 0150 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 478 0152 1846     		mov	r0, r3
+ 479 0154 FFF7FEFF 		bl	IO_13_SetDriveMode
+ 168:RasPi_Pins.c  ****             break;
+ 480              		.loc 1 168 0
+ 481 0158 18E0     		b	.L32
+ 482              	.L55:
+ 169:RasPi_Pins.c  ****         case IO_19:
+ 170:RasPi_Pins.c  ****             IO_19_SetDriveMode(value);
+ 483              		.loc 1 170 0
+ 484 015a BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 485 015c 1846     		mov	r0, r3
+ 486 015e FFF7FEFF 		bl	IO_19_SetDriveMode
+ 171:RasPi_Pins.c  ****             break;
+ 487              		.loc 1 171 0
+ 488 0162 13E0     		b	.L32
+ 489              	.L56:
+ 172:RasPi_Pins.c  ****         case IO_16:
+ 173:RasPi_Pins.c  ****             IO_16_SetDriveMode(value);
+ 490              		.loc 1 173 0
+ 491 0164 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 492 0166 1846     		mov	r0, r3
+ 493 0168 FFF7FEFF 		bl	IO_16_SetDriveMode
+ 174:RasPi_Pins.c  ****             break;
+ 494              		.loc 1 174 0
+ 495 016c 0EE0     		b	.L32
+ 496              	.L57:
+ 175:RasPi_Pins.c  ****         case IO_26:
+ 176:RasPi_Pins.c  ****             IO_26_SetDriveMode(value);
+ 497              		.loc 1 176 0
+ 498 016e BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 499 0170 1846     		mov	r0, r3
+ 500 0172 FFF7FEFF 		bl	IO_26_SetDriveMode
+ 177:RasPi_Pins.c  ****             break;
+ 501              		.loc 1 177 0
+ 502 0176 09E0     		b	.L32
+ 503              	.L58:
+ 178:RasPi_Pins.c  ****         case IO_20:
+ 179:RasPi_Pins.c  ****             IO_20_SetDriveMode(value);
+ 504              		.loc 1 179 0
+ 505 0178 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 13
+
+
+ 506 017a 1846     		mov	r0, r3
+ 507 017c FFF7FEFF 		bl	IO_20_SetDriveMode
+ 180:RasPi_Pins.c  ****             break;
+ 508              		.loc 1 180 0
+ 509 0180 04E0     		b	.L32
+ 510              	.L59:
+ 181:RasPi_Pins.c  ****         case IO_21:
+ 182:RasPi_Pins.c  ****             IO_21_SetDriveMode(value);
+ 511              		.loc 1 182 0
+ 512 0182 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 513 0184 1846     		mov	r0, r3
+ 514 0186 FFF7FEFF 		bl	IO_21_SetDriveMode
+ 183:RasPi_Pins.c  ****             break;
+ 515              		.loc 1 183 0
+ 516 018a 00BF     		nop
+ 517              	.L32:
+ 518              	.L60:
+ 184:RasPi_Pins.c  ****         }
+ 185:RasPi_Pins.c  **** }
+ 519              		.loc 1 185 0
+ 520 018c 00BF     		nop
+ 521 018e 0837     		adds	r7, r7, #8
+ 522              		.cfi_def_cfa_offset 8
+ 523 0190 BD46     		mov	sp, r7
+ 524              		.cfi_def_cfa_register 13
+ 525              		@ sp needed
+ 526 0192 80BD     		pop	{r7, pc}
+ 527              		.cfi_endproc
+ 528              	.LFE64:
+ 529              		.size	setRasPiPinDrive, .-setRasPiPinDrive
+ 530              		.text
+ 531              	.Letext0:
+ 532              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 533              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 534              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 535              		.file 5 "RasPi_Pins.h"
+ 536              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 537              		.section	.debug_info,"",%progbits
+ 538              	.Ldebug_info0:
+ 539 0000 CF010000 		.4byte	0x1cf
+ 540 0004 0400     		.2byte	0x4
+ 541 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 542 000a 04       		.byte	0x4
+ 543 000b 01       		.uleb128 0x1
+ 544 000c 0E000000 		.4byte	.LASF47
+ 545 0010 0C       		.byte	0xc
+ 546 0011 98010000 		.4byte	.LASF48
+ 547 0015 13010000 		.4byte	.LASF49
+ 548 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 549 001d 00000000 		.4byte	0
+ 550 0021 00000000 		.4byte	.Ldebug_line0
+ 551 0025 02       		.uleb128 0x2
+ 552 0026 01       		.byte	0x1
+ 553 0027 06       		.byte	0x6
+ 554 0028 7B020000 		.4byte	.LASF0
+ 555 002c 02       		.uleb128 0x2
+ 556 002d 01       		.byte	0x1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 14
+
+
+ 557 002e 08       		.byte	0x8
+ 558 002f F3000000 		.4byte	.LASF1
+ 559 0033 02       		.uleb128 0x2
+ 560 0034 02       		.byte	0x2
+ 561 0035 05       		.byte	0x5
+ 562 0036 43020000 		.4byte	.LASF2
+ 563 003a 02       		.uleb128 0x2
+ 564 003b 02       		.byte	0x2
+ 565 003c 07       		.byte	0x7
+ 566 003d 87020000 		.4byte	.LASF3
+ 567 0041 03       		.uleb128 0x3
+ 568 0042 A2000000 		.4byte	.LASF9
+ 569 0046 02       		.byte	0x2
+ 570 0047 3F       		.byte	0x3f
+ 571 0048 4C000000 		.4byte	0x4c
+ 572 004c 02       		.uleb128 0x2
+ 573 004d 04       		.byte	0x4
+ 574 004e 05       		.byte	0x5
+ 575 004f AC000000 		.4byte	.LASF4
+ 576 0053 02       		.uleb128 0x2
+ 577 0054 04       		.byte	0x4
+ 578 0055 07       		.byte	0x7
+ 579 0056 01010000 		.4byte	.LASF5
+ 580 005a 02       		.uleb128 0x2
+ 581 005b 08       		.byte	0x8
+ 582 005c 05       		.byte	0x5
+ 583 005d 00000000 		.4byte	.LASF6
+ 584 0061 02       		.uleb128 0x2
+ 585 0062 08       		.byte	0x8
+ 586 0063 07       		.byte	0x7
+ 587 0064 D1010000 		.4byte	.LASF7
+ 588 0068 04       		.uleb128 0x4
+ 589 0069 04       		.byte	0x4
+ 590 006a 05       		.byte	0x5
+ 591 006b 696E7400 		.ascii	"int\000"
+ 592 006f 02       		.uleb128 0x2
+ 593 0070 04       		.byte	0x4
+ 594 0071 07       		.byte	0x7
+ 595 0072 BB010000 		.4byte	.LASF8
+ 596 0076 03       		.uleb128 0x3
+ 597 0077 E5000000 		.4byte	.LASF10
+ 598 007b 03       		.byte	0x3
+ 599 007c 2C       		.byte	0x2c
+ 600 007d 41000000 		.4byte	0x41
+ 601 0081 05       		.uleb128 0x5
+ 602 0082 4D020000 		.4byte	.LASF11
+ 603 0086 04       		.byte	0x4
+ 604 0087 E401     		.2byte	0x1e4
+ 605 0089 2C000000 		.4byte	0x2c
+ 606 008d 02       		.uleb128 0x2
+ 607 008e 04       		.byte	0x4
+ 608 008f 04       		.byte	0x4
+ 609 0090 ED000000 		.4byte	.LASF12
+ 610 0094 02       		.uleb128 0x2
+ 611 0095 08       		.byte	0x8
+ 612 0096 04       		.byte	0x4
+ 613 0097 91010000 		.4byte	.LASF13
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 15
+
+
+ 614 009b 02       		.uleb128 0x2
+ 615 009c 01       		.byte	0x1
+ 616 009d 08       		.byte	0x8
+ 617 009e 3E020000 		.4byte	.LASF14
+ 618 00a2 02       		.uleb128 0x2
+ 619 00a3 08       		.byte	0x8
+ 620 00a4 04       		.byte	0x4
+ 621 00a5 A5010000 		.4byte	.LASF15
+ 622 00a9 02       		.uleb128 0x2
+ 623 00aa 04       		.byte	0x4
+ 624 00ab 07       		.byte	0x7
+ 625 00ac 24020000 		.4byte	.LASF16
+ 626 00b0 06       		.uleb128 0x6
+ 627 00b1 C8010000 		.4byte	.LASF50
+ 628 00b5 01       		.byte	0x1
+ 629 00b6 2C000000 		.4byte	0x2c
+ 630 00ba 05       		.byte	0x5
+ 631 00bb 13       		.byte	0x13
+ 632 00bc 5D010000 		.4byte	0x15d
+ 633 00c0 07       		.uleb128 0x7
+ 634 00c1 53020000 		.4byte	.LASF17
+ 635 00c5 00       		.byte	0
+ 636 00c6 07       		.uleb128 0x7
+ 637 00c7 58020000 		.4byte	.LASF18
+ 638 00cb 01       		.byte	0x1
+ 639 00cc 07       		.uleb128 0x7
+ 640 00cd 5D020000 		.4byte	.LASF19
+ 641 00d1 02       		.byte	0x2
+ 642 00d2 07       		.uleb128 0x7
+ 643 00d3 00020000 		.4byte	.LASF20
+ 644 00d7 03       		.byte	0x3
+ 645 00d8 07       		.uleb128 0x7
+ 646 00d9 06020000 		.4byte	.LASF21
+ 647 00dd 04       		.byte	0x4
+ 648 00de 07       		.uleb128 0x7
+ 649 00df 12020000 		.4byte	.LASF22
+ 650 00e3 05       		.byte	0x5
+ 651 00e4 07       		.uleb128 0x7
+ 652 00e5 18020000 		.4byte	.LASF23
+ 653 00e9 06       		.byte	0x6
+ 654 00ea 07       		.uleb128 0x7
+ 655 00eb DF000000 		.4byte	.LASF24
+ 656 00ef 07       		.byte	0x7
+ 657 00f0 07       		.uleb128 0x7
+ 658 00f1 C1000000 		.4byte	.LASF25
+ 659 00f5 08       		.byte	0x8
+ 660 00f6 07       		.uleb128 0x7
+ 661 00f7 C7000000 		.4byte	.LASF26
+ 662 00fb 09       		.byte	0x9
+ 663 00fc 07       		.uleb128 0x7
+ 664 00fd CD000000 		.4byte	.LASF27
+ 665 0101 0A       		.byte	0xa
+ 666 0102 07       		.uleb128 0x7
+ 667 0103 E8010000 		.4byte	.LASF28
+ 668 0107 0B       		.byte	0xb
+ 669 0108 07       		.uleb128 0x7
+ 670 0109 76020000 		.4byte	.LASF29
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 16
+
+
+ 671 010d 0C       		.byte	0xc
+ 672 010e 07       		.uleb128 0x7
+ 673 010f D3000000 		.4byte	.LASF30
+ 674 0113 0D       		.byte	0xd
+ 675 0114 07       		.uleb128 0x7
+ 676 0115 EE010000 		.4byte	.LASF31
+ 677 0119 0E       		.byte	0xe
+ 678 011a 07       		.uleb128 0x7
+ 679 011b 71020000 		.4byte	.LASF32
+ 680 011f 0F       		.byte	0xf
+ 681 0120 07       		.uleb128 0x7
+ 682 0121 6C020000 		.4byte	.LASF33
+ 683 0125 10       		.byte	0x10
+ 684 0126 07       		.uleb128 0x7
+ 685 0127 62020000 		.4byte	.LASF34
+ 686 012b 11       		.byte	0x11
+ 687 012c 07       		.uleb128 0x7
+ 688 012d 67020000 		.4byte	.LASF35
+ 689 0131 12       		.byte	0x12
+ 690 0132 07       		.uleb128 0x7
+ 691 0133 F4010000 		.4byte	.LASF36
+ 692 0137 13       		.byte	0x13
+ 693 0138 07       		.uleb128 0x7
+ 694 0139 FA010000 		.4byte	.LASF37
+ 695 013d 14       		.byte	0x14
+ 696 013e 07       		.uleb128 0x7
+ 697 013f 1E020000 		.4byte	.LASF38
+ 698 0143 15       		.byte	0x15
+ 699 0144 07       		.uleb128 0x7
+ 700 0145 0C020000 		.4byte	.LASF39
+ 701 0149 16       		.byte	0x16
+ 702 014a 07       		.uleb128 0x7
+ 703 014b D9000000 		.4byte	.LASF40
+ 704 014f 17       		.byte	0x17
+ 705 0150 07       		.uleb128 0x7
+ 706 0151 B5000000 		.4byte	.LASF41
+ 707 0155 18       		.byte	0x18
+ 708 0156 07       		.uleb128 0x7
+ 709 0157 BB000000 		.4byte	.LASF42
+ 710 015b 19       		.byte	0x19
+ 711 015c 00       		.byte	0
+ 712 015d 08       		.uleb128 0x8
+ 713 015e 2D020000 		.4byte	.LASF45
+ 714 0162 01       		.byte	0x1
+ 715 0163 0F       		.byte	0xf
+ 716 0164 00000000 		.4byte	.LFB63
+ 717 0168 94010000 		.4byte	.LFE63-.LFB63
+ 718 016c 01       		.uleb128 0x1
+ 719 016d 9C       		.byte	0x9c
+ 720 016e 8F010000 		.4byte	0x18f
+ 721 0172 09       		.uleb128 0x9
+ 722 0173 B1010000 		.4byte	.LASF43
+ 723 0177 01       		.byte	0x1
+ 724 0178 0F       		.byte	0xf
+ 725 0179 81000000 		.4byte	0x81
+ 726 017d 02       		.uleb128 0x2
+ 727 017e 91       		.byte	0x91
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 17
+
+
+ 728 017f 77       		.sleb128 -9
+ 729 0180 09       		.uleb128 0x9
+ 730 0181 9C000000 		.4byte	.LASF44
+ 731 0185 01       		.byte	0x1
+ 732 0186 0F       		.byte	0xf
+ 733 0187 81000000 		.4byte	0x81
+ 734 018b 02       		.uleb128 0x2
+ 735 018c 91       		.byte	0x91
+ 736 018d 76       		.sleb128 -10
+ 737 018e 00       		.byte	0
+ 738 018f 08       		.uleb128 0x8
+ 739 0190 80010000 		.4byte	.LASF46
+ 740 0194 01       		.byte	0x1
+ 741 0195 66       		.byte	0x66
+ 742 0196 00000000 		.4byte	.LFB64
+ 743 019a 94010000 		.4byte	.LFE64-.LFB64
+ 744 019e 01       		.uleb128 0x1
+ 745 019f 9C       		.byte	0x9c
+ 746 01a0 C1010000 		.4byte	0x1c1
+ 747 01a4 09       		.uleb128 0x9
+ 748 01a5 B1010000 		.4byte	.LASF43
+ 749 01a9 01       		.byte	0x1
+ 750 01aa 66       		.byte	0x66
+ 751 01ab 81000000 		.4byte	0x81
+ 752 01af 02       		.uleb128 0x2
+ 753 01b0 91       		.byte	0x91
+ 754 01b1 77       		.sleb128 -9
+ 755 01b2 09       		.uleb128 0x9
+ 756 01b3 9C000000 		.4byte	.LASF44
+ 757 01b7 01       		.byte	0x1
+ 758 01b8 66       		.byte	0x66
+ 759 01b9 81000000 		.4byte	0x81
+ 760 01bd 02       		.uleb128 0x2
+ 761 01be 91       		.byte	0x91
+ 762 01bf 76       		.sleb128 -10
+ 763 01c0 00       		.byte	0
+ 764 01c1 0A       		.uleb128 0xa
+ 765 01c2 73010000 		.4byte	.LASF51
+ 766 01c6 06       		.byte	0x6
+ 767 01c7 1207     		.2byte	0x712
+ 768 01c9 CD010000 		.4byte	0x1cd
+ 769 01cd 0B       		.uleb128 0xb
+ 770 01ce 76000000 		.4byte	0x76
+ 771 01d2 00       		.byte	0
+ 772              		.section	.debug_abbrev,"",%progbits
+ 773              	.Ldebug_abbrev0:
+ 774 0000 01       		.uleb128 0x1
+ 775 0001 11       		.uleb128 0x11
+ 776 0002 01       		.byte	0x1
+ 777 0003 25       		.uleb128 0x25
+ 778 0004 0E       		.uleb128 0xe
+ 779 0005 13       		.uleb128 0x13
+ 780 0006 0B       		.uleb128 0xb
+ 781 0007 03       		.uleb128 0x3
+ 782 0008 0E       		.uleb128 0xe
+ 783 0009 1B       		.uleb128 0x1b
+ 784 000a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 18
+
+
+ 785 000b 55       		.uleb128 0x55
+ 786 000c 17       		.uleb128 0x17
+ 787 000d 11       		.uleb128 0x11
+ 788 000e 01       		.uleb128 0x1
+ 789 000f 10       		.uleb128 0x10
+ 790 0010 17       		.uleb128 0x17
+ 791 0011 00       		.byte	0
+ 792 0012 00       		.byte	0
+ 793 0013 02       		.uleb128 0x2
+ 794 0014 24       		.uleb128 0x24
+ 795 0015 00       		.byte	0
+ 796 0016 0B       		.uleb128 0xb
+ 797 0017 0B       		.uleb128 0xb
+ 798 0018 3E       		.uleb128 0x3e
+ 799 0019 0B       		.uleb128 0xb
+ 800 001a 03       		.uleb128 0x3
+ 801 001b 0E       		.uleb128 0xe
+ 802 001c 00       		.byte	0
+ 803 001d 00       		.byte	0
+ 804 001e 03       		.uleb128 0x3
+ 805 001f 16       		.uleb128 0x16
+ 806 0020 00       		.byte	0
+ 807 0021 03       		.uleb128 0x3
+ 808 0022 0E       		.uleb128 0xe
+ 809 0023 3A       		.uleb128 0x3a
+ 810 0024 0B       		.uleb128 0xb
+ 811 0025 3B       		.uleb128 0x3b
+ 812 0026 0B       		.uleb128 0xb
+ 813 0027 49       		.uleb128 0x49
+ 814 0028 13       		.uleb128 0x13
+ 815 0029 00       		.byte	0
+ 816 002a 00       		.byte	0
+ 817 002b 04       		.uleb128 0x4
+ 818 002c 24       		.uleb128 0x24
+ 819 002d 00       		.byte	0
+ 820 002e 0B       		.uleb128 0xb
+ 821 002f 0B       		.uleb128 0xb
+ 822 0030 3E       		.uleb128 0x3e
+ 823 0031 0B       		.uleb128 0xb
+ 824 0032 03       		.uleb128 0x3
+ 825 0033 08       		.uleb128 0x8
+ 826 0034 00       		.byte	0
+ 827 0035 00       		.byte	0
+ 828 0036 05       		.uleb128 0x5
+ 829 0037 16       		.uleb128 0x16
+ 830 0038 00       		.byte	0
+ 831 0039 03       		.uleb128 0x3
+ 832 003a 0E       		.uleb128 0xe
+ 833 003b 3A       		.uleb128 0x3a
+ 834 003c 0B       		.uleb128 0xb
+ 835 003d 3B       		.uleb128 0x3b
+ 836 003e 05       		.uleb128 0x5
+ 837 003f 49       		.uleb128 0x49
+ 838 0040 13       		.uleb128 0x13
+ 839 0041 00       		.byte	0
+ 840 0042 00       		.byte	0
+ 841 0043 06       		.uleb128 0x6
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 19
+
+
+ 842 0044 04       		.uleb128 0x4
+ 843 0045 01       		.byte	0x1
+ 844 0046 03       		.uleb128 0x3
+ 845 0047 0E       		.uleb128 0xe
+ 846 0048 0B       		.uleb128 0xb
+ 847 0049 0B       		.uleb128 0xb
+ 848 004a 49       		.uleb128 0x49
+ 849 004b 13       		.uleb128 0x13
+ 850 004c 3A       		.uleb128 0x3a
+ 851 004d 0B       		.uleb128 0xb
+ 852 004e 3B       		.uleb128 0x3b
+ 853 004f 0B       		.uleb128 0xb
+ 854 0050 01       		.uleb128 0x1
+ 855 0051 13       		.uleb128 0x13
+ 856 0052 00       		.byte	0
+ 857 0053 00       		.byte	0
+ 858 0054 07       		.uleb128 0x7
+ 859 0055 28       		.uleb128 0x28
+ 860 0056 00       		.byte	0
+ 861 0057 03       		.uleb128 0x3
+ 862 0058 0E       		.uleb128 0xe
+ 863 0059 1C       		.uleb128 0x1c
+ 864 005a 0B       		.uleb128 0xb
+ 865 005b 00       		.byte	0
+ 866 005c 00       		.byte	0
+ 867 005d 08       		.uleb128 0x8
+ 868 005e 2E       		.uleb128 0x2e
+ 869 005f 01       		.byte	0x1
+ 870 0060 3F       		.uleb128 0x3f
+ 871 0061 19       		.uleb128 0x19
+ 872 0062 03       		.uleb128 0x3
+ 873 0063 0E       		.uleb128 0xe
+ 874 0064 3A       		.uleb128 0x3a
+ 875 0065 0B       		.uleb128 0xb
+ 876 0066 3B       		.uleb128 0x3b
+ 877 0067 0B       		.uleb128 0xb
+ 878 0068 27       		.uleb128 0x27
+ 879 0069 19       		.uleb128 0x19
+ 880 006a 11       		.uleb128 0x11
+ 881 006b 01       		.uleb128 0x1
+ 882 006c 12       		.uleb128 0x12
+ 883 006d 06       		.uleb128 0x6
+ 884 006e 40       		.uleb128 0x40
+ 885 006f 18       		.uleb128 0x18
+ 886 0070 9642     		.uleb128 0x2116
+ 887 0072 19       		.uleb128 0x19
+ 888 0073 01       		.uleb128 0x1
+ 889 0074 13       		.uleb128 0x13
+ 890 0075 00       		.byte	0
+ 891 0076 00       		.byte	0
+ 892 0077 09       		.uleb128 0x9
+ 893 0078 05       		.uleb128 0x5
+ 894 0079 00       		.byte	0
+ 895 007a 03       		.uleb128 0x3
+ 896 007b 0E       		.uleb128 0xe
+ 897 007c 3A       		.uleb128 0x3a
+ 898 007d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 20
+
+
+ 899 007e 3B       		.uleb128 0x3b
+ 900 007f 0B       		.uleb128 0xb
+ 901 0080 49       		.uleb128 0x49
+ 902 0081 13       		.uleb128 0x13
+ 903 0082 02       		.uleb128 0x2
+ 904 0083 18       		.uleb128 0x18
+ 905 0084 00       		.byte	0
+ 906 0085 00       		.byte	0
+ 907 0086 0A       		.uleb128 0xa
+ 908 0087 34       		.uleb128 0x34
+ 909 0088 00       		.byte	0
+ 910 0089 03       		.uleb128 0x3
+ 911 008a 0E       		.uleb128 0xe
+ 912 008b 3A       		.uleb128 0x3a
+ 913 008c 0B       		.uleb128 0xb
+ 914 008d 3B       		.uleb128 0x3b
+ 915 008e 05       		.uleb128 0x5
+ 916 008f 49       		.uleb128 0x49
+ 917 0090 13       		.uleb128 0x13
+ 918 0091 3F       		.uleb128 0x3f
+ 919 0092 19       		.uleb128 0x19
+ 920 0093 3C       		.uleb128 0x3c
+ 921 0094 19       		.uleb128 0x19
+ 922 0095 00       		.byte	0
+ 923 0096 00       		.byte	0
+ 924 0097 0B       		.uleb128 0xb
+ 925 0098 35       		.uleb128 0x35
+ 926 0099 00       		.byte	0
+ 927 009a 49       		.uleb128 0x49
+ 928 009b 13       		.uleb128 0x13
+ 929 009c 00       		.byte	0
+ 930 009d 00       		.byte	0
+ 931 009e 00       		.byte	0
+ 932              		.section	.debug_aranges,"",%progbits
+ 933 0000 24000000 		.4byte	0x24
+ 934 0004 0200     		.2byte	0x2
+ 935 0006 00000000 		.4byte	.Ldebug_info0
+ 936 000a 04       		.byte	0x4
+ 937 000b 00       		.byte	0
+ 938 000c 0000     		.2byte	0
+ 939 000e 0000     		.2byte	0
+ 940 0010 00000000 		.4byte	.LFB63
+ 941 0014 94010000 		.4byte	.LFE63-.LFB63
+ 942 0018 00000000 		.4byte	.LFB64
+ 943 001c 94010000 		.4byte	.LFE64-.LFB64
+ 944 0020 00000000 		.4byte	0
+ 945 0024 00000000 		.4byte	0
+ 946              		.section	.debug_ranges,"",%progbits
+ 947              	.Ldebug_ranges0:
+ 948 0000 00000000 		.4byte	.LFB63
+ 949 0004 94010000 		.4byte	.LFE63
+ 950 0008 00000000 		.4byte	.LFB64
+ 951 000c 94010000 		.4byte	.LFE64
+ 952 0010 00000000 		.4byte	0
+ 953 0014 00000000 		.4byte	0
+ 954              		.section	.debug_line,"",%progbits
+ 955              	.Ldebug_line0:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 21
+
+
+ 956 0000 F7010000 		.section	.debug_str,"MS",%progbits,1
+ 956      02006201 
+ 956      00000201 
+ 956      FB0E0D00 
+ 956      01010101 
+ 957              	.LASF6:
+ 958 0000 6C6F6E67 		.ascii	"long long int\000"
+ 958      206C6F6E 
+ 958      6720696E 
+ 958      7400
+ 959              	.LASF47:
+ 960 000e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 960      43313120 
+ 960      352E342E 
+ 960      31203230 
+ 960      31363036 
+ 961 0041 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 961      20726576 
+ 961      6973696F 
+ 961      6E203233 
+ 961      37373135 
+ 962 0074 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 962      66756E63 
+ 962      74696F6E 
+ 962      2D736563 
+ 962      74696F6E 
+ 963              	.LASF44:
+ 964 009c 76616C75 		.ascii	"value\000"
+ 964      6500
+ 965              	.LASF9:
+ 966 00a2 5F5F696E 		.ascii	"__int32_t\000"
+ 966      7433325F 
+ 966      7400
+ 967              	.LASF4:
+ 968 00ac 6C6F6E67 		.ascii	"long int\000"
+ 968      20696E74 
+ 968      00
+ 969              	.LASF41:
+ 970 00b5 494F5F32 		.ascii	"IO_20\000"
+ 970      3000
+ 971              	.LASF42:
+ 972 00bb 494F5F32 		.ascii	"IO_21\000"
+ 972      3100
+ 973              	.LASF25:
+ 974 00c1 494F5F32 		.ascii	"IO_22\000"
+ 974      3200
+ 975              	.LASF26:
+ 976 00c7 494F5F32 		.ascii	"IO_23\000"
+ 976      3300
+ 977              	.LASF27:
+ 978 00cd 494F5F32 		.ascii	"IO_24\000"
+ 978      3400
+ 979              	.LASF30:
+ 980 00d3 494F5F32 		.ascii	"IO_25\000"
+ 980      3500
+ 981              	.LASF40:
+ 982 00d9 494F5F32 		.ascii	"IO_26\000"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 22
+
+
+ 982      3600
+ 983              	.LASF24:
+ 984 00df 494F5F32 		.ascii	"IO_27\000"
+ 984      3700
+ 985              	.LASF10:
+ 986 00e5 696E7433 		.ascii	"int32_t\000"
+ 986      325F7400 
+ 987              	.LASF12:
+ 988 00ed 666C6F61 		.ascii	"float\000"
+ 988      7400
+ 989              	.LASF1:
+ 990 00f3 756E7369 		.ascii	"unsigned char\000"
+ 990      676E6564 
+ 990      20636861 
+ 990      7200
+ 991              	.LASF5:
+ 992 0101 6C6F6E67 		.ascii	"long unsigned int\000"
+ 992      20756E73 
+ 992      69676E65 
+ 992      6420696E 
+ 992      7400
+ 993              	.LASF49:
+ 994 0113 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\land-boards\\"
+ 994      73657273 
+ 994      5C48507A 
+ 994      3432305C 
+ 994      446F6375 
+ 995 0140 52617350 		.ascii	"RasPi\\RPI_PSOC5\\RPI_PSOC5_RPI_SPI8_CARD_TEST.cyds"
+ 995      695C5250 
+ 995      495F5053 
+ 995      4F43355C 
+ 995      5250495F 
+ 996 0171 6E00     		.ascii	"n\000"
+ 997              	.LASF51:
+ 998 0173 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 998      52784275 
+ 998      66666572 
+ 998      00
+ 999              	.LASF46:
+ 1000 0180 73657452 		.ascii	"setRasPiPinDrive\000"
+ 1000      61735069 
+ 1000      50696E44 
+ 1000      72697665 
+ 1000      00
+ 1001              	.LASF13:
+ 1002 0191 646F7562 		.ascii	"double\000"
+ 1002      6C6500
+ 1003              	.LASF48:
+ 1004 0198 52617350 		.ascii	"RasPi_Pins.c\000"
+ 1004      695F5069 
+ 1004      6E732E63 
+ 1004      00
+ 1005              	.LASF15:
+ 1006 01a5 6C6F6E67 		.ascii	"long double\000"
+ 1006      20646F75 
+ 1006      626C6500 
+ 1007              	.LASF43:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 23
+
+
+ 1008 01b1 62636D50 		.ascii	"bcmPinNum\000"
+ 1008      696E4E75 
+ 1008      6D00
+ 1009              	.LASF8:
+ 1010 01bb 756E7369 		.ascii	"unsigned int\000"
+ 1010      676E6564 
+ 1010      20696E74 
+ 1010      00
+ 1011              	.LASF50:
+ 1012 01c8 42434D5F 		.ascii	"BCM_PINS\000"
+ 1012      50494E53 
+ 1012      00
+ 1013              	.LASF7:
+ 1014 01d1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1014      206C6F6E 
+ 1014      6720756E 
+ 1014      7369676E 
+ 1014      65642069 
+ 1015              	.LASF28:
+ 1016 01e8 494F5F31 		.ascii	"IO_10\000"
+ 1016      3000
+ 1017              	.LASF31:
+ 1018 01ee 494F5F31 		.ascii	"IO_11\000"
+ 1018      3100
+ 1019              	.LASF36:
+ 1020 01f4 494F5F31 		.ascii	"IO_12\000"
+ 1020      3200
+ 1021              	.LASF37:
+ 1022 01fa 494F5F31 		.ascii	"IO_13\000"
+ 1022      3300
+ 1023              	.LASF20:
+ 1024 0200 494F5F31 		.ascii	"IO_14\000"
+ 1024      3400
+ 1025              	.LASF21:
+ 1026 0206 494F5F31 		.ascii	"IO_15\000"
+ 1026      3500
+ 1027              	.LASF39:
+ 1028 020c 494F5F31 		.ascii	"IO_16\000"
+ 1028      3600
+ 1029              	.LASF22:
+ 1030 0212 494F5F31 		.ascii	"IO_17\000"
+ 1030      3700
+ 1031              	.LASF23:
+ 1032 0218 494F5F31 		.ascii	"IO_18\000"
+ 1032      3800
+ 1033              	.LASF38:
+ 1034 021e 494F5F31 		.ascii	"IO_19\000"
+ 1034      3900
+ 1035              	.LASF16:
+ 1036 0224 73697A65 		.ascii	"sizetype\000"
+ 1036      74797065 
+ 1036      00
+ 1037              	.LASF45:
+ 1038 022d 73657452 		.ascii	"setRasPiPinValue\000"
+ 1038      61735069 
+ 1038      50696E56 
+ 1038      616C7565 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccEvowQd.s 			page 24
+
+
+ 1038      00
+ 1039              	.LASF14:
+ 1040 023e 63686172 		.ascii	"char\000"
+ 1040      00
+ 1041              	.LASF2:
+ 1042 0243 73686F72 		.ascii	"short int\000"
+ 1042      7420696E 
+ 1042      7400
+ 1043              	.LASF11:
+ 1044 024d 75696E74 		.ascii	"uint8\000"
+ 1044      3800
+ 1045              	.LASF17:
+ 1046 0253 494F5F32 		.ascii	"IO_2\000"
+ 1046      00
+ 1047              	.LASF18:
+ 1048 0258 494F5F33 		.ascii	"IO_3\000"
+ 1048      00
+ 1049              	.LASF19:
+ 1050 025d 494F5F34 		.ascii	"IO_4\000"
+ 1050      00
+ 1051              	.LASF34:
+ 1052 0262 494F5F35 		.ascii	"IO_5\000"
+ 1052      00
+ 1053              	.LASF35:
+ 1054 0267 494F5F36 		.ascii	"IO_6\000"
+ 1054      00
+ 1055              	.LASF33:
+ 1056 026c 494F5F37 		.ascii	"IO_7\000"
+ 1056      00
+ 1057              	.LASF32:
+ 1058 0271 494F5F38 		.ascii	"IO_8\000"
+ 1058      00
+ 1059              	.LASF29:
+ 1060 0276 494F5F39 		.ascii	"IO_9\000"
+ 1060      00
+ 1061              	.LASF0:
+ 1062 027b 7369676E 		.ascii	"signed char\000"
+ 1062      65642063 
+ 1062      68617200 
+ 1063              	.LASF3:
+ 1064 0287 73686F72 		.ascii	"short unsigned int\000"
+ 1064      7420756E 
+ 1064      7369676E 
+ 1064      65642069 
+ 1064      6E7400
+ 1065              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

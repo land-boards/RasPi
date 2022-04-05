@@ -1,0 +1,848 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Test_RPI_SPI8.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.rodata
+  20              		.align	2
+  21              	.LC0:
+  22 0000 74657374 		.ascii	"testRPISPI8() - Reached function\012\015\000"
+  22      52504953 
+  22      50493828 
+  22      29202D20 
+  22      52656163 
+  23 0023 00       		.align	2
+  24              	.LC1:
+  25 0024 74657374 		.ascii	"testRPISPI8() - Set SPI Channel\012\015\000"
+  25      52504953 
+  25      50493828 
+  25      29202D20 
+  25      53657420 
+  26 0046 0000     		.align	2
+  27              	.LC2:
+  28 0048 74657374 		.ascii	"testRPISPI8() - Start SPI\012\015\000"
+  28      52504953 
+  28      50493828 
+  28      29202D20 
+  28      53746172 
+  29              		.align	2
+  30              	.LC3:
+  31 0064 74657374 		.ascii	"testRPISPI8() - Started SPI\012\015\000"
+  31      52504953 
+  31      50493828 
+  31      29202D20 
+  31      53746172 
+  32              		.section	.text.testRPISPI8,"ax",%progbits
+  33              		.align	2
+  34              		.global	testRPISPI8
+  35              		.thumb
+  36              		.thumb_func
+  37              		.type	testRPISPI8, %function
+  38              	testRPISPI8:
+  39              	.LFB63:
+  40              		.file 1 "Test_RPI_SPI8.c"
+   1:Test_RPI_SPI8.c **** /* ========================================
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 2
+
+
+   2:Test_RPI_SPI8.c ****  *
+   3:Test_RPI_SPI8.c ****  * Copyright LAND BOARDS, LLC, 2019
+   4:Test_RPI_SPI8.c ****  * All Rights Reserved
+   5:Test_RPI_SPI8.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:Test_RPI_SPI8.c ****  *
+   7:Test_RPI_SPI8.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:Test_RPI_SPI8.c ****  * WHICH IS THE PROPERTY OF Land Boards.
+   9:Test_RPI_SPI8.c ****  *
+  10:Test_RPI_SPI8.c ****  * ========================================
+  11:Test_RPI_SPI8.c **** */
+  12:Test_RPI_SPI8.c **** 
+  13:Test_RPI_SPI8.c **** #include <project.h>
+  14:Test_RPI_SPI8.c **** #include "RPI_PSOC5.h"
+  15:Test_RPI_SPI8.c **** 
+  16:Test_RPI_SPI8.c **** void setSPIChannel(uint8);
+  17:Test_RPI_SPI8.c **** 
+  18:Test_RPI_SPI8.c **** void testRPISPI8(void)
+  19:Test_RPI_SPI8.c **** {
+  41              		.loc 1 19 0
+  42              		.cfi_startproc
+  43              		@ args = 0, pretend = 0, frame = 8
+  44              		@ frame_needed = 1, uses_anonymous_args = 0
+  45 0000 80B5     		push	{r7, lr}
+  46              		.cfi_def_cfa_offset 8
+  47              		.cfi_offset 7, -8
+  48              		.cfi_offset 14, -4
+  49 0002 82B0     		sub	sp, sp, #8
+  50              		.cfi_def_cfa_offset 16
+  51 0004 00AF     		add	r7, sp, #0
+  52              		.cfi_def_cfa_register 7
+  20:Test_RPI_SPI8.c ****     uint16 txValue;
+  21:Test_RPI_SPI8.c ****     uint8 chNum;
+  22:Test_RPI_SPI8.c ****     putStringToUSB("testRPISPI8() - Reached function\n\r");
+  53              		.loc 1 22 0
+  54 0006 1E48     		ldr	r0, .L12
+  55 0008 FFF7FEFF 		bl	putStringToUSB
+  23:Test_RPI_SPI8.c ****     // Flush input buffer
+  24:Test_RPI_SPI8.c ****     clearReceiveBuffer();
+  56              		.loc 1 24 0
+  57 000c FFF7FEFF 		bl	clearReceiveBuffer
+  25:Test_RPI_SPI8.c ****     putStringToUSB("testRPISPI8() - Set SPI Channel\n\r");
+  58              		.loc 1 25 0
+  59 0010 1C48     		ldr	r0, .L12+4
+  60 0012 FFF7FEFF 		bl	putStringToUSB
+  26:Test_RPI_SPI8.c ****     putStringToUSB("testRPISPI8() - Start SPI\n\r");
+  61              		.loc 1 26 0
+  62 0016 1C48     		ldr	r0, .L12+8
+  63 0018 FFF7FEFF 		bl	putStringToUSB
+  27:Test_RPI_SPI8.c ****     SPIM_1_Start();
+  64              		.loc 1 27 0
+  65 001c FFF7FEFF 		bl	SPIM_1_Start
+  28:Test_RPI_SPI8.c ****     putStringToUSB("testRPISPI8() - Started SPI\n\r");
+  66              		.loc 1 28 0
+  67 0020 1A48     		ldr	r0, .L12+12
+  68 0022 FFF7FEFF 		bl	putStringToUSB
+  69              	.L9:
+  29:Test_RPI_SPI8.c ****     // Blink all of the LEDs one at a time forever
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 3
+
+
+  30:Test_RPI_SPI8.c ****     // Hit ENTER to exit
+  31:Test_RPI_SPI8.c ****     while (1)
+  32:Test_RPI_SPI8.c ****     {
+  33:Test_RPI_SPI8.c ****         for (chNum = 0; chNum < 8; chNum++)
+  70              		.loc 1 33 0
+  71 0026 0023     		movs	r3, #0
+  72 0028 7B71     		strb	r3, [r7, #5]
+  73 002a 1BE0     		b	.L2
+  74              	.L6:
+  34:Test_RPI_SPI8.c ****         {
+  35:Test_RPI_SPI8.c ****             setSPIChannel(chNum);
+  75              		.loc 1 35 0
+  76 002c 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+  77 002e 1846     		mov	r0, r3
+  78 0030 FFF7FEFF 		bl	setSPIChannel
+  36:Test_RPI_SPI8.c ****             for (txValue = 0; txValue < 0x80; txValue++)
+  79              		.loc 1 36 0
+  80 0034 0023     		movs	r3, #0
+  81 0036 FB80     		strh	r3, [r7, #6]	@ movhi
+  82 0038 0EE0     		b	.L3
+  83              	.L5:
+  37:Test_RPI_SPI8.c ****             {
+  38:Test_RPI_SPI8.c ****                 //putStringToUSB("testRPISPI8() - Writing data\n\r");
+  39:Test_RPI_SPI8.c ****                 SPIM_1_WriteTxData(txValue);
+  84              		.loc 1 39 0
+  85 003a FB88     		ldrh	r3, [r7, #6]
+  86 003c 1846     		mov	r0, r3
+  87 003e FFF7FEFF 		bl	SPIM_1_WriteTxData
+  40:Test_RPI_SPI8.c ****                 //putStringToUSB("testRPISPI8() - Wait while Tx Full\n\r");
+  41:Test_RPI_SPI8.c ****                 while ((SPIM_1_TX_STATUS_REG & 0x1) != 0x01);
+  88              		.loc 1 41 0
+  89 0042 00BF     		nop
+  90              	.L4:
+  91              		.loc 1 41 0 is_stmt 0 discriminator 1
+  92 0044 124B     		ldr	r3, .L12+16
+  93 0046 1B78     		ldrb	r3, [r3]
+  94 0048 DBB2     		uxtb	r3, r3
+  95 004a 03F00103 		and	r3, r3, #1
+  96 004e 002B     		cmp	r3, #0
+  97 0050 F8D0     		beq	.L4
+  36:Test_RPI_SPI8.c ****             {
+  98              		.loc 1 36 0 is_stmt 1 discriminator 2
+  99 0052 FB88     		ldrh	r3, [r7, #6]
+ 100 0054 0133     		adds	r3, r3, #1
+ 101 0056 FB80     		strh	r3, [r7, #6]	@ movhi
+ 102              	.L3:
+  36:Test_RPI_SPI8.c ****             {
+ 103              		.loc 1 36 0 is_stmt 0 discriminator 1
+ 104 0058 FB88     		ldrh	r3, [r7, #6]
+ 105 005a 7F2B     		cmp	r3, #127
+ 106 005c EDD9     		bls	.L5
+  33:Test_RPI_SPI8.c ****         {
+ 107              		.loc 1 33 0 is_stmt 1 discriminator 2
+ 108 005e 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 109 0060 0133     		adds	r3, r3, #1
+ 110 0062 7B71     		strb	r3, [r7, #5]
+ 111              	.L2:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 4
+
+
+  33:Test_RPI_SPI8.c ****         {
+ 112              		.loc 1 33 0 is_stmt 0 discriminator 1
+ 113 0064 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 114 0066 072B     		cmp	r3, #7
+ 115 0068 E0D9     		bls	.L6
+  42:Test_RPI_SPI8.c ****                 //putStringToUSB("testRPISPI8() - Finished waiting while Tx is not empty\n\r");
+  43:Test_RPI_SPI8.c ****             }
+  44:Test_RPI_SPI8.c ****         }
+  45:Test_RPI_SPI8.c ****         // Check if ENTER is hit
+  46:Test_RPI_SPI8.c ****         if (USBUART_DataIsReady() != 0)
+ 116              		.loc 1 46 0 is_stmt 1
+ 117 006a FFF7FEFF 		bl	USBUART_DataIsReady
+ 118 006e 0346     		mov	r3, r0
+ 119 0070 002B     		cmp	r3, #0
+ 120 0072 00D1     		bne	.L11
+  47:Test_RPI_SPI8.c ****             return;
+  48:Test_RPI_SPI8.c ****     }
+ 121              		.loc 1 48 0
+ 122 0074 D7E7     		b	.L9
+ 123              	.L11:
+  47:Test_RPI_SPI8.c ****             return;
+ 124              		.loc 1 47 0
+ 125 0076 00BF     		nop
+  49:Test_RPI_SPI8.c **** }
+ 126              		.loc 1 49 0
+ 127 0078 0837     		adds	r7, r7, #8
+ 128              		.cfi_def_cfa_offset 8
+ 129 007a BD46     		mov	sp, r7
+ 130              		.cfi_def_cfa_register 13
+ 131              		@ sp needed
+ 132 007c 80BD     		pop	{r7, pc}
+ 133              	.L13:
+ 134 007e 00BF     		.align	2
+ 135              	.L12:
+ 136 0080 00000000 		.word	.LC0
+ 137 0084 24000000 		.word	.LC1
+ 138 0088 48000000 		.word	.LC2
+ 139 008c 64000000 		.word	.LC3
+ 140 0090 6B640040 		.word	1073767531
+ 141              		.cfi_endproc
+ 142              	.LFE63:
+ 143              		.size	testRPISPI8, .-testRPISPI8
+ 144              		.section	.text.setSPIChannel,"ax",%progbits
+ 145              		.align	2
+ 146              		.global	setSPIChannel
+ 147              		.thumb
+ 148              		.thumb_func
+ 149              		.type	setSPIChannel, %function
+ 150              	setSPIChannel:
+ 151              	.LFB64:
+  50:Test_RPI_SPI8.c **** 
+  51:Test_RPI_SPI8.c **** void setSPIChannel(uint8 channelNum)
+  52:Test_RPI_SPI8.c **** {
+ 152              		.loc 1 52 0
+ 153              		.cfi_startproc
+ 154              		@ args = 0, pretend = 0, frame = 8
+ 155              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 5
+
+
+ 156 0000 80B5     		push	{r7, lr}
+ 157              		.cfi_def_cfa_offset 8
+ 158              		.cfi_offset 7, -8
+ 159              		.cfi_offset 14, -4
+ 160 0002 82B0     		sub	sp, sp, #8
+ 161              		.cfi_def_cfa_offset 16
+ 162 0004 00AF     		add	r7, sp, #0
+ 163              		.cfi_def_cfa_register 7
+ 164 0006 0346     		mov	r3, r0
+ 165 0008 FB71     		strb	r3, [r7, #7]
+  53:Test_RPI_SPI8.c ****     SPI_ADDR_Write(channelNum);
+ 166              		.loc 1 53 0
+ 167 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 168 000c 1846     		mov	r0, r3
+ 169 000e FFF7FEFF 		bl	SPI_ADDR_Write
+  54:Test_RPI_SPI8.c **** }
+ 170              		.loc 1 54 0
+ 171 0012 00BF     		nop
+ 172 0014 0837     		adds	r7, r7, #8
+ 173              		.cfi_def_cfa_offset 8
+ 174 0016 BD46     		mov	sp, r7
+ 175              		.cfi_def_cfa_register 13
+ 176              		@ sp needed
+ 177 0018 80BD     		pop	{r7, pc}
+ 178              		.cfi_endproc
+ 179              	.LFE64:
+ 180              		.size	setSPIChannel, .-setSPIChannel
+ 181 001a 00BF     		.section	.text.debugRPISPI8,"ax",%progbits
+ 182              		.align	2
+ 183              		.global	debugRPISPI8
+ 184              		.thumb
+ 185              		.thumb_func
+ 186              		.type	debugRPISPI8, %function
+ 187              	debugRPISPI8:
+ 188              	.LFB65:
+  55:Test_RPI_SPI8.c **** 
+  56:Test_RPI_SPI8.c **** void debugRPISPI8(void)
+  57:Test_RPI_SPI8.c **** {
+ 189              		.loc 1 57 0
+ 190              		.cfi_startproc
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 1, uses_anonymous_args = 0
+ 193              		@ link register save eliminated.
+ 194 0000 80B4     		push	{r7}
+ 195              		.cfi_def_cfa_offset 4
+ 196              		.cfi_offset 7, -4
+ 197 0002 00AF     		add	r7, sp, #0
+ 198              		.cfi_def_cfa_register 7
+  58:Test_RPI_SPI8.c **** 
+  59:Test_RPI_SPI8.c **** }
+ 199              		.loc 1 59 0
+ 200 0004 00BF     		nop
+ 201 0006 BD46     		mov	sp, r7
+ 202              		.cfi_def_cfa_register 13
+ 203              		@ sp needed
+ 204 0008 80BC     		pop	{r7}
+ 205              		.cfi_restore 7
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 6
+
+
+ 206              		.cfi_def_cfa_offset 0
+ 207 000a 7047     		bx	lr
+ 208              		.cfi_endproc
+ 209              	.LFE65:
+ 210              		.size	debugRPISPI8, .-debugRPISPI8
+ 211              		.text
+ 212              	.Letext0:
+ 213              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 214              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 215              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 216              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 217              		.section	.debug_info,"",%progbits
+ 218              	.Ldebug_info0:
+ 219 0000 42010000 		.4byte	0x142
+ 220 0004 0400     		.2byte	0x4
+ 221 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 222 000a 04       		.byte	0x4
+ 223 000b 01       		.uleb128 0x1
+ 224 000c C4000000 		.4byte	.LASF23
+ 225 0010 0C       		.byte	0xc
+ 226 0011 B4000000 		.4byte	.LASF24
+ 227 0015 21000000 		.4byte	.LASF25
+ 228 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 229 001d 00000000 		.4byte	0
+ 230 0021 00000000 		.4byte	.Ldebug_line0
+ 231 0025 02       		.uleb128 0x2
+ 232 0026 01       		.byte	0x1
+ 233 0027 06       		.byte	0x6
+ 234 0028 C2010000 		.4byte	.LASF0
+ 235 002c 02       		.uleb128 0x2
+ 236 002d 01       		.byte	0x1
+ 237 002e 08       		.byte	0x8
+ 238 002f 5F010000 		.4byte	.LASF1
+ 239 0033 02       		.uleb128 0x2
+ 240 0034 02       		.byte	0x2
+ 241 0035 05       		.byte	0x5
+ 242 0036 F8010000 		.4byte	.LASF2
+ 243 003a 02       		.uleb128 0x2
+ 244 003b 02       		.byte	0x2
+ 245 003c 07       		.byte	0x7
+ 246 003d 0E000000 		.4byte	.LASF3
+ 247 0041 03       		.uleb128 0x3
+ 248 0042 DA010000 		.4byte	.LASF9
+ 249 0046 02       		.byte	0x2
+ 250 0047 3F       		.byte	0x3f
+ 251 0048 4C000000 		.4byte	0x4c
+ 252 004c 02       		.uleb128 0x2
+ 253 004d 04       		.byte	0x4
+ 254 004e 05       		.byte	0x5
+ 255 004f AC010000 		.4byte	.LASF4
+ 256 0053 02       		.uleb128 0x2
+ 257 0054 04       		.byte	0x4
+ 258 0055 07       		.byte	0x7
+ 259 0056 9C000000 		.4byte	.LASF5
+ 260 005a 02       		.uleb128 0x2
+ 261 005b 08       		.byte	0x8
+ 262 005c 05       		.byte	0x5
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 7
+
+
+ 263 005d 00000000 		.4byte	.LASF6
+ 264 0061 02       		.uleb128 0x2
+ 265 0062 08       		.byte	0x8
+ 266 0063 07       		.byte	0x7
+ 267 0064 83010000 		.4byte	.LASF7
+ 268 0068 04       		.uleb128 0x4
+ 269 0069 04       		.byte	0x4
+ 270 006a 05       		.byte	0x5
+ 271 006b 696E7400 		.ascii	"int\000"
+ 272 006f 02       		.uleb128 0x2
+ 273 0070 04       		.byte	0x4
+ 274 0071 07       		.byte	0x7
+ 275 0072 81000000 		.4byte	.LASF8
+ 276 0076 03       		.uleb128 0x3
+ 277 0077 09020000 		.4byte	.LASF10
+ 278 007b 03       		.byte	0x3
+ 279 007c 2C       		.byte	0x2c
+ 280 007d 41000000 		.4byte	0x41
+ 281 0081 05       		.uleb128 0x5
+ 282 0082 96000000 		.4byte	.LASF11
+ 283 0086 04       		.byte	0x4
+ 284 0087 E401     		.2byte	0x1e4
+ 285 0089 2C000000 		.4byte	0x2c
+ 286 008d 05       		.uleb128 0x5
+ 287 008e 02020000 		.4byte	.LASF12
+ 288 0092 04       		.byte	0x4
+ 289 0093 E501     		.2byte	0x1e5
+ 290 0095 3A000000 		.4byte	0x3a
+ 291 0099 02       		.uleb128 0x2
+ 292 009a 04       		.byte	0x4
+ 293 009b 04       		.byte	0x4
+ 294 009c E4010000 		.4byte	.LASF13
+ 295 00a0 02       		.uleb128 0x2
+ 296 00a1 08       		.byte	0x8
+ 297 00a2 04       		.byte	0x4
+ 298 00a3 A5010000 		.4byte	.LASF14
+ 299 00a7 02       		.uleb128 0x2
+ 300 00a8 01       		.byte	0x1
+ 301 00a9 08       		.byte	0x8
+ 302 00aa 6D010000 		.4byte	.LASF15
+ 303 00ae 05       		.uleb128 0x5
+ 304 00af 7E010000 		.4byte	.LASF16
+ 305 00b3 04       		.byte	0x4
+ 306 00b4 8E02     		.2byte	0x28e
+ 307 00b6 BA000000 		.4byte	0xba
+ 308 00ba 06       		.uleb128 0x6
+ 309 00bb 81000000 		.4byte	0x81
+ 310 00bf 02       		.uleb128 0x2
+ 311 00c0 08       		.byte	0x8
+ 312 00c1 04       		.byte	0x4
+ 313 00c2 CE010000 		.4byte	.LASF17
+ 314 00c6 02       		.uleb128 0x2
+ 315 00c7 04       		.byte	0x4
+ 316 00c8 07       		.byte	0x7
+ 317 00c9 11020000 		.4byte	.LASF18
+ 318 00cd 07       		.uleb128 0x7
+ 319 00ce 72010000 		.4byte	.LASF21
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 8
+
+
+ 320 00d2 01       		.byte	0x1
+ 321 00d3 12       		.byte	0x12
+ 322 00d4 00000000 		.4byte	.LFB63
+ 323 00d8 94000000 		.4byte	.LFE63-.LFB63
+ 324 00dc 01       		.uleb128 0x1
+ 325 00dd 9C       		.byte	0x9c
+ 326 00de FF000000 		.4byte	0xff
+ 327 00e2 08       		.uleb128 0x8
+ 328 00e3 8E000000 		.4byte	.LASF19
+ 329 00e7 01       		.byte	0x1
+ 330 00e8 14       		.byte	0x14
+ 331 00e9 8D000000 		.4byte	0x8d
+ 332 00ed 02       		.uleb128 0x2
+ 333 00ee 91       		.byte	0x91
+ 334 00ef 76       		.sleb128 -10
+ 335 00f0 08       		.uleb128 0x8
+ 336 00f1 AE000000 		.4byte	.LASF20
+ 337 00f5 01       		.byte	0x1
+ 338 00f6 15       		.byte	0x15
+ 339 00f7 81000000 		.4byte	0x81
+ 340 00fb 02       		.uleb128 0x2
+ 341 00fc 91       		.byte	0x91
+ 342 00fd 75       		.sleb128 -11
+ 343 00fe 00       		.byte	0
+ 344 00ff 07       		.uleb128 0x7
+ 345 0100 EA010000 		.4byte	.LASF22
+ 346 0104 01       		.byte	0x1
+ 347 0105 33       		.byte	0x33
+ 348 0106 00000000 		.4byte	.LFB64
+ 349 010a 1A000000 		.4byte	.LFE64-.LFB64
+ 350 010e 01       		.uleb128 0x1
+ 351 010f 9C       		.byte	0x9c
+ 352 0110 23010000 		.4byte	0x123
+ 353 0114 09       		.uleb128 0x9
+ 354 0115 9A010000 		.4byte	.LASF26
+ 355 0119 01       		.byte	0x1
+ 356 011a 33       		.byte	0x33
+ 357 011b 81000000 		.4byte	0x81
+ 358 011f 02       		.uleb128 0x2
+ 359 0120 91       		.byte	0x91
+ 360 0121 77       		.sleb128 -9
+ 361 0122 00       		.byte	0
+ 362 0123 0A       		.uleb128 0xa
+ 363 0124 52010000 		.4byte	.LASF27
+ 364 0128 01       		.byte	0x1
+ 365 0129 38       		.byte	0x38
+ 366 012a 00000000 		.4byte	.LFB65
+ 367 012e 0C000000 		.4byte	.LFE65-.LFB65
+ 368 0132 01       		.uleb128 0x1
+ 369 0133 9C       		.byte	0x9c
+ 370 0134 0B       		.uleb128 0xb
+ 371 0135 B5010000 		.4byte	.LASF28
+ 372 0139 05       		.byte	0x5
+ 373 013a 1207     		.2byte	0x712
+ 374 013c 40010000 		.4byte	0x140
+ 375 0140 06       		.uleb128 0x6
+ 376 0141 76000000 		.4byte	0x76
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 9
+
+
+ 377 0145 00       		.byte	0
+ 378              		.section	.debug_abbrev,"",%progbits
+ 379              	.Ldebug_abbrev0:
+ 380 0000 01       		.uleb128 0x1
+ 381 0001 11       		.uleb128 0x11
+ 382 0002 01       		.byte	0x1
+ 383 0003 25       		.uleb128 0x25
+ 384 0004 0E       		.uleb128 0xe
+ 385 0005 13       		.uleb128 0x13
+ 386 0006 0B       		.uleb128 0xb
+ 387 0007 03       		.uleb128 0x3
+ 388 0008 0E       		.uleb128 0xe
+ 389 0009 1B       		.uleb128 0x1b
+ 390 000a 0E       		.uleb128 0xe
+ 391 000b 55       		.uleb128 0x55
+ 392 000c 17       		.uleb128 0x17
+ 393 000d 11       		.uleb128 0x11
+ 394 000e 01       		.uleb128 0x1
+ 395 000f 10       		.uleb128 0x10
+ 396 0010 17       		.uleb128 0x17
+ 397 0011 00       		.byte	0
+ 398 0012 00       		.byte	0
+ 399 0013 02       		.uleb128 0x2
+ 400 0014 24       		.uleb128 0x24
+ 401 0015 00       		.byte	0
+ 402 0016 0B       		.uleb128 0xb
+ 403 0017 0B       		.uleb128 0xb
+ 404 0018 3E       		.uleb128 0x3e
+ 405 0019 0B       		.uleb128 0xb
+ 406 001a 03       		.uleb128 0x3
+ 407 001b 0E       		.uleb128 0xe
+ 408 001c 00       		.byte	0
+ 409 001d 00       		.byte	0
+ 410 001e 03       		.uleb128 0x3
+ 411 001f 16       		.uleb128 0x16
+ 412 0020 00       		.byte	0
+ 413 0021 03       		.uleb128 0x3
+ 414 0022 0E       		.uleb128 0xe
+ 415 0023 3A       		.uleb128 0x3a
+ 416 0024 0B       		.uleb128 0xb
+ 417 0025 3B       		.uleb128 0x3b
+ 418 0026 0B       		.uleb128 0xb
+ 419 0027 49       		.uleb128 0x49
+ 420 0028 13       		.uleb128 0x13
+ 421 0029 00       		.byte	0
+ 422 002a 00       		.byte	0
+ 423 002b 04       		.uleb128 0x4
+ 424 002c 24       		.uleb128 0x24
+ 425 002d 00       		.byte	0
+ 426 002e 0B       		.uleb128 0xb
+ 427 002f 0B       		.uleb128 0xb
+ 428 0030 3E       		.uleb128 0x3e
+ 429 0031 0B       		.uleb128 0xb
+ 430 0032 03       		.uleb128 0x3
+ 431 0033 08       		.uleb128 0x8
+ 432 0034 00       		.byte	0
+ 433 0035 00       		.byte	0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 10
+
+
+ 434 0036 05       		.uleb128 0x5
+ 435 0037 16       		.uleb128 0x16
+ 436 0038 00       		.byte	0
+ 437 0039 03       		.uleb128 0x3
+ 438 003a 0E       		.uleb128 0xe
+ 439 003b 3A       		.uleb128 0x3a
+ 440 003c 0B       		.uleb128 0xb
+ 441 003d 3B       		.uleb128 0x3b
+ 442 003e 05       		.uleb128 0x5
+ 443 003f 49       		.uleb128 0x49
+ 444 0040 13       		.uleb128 0x13
+ 445 0041 00       		.byte	0
+ 446 0042 00       		.byte	0
+ 447 0043 06       		.uleb128 0x6
+ 448 0044 35       		.uleb128 0x35
+ 449 0045 00       		.byte	0
+ 450 0046 49       		.uleb128 0x49
+ 451 0047 13       		.uleb128 0x13
+ 452 0048 00       		.byte	0
+ 453 0049 00       		.byte	0
+ 454 004a 07       		.uleb128 0x7
+ 455 004b 2E       		.uleb128 0x2e
+ 456 004c 01       		.byte	0x1
+ 457 004d 3F       		.uleb128 0x3f
+ 458 004e 19       		.uleb128 0x19
+ 459 004f 03       		.uleb128 0x3
+ 460 0050 0E       		.uleb128 0xe
+ 461 0051 3A       		.uleb128 0x3a
+ 462 0052 0B       		.uleb128 0xb
+ 463 0053 3B       		.uleb128 0x3b
+ 464 0054 0B       		.uleb128 0xb
+ 465 0055 27       		.uleb128 0x27
+ 466 0056 19       		.uleb128 0x19
+ 467 0057 11       		.uleb128 0x11
+ 468 0058 01       		.uleb128 0x1
+ 469 0059 12       		.uleb128 0x12
+ 470 005a 06       		.uleb128 0x6
+ 471 005b 40       		.uleb128 0x40
+ 472 005c 18       		.uleb128 0x18
+ 473 005d 9642     		.uleb128 0x2116
+ 474 005f 19       		.uleb128 0x19
+ 475 0060 01       		.uleb128 0x1
+ 476 0061 13       		.uleb128 0x13
+ 477 0062 00       		.byte	0
+ 478 0063 00       		.byte	0
+ 479 0064 08       		.uleb128 0x8
+ 480 0065 34       		.uleb128 0x34
+ 481 0066 00       		.byte	0
+ 482 0067 03       		.uleb128 0x3
+ 483 0068 0E       		.uleb128 0xe
+ 484 0069 3A       		.uleb128 0x3a
+ 485 006a 0B       		.uleb128 0xb
+ 486 006b 3B       		.uleb128 0x3b
+ 487 006c 0B       		.uleb128 0xb
+ 488 006d 49       		.uleb128 0x49
+ 489 006e 13       		.uleb128 0x13
+ 490 006f 02       		.uleb128 0x2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 11
+
+
+ 491 0070 18       		.uleb128 0x18
+ 492 0071 00       		.byte	0
+ 493 0072 00       		.byte	0
+ 494 0073 09       		.uleb128 0x9
+ 495 0074 05       		.uleb128 0x5
+ 496 0075 00       		.byte	0
+ 497 0076 03       		.uleb128 0x3
+ 498 0077 0E       		.uleb128 0xe
+ 499 0078 3A       		.uleb128 0x3a
+ 500 0079 0B       		.uleb128 0xb
+ 501 007a 3B       		.uleb128 0x3b
+ 502 007b 0B       		.uleb128 0xb
+ 503 007c 49       		.uleb128 0x49
+ 504 007d 13       		.uleb128 0x13
+ 505 007e 02       		.uleb128 0x2
+ 506 007f 18       		.uleb128 0x18
+ 507 0080 00       		.byte	0
+ 508 0081 00       		.byte	0
+ 509 0082 0A       		.uleb128 0xa
+ 510 0083 2E       		.uleb128 0x2e
+ 511 0084 00       		.byte	0
+ 512 0085 3F       		.uleb128 0x3f
+ 513 0086 19       		.uleb128 0x19
+ 514 0087 03       		.uleb128 0x3
+ 515 0088 0E       		.uleb128 0xe
+ 516 0089 3A       		.uleb128 0x3a
+ 517 008a 0B       		.uleb128 0xb
+ 518 008b 3B       		.uleb128 0x3b
+ 519 008c 0B       		.uleb128 0xb
+ 520 008d 27       		.uleb128 0x27
+ 521 008e 19       		.uleb128 0x19
+ 522 008f 11       		.uleb128 0x11
+ 523 0090 01       		.uleb128 0x1
+ 524 0091 12       		.uleb128 0x12
+ 525 0092 06       		.uleb128 0x6
+ 526 0093 40       		.uleb128 0x40
+ 527 0094 18       		.uleb128 0x18
+ 528 0095 9742     		.uleb128 0x2117
+ 529 0097 19       		.uleb128 0x19
+ 530 0098 00       		.byte	0
+ 531 0099 00       		.byte	0
+ 532 009a 0B       		.uleb128 0xb
+ 533 009b 34       		.uleb128 0x34
+ 534 009c 00       		.byte	0
+ 535 009d 03       		.uleb128 0x3
+ 536 009e 0E       		.uleb128 0xe
+ 537 009f 3A       		.uleb128 0x3a
+ 538 00a0 0B       		.uleb128 0xb
+ 539 00a1 3B       		.uleb128 0x3b
+ 540 00a2 05       		.uleb128 0x5
+ 541 00a3 49       		.uleb128 0x49
+ 542 00a4 13       		.uleb128 0x13
+ 543 00a5 3F       		.uleb128 0x3f
+ 544 00a6 19       		.uleb128 0x19
+ 545 00a7 3C       		.uleb128 0x3c
+ 546 00a8 19       		.uleb128 0x19
+ 547 00a9 00       		.byte	0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 12
+
+
+ 548 00aa 00       		.byte	0
+ 549 00ab 00       		.byte	0
+ 550              		.section	.debug_aranges,"",%progbits
+ 551 0000 2C000000 		.4byte	0x2c
+ 552 0004 0200     		.2byte	0x2
+ 553 0006 00000000 		.4byte	.Ldebug_info0
+ 554 000a 04       		.byte	0x4
+ 555 000b 00       		.byte	0
+ 556 000c 0000     		.2byte	0
+ 557 000e 0000     		.2byte	0
+ 558 0010 00000000 		.4byte	.LFB63
+ 559 0014 94000000 		.4byte	.LFE63-.LFB63
+ 560 0018 00000000 		.4byte	.LFB64
+ 561 001c 1A000000 		.4byte	.LFE64-.LFB64
+ 562 0020 00000000 		.4byte	.LFB65
+ 563 0024 0C000000 		.4byte	.LFE65-.LFB65
+ 564 0028 00000000 		.4byte	0
+ 565 002c 00000000 		.4byte	0
+ 566              		.section	.debug_ranges,"",%progbits
+ 567              	.Ldebug_ranges0:
+ 568 0000 00000000 		.4byte	.LFB63
+ 569 0004 94000000 		.4byte	.LFE63
+ 570 0008 00000000 		.4byte	.LFB64
+ 571 000c 1A000000 		.4byte	.LFE64
+ 572 0010 00000000 		.4byte	.LFB65
+ 573 0014 0C000000 		.4byte	.LFE65
+ 574 0018 00000000 		.4byte	0
+ 575 001c 00000000 		.4byte	0
+ 576              		.section	.debug_line,"",%progbits
+ 577              	.Ldebug_line0:
+ 578 0000 BB010000 		.section	.debug_str,"MS",%progbits,1
+ 578      02005501 
+ 578      00000201 
+ 578      FB0E0D00 
+ 578      01010101 
+ 579              	.LASF6:
+ 580 0000 6C6F6E67 		.ascii	"long long int\000"
+ 580      206C6F6E 
+ 580      6720696E 
+ 580      7400
+ 581              	.LASF3:
+ 582 000e 73686F72 		.ascii	"short unsigned int\000"
+ 582      7420756E 
+ 582      7369676E 
+ 582      65642069 
+ 582      6E7400
+ 583              	.LASF25:
+ 584 0021 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\land-boards\\"
+ 584      73657273 
+ 584      5C48507A 
+ 584      3432305C 
+ 584      446F6375 
+ 585 004e 52617350 		.ascii	"RasPi\\RPI_PSOC5\\RPI_PSOC5_RPI_SPI8_CARD_TEST.cyds"
+ 585      695C5250 
+ 585      495F5053 
+ 585      4F43355C 
+ 585      5250495F 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 13
+
+
+ 586 007f 6E00     		.ascii	"n\000"
+ 587              	.LASF8:
+ 588 0081 756E7369 		.ascii	"unsigned int\000"
+ 588      676E6564 
+ 588      20696E74 
+ 588      00
+ 589              	.LASF19:
+ 590 008e 74785661 		.ascii	"txValue\000"
+ 590      6C756500 
+ 591              	.LASF11:
+ 592 0096 75696E74 		.ascii	"uint8\000"
+ 592      3800
+ 593              	.LASF5:
+ 594 009c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 594      20756E73 
+ 594      69676E65 
+ 594      6420696E 
+ 594      7400
+ 595              	.LASF20:
+ 596 00ae 63684E75 		.ascii	"chNum\000"
+ 596      6D00
+ 597              	.LASF24:
+ 598 00b4 54657374 		.ascii	"Test_RPI_SPI8.c\000"
+ 598      5F525049 
+ 598      5F535049 
+ 598      382E6300 
+ 599              	.LASF23:
+ 600 00c4 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 600      43313120 
+ 600      352E342E 
+ 600      31203230 
+ 600      31363036 
+ 601 00f7 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 601      20726576 
+ 601      6973696F 
+ 601      6E203233 
+ 601      37373135 
+ 602 012a 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 602      66756E63 
+ 602      74696F6E 
+ 602      2D736563 
+ 602      74696F6E 
+ 603              	.LASF27:
+ 604 0152 64656275 		.ascii	"debugRPISPI8\000"
+ 604      67525049 
+ 604      53504938 
+ 604      00
+ 605              	.LASF1:
+ 606 015f 756E7369 		.ascii	"unsigned char\000"
+ 606      676E6564 
+ 606      20636861 
+ 606      7200
+ 607              	.LASF15:
+ 608 016d 63686172 		.ascii	"char\000"
+ 608      00
+ 609              	.LASF21:
+ 610 0172 74657374 		.ascii	"testRPISPI8\000"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 14
+
+
+ 610      52504953 
+ 610      50493800 
+ 611              	.LASF16:
+ 612 017e 72656738 		.ascii	"reg8\000"
+ 612      00
+ 613              	.LASF7:
+ 614 0183 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 614      206C6F6E 
+ 614      6720756E 
+ 614      7369676E 
+ 614      65642069 
+ 615              	.LASF26:
+ 616 019a 6368616E 		.ascii	"channelNum\000"
+ 616      6E656C4E 
+ 616      756D00
+ 617              	.LASF14:
+ 618 01a5 646F7562 		.ascii	"double\000"
+ 618      6C6500
+ 619              	.LASF4:
+ 620 01ac 6C6F6E67 		.ascii	"long int\000"
+ 620      20696E74 
+ 620      00
+ 621              	.LASF28:
+ 622 01b5 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 622      52784275 
+ 622      66666572 
+ 622      00
+ 623              	.LASF0:
+ 624 01c2 7369676E 		.ascii	"signed char\000"
+ 624      65642063 
+ 624      68617200 
+ 625              	.LASF17:
+ 626 01ce 6C6F6E67 		.ascii	"long double\000"
+ 626      20646F75 
+ 626      626C6500 
+ 627              	.LASF9:
+ 628 01da 5F5F696E 		.ascii	"__int32_t\000"
+ 628      7433325F 
+ 628      7400
+ 629              	.LASF13:
+ 630 01e4 666C6F61 		.ascii	"float\000"
+ 630      7400
+ 631              	.LASF22:
+ 632 01ea 73657453 		.ascii	"setSPIChannel\000"
+ 632      50494368 
+ 632      616E6E65 
+ 632      6C00
+ 633              	.LASF2:
+ 634 01f8 73686F72 		.ascii	"short int\000"
+ 634      7420696E 
+ 634      7400
+ 635              	.LASF12:
+ 636 0202 75696E74 		.ascii	"uint16\000"
+ 636      313600
+ 637              	.LASF10:
+ 638 0209 696E7433 		.ascii	"int32_t\000"
+ 638      325F7400 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccCjUstx.s 			page 15
+
+
+ 639              	.LASF18:
+ 640 0211 73697A65 		.ascii	"sizetype\000"
+ 640      74797065 
+ 640      00
+ 641              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

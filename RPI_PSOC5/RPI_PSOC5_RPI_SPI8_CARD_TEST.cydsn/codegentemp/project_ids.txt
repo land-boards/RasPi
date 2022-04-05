@@ -1,0 +1,9 @@
+C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_RPI_SPI8_CARD_TEST.cydsn\RPI_PSOC5_RPI_SPI8_CARD_TEST.cyprj|56990916-4671-4ff3-b4b2-40beb4ea81ac
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|6d0f4d78-72bb-405a-87e2-235ea04d6a94
+C:\Users\HPz420\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|187651e9-ab7e-43cb-9cd4-87f973744835
+C:\Users\HPz420\Documents\PSoC Creator\4.3\Downloads ( 4.3).cylib\Downloads ( 4.3).cyprj|c95e1a0b-4f8b-456f-87b5-0772a7ea5027
+C:\Users\HPz420\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|2c8b8694-c1e8-43b1-96f3-7d86499b64ee
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|6fb516b6-1339-4d01-b78d-f307f075dd8f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|98b611ad-fc25-4f41-8305-b1ecea5f289a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|7c6417cc-261c-48af-ad68-2b7160a76a9c
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|39483e96-f23b-444d-b02d-556c4e34b437

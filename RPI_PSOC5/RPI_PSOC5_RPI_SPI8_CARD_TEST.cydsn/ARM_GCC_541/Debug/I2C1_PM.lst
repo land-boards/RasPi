@@ -1,0 +1,1116 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"I2C1_PM.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	I2C1_backup
+  20              		.bss
+  21              		.align	2
+  22              		.type	I2C1_backup, %object
+  23              		.size	I2C1_backup, 2
+  24              	I2C1_backup:
+  25 0000 0000     		.space	2
+  26              		.section	.text.I2C1_SaveConfig,"ax",%progbits
+  27              		.align	2
+  28              		.global	I2C1_SaveConfig
+  29              		.thumb
+  30              		.thumb_func
+  31              		.type	I2C1_SaveConfig, %function
+  32              	I2C1_SaveConfig:
+  33              	.LFB0:
+  34              		.file 1 "Generated_Source\\PSoC5\\I2C1_PM.c"
+   1:Generated_Source\PSoC5/I2C1_PM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/I2C1_PM.c **** * File Name: I2C1_PM.c
+   3:Generated_Source\PSoC5/I2C1_PM.c **** * Version 3.50
+   4:Generated_Source\PSoC5/I2C1_PM.c **** *
+   5:Generated_Source\PSoC5/I2C1_PM.c **** * Description:
+   6:Generated_Source\PSoC5/I2C1_PM.c **** *  This file provides low power mode APIs for the I2C component.
+   7:Generated_Source\PSoC5/I2C1_PM.c **** *
+   8:Generated_Source\PSoC5/I2C1_PM.c **** ********************************************************************************
+   9:Generated_Source\PSoC5/I2C1_PM.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation. All rights reserved.
+  10:Generated_Source\PSoC5/I2C1_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  11:Generated_Source\PSoC5/I2C1_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  12:Generated_Source\PSoC5/I2C1_PM.c **** * the software package with which this file was provided.
+  13:Generated_Source\PSoC5/I2C1_PM.c **** *******************************************************************************/
+  14:Generated_Source\PSoC5/I2C1_PM.c **** 
+  15:Generated_Source\PSoC5/I2C1_PM.c **** #include "I2C1_PVT.h"
+  16:Generated_Source\PSoC5/I2C1_PM.c **** 
+  17:Generated_Source\PSoC5/I2C1_PM.c **** I2C1_BACKUP_STRUCT I2C1_backup =
+  18:Generated_Source\PSoC5/I2C1_PM.c **** {
+  19:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_DISABLE,
+  20:Generated_Source\PSoC5/I2C1_PM.c **** 
+  21:Generated_Source\PSoC5/I2C1_PM.c **** #if (I2C1_FF_IMPLEMENTED)
+  22:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_DEFAULT_XCFG,
+  23:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_DEFAULT_CFG,
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 2
+
+
+  24:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_DEFAULT_ADDR,
+  25:Generated_Source\PSoC5/I2C1_PM.c ****     LO8(I2C1_DEFAULT_DIVIDE_FACTOR),
+  26:Generated_Source\PSoC5/I2C1_PM.c ****     HI8(I2C1_DEFAULT_DIVIDE_FACTOR),
+  27:Generated_Source\PSoC5/I2C1_PM.c **** #else  /* (I2C1_UDB_IMPLEMENTED) */
+  28:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_DEFAULT_CFG,
+  29:Generated_Source\PSoC5/I2C1_PM.c **** #endif /* (I2C1_FF_IMPLEMENTED) */
+  30:Generated_Source\PSoC5/I2C1_PM.c **** 
+  31:Generated_Source\PSoC5/I2C1_PM.c **** #if (I2C1_TIMEOUT_ENABLED)
+  32:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_DEFAULT_TMOUT_PERIOD,
+  33:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_DEFAULT_TMOUT_INTR_MASK,
+  34:Generated_Source\PSoC5/I2C1_PM.c **** #endif /* (I2C1_TIMEOUT_ENABLED) */
+  35:Generated_Source\PSoC5/I2C1_PM.c **** };
+  36:Generated_Source\PSoC5/I2C1_PM.c **** 
+  37:Generated_Source\PSoC5/I2C1_PM.c **** #if ((I2C1_FF_IMPLEMENTED) && (I2C1_WAKEUP_ENABLED))
+  38:Generated_Source\PSoC5/I2C1_PM.c ****     volatile uint8 I2C1_wakeupSource;
+  39:Generated_Source\PSoC5/I2C1_PM.c **** #endif /* ((I2C1_FF_IMPLEMENTED) && (I2C1_WAKEUP_ENABLED)) */
+  40:Generated_Source\PSoC5/I2C1_PM.c **** 
+  41:Generated_Source\PSoC5/I2C1_PM.c **** 
+  42:Generated_Source\PSoC5/I2C1_PM.c **** /*******************************************************************************
+  43:Generated_Source\PSoC5/I2C1_PM.c **** * Function Name: I2C1_SaveConfig
+  44:Generated_Source\PSoC5/I2C1_PM.c **** ********************************************************************************
+  45:Generated_Source\PSoC5/I2C1_PM.c **** *
+  46:Generated_Source\PSoC5/I2C1_PM.c **** * Summary:
+  47:Generated_Source\PSoC5/I2C1_PM.c **** *  The Enable wakeup from Sleep Mode selection influences this function
+  48:Generated_Source\PSoC5/I2C1_PM.c **** *  implementation:
+  49:Generated_Source\PSoC5/I2C1_PM.c **** *   Unchecked: Stores the component non-retention configuration registers.
+  50:Generated_Source\PSoC5/I2C1_PM.c **** *   Checked:   Disables the master, if it was enabled before, and enables
+  51:Generated_Source\PSoC5/I2C1_PM.c **** *              backup regulator of the I2C hardware. If a transaction intended
+  52:Generated_Source\PSoC5/I2C1_PM.c **** *              for component executes during this function call, it waits until
+  53:Generated_Source\PSoC5/I2C1_PM.c **** *              the current transaction is completed and I2C hardware is ready
+  54:Generated_Source\PSoC5/I2C1_PM.c **** *              to enter sleep mode. All subsequent I2C traffic is NAKed until
+  55:Generated_Source\PSoC5/I2C1_PM.c **** *              the device is put into sleep mode.
+  56:Generated_Source\PSoC5/I2C1_PM.c **** *
+  57:Generated_Source\PSoC5/I2C1_PM.c **** * Parameters:
+  58:Generated_Source\PSoC5/I2C1_PM.c **** *  None.
+  59:Generated_Source\PSoC5/I2C1_PM.c **** *
+  60:Generated_Source\PSoC5/I2C1_PM.c **** * Return:
+  61:Generated_Source\PSoC5/I2C1_PM.c **** *  None.
+  62:Generated_Source\PSoC5/I2C1_PM.c **** *
+  63:Generated_Source\PSoC5/I2C1_PM.c **** * Global Variables:
+  64:Generated_Source\PSoC5/I2C1_PM.c **** *  I2C1_backup - The global variable used to save the component
+  65:Generated_Source\PSoC5/I2C1_PM.c **** *                            configuration and non-retention registers before
+  66:Generated_Source\PSoC5/I2C1_PM.c **** *                            entering the sleep mode.
+  67:Generated_Source\PSoC5/I2C1_PM.c **** *
+  68:Generated_Source\PSoC5/I2C1_PM.c **** * Reentrant:
+  69:Generated_Source\PSoC5/I2C1_PM.c **** *  No.
+  70:Generated_Source\PSoC5/I2C1_PM.c **** *
+  71:Generated_Source\PSoC5/I2C1_PM.c **** *******************************************************************************/
+  72:Generated_Source\PSoC5/I2C1_PM.c **** void I2C1_SaveConfig(void) 
+  73:Generated_Source\PSoC5/I2C1_PM.c **** {
+  35              		.loc 1 73 0
+  36              		.cfi_startproc
+  37              		@ args = 0, pretend = 0, frame = 0
+  38              		@ frame_needed = 1, uses_anonymous_args = 0
+  39              		@ link register save eliminated.
+  40 0000 80B4     		push	{r7}
+  41              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 3
+
+
+  42              		.cfi_offset 7, -4
+  43 0002 00AF     		add	r7, sp, #0
+  44              		.cfi_def_cfa_register 7
+  74:Generated_Source\PSoC5/I2C1_PM.c **** #if (I2C1_FF_IMPLEMENTED)
+  75:Generated_Source\PSoC5/I2C1_PM.c ****     #if (I2C1_WAKEUP_ENABLED)
+  76:Generated_Source\PSoC5/I2C1_PM.c ****         uint8 intState;
+  77:Generated_Source\PSoC5/I2C1_PM.c ****     #endif /* (I2C1_WAKEUP_ENABLED) */
+  78:Generated_Source\PSoC5/I2C1_PM.c **** 
+  79:Generated_Source\PSoC5/I2C1_PM.c ****     /* Store registers before enter low power mode */
+  80:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_backup.cfg     = I2C1_CFG_REG;
+  81:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_backup.xcfg    = I2C1_XCFG_REG;
+  82:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_backup.addr    = I2C1_ADDR_REG;
+  83:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_backup.clkDiv1 = I2C1_CLKDIV1_REG;
+  84:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_backup.clkDiv2 = I2C1_CLKDIV2_REG;
+  85:Generated_Source\PSoC5/I2C1_PM.c **** 
+  86:Generated_Source\PSoC5/I2C1_PM.c **** #if (I2C1_WAKEUP_ENABLED)
+  87:Generated_Source\PSoC5/I2C1_PM.c ****     /* Disable master */
+  88:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_CFG_REG &= (uint8) ~I2C1_ENABLE_MASTER;
+  89:Generated_Source\PSoC5/I2C1_PM.c **** 
+  90:Generated_Source\PSoC5/I2C1_PM.c ****     /* Enable backup regulator to keep block powered in low power mode */
+  91:Generated_Source\PSoC5/I2C1_PM.c ****     intState = CyEnterCriticalSection();
+  92:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_PWRSYS_CR1_REG |= I2C1_PWRSYS_CR1_I2C_REG_BACKUP;
+  93:Generated_Source\PSoC5/I2C1_PM.c ****     CyExitCriticalSection(intState);
+  94:Generated_Source\PSoC5/I2C1_PM.c **** 
+  95:Generated_Source\PSoC5/I2C1_PM.c ****     /* 1) Set force NACK to ignore I2C transactions;
+  96:Generated_Source\PSoC5/I2C1_PM.c ****     *  2) Wait unti I2C is ready go to Sleep; !!
+  97:Generated_Source\PSoC5/I2C1_PM.c ****     *  3) These bits are cleared on wake up.
+  98:Generated_Source\PSoC5/I2C1_PM.c ****     */
+  99:Generated_Source\PSoC5/I2C1_PM.c ****     /* Wait when block is ready for sleep */
+ 100:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_XCFG_REG |= I2C1_XCFG_FORCE_NACK;
+ 101:Generated_Source\PSoC5/I2C1_PM.c ****     while (0u == (I2C1_XCFG_REG & I2C1_XCFG_RDY_TO_SLEEP))
+ 102:Generated_Source\PSoC5/I2C1_PM.c ****     {
+ 103:Generated_Source\PSoC5/I2C1_PM.c ****     }
+ 104:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 105:Generated_Source\PSoC5/I2C1_PM.c ****     /* Setup wakeup interrupt */
+ 106:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_DisableInt();
+ 107:Generated_Source\PSoC5/I2C1_PM.c ****     (void) CyIntSetVector(I2C1_ISR_NUMBER, &I2C1_WAKEUP_ISR);
+ 108:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_wakeupSource = 0u;
+ 109:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_EnableInt();
+ 110:Generated_Source\PSoC5/I2C1_PM.c **** #endif /* (I2C1_WAKEUP_ENABLED) */
+ 111:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 112:Generated_Source\PSoC5/I2C1_PM.c **** #else
+ 113:Generated_Source\PSoC5/I2C1_PM.c ****     /* Store only address match bit */
+ 114:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_backup.control = (I2C1_CFG_REG & I2C1_CTRL_ANY_ADDRESS_MASK);
+  45              		.loc 1 114 0
+  46 0004 054B     		ldr	r3, .L2
+  47 0006 1B78     		ldrb	r3, [r3]
+  48 0008 DBB2     		uxtb	r3, r3
+  49 000a 03F00803 		and	r3, r3, #8
+  50 000e DAB2     		uxtb	r2, r3
+  51 0010 034B     		ldr	r3, .L2+4
+  52 0012 5A70     		strb	r2, [r3, #1]
+ 115:Generated_Source\PSoC5/I2C1_PM.c **** #endif /* (I2C1_FF_IMPLEMENTED) */
+ 116:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 117:Generated_Source\PSoC5/I2C1_PM.c **** #if (I2C1_TIMEOUT_ENABLED)
+ 118:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_TimeoutSaveConfig();
+ 119:Generated_Source\PSoC5/I2C1_PM.c **** #endif /* (I2C1_TIMEOUT_ENABLED) */
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 4
+
+
+ 120:Generated_Source\PSoC5/I2C1_PM.c **** }
+  53              		.loc 1 120 0
+  54 0014 00BF     		nop
+  55 0016 BD46     		mov	sp, r7
+  56              		.cfi_def_cfa_register 13
+  57              		@ sp needed
+  58 0018 80BC     		pop	{r7}
+  59              		.cfi_restore 7
+  60              		.cfi_def_cfa_offset 0
+  61 001a 7047     		bx	lr
+  62              	.L3:
+  63              		.align	2
+  64              	.L2:
+  65 001c 77640040 		.word	1073767543
+  66 0020 00000000 		.word	I2C1_backup
+  67              		.cfi_endproc
+  68              	.LFE0:
+  69              		.size	I2C1_SaveConfig, .-I2C1_SaveConfig
+  70              		.section	.text.I2C1_Sleep,"ax",%progbits
+  71              		.align	2
+  72              		.global	I2C1_Sleep
+  73              		.thumb
+  74              		.thumb_func
+  75              		.type	I2C1_Sleep, %function
+  76              	I2C1_Sleep:
+  77              	.LFB1:
+ 121:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 122:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 123:Generated_Source\PSoC5/I2C1_PM.c **** /*******************************************************************************
+ 124:Generated_Source\PSoC5/I2C1_PM.c **** * Function Name: I2C1_Sleep
+ 125:Generated_Source\PSoC5/I2C1_PM.c **** ********************************************************************************
+ 126:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 127:Generated_Source\PSoC5/I2C1_PM.c **** * Summary:
+ 128:Generated_Source\PSoC5/I2C1_PM.c **** *  This is the preferred method to prepare the component before device enters
+ 129:Generated_Source\PSoC5/I2C1_PM.c **** *  sleep mode. The Enable wakeup from Sleep Mode selection influences this
+ 130:Generated_Source\PSoC5/I2C1_PM.c **** *  function implementation:
+ 131:Generated_Source\PSoC5/I2C1_PM.c **** *   Unchecked: Checks current I2C component state, saves it, and disables the
+ 132:Generated_Source\PSoC5/I2C1_PM.c **** *              component by calling I2C_Stop() if it is currently enabled.
+ 133:Generated_Source\PSoC5/I2C1_PM.c **** *              I2C_SaveConfig() is then called to save the component
+ 134:Generated_Source\PSoC5/I2C1_PM.c **** *              non-retention configuration registers.
+ 135:Generated_Source\PSoC5/I2C1_PM.c **** *   Checked:   If a transaction intended for component executes during this
+ 136:Generated_Source\PSoC5/I2C1_PM.c **** *              function call, it waits until the current transaction is
+ 137:Generated_Source\PSoC5/I2C1_PM.c **** *              completed. All subsequent I2C traffic intended for component
+ 138:Generated_Source\PSoC5/I2C1_PM.c **** *              is NAKed until the device is put to sleep mode. The address
+ 139:Generated_Source\PSoC5/I2C1_PM.c **** *              match event wakes up the device.
+ 140:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 141:Generated_Source\PSoC5/I2C1_PM.c **** * Parameters:
+ 142:Generated_Source\PSoC5/I2C1_PM.c **** *  None.
+ 143:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 144:Generated_Source\PSoC5/I2C1_PM.c **** * Return:
+ 145:Generated_Source\PSoC5/I2C1_PM.c **** *  None.
+ 146:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 147:Generated_Source\PSoC5/I2C1_PM.c **** * Reentrant:
+ 148:Generated_Source\PSoC5/I2C1_PM.c **** *  No.
+ 149:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 150:Generated_Source\PSoC5/I2C1_PM.c **** *******************************************************************************/
+ 151:Generated_Source\PSoC5/I2C1_PM.c **** void I2C1_Sleep(void) 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 5
+
+
+ 152:Generated_Source\PSoC5/I2C1_PM.c **** {
+  78              		.loc 1 152 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 1, uses_anonymous_args = 0
+  82 0000 80B5     		push	{r7, lr}
+  83              		.cfi_def_cfa_offset 8
+  84              		.cfi_offset 7, -8
+  85              		.cfi_offset 14, -4
+  86 0002 00AF     		add	r7, sp, #0
+  87              		.cfi_def_cfa_register 7
+ 153:Generated_Source\PSoC5/I2C1_PM.c **** #if (I2C1_WAKEUP_ENABLED)
+ 154:Generated_Source\PSoC5/I2C1_PM.c ****     /* Do not enable block after exit low power mode if it is wakeup source */
+ 155:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_backup.enableState = I2C1_DISABLE;
+ 156:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 157:Generated_Source\PSoC5/I2C1_PM.c ****     #if (I2C1_TIMEOUT_ENABLED)
+ 158:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_TimeoutStop();
+ 159:Generated_Source\PSoC5/I2C1_PM.c ****     #endif /* (I2C1_TIMEOUT_ENABLED) */
+ 160:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 161:Generated_Source\PSoC5/I2C1_PM.c **** #else
+ 162:Generated_Source\PSoC5/I2C1_PM.c ****     /* Store enable state */
+ 163:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_backup.enableState = (uint8) I2C1_IS_ENABLED;
+  88              		.loc 1 163 0
+  89 0004 0B4B     		ldr	r3, .L6
+  90 0006 1B78     		ldrb	r3, [r3]
+  91 0008 DBB2     		uxtb	r3, r3
+  92 000a 03F00203 		and	r3, r3, #2
+  93 000e 002B     		cmp	r3, #0
+  94 0010 14BF     		ite	ne
+  95 0012 0123     		movne	r3, #1
+  96 0014 0023     		moveq	r3, #0
+  97 0016 DBB2     		uxtb	r3, r3
+  98 0018 1A46     		mov	r2, r3
+  99 001a 074B     		ldr	r3, .L6+4
+ 100 001c 1A70     		strb	r2, [r3]
+ 164:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 165:Generated_Source\PSoC5/I2C1_PM.c ****     if (0u != I2C1_backup.enableState)
+ 101              		.loc 1 165 0
+ 102 001e 064B     		ldr	r3, .L6+4
+ 103 0020 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 104 0022 002B     		cmp	r3, #0
+ 105 0024 01D0     		beq	.L5
+ 166:Generated_Source\PSoC5/I2C1_PM.c ****     {
+ 167:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_Stop();
+ 106              		.loc 1 167 0
+ 107 0026 FFF7FEFF 		bl	I2C1_Stop
+ 108              	.L5:
+ 168:Generated_Source\PSoC5/I2C1_PM.c ****     }
+ 169:Generated_Source\PSoC5/I2C1_PM.c **** #endif /* (I2C1_WAKEUP_ENABLED) */
+ 170:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 171:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_SaveConfig();
+ 109              		.loc 1 171 0
+ 110 002a FFF7FEFF 		bl	I2C1_SaveConfig
+ 172:Generated_Source\PSoC5/I2C1_PM.c **** }
+ 111              		.loc 1 172 0
+ 112 002e 00BF     		nop
+ 113 0030 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 6
+
+
+ 114              	.L7:
+ 115 0032 00BF     		.align	2
+ 116              	.L6:
+ 117 0034 77640040 		.word	1073767543
+ 118 0038 00000000 		.word	I2C1_backup
+ 119              		.cfi_endproc
+ 120              	.LFE1:
+ 121              		.size	I2C1_Sleep, .-I2C1_Sleep
+ 122              		.section	.text.I2C1_RestoreConfig,"ax",%progbits
+ 123              		.align	2
+ 124              		.global	I2C1_RestoreConfig
+ 125              		.thumb
+ 126              		.thumb_func
+ 127              		.type	I2C1_RestoreConfig, %function
+ 128              	I2C1_RestoreConfig:
+ 129              	.LFB2:
+ 173:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 174:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 175:Generated_Source\PSoC5/I2C1_PM.c **** /*******************************************************************************
+ 176:Generated_Source\PSoC5/I2C1_PM.c **** * Function Name: I2C1_RestoreConfig
+ 177:Generated_Source\PSoC5/I2C1_PM.c **** ********************************************************************************
+ 178:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 179:Generated_Source\PSoC5/I2C1_PM.c **** * Summary:
+ 180:Generated_Source\PSoC5/I2C1_PM.c **** *  The Enable wakeup from Sleep Mode selection influences this function
+ 181:Generated_Source\PSoC5/I2C1_PM.c **** *  implementation:
+ 182:Generated_Source\PSoC5/I2C1_PM.c **** *   Unchecked: Restores the component non-retention configuration registers
+ 183:Generated_Source\PSoC5/I2C1_PM.c **** *              to the state they were in before I2C_Sleep() or I2C_SaveConfig()
+ 184:Generated_Source\PSoC5/I2C1_PM.c **** *              was called.
+ 185:Generated_Source\PSoC5/I2C1_PM.c **** *   Checked:   Disables the backup regulator of the I2C hardware. Sets up the
+ 186:Generated_Source\PSoC5/I2C1_PM.c **** *              regular component interrupt handler and generates the component
+ 187:Generated_Source\PSoC5/I2C1_PM.c **** *              interrupt if it was wake up source to release the bus and
+ 188:Generated_Source\PSoC5/I2C1_PM.c **** *              continue in-coming I2C transaction.
+ 189:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 190:Generated_Source\PSoC5/I2C1_PM.c **** * Parameters:
+ 191:Generated_Source\PSoC5/I2C1_PM.c **** *  None.
+ 192:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 193:Generated_Source\PSoC5/I2C1_PM.c **** * Return:
+ 194:Generated_Source\PSoC5/I2C1_PM.c **** *  None.
+ 195:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 196:Generated_Source\PSoC5/I2C1_PM.c **** * Global Variables:
+ 197:Generated_Source\PSoC5/I2C1_PM.c **** *  I2C1_backup - The global variable used to save the component
+ 198:Generated_Source\PSoC5/I2C1_PM.c **** *                            configuration and non-retention registers before
+ 199:Generated_Source\PSoC5/I2C1_PM.c **** *                            exiting the sleep mode.
+ 200:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 201:Generated_Source\PSoC5/I2C1_PM.c **** * Reentrant:
+ 202:Generated_Source\PSoC5/I2C1_PM.c **** *  No.
+ 203:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 204:Generated_Source\PSoC5/I2C1_PM.c **** * Side Effects:
+ 205:Generated_Source\PSoC5/I2C1_PM.c **** *  Calling this function before I2C1_SaveConfig() or
+ 206:Generated_Source\PSoC5/I2C1_PM.c **** *  I2C1_Sleep() will lead to unpredictable results.
+ 207:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 208:Generated_Source\PSoC5/I2C1_PM.c **** *******************************************************************************/
+ 209:Generated_Source\PSoC5/I2C1_PM.c **** void I2C1_RestoreConfig(void) 
+ 210:Generated_Source\PSoC5/I2C1_PM.c **** {
+ 130              		.loc 1 210 0
+ 131              		.cfi_startproc
+ 132              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 7
+
+
+ 133              		@ frame_needed = 1, uses_anonymous_args = 0
+ 134              		@ link register save eliminated.
+ 135 0000 80B4     		push	{r7}
+ 136              		.cfi_def_cfa_offset 4
+ 137              		.cfi_offset 7, -4
+ 138 0002 00AF     		add	r7, sp, #0
+ 139              		.cfi_def_cfa_register 7
+ 211:Generated_Source\PSoC5/I2C1_PM.c **** #if (I2C1_FF_IMPLEMENTED)
+ 212:Generated_Source\PSoC5/I2C1_PM.c ****     uint8 intState;
+ 213:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 214:Generated_Source\PSoC5/I2C1_PM.c ****     if (I2C1_CHECK_PWRSYS_I2C_BACKUP)
+ 215:Generated_Source\PSoC5/I2C1_PM.c ****     /* Low power mode was Sleep - backup regulator is enabled */
+ 216:Generated_Source\PSoC5/I2C1_PM.c ****     {
+ 217:Generated_Source\PSoC5/I2C1_PM.c ****         /* Enable backup regulator in active mode */
+ 218:Generated_Source\PSoC5/I2C1_PM.c ****         intState = CyEnterCriticalSection();
+ 219:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_PWRSYS_CR1_REG &= (uint8) ~I2C1_PWRSYS_CR1_I2C_REG_BACKUP;
+ 220:Generated_Source\PSoC5/I2C1_PM.c ****         CyExitCriticalSection(intState);
+ 221:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 222:Generated_Source\PSoC5/I2C1_PM.c ****         /* Restore master */
+ 223:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_CFG_REG = I2C1_backup.cfg;
+ 224:Generated_Source\PSoC5/I2C1_PM.c ****     }
+ 225:Generated_Source\PSoC5/I2C1_PM.c ****     else
+ 226:Generated_Source\PSoC5/I2C1_PM.c ****     /* Low power mode was Hibernate - backup regulator is disabled. All registers are cleared */
+ 227:Generated_Source\PSoC5/I2C1_PM.c ****     {
+ 228:Generated_Source\PSoC5/I2C1_PM.c ****     #if (I2C1_WAKEUP_ENABLED)
+ 229:Generated_Source\PSoC5/I2C1_PM.c ****         /* Disable power to block before register restore */
+ 230:Generated_Source\PSoC5/I2C1_PM.c ****         intState = CyEnterCriticalSection();
+ 231:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_ACT_PWRMGR_REG  &= (uint8) ~I2C1_ACT_PWR_EN;
+ 232:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_STBY_PWRMGR_REG &= (uint8) ~I2C1_STBY_PWR_EN;
+ 233:Generated_Source\PSoC5/I2C1_PM.c ****         CyExitCriticalSection(intState);
+ 234:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 235:Generated_Source\PSoC5/I2C1_PM.c ****         /* Enable component in I2C_Wakeup() after register restore */
+ 236:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_backup.enableState = I2C1_ENABLE;
+ 237:Generated_Source\PSoC5/I2C1_PM.c ****     #endif /* (I2C1_WAKEUP_ENABLED) */
+ 238:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 239:Generated_Source\PSoC5/I2C1_PM.c ****         /* Restore component registers after Hibernate */
+ 240:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_XCFG_REG    = I2C1_backup.xcfg;
+ 241:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_CFG_REG     = I2C1_backup.cfg;
+ 242:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_ADDR_REG    = I2C1_backup.addr;
+ 243:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_CLKDIV1_REG = I2C1_backup.clkDiv1;
+ 244:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_CLKDIV2_REG = I2C1_backup.clkDiv2;
+ 245:Generated_Source\PSoC5/I2C1_PM.c ****     }
+ 246:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 247:Generated_Source\PSoC5/I2C1_PM.c **** #if (I2C1_WAKEUP_ENABLED)
+ 248:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_DisableInt();
+ 249:Generated_Source\PSoC5/I2C1_PM.c ****     (void) CyIntSetVector(I2C1_ISR_NUMBER, &I2C1_ISR);
+ 250:Generated_Source\PSoC5/I2C1_PM.c ****     if (0u != I2C1_wakeupSource)
+ 251:Generated_Source\PSoC5/I2C1_PM.c ****     {
+ 252:Generated_Source\PSoC5/I2C1_PM.c ****         /* Generate interrupt to process incoming transaction */
+ 253:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_SetPendingInt();
+ 254:Generated_Source\PSoC5/I2C1_PM.c ****     }
+ 255:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_EnableInt();
+ 256:Generated_Source\PSoC5/I2C1_PM.c **** #endif /* (I2C1_WAKEUP_ENABLED) */
+ 257:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 258:Generated_Source\PSoC5/I2C1_PM.c **** #else
+ 259:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_CFG_REG = I2C1_backup.control;
+ 140              		.loc 1 259 0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 8
+
+
+ 141 0004 034B     		ldr	r3, .L9
+ 142 0006 044A     		ldr	r2, .L9+4
+ 143 0008 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+ 144 000a 1A70     		strb	r2, [r3]
+ 260:Generated_Source\PSoC5/I2C1_PM.c **** #endif /* (I2C1_FF_IMPLEMENTED) */
+ 261:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 262:Generated_Source\PSoC5/I2C1_PM.c **** #if (I2C1_TIMEOUT_ENABLED)
+ 263:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_TimeoutRestoreConfig();
+ 264:Generated_Source\PSoC5/I2C1_PM.c **** #endif /* (I2C1_TIMEOUT_ENABLED) */
+ 265:Generated_Source\PSoC5/I2C1_PM.c **** }
+ 145              		.loc 1 265 0
+ 146 000c 00BF     		nop
+ 147 000e BD46     		mov	sp, r7
+ 148              		.cfi_def_cfa_register 13
+ 149              		@ sp needed
+ 150 0010 80BC     		pop	{r7}
+ 151              		.cfi_restore 7
+ 152              		.cfi_def_cfa_offset 0
+ 153 0012 7047     		bx	lr
+ 154              	.L10:
+ 155              		.align	2
+ 156              	.L9:
+ 157 0014 77640040 		.word	1073767543
+ 158 0018 00000000 		.word	I2C1_backup
+ 159              		.cfi_endproc
+ 160              	.LFE2:
+ 161              		.size	I2C1_RestoreConfig, .-I2C1_RestoreConfig
+ 162              		.section	.text.I2C1_Wakeup,"ax",%progbits
+ 163              		.align	2
+ 164              		.global	I2C1_Wakeup
+ 165              		.thumb
+ 166              		.thumb_func
+ 167              		.type	I2C1_Wakeup, %function
+ 168              	I2C1_Wakeup:
+ 169              	.LFB3:
+ 266:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 267:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 268:Generated_Source\PSoC5/I2C1_PM.c **** /*******************************************************************************
+ 269:Generated_Source\PSoC5/I2C1_PM.c **** * Function Name: I2C1_Wakeup
+ 270:Generated_Source\PSoC5/I2C1_PM.c **** ********************************************************************************
+ 271:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 272:Generated_Source\PSoC5/I2C1_PM.c **** * Summary:
+ 273:Generated_Source\PSoC5/I2C1_PM.c **** *  This is the preferred method to prepare the component for active mode
+ 274:Generated_Source\PSoC5/I2C1_PM.c **** *  operation (when device exits sleep mode). The Enable wakeup from Sleep Mode
+ 275:Generated_Source\PSoC5/I2C1_PM.c **** *  selection influences this function implementation:
+ 276:Generated_Source\PSoC5/I2C1_PM.c **** *   Unchecked: Restores the component non-retention configuration registers
+ 277:Generated_Source\PSoC5/I2C1_PM.c **** *              by calling I2C_RestoreConfig(). If the component was enabled
+ 278:Generated_Source\PSoC5/I2C1_PM.c **** *              before the I2C_Sleep() function was called, I2C_Wakeup()
+ 279:Generated_Source\PSoC5/I2C1_PM.c **** *              re-enables it.
+ 280:Generated_Source\PSoC5/I2C1_PM.c **** *   Checked:   Enables  master functionality if it was enabled before sleep,
+ 281:Generated_Source\PSoC5/I2C1_PM.c **** *              and disables the backup regulator of the I2C hardware.
+ 282:Generated_Source\PSoC5/I2C1_PM.c **** *              The incoming transaction continues as soon as the regular
+ 283:Generated_Source\PSoC5/I2C1_PM.c **** *              I2C interrupt handler is set up (global interrupts has to be
+ 284:Generated_Source\PSoC5/I2C1_PM.c **** *              enabled to service I2C component interrupt).
+ 285:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 286:Generated_Source\PSoC5/I2C1_PM.c **** * Parameters:
+ 287:Generated_Source\PSoC5/I2C1_PM.c **** *  None.
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 9
+
+
+ 288:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 289:Generated_Source\PSoC5/I2C1_PM.c **** * Return:
+ 290:Generated_Source\PSoC5/I2C1_PM.c **** *  None.
+ 291:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 292:Generated_Source\PSoC5/I2C1_PM.c **** * Reentrant:
+ 293:Generated_Source\PSoC5/I2C1_PM.c **** *  No.
+ 294:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 295:Generated_Source\PSoC5/I2C1_PM.c **** * Side Effects:
+ 296:Generated_Source\PSoC5/I2C1_PM.c **** *  Calling this function before I2C1_SaveConfig() or
+ 297:Generated_Source\PSoC5/I2C1_PM.c **** *  I2C1_Sleep() will lead to unpredictable results.
+ 298:Generated_Source\PSoC5/I2C1_PM.c **** *
+ 299:Generated_Source\PSoC5/I2C1_PM.c **** *******************************************************************************/
+ 300:Generated_Source\PSoC5/I2C1_PM.c **** void I2C1_Wakeup(void) 
+ 301:Generated_Source\PSoC5/I2C1_PM.c **** {
+ 170              		.loc 1 301 0
+ 171              		.cfi_startproc
+ 172              		@ args = 0, pretend = 0, frame = 0
+ 173              		@ frame_needed = 1, uses_anonymous_args = 0
+ 174 0000 80B5     		push	{r7, lr}
+ 175              		.cfi_def_cfa_offset 8
+ 176              		.cfi_offset 7, -8
+ 177              		.cfi_offset 14, -4
+ 178 0002 00AF     		add	r7, sp, #0
+ 179              		.cfi_def_cfa_register 7
+ 302:Generated_Source\PSoC5/I2C1_PM.c ****     I2C1_RestoreConfig();
+ 180              		.loc 1 302 0
+ 181 0004 FFF7FEFF 		bl	I2C1_RestoreConfig
+ 303:Generated_Source\PSoC5/I2C1_PM.c **** 
+ 304:Generated_Source\PSoC5/I2C1_PM.c ****     /* Restore component enable state */
+ 305:Generated_Source\PSoC5/I2C1_PM.c ****     if (0u != I2C1_backup.enableState)
+ 182              		.loc 1 305 0
+ 183 0008 054B     		ldr	r3, .L14
+ 184 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 185 000c 002B     		cmp	r3, #0
+ 186 000e 04D0     		beq	.L13
+ 306:Generated_Source\PSoC5/I2C1_PM.c ****     {
+ 307:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_Enable();
+ 187              		.loc 1 307 0
+ 188 0010 FFF7FEFF 		bl	I2C1_Enable
+ 308:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_EnableInt();
+ 189              		.loc 1 308 0
+ 190 0014 034B     		ldr	r3, .L14+4
+ 191 0016 0122     		movs	r2, #1
+ 192 0018 1A60     		str	r2, [r3]
+ 193              	.L13:
+ 309:Generated_Source\PSoC5/I2C1_PM.c ****     }
+ 310:Generated_Source\PSoC5/I2C1_PM.c ****     else
+ 311:Generated_Source\PSoC5/I2C1_PM.c ****     {
+ 312:Generated_Source\PSoC5/I2C1_PM.c ****     #if (I2C1_TIMEOUT_ENABLED)
+ 313:Generated_Source\PSoC5/I2C1_PM.c ****         I2C1_TimeoutEnable();
+ 314:Generated_Source\PSoC5/I2C1_PM.c ****     #endif /* (I2C1_TIMEOUT_ENABLED) */
+ 315:Generated_Source\PSoC5/I2C1_PM.c ****     }
+ 316:Generated_Source\PSoC5/I2C1_PM.c **** }
+ 194              		.loc 1 316 0
+ 195 001a 00BF     		nop
+ 196 001c 80BD     		pop	{r7, pc}
+ 197              	.L15:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 10
+
+
+ 198 001e 00BF     		.align	2
+ 199              	.L14:
+ 200 0020 00000000 		.word	I2C1_backup
+ 201 0024 00E100E0 		.word	-536813312
+ 202              		.cfi_endproc
+ 203              	.LFE3:
+ 204              		.size	I2C1_Wakeup, .-I2C1_Wakeup
+ 205              		.text
+ 206              	.Letext0:
+ 207              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 208              		.file 3 "Generated_Source\\PSoC5\\I2C1.h"
+ 209              		.section	.debug_info,"",%progbits
+ 210              	.Ldebug_info0:
+ 211 0000 47010000 		.4byte	0x147
+ 212 0004 0400     		.2byte	0x4
+ 213 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 214 000a 04       		.byte	0x4
+ 215 000b 01       		.uleb128 0x1
+ 216 000c E8000000 		.4byte	.LASF25
+ 217 0010 0C       		.byte	0xc
+ 218 0011 AA010000 		.4byte	.LASF26
+ 219 0015 15000000 		.4byte	.LASF27
+ 220 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 221 001d 00000000 		.4byte	0
+ 222 0021 00000000 		.4byte	.Ldebug_line0
+ 223 0025 02       		.uleb128 0x2
+ 224 0026 01       		.byte	0x1
+ 225 0027 06       		.byte	0x6
+ 226 0028 E4010000 		.4byte	.LASF0
+ 227 002c 02       		.uleb128 0x2
+ 228 002d 01       		.byte	0x1
+ 229 002e 08       		.byte	0x8
+ 230 002f 82000000 		.4byte	.LASF1
+ 231 0033 02       		.uleb128 0x2
+ 232 0034 02       		.byte	0x2
+ 233 0035 05       		.byte	0x5
+ 234 0036 14020000 		.4byte	.LASF2
+ 235 003a 02       		.uleb128 0x2
+ 236 003b 02       		.byte	0x2
+ 237 003c 07       		.byte	0x7
+ 238 003d D1010000 		.4byte	.LASF3
+ 239 0041 02       		.uleb128 0x2
+ 240 0042 04       		.byte	0x4
+ 241 0043 05       		.byte	0x5
+ 242 0044 8E010000 		.4byte	.LASF4
+ 243 0048 02       		.uleb128 0x2
+ 244 0049 04       		.byte	0x4
+ 245 004a 07       		.byte	0x7
+ 246 004b A6000000 		.4byte	.LASF5
+ 247 004f 02       		.uleb128 0x2
+ 248 0050 08       		.byte	0x8
+ 249 0051 05       		.byte	0x5
+ 250 0052 00000000 		.4byte	.LASF6
+ 251 0056 02       		.uleb128 0x2
+ 252 0057 08       		.byte	0x8
+ 253 0058 07       		.byte	0x7
+ 254 0059 B8000000 		.4byte	.LASF7
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 11
+
+
+ 255 005d 03       		.uleb128 0x3
+ 256 005e 04       		.byte	0x4
+ 257 005f 05       		.byte	0x5
+ 258 0060 696E7400 		.ascii	"int\000"
+ 259 0064 02       		.uleb128 0x2
+ 260 0065 04       		.byte	0x4
+ 261 0066 07       		.byte	0x7
+ 262 0067 75000000 		.4byte	.LASF8
+ 263 006b 04       		.uleb128 0x4
+ 264 006c A0000000 		.4byte	.LASF9
+ 265 0070 02       		.byte	0x2
+ 266 0071 E401     		.2byte	0x1e4
+ 267 0073 2C000000 		.4byte	0x2c
+ 268 0077 04       		.uleb128 0x4
+ 269 0078 0E000000 		.4byte	.LASF10
+ 270 007c 02       		.byte	0x2
+ 271 007d E601     		.2byte	0x1e6
+ 272 007f 48000000 		.4byte	0x48
+ 273 0083 02       		.uleb128 0x2
+ 274 0084 04       		.byte	0x4
+ 275 0085 04       		.byte	0x4
+ 276 0086 CF000000 		.4byte	.LASF11
+ 277 008a 02       		.uleb128 0x2
+ 278 008b 08       		.byte	0x8
+ 279 008c 04       		.byte	0x4
+ 280 008d A3010000 		.4byte	.LASF12
+ 281 0091 02       		.uleb128 0x2
+ 282 0092 01       		.byte	0x1
+ 283 0093 08       		.byte	0x8
+ 284 0094 89010000 		.4byte	.LASF13
+ 285 0098 04       		.uleb128 0x4
+ 286 0099 1E020000 		.4byte	.LASF14
+ 287 009d 02       		.byte	0x2
+ 288 009e 8E02     		.2byte	0x28e
+ 289 00a0 A4000000 		.4byte	0xa4
+ 290 00a4 05       		.uleb128 0x5
+ 291 00a5 6B000000 		.4byte	0x6b
+ 292 00a9 04       		.uleb128 0x4
+ 293 00aa CB010000 		.4byte	.LASF15
+ 294 00ae 02       		.byte	0x2
+ 295 00af 9002     		.2byte	0x290
+ 296 00b1 B5000000 		.4byte	0xb5
+ 297 00b5 05       		.uleb128 0x5
+ 298 00b6 77000000 		.4byte	0x77
+ 299 00ba 02       		.uleb128 0x2
+ 300 00bb 08       		.byte	0x8
+ 301 00bc 04       		.byte	0x4
+ 302 00bd 08020000 		.4byte	.LASF16
+ 303 00c1 02       		.uleb128 0x2
+ 304 00c2 04       		.byte	0x4
+ 305 00c3 07       		.byte	0x7
+ 306 00c4 36020000 		.4byte	.LASF17
+ 307 00c8 06       		.uleb128 0x6
+ 308 00c9 02       		.byte	0x2
+ 309 00ca 03       		.byte	0x3
+ 310 00cb 76       		.byte	0x76
+ 311 00cc E9000000 		.4byte	0xe9
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 12
+
+
+ 312 00d0 07       		.uleb128 0x7
+ 313 00d1 97010000 		.4byte	.LASF18
+ 314 00d5 03       		.byte	0x3
+ 315 00d6 78       		.byte	0x78
+ 316 00d7 6B000000 		.4byte	0x6b
+ 317 00db 00       		.byte	0
+ 318 00dc 07       		.uleb128 0x7
+ 319 00dd 23020000 		.4byte	.LASF19
+ 320 00e1 03       		.byte	0x3
+ 321 00e2 81       		.byte	0x81
+ 322 00e3 6B000000 		.4byte	0x6b
+ 323 00e7 01       		.byte	0x1
+ 324 00e8 00       		.byte	0
+ 325 00e9 08       		.uleb128 0x8
+ 326 00ea 76010000 		.4byte	.LASF20
+ 327 00ee 03       		.byte	0x3
+ 328 00ef 89       		.byte	0x89
+ 329 00f0 C8000000 		.4byte	0xc8
+ 330 00f4 09       		.uleb128 0x9
+ 331 00f5 90000000 		.4byte	.LASF21
+ 332 00f9 01       		.byte	0x1
+ 333 00fa 48       		.byte	0x48
+ 334 00fb 00000000 		.4byte	.LFB0
+ 335 00ff 24000000 		.4byte	.LFE0-.LFB0
+ 336 0103 01       		.uleb128 0x1
+ 337 0104 9C       		.byte	0x9c
+ 338 0105 0A       		.uleb128 0xa
+ 339 0106 2B020000 		.4byte	.LASF22
+ 340 010a 01       		.byte	0x1
+ 341 010b 97       		.byte	0x97
+ 342 010c 00000000 		.4byte	.LFB1
+ 343 0110 3C000000 		.4byte	.LFE1-.LFB1
+ 344 0114 01       		.uleb128 0x1
+ 345 0115 9C       		.byte	0x9c
+ 346 0116 09       		.uleb128 0x9
+ 347 0117 D5000000 		.4byte	.LASF23
+ 348 011b 01       		.byte	0x1
+ 349 011c D1       		.byte	0xd1
+ 350 011d 00000000 		.4byte	.LFB2
+ 351 0121 1C000000 		.4byte	.LFE2-.LFB2
+ 352 0125 01       		.uleb128 0x1
+ 353 0126 9C       		.byte	0x9c
+ 354 0127 0B       		.uleb128 0xb
+ 355 0128 FC010000 		.4byte	.LASF24
+ 356 012c 01       		.byte	0x1
+ 357 012d 2C01     		.2byte	0x12c
+ 358 012f 00000000 		.4byte	.LFB3
+ 359 0133 28000000 		.4byte	.LFE3-.LFB3
+ 360 0137 01       		.uleb128 0x1
+ 361 0138 9C       		.byte	0x9c
+ 362 0139 0C       		.uleb128 0xc
+ 363 013a F0010000 		.4byte	.LASF28
+ 364 013e 01       		.byte	0x1
+ 365 013f 11       		.byte	0x11
+ 366 0140 E9000000 		.4byte	0xe9
+ 367 0144 05       		.uleb128 0x5
+ 368 0145 03       		.byte	0x3
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 13
+
+
+ 369 0146 00000000 		.4byte	I2C1_backup
+ 370 014a 00       		.byte	0
+ 371              		.section	.debug_abbrev,"",%progbits
+ 372              	.Ldebug_abbrev0:
+ 373 0000 01       		.uleb128 0x1
+ 374 0001 11       		.uleb128 0x11
+ 375 0002 01       		.byte	0x1
+ 376 0003 25       		.uleb128 0x25
+ 377 0004 0E       		.uleb128 0xe
+ 378 0005 13       		.uleb128 0x13
+ 379 0006 0B       		.uleb128 0xb
+ 380 0007 03       		.uleb128 0x3
+ 381 0008 0E       		.uleb128 0xe
+ 382 0009 1B       		.uleb128 0x1b
+ 383 000a 0E       		.uleb128 0xe
+ 384 000b 55       		.uleb128 0x55
+ 385 000c 17       		.uleb128 0x17
+ 386 000d 11       		.uleb128 0x11
+ 387 000e 01       		.uleb128 0x1
+ 388 000f 10       		.uleb128 0x10
+ 389 0010 17       		.uleb128 0x17
+ 390 0011 00       		.byte	0
+ 391 0012 00       		.byte	0
+ 392 0013 02       		.uleb128 0x2
+ 393 0014 24       		.uleb128 0x24
+ 394 0015 00       		.byte	0
+ 395 0016 0B       		.uleb128 0xb
+ 396 0017 0B       		.uleb128 0xb
+ 397 0018 3E       		.uleb128 0x3e
+ 398 0019 0B       		.uleb128 0xb
+ 399 001a 03       		.uleb128 0x3
+ 400 001b 0E       		.uleb128 0xe
+ 401 001c 00       		.byte	0
+ 402 001d 00       		.byte	0
+ 403 001e 03       		.uleb128 0x3
+ 404 001f 24       		.uleb128 0x24
+ 405 0020 00       		.byte	0
+ 406 0021 0B       		.uleb128 0xb
+ 407 0022 0B       		.uleb128 0xb
+ 408 0023 3E       		.uleb128 0x3e
+ 409 0024 0B       		.uleb128 0xb
+ 410 0025 03       		.uleb128 0x3
+ 411 0026 08       		.uleb128 0x8
+ 412 0027 00       		.byte	0
+ 413 0028 00       		.byte	0
+ 414 0029 04       		.uleb128 0x4
+ 415 002a 16       		.uleb128 0x16
+ 416 002b 00       		.byte	0
+ 417 002c 03       		.uleb128 0x3
+ 418 002d 0E       		.uleb128 0xe
+ 419 002e 3A       		.uleb128 0x3a
+ 420 002f 0B       		.uleb128 0xb
+ 421 0030 3B       		.uleb128 0x3b
+ 422 0031 05       		.uleb128 0x5
+ 423 0032 49       		.uleb128 0x49
+ 424 0033 13       		.uleb128 0x13
+ 425 0034 00       		.byte	0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 14
+
+
+ 426 0035 00       		.byte	0
+ 427 0036 05       		.uleb128 0x5
+ 428 0037 35       		.uleb128 0x35
+ 429 0038 00       		.byte	0
+ 430 0039 49       		.uleb128 0x49
+ 431 003a 13       		.uleb128 0x13
+ 432 003b 00       		.byte	0
+ 433 003c 00       		.byte	0
+ 434 003d 06       		.uleb128 0x6
+ 435 003e 13       		.uleb128 0x13
+ 436 003f 01       		.byte	0x1
+ 437 0040 0B       		.uleb128 0xb
+ 438 0041 0B       		.uleb128 0xb
+ 439 0042 3A       		.uleb128 0x3a
+ 440 0043 0B       		.uleb128 0xb
+ 441 0044 3B       		.uleb128 0x3b
+ 442 0045 0B       		.uleb128 0xb
+ 443 0046 01       		.uleb128 0x1
+ 444 0047 13       		.uleb128 0x13
+ 445 0048 00       		.byte	0
+ 446 0049 00       		.byte	0
+ 447 004a 07       		.uleb128 0x7
+ 448 004b 0D       		.uleb128 0xd
+ 449 004c 00       		.byte	0
+ 450 004d 03       		.uleb128 0x3
+ 451 004e 0E       		.uleb128 0xe
+ 452 004f 3A       		.uleb128 0x3a
+ 453 0050 0B       		.uleb128 0xb
+ 454 0051 3B       		.uleb128 0x3b
+ 455 0052 0B       		.uleb128 0xb
+ 456 0053 49       		.uleb128 0x49
+ 457 0054 13       		.uleb128 0x13
+ 458 0055 38       		.uleb128 0x38
+ 459 0056 0B       		.uleb128 0xb
+ 460 0057 00       		.byte	0
+ 461 0058 00       		.byte	0
+ 462 0059 08       		.uleb128 0x8
+ 463 005a 16       		.uleb128 0x16
+ 464 005b 00       		.byte	0
+ 465 005c 03       		.uleb128 0x3
+ 466 005d 0E       		.uleb128 0xe
+ 467 005e 3A       		.uleb128 0x3a
+ 468 005f 0B       		.uleb128 0xb
+ 469 0060 3B       		.uleb128 0x3b
+ 470 0061 0B       		.uleb128 0xb
+ 471 0062 49       		.uleb128 0x49
+ 472 0063 13       		.uleb128 0x13
+ 473 0064 00       		.byte	0
+ 474 0065 00       		.byte	0
+ 475 0066 09       		.uleb128 0x9
+ 476 0067 2E       		.uleb128 0x2e
+ 477 0068 00       		.byte	0
+ 478 0069 3F       		.uleb128 0x3f
+ 479 006a 19       		.uleb128 0x19
+ 480 006b 03       		.uleb128 0x3
+ 481 006c 0E       		.uleb128 0xe
+ 482 006d 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 15
+
+
+ 483 006e 0B       		.uleb128 0xb
+ 484 006f 3B       		.uleb128 0x3b
+ 485 0070 0B       		.uleb128 0xb
+ 486 0071 27       		.uleb128 0x27
+ 487 0072 19       		.uleb128 0x19
+ 488 0073 11       		.uleb128 0x11
+ 489 0074 01       		.uleb128 0x1
+ 490 0075 12       		.uleb128 0x12
+ 491 0076 06       		.uleb128 0x6
+ 492 0077 40       		.uleb128 0x40
+ 493 0078 18       		.uleb128 0x18
+ 494 0079 9742     		.uleb128 0x2117
+ 495 007b 19       		.uleb128 0x19
+ 496 007c 00       		.byte	0
+ 497 007d 00       		.byte	0
+ 498 007e 0A       		.uleb128 0xa
+ 499 007f 2E       		.uleb128 0x2e
+ 500 0080 00       		.byte	0
+ 501 0081 3F       		.uleb128 0x3f
+ 502 0082 19       		.uleb128 0x19
+ 503 0083 03       		.uleb128 0x3
+ 504 0084 0E       		.uleb128 0xe
+ 505 0085 3A       		.uleb128 0x3a
+ 506 0086 0B       		.uleb128 0xb
+ 507 0087 3B       		.uleb128 0x3b
+ 508 0088 0B       		.uleb128 0xb
+ 509 0089 27       		.uleb128 0x27
+ 510 008a 19       		.uleb128 0x19
+ 511 008b 11       		.uleb128 0x11
+ 512 008c 01       		.uleb128 0x1
+ 513 008d 12       		.uleb128 0x12
+ 514 008e 06       		.uleb128 0x6
+ 515 008f 40       		.uleb128 0x40
+ 516 0090 18       		.uleb128 0x18
+ 517 0091 9642     		.uleb128 0x2116
+ 518 0093 19       		.uleb128 0x19
+ 519 0094 00       		.byte	0
+ 520 0095 00       		.byte	0
+ 521 0096 0B       		.uleb128 0xb
+ 522 0097 2E       		.uleb128 0x2e
+ 523 0098 00       		.byte	0
+ 524 0099 3F       		.uleb128 0x3f
+ 525 009a 19       		.uleb128 0x19
+ 526 009b 03       		.uleb128 0x3
+ 527 009c 0E       		.uleb128 0xe
+ 528 009d 3A       		.uleb128 0x3a
+ 529 009e 0B       		.uleb128 0xb
+ 530 009f 3B       		.uleb128 0x3b
+ 531 00a0 05       		.uleb128 0x5
+ 532 00a1 27       		.uleb128 0x27
+ 533 00a2 19       		.uleb128 0x19
+ 534 00a3 11       		.uleb128 0x11
+ 535 00a4 01       		.uleb128 0x1
+ 536 00a5 12       		.uleb128 0x12
+ 537 00a6 06       		.uleb128 0x6
+ 538 00a7 40       		.uleb128 0x40
+ 539 00a8 18       		.uleb128 0x18
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 16
+
+
+ 540 00a9 9642     		.uleb128 0x2116
+ 541 00ab 19       		.uleb128 0x19
+ 542 00ac 00       		.byte	0
+ 543 00ad 00       		.byte	0
+ 544 00ae 0C       		.uleb128 0xc
+ 545 00af 34       		.uleb128 0x34
+ 546 00b0 00       		.byte	0
+ 547 00b1 03       		.uleb128 0x3
+ 548 00b2 0E       		.uleb128 0xe
+ 549 00b3 3A       		.uleb128 0x3a
+ 550 00b4 0B       		.uleb128 0xb
+ 551 00b5 3B       		.uleb128 0x3b
+ 552 00b6 0B       		.uleb128 0xb
+ 553 00b7 49       		.uleb128 0x49
+ 554 00b8 13       		.uleb128 0x13
+ 555 00b9 3F       		.uleb128 0x3f
+ 556 00ba 19       		.uleb128 0x19
+ 557 00bb 02       		.uleb128 0x2
+ 558 00bc 18       		.uleb128 0x18
+ 559 00bd 00       		.byte	0
+ 560 00be 00       		.byte	0
+ 561 00bf 00       		.byte	0
+ 562              		.section	.debug_aranges,"",%progbits
+ 563 0000 34000000 		.4byte	0x34
+ 564 0004 0200     		.2byte	0x2
+ 565 0006 00000000 		.4byte	.Ldebug_info0
+ 566 000a 04       		.byte	0x4
+ 567 000b 00       		.byte	0
+ 568 000c 0000     		.2byte	0
+ 569 000e 0000     		.2byte	0
+ 570 0010 00000000 		.4byte	.LFB0
+ 571 0014 24000000 		.4byte	.LFE0-.LFB0
+ 572 0018 00000000 		.4byte	.LFB1
+ 573 001c 3C000000 		.4byte	.LFE1-.LFB1
+ 574 0020 00000000 		.4byte	.LFB2
+ 575 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 576 0028 00000000 		.4byte	.LFB3
+ 577 002c 28000000 		.4byte	.LFE3-.LFB3
+ 578 0030 00000000 		.4byte	0
+ 579 0034 00000000 		.4byte	0
+ 580              		.section	.debug_ranges,"",%progbits
+ 581              	.Ldebug_ranges0:
+ 582 0000 00000000 		.4byte	.LFB0
+ 583 0004 24000000 		.4byte	.LFE0
+ 584 0008 00000000 		.4byte	.LFB1
+ 585 000c 3C000000 		.4byte	.LFE1
+ 586 0010 00000000 		.4byte	.LFB2
+ 587 0014 1C000000 		.4byte	.LFE2
+ 588 0018 00000000 		.4byte	.LFB3
+ 589 001c 28000000 		.4byte	.LFE3
+ 590 0020 00000000 		.4byte	0
+ 591 0024 00000000 		.4byte	0
+ 592              		.section	.debug_line,"",%progbits
+ 593              	.Ldebug_line0:
+ 594 0000 A8000000 		.section	.debug_str,"MS",%progbits,1
+ 594      02004E00 
+ 594      00000201 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 17
+
+
+ 594      FB0E0D00 
+ 594      01010101 
+ 595              	.LASF6:
+ 596 0000 6C6F6E67 		.ascii	"long long int\000"
+ 596      206C6F6E 
+ 596      6720696E 
+ 596      7400
+ 597              	.LASF10:
+ 598 000e 75696E74 		.ascii	"uint32\000"
+ 598      333200
+ 599              	.LASF27:
+ 600 0015 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\land-boards\\"
+ 600      73657273 
+ 600      5C48507A 
+ 600      3432305C 
+ 600      446F6375 
+ 601 0042 52617350 		.ascii	"RasPi\\RPI_PSOC5\\RPI_PSOC5_RPI_SPI8_CARD_TEST.cyds"
+ 601      695C5250 
+ 601      495F5053 
+ 601      4F43355C 
+ 601      5250495F 
+ 602 0073 6E00     		.ascii	"n\000"
+ 603              	.LASF8:
+ 604 0075 756E7369 		.ascii	"unsigned int\000"
+ 604      676E6564 
+ 604      20696E74 
+ 604      00
+ 605              	.LASF1:
+ 606 0082 756E7369 		.ascii	"unsigned char\000"
+ 606      676E6564 
+ 606      20636861 
+ 606      7200
+ 607              	.LASF21:
+ 608 0090 49324331 		.ascii	"I2C1_SaveConfig\000"
+ 608      5F536176 
+ 608      65436F6E 
+ 608      66696700 
+ 609              	.LASF9:
+ 610 00a0 75696E74 		.ascii	"uint8\000"
+ 610      3800
+ 611              	.LASF5:
+ 612 00a6 6C6F6E67 		.ascii	"long unsigned int\000"
+ 612      20756E73 
+ 612      69676E65 
+ 612      6420696E 
+ 612      7400
+ 613              	.LASF7:
+ 614 00b8 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 614      206C6F6E 
+ 614      6720756E 
+ 614      7369676E 
+ 614      65642069 
+ 615              	.LASF11:
+ 616 00cf 666C6F61 		.ascii	"float\000"
+ 616      7400
+ 617              	.LASF23:
+ 618 00d5 49324331 		.ascii	"I2C1_RestoreConfig\000"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 18
+
+
+ 618      5F526573 
+ 618      746F7265 
+ 618      436F6E66 
+ 618      696700
+ 619              	.LASF25:
+ 620 00e8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 620      43313120 
+ 620      352E342E 
+ 620      31203230 
+ 620      31363036 
+ 621 011b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 621      20726576 
+ 621      6973696F 
+ 621      6E203233 
+ 621      37373135 
+ 622 014e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 622      66756E63 
+ 622      74696F6E 
+ 622      2D736563 
+ 622      74696F6E 
+ 623              	.LASF20:
+ 624 0176 49324331 		.ascii	"I2C1_BACKUP_STRUCT\000"
+ 624      5F424143 
+ 624      4B55505F 
+ 624      53545255 
+ 624      435400
+ 625              	.LASF13:
+ 626 0189 63686172 		.ascii	"char\000"
+ 626      00
+ 627              	.LASF4:
+ 628 018e 6C6F6E67 		.ascii	"long int\000"
+ 628      20696E74 
+ 628      00
+ 629              	.LASF18:
+ 630 0197 656E6162 		.ascii	"enableState\000"
+ 630      6C655374 
+ 630      61746500 
+ 631              	.LASF12:
+ 632 01a3 646F7562 		.ascii	"double\000"
+ 632      6C6500
+ 633              	.LASF26:
+ 634 01aa 47656E65 		.ascii	"Generated_Source\\PSoC5\\I2C1_PM.c\000"
+ 634      72617465 
+ 634      645F536F 
+ 634      75726365 
+ 634      5C50536F 
+ 635              	.LASF15:
+ 636 01cb 72656733 		.ascii	"reg32\000"
+ 636      3200
+ 637              	.LASF3:
+ 638 01d1 73686F72 		.ascii	"short unsigned int\000"
+ 638      7420756E 
+ 638      7369676E 
+ 638      65642069 
+ 638      6E7400
+ 639              	.LASF0:
+ 640 01e4 7369676E 		.ascii	"signed char\000"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccsawaKV.s 			page 19
+
+
+ 640      65642063 
+ 640      68617200 
+ 641              	.LASF28:
+ 642 01f0 49324331 		.ascii	"I2C1_backup\000"
+ 642      5F626163 
+ 642      6B757000 
+ 643              	.LASF24:
+ 644 01fc 49324331 		.ascii	"I2C1_Wakeup\000"
+ 644      5F57616B 
+ 644      65757000 
+ 645              	.LASF16:
+ 646 0208 6C6F6E67 		.ascii	"long double\000"
+ 646      20646F75 
+ 646      626C6500 
+ 647              	.LASF2:
+ 648 0214 73686F72 		.ascii	"short int\000"
+ 648      7420696E 
+ 648      7400
+ 649              	.LASF14:
+ 650 021e 72656738 		.ascii	"reg8\000"
+ 650      00
+ 651              	.LASF19:
+ 652 0223 636F6E74 		.ascii	"control\000"
+ 652      726F6C00 
+ 653              	.LASF22:
+ 654 022b 49324331 		.ascii	"I2C1_Sleep\000"
+ 654      5F536C65 
+ 654      657000
+ 655              	.LASF17:
+ 656 0236 73697A65 		.ascii	"sizetype\000"
+ 656      74797065 
+ 656      00
+ 657              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

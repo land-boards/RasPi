@@ -1,0 +1,904 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB64:
+  27              		.file 1 "main.c"
+   1:main.c        **** /*******************************************************************************
+   2:main.c        **** * File Name: main.c
+   3:main.c        **** *
+   4:main.c        **** * Version: 2.0
+   5:main.c        **** *
+   6:main.c        **** * Description:
+   7:main.c        **** *   The is based on the Cypress Virtual Com port code. 
+   8:main.c        **** *   Receives data from the serial port, then sends back the received data.
+   9:main.c        **** *
+  10:main.c        **** * Related Document:
+  11:main.c        **** *  Universal Serial Bus Specification Revision 2.0
+  12:main.c        **** *  Universal Serial Bus Class Definitions for Communications Devices
+  13:main.c        **** *  Revision 1.2
+  14:main.c        **** *
+  15:main.c        **** *   Test software for Raspberry Pi cards
+  16:main.c        **** *   Runs on the the RPI_PSOC5 card
+  17:main.c        **** *      http://land-boards.com/blwiki/index.php?title=RPI_PSOC5
+  18:main.c        **** *   Tests the following cards
+  19:main.c        **** *       RPP-UIO-16 Card
+  20:main.c        **** *       RPPSOC Card
+  21:main.c        **** *       RASPI-PLUS-GVS-CFG Card
+  22:main.c        **** *       RASPI-GVS Card
+  23:main.c        **** *       RASPI-PLUS-GVS Card
+  24:main.c        **** *       RPI-I2C-HUB Card
+  25:main.c        **** *       RPI-SPI8 Card
+  26:main.c        **** *
+  27:main.c        **** ********************************************************************************
+  28:main.c        **** * Copyright 2015, Cypress Semiconductor Corporation. All rights reserved.
+  29:main.c        **** * This software is owned by Cypress Semiconductor Corporation and is protected
+  30:main.c        **** * by and subject to worldwide patent and copyright laws and treaties.
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 2
+
+
+  31:main.c        **** * Therefore, you may use this software only as provided in the license agreement
+  32:main.c        **** * accompanying the software package from which you obtained this software.
+  33:main.c        **** * CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+  34:main.c        **** * WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
+  35:main.c        **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  36:main.c        **** *******************************************************************************/
+  37:main.c        **** 
+  38:main.c        **** #include <project.h>
+  39:main.c        **** #include "stdio.h"
+  40:main.c        **** #include "RPI_PSOC5.h"
+  41:main.c        **** 
+  42:main.c        **** #if defined (__GNUC__)
+  43:main.c        ****     /* Add an explicit reference to the floating point printf library */
+  44:main.c        ****     /* to allow usage of the floating point conversion specifiers. */
+  45:main.c        ****     /* This is not linked in by default with the newlib-nano library. */
+  46:main.c        **** //    asm (".global _printf_float");
+  47:main.c        **** #endif
+  48:main.c        **** 
+  49:main.c        **** #define USBFS_DEVICE    (0u)
+  50:main.c        **** 
+  51:main.c        **** /* The inBuffer size is equal to the maximum packet size of the IN and OUT bulk
+  52:main.c        **** * endpoints.
+  53:main.c        **** */
+  54:main.c        **** #define USBUART_Buffer_SIZE (64u)
+  55:main.c        **** 
+  56:main.c        **** void putStringToUSB(char * stringToPutOutUSB);
+  57:main.c        **** 
+  58:main.c        **** /*******************************************************************************
+  59:main.c        **** * Function Name: main
+  60:main.c        **** ********************************************************************************
+  61:main.c        **** *
+  62:main.c        **** * Summary:
+  63:main.c        **** *  The main function performs the following actions:
+  64:main.c        **** *   1. Waits until VBUS becomes valid and starts the USBFS component which is
+  65:main.c        **** *      enumerated as virtual Com port.
+  66:main.c        **** *   2. Waits until the device is enumerated by the host.
+  67:main.c        **** *   3. Waits for data coming from the hyper terminal
+  68:main.c        **** *   4. Parse command.
+  69:main.c        **** *
+  70:main.c        **** * Parameters:
+  71:main.c        **** *  None.
+  72:main.c        **** *
+  73:main.c        **** * Return:
+  74:main.c        **** *  None.
+  75:main.c        **** *
+  76:main.c        **** *******************************************************************************/
+  77:main.c        **** int main()
+  78:main.c        **** {
+  28              		.loc 1 78 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 72
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 92B0     		sub	sp, sp, #72
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 3
+
+
+  37              		.cfi_def_cfa_offset 80
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  79:main.c        ****     uint16 inCount;
+  80:main.c        ****     uint8 inBuffer[USBUART_Buffer_SIZE];
+  81:main.c        ****         
+  82:main.c        ****     CyGlobalIntEnable;
+  40              		.loc 1 82 0
+  41              		.syntax unified
+  42              	@ 82 "main.c" 1
+  43 0006 62B6     		CPSIE   i
+  44              	@ 0 "" 2
+  83:main.c        **** 
+  84:main.c        ****     /* Start USBFS operation with 5-V operation. */
+  85:main.c        ****     USBUART_Start(USBFS_DEVICE, USBUART_5V_OPERATION);
+  45              		.loc 1 85 0
+  46              		.thumb
+  47              		.syntax unified
+  48 0008 0121     		movs	r1, #1
+  49 000a 0020     		movs	r0, #0
+  50 000c FFF7FEFF 		bl	USBUART_Start
+  86:main.c        **** 
+  87:main.c        ****     // enable I2C interrupts
+  88:main.c        **** 	I2C_EEPROM_EnableInt();  
+  51              		.loc 1 88 0
+  52 0010 204B     		ldr	r3, .L7
+  53 0012 4FF40042 		mov	r2, #32768
+  54 0016 1A60     		str	r2, [r3]
+  89:main.c        **** 	//Start I2C
+  90:main.c        **** 	I2C_EEPROM_Start();
+  55              		.loc 1 90 0
+  56 0018 FFF7FEFF 		bl	I2C_EEPROM_Start
+  91:main.c        ****     
+  92:main.c        ****     // Default to no daughtercard
+  93:main.c        ****     cardType = UNSELECTED_CARD;
+  57              		.loc 1 93 0
+  58 001c 1E4B     		ldr	r3, .L7+4
+  59 001e 0022     		movs	r2, #0
+  60 0020 1A80     		strh	r2, [r3]	@ movhi
+  61              	.L6:
+  94:main.c        ****     
+  95:main.c        **** //    printMenuOptions();
+  96:main.c        ****     
+  97:main.c        ****     for(;;)
+  98:main.c        ****     {
+  99:main.c        ****         /* Host can send double SET_INTERFACE request. */
+ 100:main.c        ****         if (0u != USBUART_IsConfigurationChanged())
+  62              		.loc 1 100 0
+  63 0022 FFF7FEFF 		bl	USBUART_IsConfigurationChanged
+  64 0026 0346     		mov	r3, r0
+  65 0028 002B     		cmp	r3, #0
+  66 002a 06D0     		beq	.L2
+ 101:main.c        ****         {
+ 102:main.c        ****             /* Initialize IN endpoints when device is configured. */
+ 103:main.c        ****             if (0u != USBUART_GetConfiguration())
+  67              		.loc 1 103 0
+  68 002c FFF7FEFF 		bl	USBUART_GetConfiguration
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 4
+
+
+  69 0030 0346     		mov	r3, r0
+  70 0032 002B     		cmp	r3, #0
+  71 0034 01D0     		beq	.L2
+ 104:main.c        ****             {
+ 105:main.c        ****                 /* Enumeration is done, enable OUT endpoint to receive data 
+ 106:main.c        ****                  * from host. */
+ 107:main.c        ****                 USBUART_CDC_Init();
+  72              		.loc 1 107 0
+  73 0036 FFF7FEFF 		bl	USBUART_CDC_Init
+  74              	.L2:
+ 108:main.c        ****             }
+ 109:main.c        ****         }
+ 110:main.c        **** 
+ 111:main.c        ****         /* Service USB CDC when device is configured. */
+ 112:main.c        ****         if (0u != USBUART_GetConfiguration())
+  75              		.loc 1 112 0
+  76 003a FFF7FEFF 		bl	USBUART_GetConfiguration
+  77 003e 0346     		mov	r3, r0
+  78 0040 002B     		cmp	r3, #0
+  79 0042 EED0     		beq	.L6
+ 113:main.c        ****         {
+ 114:main.c        ****             /* Check for input data from host. */
+ 115:main.c        ****             if (0u != USBUART_DataIsReady())
+  80              		.loc 1 115 0
+  81 0044 FFF7FEFF 		bl	USBUART_DataIsReady
+  82 0048 0346     		mov	r3, r0
+  83 004a 002B     		cmp	r3, #0
+  84 004c E9D0     		beq	.L6
+ 116:main.c        ****             {
+ 117:main.c        ****                 /* Read received data and re-enable OUT endpoint. */
+ 118:main.c        ****                 inCount = USBUART_GetAll(inBuffer);
+  85              		.loc 1 118 0
+  86 004e 3B1D     		adds	r3, r7, #4
+  87 0050 1846     		mov	r0, r3
+  88 0052 FFF7FEFF 		bl	USBUART_GetAll
+  89 0056 0346     		mov	r3, r0
+  90 0058 A7F84630 		strh	r3, [r7, #70]	@ movhi
+ 119:main.c        ****                 addToReceiveBuffer(inCount,inBuffer);
+  91              		.loc 1 119 0
+  92 005c 3A1D     		adds	r2, r7, #4
+  93 005e B7F84630 		ldrh	r3, [r7, #70]
+  94 0062 1146     		mov	r1, r2
+  95 0064 1846     		mov	r0, r3
+  96 0066 FFF7FEFF 		bl	addToReceiveBuffer
+ 120:main.c        **** 				if (gotCRorLF == 1)
+  97              		.loc 1 120 0
+  98 006a 0C4B     		ldr	r3, .L7+8
+  99 006c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 100 006e 012B     		cmp	r3, #1
+ 101 0070 01D1     		bne	.L4
+ 121:main.c        **** 				{
+ 122:main.c        ****                     psocMenu();
+ 102              		.loc 1 122 0
+ 103 0072 FFF7FEFF 		bl	psocMenu
+ 104              	.L4:
+ 123:main.c        **** 				}
+ 124:main.c        ****                 if (USBUART_Buffer_SIZE == inCount)
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 5
+
+
+ 105              		.loc 1 124 0
+ 106 0076 B7F84630 		ldrh	r3, [r7, #70]
+ 107 007a 402B     		cmp	r3, #64
+ 108 007c D1D1     		bne	.L6
+ 125:main.c        ****                 {
+ 126:main.c        ****                     
+ 127:main.c        ****                     while (0u == USBUART_CDCIsReady()); // Wait until component is ready to send da
+ 109              		.loc 1 127 0
+ 110 007e 00BF     		nop
+ 111              	.L5:
+ 112              		.loc 1 127 0 is_stmt 0 discriminator 1
+ 113 0080 FFF7FEFF 		bl	USBUART_CDCIsReady
+ 114 0084 0346     		mov	r3, r0
+ 115 0086 002B     		cmp	r3, #0
+ 116 0088 FAD0     		beq	.L5
+ 128:main.c        ****                     
+ 129:main.c        ****                     USBUART_PutData(NULL, 0u);          // Send zero-length packet to PC.
+ 117              		.loc 1 129 0 is_stmt 1
+ 118 008a 0021     		movs	r1, #0
+ 119 008c 0020     		movs	r0, #0
+ 120 008e FFF7FEFF 		bl	USBUART_PutData
+ 130:main.c        ****                 }
+ 131:main.c        ****             }
+ 132:main.c        ****         }
+ 133:main.c        ****     }
+ 121              		.loc 1 133 0
+ 122 0092 C6E7     		b	.L6
+ 123              	.L8:
+ 124              		.align	2
+ 125              	.L7:
+ 126 0094 00E100E0 		.word	-536813312
+ 127 0098 00000000 		.word	cardType
+ 128 009c 00000000 		.word	gotCRorLF
+ 129              		.cfi_endproc
+ 130              	.LFE64:
+ 131              		.size	main, .-main
+ 132              		.text
+ 133              	.Letext0:
+ 134              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 135              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 136              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 137              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 138              		.file 6 "Test_RPI_I2C_HUB.h"
+ 139              		.file 7 "PSoC_Menu.h"
+ 140              		.file 8 "RPI_PSOC5.h"
+ 141              		.section	.debug_info,"",%progbits
+ 142              	.Ldebug_info0:
+ 143 0000 85010000 		.4byte	0x185
+ 144 0004 0400     		.2byte	0x4
+ 145 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 146 000a 04       		.byte	0x4
+ 147 000b 01       		.uleb128 0x1
+ 148 000c 26000000 		.4byte	.LASF33
+ 149 0010 0C       		.byte	0xc
+ 150 0011 F9010000 		.4byte	.LASF34
+ 151 0015 13010000 		.4byte	.LASF35
+ 152 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 6
+
+
+ 153 001d 00000000 		.4byte	0
+ 154 0021 00000000 		.4byte	.Ldebug_line0
+ 155 0025 02       		.uleb128 0x2
+ 156 0026 01       		.byte	0x1
+ 157 0027 06       		.byte	0x6
+ 158 0028 4F020000 		.4byte	.LASF0
+ 159 002c 02       		.uleb128 0x2
+ 160 002d 01       		.byte	0x1
+ 161 002e 08       		.byte	0x8
+ 162 002f F4000000 		.4byte	.LASF1
+ 163 0033 02       		.uleb128 0x2
+ 164 0034 02       		.byte	0x2
+ 165 0035 05       		.byte	0x5
+ 166 0036 0E020000 		.4byte	.LASF2
+ 167 003a 02       		.uleb128 0x2
+ 168 003b 02       		.byte	0x2
+ 169 003c 07       		.byte	0x7
+ 170 003d BE000000 		.4byte	.LASF3
+ 171 0041 03       		.uleb128 0x3
+ 172 0042 B4000000 		.4byte	.LASF9
+ 173 0046 02       		.byte	0x2
+ 174 0047 3F       		.byte	0x3f
+ 175 0048 4C000000 		.4byte	0x4c
+ 176 004c 02       		.uleb128 0x2
+ 177 004d 04       		.byte	0x4
+ 178 004e 05       		.byte	0x5
+ 179 004f 32020000 		.4byte	.LASF4
+ 180 0053 02       		.uleb128 0x2
+ 181 0054 04       		.byte	0x4
+ 182 0055 07       		.byte	0x7
+ 183 0056 9C010000 		.4byte	.LASF5
+ 184 005a 02       		.uleb128 0x2
+ 185 005b 08       		.byte	0x8
+ 186 005c 05       		.byte	0x5
+ 187 005d EB010000 		.4byte	.LASF6
+ 188 0061 02       		.uleb128 0x2
+ 189 0062 08       		.byte	0x8
+ 190 0063 07       		.byte	0x7
+ 191 0064 BB010000 		.4byte	.LASF7
+ 192 0068 04       		.uleb128 0x4
+ 193 0069 04       		.byte	0x4
+ 194 006a 05       		.byte	0x5
+ 195 006b 696E7400 		.ascii	"int\000"
+ 196 006f 02       		.uleb128 0x2
+ 197 0070 04       		.byte	0x4
+ 198 0071 07       		.byte	0x7
+ 199 0072 AE010000 		.4byte	.LASF8
+ 200 0076 03       		.uleb128 0x3
+ 201 0077 DA010000 		.4byte	.LASF10
+ 202 007b 03       		.byte	0x3
+ 203 007c 2C       		.byte	0x2c
+ 204 007d 41000000 		.4byte	0x41
+ 205 0081 05       		.uleb128 0x5
+ 206 0082 22020000 		.4byte	.LASF11
+ 207 0086 04       		.byte	0x4
+ 208 0087 E401     		.2byte	0x1e4
+ 209 0089 2C000000 		.4byte	0x2c
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 7
+
+
+ 210 008d 05       		.uleb128 0x5
+ 211 008e 8E010000 		.4byte	.LASF12
+ 212 0092 04       		.byte	0x4
+ 213 0093 E501     		.2byte	0x1e5
+ 214 0095 3A000000 		.4byte	0x3a
+ 215 0099 05       		.uleb128 0x5
+ 216 009a 95010000 		.4byte	.LASF13
+ 217 009e 04       		.byte	0x4
+ 218 009f E601     		.2byte	0x1e6
+ 219 00a1 53000000 		.4byte	0x53
+ 220 00a5 02       		.uleb128 0x2
+ 221 00a6 04       		.byte	0x4
+ 222 00a7 04       		.byte	0x4
+ 223 00a8 D8000000 		.4byte	.LASF14
+ 224 00ac 02       		.uleb128 0x2
+ 225 00ad 08       		.byte	0x8
+ 226 00ae 04       		.byte	0x4
+ 227 00af D1000000 		.4byte	.LASF15
+ 228 00b3 02       		.uleb128 0x2
+ 229 00b4 01       		.byte	0x1
+ 230 00b5 08       		.byte	0x8
+ 231 00b6 00020000 		.4byte	.LASF16
+ 232 00ba 05       		.uleb128 0x5
+ 233 00bb 20000000 		.4byte	.LASF17
+ 234 00bf 04       		.byte	0x4
+ 235 00c0 9002     		.2byte	0x290
+ 236 00c2 C6000000 		.4byte	0xc6
+ 237 00c6 06       		.uleb128 0x6
+ 238 00c7 99000000 		.4byte	0x99
+ 239 00cb 02       		.uleb128 0x2
+ 240 00cc 08       		.byte	0x8
+ 241 00cd 04       		.byte	0x4
+ 242 00ce 43020000 		.4byte	.LASF18
+ 243 00d2 02       		.uleb128 0x2
+ 244 00d3 04       		.byte	0x4
+ 245 00d4 07       		.byte	0x7
+ 246 00d5 E2010000 		.4byte	.LASF19
+ 247 00d9 07       		.uleb128 0x7
+ 248 00da 00000000 		.4byte	.LASF36
+ 249 00de 01       		.byte	0x1
+ 250 00df 2C000000 		.4byte	0x2c
+ 251 00e3 08       		.byte	0x8
+ 252 00e4 1B       		.byte	0x1b
+ 253 00e5 1A010000 		.4byte	0x11a
+ 254 00e9 08       		.uleb128 0x8
+ 255 00ea 10000000 		.4byte	.LASF20
+ 256 00ee 00       		.byte	0
+ 257 00ef 08       		.uleb128 0x8
+ 258 00f0 EB000000 		.4byte	.LASF21
+ 259 00f4 01       		.byte	0x1
+ 260 00f5 08       		.uleb128 0x8
+ 261 00f6 09010000 		.4byte	.LASF22
+ 262 00fa 02       		.byte	0x2
+ 263 00fb 08       		.uleb128 0x8
+ 264 00fc 02010000 		.4byte	.LASF23
+ 265 0100 03       		.byte	0x3
+ 266 0101 08       		.uleb128 0x8
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 8
+
+
+ 267 0102 05020000 		.4byte	.LASF24
+ 268 0106 04       		.byte	0x4
+ 269 0107 08       		.uleb128 0x8
+ 270 0108 DE000000 		.4byte	.LASF25
+ 271 010c 05       		.byte	0x5
+ 272 010d 08       		.uleb128 0x8
+ 273 010e 18020000 		.4byte	.LASF26
+ 274 0112 06       		.byte	0x6
+ 275 0113 08       		.uleb128 0x8
+ 276 0114 3B020000 		.4byte	.LASF27
+ 277 0118 07       		.byte	0x7
+ 278 0119 00       		.byte	0
+ 279 011a 09       		.uleb128 0x9
+ 280 011b 89010000 		.4byte	.LASF37
+ 281 011f 01       		.byte	0x1
+ 282 0120 4D       		.byte	0x4d
+ 283 0121 68000000 		.4byte	0x68
+ 284 0125 00000000 		.4byte	.LFB64
+ 285 0129 A0000000 		.4byte	.LFE64-.LFB64
+ 286 012d 01       		.uleb128 0x1
+ 287 012e 9C       		.byte	0x9c
+ 288 012f 51010000 		.4byte	0x151
+ 289 0133 0A       		.uleb128 0xa
+ 290 0134 D2010000 		.4byte	.LASF28
+ 291 0138 01       		.byte	0x1
+ 292 0139 4F       		.byte	0x4f
+ 293 013a 8D000000 		.4byte	0x8d
+ 294 013e 02       		.uleb128 0x2
+ 295 013f 91       		.byte	0x91
+ 296 0140 76       		.sleb128 -10
+ 297 0141 0A       		.uleb128 0xa
+ 298 0142 5B020000 		.4byte	.LASF29
+ 299 0146 01       		.byte	0x1
+ 300 0147 50       		.byte	0x50
+ 301 0148 51010000 		.4byte	0x151
+ 302 014c 03       		.uleb128 0x3
+ 303 014d 91       		.byte	0x91
+ 304 014e B47F     		.sleb128 -76
+ 305 0150 00       		.byte	0
+ 306 0151 0B       		.uleb128 0xb
+ 307 0152 81000000 		.4byte	0x81
+ 308 0156 61010000 		.4byte	0x161
+ 309 015a 0C       		.uleb128 0xc
+ 310 015b D2000000 		.4byte	0xd2
+ 311 015f 3F       		.byte	0x3f
+ 312 0160 00       		.byte	0
+ 313 0161 0D       		.uleb128 0xd
+ 314 0162 73010000 		.4byte	.LASF30
+ 315 0166 05       		.byte	0x5
+ 316 0167 1207     		.2byte	0x712
+ 317 0169 6D010000 		.4byte	0x16d
+ 318 016d 06       		.uleb128 0x6
+ 319 016e 76000000 		.4byte	0x76
+ 320 0172 0E       		.uleb128 0xe
+ 321 0173 80010000 		.4byte	.LASF31
+ 322 0177 06       		.byte	0x6
+ 323 0178 16       		.byte	0x16
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 9
+
+
+ 324 0179 8D000000 		.4byte	0x8d
+ 325 017d 0E       		.uleb128 0xe
+ 326 017e 28020000 		.4byte	.LASF32
+ 327 0182 07       		.byte	0x7
+ 328 0183 1A       		.byte	0x1a
+ 329 0184 81000000 		.4byte	0x81
+ 330 0188 00       		.byte	0
+ 331              		.section	.debug_abbrev,"",%progbits
+ 332              	.Ldebug_abbrev0:
+ 333 0000 01       		.uleb128 0x1
+ 334 0001 11       		.uleb128 0x11
+ 335 0002 01       		.byte	0x1
+ 336 0003 25       		.uleb128 0x25
+ 337 0004 0E       		.uleb128 0xe
+ 338 0005 13       		.uleb128 0x13
+ 339 0006 0B       		.uleb128 0xb
+ 340 0007 03       		.uleb128 0x3
+ 341 0008 0E       		.uleb128 0xe
+ 342 0009 1B       		.uleb128 0x1b
+ 343 000a 0E       		.uleb128 0xe
+ 344 000b 55       		.uleb128 0x55
+ 345 000c 17       		.uleb128 0x17
+ 346 000d 11       		.uleb128 0x11
+ 347 000e 01       		.uleb128 0x1
+ 348 000f 10       		.uleb128 0x10
+ 349 0010 17       		.uleb128 0x17
+ 350 0011 00       		.byte	0
+ 351 0012 00       		.byte	0
+ 352 0013 02       		.uleb128 0x2
+ 353 0014 24       		.uleb128 0x24
+ 354 0015 00       		.byte	0
+ 355 0016 0B       		.uleb128 0xb
+ 356 0017 0B       		.uleb128 0xb
+ 357 0018 3E       		.uleb128 0x3e
+ 358 0019 0B       		.uleb128 0xb
+ 359 001a 03       		.uleb128 0x3
+ 360 001b 0E       		.uleb128 0xe
+ 361 001c 00       		.byte	0
+ 362 001d 00       		.byte	0
+ 363 001e 03       		.uleb128 0x3
+ 364 001f 16       		.uleb128 0x16
+ 365 0020 00       		.byte	0
+ 366 0021 03       		.uleb128 0x3
+ 367 0022 0E       		.uleb128 0xe
+ 368 0023 3A       		.uleb128 0x3a
+ 369 0024 0B       		.uleb128 0xb
+ 370 0025 3B       		.uleb128 0x3b
+ 371 0026 0B       		.uleb128 0xb
+ 372 0027 49       		.uleb128 0x49
+ 373 0028 13       		.uleb128 0x13
+ 374 0029 00       		.byte	0
+ 375 002a 00       		.byte	0
+ 376 002b 04       		.uleb128 0x4
+ 377 002c 24       		.uleb128 0x24
+ 378 002d 00       		.byte	0
+ 379 002e 0B       		.uleb128 0xb
+ 380 002f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 10
+
+
+ 381 0030 3E       		.uleb128 0x3e
+ 382 0031 0B       		.uleb128 0xb
+ 383 0032 03       		.uleb128 0x3
+ 384 0033 08       		.uleb128 0x8
+ 385 0034 00       		.byte	0
+ 386 0035 00       		.byte	0
+ 387 0036 05       		.uleb128 0x5
+ 388 0037 16       		.uleb128 0x16
+ 389 0038 00       		.byte	0
+ 390 0039 03       		.uleb128 0x3
+ 391 003a 0E       		.uleb128 0xe
+ 392 003b 3A       		.uleb128 0x3a
+ 393 003c 0B       		.uleb128 0xb
+ 394 003d 3B       		.uleb128 0x3b
+ 395 003e 05       		.uleb128 0x5
+ 396 003f 49       		.uleb128 0x49
+ 397 0040 13       		.uleb128 0x13
+ 398 0041 00       		.byte	0
+ 399 0042 00       		.byte	0
+ 400 0043 06       		.uleb128 0x6
+ 401 0044 35       		.uleb128 0x35
+ 402 0045 00       		.byte	0
+ 403 0046 49       		.uleb128 0x49
+ 404 0047 13       		.uleb128 0x13
+ 405 0048 00       		.byte	0
+ 406 0049 00       		.byte	0
+ 407 004a 07       		.uleb128 0x7
+ 408 004b 04       		.uleb128 0x4
+ 409 004c 01       		.byte	0x1
+ 410 004d 03       		.uleb128 0x3
+ 411 004e 0E       		.uleb128 0xe
+ 412 004f 0B       		.uleb128 0xb
+ 413 0050 0B       		.uleb128 0xb
+ 414 0051 49       		.uleb128 0x49
+ 415 0052 13       		.uleb128 0x13
+ 416 0053 3A       		.uleb128 0x3a
+ 417 0054 0B       		.uleb128 0xb
+ 418 0055 3B       		.uleb128 0x3b
+ 419 0056 0B       		.uleb128 0xb
+ 420 0057 01       		.uleb128 0x1
+ 421 0058 13       		.uleb128 0x13
+ 422 0059 00       		.byte	0
+ 423 005a 00       		.byte	0
+ 424 005b 08       		.uleb128 0x8
+ 425 005c 28       		.uleb128 0x28
+ 426 005d 00       		.byte	0
+ 427 005e 03       		.uleb128 0x3
+ 428 005f 0E       		.uleb128 0xe
+ 429 0060 1C       		.uleb128 0x1c
+ 430 0061 0B       		.uleb128 0xb
+ 431 0062 00       		.byte	0
+ 432 0063 00       		.byte	0
+ 433 0064 09       		.uleb128 0x9
+ 434 0065 2E       		.uleb128 0x2e
+ 435 0066 01       		.byte	0x1
+ 436 0067 3F       		.uleb128 0x3f
+ 437 0068 19       		.uleb128 0x19
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 11
+
+
+ 438 0069 03       		.uleb128 0x3
+ 439 006a 0E       		.uleb128 0xe
+ 440 006b 3A       		.uleb128 0x3a
+ 441 006c 0B       		.uleb128 0xb
+ 442 006d 3B       		.uleb128 0x3b
+ 443 006e 0B       		.uleb128 0xb
+ 444 006f 49       		.uleb128 0x49
+ 445 0070 13       		.uleb128 0x13
+ 446 0071 11       		.uleb128 0x11
+ 447 0072 01       		.uleb128 0x1
+ 448 0073 12       		.uleb128 0x12
+ 449 0074 06       		.uleb128 0x6
+ 450 0075 40       		.uleb128 0x40
+ 451 0076 18       		.uleb128 0x18
+ 452 0077 9642     		.uleb128 0x2116
+ 453 0079 19       		.uleb128 0x19
+ 454 007a 01       		.uleb128 0x1
+ 455 007b 13       		.uleb128 0x13
+ 456 007c 00       		.byte	0
+ 457 007d 00       		.byte	0
+ 458 007e 0A       		.uleb128 0xa
+ 459 007f 34       		.uleb128 0x34
+ 460 0080 00       		.byte	0
+ 461 0081 03       		.uleb128 0x3
+ 462 0082 0E       		.uleb128 0xe
+ 463 0083 3A       		.uleb128 0x3a
+ 464 0084 0B       		.uleb128 0xb
+ 465 0085 3B       		.uleb128 0x3b
+ 466 0086 0B       		.uleb128 0xb
+ 467 0087 49       		.uleb128 0x49
+ 468 0088 13       		.uleb128 0x13
+ 469 0089 02       		.uleb128 0x2
+ 470 008a 18       		.uleb128 0x18
+ 471 008b 00       		.byte	0
+ 472 008c 00       		.byte	0
+ 473 008d 0B       		.uleb128 0xb
+ 474 008e 01       		.uleb128 0x1
+ 475 008f 01       		.byte	0x1
+ 476 0090 49       		.uleb128 0x49
+ 477 0091 13       		.uleb128 0x13
+ 478 0092 01       		.uleb128 0x1
+ 479 0093 13       		.uleb128 0x13
+ 480 0094 00       		.byte	0
+ 481 0095 00       		.byte	0
+ 482 0096 0C       		.uleb128 0xc
+ 483 0097 21       		.uleb128 0x21
+ 484 0098 00       		.byte	0
+ 485 0099 49       		.uleb128 0x49
+ 486 009a 13       		.uleb128 0x13
+ 487 009b 2F       		.uleb128 0x2f
+ 488 009c 0B       		.uleb128 0xb
+ 489 009d 00       		.byte	0
+ 490 009e 00       		.byte	0
+ 491 009f 0D       		.uleb128 0xd
+ 492 00a0 34       		.uleb128 0x34
+ 493 00a1 00       		.byte	0
+ 494 00a2 03       		.uleb128 0x3
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 12
+
+
+ 495 00a3 0E       		.uleb128 0xe
+ 496 00a4 3A       		.uleb128 0x3a
+ 497 00a5 0B       		.uleb128 0xb
+ 498 00a6 3B       		.uleb128 0x3b
+ 499 00a7 05       		.uleb128 0x5
+ 500 00a8 49       		.uleb128 0x49
+ 501 00a9 13       		.uleb128 0x13
+ 502 00aa 3F       		.uleb128 0x3f
+ 503 00ab 19       		.uleb128 0x19
+ 504 00ac 3C       		.uleb128 0x3c
+ 505 00ad 19       		.uleb128 0x19
+ 506 00ae 00       		.byte	0
+ 507 00af 00       		.byte	0
+ 508 00b0 0E       		.uleb128 0xe
+ 509 00b1 34       		.uleb128 0x34
+ 510 00b2 00       		.byte	0
+ 511 00b3 03       		.uleb128 0x3
+ 512 00b4 0E       		.uleb128 0xe
+ 513 00b5 3A       		.uleb128 0x3a
+ 514 00b6 0B       		.uleb128 0xb
+ 515 00b7 3B       		.uleb128 0x3b
+ 516 00b8 0B       		.uleb128 0xb
+ 517 00b9 49       		.uleb128 0x49
+ 518 00ba 13       		.uleb128 0x13
+ 519 00bb 3F       		.uleb128 0x3f
+ 520 00bc 19       		.uleb128 0x19
+ 521 00bd 3C       		.uleb128 0x3c
+ 522 00be 19       		.uleb128 0x19
+ 523 00bf 00       		.byte	0
+ 524 00c0 00       		.byte	0
+ 525 00c1 00       		.byte	0
+ 526              		.section	.debug_aranges,"",%progbits
+ 527 0000 1C000000 		.4byte	0x1c
+ 528 0004 0200     		.2byte	0x2
+ 529 0006 00000000 		.4byte	.Ldebug_info0
+ 530 000a 04       		.byte	0x4
+ 531 000b 00       		.byte	0
+ 532 000c 0000     		.2byte	0
+ 533 000e 0000     		.2byte	0
+ 534 0010 00000000 		.4byte	.LFB64
+ 535 0014 A0000000 		.4byte	.LFE64-.LFB64
+ 536 0018 00000000 		.4byte	0
+ 537 001c 00000000 		.4byte	0
+ 538              		.section	.debug_ranges,"",%progbits
+ 539              	.Ldebug_ranges0:
+ 540 0000 00000000 		.4byte	.LFB64
+ 541 0004 A0000000 		.4byte	.LFE64
+ 542 0008 00000000 		.4byte	0
+ 543 000c 00000000 		.4byte	0
+ 544              		.section	.debug_line,"",%progbits
+ 545              	.Ldebug_line0:
+ 546 0000 AF010000 		.section	.debug_str,"MS",%progbits,1
+ 546      02008001 
+ 546      00000201 
+ 546      FB0E0D00 
+ 546      01010101 
+ 547              	.LASF36:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 13
+
+
+ 548 0000 43617264 		.ascii	"Card_Types_Enum\000"
+ 548      5F547970 
+ 548      65735F45 
+ 548      6E756D00 
+ 549              	.LASF20:
+ 550 0010 554E5345 		.ascii	"UNSELECTED_CARD\000"
+ 550      4C454354 
+ 550      45445F43 
+ 550      41524400 
+ 551              	.LASF17:
+ 552 0020 72656733 		.ascii	"reg32\000"
+ 552      3200
+ 553              	.LASF33:
+ 554 0026 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 554      43313120 
+ 554      352E342E 
+ 554      31203230 
+ 554      31363036 
+ 555 0059 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 555      20726576 
+ 555      6973696F 
+ 555      6E203233 
+ 555      37373135 
+ 556 008c 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 556      66756E63 
+ 556      74696F6E 
+ 556      2D736563 
+ 556      74696F6E 
+ 557              	.LASF9:
+ 558 00b4 5F5F696E 		.ascii	"__int32_t\000"
+ 558      7433325F 
+ 558      7400
+ 559              	.LASF3:
+ 560 00be 73686F72 		.ascii	"short unsigned int\000"
+ 560      7420756E 
+ 560      7369676E 
+ 560      65642069 
+ 560      6E7400
+ 561              	.LASF15:
+ 562 00d1 646F7562 		.ascii	"double\000"
+ 562      6C6500
+ 563              	.LASF14:
+ 564 00d8 666C6F61 		.ascii	"float\000"
+ 564      7400
+ 565              	.LASF25:
+ 566 00de 52415350 		.ascii	"RASPIPLUSGVS\000"
+ 566      49504C55 
+ 566      53475653 
+ 566      00
+ 567              	.LASF21:
+ 568 00eb 52505055 		.ascii	"RPPUIO16\000"
+ 568      494F3136 
+ 568      00
+ 569              	.LASF1:
+ 570 00f4 756E7369 		.ascii	"unsigned char\000"
+ 570      676E6564 
+ 570      20636861 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 14
+
+
+ 570      7200
+ 571              	.LASF23:
+ 572 0102 52505053 		.ascii	"RPPSOC\000"
+ 572      4F4300
+ 573              	.LASF22:
+ 574 0109 52505047 		.ascii	"RPPGVSCFG\000"
+ 574      56534346 
+ 574      4700
+ 575              	.LASF35:
+ 576 0113 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\land-boards\\"
+ 576      73657273 
+ 576      5C48507A 
+ 576      3432305C 
+ 576      446F6375 
+ 577 0140 52617350 		.ascii	"RasPi\\RPI_PSOC5\\RPI_PSOC5_RPI_SPI8_CARD_TEST.cyds"
+ 577      695C5250 
+ 577      495F5053 
+ 577      4F43355C 
+ 577      5250495F 
+ 578 0171 6E00     		.ascii	"n\000"
+ 579              	.LASF30:
+ 580 0173 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 580      52784275 
+ 580      66666572 
+ 580      00
+ 581              	.LASF31:
+ 582 0180 63617264 		.ascii	"cardType\000"
+ 582      54797065 
+ 582      00
+ 583              	.LASF37:
+ 584 0189 6D61696E 		.ascii	"main\000"
+ 584      00
+ 585              	.LASF12:
+ 586 018e 75696E74 		.ascii	"uint16\000"
+ 586      313600
+ 587              	.LASF13:
+ 588 0195 75696E74 		.ascii	"uint32\000"
+ 588      333200
+ 589              	.LASF5:
+ 590 019c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 590      20756E73 
+ 590      69676E65 
+ 590      6420696E 
+ 590      7400
+ 591              	.LASF8:
+ 592 01ae 756E7369 		.ascii	"unsigned int\000"
+ 592      676E6564 
+ 592      20696E74 
+ 592      00
+ 593              	.LASF7:
+ 594 01bb 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 594      206C6F6E 
+ 594      6720756E 
+ 594      7369676E 
+ 594      65642069 
+ 595              	.LASF28:
+ 596 01d2 696E436F 		.ascii	"inCount\000"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 15
+
+
+ 596      756E7400 
+ 597              	.LASF10:
+ 598 01da 696E7433 		.ascii	"int32_t\000"
+ 598      325F7400 
+ 599              	.LASF19:
+ 600 01e2 73697A65 		.ascii	"sizetype\000"
+ 600      74797065 
+ 600      00
+ 601              	.LASF6:
+ 602 01eb 6C6F6E67 		.ascii	"long long int\000"
+ 602      206C6F6E 
+ 602      6720696E 
+ 602      7400
+ 603              	.LASF34:
+ 604 01f9 6D61696E 		.ascii	"main.c\000"
+ 604      2E6300
+ 605              	.LASF16:
+ 606 0200 63686172 		.ascii	"char\000"
+ 606      00
+ 607              	.LASF24:
+ 608 0205 52415350 		.ascii	"RASPIGVS\000"
+ 608      49475653 
+ 608      00
+ 609              	.LASF2:
+ 610 020e 73686F72 		.ascii	"short int\000"
+ 610      7420696E 
+ 610      7400
+ 611              	.LASF26:
+ 612 0218 52504949 		.ascii	"RPII2CHUB\000"
+ 612      32434855 
+ 612      4200
+ 613              	.LASF11:
+ 614 0222 75696E74 		.ascii	"uint8\000"
+ 614      3800
+ 615              	.LASF32:
+ 616 0228 676F7443 		.ascii	"gotCRorLF\000"
+ 616      526F724C 
+ 616      4600
+ 617              	.LASF4:
+ 618 0232 6C6F6E67 		.ascii	"long int\000"
+ 618      20696E74 
+ 618      00
+ 619              	.LASF27:
+ 620 023b 52504953 		.ascii	"RPISPI8\000"
+ 620      50493800 
+ 621              	.LASF18:
+ 622 0243 6C6F6E67 		.ascii	"long double\000"
+ 622      20646F75 
+ 622      626C6500 
+ 623              	.LASF0:
+ 624 024f 7369676E 		.ascii	"signed char\000"
+ 624      65642063 
+ 624      68617200 
+ 625              	.LASF29:
+ 626 025b 696E4275 		.ascii	"inBuffer\000"
+ 626      66666572 
+ 626      00
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccpmNshK.s 			page 16
+
+
+ 627              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,58 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cc8H68T6.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Z80_SIO_emul.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              	.Letext0:
+  20              		.section	.debug_line,"",%progbits
+  21              	.Ldebug_line0:
+  22              		.section	.debug_str,"MS",%progbits,1
+  23              	.LASF0:
+  24 0000 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\RPI_PSOC5\\RP"
+  24      73657273 
+  24      5C48507A 
+  24      3432305C 
+  24      446F6375 
+  25 002d 495F5053 		.ascii	"I_PSOC5_Serial_01\\RPS_PSOC5_Serial_01.cydsn\000"
+  25      4F43355F 
+  25      53657269 
+  25      616C5F30 
+  25      315C5250 
+  26              	.LASF1:
+  27 0059 5A38305F 		.ascii	"Z80_SIO_emul.c\000"
+  27      53494F5F 
+  27      656D756C 
+  27      2E6300
+  28              	.LASF2:
+  29 0068 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+  29      43313120 
+  29      352E342E 
+  29      31203230 
+  29      31363036 
+  30 009b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+  30      20726576 
+  30      6973696F 
+  30      6E203233 
+  30      37373135 
+  31 00ce 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+  31      66756E63 
+  31      74696F6E 
+  31      2D736563 
+  31      74696F6E 
+  32              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

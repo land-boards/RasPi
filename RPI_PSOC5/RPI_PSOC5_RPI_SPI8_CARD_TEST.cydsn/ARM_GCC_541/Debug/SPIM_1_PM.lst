@@ -1,0 +1,860 @@
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"SPIM_1_PM.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.data
+  20              		.align	2
+  21              		.type	SPIM_1_backup, %object
+  22              		.size	SPIM_1_backup, 2
+  23              	SPIM_1_backup:
+  24 0000 00       		.byte	0
+  25 0001 1F       		.byte	31
+  26              		.section	.text.SPIM_1_SaveConfig,"ax",%progbits
+  27              		.align	2
+  28              		.global	SPIM_1_SaveConfig
+  29              		.thumb
+  30              		.thumb_func
+  31              		.type	SPIM_1_SaveConfig, %function
+  32              	SPIM_1_SaveConfig:
+  33              	.LFB0:
+  34              		.file 1 "Generated_Source\\PSoC5\\SPIM_1_PM.c"
+   1:Generated_Source\PSoC5/SPIM_1_PM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/SPIM_1_PM.c **** * File Name: SPIM_1_PM.c
+   3:Generated_Source\PSoC5/SPIM_1_PM.c **** * Version 2.50
+   4:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+   5:Generated_Source\PSoC5/SPIM_1_PM.c **** * Description:
+   6:Generated_Source\PSoC5/SPIM_1_PM.c **** *  This file contains the setup, control and status commands to support
+   7:Generated_Source\PSoC5/SPIM_1_PM.c **** *  component operations in low power mode.
+   8:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+   9:Generated_Source\PSoC5/SPIM_1_PM.c **** * Note:
+  10:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  11:Generated_Source\PSoC5/SPIM_1_PM.c **** ********************************************************************************
+  12:Generated_Source\PSoC5/SPIM_1_PM.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC5/SPIM_1_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:Generated_Source\PSoC5/SPIM_1_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:Generated_Source\PSoC5/SPIM_1_PM.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC5/SPIM_1_PM.c **** *******************************************************************************/
+  17:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  18:Generated_Source\PSoC5/SPIM_1_PM.c **** #include "SPIM_1_PVT.h"
+  19:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  20:Generated_Source\PSoC5/SPIM_1_PM.c **** static SPIM_1_BACKUP_STRUCT SPIM_1_backup =
+  21:Generated_Source\PSoC5/SPIM_1_PM.c **** {
+  22:Generated_Source\PSoC5/SPIM_1_PM.c ****     SPIM_1_DISABLED,
+  23:Generated_Source\PSoC5/SPIM_1_PM.c ****     SPIM_1_BITCTR_INIT,
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 2
+
+
+  24:Generated_Source\PSoC5/SPIM_1_PM.c **** };
+  25:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  26:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  27:Generated_Source\PSoC5/SPIM_1_PM.c **** /*******************************************************************************
+  28:Generated_Source\PSoC5/SPIM_1_PM.c **** * Function Name: SPIM_1_SaveConfig
+  29:Generated_Source\PSoC5/SPIM_1_PM.c **** ********************************************************************************
+  30:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  31:Generated_Source\PSoC5/SPIM_1_PM.c **** * Summary:
+  32:Generated_Source\PSoC5/SPIM_1_PM.c **** *  Empty function. Included for consistency with other components.
+  33:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  34:Generated_Source\PSoC5/SPIM_1_PM.c **** * Parameters:
+  35:Generated_Source\PSoC5/SPIM_1_PM.c **** *  None.
+  36:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  37:Generated_Source\PSoC5/SPIM_1_PM.c **** * Return:
+  38:Generated_Source\PSoC5/SPIM_1_PM.c **** *  None.
+  39:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  40:Generated_Source\PSoC5/SPIM_1_PM.c **** *******************************************************************************/
+  41:Generated_Source\PSoC5/SPIM_1_PM.c **** void SPIM_1_SaveConfig(void) 
+  42:Generated_Source\PSoC5/SPIM_1_PM.c **** {
+  35              		.loc 1 42 0
+  36              		.cfi_startproc
+  37              		@ args = 0, pretend = 0, frame = 0
+  38              		@ frame_needed = 1, uses_anonymous_args = 0
+  39              		@ link register save eliminated.
+  40 0000 80B4     		push	{r7}
+  41              		.cfi_def_cfa_offset 4
+  42              		.cfi_offset 7, -4
+  43 0002 00AF     		add	r7, sp, #0
+  44              		.cfi_def_cfa_register 7
+  43:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  44:Generated_Source\PSoC5/SPIM_1_PM.c **** }
+  45              		.loc 1 44 0
+  46 0004 00BF     		nop
+  47 0006 BD46     		mov	sp, r7
+  48              		.cfi_def_cfa_register 13
+  49              		@ sp needed
+  50 0008 80BC     		pop	{r7}
+  51              		.cfi_restore 7
+  52              		.cfi_def_cfa_offset 0
+  53 000a 7047     		bx	lr
+  54              		.cfi_endproc
+  55              	.LFE0:
+  56              		.size	SPIM_1_SaveConfig, .-SPIM_1_SaveConfig
+  57              		.section	.text.SPIM_1_RestoreConfig,"ax",%progbits
+  58              		.align	2
+  59              		.global	SPIM_1_RestoreConfig
+  60              		.thumb
+  61              		.thumb_func
+  62              		.type	SPIM_1_RestoreConfig, %function
+  63              	SPIM_1_RestoreConfig:
+  64              	.LFB1:
+  45:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  46:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  47:Generated_Source\PSoC5/SPIM_1_PM.c **** /*******************************************************************************
+  48:Generated_Source\PSoC5/SPIM_1_PM.c **** * Function Name: SPIM_1_RestoreConfig
+  49:Generated_Source\PSoC5/SPIM_1_PM.c **** ********************************************************************************
+  50:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 3
+
+
+  51:Generated_Source\PSoC5/SPIM_1_PM.c **** * Summary:
+  52:Generated_Source\PSoC5/SPIM_1_PM.c **** *  Empty function. Included for consistency with other components.
+  53:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  54:Generated_Source\PSoC5/SPIM_1_PM.c **** * Parameters:
+  55:Generated_Source\PSoC5/SPIM_1_PM.c **** *  None.
+  56:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  57:Generated_Source\PSoC5/SPIM_1_PM.c **** * Return:
+  58:Generated_Source\PSoC5/SPIM_1_PM.c **** *  None.
+  59:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  60:Generated_Source\PSoC5/SPIM_1_PM.c **** *******************************************************************************/
+  61:Generated_Source\PSoC5/SPIM_1_PM.c **** void SPIM_1_RestoreConfig(void) 
+  62:Generated_Source\PSoC5/SPIM_1_PM.c **** {
+  65              		.loc 1 62 0
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 0
+  68              		@ frame_needed = 1, uses_anonymous_args = 0
+  69              		@ link register save eliminated.
+  70 0000 80B4     		push	{r7}
+  71              		.cfi_def_cfa_offset 4
+  72              		.cfi_offset 7, -4
+  73 0002 00AF     		add	r7, sp, #0
+  74              		.cfi_def_cfa_register 7
+  63:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  64:Generated_Source\PSoC5/SPIM_1_PM.c **** }
+  75              		.loc 1 64 0
+  76 0004 00BF     		nop
+  77 0006 BD46     		mov	sp, r7
+  78              		.cfi_def_cfa_register 13
+  79              		@ sp needed
+  80 0008 80BC     		pop	{r7}
+  81              		.cfi_restore 7
+  82              		.cfi_def_cfa_offset 0
+  83 000a 7047     		bx	lr
+  84              		.cfi_endproc
+  85              	.LFE1:
+  86              		.size	SPIM_1_RestoreConfig, .-SPIM_1_RestoreConfig
+  87              		.section	.text.SPIM_1_Sleep,"ax",%progbits
+  88              		.align	2
+  89              		.global	SPIM_1_Sleep
+  90              		.thumb
+  91              		.thumb_func
+  92              		.type	SPIM_1_Sleep, %function
+  93              	SPIM_1_Sleep:
+  94              	.LFB2:
+  65:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  66:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  67:Generated_Source\PSoC5/SPIM_1_PM.c **** /*******************************************************************************
+  68:Generated_Source\PSoC5/SPIM_1_PM.c **** * Function Name: SPIM_1_Sleep
+  69:Generated_Source\PSoC5/SPIM_1_PM.c **** ********************************************************************************
+  70:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  71:Generated_Source\PSoC5/SPIM_1_PM.c **** * Summary:
+  72:Generated_Source\PSoC5/SPIM_1_PM.c **** *  Prepare SPIM Component goes to sleep.
+  73:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  74:Generated_Source\PSoC5/SPIM_1_PM.c **** * Parameters:
+  75:Generated_Source\PSoC5/SPIM_1_PM.c **** *  None.
+  76:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  77:Generated_Source\PSoC5/SPIM_1_PM.c **** * Return:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 4
+
+
+  78:Generated_Source\PSoC5/SPIM_1_PM.c **** *  None.
+  79:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  80:Generated_Source\PSoC5/SPIM_1_PM.c **** * Global Variables:
+  81:Generated_Source\PSoC5/SPIM_1_PM.c **** *  SPIM_1_backup - modified when non-retention registers are saved.
+  82:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  83:Generated_Source\PSoC5/SPIM_1_PM.c **** * Reentrant:
+  84:Generated_Source\PSoC5/SPIM_1_PM.c **** *  No.
+  85:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+  86:Generated_Source\PSoC5/SPIM_1_PM.c **** *******************************************************************************/
+  87:Generated_Source\PSoC5/SPIM_1_PM.c **** void SPIM_1_Sleep(void) 
+  88:Generated_Source\PSoC5/SPIM_1_PM.c **** {
+  95              		.loc 1 88 0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 1, uses_anonymous_args = 0
+  99 0000 80B5     		push	{r7, lr}
+ 100              		.cfi_def_cfa_offset 8
+ 101              		.cfi_offset 7, -8
+ 102              		.cfi_offset 14, -4
+ 103 0002 00AF     		add	r7, sp, #0
+ 104              		.cfi_def_cfa_register 7
+  89:Generated_Source\PSoC5/SPIM_1_PM.c ****     /* Save components enable state */
+  90:Generated_Source\PSoC5/SPIM_1_PM.c ****     SPIM_1_backup.enableState = ((uint8) SPIM_1_IS_ENABLED);
+ 105              		.loc 1 90 0
+ 106 0004 084B     		ldr	r3, .L4
+ 107 0006 1B78     		ldrb	r3, [r3]
+ 108 0008 DBB2     		uxtb	r3, r3
+ 109 000a 03F01003 		and	r3, r3, #16
+ 110 000e 002B     		cmp	r3, #0
+ 111 0010 14BF     		ite	ne
+ 112 0012 0123     		movne	r3, #1
+ 113 0014 0023     		moveq	r3, #0
+ 114 0016 DBB2     		uxtb	r3, r3
+ 115 0018 1A46     		mov	r2, r3
+ 116 001a 044B     		ldr	r3, .L4+4
+ 117 001c 1A70     		strb	r2, [r3]
+  91:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  92:Generated_Source\PSoC5/SPIM_1_PM.c ****     SPIM_1_Stop();
+ 118              		.loc 1 92 0
+ 119 001e FFF7FEFF 		bl	SPIM_1_Stop
+  93:Generated_Source\PSoC5/SPIM_1_PM.c **** }
+ 120              		.loc 1 93 0
+ 121 0022 00BF     		nop
+ 122 0024 80BD     		pop	{r7, pc}
+ 123              	.L5:
+ 124 0026 00BF     		.align	2
+ 125              	.L4:
+ 126 0028 9B640040 		.word	1073767579
+ 127 002c 00000000 		.word	SPIM_1_backup
+ 128              		.cfi_endproc
+ 129              	.LFE2:
+ 130              		.size	SPIM_1_Sleep, .-SPIM_1_Sleep
+ 131              		.section	.text.SPIM_1_Wakeup,"ax",%progbits
+ 132              		.align	2
+ 133              		.global	SPIM_1_Wakeup
+ 134              		.thumb
+ 135              		.thumb_func
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 5
+
+
+ 136              		.type	SPIM_1_Wakeup, %function
+ 137              	SPIM_1_Wakeup:
+ 138              	.LFB3:
+  94:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  95:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+  96:Generated_Source\PSoC5/SPIM_1_PM.c **** /*******************************************************************************
+  97:Generated_Source\PSoC5/SPIM_1_PM.c **** * Function Name: SPIM_1_Wakeup
+  98:Generated_Source\PSoC5/SPIM_1_PM.c **** ********************************************************************************
+  99:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+ 100:Generated_Source\PSoC5/SPIM_1_PM.c **** * Summary:
+ 101:Generated_Source\PSoC5/SPIM_1_PM.c **** *  Prepare SPIM Component to wake up.
+ 102:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+ 103:Generated_Source\PSoC5/SPIM_1_PM.c **** * Parameters:
+ 104:Generated_Source\PSoC5/SPIM_1_PM.c **** *  None.
+ 105:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+ 106:Generated_Source\PSoC5/SPIM_1_PM.c **** * Return:
+ 107:Generated_Source\PSoC5/SPIM_1_PM.c **** *  None.
+ 108:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+ 109:Generated_Source\PSoC5/SPIM_1_PM.c **** * Global Variables:
+ 110:Generated_Source\PSoC5/SPIM_1_PM.c **** *  SPIM_1_backup - used when non-retention registers are restored.
+ 111:Generated_Source\PSoC5/SPIM_1_PM.c **** *  SPIM_1_txBufferWrite - modified every function call - resets to
+ 112:Generated_Source\PSoC5/SPIM_1_PM.c **** *  zero.
+ 113:Generated_Source\PSoC5/SPIM_1_PM.c **** *  SPIM_1_txBufferRead - modified every function call - resets to
+ 114:Generated_Source\PSoC5/SPIM_1_PM.c **** *  zero.
+ 115:Generated_Source\PSoC5/SPIM_1_PM.c **** *  SPIM_1_rxBufferWrite - modified every function call - resets to
+ 116:Generated_Source\PSoC5/SPIM_1_PM.c **** *  zero.
+ 117:Generated_Source\PSoC5/SPIM_1_PM.c **** *  SPIM_1_rxBufferRead - modified every function call - resets to
+ 118:Generated_Source\PSoC5/SPIM_1_PM.c **** *  zero.
+ 119:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+ 120:Generated_Source\PSoC5/SPIM_1_PM.c **** * Reentrant:
+ 121:Generated_Source\PSoC5/SPIM_1_PM.c **** *  No.
+ 122:Generated_Source\PSoC5/SPIM_1_PM.c **** *
+ 123:Generated_Source\PSoC5/SPIM_1_PM.c **** *******************************************************************************/
+ 124:Generated_Source\PSoC5/SPIM_1_PM.c **** void SPIM_1_Wakeup(void) 
+ 125:Generated_Source\PSoC5/SPIM_1_PM.c **** {
+ 139              		.loc 1 125 0
+ 140              		.cfi_startproc
+ 141              		@ args = 0, pretend = 0, frame = 0
+ 142              		@ frame_needed = 1, uses_anonymous_args = 0
+ 143 0000 80B5     		push	{r7, lr}
+ 144              		.cfi_def_cfa_offset 8
+ 145              		.cfi_offset 7, -8
+ 146              		.cfi_offset 14, -4
+ 147 0002 00AF     		add	r7, sp, #0
+ 148              		.cfi_def_cfa_register 7
+ 126:Generated_Source\PSoC5/SPIM_1_PM.c ****     #if(SPIM_1_RX_SOFTWARE_BUF_ENABLED)
+ 127:Generated_Source\PSoC5/SPIM_1_PM.c ****         SPIM_1_rxBufferFull  = 0u;
+ 128:Generated_Source\PSoC5/SPIM_1_PM.c ****         SPIM_1_rxBufferRead  = 0u;
+ 129:Generated_Source\PSoC5/SPIM_1_PM.c ****         SPIM_1_rxBufferWrite = 0u;
+ 130:Generated_Source\PSoC5/SPIM_1_PM.c ****     #endif /* (SPIM_1_RX_SOFTWARE_BUF_ENABLED) */
+ 131:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+ 132:Generated_Source\PSoC5/SPIM_1_PM.c ****     #if(SPIM_1_TX_SOFTWARE_BUF_ENABLED)
+ 133:Generated_Source\PSoC5/SPIM_1_PM.c ****         SPIM_1_txBufferFull  = 0u;
+ 134:Generated_Source\PSoC5/SPIM_1_PM.c ****         SPIM_1_txBufferRead  = 0u;
+ 135:Generated_Source\PSoC5/SPIM_1_PM.c ****         SPIM_1_txBufferWrite = 0u;
+ 136:Generated_Source\PSoC5/SPIM_1_PM.c ****     #endif /* (SPIM_1_TX_SOFTWARE_BUF_ENABLED) */
+ 137:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 6
+
+
+ 138:Generated_Source\PSoC5/SPIM_1_PM.c ****     /* Clear any data from the RX and TX FIFO */
+ 139:Generated_Source\PSoC5/SPIM_1_PM.c ****     SPIM_1_ClearFIFO();
+ 149              		.loc 1 139 0
+ 150 0004 FFF7FEFF 		bl	SPIM_1_ClearFIFO
+ 140:Generated_Source\PSoC5/SPIM_1_PM.c **** 
+ 141:Generated_Source\PSoC5/SPIM_1_PM.c ****     /* Restore components block enable state */
+ 142:Generated_Source\PSoC5/SPIM_1_PM.c ****     if(0u != SPIM_1_backup.enableState)
+ 151              		.loc 1 142 0
+ 152 0008 034B     		ldr	r3, .L9
+ 153 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 154 000c 002B     		cmp	r3, #0
+ 155 000e 01D0     		beq	.L8
+ 143:Generated_Source\PSoC5/SPIM_1_PM.c ****     {
+ 144:Generated_Source\PSoC5/SPIM_1_PM.c ****         SPIM_1_Enable();
+ 156              		.loc 1 144 0
+ 157 0010 FFF7FEFF 		bl	SPIM_1_Enable
+ 158              	.L8:
+ 145:Generated_Source\PSoC5/SPIM_1_PM.c ****     }
+ 146:Generated_Source\PSoC5/SPIM_1_PM.c **** }
+ 159              		.loc 1 146 0
+ 160 0014 00BF     		nop
+ 161 0016 80BD     		pop	{r7, pc}
+ 162              	.L10:
+ 163              		.align	2
+ 164              	.L9:
+ 165 0018 00000000 		.word	SPIM_1_backup
+ 166              		.cfi_endproc
+ 167              	.LFE3:
+ 168              		.size	SPIM_1_Wakeup, .-SPIM_1_Wakeup
+ 169              		.text
+ 170              	.Letext0:
+ 171              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 172              		.file 3 "Generated_Source\\PSoC5\\SPIM_1.h"
+ 173              		.section	.debug_info,"",%progbits
+ 174              	.Ldebug_info0:
+ 175 0000 29010000 		.4byte	0x129
+ 176 0004 0400     		.2byte	0x4
+ 177 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 178 000a 04       		.byte	0x4
+ 179 000b 01       		.uleb128 0x1
+ 180 000c FA000000 		.4byte	.LASF23
+ 181 0010 0C       		.byte	0xc
+ 182 0011 08020000 		.4byte	.LASF24
+ 183 0015 20000000 		.4byte	.LASF25
+ 184 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 185 001d 00000000 		.4byte	0
+ 186 0021 00000000 		.4byte	.Ldebug_line0
+ 187 0025 02       		.uleb128 0x2
+ 188 0026 01       		.byte	0x1
+ 189 0027 06       		.byte	0x6
+ 190 0028 F0010000 		.4byte	.LASF0
+ 191 002c 02       		.uleb128 0x2
+ 192 002d 01       		.byte	0x1
+ 193 002e 08       		.byte	0x8
+ 194 002f 88010000 		.4byte	.LASF1
+ 195 0033 02       		.uleb128 0x2
+ 196 0034 02       		.byte	0x2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 7
+
+
+ 197 0035 05       		.byte	0x5
+ 198 0036 2B020000 		.4byte	.LASF2
+ 199 003a 02       		.uleb128 0x2
+ 200 003b 02       		.byte	0x2
+ 201 003c 07       		.byte	0x7
+ 202 003d DD010000 		.4byte	.LASF3
+ 203 0041 02       		.uleb128 0x2
+ 204 0042 04       		.byte	0x4
+ 205 0043 05       		.byte	0x5
+ 206 0044 A8010000 		.4byte	.LASF4
+ 207 0048 02       		.uleb128 0x2
+ 208 0049 04       		.byte	0x4
+ 209 004a 07       		.byte	0x7
+ 210 004b A8000000 		.4byte	.LASF5
+ 211 004f 02       		.uleb128 0x2
+ 212 0050 08       		.byte	0x8
+ 213 0051 05       		.byte	0x5
+ 214 0052 00000000 		.4byte	.LASF6
+ 215 0056 02       		.uleb128 0x2
+ 216 0057 08       		.byte	0x8
+ 217 0058 07       		.byte	0x7
+ 218 0059 BA000000 		.4byte	.LASF7
+ 219 005d 03       		.uleb128 0x3
+ 220 005e 04       		.byte	0x4
+ 221 005f 05       		.byte	0x5
+ 222 0060 696E7400 		.ascii	"int\000"
+ 223 0064 02       		.uleb128 0x2
+ 224 0065 04       		.byte	0x4
+ 225 0066 07       		.byte	0x7
+ 226 0067 80000000 		.4byte	.LASF8
+ 227 006b 04       		.uleb128 0x4
+ 228 006c A2000000 		.4byte	.LASF12
+ 229 0070 02       		.byte	0x2
+ 230 0071 E401     		.2byte	0x1e4
+ 231 0073 2C000000 		.4byte	0x2c
+ 232 0077 02       		.uleb128 0x2
+ 233 0078 04       		.byte	0x4
+ 234 0079 04       		.byte	0x4
+ 235 007a E6000000 		.4byte	.LASF9
+ 236 007e 02       		.uleb128 0x2
+ 237 007f 08       		.byte	0x8
+ 238 0080 04       		.byte	0x4
+ 239 0081 BD010000 		.4byte	.LASF10
+ 240 0085 02       		.uleb128 0x2
+ 241 0086 01       		.byte	0x1
+ 242 0087 08       		.byte	0x8
+ 243 0088 A3010000 		.4byte	.LASF11
+ 244 008c 04       		.uleb128 0x4
+ 245 008d 35020000 		.4byte	.LASF13
+ 246 0091 02       		.byte	0x2
+ 247 0092 8E02     		.2byte	0x28e
+ 248 0094 98000000 		.4byte	0x98
+ 249 0098 05       		.uleb128 0x5
+ 250 0099 6B000000 		.4byte	0x6b
+ 251 009d 02       		.uleb128 0x2
+ 252 009e 08       		.byte	0x8
+ 253 009f 04       		.byte	0x4
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 8
+
+
+ 254 00a0 FC010000 		.4byte	.LASF14
+ 255 00a4 02       		.uleb128 0x2
+ 256 00a5 04       		.byte	0x4
+ 257 00a6 07       		.byte	0x7
+ 258 00a7 3A020000 		.4byte	.LASF15
+ 259 00ab 06       		.uleb128 0x6
+ 260 00ac 02       		.byte	0x2
+ 261 00ad 03       		.byte	0x3
+ 262 00ae 40       		.byte	0x40
+ 263 00af CC000000 		.4byte	0xcc
+ 264 00b3 07       		.uleb128 0x7
+ 265 00b4 B1010000 		.4byte	.LASF16
+ 266 00b8 03       		.byte	0x3
+ 267 00b9 42       		.byte	0x42
+ 268 00ba 6B000000 		.4byte	0x6b
+ 269 00be 00       		.byte	0
+ 270 00bf 07       		.uleb128 0x7
+ 271 00c0 D2010000 		.4byte	.LASF17
+ 272 00c4 03       		.byte	0x3
+ 273 00c5 43       		.byte	0x43
+ 274 00c6 6B000000 		.4byte	0x6b
+ 275 00ca 01       		.byte	0x1
+ 276 00cb 00       		.byte	0
+ 277 00cc 08       		.uleb128 0x8
+ 278 00cd D1000000 		.4byte	.LASF18
+ 279 00d1 03       		.byte	0x3
+ 280 00d2 44       		.byte	0x44
+ 281 00d3 AB000000 		.4byte	0xab
+ 282 00d7 09       		.uleb128 0x9
+ 283 00d8 0E000000 		.4byte	.LASF19
+ 284 00dc 01       		.byte	0x1
+ 285 00dd 29       		.byte	0x29
+ 286 00de 00000000 		.4byte	.LFB0
+ 287 00e2 0C000000 		.4byte	.LFE0-.LFB0
+ 288 00e6 01       		.uleb128 0x1
+ 289 00e7 9C       		.byte	0x9c
+ 290 00e8 09       		.uleb128 0x9
+ 291 00e9 8D000000 		.4byte	.LASF20
+ 292 00ed 01       		.byte	0x1
+ 293 00ee 3D       		.byte	0x3d
+ 294 00ef 00000000 		.4byte	.LFB1
+ 295 00f3 0C000000 		.4byte	.LFE1-.LFB1
+ 296 00f7 01       		.uleb128 0x1
+ 297 00f8 9C       		.byte	0x9c
+ 298 00f9 0A       		.uleb128 0xa
+ 299 00fa 96010000 		.4byte	.LASF21
+ 300 00fe 01       		.byte	0x1
+ 301 00ff 57       		.byte	0x57
+ 302 0100 00000000 		.4byte	.LFB2
+ 303 0104 30000000 		.4byte	.LFE2-.LFB2
+ 304 0108 01       		.uleb128 0x1
+ 305 0109 9C       		.byte	0x9c
+ 306 010a 0A       		.uleb128 0xa
+ 307 010b C4010000 		.4byte	.LASF22
+ 308 010f 01       		.byte	0x1
+ 309 0110 7C       		.byte	0x7c
+ 310 0111 00000000 		.4byte	.LFB3
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 9
+
+
+ 311 0115 1C000000 		.4byte	.LFE3-.LFB3
+ 312 0119 01       		.uleb128 0x1
+ 313 011a 9C       		.byte	0x9c
+ 314 011b 0B       		.uleb128 0xb
+ 315 011c EC000000 		.4byte	.LASF26
+ 316 0120 01       		.byte	0x1
+ 317 0121 14       		.byte	0x14
+ 318 0122 CC000000 		.4byte	0xcc
+ 319 0126 05       		.uleb128 0x5
+ 320 0127 03       		.byte	0x3
+ 321 0128 00000000 		.4byte	SPIM_1_backup
+ 322 012c 00       		.byte	0
+ 323              		.section	.debug_abbrev,"",%progbits
+ 324              	.Ldebug_abbrev0:
+ 325 0000 01       		.uleb128 0x1
+ 326 0001 11       		.uleb128 0x11
+ 327 0002 01       		.byte	0x1
+ 328 0003 25       		.uleb128 0x25
+ 329 0004 0E       		.uleb128 0xe
+ 330 0005 13       		.uleb128 0x13
+ 331 0006 0B       		.uleb128 0xb
+ 332 0007 03       		.uleb128 0x3
+ 333 0008 0E       		.uleb128 0xe
+ 334 0009 1B       		.uleb128 0x1b
+ 335 000a 0E       		.uleb128 0xe
+ 336 000b 55       		.uleb128 0x55
+ 337 000c 17       		.uleb128 0x17
+ 338 000d 11       		.uleb128 0x11
+ 339 000e 01       		.uleb128 0x1
+ 340 000f 10       		.uleb128 0x10
+ 341 0010 17       		.uleb128 0x17
+ 342 0011 00       		.byte	0
+ 343 0012 00       		.byte	0
+ 344 0013 02       		.uleb128 0x2
+ 345 0014 24       		.uleb128 0x24
+ 346 0015 00       		.byte	0
+ 347 0016 0B       		.uleb128 0xb
+ 348 0017 0B       		.uleb128 0xb
+ 349 0018 3E       		.uleb128 0x3e
+ 350 0019 0B       		.uleb128 0xb
+ 351 001a 03       		.uleb128 0x3
+ 352 001b 0E       		.uleb128 0xe
+ 353 001c 00       		.byte	0
+ 354 001d 00       		.byte	0
+ 355 001e 03       		.uleb128 0x3
+ 356 001f 24       		.uleb128 0x24
+ 357 0020 00       		.byte	0
+ 358 0021 0B       		.uleb128 0xb
+ 359 0022 0B       		.uleb128 0xb
+ 360 0023 3E       		.uleb128 0x3e
+ 361 0024 0B       		.uleb128 0xb
+ 362 0025 03       		.uleb128 0x3
+ 363 0026 08       		.uleb128 0x8
+ 364 0027 00       		.byte	0
+ 365 0028 00       		.byte	0
+ 366 0029 04       		.uleb128 0x4
+ 367 002a 16       		.uleb128 0x16
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 10
+
+
+ 368 002b 00       		.byte	0
+ 369 002c 03       		.uleb128 0x3
+ 370 002d 0E       		.uleb128 0xe
+ 371 002e 3A       		.uleb128 0x3a
+ 372 002f 0B       		.uleb128 0xb
+ 373 0030 3B       		.uleb128 0x3b
+ 374 0031 05       		.uleb128 0x5
+ 375 0032 49       		.uleb128 0x49
+ 376 0033 13       		.uleb128 0x13
+ 377 0034 00       		.byte	0
+ 378 0035 00       		.byte	0
+ 379 0036 05       		.uleb128 0x5
+ 380 0037 35       		.uleb128 0x35
+ 381 0038 00       		.byte	0
+ 382 0039 49       		.uleb128 0x49
+ 383 003a 13       		.uleb128 0x13
+ 384 003b 00       		.byte	0
+ 385 003c 00       		.byte	0
+ 386 003d 06       		.uleb128 0x6
+ 387 003e 13       		.uleb128 0x13
+ 388 003f 01       		.byte	0x1
+ 389 0040 0B       		.uleb128 0xb
+ 390 0041 0B       		.uleb128 0xb
+ 391 0042 3A       		.uleb128 0x3a
+ 392 0043 0B       		.uleb128 0xb
+ 393 0044 3B       		.uleb128 0x3b
+ 394 0045 0B       		.uleb128 0xb
+ 395 0046 01       		.uleb128 0x1
+ 396 0047 13       		.uleb128 0x13
+ 397 0048 00       		.byte	0
+ 398 0049 00       		.byte	0
+ 399 004a 07       		.uleb128 0x7
+ 400 004b 0D       		.uleb128 0xd
+ 401 004c 00       		.byte	0
+ 402 004d 03       		.uleb128 0x3
+ 403 004e 0E       		.uleb128 0xe
+ 404 004f 3A       		.uleb128 0x3a
+ 405 0050 0B       		.uleb128 0xb
+ 406 0051 3B       		.uleb128 0x3b
+ 407 0052 0B       		.uleb128 0xb
+ 408 0053 49       		.uleb128 0x49
+ 409 0054 13       		.uleb128 0x13
+ 410 0055 38       		.uleb128 0x38
+ 411 0056 0B       		.uleb128 0xb
+ 412 0057 00       		.byte	0
+ 413 0058 00       		.byte	0
+ 414 0059 08       		.uleb128 0x8
+ 415 005a 16       		.uleb128 0x16
+ 416 005b 00       		.byte	0
+ 417 005c 03       		.uleb128 0x3
+ 418 005d 0E       		.uleb128 0xe
+ 419 005e 3A       		.uleb128 0x3a
+ 420 005f 0B       		.uleb128 0xb
+ 421 0060 3B       		.uleb128 0x3b
+ 422 0061 0B       		.uleb128 0xb
+ 423 0062 49       		.uleb128 0x49
+ 424 0063 13       		.uleb128 0x13
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 11
+
+
+ 425 0064 00       		.byte	0
+ 426 0065 00       		.byte	0
+ 427 0066 09       		.uleb128 0x9
+ 428 0067 2E       		.uleb128 0x2e
+ 429 0068 00       		.byte	0
+ 430 0069 3F       		.uleb128 0x3f
+ 431 006a 19       		.uleb128 0x19
+ 432 006b 03       		.uleb128 0x3
+ 433 006c 0E       		.uleb128 0xe
+ 434 006d 3A       		.uleb128 0x3a
+ 435 006e 0B       		.uleb128 0xb
+ 436 006f 3B       		.uleb128 0x3b
+ 437 0070 0B       		.uleb128 0xb
+ 438 0071 27       		.uleb128 0x27
+ 439 0072 19       		.uleb128 0x19
+ 440 0073 11       		.uleb128 0x11
+ 441 0074 01       		.uleb128 0x1
+ 442 0075 12       		.uleb128 0x12
+ 443 0076 06       		.uleb128 0x6
+ 444 0077 40       		.uleb128 0x40
+ 445 0078 18       		.uleb128 0x18
+ 446 0079 9742     		.uleb128 0x2117
+ 447 007b 19       		.uleb128 0x19
+ 448 007c 00       		.byte	0
+ 449 007d 00       		.byte	0
+ 450 007e 0A       		.uleb128 0xa
+ 451 007f 2E       		.uleb128 0x2e
+ 452 0080 00       		.byte	0
+ 453 0081 3F       		.uleb128 0x3f
+ 454 0082 19       		.uleb128 0x19
+ 455 0083 03       		.uleb128 0x3
+ 456 0084 0E       		.uleb128 0xe
+ 457 0085 3A       		.uleb128 0x3a
+ 458 0086 0B       		.uleb128 0xb
+ 459 0087 3B       		.uleb128 0x3b
+ 460 0088 0B       		.uleb128 0xb
+ 461 0089 27       		.uleb128 0x27
+ 462 008a 19       		.uleb128 0x19
+ 463 008b 11       		.uleb128 0x11
+ 464 008c 01       		.uleb128 0x1
+ 465 008d 12       		.uleb128 0x12
+ 466 008e 06       		.uleb128 0x6
+ 467 008f 40       		.uleb128 0x40
+ 468 0090 18       		.uleb128 0x18
+ 469 0091 9642     		.uleb128 0x2116
+ 470 0093 19       		.uleb128 0x19
+ 471 0094 00       		.byte	0
+ 472 0095 00       		.byte	0
+ 473 0096 0B       		.uleb128 0xb
+ 474 0097 34       		.uleb128 0x34
+ 475 0098 00       		.byte	0
+ 476 0099 03       		.uleb128 0x3
+ 477 009a 0E       		.uleb128 0xe
+ 478 009b 3A       		.uleb128 0x3a
+ 479 009c 0B       		.uleb128 0xb
+ 480 009d 3B       		.uleb128 0x3b
+ 481 009e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 12
+
+
+ 482 009f 49       		.uleb128 0x49
+ 483 00a0 13       		.uleb128 0x13
+ 484 00a1 02       		.uleb128 0x2
+ 485 00a2 18       		.uleb128 0x18
+ 486 00a3 00       		.byte	0
+ 487 00a4 00       		.byte	0
+ 488 00a5 00       		.byte	0
+ 489              		.section	.debug_aranges,"",%progbits
+ 490 0000 34000000 		.4byte	0x34
+ 491 0004 0200     		.2byte	0x2
+ 492 0006 00000000 		.4byte	.Ldebug_info0
+ 493 000a 04       		.byte	0x4
+ 494 000b 00       		.byte	0
+ 495 000c 0000     		.2byte	0
+ 496 000e 0000     		.2byte	0
+ 497 0010 00000000 		.4byte	.LFB0
+ 498 0014 0C000000 		.4byte	.LFE0-.LFB0
+ 499 0018 00000000 		.4byte	.LFB1
+ 500 001c 0C000000 		.4byte	.LFE1-.LFB1
+ 501 0020 00000000 		.4byte	.LFB2
+ 502 0024 30000000 		.4byte	.LFE2-.LFB2
+ 503 0028 00000000 		.4byte	.LFB3
+ 504 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 505 0030 00000000 		.4byte	0
+ 506 0034 00000000 		.4byte	0
+ 507              		.section	.debug_ranges,"",%progbits
+ 508              	.Ldebug_ranges0:
+ 509 0000 00000000 		.4byte	.LFB0
+ 510 0004 0C000000 		.4byte	.LFE0
+ 511 0008 00000000 		.4byte	.LFB1
+ 512 000c 0C000000 		.4byte	.LFE1
+ 513 0010 00000000 		.4byte	.LFB2
+ 514 0014 30000000 		.4byte	.LFE2
+ 515 0018 00000000 		.4byte	.LFB3
+ 516 001c 1C000000 		.4byte	.LFE3
+ 517 0020 00000000 		.4byte	0
+ 518 0024 00000000 		.4byte	0
+ 519              		.section	.debug_line,"",%progbits
+ 520              	.Ldebug_line0:
+ 521 0000 A1000000 		.section	.debug_str,"MS",%progbits,1
+ 521      02005200 
+ 521      00000201 
+ 521      FB0E0D00 
+ 521      01010101 
+ 522              	.LASF6:
+ 523 0000 6C6F6E67 		.ascii	"long long int\000"
+ 523      206C6F6E 
+ 523      6720696E 
+ 523      7400
+ 524              	.LASF19:
+ 525 000e 5350494D 		.ascii	"SPIM_1_SaveConfig\000"
+ 525      5F315F53 
+ 525      61766543 
+ 525      6F6E6669 
+ 525      6700
+ 526              	.LASF25:
+ 527 0020 433A5C55 		.ascii	"C:\\Users\\HPz420\\Documents\\GitHub\\land-boards\\"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 13
+
+
+ 527      73657273 
+ 527      5C48507A 
+ 527      3432305C 
+ 527      446F6375 
+ 528 004d 52617350 		.ascii	"RasPi\\RPI_PSOC5\\RPI_PSOC5_RPI_SPI8_CARD_TEST.cyds"
+ 528      695C5250 
+ 528      495F5053 
+ 528      4F43355C 
+ 528      5250495F 
+ 529 007e 6E00     		.ascii	"n\000"
+ 530              	.LASF8:
+ 531 0080 756E7369 		.ascii	"unsigned int\000"
+ 531      676E6564 
+ 531      20696E74 
+ 531      00
+ 532              	.LASF20:
+ 533 008d 5350494D 		.ascii	"SPIM_1_RestoreConfig\000"
+ 533      5F315F52 
+ 533      6573746F 
+ 533      7265436F 
+ 533      6E666967 
+ 534              	.LASF12:
+ 535 00a2 75696E74 		.ascii	"uint8\000"
+ 535      3800
+ 536              	.LASF5:
+ 537 00a8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 537      20756E73 
+ 537      69676E65 
+ 537      6420696E 
+ 537      7400
+ 538              	.LASF7:
+ 539 00ba 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 539      206C6F6E 
+ 539      6720756E 
+ 539      7369676E 
+ 539      65642069 
+ 540              	.LASF18:
+ 541 00d1 5350494D 		.ascii	"SPIM_1_BACKUP_STRUCT\000"
+ 541      5F315F42 
+ 541      41434B55 
+ 541      505F5354 
+ 541      52554354 
+ 542              	.LASF9:
+ 543 00e6 666C6F61 		.ascii	"float\000"
+ 543      7400
+ 544              	.LASF26:
+ 545 00ec 5350494D 		.ascii	"SPIM_1_backup\000"
+ 545      5F315F62 
+ 545      61636B75 
+ 545      7000
+ 546              	.LASF23:
+ 547 00fa 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 547      43313120 
+ 547      352E342E 
+ 547      31203230 
+ 547      31363036 
+ 548 012d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 14
+
+
+ 548      20726576 
+ 548      6973696F 
+ 548      6E203233 
+ 548      37373135 
+ 549 0160 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 549      66756E63 
+ 549      74696F6E 
+ 549      2D736563 
+ 549      74696F6E 
+ 550              	.LASF1:
+ 551 0188 756E7369 		.ascii	"unsigned char\000"
+ 551      676E6564 
+ 551      20636861 
+ 551      7200
+ 552              	.LASF21:
+ 553 0196 5350494D 		.ascii	"SPIM_1_Sleep\000"
+ 553      5F315F53 
+ 553      6C656570 
+ 553      00
+ 554              	.LASF11:
+ 555 01a3 63686172 		.ascii	"char\000"
+ 555      00
+ 556              	.LASF4:
+ 557 01a8 6C6F6E67 		.ascii	"long int\000"
+ 557      20696E74 
+ 557      00
+ 558              	.LASF16:
+ 559 01b1 656E6162 		.ascii	"enableState\000"
+ 559      6C655374 
+ 559      61746500 
+ 560              	.LASF10:
+ 561 01bd 646F7562 		.ascii	"double\000"
+ 561      6C6500
+ 562              	.LASF22:
+ 563 01c4 5350494D 		.ascii	"SPIM_1_Wakeup\000"
+ 563      5F315F57 
+ 563      616B6575 
+ 563      7000
+ 564              	.LASF17:
+ 565 01d2 636E7472 		.ascii	"cntrPeriod\000"
+ 565      50657269 
+ 565      6F6400
+ 566              	.LASF3:
+ 567 01dd 73686F72 		.ascii	"short unsigned int\000"
+ 567      7420756E 
+ 567      7369676E 
+ 567      65642069 
+ 567      6E7400
+ 568              	.LASF0:
+ 569 01f0 7369676E 		.ascii	"signed char\000"
+ 569      65642063 
+ 569      68617200 
+ 570              	.LASF14:
+ 571 01fc 6C6F6E67 		.ascii	"long double\000"
+ 571      20646F75 
+ 571      626C6500 
+ 572              	.LASF24:
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\cctsBXiD.s 			page 15
+
+
+ 573 0208 47656E65 		.ascii	"Generated_Source\\PSoC5\\SPIM_1_PM.c\000"
+ 573      72617465 
+ 573      645F536F 
+ 573      75726365 
+ 573      5C50536F 
+ 574              	.LASF2:
+ 575 022b 73686F72 		.ascii	"short int\000"
+ 575      7420696E 
+ 575      7400
+ 576              	.LASF13:
+ 577 0235 72656738 		.ascii	"reg8\000"
+ 577      00
+ 578              	.LASF15:
+ 579 023a 73697A65 		.ascii	"sizetype\000"
+ 579      74797065 
+ 579      00
+ 580              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

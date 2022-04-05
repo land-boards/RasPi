@@ -1,0 +1,32 @@
+
+		SoftJin Router, Version 1.0
+
+I1203: Reading Design RPI_PSOC5_RPI_SPI8_CARD_TEST
+I1204: Reading netlist from file RPI_PSOC5_RPI_SPI8_CARD_TEST_r.vh2
+I1206: Completed Reading of file RPI_PSOC5_RPI_SPI8_CARD_TEST_r.vh2
+I1204: Reading placement from file RPI_PSOC5_RPI_SPI8_CARD_TEST.pco
+I1206: Completed Reading of file RPI_PSOC5_RPI_SPI8_CARD_TEST.pco
+I1204: Reading timing library from file RPI_PSOC5_RPI_SPI8_CARD_TEST_r.lib
+I1206: Completed Reading of file RPI_PSOC5_RPI_SPI8_CARD_TEST_r.lib
+I1204: Reading timing constraints from file RPI_PSOC5_RPI_SPI8_CARD_TEST.sdc
+I1206: Completed Reading of file RPI_PSOC5_RPI_SPI8_CARD_TEST.sdc
+I1204: Reading architecture from file C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc5/psoc5lp/route_arch-rrg.cydata
+I1206: Completed Reading of file C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc5/psoc5lp/route_arch-rrg.cydata
+I1209: Started routing
+I1223: Total Nets : 105 
+I1212: Iteration  1 :    73 unrouted : 1 seconds
+I1212: Iteration  2 :    29 unrouted : 0 seconds
+I1212: Iteration  3 :    18 unrouted : 0 seconds
+I1212: Iteration  4 :     6 unrouted : 1 seconds
+I1212: Iteration  5 :     4 unrouted : 0 seconds
+I1212: Iteration  6 :     4 unrouted : 0 seconds
+I1212: Iteration  7 :     6 unrouted : 0 seconds
+I1212: Iteration  8 :     3 unrouted : 0 seconds
+I1212: Iteration  9 :     4 unrouted : 0 seconds
+I1212: Iteration 10 :     4 unrouted : 0 seconds
+I1212: Iteration 11 :     0 unrouted : 0 seconds
+I1215: Routing is successful
+I1207: Completed routing
+I1210: Writing routes
+I1218: Exiting the router
+I1224: Total Time : 3 seconds
