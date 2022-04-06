@@ -46,20 +46,22 @@ def setSPIMuxPort(muxPort):
 		GPIO.output(A2Pin, GPIO.LOW)
 	return
 
-def write_pot(input):
-	msb = input >> 8
-	lsb = input & 0xFF
+def write_pot(potNum,input):
+	lsb = input & 0x7F
+	msb = potNum << 4
 	spi.xfer([msb, lsb])
 
-setSPIMuxPort(0)
 # GPIO.output(A0Pin, GPIO.LOW)	# A0 = 0
 # GPIO.output(A1Pin, GPIO.LOW)	# A1 = 0
 # GPIO.output(A2Pin, GPIO.LOW)	# A2 = 0
 
 while True:
-	for i in range(0x00, 0x07F, 1):
-		write_pot(i)
-		time.sleep(.001)
-	for i in range(0x07F, 0x00, -1):
-		write_pot(i)
-		time.sleep(.001)
+	for channelNum in range(0,8):
+		setSPIMuxPort(channelNum)
+		for potNum in range(0,2):
+			for i in range(0x00, 0x7F, 1):
+				write_pot(potNum,i)
+				time.sleep(.001)
+			for i in range(0x7F, 0x00, -1):
+				write_pot(potNum,i)
+				time.sleep(.001)
