@@ -30,11 +30,6 @@ GPIO.setup(A0Pin, GPIO.OUT)		# A0
 GPIO.setup(A1Pin, GPIO.OUT)		# A1
 GPIO.setup(A2Pin, GPIO.OUT)		# A2
 
-setSPIMuxPort(0)
-# GPIO.output(A0Pin, GPIO.LOW)	# A0 = 0
-# GPIO.output(A1Pin, GPIO.LOW)	# A1 = 0
-# GPIO.output(A2Pin, GPIO.LOW)	# A2 = 0
-
 def setSPIMuxPort(muxPort):
 	muxPort &= 0x7
 	if (muxPort & 1) == 1:
@@ -55,6 +50,11 @@ def write_pot(input):
 	msb = input >> 8
 	lsb = input & 0xFF
 	spi.xfer([msb, lsb])
+
+setSPIMuxPort(0)
+# GPIO.output(A0Pin, GPIO.LOW)	# A0 = 0
+# GPIO.output(A1Pin, GPIO.LOW)	# A1 = 0
+# GPIO.output(A2Pin, GPIO.LOW)	# A2 = 0
 
 while True:
 	for i in range(0x00, 0x07F, 1):
