@@ -29,19 +29,37 @@ GPIO.setmode(GPIO.BOARD)		# Set the board mode  to numbers pins by physical loca
 GPIO.setup(A0Pin, GPIO.OUT)		# A0
 GPIO.setup(A1Pin, GPIO.OUT)		# A1
 GPIO.setup(A2Pin, GPIO.OUT)		# A2
-GPIO.output(A0Pin, GPIO.LOW)	# A0 = 0
-GPIO.output(A1Pin, GPIO.LOW)	# A1 = 0
-GPIO.output(A2Pin, GPIO.LOW)	# A2 = 0
+
+setSPIMuxPort(0)
+# GPIO.output(A0Pin, GPIO.LOW)	# A0 = 0
+# GPIO.output(A1Pin, GPIO.LOW)	# A1 = 0
+# GPIO.output(A2Pin, GPIO.LOW)	# A2 = 0
+
+def setSPIMuxPort(muxPort):
+	muxPort &= 0x7
+	if (muxPort & 1) == 1:
+		GPIO.output(A0Pin, GPIO.HIGH)
+	else:
+		GPIO.output(A0Pin, GPIO.LOW)
+	if (muxPort & 2) == 2:
+		GPIO.output(A1Pin, GPIO.HIGH)
+	else:
+		GPIO.output(A1Pin, GPIO.LOW)
+	if (muxPort & 4) == 4:
+		GPIO.output(A2Pin, GPIO.HIGH)
+	else:
+		GPIO.output(A2Pin, GPIO.LOW)
+	return
 
 def write_pot(input):
-    msb = input >> 8
-    lsb = input & 0xFF
-    spi.xfer([msb, lsb])
+	msb = input >> 8
+	lsb = input & 0xFF
+	spi.xfer([msb, lsb])
 
 while True:
-    for i in range(0x00, 0x07F, 1):
-        write_pot(i)
-        time.sleep(.001)
-    for i in range(0x07F, 0x00, -1):
-        write_pot(i)
-        time.sleep(.001)
+	for i in range(0x00, 0x07F, 1):
+		write_pot(i)
+		time.sleep(.001)
+	for i in range(0x07F, 0x00, -1):
+		write_pot(i)
+		time.sleep(.001)
