@@ -21,9 +21,9 @@ spi = spidev.SpiDev()
 spi.open(0, 0)		# bus,device
 spi.max_speed_hz = 976000	# speed
 
-A0Pin = 22
-A1Pin = 27
-A2Pin = 17
+A0Pin = 15
+A1Pin = 13
+A2Pin = 11
 
 GPIO.setmode(GPIO.BOARD)		# Set the board mode  to numbers pins by physical location
 GPIO.setup(A0Pin, GPIO.OUT)		# A0
