@@ -15,10 +15,23 @@
 
 import spidev
 import time
+import RPi.GPIO  as  GPIO
 
 spi = spidev.SpiDev()
 spi.open(0, 0)		# bus,device
 spi.max_speed_hz = 976000	# speed
+
+A0Pin = 22
+A1Pin = 27
+A2Pin = 17
+
+GPIO.setmode(GPIO.BOARD)		# Set the board mode  to numbers pins by physical location
+GPIO.setup(A0Pin, GPIO.OUT)		# A0
+GPIO.setup(A1Pin, GPIO.OUT)		# A1
+GPIO.setup(A2Pin, GPIO.OUT)		# A2
+GPIO.output(A0Pin, GPIO.LOW)	# A0 = 0
+GPIO.output(A1Pin, GPIO.LOW)	# A1 = 0
+GPIO.output(A2Pin, GPIO.LOW)	# A2  =0
 
 def write_pot(input):
     msb = input >> 8
