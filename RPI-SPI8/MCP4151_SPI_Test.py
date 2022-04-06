@@ -26,9 +26,9 @@ def write_pot(input):
     spi.xfer([msb, lsb])
 
 while True:
-    for i in range(0x00, 0x07F, 1):
+    for i in range(0x00, 0x1FF, 1):
         write_pot(i)
         time.sleep(.005)
-    for i in range(0x07F, 0x00, -1):
+    for i in range(0x1FF, 0x00, -1):
         write_pot(i)
         time.sleep(.005)
