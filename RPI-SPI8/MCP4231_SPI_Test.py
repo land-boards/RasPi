@@ -31,7 +31,7 @@ GPIO.setup(A1Pin, GPIO.OUT)		# A1
 GPIO.setup(A2Pin, GPIO.OUT)		# A2
 GPIO.output(A0Pin, GPIO.LOW)	# A0 = 0
 GPIO.output(A1Pin, GPIO.LOW)	# A1 = 0
-GPIO.output(A2Pin, GPIO.LOW)	# A2  =0
+GPIO.output(A2Pin, GPIO.LOW)	# A2 = 0
 
 def write_pot(input):
     msb = input >> 8
