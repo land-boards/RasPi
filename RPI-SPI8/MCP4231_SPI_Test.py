@@ -1,22 +1,24 @@
 #!/usr/bin/python
 # 
 # MCP4231_SPI_Test.py
-#	Test RPI_SPI card using SPI-POTX2 card
-# Original mcp4151 (digital pot) code at
-#	https://www.takaitra.com/mcp4151-digital-potentiometer-raspberry-pi/
-# Setup SPI at
-#	https://www.takaitra.com/spi-device-raspberry-pi/
+#	Test SPI-POTX2 card on the Raspberry Pi using RPI_SPI8 SPI mux card
+# 	Makes triangle waves
 # 
 # Hardware
 # RPI_SPI8 SPI mux card Wiki page:
 #	http://land-boards.com/blwiki/index.php?title=RPI_SPI8
 # SPI-POTX2 Dual Digital Pot Wiki page:
 #	http://land-boards.com/blwiki/index.php?title=SPI-POTX2
-# Triangle wave
+# 
+# Software
+# Original mcp4151 (digital pot) code at
+#	https://www.takaitra.com/mcp4151-digital-potentiometer-raspberry-pi/
+# Setup SPI at
+#	https://www.takaitra.com/spi-device-raspberry-pi/
+# 
 # Run with -
 # chmod +x MCP4231_SPI_Test.py
 # sudo ./MCP4231_SPI_Test.py
-# 
 
 import spidev
 import time
@@ -55,22 +57,22 @@ def set_RPI_SPI8_MuxPort(muxPort):
 			GPIO.output(A2Pin, GPIO.LOW)
 	return
 
-def write_pot(potNum,input):
-	lsb = input & 0x7F
-	msb = potNum << 4
+# write_pot(potNum,input)
+#	potNum - 0,1 - the two pots on the SPI-POTX2 card
+#	potVal = 0-127 - 7-bit pot value
+def write_pot(potNum,potVal):
+	msb = (potNum & 1) << 4
+	lsb = potVal & 0x7F
 	spi.xfer([msb, lsb])
 
-# GPIO.output(A0Pin, GPIO.LOW)	# A0 = 0
-# GPIO.output(A1Pin, GPIO.LOW)	# A1 = 0
-# GPIO.output(A2Pin, GPIO.LOW)	# A2 = 0
-
+# Test loop follows
 while True:
 	for channelNum in range(0,8):
 		set_RPI_SPI8_MuxPort(channelNum)
 		for potNum in range(0,2):
 			for i in range(0x00, 0x7F, 1):
 				write_pot(potNum,i)
-				time.sleep(.001)
+				# time.sleep(.001)
 			for i in range(0x7F, 0x00, -1):
 				write_pot(potNum,i)
-				time.sleep(.001)
+				# time.sleep(.001)
