@@ -4,7 +4,15 @@
 ** Test [http://land-boards.com/blwiki/index.php?title=SPI-POTX2 SPI-POTX2] Dual pot card on the Raspberry Pi using [http://land-boards.com/blwiki/index.php?title=RPI_SPI8 RPI_SPI8] SPI mux card
 ** Makes triangle waves
 
-=== Hardware ===
+== Hardware ==
 
 * [http://land-boards.com/blwiki/index.php?title=RPI_SPI8 RPI_SPI8 SPI mux card Wiki page]
 * [http://land-boards.com/blwiki/index.php?title=SPI-POTX2 SPI-POTX2 Dual Digital Pot Wiki page]
+
+=== RPI_SPI8 Card ===
+
+<img src="http://land-boards.com/blwiki/images/5/5f/RPI_SPI8_P1892-720px.jpg"></img>
+
+=== SPI-POTX2 Card ===
+
+<img src="http://land-boards.com/blwiki/images/3/31/SPI-POTX2-720px.jpg"></img>
