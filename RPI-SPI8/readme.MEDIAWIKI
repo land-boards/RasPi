@@ -1,1 +1,10 @@
-== SPI-POTX2 and RPI_SPI8 Card Example Code ==
+  == SPI-POTX2 and RPI_SPI8 Card Example Code ==
+
+* MCP4231_SPI_Test.py
+** Test SPI-POTX2 card on the Raspberry Pi using RPI_SPI8 SPI mux card
+** Makes triangle waves
+
+=== Hardware ===
+
+* [http://land-boards.com/blwiki/index.php?title=RPI_SPI8 RPI_SPI8 SPI mux card Wiki page]
+* [http://land-boards.com/blwiki/index.php?title=SPI-POTX2 SPI-POTX2 Dual Digital Pot Wiki page:]
