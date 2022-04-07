@@ -24,7 +24,7 @@ import spidev
 import time
 import RPi.GPIO  as  GPIO
 
-# Set the next line to False if directly connecting to Raspberry Pi
+# Set the next line to False if directly connecting to Raspberry Pi SPI bus
 USING_RPI_SPI8_CARD = True
 
 spi = spidev.SpiDev()
