@@ -18,7 +18,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Source Files\Test_RPI_I2C_HUB.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\TopDesign">
 <ExpandedNodeIds>
 <v>RPI_PSOC5_CARD_TEST_STATION-001</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION</v>
@@ -65,11 +65,16 @@
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Generated_Source\PSoC5</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Generated_Source\PSoC5\IO_17</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Generated_Source\PSoC5\SDA0</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Generated_Source\PSoC5\SPI_ADDR</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\USBFS_UART.pdf</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\USBUART_cdc.inf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>RPI_PSOC5_CARD_TEST_STATION-001</v>
+<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION</v>
+<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\TopDesign</v>
+<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\RPI_PSOC5_CARD_TEST_STATION.cydwr</v>
+<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\RPI_PSOC5_CARD_TEST_STATION.cydwr\Pins</v>
+<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\RPI_PSOC5_CARD_TEST_STATION.cydwr\Analog</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\RPI_PSOC5_CARD_TEST_STATION.cydwr\Clocks</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\RPI_PSOC5_CARD_TEST_STATION.cydwr\Interrupts</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\RPI_PSOC5_CARD_TEST_STATION.cydwr\DMA</v>
@@ -109,11 +114,6 @@
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Generated_Source\PSoC5</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Generated_Source\PSoC5\Clock_1</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Generated_Source\PSoC5\Clock_2</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Generated_Source\PSoC5\cy_boot</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Generated_Source\PSoC5\CyScBoostClk</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Generated_Source\PSoC5\I2C_EEPROM</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\Generated_Source\PSoC5\I2C1</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -220,12 +220,6 @@
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\SCL1.lst</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA0.lst</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA1.lst</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\SPI_ADDR.lst</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\SPI_ADDR_PM.lst</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM_1.lst</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM_1_INT.lst</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM_1_IntClock.lst</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM_1_PM.lst</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\Test_RASPI_GVS.lst</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\Test_RASPI_PLUS_GVS.lst</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\Test_RPI_I2C_HUB.lst</v>
@@ -300,6 +294,7 @@
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\IO_15.lst</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\IO_16.lst</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\IO_17.lst</v>
+<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CortexM3\ARM_GCC_541\Debug\Listing Files\IO_18.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -317,14 +312,11 @@
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\System Reference Guides\cy_boot_v5_80</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_clock_v2_20</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_constant_v1_0</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
+<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_constant_v1_0.pdf</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_pins_v2_20</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CyControlReg_v1_80.pdf</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\I2C_v3_50</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\I2C_v3_50\I2C_v3_50.pdf</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\SPI_Master_v2_50.pdf</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\USBFS_v3_20.pdf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
@@ -336,14 +328,11 @@
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\System Reference Guides\cy_boot_v5_80</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_clock_v2_20</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_constant_v1_0</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
+<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_constant_v1_0.pdf</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_pins_v2_20</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\CyControlReg_v1_80.pdf</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\I2C_v3_50</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\I2C_v3_50\I2C_v3_50.pdf</v>
-<v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\SPI_Master_v2_50.pdf</v>
 <v>RPI_PSOC5_CARD_TEST_STATION-001\RPI_PSOC5_CARD_TEST_STATION\USBFS_v3_20.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
@@ -361,8 +350,6 @@
 <name v=".\Generated_Source\PSoC5\SDA0.c" />
 <name v=".\Test_SPI_POTX2.c" />
 <name v=".\Test_SPI_POTX2.h" />
-<name v=".\Generated_Source\PSoC5\SPI_ADDR.c" />
-<name v=".\Test_RPI_I2C_HUB.h" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -370,7 +357,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1079, 648" SelectedTabbedMdiWindow="8072bf80-af4d-443d-9b39-c72afd24fbf9"><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\TopDesign\PSoC5\TopDesign.cysch" Guid="0a546a1a-214c-4212-a3b1-0ab88d4d8cfb" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\main.c" Guid="7c23cc4a-374f-45e3-b6a1-8727157977ea" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\PSoC_Menu.c" Guid="12d7f534-5d6a-4987-9636-e3fed7eb9d6c" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\RPI_PSOC5.h" Guid="708ffa20-0520-424a-98c4-f9d02b29a00d" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\Generated_Source\PSoC5\SDA0.c" Guid="a2906728-5e4b-497e-bc6e-c8f280744eb2" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\Test_SPI_POTX2.c" Guid="8072bf80-af4d-443d-9b39-c72afd24fbf9" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\Test_SPI_POTX2.h" Guid="89d32e05-05eb-48a0-b5f6-abdc5231a1c5" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\Generated_Source\PSoC5\SPI_ADDR.c" Guid="4f54a65e-b57c-4631-b61b-4a0344596500" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\Test_RPI_I2C_HUB.h" Guid="d4c8feb9-a21c-44a4-8ceb-02bd3556ddb5" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="989, 623" SelectedTabbedMdiWindow="0a546a1a-214c-4212-a3b1-0ab88d4d8cfb"><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\TopDesign\PSoC5\TopDesign.cysch" Guid="0a546a1a-214c-4212-a3b1-0ab88d4d8cfb" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\main.c" Guid="7c23cc4a-374f-45e3-b6a1-8727157977ea" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\PSoC_Menu.c" Guid="12d7f534-5d6a-4987-9636-e3fed7eb9d6c" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\RPI_PSOC5.h" Guid="708ffa20-0520-424a-98c4-f9d02b29a00d" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\Generated_Source\PSoC5\SDA0.c" Guid="a2906728-5e4b-497e-bc6e-c8f280744eb2" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\Test_SPI_POTX2.c" Guid="8072bf80-af4d-443d-9b39-c72afd24fbf9" /><DocumentWindow Key="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\Test_SPI_POTX2.h" Guid="89d32e05-05eb-48a0-b5f6-abdc5231a1c5" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="f908feb5-a8cc-41c1-8fbb-99f34fbc4db2" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

@@ -18,6 +18,7 @@
  * ========================================
 */
 
+/*
 #include <project.h>
 #include "RPI_PSOC5.h"
 
@@ -74,5 +75,8 @@ void debugSPIPOTX2(void)
 {
 
 }
+
+
+*/
 
 /* [] END OF FILE */

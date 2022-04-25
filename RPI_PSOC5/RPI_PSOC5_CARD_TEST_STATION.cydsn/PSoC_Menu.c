@@ -95,7 +95,7 @@ void psocMenu(void)
         else if (cardType == SPIPOTX2)
         {
             putStringToUSB("Testing SPI-POTX2 card (via RPI-SPI8), please wait\n\r");
-            test_SPI_POTX2();
+            // test_SPI_POTX2();
             putStringToUSB("Completed Testing SPI-POTX2 card (via RPI-SPI8)\n\r");
         }
         else

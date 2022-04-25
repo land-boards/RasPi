@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
   28:Generated_Source\PSoC5/Clock_1.c **** 
   29:Generated_Source\PSoC5/Clock_1.c **** 
   30:Generated_Source\PSoC5/Clock_1.c **** /*******************************************************************************
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 2
 
 
   31:Generated_Source\PSoC5/Clock_1.c **** * Function Name: Clock_1_Start
@@ -94,7 +94,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
   40 0006 094B     		ldr	r3, .L2
   41 0008 1B78     		ldrb	r3, [r3]
   42 000a DBB2     		uxtb	r3, r3
-  43 000c 43F00403 		orr	r3, r3, #4
+  43 000c 43F00203 		orr	r3, r3, #2
   44 0010 DBB2     		uxtb	r3, r3
   45 0012 1370     		strb	r3, [r2]
   49:Generated_Source\PSoC5/Clock_1.c **** 	Clock_1_CLKSTBY |= Clock_1_CLKSTBY_MASK;
@@ -103,7 +103,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
   48 0016 064B     		ldr	r3, .L2+4
   49 0018 1B78     		ldrb	r3, [r3]
   50 001a DBB2     		uxtb	r3, r3
-  51 001c 43F00403 		orr	r3, r3, #4
+  51 001c 43F00203 		orr	r3, r3, #2
   52 0020 DBB2     		uxtb	r3, r3
   53 0022 1370     		strb	r3, [r2]
   50:Generated_Source\PSoC5/Clock_1.c **** }
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
   62 002a 7047     		bx	lr
   63              	.L3:
   64              		.align	2
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 3
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 3
 
 
   65              	.L2:
@@ -174,11 +174,11 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
   91 0006 094B     		ldr	r3, .L5
   92 0008 1B78     		ldrb	r3, [r3]
   93 000a DBB2     		uxtb	r3, r3
-  94 000c 23F00403 		bic	r3, r3, #4
+  94 000c 23F00203 		bic	r3, r3, #2
   95 0010 DBB2     		uxtb	r3, r3
   96 0012 1370     		strb	r3, [r2]
   75:Generated_Source\PSoC5/Clock_1.c **** 	Clock_1_CLKSTBY &= (uint8)(~Clock_1_CLKSTBY_MASK);
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 4
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 4
 
 
   97              		.loc 1 75 0
@@ -186,7 +186,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
   99 0016 064B     		ldr	r3, .L5+4
  100 0018 1B78     		ldrb	r3, [r3]
  101 001a DBB2     		uxtb	r3, r3
- 102 001c 23F00403 		bic	r3, r3, #4
+ 102 001c 23F00203 		bic	r3, r3, #2
  103 0020 DBB2     		uxtb	r3, r3
  104 0022 1370     		strb	r3, [r2]
   76:Generated_Source\PSoC5/Clock_1.c **** }
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
   97:Generated_Source\PSoC5/Clock_1.c **** *  None
   98:Generated_Source\PSoC5/Clock_1.c **** *
   99:Generated_Source\PSoC5/Clock_1.c **** *******************************************************************************/
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 5
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 5
 
 
  100:Generated_Source\PSoC5/Clock_1.c **** void Clock_1_StopBlock(void) 
@@ -260,7 +260,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  143 0006 224B     		ldr	r3, .L11
  144 0008 1B78     		ldrb	r3, [r3]
  145 000a DBB2     		uxtb	r3, r3
- 146 000c 03F00403 		and	r3, r3, #4
+ 146 000c 03F00203 		and	r3, r3, #2
  147 0010 002B     		cmp	r3, #0
  148 0012 37D0     		beq	.L10
  149              	.LBB2:
@@ -282,7 +282,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  114:Generated_Source\PSoC5/Clock_1.c ****         CLK_DIST_DMASK = Clock_1_CLKEN_MASK;
  154              		.loc 1 114 0
  155 001a 1F4B     		ldr	r3, .L11+8
- 156 001c 0422     		movs	r2, #4
+ 156 001c 0222     		movs	r2, #2
  157 001e 1A70     		strb	r2, [r3]
  115:Generated_Source\PSoC5/Clock_1.c ****         CLK_DIST_AMASK = 0x00u;
  158              		.loc 1 115 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  164 0028 1D4B     		ldr	r3, .L11+16
  165 002a 1B78     		ldrb	r3, [r3]
  166 002c DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 6
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 6
 
 
  167 002e 03F07F03 		and	r3, r3, #127
@@ -342,7 +342,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  194 005a 0D4B     		ldr	r3, .L11
  195 005c 1B78     		ldrb	r3, [r3]
  196 005e DBB2     		uxtb	r3, r3
- 197 0060 23F00403 		bic	r3, r3, #4
+ 197 0060 23F00203 		bic	r3, r3, #2
  198 0064 DBB2     		uxtb	r3, r3
  199 0066 1370     		strb	r3, [r2]
  131:Generated_Source\PSoC5/Clock_1.c ****         Clock_1_CLKSTBY &= (uint8)(~Clock_1_CLKSTBY_MASK);
@@ -351,14 +351,14 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  202 006a 104B     		ldr	r3, .L11+28
  203 006c 1B78     		ldrb	r3, [r3]
  204 006e DBB2     		uxtb	r3, r3
- 205 0070 23F00403 		bic	r3, r3, #4
+ 205 0070 23F00203 		bic	r3, r3, #2
  206 0074 DBB2     		uxtb	r3, r3
  207 0076 1370     		strb	r3, [r2]
  132:Generated_Source\PSoC5/Clock_1.c **** 
  133:Generated_Source\PSoC5/Clock_1.c **** #if HAS_CLKDIST_LD_DISABLE
  134:Generated_Source\PSoC5/Clock_1.c ****         /* Clear the disable bit */
  135:Generated_Source\PSoC5/Clock_1.c ****         CLK_DIST_LD = 0x00u;
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 7
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 7
 
 
  208              		.loc 1 135 0
@@ -394,7 +394,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  234 0098 10400040 		.word	1073758224
  235 009c 14400040 		.word	1073758228
  236 00a0 08400040 		.word	1073758216
- 237 00a4 88400040 		.word	1073758344
+ 237 00a4 84400040 		.word	1073758340
  238 00a8 02400040 		.word	1073758210
  239 00ac B2430040 		.word	1073759154
  240              		.cfi_endproc
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  147:Generated_Source\PSoC5/Clock_1.c **** * Summary:
  148:Generated_Source\PSoC5/Clock_1.c **** *  Sets whether the clock is active in standby mode.
  149:Generated_Source\PSoC5/Clock_1.c **** *
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 8
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 8
 
 
  150:Generated_Source\PSoC5/Clock_1.c **** * Parameters:
@@ -456,7 +456,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  271 0012 0A4B     		ldr	r3, .L17
  272 0014 1B78     		ldrb	r3, [r3]
  273 0016 DBB2     		uxtb	r3, r3
- 274 0018 23F00403 		bic	r3, r3, #4
+ 274 0018 23F00203 		bic	r3, r3, #2
  275 001c DBB2     		uxtb	r3, r3
  276 001e 1370     		strb	r3, [r2]
  162:Generated_Source\PSoC5/Clock_1.c ****     }
@@ -474,11 +474,11 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  282 0024 054B     		ldr	r3, .L17
  283 0026 1B78     		ldrb	r3, [r3]
  284 0028 DBB2     		uxtb	r3, r3
- 285 002a 43F00403 		orr	r3, r3, #4
+ 285 002a 43F00203 		orr	r3, r3, #2
  286 002e DBB2     		uxtb	r3, r3
  287 0030 1370     		strb	r3, [r2]
  288              	.L16:
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 9
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 9
 
 
  289              		.loc 1 167 0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  315              		.loc 1 195 0
  316              		.cfi_startproc
  317              		@ args = 0, pretend = 0, frame = 16
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 10
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 10
 
 
  318              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -580,7 +580,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  346 002a 464B     		ldr	r3, .L33
  347 002c 1B78     		ldrb	r3, [r3]
  348 002e DBB2     		uxtb	r3, r3
- 349 0030 03F00403 		and	r3, r3, #4
+ 349 0030 03F00203 		and	r3, r3, #2
  350 0034 FB72     		strb	r3, [r7, #11]
  204:Generated_Source\PSoC5/Clock_1.c **** 
  205:Generated_Source\PSoC5/Clock_1.c ****         if ((currSrc == (uint8)CYCLK_SRC_SEL_CLK_SYNC_D) && ((oldDivider == 0u) || (clkDivider == 0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  362 0046 1AD1     		bne	.L21
  363              	.L22:
  206:Generated_Source\PSoC5/Clock_1.c ****         {
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 11
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 11
 
 
  207:Generated_Source\PSoC5/Clock_1.c ****             /* Moving to/from SSS requires correct ordering to prevent halting the clock    */
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  225:Generated_Source\PSoC5/Clock_1.c ****         {
  226:Generated_Source\PSoC5/Clock_1.c **** 			
  227:Generated_Source\PSoC5/Clock_1.c ****             if (enabled != 0u)
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 12
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 12
 
 
  398              		.loc 1 227 0
@@ -680,7 +680,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  236:Generated_Source\PSoC5/Clock_1.c ****                 CLK_DIST_DMASK = Clock_1_CLKEN_MASK;
  406              		.loc 1 236 0
  407 008a 324B     		ldr	r3, .L33+16
- 408 008c 0422     		movs	r2, #4
+ 408 008c 0222     		movs	r2, #2
  409 008e 1A70     		strb	r2, [r3]
  237:Generated_Source\PSoC5/Clock_1.c ****                 CLK_DIST_AMASK = 0x00u;
  410              		.loc 1 237 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  246:Generated_Source\PSoC5/Clock_1.c ****                     CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
  434              		.loc 1 246 0 is_stmt 1
  435 00ba 294A     		ldr	r2, .L33+28
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 13
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 13
 
 
  436 00bc BB89     		ldrh	r3, [r7, #12]	@ movhi
@@ -749,7 +749,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  454 00d8 1A4B     		ldr	r3, .L33
  455 00da 1B78     		ldrb	r3, [r3]
  456 00dc DBB2     		uxtb	r3, r3
- 457 00de 23F00403 		bic	r3, r3, #4
+ 457 00de 23F00203 		bic	r3, r3, #2
  458 00e2 DBB2     		uxtb	r3, r3
  459 00e4 1370     		strb	r3, [r2]
  254:Generated_Source\PSoC5/Clock_1.c **** 
@@ -771,14 +771,14 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  466 00ec 154B     		ldr	r3, .L33
  467 00ee 1B78     		ldrb	r3, [r3]
  468 00f0 DBB2     		uxtb	r3, r3
- 469 00f2 03F00403 		and	r3, r3, #4
+ 469 00f2 03F00203 		and	r3, r3, #2
  470 00f6 002B     		cmp	r3, #0
  471 00f8 13D0     		beq	.L28
  264:Generated_Source\PSoC5/Clock_1.c ****             {
  265:Generated_Source\PSoC5/Clock_1.c ****                 /* If the clock is still enabled, use the shadow registers */
  266:Generated_Source\PSoC5/Clock_1.c ****                 CY_SET_REG16(CYREG_CLKDIST_WRK0, clkDivider);
  472              		.loc 1 266 0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 14
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 14
 
 
  473 00fa 194A     		ldr	r2, .L33+28
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  512 0130 FB7A     		ldrb	r3, [r7, #11]
  513 0132 1343     		orrs	r3, r3, r2
  514 0134 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 15
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 15
 
 
  515 0136 0B70     		strb	r3, [r1]
@@ -857,8 +857,8 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  528 0142 00BF     		.align	2
  529              	.L33:
  530 0144 A2430040 		.word	1073759138
- 531 0148 88400040 		.word	1073758344
- 532 014c 8A400040 		.word	1073758346
+ 531 0148 84400040 		.word	1073758340
+ 532 014c 86400040 		.word	1073758342
  533 0150 01400040 		.word	1073758209
  534 0154 10400040 		.word	1073758224
  535 0158 14400040 		.word	1073758228
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  550              		.cfi_startproc
  551              		@ args = 0, pretend = 0, frame = 0
  552              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 16
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 16
 
 
  553              		@ link register save eliminated.
@@ -925,7 +925,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  572              	.L38:
  573 0012 00BF     		.align	2
  574              	.L37:
- 575 0014 88400040 		.word	1073758344
+ 575 0014 84400040 		.word	1073758340
  576              		.cfi_endproc
  577              	.LFE5:
  578              		.size	Clock_1_GetDividerRegister, .-Clock_1_GetDividerRegister
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  319:Generated_Source\PSoC5/Clock_1.c **** *   - CYCLK_DUTY  Enable 50% duty cycle output. When enabled, the output clock
  320:Generated_Source\PSoC5/Clock_1.c **** *                 is asserted for approximately half of its period. When
  321:Generated_Source\PSoC5/Clock_1.c **** *                 disabled, the output clock is asserted for one period of the
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 17
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 17
 
 
  322:Generated_Source\PSoC5/Clock_1.c **** *                 source clock.
@@ -1016,9 +1016,9 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  625              	.L41:
  626              		.align	2
  627              	.L40:
- 628 0030 8A400040 		.word	1073758346
+ 628 0030 86400040 		.word	1073758342
  629              		.cfi_endproc
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 18
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 18
 
 
  630              	.LFE6:
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  651              		.cfi_def_cfa_register 7
  652 0006 0346     		mov	r3, r0
  653 0008 FB71     		strb	r3, [r7, #7]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 19
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 19
 
 
  369:Generated_Source\PSoC5/Clock_1.c ****     Clock_1_MOD_SRC &= (uint8)(~modeBitMask) | (uint8)(~(uint8)(Clock_1_MODE_MASK));
@@ -1110,7 +1110,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  678              	.L44:
  679 002e 00BF     		.align	2
  680              	.L43:
- 681 0030 8A400040 		.word	1073758346
+ 681 0030 86400040 		.word	1073758342
  682              		.cfi_endproc
  683              	.LFE7:
  684              		.size	Clock_1_ClearModeRegister, .-Clock_1_ClearModeRegister
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  384:Generated_Source\PSoC5/Clock_1.c **** *  Bit mask representing the enabled mode bits. See the SetModeRegister and
  385:Generated_Source\PSoC5/Clock_1.c **** *  ClearModeRegister descriptions for details about the mode bits.
  386:Generated_Source\PSoC5/Clock_1.c **** *
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 20
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 20
 
 
  387:Generated_Source\PSoC5/Clock_1.c **** *******************************************************************************/
@@ -1174,7 +1174,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  718              	.L48:
  719              		.align	2
  720              	.L47:
- 721 0018 8A400040 		.word	1073758346
+ 721 0018 86400040 		.word	1073758342
  722              		.cfi_endproc
  723              	.LFE8:
  724              		.size	Clock_1_GetModeRegister, .-Clock_1_GetModeRegister
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  401:Generated_Source\PSoC5/Clock_1.c **** *
  402:Generated_Source\PSoC5/Clock_1.c **** * Parameters:
  403:Generated_Source\PSoC5/Clock_1.c **** *  clkSource:  For PSoC 3 and PSoC 5 devices, clkSource should be one of the
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 21
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 21
 
 
  404:Generated_Source\PSoC5/Clock_1.c **** *   following input sources:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  765 0028 002B     		cmp	r3, #0
  766 002a 16D1     		bne	.L50
  426:Generated_Source\PSoC5/Clock_1.c ****     {
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 22
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 22
 
 
  427:Generated_Source\PSoC5/Clock_1.c ****         /* Switching to Master and divider is 1, set SSS, which will output master, */
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  807 006e 144B     		ldr	r3, .L53
  808 0070 1B78     		ldrb	r3, [r3]
  809 0072 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 23
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 23
 
 
  438:Generated_Source\PSoC5/Clock_1.c ****             (Clock_1_MOD_SRC & (uint8)(~Clock_1_SRC_SEL_MSK)) | clkSource;
@@ -1377,8 +1377,8 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  853              	.L54:
  854 00be 00BF     		.align	2
  855              	.L53:
- 856 00c0 8A400040 		.word	1073758346
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 24
+ 856 00c0 86400040 		.word	1073758342
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 24
 
 
  857              		.cfi_endproc
@@ -1438,12 +1438,12 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  891              		.cfi_def_cfa_offset 0
  892 0016 7047     		bx	lr
  893              	.L58:
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 25
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 25
 
 
  894              		.align	2
  895              	.L57:
- 896 0018 8A400040 		.word	1073758346
+ 896 0018 86400040 		.word	1073758342
  897              		.cfi_endproc
  898              	.LFE10:
  899              		.size	Clock_1_GetSourceRegister, .-Clock_1_GetSourceRegister
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  948 0059 1D020000 		.4byte	.LASF7
  949 005d 03       		.uleb128 0x3
  950 005e 04       		.byte	0x4
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 26
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 26
 
 
  951 005f 05       		.byte	0x5
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1005 00d2 00000000 		.4byte	.LFB1
  1006 00d6 34000000 		.4byte	.LFE1-.LFB1
  1007 00da 01       		.uleb128 0x1
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 27
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 27
 
 
  1008 00db 9C       		.byte	0x9c
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1062 014a 77000000 		.4byte	0x77
  1063 014e 02       		.uleb128 0x2
  1064 014f 91       		.byte	0x91
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 28
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 28
 
 
  1065 0150 6E       		.sleb128 -18
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1119 01bb 01       		.byte	0x1
  1120 01bc 4C01     		.2byte	0x14c
  1121 01be 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 29
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 29
 
 
  1122 01c2 02       		.uleb128 0x2
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1176 0234 91       		.byte	0x91
  1177 0235 76       		.sleb128 -10
  1178 0236 10       		.uleb128 0x10
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 30
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 30
 
 
  1179 0237 6F010000 		.4byte	.LASF35
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1233 0022 0B       		.uleb128 0xb
  1234 0023 3E       		.uleb128 0x3e
  1235 0024 0B       		.uleb128 0xb
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 31
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 31
 
 
  1236 0025 03       		.uleb128 0x3
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1290 005c 3A       		.uleb128 0x3a
  1291 005d 0B       		.uleb128 0xb
  1292 005e 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 32
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 32
 
 
  1293 005f 0B       		.uleb128 0xb
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1347 0096 0B       		.uleb128 0xb
  1348 0097 2E       		.uleb128 0x2e
  1349 0098 01       		.byte	0x1
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 33
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 33
 
 
  1350 0099 3F       		.uleb128 0x3f
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1404 00d1 3A       		.uleb128 0x3a
  1405 00d2 0B       		.uleb128 0xb
  1406 00d3 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 34
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 34
 
 
  1407 00d4 05       		.uleb128 0x5
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1461 010c 00       		.byte	0
  1462 010d 10       		.uleb128 0x10
  1463 010e 34       		.uleb128 0x34
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 35
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 35
 
 
  1464 010f 00       		.byte	0
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1518 0018 00000000 		.4byte	.LFB3
  1519 001c 40000000 		.4byte	.LFE3
  1520 0020 00000000 		.4byte	.LFB4
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 36
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 36
 
 
  1521 0024 64010000 		.4byte	.LFE4
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1552      31363036 
  1553 00b8 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
  1553      20726576 
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 37
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 37
 
 
  1553      6973696F 
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1576      6720696E 
  1576      7400
  1577              	.LASF18:
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 38
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 38
 
 
  1578 01bc 436C6F63 		.ascii	"Clock_1_StopBlock\000"
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 1
  1599              	.LASF13:
  1600 026f 63686172 		.ascii	"char\000"
  1600      00
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccfwbco2.s 			page 39
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccXlH0Vc.s 			page 39
 
 
  1601              	.LASF33:
