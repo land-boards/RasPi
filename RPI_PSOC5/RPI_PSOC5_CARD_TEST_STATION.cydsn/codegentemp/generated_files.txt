@@ -161,8 +161,6 @@
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\USBUART_Dp_aliases.h" value="HEADER;;;;;USBUART_Dp" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\USBUART_Dp.c" value="SOURCE_C;CortexM3;;;;USBUART_Dp" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\USBUART_Dp.h" value="HEADER;;;;;USBUART_Dp" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cy_em_eeprom.c" value="SOURCE_C;CortexM3;;;;Em_EEPROM_Dynamic" />
-  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cy_em_eeprom.h" value="HEADER;;;;;Em_EEPROM_Dynamic" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cm3gcc.ld" value="LINKER_SCRIPT;;;b98f980c-3bd1-4fc7-a887-c56a20a46fdd;;cy_boot" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\Cm3RealView.scat" value="LINKER_SCRIPT;;;fdb8e1ae-f83a-46cf-9446-1d703716f38a;;cy_boot" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\Cm3Start.c" value="SOURCE_C;CortexM3;;;;cy_boot" />
@@ -190,6 +188,8 @@
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cmsis_armcc.h" value="HEADER;;;;;cy_boot" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cmsis_gcc.h" value="HEADER;;;;;cy_boot" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cmsis_compiler.h" value="HEADER;;;;;cy_boot" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cy_em_eeprom.c" value="SOURCE_C;CortexM3;;;;Em_EEPROM_Dynamic" />
+  <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cy_em_eeprom.h" value="HEADER;;;;;Em_EEPROM_Dynamic" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\project.h" value="OTHER;;;;;" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cycodeshareimport.ld" value="OTHER;;;;;" />
   <file name="C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\codegentemp\cycodeshareexport.ld" value="OTHER;;;;;" />

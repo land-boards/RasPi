@@ -2,7 +2,7 @@
 --	Conversion of RPI_PSOC5_CARD_TEST_STATION.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Mon Apr 25 17:11:10 2022
+--	Thu Oct 06 19:10:52 2022
 --
 
 USE cypress.cypress.all;
@@ -1242,10 +1242,10 @@ IO_10:cy_psoc3_pins_v1_10
 		interrupt=>tmpINTERRUPT_0__IO_10_net_0);
 IO_8:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"3cbb44c9-e997-4e41-8368-830dc2323e5c",
-		drive_mode=>"110",
+		drive_mode=>"001",
 		ibuf_enabled=>"1",
 		init_dr_st=>"0",
-		input_sync=>"1",
+		input_sync=>"0",
 		input_clk_en=>'0',
 		input_sync_mode=>"0",
 		intr_mode=>"00",
@@ -1267,7 +1267,7 @@ IO_8:cy_psoc3_pins_v1_10
 		oe_conn=>"0",
 		oe_reset=>'0',
 		pin_aliases=>"",
-		pin_mode=>"O",
+		pin_mode=>"I",
 		por_state=>4,
 		sio_group_cnt=>0,
 		sio_hifreq=>"00000000",
@@ -1281,7 +1281,7 @@ IO_8:cy_psoc3_pins_v1_10
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
-		vtrip=>"10",
+		vtrip=>"00",
 		width=>1,
 		port_alias_required=>'0',
 		port_alias_group=>"",
@@ -3222,10 +3222,10 @@ Clock_2:cy_clock_v1_0
 		yfb=>\I2C1:Net_1109_1\);
 IO_11:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"77257e8c-45e3-4454-b986-8801862bf669",
-		drive_mode=>"110",
+		drive_mode=>"001",
 		ibuf_enabled=>"1",
 		init_dr_st=>"0",
-		input_sync=>"1",
+		input_sync=>"0",
 		input_clk_en=>'0',
 		input_sync_mode=>"0",
 		intr_mode=>"00",
@@ -3247,7 +3247,7 @@ IO_11:cy_psoc3_pins_v1_10
 		oe_conn=>"0",
 		oe_reset=>'0',
 		pin_aliases=>"",
-		pin_mode=>"O",
+		pin_mode=>"I",
 		por_state=>4,
 		sio_group_cnt=>0,
 		sio_hifreq=>"00000000",
@@ -3261,7 +3261,7 @@ IO_11:cy_psoc3_pins_v1_10
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
-		vtrip=>"10",
+		vtrip=>"00",
 		width=>1,
 		port_alias_required=>'0',
 		port_alias_group=>"",

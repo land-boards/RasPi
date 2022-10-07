@@ -12,8 +12,8 @@
   <block name="LED" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IO_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IO_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="I2C1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="or_udb" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />

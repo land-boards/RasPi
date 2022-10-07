@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
   28:Generated_Source\PSoC5/cy_em_eeprom.c **** 
   29:Generated_Source\PSoC5/cy_em_eeprom.c **** 
   30:Generated_Source\PSoC5/cy_em_eeprom.c **** #if defined(__cplusplus)
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 2
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 2
 
 
   31:Generated_Source\PSoC5/cy_em_eeprom.c **** extern "C" {
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
   85:Generated_Source\PSoC5/cy_em_eeprom.c **** * datasheet.
   86:Generated_Source\PSoC5/cy_em_eeprom.c **** *
   87:Generated_Source\PSoC5/cy_em_eeprom.c **** * \sideeffect 
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 3
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 3
 
 
   88:Generated_Source\PSoC5/cy_em_eeprom.c **** * If the "Redundant Copy" option is used, the function performs a number of 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
   68 0030 50D0     		beq	.L2
  101:Generated_Source\PSoC5/cy_em_eeprom.c ****     {
  102:Generated_Source\PSoC5/cy_em_eeprom.c ****         ret = CheckRanges(config);
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 4
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 4
 
 
   69              		.loc 1 102 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  112              		.loc 1 113 0 is_stmt 0 discriminator 1
  113 007c 0123     		movs	r3, #1
  114 007e 00E0     		b	.L4
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 5
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 5
 
 
  115              	.L3:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  157 00c4 0346     		mov	r3, r0
  158 00c6 FB73     		strb	r3, [r7, #15]
  125:Generated_Source\PSoC5/cy_em_eeprom.c ****                 
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 6
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 6
 
 
  126:Generated_Source\PSoC5/cy_em_eeprom.c ****                 /* Update the last written EEPROM row for Cy_Em_EEPROM_NumWrites() */
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  152:Generated_Source\PSoC5/cy_em_eeprom.c **** * \param context
  153:Generated_Source\PSoC5/cy_em_eeprom.c **** * The pointer to the EEPROM context structure \ref cy_stc_eeprom_context_t.
  154:Generated_Source\PSoC5/cy_em_eeprom.c **** *
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 7
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 7
 
 
  155:Generated_Source\PSoC5/cy_em_eeprom.c **** * \return
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  212              		.loc 1 183 0
  213 001c BB68     		ldr	r3, [r7, #8]
  214 001e 7B64     		str	r3, [r7, #68]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 8
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 8
 
 
  184:Generated_Source\PSoC5/cy_em_eeprom.c **** 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  254 0060 DB09     		lsrs	r3, r3, #7
  197:Generated_Source\PSoC5/cy_em_eeprom.c ****                               (rdAddr / CY_EM_EEPROM_EEPROM_DATA_LEN)) + 1u;
  255              		.loc 1 197 0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 9
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 9
 
 
  256 0062 D31A     		subs	r3, r2, r3
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  293 009c 08D8     		bhi	.L9
  294              		.loc 1 212 0 is_stmt 0 discriminator 1
  295 009e BB6D     		ldr	r3, [r7, #88]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 10
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 10
 
 
  296 00a0 0133     		adds	r3, r3, #1
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  339 00da BB62     		str	r3, [r7, #40]
  222:Generated_Source\PSoC5/cy_em_eeprom.c **** 
  223:Generated_Source\PSoC5/cy_em_eeprom.c ****         /* Check if wear leveling is used */
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 11
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 11
 
 
  224:Generated_Source\PSoC5/cy_em_eeprom.c ****         if(context->wearLevelingFactor > 1u)
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  236:Generated_Source\PSoC5/cy_em_eeprom.c ****             startRowAddr = curEepromBaseAddr + (curRdEepromRowNum * CY_EM_EEPROM_FLASH_SIZEOF_ROW);
  382              		.loc 1 236 0
  383 0110 FB6C     		ldr	r3, [r7, #76]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 12
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 12
 
 
  384 0112 1A02     		lsls	r2, r3, #8
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  256:Generated_Source\PSoC5/cy_em_eeprom.c ****                 startRowAddr -= context->numberOfRows * CY_EM_EEPROM_FLASH_SIZEOF_ROW;
  419              		.loc 1 256 0 is_stmt 1
  420 014e 3B68     		ldr	r3, [r7]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 13
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 13
 
 
  421 0150 5B68     		ldr	r3, [r3, #4]
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  271:Generated_Source\PSoC5/cy_em_eeprom.c **** 
  272:Generated_Source\PSoC5/cy_em_eeprom.c ****                 if(CY_EM_EEPROM_SUCCESS != ret)
  460              		.loc 1 272 0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 14
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 14
 
 
  461 0194 97F85F30 		ldrb	r3, [r7, #95]	@ zero_extendqisi2
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  495 01ca 7B64     		str	r3, [r7, #68]
  292:Generated_Source\PSoC5/cy_em_eeprom.c ****             curRdEepromRowNum++;
  496              		.loc 1 292 0 discriminator 2
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 15
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 15
 
 
  497 01cc FB6C     		ldr	r3, [r7, #76]
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  533 0208 3B6B     		ldr	r3, [r7, #48]
  534 020a D31A     		subs	r3, r2, r3
  535 020c BB65     		str	r3, [r7, #88]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 16
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 16
 
 
  536 020e 72E0     		b	.L27
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  579 0252 BB69     		ldr	r3, [r7, #24]
  580 0254 9A42     		cmp	r2, r3
  581 0256 34BF     		ite	cc
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 17
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 17
 
 
  582 0258 0123     		movcc	r3, #1
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  630 0296 7B69     		ldr	r3, [r7, #20]
  631 0298 0C33     		adds	r3, r3, #12
  632 029a 7B61     		str	r3, [r7, #20]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 18
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 18
 
 
  326:Generated_Source\PSoC5/cy_em_eeprom.c **** 
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  668              		.loc 1 344 0
  669 02de 0EE0     		b	.L7
  670              	.L35:
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 19
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 19
 
 
  345:Generated_Source\PSoC5/cy_em_eeprom.c ****                             }
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  709              		.global	Cy_Em_EEPROM_Write
  710              		.thumb
  711              		.thumb_func
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 20
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 20
 
 
  712              		.type	Cy_Em_EEPROM_Write, %function
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  410:Generated_Source\PSoC5/cy_em_eeprom.c **** *******************************************************************************/
  411:Generated_Source\PSoC5/cy_em_eeprom.c **** cy_en_em_eeprom_status_t Cy_Em_EEPROM_Write(uint32 addr,
  412:Generated_Source\PSoC5/cy_em_eeprom.c ****                                             void * eepromData,
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 21
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 21
 
 
  413:Generated_Source\PSoC5/cy_em_eeprom.c ****                                             uint32 size,
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  754 003c 07F10803 		add	r3, r7, #8
  755 0040 1B68     		ldr	r3, [r3]
  756 0042 C7F83C31 		str	r3, [r7, #316]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 22
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 22
 
 
  428:Generated_Source\PSoC5/cy_em_eeprom.c **** 
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  438:Generated_Source\PSoC5/cy_em_eeprom.c ****             /* Get the sequence number of the last written row */
  439:Generated_Source\PSoC5/cy_em_eeprom.c ****             uint32 seqNum = CY_EM_EEPROM_GET_SEQ_NUM(emEepromRowAddr);
  801              		.loc 1 439 0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 23
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 23
 
 
  802 009e 07F11803 		add	r3, r7, #24
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  837 00fa 5A1E     		subs	r2, r3, #1
  838 00fc D7F84431 		ldr	r3, [r7, #324]
  839 0100 9A42     		cmp	r2, r3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 24
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 24
 
 
  840 0102 05D1     		bne	.L41
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  873 0140 07F12403 		add	r3, r7, #36
  874 0144 0C33     		adds	r3, r3, #12
  875 0146 D7F82C11 		ldr	r1, [r7, #300]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 25
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 25
 
 
  876 014a 1846     		mov	r0, r3
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  915 0192 C7F84831 		str	r3, [r7, #328]
  493:Generated_Source\PSoC5/cy_em_eeprom.c **** 
  494:Generated_Source\PSoC5/cy_em_eeprom.c ****             for(; i <= seqNum; i++)
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 26
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 26
 
 
  916              		.loc 1 494 0 is_stmt 1 discriminator 4
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  514:Generated_Source\PSoC5/cy_em_eeprom.c ****                                                                            context->userFlashStartA
  515:Generated_Source\PSoC5/cy_em_eeprom.c ****                 if(0UL != tmpRowAddr)
  951              		.loc 1 515 0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 27
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 27
 
 
  952 01e2 D7F84031 		ldr	r3, [r7, #320]
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  534:Generated_Source\PSoC5/cy_em_eeprom.c ****                 {
  535:Generated_Source\PSoC5/cy_em_eeprom.c ****                     uint32 dataAddr = ((uint32)((uint8 *)&writeRamBuffer)) + startAddr;
  986              		.loc 1 535 0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 28
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 28
 
 
  987 022c 07F12402 		add	r2, r7, #36
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1027 028a DA67     		str	r2, [r3, #124]
  1028              	.L52:
  494:Generated_Source\PSoC5/cy_em_eeprom.c ****             {
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 29
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 29
 
 
  1029              		.loc 1 494 0
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1069 02e6 3B46     		mov	r3, r7
  1070 02e8 1B68     		ldr	r3, [r3]
  1071 02ea 1B68     		ldr	r3, [r3]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 30
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 30
 
 
  1072 02ec 1344     		add	r3, r3, r2
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1109              	.L39:
  1110              	.LBE9:
  1111              	.LBE6:
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 31
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 31
 
 
  577:Generated_Source\PSoC5/cy_em_eeprom.c ****             }
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  606:Generated_Source\PSoC5/cy_em_eeprom.c **** * So it is recommended to use this function in utmost case to prolongate
  607:Generated_Source\PSoC5/cy_em_eeprom.c **** * flash life.
  608:Generated_Source\PSoC5/cy_em_eeprom.c **** *
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 32
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 32
 
 
  609:Generated_Source\PSoC5/cy_em_eeprom.c **** * \note
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1163 0024 1A46     		mov	r2, r3
  1164 0026 0021     		movs	r1, #0
  1165 0028 FFF7FEFF 		bl	memset
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 33
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 33
 
 
  637:Generated_Source\PSoC5/cy_em_eeprom.c **** #if (CY_PSOC6)
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  658:Generated_Source\PSoC5/cy_em_eeprom.c ****                         CalcChecksum((uint8 *) &writeRamBuffer[CY_EM_EEPROM_EEPROM_DATA_OFFSET_U32]
  1197              		.loc 1 658 0
  1198 006c 1A46     		mov	r2, r3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 34
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 34
 
 
  1199 006e 07F10803 		add	r3, r7, #8
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  691:Generated_Source\PSoC5/cy_em_eeprom.c ****             writeRamBuffer[0u] = seqNum;
  1222              		.loc 1 691 0 discriminator 3
  1223 00a4 07F10803 		add	r3, r7, #8
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 35
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 35
 
 
  1224 00a8 D7F81421 		ldr	r2, [r7, #276]
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1251              		.cfi_def_cfa_offset 8
  1252 00e4 BD46     		mov	sp, r7
  1253              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 36
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 36
 
 
  1254              		@ sp needed
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1289              		.cfi_def_cfa_register 13
  1290              		@ sp needed
  1291 0014 80BC     		pop	{r7}
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 37
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 37
 
 
  1292              		.cfi_restore 7
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1321 000c BB60     		str	r3, [r7, #8]
  761:Generated_Source\PSoC5/cy_em_eeprom.c ****     uint32 prevSeqNum = 0u;
  1322              		.loc 1 761 0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 38
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 38
 
 
  1323 000e 0023     		movs	r3, #0
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  780:Generated_Source\PSoC5/cy_em_eeprom.c ****         emEepromAddr = emEepromAddr + CY_EM_EEPROM_FLASH_SIZEOF_ROW;
  1359              		.loc 1 780 0 discriminator 2
  1360 0042 FB68     		ldr	r3, [r7, #12]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 39
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 39
 
 
  1361 0044 03F58073 		add	r3, r3, #256
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  796:Generated_Source\PSoC5/cy_em_eeprom.c **** *
  797:Generated_Source\PSoC5/cy_em_eeprom.c **** * \return
  798:Generated_Source\PSoC5/cy_em_eeprom.c **** * The address of the row or zero if the row with the sequence number was not
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 40
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 40
 
 
  799:Generated_Source\PSoC5/cy_em_eeprom.c **** * found.
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1433              		.loc 1 816 0
  1434 0028 04E0     		b	.L77
  1435              	.L76:
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 41
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 41
 
 
  806:Generated_Source\PSoC5/cy_em_eeprom.c ****     {
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  840:Generated_Source\PSoC5/cy_em_eeprom.c **** * The address of the row from which the data should be read into the RAM buffer
  841:Generated_Source\PSoC5/cy_em_eeprom.c **** * in a later write operation. Out parameter.
  842:Generated_Source\PSoC5/cy_em_eeprom.c **** *
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 42
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 42
 
 
  843:Generated_Source\PSoC5/cy_em_eeprom.c **** * \param context
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  863:Generated_Source\PSoC5/cy_em_eeprom.c ****             CY_EM_EEPROM_IS_ADDR_EXCEED_RANGE(*rowToWrPtr, context->wlEndAddr))
  1498              		.loc 1 863 0
  1499 0028 9A42     		cmp	r2, r3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 43
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 43
 
 
  1500 002a 03D3     		bcc	.L82
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1533 005c 9A42     		cmp	r2, r3
  1534 005e 16D2     		bcs	.L85
  885:Generated_Source\PSoC5/cy_em_eeprom.c ****             {
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 44
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 44
 
 
  886:Generated_Source\PSoC5/cy_em_eeprom.c ****                 *rowToRdPtr = context->userFlashStartAddr +
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1568 0098 D21A     		subs	r2, r2, r3
  1569 009a 7B68     		ldr	r3, [r7, #4]
  1570 009c 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 45
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 45
 
 
  1571              		.loc 1 903 0
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1603              		@ args = 0, pretend = 0, frame = 16
  1604              		@ frame_needed = 1, uses_anonymous_args = 0
  1605              		@ link register save eliminated.
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 46
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 46
 
 
  1606 0000 80B4     		push	{r7}
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1650 003e FB7B     		ldrb	r3, [r7, #15]
  1651 0040 5B00     		lsls	r3, r3, #1
  1652 0042 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 47
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 47
 
 
  1653              	.L92:
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  941:Generated_Source\PSoC5/cy_em_eeprom.c **** 
  942:Generated_Source\PSoC5/cy_em_eeprom.c **** 
  943:Generated_Source\PSoC5/cy_em_eeprom.c **** /*******************************************************************************
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 48
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 48
 
 
  944:Generated_Source\PSoC5/cy_em_eeprom.c **** * Function Name: CheckRanges
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1735 002a 1344     		add	r3, r3, r2
  1736 002c 7A68     		ldr	r2, [r7, #4]
  1737 002e 5268     		ldr	r2, [r2, #4]
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 49
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 49
 
 
  1738 0030 02FB03F3 		mul	r3, r2, r3
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  971:Generated_Source\PSoC5/cy_em_eeprom.c **** 
  972:Generated_Source\PSoC5/cy_em_eeprom.c **** /*******************************************************************************
  973:Generated_Source\PSoC5/cy_em_eeprom.c **** * Function Name: WriteRow
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 50
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 50
 
 
  974:Generated_Source\PSoC5/cy_em_eeprom.c **** ****************************************************************************//**
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
 1010:Generated_Source\PSoC5/cy_em_eeprom.c ****     #endif /* ((CY_PSOC3) */
 1011:Generated_Source\PSoC5/cy_em_eeprom.c ****     
 1012:Generated_Source\PSoC5/cy_em_eeprom.c ****     /* Write the flash row */
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 51
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 51
 
 
 1013:Generated_Source\PSoC5/cy_em_eeprom.c ****     #if (CY_PSOC4)
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
 1037:Generated_Source\PSoC5/cy_em_eeprom.c ****     }
 1038:Generated_Source\PSoC5/cy_em_eeprom.c **** #else /* PSoC 6 */
 1039:Generated_Source\PSoC5/cy_em_eeprom.c ****     if(0u != context->blockingWrite)
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 52
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 52
 
 
 1040:Generated_Source\PSoC5/cy_em_eeprom.c ****     {
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
 1074:Generated_Source\PSoC5/cy_em_eeprom.c **** 
 1075:Generated_Source\PSoC5/cy_em_eeprom.c **** /*******************************************************************************
 1076:Generated_Source\PSoC5/cy_em_eeprom.c **** * Function Name: EraseRow
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 53
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 53
 
 
 1077:Generated_Source\PSoC5/cy_em_eeprom.c **** ****************************************************************************//**
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
 1110:Generated_Source\PSoC5/cy_em_eeprom.c ****         i++;
 1111:Generated_Source\PSoC5/cy_em_eeprom.c ****     }
 1112:Generated_Source\PSoC5/cy_em_eeprom.c **** 
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 54
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 54
 
 
 1113:Generated_Source\PSoC5/cy_em_eeprom.c ****     do
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1878 0022 FB75     		strb	r3, [r7, #23]
 1160:Generated_Source\PSoC5/cy_em_eeprom.c **** 
 1161:Generated_Source\PSoC5/cy_em_eeprom.c ****     if((CY_EM_EEPROM_SUCCESS == ret) && (0u != context->redundantCopy))
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 55
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 55
 
 
  1879              		.loc 1 1161 0
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1919 0062 1837     		adds	r7, r7, #24
  1920              		.cfi_def_cfa_offset 8
  1921 0064 BD46     		mov	sp, r7
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 56
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 56
 
 
  1922              		.cfi_def_cfa_register 13
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
 1217:Generated_Source\PSoC5/cy_em_eeprom.c ****                                                 cy_stc_eeprom_context_t * context)
 1218:Generated_Source\PSoC5/cy_em_eeprom.c **** {
  1935              		.loc 1 1218 0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 57
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 57
 
 
  1936              		.cfi_startproc
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  1980 0050 9C42     		cmp	r4, r3
  1981 0052 11D1     		bne	.L109
 1228:Generated_Source\PSoC5/cy_em_eeprom.c ****             CY_EM_EEPROM_EEPROM_DATA_LEN)))
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 58
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 58
 
 
 1229:Generated_Source\PSoC5/cy_em_eeprom.c ****     {
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
 1245:Generated_Source\PSoC5/cy_em_eeprom.c ****         /* Restore bad row data from the RAM buffer */
 1246:Generated_Source\PSoC5/cy_em_eeprom.c ****         ret = WriteRow(startAddr, (uint32 *)writeRamBuffer, context);
  2019              		.loc 1 1246 0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 59
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 59
 
 
  2020 00a6 07F11001 		add	r1, r7, #16
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2061 00f6 00BF     		.section	.text.GetAddresses,"ax",%progbits
  2062              		.align	2
  2063              		.thumb
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 60
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 60
 
 
  2064              		.thumb_func
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2074              		.cfi_def_cfa_offset 4
  2075              		.cfi_offset 7, -4
  2076 0002 87B0     		sub	sp, sp, #28
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 61
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 61
 
 
  2077              		.cfi_def_cfa_offset 32
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2122 0048 3A6A     		ldr	r2, [r7, #32]
  2123 004a 7B6A     		ldr	r3, [r7, #36]
  2124 004c 1A44     		add	r2, r2, r3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 62
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 62
 
 
  2125 004e 3B68     		ldr	r3, [r7]
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2167 008e 1A44     		add	r2, r2, r3
  2168 0090 3B68     		ldr	r3, [r7]
  2169 0092 DB01     		lsls	r3, r3, #7
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 63
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 63
 
 
  2170 0094 9A42     		cmp	r2, r3
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2220              	.L125:
 1329:Generated_Source\PSoC5/cy_em_eeprom.c ****         }
 1330:Generated_Source\PSoC5/cy_em_eeprom.c ****         else
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 64
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 64
 
 
 1331:Generated_Source\PSoC5/cy_em_eeprom.c ****         {
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
 1357:Generated_Source\PSoC5/cy_em_eeprom.c **** * operation to the EEPROM would fail. This would happen because the Em_EEPROM 
 1358:Generated_Source\PSoC5/cy_em_eeprom.c **** * headers checksum field values (which is zero at the moment) would not be 
 1359:Generated_Source\PSoC5/cy_em_eeprom.c **** * equal to the actual data checksum. This function allows to avoid read failure
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 65
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 65
 
 
 1360:Generated_Source\PSoC5/cy_em_eeprom.c **** * after device reprogramming. 
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
 1381:Generated_Source\PSoC5/cy_em_eeprom.c ****         /* Copy the EEPROM row from Flash to RAM */
 1382:Generated_Source\PSoC5/cy_em_eeprom.c ****         (void)memcpy((void *)&writeRamBuffer[0u], (void *)(wrAddr), CY_EM_EEPROM_FLASH_SIZEOF_ROW);
  2282              		.loc 1 1382 0 discriminator 3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 66
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 66
 
 
  2283 0030 07F10803 		add	r3, r7, #8
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2319 008a 07F10803 		add	r3, r7, #8
  2320 008e 1A68     		ldr	r2, [r3]
  2321 0090 3B1D     		adds	r3, r7, #4
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 67
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 67
 
 
  2322 0092 1B68     		ldr	r3, [r3]
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2362 00f0 97F81731 		ldrb	r3, [r7, #279]	@ zero_extendqisi2
 1412:Generated_Source\PSoC5/cy_em_eeprom.c **** }
  2363              		.loc 1 1412 0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 68
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 68
 
 
  2364 00f4 1846     		mov	r0, r3
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2418 0051 05       		.byte	0x5
  2419 0052 1B010000 		.4byte	.LASF6
  2420 0056 02       		.uleb128 0x2
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 69
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 69
 
 
  2421 0057 08       		.byte	0x8
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2475 00c1 10       		.byte	0x10
  2476 00c2 03       		.byte	0x3
  2477 00c3 FB       		.byte	0xfb
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 70
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 70
 
 
  2478 00c4 09010000 		.4byte	0x109
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2532 0138 08       		.uleb128 0x8
  2533 0139 47050000 		.4byte	.LASF26
  2534 013d 03       		.byte	0x3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 71
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 71
 
 
  2535 013e 2301     		.2byte	0x123
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2589 01b2 0B       		.uleb128 0xb
  2590 01b3 3F040000 		.4byte	.LASF31
  2591 01b7 03       		.byte	0x3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 72
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 72
 
 
  2592 01b8 0B       		.uleb128 0xb
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2646 0222 BF010000 		.4byte	0x1bf
  2647 0226 00000000 		.4byte	.LFB1
  2648 022a 0A030000 		.4byte	.LFE1-.LFB1
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 73
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 73
 
 
  2649 022e 01       		.uleb128 0x1
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2703 0290 B0       		.byte	0xb0
  2704 0291 83000000 		.4byte	0x83
  2705 0295 02       		.uleb128 0x2
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 74
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 74
 
 
  2706 0296 91       		.byte	0x91
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2760 02f4 83000000 		.4byte	0x83
  2761 02f8 02       		.uleb128 0x2
  2762 02f9 91       		.byte	0x91
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 75
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 75
 
 
  2763 02fa 5C       		.sleb128 -36
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2817 0363 91       		.byte	0x91
  2818 0364 BC7F     		.sleb128 -68
  2819 0366 00       		.byte	0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 76
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 76
 
 
  2820 0367 11       		.uleb128 0x11
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2874 03dc 01       		.byte	0x1
  2875 03dd 9B01     		.2byte	0x19b
  2876 03df 83000000 		.4byte	0x83
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 77
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 77
 
 
  2877 03e3 03       		.uleb128 0x3
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2931 0448 A301     		.2byte	0x1a3
  2932 044a 83000000 		.4byte	0x83
  2933 044e 02       		.uleb128 0x2
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 78
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 78
 
 
  2934 044f 91       		.byte	0x91
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  2988 04b8 BE000000 		.4byte	0xbe
  2989 04bc 02       		.uleb128 0x2
  2990 04bd 91       		.byte	0x91
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 79
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 79
 
 
  2991 04be 4C       		.sleb128 -52
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3045 052e 02       		.uleb128 0x2
  3046 052f 91       		.byte	0x91
  3047 0530 44       		.sleb128 -60
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 80
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 80
 
 
  3048 0531 00       		.byte	0
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3102 059b 23030000 		.4byte	.LASF65
  3103 059f 01       		.byte	0x1
  3104 05a0 7A02     		.2byte	0x27a
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 81
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 81
 
 
  3105 05a2 83000000 		.4byte	0x83
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3159 0611 01       		.byte	0x1
  3160 0612 F602     		.2byte	0x2f6
  3161 0614 00000000 		.4byte	.LFB5
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 82
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 82
 
 
  3162 0618 6C000000 		.4byte	.LFE5-.LFB5
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3216 067e 04       		.byte	0x4
  3217 067f 83000000 		.4byte	0x83
  3218 0683 1C       		.uleb128 0x1c
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 83
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 83
 
 
  3219 0684 AF050000 		.4byte	.LASF81
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3273 06f6 5003     		.2byte	0x350
  3274 06f8 7D060000 		.4byte	0x67d
  3275 06fc 02       		.uleb128 0x2
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 84
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 84
 
 
  3276 06fd 91       		.byte	0x91
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3330 0766 6900     		.ascii	"i\000"
  3331 0768 01       		.byte	0x1
  3332 0769 9E03     		.2byte	0x39e
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 85
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 85
 
 
  3333 076b 6B000000 		.4byte	0x6b
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3387 07d7 83000000 		.4byte	0x83
  3388 07db 02       		.uleb128 0x2
  3389 07dc 91       		.byte	0x91
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 86
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 86
 
 
  3390 07dd 6C       		.sleb128 -20
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3444 0848 01       		.byte	0x1
  3445 0849 E703     		.2byte	0x3e7
  3446 084b 83000000 		.4byte	0x83
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 87
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 87
 
 
  3447 084f 02       		.uleb128 0x2
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3501 08b8 16       		.uleb128 0x16
  3502 08b9 72657400 		.ascii	"ret\000"
  3503 08bd 01       		.byte	0x1
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 88
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 88
 
 
  3504 08be 4E04     		.2byte	0x44e
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3558 092f 91       		.byte	0x91
  3559 0930 00       		.sleb128 0
  3560 0931 16       		.uleb128 0x16
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 89
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 89
 
 
  3561 0932 72657400 		.ascii	"ret\000"
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3615 09a0 7D060000 		.4byte	0x67d
  3616 09a4 02       		.uleb128 0x2
  3617 09a5 91       		.byte	0x91
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 90
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 90
 
 
  3618 09a6 64       		.sleb128 -28
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3672 0a0e 5A05     		.2byte	0x55a
  3673 0a10 83000000 		.4byte	0x83
  3674 0a14 02       		.uleb128 0x2
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 91
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 91
 
 
  3675 0a15 91       		.byte	0x91
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3729 0000 01       		.uleb128 0x1
  3730 0001 11       		.uleb128 0x11
  3731 0002 01       		.byte	0x1
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 92
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 92
 
 
  3732 0003 25       		.uleb128 0x25
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3786 0039 0B       		.uleb128 0xb
  3787 003a 0B       		.uleb128 0xb
  3788 003b 00       		.byte	0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 93
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 93
 
 
  3789 003c 00       		.byte	0
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3843 0072 13       		.uleb128 0x13
  3844 0073 00       		.byte	0
  3845 0074 00       		.byte	0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 94
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 94
 
 
  3846 0075 0A       		.uleb128 0xa
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3900 00ac 03       		.uleb128 0x3
  3901 00ad 0E       		.uleb128 0xe
  3902 00ae 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 95
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 95
 
 
  3903 00af 0B       		.uleb128 0xb
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  3957 00e5 06       		.uleb128 0x6
  3958 00e6 00       		.byte	0
  3959 00e7 00       		.byte	0
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 96
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 96
 
 
  3960 00e8 12       		.uleb128 0x12
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4014 011f 05       		.uleb128 0x5
  4015 0120 00       		.byte	0
  4016 0121 03       		.uleb128 0x3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 97
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 97
 
 
  4017 0122 0E       		.uleb128 0xe
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4071 0158 3F       		.uleb128 0x3f
  4072 0159 19       		.uleb128 0x19
  4073 015a 03       		.uleb128 0x3
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 98
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 98
 
 
  4074 015b 0E       		.uleb128 0xe
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4128 0193 19       		.uleb128 0x19
  4129 0194 49       		.uleb128 0x49
  4130 0195 13       		.uleb128 0x13
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 99
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 99
 
 
  4131 0196 11       		.uleb128 0x11
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4185 01ce 01       		.byte	0x1
  4186 01cf 03       		.uleb128 0x3
  4187 01d0 0E       		.uleb128 0xe
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 100
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 100
 
 
  4188 01d1 3A       		.uleb128 0x3a
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4242 007c FA000000 		.4byte	.LFE13-.LFB13
  4243 0080 00000000 		.4byte	.LFB14
  4244 0084 FE000000 		.4byte	.LFE14-.LFB14
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 101
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 101
 
 
  4245 0088 00000000 		.4byte	0
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4293      6F577250 
  4293      747200
  4294              	.LASF66:
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 102
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 102
 
 
  4295 0012 746D7044 		.ascii	"tmpData\000"
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4317 0110 65657072 		.ascii	"eepromSize\000"
  4317      6F6D5369 
  4317      7A6500
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 103
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 103
 
 
  4318              	.LASF6:
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4339 01fb 75696E74 		.ascii	"uint8\000"
  4339      3800
  4340              	.LASF13:
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 104
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 104
 
 
  4341 0201 646F7562 		.ascii	"double\000"
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4365 029a 6E756D42 		.ascii	"numBytes\000"
  4365      79746573 
  4365      00
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 105
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 105
 
 
  4366              	.LASF5:
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4387      746100
  4388              	.LASF44:
  4389 0340 73746172 		.ascii	"startRowAddr\000"
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 106
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 106
 
 
  4389      74526F77 
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4411      6570726F 
  4411      6D5F636F 
  4411      6E746578 
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 107
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 107
 
 
  4412              	.LASF78:
@@ -6418,7 +6418,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4437      7400
  4438              	.LASF74:
  4439 04a5 70726576 		.ascii	"prevSeqNum\000"
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 108
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 108
 
 
  4439      5365714E 
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4464              	.LASF35:
  4465 053f 636F6E74 		.ascii	"context\000"
  4465      65787400 
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 109
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 109
 
 
  4466              	.LASF26:
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 1
  4489 05e5 63757252 		.ascii	"curRdEepromRowNum\000"
  4489      64456570 
  4489      726F6D52 
-ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccyY4FIf.s 			page 110
+ARM GAS  C:\Users\HPz420\AppData\Local\Temp\ccLk5to0.s 			page 110
 
 
  4489      6F774E75 

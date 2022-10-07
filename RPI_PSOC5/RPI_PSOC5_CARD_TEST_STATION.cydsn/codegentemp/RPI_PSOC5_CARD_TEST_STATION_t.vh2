@@ -1,5 +1,5 @@
 -- Project:   C:\Users\HPz420\Documents\GitHub\land-boards\RasPi\RPI_PSOC5\RPI_PSOC5_CARD_TEST_STATION.cydsn\RPI_PSOC5_CARD_TEST_STATION.cyprj
--- Generated: 04/25/2022 17:11:16
+-- Generated: 10/06/2022 19:10:58
 -- PSoC Creator  4.4
 
 ENTITY RPI_PSOC5_CARD_TEST_STATION IS
@@ -8,7 +8,7 @@ ENTITY RPI_PSOC5_CARD_TEST_STATION IS
         SCL0(0)_PAD : INOUT std_ulogic;
         IO_12(0)_PAD : OUT std_ulogic;
         IO_10(0)_PAD : OUT std_ulogic;
-        IO_8(0)_PAD : OUT std_ulogic;
+        IO_8(0)_PAD : IN std_ulogic;
         IO_13(0)_PAD : OUT std_ulogic;
         IO_6(0)_PAD : OUT std_ulogic;
         IO_16(0)_PAD : OUT std_ulogic;
@@ -33,7 +33,7 @@ ENTITY RPI_PSOC5_CARD_TEST_STATION IS
         LED(0)_PAD : OUT std_ulogic;
         SDA1(0)_PAD : INOUT std_ulogic;
         SCL1(0)_PAD : INOUT std_ulogic;
-        IO_11(0)_PAD : OUT std_ulogic;
+        IO_11(0)_PAD : IN std_ulogic;
         IO_9(0)_PAD : OUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
@@ -1312,13 +1312,13 @@ BEGIN
 
     IO_8:logicalport
         GENERIC MAP(
-            drive_mode => "110",
+            drive_mode => "001",
             ibuf_enabled => "1",
             id => "3cbb44c9-e997-4e41-8368-830dc2323e5c",
             init_dr_st => "0",
             input_buffer_sel => "00",
             input_clk_en => 0,
-            input_sync => "1",
+            input_sync => "0",
             input_sync_mode => "0",
             intr_mode => "00",
             invert_in_clock => 0,
@@ -1348,7 +1348,7 @@ BEGIN
             pa_out_clock_en => -1,
             pa_out_reset => -1,
             pin_aliases => "",
-            pin_mode => "O",
+            pin_mode => "I",
             por_state => 4,
             port_alias_group => "",
             port_alias_required => 0,
@@ -1365,7 +1365,7 @@ BEGIN
             spanning => 0,
             sw_only => 0,
             use_annotation => "0",
-            vtrip => "10",
+            vtrip => "00",
             width => 1,
             in_clk_inv => 0,
             in_clken_inv => 0,
@@ -3572,13 +3572,13 @@ BEGIN
 
     IO_11:logicalport
         GENERIC MAP(
-            drive_mode => "110",
+            drive_mode => "001",
             ibuf_enabled => "1",
             id => "77257e8c-45e3-4454-b986-8801862bf669",
             init_dr_st => "0",
             input_buffer_sel => "00",
             input_clk_en => 0,
-            input_sync => "1",
+            input_sync => "0",
             input_sync_mode => "0",
             intr_mode => "00",
             invert_in_clock => 0,
@@ -3608,7 +3608,7 @@ BEGIN
             pa_out_clock_en => -1,
             pa_out_reset => -1,
             pin_aliases => "",
-            pin_mode => "O",
+            pin_mode => "I",
             por_state => 4,
             port_alias_group => "",
             port_alias_required => 0,
@@ -3625,7 +3625,7 @@ BEGIN
             spanning => 0,
             sw_only => 0,
             use_annotation => "0",
-            vtrip => "10",
+            vtrip => "00",
             width => 1,
             in_clk_inv => 0,
             in_clken_inv => 0,
