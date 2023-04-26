@@ -1,6 +1,6 @@
 -- ======================================================================
 -- RPI_PSOC5_CARD_TEST_STATION.ctl generated from RPI_PSOC5_CARD_TEST_STATION
--- 10/06/2022 at 19:10
+-- 04/26/2023 at 16:24
 -- This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 -- ======================================================================
 
